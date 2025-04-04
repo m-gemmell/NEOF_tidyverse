@@ -1,0 +1,9 @@
+---
+title: "forcats"
+---
+
+<center>
+![](images/forcats.png){style="width:150px"}
+</center>
+
+[forcats homepage](https://forcats.tidyverse.org/)

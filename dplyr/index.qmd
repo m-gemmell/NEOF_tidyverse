@@ -1,0 +1,9 @@
+---
+title: "dplyr"
+---
+
+<center>
+![](images/dplyr.png){style="width:150px"}
+</center>
+
+[dplyr homepage](https://dplyr.tidyverse.org//)

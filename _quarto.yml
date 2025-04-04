@@ -1,19 +1,144 @@
 project:
   type: website
-
+editor: source
 website:
-  title: "NEOF_tidyverse"
+  favicon: /images/NEOF_favicon.png
+  page-navigation: true
+  title: NEOF Tidyverse
+  description: Tidyverse cookbook by NEOF
   navbar:
+    title: NEOF Tidy R
+    collapse-below: lg
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+    - text: Overview
+      href: index.qmd
+    - text: tibble
+      href: tibble/index.qmd
+    - text: dplyr
+      href: dplyr/index.qmd
+    - text: readr
+      href: readr/index.qmd
+    - text: tidyr
+      href: tidyr/index.qmd
+    - text: ggplot2
+      href: ggplot2/index.qmd
+    - text: stringr
+      href: stringr/index.qmd
+    - text: forcats
+      href: forcats/index.qmd
+    - text: purrr
+      href: purrr/index.qmd
+    - text: lubridate
+      href: lubridate/index.qmd
+    right:
+    - icon: house-fill
+      href: https://neof.org.uk/training/
+      aria-label: Neof website
+    - icon: linkedin
+      href: https://www.linkedin.com/in/training-neof/
+      aria-label: LinkedIn
+    - text: "![](/images/Bluesky_quarto_navbar.svg){height=20px}"
+      href: https://bsky.app/profile/nerc-eof.bsky.social
+  page-footer:
+    left: |
+      [![](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png){fig-alt="CC BY-SA 4.0" height=30px}](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+    center: |
+      [![](/images/NEOF_rounded_corners.png){fig-alt="NEOF" height=60px}](https://neof.org.uk/)
+  sidebar:
+  - id: Overview
+    title: Overview
+    style: floating
+    align: left
+    contents:
+    - href: index.qmd
+  - id: Tibble
+    title: Tibble
+    style: floating
+    collapse-level: 2
+    align: left
+    contents:
+    - href: tibble/index.qmd
+  - id: dplyr
+    title: dplyr
+    style: floating
+    collapse-level: 2
+    align: left
+    contents:
+    - href: dplyr/index.qmd
+    - href: dplyr/cheatsheets.qmd
+  - id: readr
+    title: readr
+    style: floating
+    collapse-level: 2
+    align: left
+    contents:
+    - href: readr/index.qmd
+    - href: readr/cheatsheets.qmd
+  - id: tidyr
+    title: tidyr
+    style: floating
+    collapse-level: 2
+    align: left
+    contents:
+    - href: tidyr/index.qmd
+    - href: tidyr/cheatsheets.qmd
+  - id: ggplot2
+    title: ggplot2
+    style: floating
+    collapse-level: 2
+    align: left
+    contents:
+    - href: ggplot2/index.qmd
+    - href: ggplot2/cheatsheets.qmd
+  - id: stringr
+    title: stringr
+    style: floating
+    collapse-level: 2
+    align: left
+    contents:
+    - href: stringr/index.qmd
+    - href: stringr/cheatsheets.qmd
+  - id: forcats
+    title: forcats
+    style: floating
+    collapse-level: 2
+    align: left
+    contents:
+    - href: forcats/index.qmd
+    - href: forcats/cheatsheets.qmd
+  - id: purrr
+    title: purrr
+    style: floating
+    collapse-level: 2
+    align: left
+    contents:
+    - href: purrr/index.qmd
+    - href: purrr/cheatsheets.qmd
+  - id: lubridate
+    title: lubridate
+    style: floating
+    collapse-level: 2
+    align: left
+    contents:
+    - href: lubridate/index.qmd
+    - href: lubridate/cheatsheets.qmd
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    grid:
+      sidebar-width: 200px
+      body-width: 1000px
+      margin-width: 200px
+      gutter-width: 0.75em
+    css: include/webex.css
+    include-after-body: include/webex.js
+    theme:
+      light:
+      - cosmo
+      - css_files/styles.scss
+      dark:
+      - darkly
+      - css_files/styles.scss
+    embed-resources: false
     toc: true
-
-
-
+    mainfont: Lexend

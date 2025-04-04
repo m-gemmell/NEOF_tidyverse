@@ -1,0 +1,9 @@
+---
+title: "stringr"
+---
+
+<center>
+![](images/stringr.png){style="width:150px"}
+</center>
+
+[tidyr homepage](https://stringr.tidyverse.org/)

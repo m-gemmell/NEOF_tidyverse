@@ -1,0 +1,9 @@
+---
+title: "tidyr"
+---
+
+<center>
+![](images/tidyr.png){style="width:150px"}
+</center>
+
+[tidyr homepage](https://tidyr.tidyverse.org/)

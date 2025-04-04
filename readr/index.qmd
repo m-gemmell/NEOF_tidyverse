@@ -1,0 +1,9 @@
+---
+title: "readr"
+---
+
+<center>
+![](images/readr.png){style="width:150px"}
+</center>
+
+[readr homepage](https://readr.tidyverse.org/)

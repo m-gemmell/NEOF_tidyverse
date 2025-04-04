@@ -1,0 +1,9 @@
+---
+title: "purrr"
+---
+
+<center>
+![](images/purrr.png){style="width:150px"}
+</center>
+
+[purr homepage](https://purrr.tidyverse.org/)

@@ -1,11 +1,30 @@
 ---
-title: "NEOF_tidyverse"
+title: "NEOF Tidyverse"
 ---
 
-This is a Quarto website.
+This is a resource for the R Tidyverse suite of packages.
+It is intended as a quick one-stop reference for the various tidyverse packages and their functions, also known as a cookbook.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+This website does not go into great details rather it provides:
 
-```{r}
-1 + 1
-```
+- Concise explanations
+- Quick examples
+- Links to the official documentation
+
+This webpage is split into sections for each of the main packages in tidyverse.
+These are:
+
+- [tibble](./tibble): A new and improved data frame-like object
+- [dplyr](./dplyr): data manipulation, also introduces the tidyverse pipe (`|>`)
+- [readr](./readr): Read in tabular data
+- tidyr: Tidying tibbles, includes going from wide to long tibbles/data frames
+- ggplot2: Visulation with the grammar of graphics
+- stringr: String manipulation
+- forcats: Factor manipulation
+- purrr: Functions & vectors
+- lubridate: Data-time data
+
+## External links
+
+- [Tidyverse homepage](https://www.tidyverse.org/)
+- [R for Data Science (2e)](https://r4ds.hadley.nz/): If you want a more structured course this is a good place to start.

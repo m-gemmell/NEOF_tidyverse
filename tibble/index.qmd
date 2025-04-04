@@ -1,0 +1,9 @@
+---
+title: "Tibble"
+---
+
+<center>
+![](images/tibble.png){style="width:150px"}
+</center>
+
+[Tibble homepage](https://tibble.tidyverse.org/)

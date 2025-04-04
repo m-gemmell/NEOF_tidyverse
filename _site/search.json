@@ -1,0 +1,135 @@
+[
+  {
+    "objectID": "dplyr/cheatsheets.html",
+    "href": "dplyr/cheatsheets.html",
+    "title": "Cheatsheets",
+    "section": "",
+    "text": "Source"
+  },
+  {
+    "objectID": "dplyr/index.html",
+    "href": "dplyr/index.html",
+    "title": "dplyr",
+    "section": "",
+    "text": "dplyr homepage"
+  },
+  {
+    "objectID": "forcats/cheatsheets.html",
+    "href": "forcats/cheatsheets.html",
+    "title": "Cheatsheets",
+    "section": "",
+    "text": "Source"
+  },
+  {
+    "objectID": "forcats/index.html",
+    "href": "forcats/index.html",
+    "title": "forcats",
+    "section": "",
+    "text": "forcats homepage"
+  },
+  {
+    "objectID": "ggplot2/cheatsheets.html",
+    "href": "ggplot2/cheatsheets.html",
+    "title": "Cheatsheets",
+    "section": "",
+    "text": "Source"
+  },
+  {
+    "objectID": "ggplot2/index.html",
+    "href": "ggplot2/index.html",
+    "title": "ggplot2",
+    "section": "",
+    "text": "tidyr homepage"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "NEOF Tidyverse",
+    "section": "",
+    "text": "This is a resource for the R Tidyverse suite of packages. It is intended as a quick one-stop reference for the various tidyverse packages and their functions, also known as a cookbook.\nThis website does not go into great details rather it provides:\nThis webpage is split into sections for each of the main packages in tidyverse. These are:"
+  },
+  {
+    "objectID": "index.html#external-links",
+    "href": "index.html#external-links",
+    "title": "NEOF Tidyverse",
+    "section": "External links",
+    "text": "External links\n\nTidyverse homepage\nR for Data Science (2e): If you want a more structured course this is a good place to start."
+  },
+  {
+    "objectID": "lubridate/cheatsheets.html",
+    "href": "lubridate/cheatsheets.html",
+    "title": "Cheatsheets",
+    "section": "",
+    "text": "Source"
+  },
+  {
+    "objectID": "lubridate/index.html",
+    "href": "lubridate/index.html",
+    "title": "lubridate",
+    "section": "",
+    "text": "purr homepage"
+  },
+  {
+    "objectID": "purrr/cheatsheets.html",
+    "href": "purrr/cheatsheets.html",
+    "title": "Cheatsheets",
+    "section": "",
+    "text": "Source"
+  },
+  {
+    "objectID": "purrr/index.html",
+    "href": "purrr/index.html",
+    "title": "purrr",
+    "section": "",
+    "text": "purr homepage"
+  },
+  {
+    "objectID": "readr/cheatsheets.html",
+    "href": "readr/cheatsheets.html",
+    "title": "Cheatsheets",
+    "section": "",
+    "text": "Source"
+  },
+  {
+    "objectID": "readr/index.html",
+    "href": "readr/index.html",
+    "title": "readr",
+    "section": "",
+    "text": "readr homepage"
+  },
+  {
+    "objectID": "stringr/cheatsheets.html",
+    "href": "stringr/cheatsheets.html",
+    "title": "Cheatsheets",
+    "section": "",
+    "text": "Source"
+  },
+  {
+    "objectID": "stringr/index.html",
+    "href": "stringr/index.html",
+    "title": "stringr",
+    "section": "",
+    "text": "tidyr homepage"
+  },
+  {
+    "objectID": "tibble/index.html",
+    "href": "tibble/index.html",
+    "title": "Tibble",
+    "section": "",
+    "text": "Tibble homepage"
+  },
+  {
+    "objectID": "tidyr/cheatsheets.html",
+    "href": "tidyr/cheatsheets.html",
+    "title": "Cheatsheets",
+    "section": "",
+    "text": "Source"
+  },
+  {
+    "objectID": "tidyr/index.html",
+    "href": "tidyr/index.html",
+    "title": "tidyr",
+    "section": "",
+    "text": "tidyr homepage"
+  }
+]
