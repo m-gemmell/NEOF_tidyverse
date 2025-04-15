@@ -1,0 +1,33 @@
+---
+title: "Creating tibbles"
+format: html
+---
+
+Their are various ways to create __tibbles__. 
+Below are three methods:
+
+- Creating a new __tibble__ via code
+- Coercing a __data.frame__ into a __tibble__
+- Reading in a file as a __tibble__
+
+## Code to tibble
+
+## data.frame to tibble
+
+## File to tibble
+
+We can use __readr's__ function `read_csv()` to read in a file as a __tibble__.
+More information: [readr](./readr) 
+
+Ensure you have the following file downloaded: 
+
+
+```{r, eval=FALSE}
+house_plants_dbl <- readr::read_csv(file = "all_plant_details.csv")
+house_plants_dbl
+```
+
+```{r, echo=FALSE}
+house_plants_dbl <- readr::read_csv(file = "../files/all_plant_details.csv")
+house_plants_dbl
+```

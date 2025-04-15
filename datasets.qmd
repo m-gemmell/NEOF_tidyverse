@@ -1,0 +1,16 @@
+---
+title: "datasets"
+format: html
+---
+
+This website uses various datasets to demonstrate code.
+Below are explanations to the datasets and their download links.
+
+
+
+
+## Suggestions for Matthew
+
+### Houseplant envirpnment characteristics
+
+https://www.kaggle.com/datasets/noneee/houseplant-environment-characteristics

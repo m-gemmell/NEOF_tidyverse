@@ -13,23 +13,23 @@ website:
     - text: Overview
       href: index.qmd
     - text: tibble
-      href: tibble/index.qmd
+      href: tibble/tibble.qmd
     - text: dplyr
-      href: dplyr/index.qmd
+      href: dplyr/dplyr.qmd
     - text: readr
-      href: readr/index.qmd
+      href: readr/readr.qmd
     - text: tidyr
-      href: tidyr/index.qmd
+      href: tidyr/tidyr.qmd
     - text: ggplot2
-      href: ggplot2/index.qmd
+      href: ggplot2/ggplot2.qmd
     - text: stringr
-      href: stringr/index.qmd
+      href: stringr/stringr.qmd
     - text: forcats
-      href: forcats/index.qmd
+      href: forcats/forcats.qmd
     - text: purrr
-      href: purrr/index.qmd
+      href: purrr/purrr.qmd
     - text: lubridate
-      href: lubridate/index.qmd
+      href: lubridate/lubridate.qmd
     right:
     - icon: house-fill
       href: https://neof.org.uk/training/
@@ -57,14 +57,15 @@ website:
     collapse-level: 2
     align: left
     contents:
-    - href: tibble/index.qmd
+    - href: tibble/tibble.qmd
+    - href: tibble/creating_tibbles.qmd
   - id: dplyr
     title: dplyr
     style: floating
     collapse-level: 2
     align: left
     contents:
-    - href: dplyr/index.qmd
+    - href: dplyr/dplyr.qmd
     - href: dplyr/cheatsheets.qmd
   - id: readr
     title: readr
@@ -72,7 +73,7 @@ website:
     collapse-level: 2
     align: left
     contents:
-    - href: readr/index.qmd
+    - href: readr/readr.qmd
     - href: readr/cheatsheets.qmd
   - id: tidyr
     title: tidyr
@@ -80,7 +81,7 @@ website:
     collapse-level: 2
     align: left
     contents:
-    - href: tidyr/index.qmd
+    - href: tidyr/tidyr.qmd
     - href: tidyr/cheatsheets.qmd
   - id: ggplot2
     title: ggplot2
@@ -88,7 +89,7 @@ website:
     collapse-level: 2
     align: left
     contents:
-    - href: ggplot2/index.qmd
+    - href: ggplot2/ggplot2.qmd
     - href: ggplot2/cheatsheets.qmd
   - id: stringr
     title: stringr
@@ -96,7 +97,7 @@ website:
     collapse-level: 2
     align: left
     contents:
-    - href: stringr/index.qmd
+    - href: stringr/stringr.qmd
     - href: stringr/cheatsheets.qmd
   - id: forcats
     title: forcats
@@ -104,7 +105,7 @@ website:
     collapse-level: 2
     align: left
     contents:
-    - href: forcats/index.qmd
+    - href: forcats/forcats.qmd
     - href: forcats/cheatsheets.qmd
   - id: purrr
     title: purrr
@@ -112,7 +113,7 @@ website:
     collapse-level: 2
     align: left
     contents:
-    - href: purrr/index.qmd
+    - href: purrr/purrr.qmd
     - href: purrr/cheatsheets.qmd
   - id: lubridate
     title: lubridate
@@ -120,7 +121,7 @@ website:
     collapse-level: 2
     align: left
     contents:
-    - href: lubridate/index.qmd
+    - href: lubridate/lubridate.qmd
     - href: lubridate/cheatsheets.qmd
 
 format:

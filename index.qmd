@@ -17,12 +17,38 @@ These are:
 - [tibble](./tibble): A new and improved data frame-like object
 - [dplyr](./dplyr): data manipulation, also introduces the tidyverse pipe (`|>`)
 - [readr](./readr): Read in tabular data
-- tidyr: Tidying tibbles, includes going from wide to long tibbles/data frames
-- ggplot2: Visulation with the grammar of graphics
-- stringr: String manipulation
-- forcats: Factor manipulation
-- purrr: Functions & vectors
-- lubridate: Data-time data
+- [tidyr](./tidyr): Tidying tibbles, includes going from wide to long tibbles/data frames
+- [ggplot2](./ggplot2): Visualisation with the grammar of graphics
+- [stringr](./stringr): String manipulation
+- [forcats](./forcats): Factor manipulation
+- [purrr](./purrr): Functions & vectors
+- [lubridate](./lubridate): Data-time data
+
+## Package names
+
+To keep consistent we will include the package name of each function used in code.
+This is carried out like below.
+
+```{r, eval=FALSE}
+#
+```
+
+## Installation & loading
+
+Ensure you have tidyverse installed and loaded before running commands within the rest of these materials.
+
+You can install all the tidyverse packages with the following command:
+
+```{r, eval=FALSE}
+install.packages("tidyverse")
+```
+
+Once installed you can load the package suite:
+
+```{r, eval=FALSE}
+library("tidyverse")
+```
+
 
 ## External links
 

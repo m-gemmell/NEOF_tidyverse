@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NEOF Tidyverse - dplyr</title>
+<title>NEOF Tidyverse - purrr</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../dplyr/cheatsheets.html" rel="next">
+<link href="../purrr/cheatsheets.html" rel="next">
 <link href="..//images/NEOF_favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -89,39 +89,39 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../tibble/index.html" rel="" target="">
+    <a class="nav-link" href="../tibble/tibble.html" rel="" target="">
  <span class="menu-text">tibble</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../dplyr/index.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../dplyr/dplyr.html" rel="" target="">
  <span class="menu-text">dplyr</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../readr/index.html" rel="" target="">
+    <a class="nav-link" href="../readr/readr.html" rel="" target="">
  <span class="menu-text">readr</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../tidyr/index.html" rel="" target="">
+    <a class="nav-link" href="../tidyr/tidyr.html" rel="" target="">
  <span class="menu-text">tidyr</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../ggplot2/index.html" rel="" target="">
+    <a class="nav-link" href="../ggplot2/ggplot2.html" rel="" target="">
  <span class="menu-text">ggplot2</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../stringr/index.html" rel="" target="">
+    <a class="nav-link" href="../stringr/stringr.html" rel="" target="">
  <span class="menu-text">stringr</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../forcats/index.html" rel="" target="">
+    <a class="nav-link" href="../forcats/forcats.html" rel="" target="">
  <span class="menu-text">forcats</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../purrr/index.html" rel="" target="">
+    <a class="nav-link active" href="../purrr/purrr.html" rel="" target="" aria-current="page">
  <span class="menu-text">purrr</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../lubridate/index.html" rel="" target="">
+    <a class="nav-link" href="../lubridate/lubridate.html" rel="" target="">
  <span class="menu-text">lubridate</span></a>
   </li>  
 </ul>
@@ -152,7 +152,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../dplyr/index.html">dplyr</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../purrr/purrr.html">purrr</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -166,13 +166,13 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dplyr/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">dplyr</span></a>
+  <a href="../purrr/purrr.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">purrr</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dplyr/cheatsheets.html" class="sidebar-item-text sidebar-link">
+  <a href="../purrr/cheatsheets.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cheatsheets</span></a>
   </div>
 </li>
@@ -189,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">dplyr</h1>
+<h1 class="title">purrr</h1>
 </div>
 
 
@@ -205,9 +205,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <center>
-<img src="images/dplyr.png" class="img-fluid" style="width:150px">
+<img src="images/purrr.png" class="img-fluid" style="width:150px">
 </center>
-<p><a href="https://dplyr.tidyverse.org//">dplyr homepage</a></p>
+<p><a href="https://purrr.tidyverse.org/">purr homepage</a></p>
 
 
 
@@ -770,7 +770,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../dplyr/cheatsheets.html" class="pagination-link">
+      <a href="../purrr/cheatsheets.html" class="pagination-link">
         <span class="nav-page-text">Cheatsheets</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
