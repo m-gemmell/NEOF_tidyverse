@@ -28,10 +28,8 @@ Below is an example of:
 - Printing the tibble
 
 ```{r}
-#Load tidyverse
-library("tidyverse")
 #Create a tibble
-tbl <- tibble(Day = c("Mon", "Tue", "Wed"),
+tbl <- tibble::tibble(Day = c("Mon", "Tue", "Wed"),
               Hawks = c(3,7,2),
               Pigeons = c(52,21,61),
               Starlings = c(1,2,1))
