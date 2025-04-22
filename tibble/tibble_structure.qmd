@@ -1,0 +1,25 @@
+---
+title: "tibble structure"
+format: html
+---
+
+Useful resource for MG: https://ssc.wisc.edu/sscc/pubs/R_intro/book/2-5-tibble-structure.html
+
+Tibbles are formatted like a __data.frame__ but have some extra functions and terminology.
+
+Below is an example of a simple tibble.
+
+```{r, echo=FALSE}
+#Vectors to be used as columns
+Month <- rep("January", 3)
+Sex <- 
+Species <- 
+Hawks <- c(3,7,2)
+Pigeons <- c(52,21,61)
+Starlings <- c(1,2,1)
+#Create a tibble
+tbl <- tibble::tibble(Day, Month, Hawks, Pigeons, Starlings)
+#View tibble
+#Note that the column names are the same as the vector names
+tbl
+```

@@ -2,6 +2,48 @@
 title: "NEOF Tidyverse"
 ---
 
+<div class="hexrowtop">
+  <p><a href="tibble/tibble.qmd">
+  <img src="tibble/images/tibble.png" width="100px">
+  </a></p>
+  
+  <p><a href="dplyr/dplyr.qmd">
+  <img src="dplyr/images/dplyr.png" width="100px">
+  </a></p>
+  
+  <p><a href="readr/readr.qmd">
+  <img src="readr/images/readr.png" width="100px" class="hexcollast">
+  </a></p>
+</div>
+
+<div class="hexrowmid">
+  <p><a href="tidyr/tidyr.qmd">
+  <img src="tidyr/images/tidyr.png" width="100px">
+  </a></p>
+  
+  <p><a href="ggplot2/ggplot2.qmd">
+  <img src="ggplot2/images/ggplot2.png" width="100px">
+  </a></p>
+  
+  <p><a href="stringr/stringr.qmd">
+  <img src="stringr/images/stringr.png" width="100px" class="hexcollast">
+  </a></p>
+</div>
+
+<div class="hexrowbottom">
+  <p><a href="forcats/forcats.qmd">
+  <img src="forcats/images/forcats.png" width="100px">
+  </a></p>
+  
+  <p><a href="purrr/purrr.qmd">
+  <img src="purrr/images/purrr.png" width="100px">
+  </a></p>
+  
+  <p><a href="lubridate/lubridate.qmd">
+  <img src="lubridate/images/lubridate.png" width="100px" class="hexcollast">
+  </a></p>
+</div>
+
 This is a resource for the R Tidyverse suite of packages.
 It is intended as a quick one-stop reference for the various tidyverse packages and their functions, also known as a cookbook.
 

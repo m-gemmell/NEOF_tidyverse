@@ -59,6 +59,7 @@ website:
     contents:
     - href: tibble/tibble.qmd
     - href: tibble/creating_tibbles.qmd
+    - href: tibble/tibble_structure.qmd
   - id: dplyr
     title: dplyr
     style: floating

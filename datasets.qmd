@@ -11,6 +11,14 @@ Below are explanations to the datasets and their download links.
 
 ## Suggestions for Matthew
 
-### Houseplant envirpnment characteristics
-
+### Houseplant environment characteristics
+all_plant_details.csv
 https://www.kaggle.com/datasets/noneee/houseplant-environment-characteristics
+
+### Crab age prediction
+CrabAgePredictions.csv
+https://www.kaggle.com/datasets/sidhus/crab-age-prediction
+
+### Shifting Seas: Ocean Climate & Marine Life Dataset
+realistic_ocean_climate_dataset.csv
+https://www.kaggle.com/datasets/atharvasoundankar/shifting-seas-ocean-climate-and-marine-life-dataset

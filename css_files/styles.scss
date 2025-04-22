@@ -31,3 +31,38 @@ h1, h2, h3, h4, h5, h6 {
 monofont {
   font-family: "Fire+Mono";
 }
+
+// Placement of hex image rows in main index page
+.hexrowtop {
+  position: relative;
+  left:-50px;
+  display: flex;
+  flex-wrap:nowrap;
+  justify-content: center;
+}
+.hexrowmid {
+  position: relative;
+  top: -47px;
+  display: flex;
+  flex-wrap:nowrap;
+  justify-content: center;
+}
+.hexrowbottom {
+  position: relative;
+  top: -94px;
+  left: 50px;
+  display: flex;
+  justify-content: center;
+  height: 40px;
+}
+
+.hexcollast {
+}
+
+
+// Make images disappear if size of viewport is too small
+@media (max-width: 450px) {
+  .hexcollast {
+    display: none;
+  }
+}

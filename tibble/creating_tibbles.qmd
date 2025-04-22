@@ -12,22 +12,55 @@ Below are three methods:
 
 ## Code to tibble
 
+When creating a __tibble__ through code you provide the `tibble::tibble()` function with vectors of identical length.
+Each vector will become a column.
+
+```{r}
+#Vectors to be used as columns
+Day <- c("Mon", "Tue", "Wed")
+Month <- rep("January", 3)
+Hawks <- c(3,7,2)
+Pigeons <- c(52,21,61)
+Starlings <- c(1,2,1)
+#Create a tibble
+tbl <- tibble::tibble(Day, Month, Hawks, Pigeons, Starlings)
+#View tibble
+#Note that the column names are the same as the vector names
+tbl
+```
+
 ## data.frame to tibble
+
+Let's load in the built-in __iris__ data frame and convert it to a tibble.
+
+```{r}
+#Head of iris data.frame
+head(iris)
+#Coerce to tibble
+iris_tbl <- tibble::as_tibble(iris)
+#View iris tibble
+iris_tbl
+```
+
+__Note:__ The __iris__ dataset is built-in to base R. You can see all the pre-loaded datasets in R with `data()`
 
 ## File to tibble
 
 We can use __readr's__ function `read_csv()` to read in a file as a __tibble__.
+
 More information: [readr](./readr) 
 
 Ensure you have the following file downloaded: 
 
+<MG ADD DL LINK>
+
 
 ```{r, eval=FALSE}
-house_plants_dbl <- readr::read_csv(file = "all_plant_details.csv")
-house_plants_dbl
+house_plants_tbl <- readr::read_csv(file = "all_plant_details.csv")
+house_plants_tbl
 ```
 
 ```{r, echo=FALSE}
-house_plants_dbl <- readr::read_csv(file = "../files/all_plant_details.csv")
-house_plants_dbl
+house_plants_tbl <- readr::read_csv(file = "../files/all_plant_details.csv")
+house_plants_tbl
 ```
