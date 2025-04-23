@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Cheatsheets – NEOF Tidyverse</title>
+<title>Tibble features – NEOF Tidyverse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../purrr/purrr.html" rel="prev">
 <link href="..//images/NEOF_favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -78,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../include/webex.css">
 </head>
 
-<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -288,7 +287,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Forcats</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../purrr/purrr.html" aria-current="page"> 
+    <a class="nav-link" href="../purrr/purrr.html"> 
 <span class="menu-text">Purrr</span></a>
   </li>  
   <li class="nav-item">
@@ -322,42 +321,22 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../purrr/cheatsheets.html">Cheatsheets</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../purrr/purrr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">purrr</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../purrr/cheatsheets.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Cheatsheets</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#handy-features" id="toc-handy-features" class="nav-link active" data-scroll-target="#handy-features">Handy features</a>
+  <ul class="collapse">
+  <li><a href="#subsetting-a-tibble" id="toc-subsetting-a-tibble" class="nav-link" data-scroll-target="#subsetting-a-tibble">Subsetting a tibble</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -365,7 +344,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Cheatsheets</h1>
+<h1 class="title">Tibble features</h1>
 </div>
 
 
@@ -382,15 +361,15 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><a href="https://github.com/rstudio/cheatsheets/blob/main/purrr.pdf">Source</a></p>
-<center>
-<img src="images/cheatsheet_1.png" class="img-fluid" style="width:100%">
-</center>
-<center>
-<img src="images/cheatsheet_2.png" class="img-fluid" style="width:100%">
-</center>
+<section id="handy-features" class="level2">
+<h2 class="anchored" data-anchor-id="handy-features">Handy features</h2>
+<section id="subsetting-a-tibble" class="level3">
+<h3 class="anchored" data-anchor-id="subsetting-a-tibble">Subsetting a tibble</h3>
+<p>When you subset a <strong>tibble</strong> you will always end up with a <strong>tibble</strong>.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script>
@@ -1011,15 +990,6 @@ window.onload = function() {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../purrr/purrr.html" class="pagination-link" aria-label="purrr">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">purrr</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

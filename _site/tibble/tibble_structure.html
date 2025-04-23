@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Cheatsheets – NEOF Tidyverse</title>
+<title>Tibble structure – NEOF Tidyverse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../purrr/purrr.html" rel="prev">
+<link href="../tibble/creating_tibbles.html" rel="prev">
 <link href="..//images/NEOF_favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -260,7 +295,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../tibble/tibble.html"> 
+    <a class="nav-link active" href="../tibble/tibble.html" aria-current="page"> 
 <span class="menu-text">Tibble</span></a>
   </li>  
   <li class="nav-item">
@@ -288,7 +323,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Forcats</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../purrr/purrr.html" aria-current="page"> 
+    <a class="nav-link" href="../purrr/purrr.html"> 
 <span class="menu-text">Purrr</span></a>
   </li>  
   <li class="nav-item">
@@ -327,7 +362,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../purrr/cheatsheets.html">Cheatsheets</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tibble/tibble_structure.html">Tibble structure</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -341,14 +376,20 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../purrr/purrr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">purrr</span></a>
+  <a href="../tibble/tibble.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tibble</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../purrr/cheatsheets.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Cheatsheets</span></a>
+  <a href="../tibble/creating_tibbles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating tibbles</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tibble/tibble_structure.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Tibble structure</span></a>
   </div>
 </li>
     </ul>
@@ -356,8 +397,19 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#format" id="toc-format" class="nav-link active" data-scroll-target="#format">Format</a>
+  <ul class="collapse">
+  <li><a href="#size-info" id="toc-size-info" class="nav-link" data-scroll-target="#size-info">Size info</a></li>
+  <li><a href="#rowsobservations" id="toc-rowsobservations" class="nav-link" data-scroll-target="#rowsobservations">Rows/observations</a></li>
+  <li><a href="#variablescolumns" id="toc-variablescolumns" class="nav-link" data-scroll-target="#variablescolumns">Variables/columns</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -365,7 +417,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Cheatsheets</h1>
+<h1 class="title">Tibble structure</h1>
 </div>
 
 
@@ -382,15 +434,88 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><a href="https://github.com/rstudio/cheatsheets/blob/main/purrr.pdf">Source</a></p>
-<center>
-<img src="images/cheatsheet_1.png" class="img-fluid" style="width:100%">
-</center>
-<center>
-<img src="images/cheatsheet_2.png" class="img-fluid" style="width:100%">
-</center>
+<p>Useful resource for MG: https://ssc.wisc.edu/sscc/pubs/R_intro/book/2-5-tibble-structure.html</p>
+<p>Tibbles are formatted like a <strong>data.frame</strong> but have some extra functions and terminology.</p>
+<section id="format" class="level2">
+<h2 class="anchored" data-anchor-id="format">Format</h2>
+<p>Below is an example of a tibble (Dataset: <a href="../datasets/mammal_sleep.html">Sleep in mammals</a>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mammal_sleep <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"mammals.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>mammal_sleep[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 6
+   species                 body_wt brain_wt non_dreaming dreaming total_sleep
+   &lt;chr&gt;                     &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;
+ 1 Africanelephant        6654       5712           NA       NA           3.3
+ 2 Africangiantpouchedrat    1          6.6          6.3      2           8.3
+ 3 ArcticFox                 3.38      44.5         NA       NA          12.5
+ 4 Arcticgroundsquirrel      0.92       5.7         NA       NA          16.5
+ 5 Asianelephant          2547       4603            2.1      1.8         3.9
+ 6 Baboon                   10.6      180.           9.1      0.7         9.8
+ 7 Bigbrownbat               0.023      0.3         15.8      3.9        19.7
+ 8 Braziliantapir          160        169            5.2      1           6.2
+ 9 Cat                       3.3       25.6         10.9      3.6        14.5
+10 Chimpanzee               52.2      440            8.3      1.4         9.7</code></pre>
+</div>
+</div>
+<p>Let’s go over some of its components:</p>
+<ul>
+<li>Size info</li>
+<li>Variables/columns</li>
+<li>observations/rows</li>
+</ul>
+<section id="size-info" class="level3">
+<h3 class="anchored" data-anchor-id="size-info">Size info</h3>
+<p>At the top of the <strong>tibble</strong> it tells us the size. The first number is the rows and the second is the columns.</p>
+<p>In the above example we have:</p>
+<ul>
+<li>10 rows/observations</li>
+<li>6 columns/variables</li>
+</ul>
+</section>
+<section id="rowsobservations" class="level3">
+<h3 class="anchored" data-anchor-id="rowsobservations">Rows/observations</h3>
+<p>As in a <strong>data.frame</strong> each observation is within its own row. The contents of an observation/row is determined by your dataset and how you want to analyse or visualise it. There are many ways to manipulate <strong>tibble</strong> with the <a href="../dplyr/dplyr.html">dplyr</a>, <a href="../tidyr/tidyr.html">tidyr</a>, and other tidyverse packages.</p>
+<p><strong>Tibble</strong> rows do not have row names and you cannot/should not give them row names. They are numbered instead.</p>
+</section>
+<section id="variablescolumns" class="level3">
+<h3 class="anchored" data-anchor-id="variablescolumns">Variables/columns</h3>
+<p>A <strong>tibble</strong> will have a certain number of columns.</p>
+<p>Each column has a name that is at the top. For example:</p>
+<ul>
+<li>species</li>
+<li>body_wt</li>
+<li>brain_wt</li>
+</ul>
+<p>Below the column/variable names is the data class/type of the column. All the entries within a column will have the same data class. These include:</p>
+<ul>
+<li><strong>&lt;int&gt;</strong>: <a href="https://neof-workshops.github.io/R_j4c0xh/04-R_objects.html#numeric">Integer</a></li>
+<li><strong>&lt;dbl&gt;</strong>: <a href="https://neof-workshops.github.io/R_j4c0xh/04-R_objects.html#numeric">Double</a></li>
+<li><strong>&lt;chr&gt;</strong>: <a href="https://neof-workshops.github.io/R_j4c0xh/04-R_objects.html#string">Character/String</a></li>
+<li><strong>&lt;fct&gt;</strong>: <a href="https://neof-workshops.github.io/R_j4c0xh/04-R_objects.html#string">Factor</a></li>
+<li><strong>&lt;lgl&gt;</strong>: <a href="https://neof-workshops.github.io/R_j4c0xh/04-R_objects.html#string">Logical</a></li>
+<li><strong>&lt;date&gt;</strong>: Date (MG ADD LINK TO INFO ABOUT DATE CLASS, MOST LIKELY IN LUBRIDATE SECTION)</li>
+<li><strong>&lt;list&gt;</strong>: List</li>
+</ul>
+<p>Below is an example of a <strong>tibble</strong> with column for each of these classes.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 7
+  Integers   Doubles Characters Factors Logicals Dates   Lists    
+     &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;fct&gt;   &lt;lgl&gt;    &lt;date&gt;  &lt;list&gt;   
+1      101     0.345 One        A       TRUE     1-01-20 &lt;dbl [3]&gt;
+2       21     3.14  sentence   B       TRUE     2-01-20 &lt;dbl [3]&gt;
+3        3    78.9   is         B       FALSE    3-01-20 &lt;dbl [3]&gt;
+4        0 20001.    enough     A       FALSE    4-01-20 &lt;dbl [3]&gt;</code></pre>
+</div>
+</div>
+<p>Above you can see that when you view a <strong>tibble</strong>, by printing it or viewing it in an Rstudio tab, it will align the values in columns in a easy to read manner. This is especially useful for numeric (integers &amp; doubles) columns where the numbers are aligned by place value. This allows you to easily compare the size of numbers in the same column.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script>
@@ -1013,8 +1138,8 @@ window.onload = function() {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../purrr/purrr.html" class="pagination-link" aria-label="purrr">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">purrr</span>
+      <a href="../tibble/creating_tibbles.html" class="pagination-link" aria-label="Creating tibbles">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Creating tibbles</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

@@ -1,5 +1,9 @@
 project:
   type: website
+  preview:
+    port: 2947
+    browser: false
+    watch-inputs: true
 editor: source
 website:
   favicon: /images/NEOF_favicon.png
@@ -12,24 +16,26 @@ website:
     left:
     - text: Overview
       href: index.qmd
-    - text: tibble
+    - text: Tibble
       href: tibble/tibble.qmd
-    - text: dplyr
+    - text: Dplyr
       href: dplyr/dplyr.qmd
-    - text: readr
+    - text: Readr
       href: readr/readr.qmd
-    - text: tidyr
+    - text: Tidyr
       href: tidyr/tidyr.qmd
-    - text: ggplot2
+    - text: Ggplot2
       href: ggplot2/ggplot2.qmd
-    - text: stringr
+    - text: Stringr
       href: stringr/stringr.qmd
-    - text: forcats
+    - text: Forcats
       href: forcats/forcats.qmd
-    - text: purrr
+    - text: Purrr
       href: purrr/purrr.qmd
-    - text: lubridate
+    - text: Lubridate
       href: lubridate/lubridate.qmd
+    - text: Datasets
+      href: datasets/datasets.qmd
     right:
     - icon: house-fill
       href: https://neof.org.uk/training/
@@ -60,70 +66,78 @@ website:
     - href: tibble/tibble.qmd
     - href: tibble/creating_tibbles.qmd
     - href: tibble/tibble_structure.qmd
-  - id: dplyr
-    title: dplyr
+  - id: Dplyr
+    title: Dplyr
     style: floating
     collapse-level: 2
     align: left
     contents:
     - href: dplyr/dplyr.qmd
     - href: dplyr/cheatsheets.qmd
-  - id: readr
-    title: readr
+  - id: Readr
+    title: Readr
     style: floating
     collapse-level: 2
     align: left
     contents:
     - href: readr/readr.qmd
     - href: readr/cheatsheets.qmd
-  - id: tidyr
-    title: tidyr
+  - id: Tidyr
+    title: Tidyr
     style: floating
     collapse-level: 2
     align: left
     contents:
     - href: tidyr/tidyr.qmd
     - href: tidyr/cheatsheets.qmd
-  - id: ggplot2
-    title: ggplot2
+  - id: Ggplot2
+    title: Ggplot2
     style: floating
     collapse-level: 2
     align: left
     contents:
     - href: ggplot2/ggplot2.qmd
     - href: ggplot2/cheatsheets.qmd
-  - id: stringr
-    title: stringr
+  - id: Stringr
+    title: Stringr
     style: floating
     collapse-level: 2
     align: left
     contents:
     - href: stringr/stringr.qmd
     - href: stringr/cheatsheets.qmd
-  - id: forcats
-    title: forcats
+  - id: Forcats
+    title: Forcats
     style: floating
     collapse-level: 2
     align: left
     contents:
     - href: forcats/forcats.qmd
     - href: forcats/cheatsheets.qmd
-  - id: purrr
-    title: purrr
+  - id: Purrr
+    title: Purrr
     style: floating
     collapse-level: 2
     align: left
     contents:
     - href: purrr/purrr.qmd
     - href: purrr/cheatsheets.qmd
-  - id: lubridate
-    title: lubridate
+  - id: Lubridate
+    title: Lubridate
     style: floating
     collapse-level: 2
     align: left
     contents:
     - href: lubridate/lubridate.qmd
     - href: lubridate/cheatsheets.qmd
+  - id: Datasets
+    title: Datasets
+    style: floating
+    collapse-level: 2
+    align: left
+    contents:
+    - href: datasets/datasets.qmd
+    - href: datasets/mammal_sleep.qmd
 
 format:
   html:
