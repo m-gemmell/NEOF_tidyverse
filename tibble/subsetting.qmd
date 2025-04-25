@@ -1,0 +1,113 @@
+---
+title: "Subsetting"
+format: html
+---
+
+There are various ways to subset a __tibble__. This sections shows the various methods with examples.
+
+[Tidyverse's tibble subsetting webpage](https://tibble.tidyverse.org/reference/subsetting.html)
+
+## Load data
+
+The examples in this section use the `pie_crab` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (includes install instructions).
+
+Load package
+```{r}
+library("lterdatasampler")
+```
+
+Create a __tibble__ from a subset of the pie_crab data.
+```{r}
+pie_crab_tbl <- tibble::as_tibble(pie_crab[1:10,1:8])
+pie_crab_tbl
+```
+
+## One column with $
+
+Subsetting a column using `$` and a column name will produce a __vector__.
+
+```{r}
+pie_crab_tbl$site
+str(pie_crab_tbl$site)
+```
+
+## Columns with [c]
+
+Subsetting 1 or more columns with `[c]` will produce a __tibble__.
+
+```{r}
+pie_crab_tbl[1]
+```
+
+```{r}
+pie_crab_tbl[c("date","air_temp","size")]
+```
+
+## Rows and columns with [r,c]
+
+Subsetting a __tibble__ with `[]` will always produce a __tibble__.
+
+This is different from a __data.frame__ where you may extract a [scalar](https://neof-workshops.github.io/R_j4c0xh/04-R_objects.html#scalar), [vector](https://neof-workshops.github.io/R_j4c0xh/04-R_objects.html#vectors-lists), or __data.frame__.
+
+Below are examples using a subset of the `pie_crab` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (includes install instructions).
+
+### Load data.frame
+
+Create a __data.frame__ from the `pie_crab_tbl`.
+```{r}
+pie_crab_df <- as.data.frame(pie_crab_tbl)
+pie_crab_df
+```
+
+### Extracting a value
+
+Subsetting one value from a __data.frame__ leads to a __scalar__
+```{r}
+pie_crab_df[1,1]
+str(pie_crab_df[1,1])
+```
+
+Subsetting one value from a __tibble__ leads to a __tibble__
+```{r}
+pie_crab_tbl[1,1]
+```
+
+### Extracting a row
+
+Subsetting a row from a __data.frame__ leads to a __data.frame__
+
+```{r}
+pie_crab_df[1,]
+str(pie_crab_df[1,])
+```
+
+Subsetting a row from a __tibble__ leads to a __tibble__
+```{r}
+pie_crab_tbl[1,]
+```
+
+### Extracting a column
+
+Subsetting a column from a __data.frame__ leads to a __vector__
+```{r}
+pie_crab_df[,1]
+str(pie_crab_df[,1])
+```
+
+Subsetting a column from a __tibble__ leads to a __tibble__
+```{r}
+pie_crab_tbl[,1]
+```
+
+### Extracting a combo of columns and rows
+
+Subsetting rows and columns together from a __data.frame__ leads to a __data.frame__
+```{r}
+pie_crab_df[1:3,c("date","air_temp","size")]
+str(pie_crab_df[1:3,c("date","air_temp","size")])
+```
+
+Subsetting rows and columns together from a __tibble__ leads to a __tibble__
+```{r}
+pie_crab_tbl[1:3,c("date","air_temp","size")]
+```

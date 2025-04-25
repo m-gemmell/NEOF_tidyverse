@@ -20,115 +20,218 @@
     ]
   },
   {
-    "objectID": "include/cheatsheets.html",
-    "href": "include/cheatsheets.html",
+    "objectID": "datasets/mammal_sleep.html",
+    "href": "datasets/mammal_sleep.html",
+    "title": "Sleep in mammals",
+    "section": "",
+    "text": "mammals.csv\nhttps://www.kaggle.com/datasets/volkandl/sleep-in-mammals",
+    "crumbs": [
+      "Datasets",
+      "Sleep in mammals"
+    ]
+  },
+  {
+    "objectID": "tidyr/cheatsheets.html",
+    "href": "tidyr/cheatsheets.html",
     "title": "Cheatsheets",
     "section": "",
-    "text": "Source"
-  },
-  {
-    "objectID": "tidyr/tidyr.html",
-    "href": "tidyr/tidyr.html",
-    "title": "Tidyr",
-    "section": "",
-    "text": "tidyr homepage",
+    "text": "Source",
     "crumbs": [
-      "Tidyr"
+      "Tidyr",
+      "Cheatsheets"
     ]
   },
   {
-    "objectID": "forcats/forcats.html",
-    "href": "forcats/forcats.html",
-    "title": "Forcats",
+    "objectID": "forcats/cheatsheets.html",
+    "href": "forcats/cheatsheets.html",
+    "title": "Cheatsheets",
     "section": "",
-    "text": "forcats homepage",
+    "text": "Source",
     "crumbs": [
-      "Forcats"
+      "Forcats",
+      "Cheatsheets"
     ]
   },
   {
-    "objectID": "readr/readr.html",
-    "href": "readr/readr.html",
-    "title": "Readr",
+    "objectID": "readr/cheatsheets.html",
+    "href": "readr/cheatsheets.html",
+    "title": "Cheatsheets",
+    "section": "",
+    "text": "Source\n\n\n\n\n\n\nTEST",
+    "crumbs": [
+      "Readr",
+      "Cheatsheets"
+    ]
+  },
+  {
+    "objectID": "tibble/structure.html",
+    "href": "tibble/structure.html",
+    "title": "Structure",
+    "section": "",
+    "text": "Tibbles are formatted like a data.frame but have some extra functions and terminology.",
+    "crumbs": [
+      "Tibble",
+      "Structure"
+    ]
+  },
+  {
+    "objectID": "tibble/structure.html#format",
+    "href": "tibble/structure.html#format",
+    "title": "Structure",
+    "section": "Format",
+    "text": "Format\nBelow we load and subset the hbr_maples data from the lterdatasampler package (includes install instructions) and view it.\n\n#Load package\nlibrary(\"lterdatasampler\")\n#Subset of hbr_maples tibble\ntibble::as_tibble(hbr_maples)[1:10,1:8]\n\n# A tibble: 10 × 8\n    year watershed elevation transect sample stem_length leaf1area leaf2area\n   &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt;    &lt;fct&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n 1  2003 Reference Low       R1       1             86.9     13.8      12.1 \n 2  2003 Reference Low       R1       2            114       14.6      15.3 \n 3  2003 Reference Low       R1       3             83.5     12.5       9.73\n 4  2003 Reference Low       R1       4             68.1      9.97     10.1 \n 5  2003 Reference Low       R1       5             72.1      6.84      5.48\n 6  2003 Reference Low       R1       6             77.7      9.66      7.64\n 7  2003 Reference Low       R1       7             85.5      8.82      9.23\n 8  2003 Reference Low       R1       8             81.6      5.83      6.18\n 9  2003 Reference Low       R1       9             92.9      8.11      7.13\n10  2003 Reference Low       R1       10            59.6      3.02      3.44\n\n\nLet’s go over some of its components:\n\nSize info\nVariables/columns\nobservations/rows\n\n\nSize info\nAt the top of the tibble it tells us the size. The first number is the rows and the second is the columns.\nIn the above example we have:\n\n10 rows/observations\n8 columns/variables\n\n\n\nRows/observations\nAs in a data.frame each observation is within its own row. The contents of an observation/row is determined by your dataset and how you want to analyse or visualise it. There are many ways to manipulate tibble with the dplyr, tidyr, and other tidyverse packages.\nTibble rows do not have row names and you cannot/should not give them row names. They are numbered/indexxed instead.\n\n\nVariables/columns\nA tibble will have a certain number of columns.\nEach column has a name that is at the top. For example:\n\nyear\nwatershed\nelevation\n\nBelow the column/variable names is the data class/type of the column. All the entries within a column will have the same data class. These include:\n\n&lt;int&gt;: Integer\n&lt;dbl&gt;: Double\n&lt;chr&gt;: Character/String\n&lt;fct&gt;: Factor\n&lt;lgl&gt;: Logical\n&lt;date&gt;: Date (MG ADD LINK TO INFO ABOUT DATE CLASS, MOST LIKELY IN LUBRIDATE SECTION)\n&lt;list&gt;: List\n\nBelow is an example of a tibble with a column for each of these classes.\n\n\n# A tibble: 4 × 7\n  Integers   Doubles Characters Factors Logicals Dates   Lists    \n     &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;fct&gt;   &lt;lgl&gt;    &lt;date&gt;  &lt;list&gt;   \n1      101     0.345 One        A       TRUE     1-01-20 &lt;dbl [3]&gt;\n2       21     3.14  sentence   B       TRUE     2-01-20 &lt;dbl [3]&gt;\n3        3    78.9   is         B       FALSE    3-01-20 &lt;dbl [3]&gt;\n4        0 20001.    enough     A       FALSE    4-01-20 &lt;dbl [3]&gt;\n\n\nAbove you can see that when you view a tibble, by printing it or viewing it in an Rstudio tab, it will align the values in the columns in a easy to read manner. This is especially useful for numeric (integers & doubles) columns where the numbers are aligned by place value. This allows you to easily compare the size of numbers in the same column.",
+    "crumbs": [
+      "Tibble",
+      "Structure"
+    ]
+  },
+  {
+    "objectID": "tibble/printing.html",
+    "href": "tibble/printing.html",
+    "title": "Printing or viewing",
+    "section": "",
+    "text": "Tibbles have some unique characteristics when printing and viewing them on a terminal, including the RStudio console window.",
+    "crumbs": [
+      "Tibble",
+      "Printing or viewing"
+    ]
+  },
+  {
+    "objectID": "tibble/printing.html#load-and-print-data",
+    "href": "tibble/printing.html#load-and-print-data",
+    "title": "Printing or viewing",
+    "section": "Load and print data",
+    "text": "Load and print data\nBelow we load the and_vertebrates data from the lterdatasampler package (includes install instructions) and view it.\n\n#Load package\nlibrary(\"lterdatasampler\")\n#subsetted pie_crab tibble\ntibble::as_tibble(and_vertebrates)[1:10,1:5]\n\n# A tibble: 10 × 5\n    year sitecode section reach  pass\n   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;\n 1  1987 MACKCC-L CC      L         1\n 2  1987 MACKCC-L CC      L         1\n 3  1987 MACKCC-L CC      L         1\n 4  1987 MACKCC-L CC      L         1\n 5  1987 MACKCC-L CC      L         1\n 6  1987 MACKCC-L CC      L         1\n 7  1987 MACKCC-L CC      L         1\n 8  1987 MACKCC-L CC      L         1\n 9  1987 MACKCC-L CC      L         1\n10  1987 MACKCC-L CC      L         1\n\n\nInformation on the format of a tibble is within the Tibble structure section",
+    "crumbs": [
+      "Tibble",
+      "Printing or viewing"
+    ]
+  },
+  {
+    "objectID": "tibble/printing.html#larger-tibbles",
+    "href": "tibble/printing.html#larger-tibbles",
+    "title": "Printing or viewing",
+    "section": "Larger tibbles",
+    "text": "Larger tibbles\nWhen printing out a larger tibble only a part of the tibble will be displayed with info on the undisplayed data below the displayed data.\nBy default only 10 rows of a tibble will be displayed.\nThe number of displayed columns is dynamic. The maximum amount of columns will be displayed based on the width of the viewer and the width of the data in the columns.\nThe info shown below a tibble is:\n\nThe number of rows that are not displayed\nThe number, names, and classes of the variables/columns not displayed\n\n\ntibble::as_tibble(and_vertebrates)\n\n# A tibble: 32,209 × 16\n    year sitecode section reach  pass unitnum unittype vert_index pitnumber\n   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;\n 1  1987 MACKCC-L CC      L         1       1 R                 1        NA\n 2  1987 MACKCC-L CC      L         1       1 R                 2        NA\n 3  1987 MACKCC-L CC      L         1       1 R                 3        NA\n 4  1987 MACKCC-L CC      L         1       1 R                 4        NA\n 5  1987 MACKCC-L CC      L         1       1 R                 5        NA\n 6  1987 MACKCC-L CC      L         1       1 R                 6        NA\n 7  1987 MACKCC-L CC      L         1       1 R                 7        NA\n 8  1987 MACKCC-L CC      L         1       1 R                 8        NA\n 9  1987 MACKCC-L CC      L         1       1 R                 9        NA\n10  1987 MACKCC-L CC      L         1       1 R                10        NA\n# ℹ 32,199 more rows\n# ℹ 7 more variables: species &lt;chr&gt;, length_1_mm &lt;dbl&gt;, length_2_mm &lt;dbl&gt;,\n#   weight_g &lt;dbl&gt;, clip &lt;chr&gt;, sampledate &lt;date&gt;, notes &lt;chr&gt;",
+    "crumbs": [
+      "Tibble",
+      "Printing or viewing"
+    ]
+  },
+  {
+    "objectID": "tibble/printing.html#print-more-rows",
+    "href": "tibble/printing.html#print-more-rows",
+    "title": "Printing or viewing",
+    "section": "Print more rows",
+    "text": "Print more rows\nMore rows can be printed by using the base R print() function with the n= option.\n\nprint(tibble::as_tibble(and_vertebrates), n =20)\n\n# A tibble: 32,209 × 16\n    year sitecode section reach  pass unitnum unittype vert_index pitnumber\n   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;\n 1  1987 MACKCC-L CC      L         1       1 R                 1        NA\n 2  1987 MACKCC-L CC      L         1       1 R                 2        NA\n 3  1987 MACKCC-L CC      L         1       1 R                 3        NA\n 4  1987 MACKCC-L CC      L         1       1 R                 4        NA\n 5  1987 MACKCC-L CC      L         1       1 R                 5        NA\n 6  1987 MACKCC-L CC      L         1       1 R                 6        NA\n 7  1987 MACKCC-L CC      L         1       1 R                 7        NA\n 8  1987 MACKCC-L CC      L         1       1 R                 8        NA\n 9  1987 MACKCC-L CC      L         1       1 R                 9        NA\n10  1987 MACKCC-L CC      L         1       1 R                10        NA\n11  1987 MACKCC-L CC      L         1       1 R                11        NA\n12  1987 MACKCC-L CC      L         1       1 R                12        NA\n13  1987 MACKCC-L CC      L         1       1 R                13        NA\n14  1987 MACKCC-L CC      L         1       1 R                14        NA\n15  1987 MACKCC-L CC      L         1       1 R                15        NA\n16  1987 MACKCC-L CC      L         1       1 R                16        NA\n17  1987 MACKCC-L CC      L         1       2 C                 1        NA\n18  1987 MACKCC-L CC      L         1       2 C                 2        NA\n19  1987 MACKCC-L CC      L         1       2 C                 3        NA\n20  1987 MACKCC-L CC      L         1       2 C                 4        NA\n# ℹ 32,189 more rows\n# ℹ 7 more variables: species &lt;chr&gt;, length_1_mm &lt;dbl&gt;, length_2_mm &lt;dbl&gt;,\n#   weight_g &lt;dbl&gt;, clip &lt;chr&gt;, sampledate &lt;date&gt;, notes &lt;chr&gt;",
+    "crumbs": [
+      "Tibble",
+      "Printing or viewing"
+    ]
+  },
+  {
+    "objectID": "tibble/add_rows_and_columns.html",
+    "href": "tibble/add_rows_and_columns.html",
+    "title": "Adding rows and columns",
+    "section": "",
+    "text": "Data can be added to a tibble with the intuitively named functions:",
+    "crumbs": [
+      "Tibble",
+      "Adding rows and columns"
+    ]
+  },
+  {
+    "objectID": "tibble/add_rows_and_columns.html#create-example-tibbles",
+    "href": "tibble/add_rows_and_columns.html#create-example-tibbles",
+    "title": "Adding rows and columns",
+    "section": "Create example tibbles",
+    "text": "Create example tibbles\nBefore demonstrating the two functions we will create a few tibbles.\n\nnum_tbl &lt;- tibble::tibble(x = 1:3, y = 4:6, z = 7:9)",
+    "crumbs": [
+      "Tibble",
+      "Adding rows and columns"
+    ]
+  },
+  {
+    "objectID": "tibble/add_rows_and_columns.html#add-rows",
+    "href": "tibble/add_rows_and_columns.html#add-rows",
+    "title": "Adding rows and columns",
+    "section": "Add rows",
+    "text": "Add rows\nDisplay the tibble num_tbl\n\nnum_tbl\n\n# A tibble: 3 × 3\n      x     y     z\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1     1     4     7\n2     2     5     8\n3     3     6     9",
+    "crumbs": [
+      "Tibble",
+      "Adding rows and columns"
+    ]
+  },
+  {
+    "objectID": "ggplot2/ggplot2.html",
+    "href": "ggplot2/ggplot2.html",
+    "title": "Ggplot2",
+    "section": "",
+    "text": "ggplot2 homepage",
+    "crumbs": [
+      "Ggplot2"
+    ]
+  },
+  {
+    "objectID": "stringr/stringr.html",
+    "href": "stringr/stringr.html",
+    "title": "Stringr",
     "section": "",
     "text": "test\nreadr homepage",
     "crumbs": [
-      "Readr"
+      "Stringr"
     ]
   },
   {
-    "objectID": "tibble/tibble.html#overview",
-    "href": "tibble/tibble.html#overview",
-    "title": "Tibble",
-    "section": "Overview",
-    "text": "Overview\nA tibble (tbl) is a reimagining of the data.frame (df) object. They are described as data.frames that are:\n\nLazy: They don’t change variable names and they don’t do partial matching.\nSurly: They complain more such as when a variable does not exist.\n\nOne important note is that tibbles should not be given row names.\nAlthough tibbles have advantages compared to data.frames they are not always more suited to the task than data.frames. However, tibbles are generally always preferred over data.frames when using tidyverse packages.\nTibble homepage",
-    "crumbs": [
-      "Tibble"
-    ]
-  },
-  {
-    "objectID": "tibble/tibble.html#tibble-example",
-    "href": "tibble/tibble.html#tibble-example",
-    "title": "Tibble",
-    "section": "Tibble example",
-    "text": "Tibble example\nBelow is an example of:\n\nCreating a basic tibble\nPrinting the tibble\n\n\n#Create a tibble\ntbl &lt;- tibble::tibble(Day = c(\"Mon\", \"Tue\", \"Wed\"),\n              Hawks = c(3,7,2),\n              Pigeons = c(52,21,61),\n              Starlings = c(1,2,1))\n#Print tibble\ntbl\n\n# A tibble: 3 × 4\n  Day   Hawks Pigeons Starlings\n  &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;\n1 Mon       3      52         1\n2 Tue       7      21         2\n3 Wed       2      61         1\n\n\ntest",
-    "crumbs": [
-      "Tibble"
-    ]
-  },
-  {
-    "objectID": "tibble/tibble_features.html",
-    "href": "tibble/tibble_features.html",
-    "title": "Tibble features",
+    "objectID": "purrr/purrr.html",
+    "href": "purrr/purrr.html",
+    "title": "Purrr",
     "section": "",
-    "text": "When you subset a tibble you will always end up with a tibble.",
+    "text": "purr homepage",
     "crumbs": [
-      "Tibble",
-      "Tibble features"
+      "Purrr"
     ]
   },
   {
-    "objectID": "tibble/tibble_features.html#handy-features",
-    "href": "tibble/tibble_features.html#handy-features",
-    "title": "Tibble features",
-    "section": "",
-    "text": "When you subset a tibble you will always end up with a tibble.",
-    "crumbs": [
-      "Tibble",
-      "Tibble features"
-    ]
-  },
-  {
-    "objectID": "ggplot2/cheatsheets.html",
-    "href": "ggplot2/cheatsheets.html",
+    "objectID": "dplyr/cheatsheets.html",
+    "href": "dplyr/cheatsheets.html",
     "title": "Cheatsheets",
     "section": "",
     "text": "Source",
     "crumbs": [
-      "Ggplot2",
+      "Dplyr",
       "Cheatsheets"
     ]
   },
   {
-    "objectID": "stringr/cheatsheets.html",
-    "href": "stringr/cheatsheets.html",
+    "objectID": "lubridate/cheatsheets.html",
+    "href": "lubridate/cheatsheets.html",
     "title": "Cheatsheets",
     "section": "",
     "text": "Source",
     "crumbs": [
-      "Stringr",
+      "Lubridate",
       "Cheatsheets"
     ]
   },
   {
-    "objectID": "purrr/cheatsheets.html",
-    "href": "purrr/cheatsheets.html",
-    "title": "Cheatsheets",
+    "objectID": "lubridate/lubridate.html",
+    "href": "lubridate/lubridate.html",
+    "title": "Lubridate",
     "section": "",
-    "text": "Source",
+    "text": "Lubridate is a useful package to manipulate the date class.\npurr homepage",
     "crumbs": [
-      "Purrr",
-      "Cheatsheets"
+      "Lubridate"
+    ]
+  },
+  {
+    "objectID": "dplyr/dplyr.html",
+    "href": "dplyr/dplyr.html",
+    "title": "Dplyr",
+    "section": "",
+    "text": "dplyr homepage",
+    "crumbs": [
+      "Dplyr"
     ]
   },
   {
@@ -147,7 +250,7 @@
     "href": "index.html#package-names",
     "title": "NEOF Tidyverse",
     "section": "Package names",
-    "text": "Package names\nTo keep consistent we will include the package name of each function used in code. This is carried out like below.\n\n#",
+    "text": "Package names\nTo keep consistent we will include the package name of each function used in code. This is carried out like below.\nNote: Don’t run the below command\n\n#Use as_tibble function from tibble package\ntibble::as_tibble()",
     "crumbs": [
       "Overview",
       "NEOF Tidyverse"
@@ -176,75 +279,36 @@
     ]
   },
   {
-    "objectID": "dplyr/dplyr.html",
-    "href": "dplyr/dplyr.html",
-    "title": "Dplyr",
-    "section": "",
-    "text": "dplyr homepage",
-    "crumbs": [
-      "Dplyr"
-    ]
-  },
-  {
-    "objectID": "lubridate/lubridate.html",
-    "href": "lubridate/lubridate.html",
-    "title": "Lubridate",
-    "section": "",
-    "text": "Lubridate is a useful package to manipulate the date class.\npurr homepage",
-    "crumbs": [
-      "Lubridate"
-    ]
-  },
-  {
-    "objectID": "lubridate/cheatsheets.html",
-    "href": "lubridate/cheatsheets.html",
+    "objectID": "purrr/cheatsheets.html",
+    "href": "purrr/cheatsheets.html",
     "title": "Cheatsheets",
     "section": "",
     "text": "Source",
     "crumbs": [
-      "Lubridate",
+      "Purrr",
       "Cheatsheets"
     ]
   },
   {
-    "objectID": "dplyr/cheatsheets.html",
-    "href": "dplyr/cheatsheets.html",
+    "objectID": "stringr/cheatsheets.html",
+    "href": "stringr/cheatsheets.html",
     "title": "Cheatsheets",
     "section": "",
     "text": "Source",
     "crumbs": [
-      "Dplyr",
+      "Stringr",
       "Cheatsheets"
     ]
   },
   {
-    "objectID": "purrr/purrr.html",
-    "href": "purrr/purrr.html",
-    "title": "Purrr",
+    "objectID": "ggplot2/cheatsheets.html",
+    "href": "ggplot2/cheatsheets.html",
+    "title": "Cheatsheets",
     "section": "",
-    "text": "test\n\n\n\npurr homepage",
+    "text": "Source",
     "crumbs": [
-      "Purrr"
-    ]
-  },
-  {
-    "objectID": "stringr/stringr.html",
-    "href": "stringr/stringr.html",
-    "title": "Stringr",
-    "section": "",
-    "text": "test\nreadr homepage",
-    "crumbs": [
-      "Stringr"
-    ]
-  },
-  {
-    "objectID": "ggplot2/ggplot2.html",
-    "href": "ggplot2/ggplot2.html",
-    "title": "Ggplot2",
-    "section": "",
-    "text": "ggplot2 homepage",
-    "crumbs": [
-      "Ggplot2"
+      "Ggplot2",
+      "Cheatsheets"
     ]
   },
   {
@@ -285,83 +349,159 @@
     "href": "tibble/creating_tibbles.html#file-to-tibble",
     "title": "Creating tibbles",
     "section": "File to tibble",
-    "text": "File to tibble\nWe can use readr’s function read_csv() to read in a file as a tibble.\nMore information: readr\nEnsure you have the following file downloaded:\n\n\nhouse_plants_tbl &lt;- readr::read_csv(file = \"all_plant_details.csv\")\nhouse_plants_tbl\n\n\n\nRows: 155 Columns: 33\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (1): common_name\ndbl (32): id, seeds, drought_tolerant, salt_tolerant, thorny, invasive, trop...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 155 × 33\n      id common_name        seeds drought_tolerant salt_tolerant thorny invasive\n   &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;            &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;\n 1   425 flowering-maple        0                1             0      1        0\n 2   426 flowering-maple        0                1             0      0        0\n 3   427 flowering-maple        0                1             0      0        0\n 4   428 flowering-maple        0                1             1      0        0\n 5   434 Jacob's coat           0                0             0      0        0\n 6   502 hot water plant        0                0             0      0        0\n 7   540 desert rose            0                1             1      1        0\n 8   543 maidenhair fern        0                0             0      0        0\n 9   546 delta maidenhair …     0                1             0      0        0\n10   549 urn plant              1                1             1      0        0\n# ℹ 145 more rows\n# ℹ 26 more variables: tropical &lt;dbl&gt;, indoor &lt;dbl&gt;, flowers &lt;dbl&gt;,\n#   cones &lt;dbl&gt;, fruits &lt;dbl&gt;, edible_fruit &lt;dbl&gt;, leaf &lt;dbl&gt;,\n#   edible_leaf &lt;dbl&gt;, cuisine &lt;dbl&gt;, medicinal &lt;dbl&gt;,\n#   poisonous_to_humans &lt;dbl&gt;, poisonous_to_pets &lt;dbl&gt;,\n#   sunlight_part_sun_part_shade &lt;dbl&gt;, sunlight_full_shade &lt;dbl&gt;,\n#   sunlight_deep_shade &lt;dbl&gt;, sunlight_part_shade &lt;dbl&gt;, …",
+    "text": "File to tibble\nWe can use readr’s function read_csv() to read in a file as a tibble.\nMore information: readr\nEnsure you have the following file downloaded:\n(MG ADD DL LINK)\n\nhouse_plants_tbl &lt;- readr::read_csv(file = \"all_plant_details.csv\")\nhouse_plants_tbl\n\n\n\nRows: 155 Columns: 33\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (1): common_name\ndbl (32): id, seeds, drought_tolerant, salt_tolerant, thorny, invasive, trop...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 155 × 33\n      id common_name        seeds drought_tolerant salt_tolerant thorny invasive\n   &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;            &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;\n 1   425 flowering-maple        0                1             0      1        0\n 2   426 flowering-maple        0                1             0      0        0\n 3   427 flowering-maple        0                1             0      0        0\n 4   428 flowering-maple        0                1             1      0        0\n 5   434 Jacob's coat           0                0             0      0        0\n 6   502 hot water plant        0                0             0      0        0\n 7   540 desert rose            0                1             1      1        0\n 8   543 maidenhair fern        0                0             0      0        0\n 9   546 delta maidenhair …     0                1             0      0        0\n10   549 urn plant              1                1             1      0        0\n# ℹ 145 more rows\n# ℹ 26 more variables: tropical &lt;dbl&gt;, indoor &lt;dbl&gt;, flowers &lt;dbl&gt;,\n#   cones &lt;dbl&gt;, fruits &lt;dbl&gt;, edible_fruit &lt;dbl&gt;, leaf &lt;dbl&gt;,\n#   edible_leaf &lt;dbl&gt;, cuisine &lt;dbl&gt;, medicinal &lt;dbl&gt;,\n#   poisonous_to_humans &lt;dbl&gt;, poisonous_to_pets &lt;dbl&gt;,\n#   sunlight_part_sun_part_shade &lt;dbl&gt;, sunlight_full_shade &lt;dbl&gt;,\n#   sunlight_deep_shade &lt;dbl&gt;, sunlight_part_shade &lt;dbl&gt;, …",
     "crumbs": [
       "Tibble",
       "Creating tibbles"
     ]
   },
   {
-    "objectID": "tibble/tibble_structure.html",
-    "href": "tibble/tibble_structure.html",
-    "title": "Tibble structure",
+    "objectID": "tibble/subsetting.html",
+    "href": "tibble/subsetting.html",
+    "title": "Subsetting",
     "section": "",
-    "text": "Useful resource for MG: https://ssc.wisc.edu/sscc/pubs/R_intro/book/2-5-tibble-structure.html\nTibbles are formatted like a data.frame but have some extra functions and terminology.",
+    "text": "There are various ways to subset a tibble. This sections shows the various methods with examples.\nTidyverse’s tibble subsetting webpage",
     "crumbs": [
       "Tibble",
-      "Tibble structure"
+      "Subsetting"
     ]
   },
   {
-    "objectID": "tibble/tibble_structure.html#format",
-    "href": "tibble/tibble_structure.html#format",
-    "title": "Tibble structure",
-    "section": "Format",
-    "text": "Format\nBelow is an example of a tibble (Dataset: Sleep in mammals).\n\nmammal_sleep &lt;- readr::read_csv(file = \"mammals.csv\", show_col_types = FALSE)\nmammal_sleep[1:10,1:6]\n\n\n\n# A tibble: 10 × 6\n   species                 body_wt brain_wt non_dreaming dreaming total_sleep\n   &lt;chr&gt;                     &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;\n 1 Africanelephant        6654       5712           NA       NA           3.3\n 2 Africangiantpouchedrat    1          6.6          6.3      2           8.3\n 3 ArcticFox                 3.38      44.5         NA       NA          12.5\n 4 Arcticgroundsquirrel      0.92       5.7         NA       NA          16.5\n 5 Asianelephant          2547       4603            2.1      1.8         3.9\n 6 Baboon                   10.6      180.           9.1      0.7         9.8\n 7 Bigbrownbat               0.023      0.3         15.8      3.9        19.7\n 8 Braziliantapir          160        169            5.2      1           6.2\n 9 Cat                       3.3       25.6         10.9      3.6        14.5\n10 Chimpanzee               52.2      440            8.3      1.4         9.7\n\n\nLet’s go over some of its components:\n\nSize info\nVariables/columns\nobservations/rows\n\n\nSize info\nAt the top of the tibble it tells us the size. The first number is the rows and the second is the columns.\nIn the above example we have:\n\n10 rows/observations\n6 columns/variables\n\n\n\nRows/observations\nAs in a data.frame each observation is within its own row. The contents of an observation/row is determined by your dataset and how you want to analyse or visualise it. There are many ways to manipulate tibble with the dplyr, tidyr, and other tidyverse packages.\nTibble rows do not have row names and you cannot/should not give them row names. They are numbered instead.\n\n\nVariables/columns\nA tibble will have a certain number of columns.\nEach column has a name that is at the top. For example:\n\nspecies\nbody_wt\nbrain_wt\n\nBelow the column/variable names is the data class/type of the column. All the entries within a column will have the same data class. These include:\n\n&lt;int&gt;: Integer\n&lt;dbl&gt;: Double\n&lt;chr&gt;: Character/String\n&lt;fct&gt;: Factor\n&lt;lgl&gt;: Logical\n&lt;date&gt;: Date (MG ADD LINK TO INFO ABOUT DATE CLASS, MOST LIKELY IN LUBRIDATE SECTION)\n&lt;list&gt;: List\n\nBelow is an example of a tibble with column for each of these classes.\n\n\n# A tibble: 4 × 7\n  Integers   Doubles Characters Factors Logicals Dates   Lists    \n     &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;fct&gt;   &lt;lgl&gt;    &lt;date&gt;  &lt;list&gt;   \n1      101     0.345 One        A       TRUE     1-01-20 &lt;dbl [3]&gt;\n2       21     3.14  sentence   B       TRUE     2-01-20 &lt;dbl [3]&gt;\n3        3    78.9   is         B       FALSE    3-01-20 &lt;dbl [3]&gt;\n4        0 20001.    enough     A       FALSE    4-01-20 &lt;dbl [3]&gt;\n\n\nAbove you can see that when you view a tibble, by printing it or viewing it in an Rstudio tab, it will align the values in columns in a easy to read manner. This is especially useful for numeric (integers & doubles) columns where the numbers are aligned by place value. This allows you to easily compare the size of numbers in the same column.",
+    "objectID": "tibble/subsetting.html#load-data",
+    "href": "tibble/subsetting.html#load-data",
+    "title": "Subsetting",
+    "section": "Load data",
+    "text": "Load data\nThe examples in this section use the pie_crab data from the lterdatasampler package (includes install instructions).\nLoad package\n\nlibrary(\"lterdatasampler\")\n\nCreate a tibble from a subset of the pie_crab data.\n\npie_crab_tbl &lt;- tibble::as_tibble(pie_crab[1:10,1:8])\npie_crab_tbl\n\n# A tibble: 10 × 8\n   date       latitude site   size air_temp air_temp_sd water_temp water_temp_sd\n   &lt;date&gt;        &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt;\n 1 2016-07-24       30 GTM    12.4     21.8        6.39       24.5          6.12\n 2 2016-07-24       30 GTM    14.2     21.8        6.39       24.5          6.12\n 3 2016-07-24       30 GTM    14.5     21.8        6.39       24.5          6.12\n 4 2016-07-24       30 GTM    12.9     21.8        6.39       24.5          6.12\n 5 2016-07-24       30 GTM    12.4     21.8        6.39       24.5          6.12\n 6 2016-07-24       30 GTM    13.0     21.8        6.39       24.5          6.12\n 7 2016-07-24       30 GTM    10.3     21.8        6.39       24.5          6.12\n 8 2016-07-24       30 GTM    11.2     21.8        6.39       24.5          6.12\n 9 2016-07-24       30 GTM    12.7     21.8        6.39       24.5          6.12\n10 2016-07-24       30 GTM    14.6     21.8        6.39       24.5          6.12",
     "crumbs": [
       "Tibble",
-      "Tibble structure"
+      "Subsetting"
     ]
   },
   {
-    "objectID": "readr/cheatsheets.html",
-    "href": "readr/cheatsheets.html",
-    "title": "Cheatsheets",
-    "section": "",
-    "text": "Source\n\n\n\n\n\n\nTEST",
+    "objectID": "tibble/subsetting.html#one-column-with",
+    "href": "tibble/subsetting.html#one-column-with",
+    "title": "Subsetting",
+    "section": "One column with $",
+    "text": "One column with $\nSubsetting a column using $ and a column name will produce a vector.\n\npie_crab_tbl$site\n\n [1] \"GTM\" \"GTM\" \"GTM\" \"GTM\" \"GTM\" \"GTM\" \"GTM\" \"GTM\" \"GTM\" \"GTM\"\n\nstr(pie_crab_tbl$site)\n\n chr [1:10] \"GTM\" \"GTM\" \"GTM\" \"GTM\" \"GTM\" \"GTM\" \"GTM\" \"GTM\" \"GTM\" \"GTM\"",
     "crumbs": [
-      "Readr",
-      "Cheatsheets"
+      "Tibble",
+      "Subsetting"
     ]
   },
   {
-    "objectID": "forcats/cheatsheets.html",
-    "href": "forcats/cheatsheets.html",
-    "title": "Cheatsheets",
-    "section": "",
-    "text": "Source",
+    "objectID": "tibble/subsetting.html#columns-with-c",
+    "href": "tibble/subsetting.html#columns-with-c",
+    "title": "Subsetting",
+    "section": "Columns with [c]",
+    "text": "Columns with [c]\nSubsetting 1 or more columns with [c] will produce a tibble.\n\npie_crab_tbl[1]\n\n# A tibble: 10 × 1\n   date      \n   &lt;date&gt;    \n 1 2016-07-24\n 2 2016-07-24\n 3 2016-07-24\n 4 2016-07-24\n 5 2016-07-24\n 6 2016-07-24\n 7 2016-07-24\n 8 2016-07-24\n 9 2016-07-24\n10 2016-07-24\n\n\n\npie_crab_tbl[c(\"date\",\"air_temp\",\"size\")]\n\n# A tibble: 10 × 3\n   date       air_temp  size\n   &lt;date&gt;        &lt;dbl&gt; &lt;dbl&gt;\n 1 2016-07-24     21.8  12.4\n 2 2016-07-24     21.8  14.2\n 3 2016-07-24     21.8  14.5\n 4 2016-07-24     21.8  12.9\n 5 2016-07-24     21.8  12.4\n 6 2016-07-24     21.8  13.0\n 7 2016-07-24     21.8  10.3\n 8 2016-07-24     21.8  11.2\n 9 2016-07-24     21.8  12.7\n10 2016-07-24     21.8  14.6",
     "crumbs": [
-      "Forcats",
-      "Cheatsheets"
+      "Tibble",
+      "Subsetting"
     ]
   },
   {
-    "objectID": "tidyr/cheatsheets.html",
-    "href": "tidyr/cheatsheets.html",
-    "title": "Cheatsheets",
-    "section": "",
-    "text": "Source",
+    "objectID": "tibble/subsetting.html#rows-and-columns-with-rc",
+    "href": "tibble/subsetting.html#rows-and-columns-with-rc",
+    "title": "Subsetting",
+    "section": "Rows and columns with [r,c]",
+    "text": "Rows and columns with [r,c]\nSubsetting a tibble with [] will always produce a tibble.\nThis is different from a data.frame where you may extract a scalar, vector, or data.frame.\nBelow are examples using a subset of the pie_crab data from the lterdatasampler package (includes install instructions).\n\nLoad data.frame\nCreate a data.frame from the pie_crab_tbl.\n\npie_crab_df &lt;- as.data.frame(pie_crab_tbl)\npie_crab_df\n\n         date latitude site  size air_temp air_temp_sd water_temp water_temp_sd\n1  2016-07-24       30  GTM 12.43   21.792       6.391     24.502         6.121\n2  2016-07-24       30  GTM 14.18   21.792       6.391     24.502         6.121\n3  2016-07-24       30  GTM 14.52   21.792       6.391     24.502         6.121\n4  2016-07-24       30  GTM 12.94   21.792       6.391     24.502         6.121\n5  2016-07-24       30  GTM 12.45   21.792       6.391     24.502         6.121\n6  2016-07-24       30  GTM 12.99   21.792       6.391     24.502         6.121\n7  2016-07-24       30  GTM 10.32   21.792       6.391     24.502         6.121\n8  2016-07-24       30  GTM 11.19   21.792       6.391     24.502         6.121\n9  2016-07-24       30  GTM 12.68   21.792       6.391     24.502         6.121\n10 2016-07-24       30  GTM 14.55   21.792       6.391     24.502         6.121\n\n\n\n\nExtracting a value\nSubsetting one value from a data.frame leads to a scalar\n\npie_crab_df[1,1]\n\n[1] \"2016-07-24\"\n\nstr(pie_crab_df[1,1])\n\n Date[1:1], format: \"2016-07-24\"\n\n\nSubsetting one value from a tibble leads to a tibble\n\npie_crab_tbl[1,1]\n\n# A tibble: 1 × 1\n  date      \n  &lt;date&gt;    \n1 2016-07-24\n\n\n\n\nExtracting a row\nSubsetting a row from a data.frame leads to a data.frame\n\npie_crab_df[1,]\n\n        date latitude site  size air_temp air_temp_sd water_temp water_temp_sd\n1 2016-07-24       30  GTM 12.43   21.792       6.391     24.502         6.121\n\nstr(pie_crab_df[1,])\n\n'data.frame':   1 obs. of  8 variables:\n $ date         : Date, format: \"2016-07-24\"\n $ latitude     : num 30\n $ site         : chr \"GTM\"\n $ size         : num 12.4\n $ air_temp     : num 21.8\n $ air_temp_sd  : num 6.39\n $ water_temp   : num 24.5\n $ water_temp_sd: num 6.12\n\n\nSubsetting a row from a tibble leads to a tibble\n\npie_crab_tbl[1,]\n\n# A tibble: 1 × 8\n  date       latitude site   size air_temp air_temp_sd water_temp water_temp_sd\n  &lt;date&gt;        &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt;\n1 2016-07-24       30 GTM    12.4     21.8        6.39       24.5          6.12\n\n\n\n\nExtracting a column\nSubsetting a column from a data.frame leads to a vector\n\npie_crab_df[,1]\n\n [1] \"2016-07-24\" \"2016-07-24\" \"2016-07-24\" \"2016-07-24\" \"2016-07-24\"\n [6] \"2016-07-24\" \"2016-07-24\" \"2016-07-24\" \"2016-07-24\" \"2016-07-24\"\n\nstr(pie_crab_df[,1])\n\n Date[1:10], format: \"2016-07-24\" \"2016-07-24\" \"2016-07-24\" \"2016-07-24\" \"2016-07-24\" ...\n\n\nSubsetting a column from a tibble leads to a tibble\n\npie_crab_tbl[,1]\n\n# A tibble: 10 × 1\n   date      \n   &lt;date&gt;    \n 1 2016-07-24\n 2 2016-07-24\n 3 2016-07-24\n 4 2016-07-24\n 5 2016-07-24\n 6 2016-07-24\n 7 2016-07-24\n 8 2016-07-24\n 9 2016-07-24\n10 2016-07-24\n\n\n\n\nExtracting a combo of columns and rows\nSubsetting rows and columns together from a data.frame leads to a data.frame\n\npie_crab_df[1:3,c(\"date\",\"air_temp\",\"size\")]\n\n        date air_temp  size\n1 2016-07-24   21.792 12.43\n2 2016-07-24   21.792 14.18\n3 2016-07-24   21.792 14.52\n\nstr(pie_crab_df[1:3,c(\"date\",\"air_temp\",\"size\")])\n\n'data.frame':   3 obs. of  3 variables:\n $ date    : Date, format: \"2016-07-24\" \"2016-07-24\" ...\n $ air_temp: num  21.8 21.8 21.8\n $ size    : num  12.4 14.2 14.5\n\n\nSubsetting rows and columns together from a tibble leads to a tibble\n\npie_crab_tbl[1:3,c(\"date\",\"air_temp\",\"size\")]\n\n# A tibble: 3 × 3\n  date       air_temp  size\n  &lt;date&gt;        &lt;dbl&gt; &lt;dbl&gt;\n1 2016-07-24     21.8  12.4\n2 2016-07-24     21.8  14.2\n3 2016-07-24     21.8  14.5",
     "crumbs": [
-      "Tidyr",
-      "Cheatsheets"
+      "Tibble",
+      "Subsetting"
     ]
   },
   {
-    "objectID": "include/lubridate.html",
-    "href": "include/lubridate.html",
-    "title": "Lubridate",
-    "section": "",
-    "text": "Lubridate is a useful package to manipulate the date class.\npurr homepage"
+    "objectID": "tibble/tibble.html#overview",
+    "href": "tibble/tibble.html#overview",
+    "title": "Tibble",
+    "section": "Overview",
+    "text": "Overview\nA tibble (tbl) is a reimagining of the data.frame (df) object. They are described as data.frames that are:\n\nLazy: They don’t change variable names and they don’t do partial matching.\nSurly: They complain more such as when a variable does not exist.\n\nOne important note is that tibbles should not be given row names.\nAlthough tibbles have advantages compared to data.frames they are not always more suited to the task than data.frames. However, tibbles are generally always preferred over data.frames when using tidyverse packages.\nTibble homepage",
+    "crumbs": [
+      "Tibble"
+    ]
   },
   {
-    "objectID": "datasets/mammal_sleep.html",
-    "href": "datasets/mammal_sleep.html",
-    "title": "Sleep in mammals",
+    "objectID": "tibble/tibble.html#tibble-example",
+    "href": "tibble/tibble.html#tibble-example",
+    "title": "Tibble",
+    "section": "Tibble example",
+    "text": "Tibble example\nBelow is an example of:\n\nCreating a basic tibble\nPrinting the tibble\n\n\n#Create a tibble\ntbl &lt;- tibble::tibble(Day = c(\"Mon\", \"Tue\", \"Wed\"),\n              Hawks = c(3,7,2),\n              Pigeons = c(52,21,61),\n              Starlings = c(1,2,1))\n#Print tibble\ntbl\n\n# A tibble: 3 × 4\n  Day   Hawks Pigeons Starlings\n  &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;\n1 Mon       3      52         1\n2 Tue       7      21         2\n3 Wed       2      61         1\n\n\ntest",
+    "crumbs": [
+      "Tibble"
+    ]
+  },
+  {
+    "objectID": "readr/readr.html",
+    "href": "readr/readr.html",
+    "title": "Readr",
     "section": "",
-    "text": "mammals.csv\nhttps://www.kaggle.com/datasets/volkandl/sleep-in-mammals",
+    "text": "readr homepage",
+    "crumbs": [
+      "Readr"
+    ]
+  },
+  {
+    "objectID": "forcats/forcats.html",
+    "href": "forcats/forcats.html",
+    "title": "Forcats",
+    "section": "",
+    "text": "forcats homepage",
+    "crumbs": [
+      "Forcats"
+    ]
+  },
+  {
+    "objectID": "tidyr/tidyr.html",
+    "href": "tidyr/tidyr.html",
+    "title": "Tidyr",
+    "section": "",
+    "text": "tidyr homepage",
+    "crumbs": [
+      "Tidyr"
+    ]
+  },
+  {
+    "objectID": "datasets/lterdatasampler.html",
+    "href": "datasets/lterdatasampler.html",
+    "title": "Lterdatasampler",
+    "section": "",
+    "text": "Lterdatasampler is a R package containing various datasets. These datasets were generated by the Long Term Ecological Research program (LTER) Network. They were curated into a R package by Allison Horst and Julien Brun.\nFor full information please see the lterdatasampler website",
     "crumbs": [
       "Datasets",
-      "Sleep in mammals"
+      "Lterdatasampler"
+    ]
+  },
+  {
+    "objectID": "datasets/lterdatasampler.html#install-and-load",
+    "href": "datasets/lterdatasampler.html#install-and-load",
+    "title": "Lterdatasampler",
+    "section": "Install and load",
+    "text": "Install and load\nInstallation and loading instruction below:\n\ninstall.packages(\"lterdatasampler\")\nlibrary(\"lterdatasampler\")",
+    "crumbs": [
+      "Datasets",
+      "Lterdatasampler"
+    ]
+  },
+  {
+    "objectID": "datasets/lterdatasampler.html#summary-of-datasets",
+    "href": "datasets/lterdatasampler.html#summary-of-datasets",
+    "title": "Lterdatasampler",
+    "section": "Summary of datasets",
+    "text": "Summary of datasets\nList of the datasets within the package (as of 25th April 2025)\n\nand_vertebrates: Records for aquatic vertebrates (cutthroat trout and salamanders) in Mack Creek, Andrews Experimental Forest, Oregon (1987 - present)\narc_weather: Daily meteorological (e.g. air temperature, precipitation) records from Toolik Field Station, Alaska (1988 - present)\nhbr_maples: Sugar maple seedlings at Hubbard Brook Experimental Forest (New Hampshire) in calcium-treated and reference watersheds in August 2003 and June 2004\nknz_bison: Bison masses recorded for the herd at Konza Prairie Biological Station LTER\nluq_streamchem: stream chemistry data for the Quebrada Sonadora (QS) location part of the Luqillo tropical forest LTER site\nntl_icecover: Ice freeze and thaw dates for Madison, Wisconsin Area lakes (1853 - 2019), North Temperate Lakes LTER\nntl_airtemp: Daily average air temperature data for Madison, Wisconsin (1869 - 2019), North Temperate Lakes LTER\nnwt_pikas: Pika observations for habitat and stress analysis at Niwot Ridge LTER, Colorado\npie_crab: Fiddler crab body size recorded summer 2016 in salt marshes from Florida to Massachusetts including Plum Island Ecosystem LTER, Virginia Coast LTER, and NOAA’s National Estuarine Research Reserve System",
+    "crumbs": [
+      "Datasets",
+      "Lterdatasampler"
+    ]
+  },
+  {
+    "objectID": "tibble/add_rows_and_columns.html#adding-one-row-or-column",
+    "href": "tibble/add_rows_and_columns.html#adding-one-row-or-column",
+    "title": "Adding rows and columns",
+    "section": "Adding one row or column",
+    "text": "Adding one row or column\nDisplay the tibble num_tbl\n\nnum_tbl\n\n# A tibble: 3 × 3\n      x     y     z\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1     1     4     7\n2     2     5     8\n3     3     6     9\n\n\nAdd a column\n\ntibble::add_column(num_tbl, aa = 10:12)\n\n# A tibble: 3 × 4\n      x     y     z    aa\n  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1     1     4     7    10\n2     2     5     8    11\n3     3     6     9    12\n\n\nAdd a row\n\ntibble::add_row(num_tbl, x = 11, y = 12, z = 13)\n\n# A tibble: 4 × 3\n      x     y     z\n  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     1     4     7\n2     2     5     8\n3     3     6     9\n4    11    12    13",
+    "crumbs": [
+      "Tibble",
+      "Adding rows and columns"
     ]
   }
 ]

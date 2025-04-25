@@ -52,7 +52,7 @@ More information: [readr](../readr/readr.qmd)
 
 Ensure you have the following file downloaded: 
 
-<MG ADD DL LINK>
+(MG ADD DL LINK)
 
 
 ```{r, eval=FALSE}

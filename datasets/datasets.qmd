@@ -43,4 +43,3 @@ https://www.kaggle.com/datasets/amulyas/penguin-size-dataset
 capture-fisheries-vs-aquaculture.csv
 
 https://www.kaggle.com/datasets/sergegeukjian/fish-and-overfishing?select=capture-fisheries-vs-aquaculture.csv
-

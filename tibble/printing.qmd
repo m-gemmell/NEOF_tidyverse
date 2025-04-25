@@ -1,0 +1,46 @@
+---
+title: "Printing or viewing"
+format: html
+---
+
+Tibbles have some unique characteristics when printing and viewing them on a terminal, including the RStudio console window.
+
+## Load and print data
+
+Below we load the `and_vertebrates` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (includes install instructions) and view it.
+
+```{r}
+#Load package
+library("lterdatasampler")
+#subsetted pie_crab tibble
+tibble::as_tibble(and_vertebrates)[1:10,1:5]
+```
+
+Information on the format of a __tibble__ is within the [Tibble structure section](/tibble/structure.html#format)
+
+## Larger tibbles
+
+When printing out a larger __tibble__ only a part of the __tibble__ will be displayed with info on the undisplayed data below the displayed data.
+
+By default only 10 __rows__ of a __tibble__ will be displayed. 
+
+The number of displayed __columns__ is dynamic.
+The maximum amount of __columns__ will be displayed based on the width of the viewer and the width of the data in the __columns__.
+
+The info shown below a __tibble__ is:
+
+- The number of rows that are not displayed
+- The number, names, and classes of the variables/columns not displayed
+
+```{r}
+tibble::as_tibble(and_vertebrates)
+```
+
+## Print more rows
+
+More rows can be printed by using the base R `print()` function with the `n=` option.
+
+```{r}
+print(tibble::as_tibble(and_vertebrates), n =20)
+```
+

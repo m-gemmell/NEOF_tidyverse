@@ -1,0 +1,43 @@
+---
+title: "Adding rows and columns"
+format: html
+---
+
+Data can be added to a __tibble__ with the intuitively named functions:
+
+- `tibble::add_row()`: Add one or more rows to a __tibble__
+- `tibble::add_column()`: Add one or more columns to a __tibble__
+
+## Create example tibbles
+
+Before demonstrating the two functions we will create a few __tibbles__.
+
+```{r}
+num_tbl <- tibble::tibble(x = 1:3, y = 4:6, z = 7:9)
+```
+
+
+## Adding one row or column
+
+Display the __tibble__ `num_tbl`
+
+```{r}
+num_tbl
+```
+
+Add a column
+```{r}
+tibble::add_column(num_tbl, aa = 10:12)
+```
+
+Add a row
+
+```{r}
+tibble::add_row(num_tbl, x = 11, y = 12, z = 13)
+```
+
+
+
+
+
+

@@ -56,23 +56,26 @@ This website does not go into great details rather it provides:
 This webpage is split into sections for each of the main packages in tidyverse.
 These are:
 
-- [tibble](./tibble): A new and improved data frame-like object
-- [dplyr](./dplyr): data manipulation, also introduces the tidyverse pipe (`|>`)
-- [readr](./readr): Read in tabular data
-- [tidyr](./tidyr/): Tidying tibbles, includes going from wide to long tibbles/data frames
-- [ggplot2](./ggplot2): Visualisation with the grammar of graphics
-- [stringr](./stringr): String manipulation
-- [forcats](./forcats): Factor manipulation
-- [purrr](./purrr): Functions & vectors
-- [lubridate](./lubridate): Data-time data
+- [tibble](/tibble/tibble.qmd): A new and improved data frame-like object
+- [dplyr](/dplyr/dplyr.qmd): data manipulation, also introduces the tidyverse pipe (`|>`)
+- [readr](/readr/readr.qmd): Read in tabular data
+- [tidyr](/tidyr/tidyr.qmd): Tidying tibbles, includes going from wide to long tibbles/data frames
+- [ggplot2](/ggplot2/ggplot2.qmd): Visualisation with the grammar of graphics
+- [stringr](/stringr/stringr.qmd): String manipulation
+- [forcats](/forcats/forcats.qmd): Factor manipulation
+- [purrr](/purrr/purrr.qmd): Functions & vectors
+- [lubridate](/lubridate/lubridate.qmd): Data-time data
 
 ## Package names
 
 To keep consistent we will include the package name of each function used in code.
 This is carried out like below.
 
+__Note:__ Don't run the below command
+
 ```{r, eval=FALSE}
-#
+#Use as_tibble function from tibble package
+tibble::as_tibble()
 ```
 
 ## Installation & loading
@@ -87,7 +90,7 @@ install.packages("tidyverse")
 
 Once installed you can load the package suite:
 
-```{r, eval=FALSE}
+```{r, output=FALSE,warning=FALSE,error=FALSE}
 library("tidyverse")
 ```
 

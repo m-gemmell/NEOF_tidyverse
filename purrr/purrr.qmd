@@ -2,8 +2,6 @@
 title: "Purrr"
 ---
 
-test
-
 <center>
 ![](../images/purrr.png){style="width:150px"}
 </center>

@@ -97,5 +97,26 @@
   },
   "purrr/cheatsheets.qmd": {
     "cheatsheets.html": "6e355159"
+  },
+  "datasets/lterdatasampler.qmd": {
+    "lterdatasampler.html": "ac345c54"
+  },
+  "tibble/tibble_subsetting.qmd": {
+    "tibble_subsetting.html": "a2917931"
+  },
+  "tibble/features.qmd": {
+    "features.html": "9be0aa08"
+  },
+  "tibble/subsetting.qmd": {
+    "subsetting.html": "d3c6a408"
+  },
+  "tibble/structure.qmd": {
+    "structure.html": "dec337b5"
+  },
+  "tibble/printing.qmd": {
+    "printing.html": "df6282aa"
+  },
+  "tibble/add_rows_and_columns.qmd": {
+    "add_rows_and_columns.html": "4ab93179"
   }
 }
