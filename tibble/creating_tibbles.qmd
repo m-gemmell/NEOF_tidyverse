@@ -48,7 +48,7 @@ __Note:__ The __iris__ dataset is built-in to base R. You can see all the pre-lo
 
 We can use __readr's__ function `read_csv()` to read in a file as a __tibble__.
 
-More information: [readr](./readr) 
+More information: [readr](../readr/readr.qmd) 
 
 Ensure you have the following file downloaded: 
 

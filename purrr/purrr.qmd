@@ -1,9 +1,11 @@
 ---
-title: "purrr"
+title: "Purrr"
 ---
 
+test
+
 <center>
-![](images/purrr.png){style="width:150px"}
+![](../images/purrr.png){style="width:150px"}
 </center>
 
 [purr homepage](https://purrr.tidyverse.org/)

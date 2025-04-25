@@ -1,9 +1,9 @@
 ---
-title: "ggplot2"
+title: "Ggplot2"
 ---
 
 <center>
-![](images/ggplot2.png){style="width:150px"}
+![](../images/ggplot2.png){style="width:150px"}
 </center>
 
-[tidyr homepage](https://ggplot2.tidyverse.org//)
+[ggplot2 homepage](https://ggplot2.tidyverse.org//)

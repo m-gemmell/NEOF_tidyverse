@@ -3,7 +3,7 @@ title: "Tibble"
 ---
 
 <center>
-![](images/tibble.png){style="width:150px"}
+![](../images/tibble.png){style="width:150px"}
 </center>
 
 ## Overview
@@ -36,3 +36,5 @@ tbl <- tibble::tibble(Day = c("Mon", "Tue", "Wed"),
 #Print tibble
 tbl
 ```
+
+test

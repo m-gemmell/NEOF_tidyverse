@@ -1,0 +1,15 @@
+{
+  "hash": "228ed2df5701747b52785bcc2bb20380",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Tibble\"\n---\n\n<center>\n![](../images/tibble.png){style=\"width:150px\"}\n</center>\n\n## Overview\n\nA __tibble__ (`tbl`) is a reimagining of the __data.frame__ (`df`) object. They are described as __data.frames__ that are:\n\n- __Lazy__: They don't change variable names and they don't do partial matching.\n- __Surly__: They complain more such as when a variable does not exist.\n\nOne important note is that __tibbles__ should not be given row names.\n\nAlthough __tibbles__ have advantages compared to __data.frames__ they are not always more suited to the task than __data.frames__. \nHowever, __tibbles__ are generally always preferred over __data.frames__ when using __tidyverse__ packages.\n\n[Tibble homepage](https://tibble.tidyverse.org/)\n\n## Tibble example\n\nBelow is an example of:\n\n- Creating a basic tibble\n- Printing the tibble\n\n\n::: {.cell}\n\n```{.r .cell-code}\n#Create a tibble\ntbl <- tibble::tibble(Day = c(\"Mon\", \"Tue\", \"Wed\"),\n              Hawks = c(3,7,2),\n              Pigeons = c(52,21,61),\n              Starlings = c(1,2,1))\n#Print tibble\ntbl\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n# A tibble: 3 × 4\n  Day   Hawks Pigeons Starlings\n  <chr> <dbl>   <dbl>     <dbl>\n1 Mon       3      52         1\n2 Tue       7      21         2\n3 Wed       2      61         1\n```\n\n\n:::\n:::\n\n\ntest",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

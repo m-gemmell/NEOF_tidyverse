@@ -20,36 +20,40 @@
     ]
   },
   {
+    "objectID": "include/cheatsheets.html",
+    "href": "include/cheatsheets.html",
+    "title": "Cheatsheets",
+    "section": "",
+    "text": "Source"
+  },
+  {
     "objectID": "tidyr/tidyr.html",
     "href": "tidyr/tidyr.html",
-    "title": "tidyr",
+    "title": "Tidyr",
     "section": "",
     "text": "tidyr homepage",
     "crumbs": [
-      "Tidyr",
-      "tidyr"
+      "Tidyr"
     ]
   },
   {
     "objectID": "forcats/forcats.html",
     "href": "forcats/forcats.html",
-    "title": "forcats",
+    "title": "Forcats",
     "section": "",
     "text": "forcats homepage",
     "crumbs": [
-      "Forcats",
-      "forcats"
+      "Forcats"
     ]
   },
   {
     "objectID": "readr/readr.html",
     "href": "readr/readr.html",
-    "title": "readr",
+    "title": "Readr",
     "section": "",
-    "text": "readr homepage",
+    "text": "test\nreadr homepage",
     "crumbs": [
-      "Readr",
-      "readr"
+      "Readr"
     ]
   },
   {
@@ -67,7 +71,7 @@
     "href": "tibble/tibble.html#tibble-example",
     "title": "Tibble",
     "section": "Tibble example",
-    "text": "Tibble example\nBelow is an example of:\n\nCreating a basic tibble\nPrinting the tibble\n\n\n#Create a tibble\ntbl &lt;- tibble::tibble(Day = c(\"Mon\", \"Tue\", \"Wed\"),\n              Hawks = c(3,7,2),\n              Pigeons = c(52,21,61),\n              Starlings = c(1,2,1))\n#Print tibble\ntbl\n\n# A tibble: 3 × 4\n  Day   Hawks Pigeons Starlings\n  &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;\n1 Mon       3      52         1\n2 Tue       7      21         2\n3 Wed       2      61         1",
+    "text": "Tibble example\nBelow is an example of:\n\nCreating a basic tibble\nPrinting the tibble\n\n\n#Create a tibble\ntbl &lt;- tibble::tibble(Day = c(\"Mon\", \"Tue\", \"Wed\"),\n              Hawks = c(3,7,2),\n              Pigeons = c(52,21,61),\n              Starlings = c(1,2,1))\n#Print tibble\ntbl\n\n# A tibble: 3 × 4\n  Day   Hawks Pigeons Starlings\n  &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;\n1 Mon       3      52         1\n2 Tue       7      21         2\n3 Wed       2      61         1\n\n\ntest",
     "crumbs": [
       "Tibble"
     ]
@@ -77,14 +81,22 @@
     "href": "tibble/tibble_features.html",
     "title": "Tibble features",
     "section": "",
-    "text": "When you subset a tibble you will always end up with a tibble."
+    "text": "When you subset a tibble you will always end up with a tibble.",
+    "crumbs": [
+      "Tibble",
+      "Tibble features"
+    ]
   },
   {
     "objectID": "tibble/tibble_features.html#handy-features",
     "href": "tibble/tibble_features.html#handy-features",
     "title": "Tibble features",
     "section": "",
-    "text": "When you subset a tibble you will always end up with a tibble."
+    "text": "When you subset a tibble you will always end up with a tibble.",
+    "crumbs": [
+      "Tibble",
+      "Tibble features"
+    ]
   },
   {
     "objectID": "ggplot2/cheatsheets.html",
@@ -166,23 +178,21 @@
   {
     "objectID": "dplyr/dplyr.html",
     "href": "dplyr/dplyr.html",
-    "title": "dplyr",
+    "title": "Dplyr",
     "section": "",
     "text": "dplyr homepage",
     "crumbs": [
-      "Dplyr",
-      "dplyr"
+      "Dplyr"
     ]
   },
   {
     "objectID": "lubridate/lubridate.html",
     "href": "lubridate/lubridate.html",
-    "title": "lubridate",
+    "title": "Lubridate",
     "section": "",
-    "text": "purr homepage",
+    "text": "Lubridate is a useful package to manipulate the date class.\npurr homepage",
     "crumbs": [
-      "Lubridate",
-      "lubridate"
+      "Lubridate"
     ]
   },
   {
@@ -210,34 +220,31 @@
   {
     "objectID": "purrr/purrr.html",
     "href": "purrr/purrr.html",
-    "title": "purrr",
+    "title": "Purrr",
     "section": "",
-    "text": "purr homepage",
+    "text": "test\n\n\n\npurr homepage",
     "crumbs": [
-      "Purrr",
-      "purrr"
+      "Purrr"
     ]
   },
   {
     "objectID": "stringr/stringr.html",
     "href": "stringr/stringr.html",
-    "title": "stringr",
+    "title": "Stringr",
     "section": "",
-    "text": "tidyr homepage",
+    "text": "test\nreadr homepage",
     "crumbs": [
-      "Stringr",
-      "stringr"
+      "Stringr"
     ]
   },
   {
     "objectID": "ggplot2/ggplot2.html",
     "href": "ggplot2/ggplot2.html",
-    "title": "ggplot2",
+    "title": "Ggplot2",
     "section": "",
-    "text": "tidyr homepage",
+    "text": "ggplot2 homepage",
     "crumbs": [
-      "Ggplot2",
-      "ggplot2"
+      "Ggplot2"
     ]
   },
   {
@@ -311,7 +318,7 @@
     "href": "readr/cheatsheets.html",
     "title": "Cheatsheets",
     "section": "",
-    "text": "Source",
+    "text": "Source\n\n\n\n\n\n\nTEST",
     "crumbs": [
       "Readr",
       "Cheatsheets"
@@ -338,6 +345,13 @@
       "Tidyr",
       "Cheatsheets"
     ]
+  },
+  {
+    "objectID": "include/lubridate.html",
+    "href": "include/lubridate.html",
+    "title": "Lubridate",
+    "section": "",
+    "text": "Lubridate is a useful package to manipulate the date class.\npurr homepage"
   },
   {
     "objectID": "datasets/mammal_sleep.html",

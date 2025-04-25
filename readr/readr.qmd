@@ -1,9 +1,11 @@
 ---
-title: "readr"
+title: "Readr"
 ---
 
 <center>
-![](images/readr.png){style="width:150px"}
+![](../images/readr.png){style="width:150px"}
 </center>
+
+test
 
 [readr homepage](https://readr.tidyverse.org/)

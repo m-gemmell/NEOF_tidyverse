@@ -1,0 +1,11 @@
+---
+title: "Lubridate"
+---
+
+<center>
+![](images/lubridate.png){style="width:150px"}
+</center>
+
+Lubridate is a useful package to manipulate the date class.
+
+[purr homepage](https://lubridate.tidyverse.org/)

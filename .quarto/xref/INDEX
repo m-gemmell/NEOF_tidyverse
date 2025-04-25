@@ -1,0 +1,101 @@
+{
+  "index.qmd": {
+    "index.html": "0e91e0a3"
+  },
+  "tibble/creating_tibbles.qmd": {
+    "creating_tibbles.html": "a05f0e00"
+  },
+  "tibble/tibble_features.qmd": {
+    "tibble_features.html": "747a17e8"
+  },
+  "tibble/tibble_structure.qmd": {
+    "tibble_structure.html": "6cb6b553"
+  },
+  "tibble/tibble.qmd": {
+    "tibble.html": "7fa99bb0"
+  },
+  "lubridate/lubridate.qmd": {
+    "lubridate.html": "c38b269c"
+  },
+  "lubridate/cheatsheets.qmd": {
+    "cheatsheets.html": "a7ae1a44"
+  },
+  "dplyr/dplyr.qmd": {
+    "dplyr.html": "590480de"
+  },
+  "dplyr/cheatsheets.qmd": {
+    "cheatsheets.html": "976f80a8"
+  },
+  "purrr/images/purrr.qmd": {
+    "purrr.html": "c8b70428"
+  },
+  "purrr/images/cheatsheets.qmd": {
+    "cheatsheets.html": "d804dedc"
+  },
+  "stringr/images/cheatsheets.qmd": {
+    "cheatsheets.html": "9b200e84"
+  },
+  "stringr/images/readr.qmd": {
+    "readr.html": "56668594"
+  },
+  "ggplot2/ggplot2.qmd": {
+    "ggplot2.html": "50c9f03e"
+  },
+  "ggplot2/cheatsheets.qmd": {
+    "cheatsheets.html": "8ed2fb37"
+  },
+  "readr/cheatsheets.qmd": {
+    "cheatsheets.html": "3a25a506"
+  },
+  "readr/images/readr.qmd": {
+    "readr.html": "1113a0e5"
+  },
+  "forcats/cheatsheets.qmd": {
+    "cheatsheets.html": "a6bfd676"
+  },
+  "forcats/forcats.qmd": {
+    "forcats.html": "572ca5dd"
+  },
+  "tidyr/images/cheatsheets.qmd": {
+    "cheatsheets.html": "421ef0b4"
+  },
+  "tidyr/images/tidyr.qmd": {
+    "tidyr.html": "264aebd2"
+  },
+  "include/lubridate.qmd": {
+    "lubridate.html": "38e12440"
+  },
+  "include/cheatsheets.qmd": {
+    "cheatsheets.html": "9b74c75e"
+  },
+  "datasets/mammal_sleep.qmd": {
+    "mammal_sleep.html": "82e65774"
+  },
+  "datasets/datasets.qmd": {
+    "datasets.html": "e6622bc7"
+  },
+  "readr/readr.qmd": {
+    "readr.html": "903def61"
+  },
+  "stringr/readr.qmd": {
+    "readr.html": "f132eaa5"
+  },
+  "tidyr/cheatsheets.qmd": {
+    "cheatsheets.html": "3f6281e7"
+  },
+  "tidyr/tidyr.qmd": {
+    "tidyr.html": "dfdce0ea"
+  },
+  "stringr/cheatsheets.qmd": {
+    "cheatsheets.html": "54633890"
+  },
+  "stringr/stringr.qmd": {
+    "stringr.html": "47b99dc1"
+  },
+  "purrr/purrr.qmd": {
+    "purrr.html": "2c8b38ad"
+  },
+  "purrr/cheatsheets.qmd": {
+    "cheatsheets.html": "6e355159"
+  }
+}

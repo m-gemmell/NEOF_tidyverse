@@ -1,9 +1,11 @@
 ---
-title: "stringr"
+title: "Stringr"
 ---
 
 <center>
-![](images/stringr.png){style="width:150px"}
+![](../images/stringr.png){style="width:150px"}
 </center>
 
-[tidyr homepage](https://stringr.tidyverse.org/)
+test
+
+[readr homepage](https://stringr.tidyverse.org/)

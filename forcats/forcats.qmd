@@ -1,9 +1,9 @@
 ---
-title: "forcats"
+title: "Forcats"
 ---
 
 <center>
-![](images/forcats.png){style="width:150px"}
+![](../images/forcats.png){style="width:150px"}
 </center>
 
 [forcats homepage](https://forcats.tidyverse.org/)

@@ -4,43 +4,43 @@ title: "NEOF Tidyverse"
 
 <div class="hexrowtop">
   <p><a href="tibble/tibble.qmd">
-  <img src="tibble/images/tibble.png" width="100px">
+  <img src="images/tibble.png" width="100px">
   </a></p>
   
   <p><a href="dplyr/dplyr.qmd">
-  <img src="dplyr/images/dplyr.png" width="100px">
+  <img src="images/dplyr.png" width="100px">
   </a></p>
   
   <p><a href="readr/readr.qmd">
-  <img src="readr/images/readr.png" width="100px" class="hexcollast">
+  <img src="images/readr.png" width="100px" class="hexcollast">
   </a></p>
 </div>
 
 <div class="hexrowmid">
   <p><a href="tidyr/tidyr.qmd">
-  <img src="tidyr/images/tidyr.png" width="100px">
+  <img src="images/tidyr.png" width="100px">
   </a></p>
   
   <p><a href="ggplot2/ggplot2.qmd">
-  <img src="ggplot2/images/ggplot2.png" width="100px">
+  <img src="images/ggplot2.png" width="100px">
   </a></p>
   
   <p><a href="stringr/stringr.qmd">
-  <img src="stringr/images/stringr.png" width="100px" class="hexcollast">
+  <img src="images/stringr.png" width="100px" class="hexcollast">
   </a></p>
 </div>
 
 <div class="hexrowbottom">
   <p><a href="forcats/forcats.qmd">
-  <img src="forcats/images/forcats.png" width="100px">
+  <img src="images/forcats.png" width="100px">
   </a></p>
   
   <p><a href="purrr/purrr.qmd">
-  <img src="purrr/images/purrr.png" width="100px">
+  <img src="images/purrr.png" width="100px">
   </a></p>
   
   <p><a href="lubridate/lubridate.qmd">
-  <img src="lubridate/images/lubridate.png" width="100px" class="hexcollast">
+  <img src="images/lubridate.png" width="100px" class="hexcollast">
   </a></p>
 </div>
 
@@ -59,7 +59,7 @@ These are:
 - [tibble](./tibble): A new and improved data frame-like object
 - [dplyr](./dplyr): data manipulation, also introduces the tidyverse pipe (`|>`)
 - [readr](./readr): Read in tabular data
-- [tidyr](./tidyr): Tidying tibbles, includes going from wide to long tibbles/data frames
+- [tidyr](./tidyr/): Tidying tibbles, includes going from wide to long tibbles/data frames
 - [ggplot2](./ggplot2): Visualisation with the grammar of graphics
 - [stringr](./stringr): String manipulation
 - [forcats](./forcats): Factor manipulation
