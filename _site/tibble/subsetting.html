@@ -423,8 +423,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#load-data" id="toc-load-data" class="nav-link active" data-scroll-target="#load-data">Load data</a></li>
   <li><a href="#one-column-with" id="toc-one-column-with" class="nav-link" data-scroll-target="#one-column-with">One column with $</a></li>
-  <li><a href="#columns-with-c" id="toc-columns-with-c" class="nav-link" data-scroll-target="#columns-with-c">Columns with [c]</a></li>
-  <li><a href="#rows-and-columns-with-rc" id="toc-rows-and-columns-with-rc" class="nav-link" data-scroll-target="#rows-and-columns-with-rc">Rows and columns with [r,c]</a>
+  <li><a href="#columns-with" id="toc-columns-with" class="nav-link" data-scroll-target="#columns-with">Columns with []</a></li>
+  <li><a href="#rows-and-columns-with" id="toc-rows-and-columns-with" class="nav-link" data-scroll-target="#rows-and-columns-with">Rows and columns with [,]</a>
   <ul class="collapse">
   <li><a href="#load-data.frame" id="toc-load-data.frame" class="nav-link" data-scroll-target="#load-data.frame">Load data.frame</a></li>
   <li><a href="#extracting-a-value" id="toc-extracting-a-value" class="nav-link" data-scroll-target="#extracting-a-value">Extracting a value</a></li>
@@ -469,7 +469,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Create a <strong>tibble</strong> from a subset of the pie_crab data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pie_crab_tbl <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">as_tibble</span>(pie_crab[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>])</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pie_crab_tbl <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">as_tibble</span>(lterdatasampler<span class="sc">::</span>pie_crab[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>])</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pie_crab_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 8
@@ -502,9 +502,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="columns-with-c" class="level2">
-<h2 class="anchored" data-anchor-id="columns-with-c">Columns with [c]</h2>
-<p>Subsetting 1 or more columns with <code>[c]</code> will produce a <strong>tibble</strong>.</p>
+<section id="columns-with" class="level2">
+<h2 class="anchored" data-anchor-id="columns-with">Columns with []</h2>
+<p>Subsetting 1 or more columns with <code>[]</code> will produce a <strong>tibble</strong>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pie_crab_tbl[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -542,8 +542,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="rows-and-columns-with-rc" class="level2">
-<h2 class="anchored" data-anchor-id="rows-and-columns-with-rc">Rows and columns with [r,c]</h2>
+<section id="rows-and-columns-with" class="level2">
+<h2 class="anchored" data-anchor-id="rows-and-columns-with">Rows and columns with [,]</h2>
 <p>Subsetting a <strong>tibble</strong> with <code>[]</code> will always produce a <strong>tibble</strong>.</p>
 <p>This is different from a <strong>data.frame</strong> where you may extract a <a href="https://neof-workshops.github.io/R_j4c0xh/04-R_objects.html#scalar">scalar</a>, <a href="https://neof-workshops.github.io/R_j4c0xh/04-R_objects.html#vectors-lists">vector</a>, or <strong>data.frame</strong>.</p>
 <p>Below are examples using a subset of the <code>pie_crab</code> data from the <a href="../datasets/lterdatasampler.html">lterdatasampler package</a> (includes install instructions).</p>

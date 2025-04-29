@@ -455,10 +455,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>A <strong>tibble</strong> (<code>tbl</code>) is a reimagining of the <strong>data.frame</strong> (<code>df</code>) object. They are described as <strong>data.frames</strong> that are:</p>
 <ul>
-<li><strong>Lazy</strong>: They don’t change variable names and they don’t do partial matching.</li>
+<li><strong>Lazy</strong>: They don’t change variable names and they partial matching does not work.</li>
 <li><strong>Surly</strong>: They complain more such as when a variable does not exist.</li>
 </ul>
-<p>One important note is that <strong>tibbles</strong> should not be given row names.</p>
+<p>One important note is that <strong>tibbles</strong> don’t have row names.</p>
 <p>Although <strong>tibbles</strong> have advantages compared to <strong>data.frames</strong> they are not always more suited to the task than <strong>data.frames</strong>. However, <strong>tibbles</strong> are generally always preferred over <strong>data.frames</strong> when using <strong>tidyverse</strong> packages.</p>
 <p><a href="https://tibble.tidyverse.org/">Tibble homepage</a></p>
 </section>
@@ -486,7 +486,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 3 Wed       2      61         1</code></pre>
 </div>
 </div>
-<p>test</p>
 
 
 </section>

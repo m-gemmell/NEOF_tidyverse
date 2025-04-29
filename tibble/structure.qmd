@@ -7,13 +7,13 @@ Tibbles are formatted like a __data.frame__ but have some extra functions and te
 
 ## Format
 
-Below we load and subset the `hbr_maples` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (includes install instructions) and view it.
+Below we load and subset the `hbr_maples` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (hyperlink includes install instructions) and view it.
 
 ```{r}
 #Load package
 library("lterdatasampler")
 #Subset of hbr_maples tibble
-tibble::as_tibble(hbr_maples)[1:10,1:8]
+tibble::as_tibble(lterdatasampler::hbr_maples)[1:10,1:8]
 ```
 
 Let's go over some of its components:
@@ -36,7 +36,7 @@ In the above example we have:
 
 As in a __data.frame__ each observation is within its own row.
 The contents of an observation/row is determined by your dataset and how you want to analyse or visualise it.
-There are many ways to manipulate __tibble__ with the [dplyr](/dplyr/dplyr.qmd), [tidyr](/tidyr/tidyr.qmd), and other tidyverse packages. 
+There are many ways to manipulate __tibbles__ with the [dplyr](/dplyr/dplyr.qmd), [tidyr](/tidyr/tidyr.qmd), and other tidyverse packages. 
 
 __Tibble__ rows do not have row names and you cannot/should not give them row names.
 They are numbered/indexxed instead.
@@ -53,7 +53,7 @@ For example:
 - elevation
 
 Below the column/variable names is the data class/type of the column.
-All the entries within a column will have the same data class.
+All the entries within a single column will have the same data class.
 These include:
 
 - __\<int>__: [Integer](https://neof-workshops.github.io/R_j4c0xh/04-R_objects.html#numeric)

@@ -421,7 +421,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#create-example-tibbles" id="toc-create-example-tibbles" class="nav-link active" data-scroll-target="#create-example-tibbles">Create example tibbles</a></li>
-  <li><a href="#adding-one-row-or-column" id="toc-adding-one-row-or-column" class="nav-link" data-scroll-target="#adding-one-row-or-column">Adding one row or column</a></li>
+  <li><a href="#adding-one-row-or-column" id="toc-adding-one-row-or-column" class="nav-link" data-scroll-target="#adding-one-row-or-column">Adding one row or column</a>
+  <ul class="collapse">
+  <li><a href="#adding-a-column" id="toc-adding-a-column" class="nav-link" data-scroll-target="#adding-a-column">Adding a column</a></li>
+  <li><a href="#adding-a-row" id="toc-adding-a-row" class="nav-link" data-scroll-target="#adding-a-row">Adding a row</a></li>
+  </ul></li>
+  <li><a href="#binding-a-tibble-to-a-tibble" id="toc-binding-a-tibble-to-a-tibble" class="nav-link" data-scroll-target="#binding-a-tibble-to-a-tibble">Binding a tibble to a tibble</a>
+  <ul class="collapse">
+  <li><a href="#bind-by-columns" id="toc-bind-by-columns" class="nav-link" data-scroll-target="#bind-by-columns">Bind by columns</a></li>
+  <li><a href="#bind-by-rows" id="toc-bind-by-rows" class="nav-link" data-scroll-target="#bind-by-rows">Bind by rows</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -448,21 +457,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Data can be added to a <strong>tibble</strong> with the intuitively named functions:</p>
+<p>Data can be added to a <strong>tibble</strong> by various methods. this includes:</p>
 <ul>
-<li><code>tibble::add_row()</code>: Add one or more rows to a <strong>tibble</strong></li>
-<li><code>tibble::add_column()</code>: Add one or more columns to a <strong>tibble</strong></li>
+<li>Adding a new row or column with <a href="https://tibble.tidyverse.org/reference/add_row.html"><code>tibble::add_row()</code></a> and <a href="https://tibble.tidyverse.org/reference/add_column.html"><code>tibble::add_column()</code></a>.</li>
+<li>Binding rows or columns with <a href="../dplyr/bind_tibbles">Dplyr</a></li>
 </ul>
 <section id="create-example-tibbles" class="level2">
 <h2 class="anchored" data-anchor-id="create-example-tibbles">Create example tibbles</h2>
-<p>Before demonstrating the two functions we will create a few <strong>tibbles</strong>.</p>
+<p>Before demonstrating various examples we will create a few <strong>tibbles</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>num_tbl <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">z =</span> <span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>num_tbl <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">z =</span> <span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>num_tbl_2 <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">aa =</span> <span class="dv">11</span><span class="sc">:</span><span class="dv">13</span>, <span class="at">ab =</span> <span class="dv">14</span><span class="sc">:</span><span class="dv">16</span>, <span class="at">ac =</span> <span class="dv">17</span><span class="sc">:</span><span class="dv">19</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>num_tbl_3 <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">y =</span> <span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">z =</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">12</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>mixed_tbl <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">number =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">word =</span> <span class="fu">c</span>(<span class="st">"one"</span>,<span class="st">"two"</span>,<span class="st">"three"</span>), </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                            <span class="at">logical =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="adding-one-row-or-column" class="level2">
 <h2 class="anchored" data-anchor-id="adding-one-row-or-column">Adding one row or column</h2>
-<p>Display the <strong>tibble</strong> <code>num_tbl</code></p>
+<p>Adding one new column or row can be carried out with the</p>
+<p>intuitively named functions:</p>
+<ul>
+<li><a href="https://tibble.tidyverse.org/reference/add_row.html"><code>tibble::add_row()</code></a>: Add one or more rows to a <strong>tibble</strong></li>
+<li><a href="https://tibble.tidyverse.org/reference/add_column.html"><code>tibble::add_column()</code></a>: Add one or more columns to a <strong>tibble</strong></li>
+</ul>
+<section id="adding-a-column" class="level3">
+<h3 class="anchored" data-anchor-id="adding-a-column">Adding a column</h3>
+<p>We will add a column to the <strong>tibble</strong> <code>num_tbl</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>num_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -474,9 +496,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 3     3     6     9</code></pre>
 </div>
 </div>
-<p>Add a column</p>
+<p>To add a new column you can provide <code>tibble::add_column()</code> with a vector that is the same length as the number of rows. In the below example the new column will have the name <strong>aa</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">add_column</span>(num_tbl, <span class="at">aa =</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>num_tbl_added_col <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">add_column</span>(num_tbl, <span class="at">aa =</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">12</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>num_tbl_added_col</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 4
       x     y     z    aa
@@ -486,21 +509,131 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 3     3     6     9    12</code></pre>
 </div>
 </div>
-<p>Add a row</p>
+</section>
+<section id="adding-a-row" class="level3">
+<h3 class="anchored" data-anchor-id="adding-a-row">Adding a row</h3>
+<p>We will add a row to the <strong>tibble</strong> <code>mixed_tbl</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">add_row</span>(num_tbl, <span class="at">x =</span> <span class="dv">11</span>, <span class="at">y =</span> <span class="dv">12</span>, <span class="at">z =</span> <span class="dv">13</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mixed_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  number word  logical
+   &lt;int&gt; &lt;chr&gt; &lt;lgl&gt;  
+1      1 one   TRUE   
+2      2 two   FALSE  
+3      3 three TRUE   </code></pre>
+</div>
+</div>
+<p>To add a row you can use <code>tibble::add_row()</code>. Each column of the <strong>tibble</strong> needs to be specified as an option with its added value. Each value must have the same class as the column it is being added to.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mixed_tbl_add_row <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">add_row</span>(mixed_tbl, </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">number =</span> <span class="dv">4</span>,  </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">word =</span> <span class="st">"four"</span>,  </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">logical =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>mixed_tbl_add_row</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
+  number word  logical
+   &lt;dbl&gt; &lt;chr&gt; &lt;lgl&gt;  
+1      1 one   TRUE   
+2      2 two   FALSE  
+3      3 three TRUE   
+4      4 four  FALSE  </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="binding-a-tibble-to-a-tibble" class="level2">
+<h2 class="anchored" data-anchor-id="binding-a-tibble-to-a-tibble">Binding a tibble to a tibble</h2>
+<p><strong>Tibbles</strong> can be bound together to create a new <strong>tibble</strong> with <code>dplyr::bind_cols()</code> and <code>dplyr::bind_rows()</code>.</p>
+<p>Below are 2 quick examples with more details in the <a href="../dplyr/bind_tibbles">Dplyr bind tibbles page</a></p>
+<section id="bind-by-columns" class="level3">
+<h3 class="anchored" data-anchor-id="bind-by-columns">Bind by columns</h3>
+<p>Bind 2 or more <strong>tibbles</strong> by columns. In other words you will end up with more columns and the same amount of rows.</p>
+<p>We will bind the two following <strong>tibbles</strong> by columns.</p>
+<p><strong>Note</strong> that the two <strong>tibbles</strong> must have the same amount of rows. Additionally, they should have completely unique column names compared to each other.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>num_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
       x     y     z
-  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+1     1     4     7
+2     2     5     8
+3     3     6     9</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>num_tbl_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+     aa    ab    ac
+  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+1    11    14    17
+2    12    15    18
+3    13    16    19</code></pre>
+</div>
+</div>
+<p>Column bind</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>num_tbl_col_bound <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_cols</span>(num_tbl, num_tbl_2)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>num_tbl_col_bound</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 6
+      x     y     z    aa    ab    ac
+  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+1     1     4     7    11    14    17
+2     2     5     8    12    15    18
+3     3     6     9    13    16    19</code></pre>
+</div>
+</div>
+</section>
+<section id="bind-by-rows" class="level3">
+<h3 class="anchored" data-anchor-id="bind-by-rows">Bind by rows</h3>
+<p>Bind 2 or more <strong>tibbles</strong> by rows with <code>dplyr::bind_rows()</code>. In other words you will end up with more rows and the same amount of columns.</p>
+<p>We will bind the two following <strong>tibbles</strong> by rows.</p>
+<p><strong>Note</strong> that the two <strong>tibbles</strong> must have the same amount of columns. Additionally, they should have the same column names.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>num_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+      x     y     z
+  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+1     1     4     7
+2     2     5     8
+3     3     6     9</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>num_tbl_3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+      x     y     z
+  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+1     4     7    10
+2     5     8    11
+3     6     9    12</code></pre>
+</div>
+</div>
+<p>Row bind</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>num_tbl_row_bound <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(num_tbl, num_tbl_3)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>num_tbl_row_bound</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+      x     y     z
+  &lt;int&gt; &lt;int&gt; &lt;int&gt;
 1     1     4     7
 2     2     5     8
 3     3     6     9
-4    11    12    13</code></pre>
+4     4     7    10
+5     5     8    11
+6     6     9    12</code></pre>
 </div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

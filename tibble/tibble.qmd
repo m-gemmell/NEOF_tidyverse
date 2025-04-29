@@ -10,10 +10,10 @@ title: "Tibble"
 
 A __tibble__ (`tbl`) is a reimagining of the __data.frame__ (`df`) object. They are described as __data.frames__ that are:
 
-- __Lazy__: They don't change variable names and they don't do partial matching.
+- __Lazy__: They don't change variable names and they partial matching does not work.
 - __Surly__: They complain more such as when a variable does not exist.
 
-One important note is that __tibbles__ should not be given row names.
+One important note is that __tibbles__ don't have row names.
 
 Although __tibbles__ have advantages compared to __data.frames__ they are not always more suited to the task than __data.frames__. 
 However, __tibbles__ are generally always preferred over __data.frames__ when using __tidyverse__ packages.
@@ -36,5 +36,3 @@ tbl <- tibble::tibble(Day = c("Mon", "Tue", "Wed"),
 #Print tibble
 tbl
 ```
-
-test

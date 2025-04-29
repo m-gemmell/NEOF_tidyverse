@@ -118,5 +118,8 @@
   },
   "tibble/add_rows_and_columns.qmd": {
     "add_rows_and_columns.html": "4ab93179"
+  },
+  "dplyr/bind_tibbles.qmd": {
+    "bind_tibbles.html": "a06acf88"
   }
 }
