@@ -6,4 +6,10 @@ title: "Dplyr"
 ![](../images/dplyr.png){style="width:150px"}
 </center>
 
+## Overview
+
+__Dplyr__ is the main data manipulation package for __tibbles__ in __tidyverse__.
+
+__Dplyr__ is described as a "grammar of data manipulation" using verbs as the name of its various functions.
+
 [dplyr homepage](https://dplyr.tidyverse.org//)

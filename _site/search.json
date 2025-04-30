@@ -68,7 +68,7 @@
     "href": "tibble/structure.html",
     "title": "Structure",
     "section": "",
-    "text": "Tibbles are formatted like a data.frame but have some extra functions and terminology.",
+    "text": "Tibbles are formatted like a data.frame but have some extra functions and terminology.\nFor demostration we’ll load and subset the hbr_maples data from the lterdatasampler package (hyperlink includes install instructions) and view it.\n#Load package\nlibrary(\"lterdatasampler\")\n#Subset of hbr_maples tibble\ntibble::as_tibble(lterdatasampler::hbr_maples)[1:10,1:7]\n\n# A tibble: 10 × 7\n    year watershed elevation transect sample stem_length leaf1area\n   &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt;    &lt;fct&gt;        &lt;dbl&gt;     &lt;dbl&gt;\n 1  2003 Reference Low       R1       1             86.9     13.8 \n 2  2003 Reference Low       R1       2            114       14.6 \n 3  2003 Reference Low       R1       3             83.5     12.5 \n 4  2003 Reference Low       R1       4             68.1      9.97\n 5  2003 Reference Low       R1       5             72.1      6.84\n 6  2003 Reference Low       R1       6             77.7      9.66\n 7  2003 Reference Low       R1       7             85.5      8.82\n 8  2003 Reference Low       R1       8             81.6      5.83\n 9  2003 Reference Low       R1       9             92.9      8.11\n10  2003 Reference Low       R1       10            59.6      3.02\nLet’s go over some of its components:",
     "crumbs": [
       "Tibble",
       "Structure"
@@ -208,7 +208,7 @@
     "href": "dplyr/dplyr.html",
     "title": "Dplyr",
     "section": "",
-    "text": "dplyr homepage",
+    "text": "Overview\ndplyr homepage",
     "crumbs": [
       "Dplyr"
     ]
@@ -218,7 +218,7 @@
     "href": "lubridate/lubridate.html",
     "title": "Lubridate",
     "section": "",
-    "text": "Lubridate is a useful package to manipulate the date class.\npurr homepage",
+    "text": "Lubridate is a useful package to manipulate the date class.\nlubridate homepage\nMG ONCE YOU ADD INFO ABOUT DATE CLASS ADD LINK TO IT IN /tibble/structure.qmd",
     "crumbs": [
       "Lubridate"
     ]
@@ -382,7 +382,7 @@
     "href": "tibble/subsetting.html#load-data",
     "title": "Subsetting",
     "section": "Load data",
-    "text": "Load data\nThe examples in this section use the pie_crab data from the lterdatasampler package (includes install instructions).\nLoad package\n\nlibrary(\"lterdatasampler\")\n\nCreate a tibble from a subset of the pie_crab data.\n\npie_crab_tbl &lt;- tibble::as_tibble(lterdatasampler::pie_crab[1:10,1:8])\npie_crab_tbl\n\n# A tibble: 10 × 8\n   date       latitude site   size air_temp air_temp_sd water_temp water_temp_sd\n   &lt;date&gt;        &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt;\n 1 2016-07-24       30 GTM    12.4     21.8        6.39       24.5          6.12\n 2 2016-07-24       30 GTM    14.2     21.8        6.39       24.5          6.12\n 3 2016-07-24       30 GTM    14.5     21.8        6.39       24.5          6.12\n 4 2016-07-24       30 GTM    12.9     21.8        6.39       24.5          6.12\n 5 2016-07-24       30 GTM    12.4     21.8        6.39       24.5          6.12\n 6 2016-07-24       30 GTM    13.0     21.8        6.39       24.5          6.12\n 7 2016-07-24       30 GTM    10.3     21.8        6.39       24.5          6.12\n 8 2016-07-24       30 GTM    11.2     21.8        6.39       24.5          6.12\n 9 2016-07-24       30 GTM    12.7     21.8        6.39       24.5          6.12\n10 2016-07-24       30 GTM    14.6     21.8        6.39       24.5          6.12",
+    "text": "Load data\nThe examples in this section use the pie_crab data from the lterdatasampler package (includes install instructions).\nLoad package\n\nlibrary(\"lterdatasampler\")\n\nCreate a tibble from a subset of the pie_crab data.\n\npie_crab_tbl &lt;- tibble::as_tibble(lterdatasampler::pie_crab[1:10,1:7])\npie_crab_tbl\n\n# A tibble: 10 × 7\n   date       latitude site   size air_temp air_temp_sd water_temp\n   &lt;date&gt;        &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;\n 1 2016-07-24       30 GTM    12.4     21.8        6.39       24.5\n 2 2016-07-24       30 GTM    14.2     21.8        6.39       24.5\n 3 2016-07-24       30 GTM    14.5     21.8        6.39       24.5\n 4 2016-07-24       30 GTM    12.9     21.8        6.39       24.5\n 5 2016-07-24       30 GTM    12.4     21.8        6.39       24.5\n 6 2016-07-24       30 GTM    13.0     21.8        6.39       24.5\n 7 2016-07-24       30 GTM    10.3     21.8        6.39       24.5\n 8 2016-07-24       30 GTM    11.2     21.8        6.39       24.5\n 9 2016-07-24       30 GTM    12.7     21.8        6.39       24.5\n10 2016-07-24       30 GTM    14.6     21.8        6.39       24.5",
     "crumbs": [
       "Tibble",
       "Subsetting"
@@ -415,7 +415,7 @@
     "href": "tibble/subsetting.html#rows-and-columns-with",
     "title": "Subsetting",
     "section": "Rows and columns with [,]",
-    "text": "Rows and columns with [,]\nSubsetting a tibble with [] will always produce a tibble.\nThis is different from a data.frame where you may extract a scalar, vector, or data.frame.\nBelow are examples using a subset of the pie_crab data from the lterdatasampler package (includes install instructions).\n\nLoad data.frame\nCreate a data.frame from the pie_crab_tbl.\n\npie_crab_df &lt;- as.data.frame(pie_crab_tbl)\npie_crab_df\n\n         date latitude site  size air_temp air_temp_sd water_temp water_temp_sd\n1  2016-07-24       30  GTM 12.43   21.792       6.391     24.502         6.121\n2  2016-07-24       30  GTM 14.18   21.792       6.391     24.502         6.121\n3  2016-07-24       30  GTM 14.52   21.792       6.391     24.502         6.121\n4  2016-07-24       30  GTM 12.94   21.792       6.391     24.502         6.121\n5  2016-07-24       30  GTM 12.45   21.792       6.391     24.502         6.121\n6  2016-07-24       30  GTM 12.99   21.792       6.391     24.502         6.121\n7  2016-07-24       30  GTM 10.32   21.792       6.391     24.502         6.121\n8  2016-07-24       30  GTM 11.19   21.792       6.391     24.502         6.121\n9  2016-07-24       30  GTM 12.68   21.792       6.391     24.502         6.121\n10 2016-07-24       30  GTM 14.55   21.792       6.391     24.502         6.121\n\n\n\n\nExtracting a value\nSubsetting one value from a data.frame leads to a scalar\n\npie_crab_df[1,1]\n\n[1] \"2016-07-24\"\n\nstr(pie_crab_df[1,1])\n\n Date[1:1], format: \"2016-07-24\"\n\n\nSubsetting one value from a tibble leads to a tibble\n\npie_crab_tbl[1,1]\n\n# A tibble: 1 × 1\n  date      \n  &lt;date&gt;    \n1 2016-07-24\n\n\n\n\nExtracting a row\nSubsetting a row from a data.frame leads to a data.frame\n\npie_crab_df[1,]\n\n        date latitude site  size air_temp air_temp_sd water_temp water_temp_sd\n1 2016-07-24       30  GTM 12.43   21.792       6.391     24.502         6.121\n\nstr(pie_crab_df[1,])\n\n'data.frame':   1 obs. of  8 variables:\n $ date         : Date, format: \"2016-07-24\"\n $ latitude     : num 30\n $ site         : chr \"GTM\"\n $ size         : num 12.4\n $ air_temp     : num 21.8\n $ air_temp_sd  : num 6.39\n $ water_temp   : num 24.5\n $ water_temp_sd: num 6.12\n\n\nSubsetting a row from a tibble leads to a tibble\n\npie_crab_tbl[1,]\n\n# A tibble: 1 × 8\n  date       latitude site   size air_temp air_temp_sd water_temp water_temp_sd\n  &lt;date&gt;        &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt;\n1 2016-07-24       30 GTM    12.4     21.8        6.39       24.5          6.12\n\n\n\n\nExtracting a column\nSubsetting a column from a data.frame leads to a vector\n\npie_crab_df[,1]\n\n [1] \"2016-07-24\" \"2016-07-24\" \"2016-07-24\" \"2016-07-24\" \"2016-07-24\"\n [6] \"2016-07-24\" \"2016-07-24\" \"2016-07-24\" \"2016-07-24\" \"2016-07-24\"\n\nstr(pie_crab_df[,1])\n\n Date[1:10], format: \"2016-07-24\" \"2016-07-24\" \"2016-07-24\" \"2016-07-24\" \"2016-07-24\" ...\n\n\nSubsetting a column from a tibble leads to a tibble\n\npie_crab_tbl[,1]\n\n# A tibble: 10 × 1\n   date      \n   &lt;date&gt;    \n 1 2016-07-24\n 2 2016-07-24\n 3 2016-07-24\n 4 2016-07-24\n 5 2016-07-24\n 6 2016-07-24\n 7 2016-07-24\n 8 2016-07-24\n 9 2016-07-24\n10 2016-07-24\n\n\n\n\nExtracting a combo of columns and rows\nSubsetting rows and columns together from a data.frame leads to a data.frame\n\npie_crab_df[1:3,c(\"date\",\"air_temp\",\"size\")]\n\n        date air_temp  size\n1 2016-07-24   21.792 12.43\n2 2016-07-24   21.792 14.18\n3 2016-07-24   21.792 14.52\n\nstr(pie_crab_df[1:3,c(\"date\",\"air_temp\",\"size\")])\n\n'data.frame':   3 obs. of  3 variables:\n $ date    : Date, format: \"2016-07-24\" \"2016-07-24\" ...\n $ air_temp: num  21.8 21.8 21.8\n $ size    : num  12.4 14.2 14.5\n\n\nSubsetting rows and columns together from a tibble leads to a tibble\n\npie_crab_tbl[1:3,c(\"date\",\"air_temp\",\"size\")]\n\n# A tibble: 3 × 3\n  date       air_temp  size\n  &lt;date&gt;        &lt;dbl&gt; &lt;dbl&gt;\n1 2016-07-24     21.8  12.4\n2 2016-07-24     21.8  14.2\n3 2016-07-24     21.8  14.5",
+    "text": "Rows and columns with [,]\nSubsetting a tibble with [] will always produce a tibble.\nThis is different from a data.frame where you may extract a scalar, vector, or data.frame.\nBelow are examples using a subset of the pie_crab data from the lterdatasampler package (includes install instructions).\n\nLoad data.frame\nCreate a data.frame from the pie_crab_tbl.\n\npie_crab_df &lt;- as.data.frame(pie_crab_tbl)\npie_crab_df\n\n         date latitude site  size air_temp air_temp_sd water_temp\n1  2016-07-24       30  GTM 12.43   21.792       6.391     24.502\n2  2016-07-24       30  GTM 14.18   21.792       6.391     24.502\n3  2016-07-24       30  GTM 14.52   21.792       6.391     24.502\n4  2016-07-24       30  GTM 12.94   21.792       6.391     24.502\n5  2016-07-24       30  GTM 12.45   21.792       6.391     24.502\n6  2016-07-24       30  GTM 12.99   21.792       6.391     24.502\n7  2016-07-24       30  GTM 10.32   21.792       6.391     24.502\n8  2016-07-24       30  GTM 11.19   21.792       6.391     24.502\n9  2016-07-24       30  GTM 12.68   21.792       6.391     24.502\n10 2016-07-24       30  GTM 14.55   21.792       6.391     24.502\n\n\n\n\nExtracting a value\nSubsetting one value from a data.frame leads to a scalar\n\npie_crab_df[1,1]\n\n[1] \"2016-07-24\"\n\nstr(pie_crab_df[1,1])\n\n Date[1:1], format: \"2016-07-24\"\n\n\nSubsetting one value from a tibble leads to a tibble\n\npie_crab_tbl[1,1]\n\n# A tibble: 1 × 1\n  date      \n  &lt;date&gt;    \n1 2016-07-24\n\n\n\n\nExtracting a row\nSubsetting a row from a data.frame leads to a data.frame\n\npie_crab_df[1,]\n\n        date latitude site  size air_temp air_temp_sd water_temp\n1 2016-07-24       30  GTM 12.43   21.792       6.391     24.502\n\nstr(pie_crab_df[1,])\n\n'data.frame':   1 obs. of  7 variables:\n $ date       : Date, format: \"2016-07-24\"\n $ latitude   : num 30\n $ site       : chr \"GTM\"\n $ size       : num 12.4\n $ air_temp   : num 21.8\n $ air_temp_sd: num 6.39\n $ water_temp : num 24.5\n\n\nSubsetting a row from a tibble leads to a tibble\n\npie_crab_tbl[1,]\n\n# A tibble: 1 × 7\n  date       latitude site   size air_temp air_temp_sd water_temp\n  &lt;date&gt;        &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;\n1 2016-07-24       30 GTM    12.4     21.8        6.39       24.5\n\n\n\n\nExtracting a column\nSubsetting a column from a data.frame leads to a vector\n\npie_crab_df[,1]\n\n [1] \"2016-07-24\" \"2016-07-24\" \"2016-07-24\" \"2016-07-24\" \"2016-07-24\"\n [6] \"2016-07-24\" \"2016-07-24\" \"2016-07-24\" \"2016-07-24\" \"2016-07-24\"\n\nstr(pie_crab_df[,1])\n\n Date[1:10], format: \"2016-07-24\" \"2016-07-24\" \"2016-07-24\" \"2016-07-24\" \"2016-07-24\" ...\n\n\nSubsetting a column from a tibble leads to a tibble\n\npie_crab_tbl[,1]\n\n# A tibble: 10 × 1\n   date      \n   &lt;date&gt;    \n 1 2016-07-24\n 2 2016-07-24\n 3 2016-07-24\n 4 2016-07-24\n 5 2016-07-24\n 6 2016-07-24\n 7 2016-07-24\n 8 2016-07-24\n 9 2016-07-24\n10 2016-07-24\n\n\n\n\nExtracting a combo of columns and rows\nSubsetting rows and columns together from a data.frame leads to a data.frame\n\npie_crab_df[1:3,c(\"date\",\"air_temp\",\"size\")]\n\n        date air_temp  size\n1 2016-07-24   21.792 12.43\n2 2016-07-24   21.792 14.18\n3 2016-07-24   21.792 14.52\n\nstr(pie_crab_df[1:3,c(\"date\",\"air_temp\",\"size\")])\n\n'data.frame':   3 obs. of  3 variables:\n $ date    : Date, format: \"2016-07-24\" \"2016-07-24\" ...\n $ air_temp: num  21.8 21.8 21.8\n $ size    : num  12.4 14.2 14.5\n\n\nSubsetting rows and columns together from a tibble leads to a tibble\n\npie_crab_tbl[1:3,c(\"date\",\"air_temp\",\"size\")]\n\n# A tibble: 3 × 3\n  date       air_temp  size\n  &lt;date&gt;        &lt;dbl&gt; &lt;dbl&gt;\n1 2016-07-24     21.8  12.4\n2 2016-07-24     21.8  14.2\n3 2016-07-24     21.8  14.5",
     "crumbs": [
       "Tibble",
       "Subsetting"
@@ -494,6 +494,17 @@
     ]
   },
   {
+    "objectID": "datasets/lterdatasampler.html#accessing-data",
+    "href": "datasets/lterdatasampler.html#accessing-data",
+    "title": "Lterdatasampler",
+    "section": "Accessing data",
+    "text": "Accessing data\nOnce you have installed and loaded the package you can access one of the various datasets as a tibble like below:\n\ntibble::as_tibble(lterdatasampler::and_vertebrates)\n\n# A tibble: 32,209 × 16\n    year sitecode section reach  pass unitnum unittype vert_index pitnumber\n   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;\n 1  1987 MACKCC-L CC      L         1       1 R                 1        NA\n 2  1987 MACKCC-L CC      L         1       1 R                 2        NA\n 3  1987 MACKCC-L CC      L         1       1 R                 3        NA\n 4  1987 MACKCC-L CC      L         1       1 R                 4        NA\n 5  1987 MACKCC-L CC      L         1       1 R                 5        NA\n 6  1987 MACKCC-L CC      L         1       1 R                 6        NA\n 7  1987 MACKCC-L CC      L         1       1 R                 7        NA\n 8  1987 MACKCC-L CC      L         1       1 R                 8        NA\n 9  1987 MACKCC-L CC      L         1       1 R                 9        NA\n10  1987 MACKCC-L CC      L         1       1 R                10        NA\n# ℹ 32,199 more rows\n# ℹ 7 more variables: species &lt;chr&gt;, length_1_mm &lt;dbl&gt;, length_2_mm &lt;dbl&gt;,\n#   weight_g &lt;dbl&gt;, clip &lt;chr&gt;, sampledate &lt;date&gt;, notes &lt;chr&gt;",
+    "crumbs": [
+      "Datasets",
+      "Lterdatasampler"
+    ]
+  },
+  {
     "objectID": "datasets/lterdatasampler.html#datasets",
     "href": "datasets/lterdatasampler.html#datasets",
     "title": "Lterdatasampler",
@@ -505,14 +516,133 @@
     ]
   },
   {
-    "objectID": "datasets/lterdatasampler.html#accessing-data",
-    "href": "datasets/lterdatasampler.html#accessing-data",
-    "title": "Lterdatasampler",
-    "section": "Accessing data",
-    "text": "Accessing data\nOnce you have installed and loaded the package you can access one of the various datasets as a tibble like below:\n\ntibble::as_tibble(lterdatasampler::and_vertebrates)\n\n# A tibble: 32,209 × 16\n    year sitecode section reach  pass unitnum unittype vert_index pitnumber\n   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;\n 1  1987 MACKCC-L CC      L         1       1 R                 1        NA\n 2  1987 MACKCC-L CC      L         1       1 R                 2        NA\n 3  1987 MACKCC-L CC      L         1       1 R                 3        NA\n 4  1987 MACKCC-L CC      L         1       1 R                 4        NA\n 5  1987 MACKCC-L CC      L         1       1 R                 5        NA\n 6  1987 MACKCC-L CC      L         1       1 R                 6        NA\n 7  1987 MACKCC-L CC      L         1       1 R                 7        NA\n 8  1987 MACKCC-L CC      L         1       1 R                 8        NA\n 9  1987 MACKCC-L CC      L         1       1 R                 9        NA\n10  1987 MACKCC-L CC      L         1       1 R                10        NA\n# ℹ 32,199 more rows\n# ℹ 7 more variables: species &lt;chr&gt;, length_1_mm &lt;dbl&gt;, length_2_mm &lt;dbl&gt;,\n#   weight_g &lt;dbl&gt;, clip &lt;chr&gt;, sampledate &lt;date&gt;, notes &lt;chr&gt;",
+    "objectID": "tibble/tibble.html#sections",
+    "href": "tibble/tibble.html#sections",
+    "title": "Tibble",
+    "section": "Sections",
+    "text": "Sections\nThe sections in this book are:\n\nCreating tibbles: Creating tibbles with code, data.frame coercion, and reading in from files.\nStructure: Demonstrates the sturcture/format of a tibble.\nSubsetting: Subsetting tibbles and the difference between using $ and [].\nPrinting or viewing: Unique features of viewing tibbles.\nAdding rows and columns: How to add new rows/columns and bind tibbles together.",
     "crumbs": [
-      "Datasets",
-      "Lterdatasampler"
+      "Tibble"
+    ]
+  },
+  {
+    "objectID": "tibble/structure.html#size-info",
+    "href": "tibble/structure.html#size-info",
+    "title": "Structure",
+    "section": "Size info",
+    "text": "Size info\nAt the top of the tibble it tells us the size. The first number is the rows and the second is the columns.\nIn the above example we have:\n\n10 rows/observations\n7 columns/variables",
+    "crumbs": [
+      "Tibble",
+      "Structure"
+    ]
+  },
+  {
+    "objectID": "tibble/structure.html#rowsobservations",
+    "href": "tibble/structure.html#rowsobservations",
+    "title": "Structure",
+    "section": "Rows/observations",
+    "text": "Rows/observations\nAs in a data.frame each observation is within its own row. The contents of an observation/row is determined by your dataset and how you want to analyse or visualise it. There are many ways to manipulate tibbles with the dplyr, tidyr, and other tidyverse packages.\nTibble rows do not have row names and you cannot/should not give them row names. They are numbered/indexxed instead.",
+    "crumbs": [
+      "Tibble",
+      "Structure"
+    ]
+  },
+  {
+    "objectID": "tibble/structure.html#variablescolumns",
+    "href": "tibble/structure.html#variablescolumns",
+    "title": "Structure",
+    "section": "Variables/columns",
+    "text": "Variables/columns\nA tibble will have a certain number of columns.\nEach column has a name that is at the top. For example:\n\nyear\nwatershed\nelevation\n\nBelow the column/variable names is the data class/type of the column. All the entries within a single column will have the same data class. These include:\n\n&lt;int&gt;: Integer\n&lt;dbl&gt;: Double\n&lt;chr&gt;: Character/String\n&lt;fct&gt;: Factor\n&lt;lgl&gt;: Logical\n&lt;date&gt;: Date (MG ADD LINK TO INFO ABOUT DATE CLASS, MOST LIKELY IN LUBRIDATE SECTION)\n&lt;list&gt;: List\n\nBelow is an example of a tibble with a column for each of these classes.\n\n\n# A tibble: 4 × 7\n  Integers   Doubles Characters Factors Logicals Dates   Lists    \n     &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;fct&gt;   &lt;lgl&gt;    &lt;date&gt;  &lt;list&gt;   \n1      101     0.345 One        A       TRUE     1-01-20 &lt;dbl [3]&gt;\n2       21     3.14  sentence   B       TRUE     2-01-20 &lt;dbl [3]&gt;\n3        3    78.9   is         B       FALSE    3-01-20 &lt;dbl [3]&gt;\n4        0 20001.    enough     A       FALSE    4-01-20 &lt;dbl [3]&gt;\n\n\nAbove you can see that when you view a tibble, by printing it or viewing it in an Rstudio tab, it will align the values in the columns in a easy to read manner. This is especially useful for numeric (integers & doubles) columns where the numbers are aligned by place value. This allows you to easily compare the size of numbers in the same column.",
+    "crumbs": [
+      "Tibble",
+      "Structure"
+    ]
+  },
+  {
+    "objectID": "dplyr/dplyr.html#overview",
+    "href": "dplyr/dplyr.html#overview",
+    "title": "Dplyr",
+    "section": "Overview",
+    "text": "Overview\nDplyr is the main data manipulation package for tibbles in tidyverse.\nDplyr is described as a “grammar of data manipulation” using verbs as the name of its various functions.\ndplyr homepage",
+    "crumbs": [
+      "Dplyr"
+    ]
+  },
+  {
+    "objectID": "dplyr/row_functions.html",
+    "href": "dplyr/row_functions.html",
+    "title": "Row functions",
+    "section": "",
+    "text": "There four main verbs (i.e. functions) to manipulate rows. These are:\n\narrange():\ndistinct():\nfilter():\nslice():",
+    "crumbs": [
+      "Dplyr",
+      "Row functions"
+    ]
+  },
+  {
+    "objectID": "dplyr/row_functions.html#dataset",
+    "href": "dplyr/row_functions.html#dataset",
+    "title": "Row functions",
+    "section": "Dataset",
+    "text": "Dataset\nFor demostration we’ll load the knz_bison data from the lterdatasampler package (hyperlink includes install instructions) and view it.\n\n#Load package\nlibrary(\"lterdatasampler\")\n#arc_weather tibble\ntibble::as_tibble(lterdatasampler::knz_bison)\n\n# A tibble: 8,325 × 8\n   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight\n   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;\n 1 CBH01         1994        11       8 813         F                    890\n 2 CBH01         1994        11       8 834         F                   1074\n 3 CBH01         1994        11       8 B-301       F                   1060\n 4 CBH01         1994        11       8 B-402       F                    989\n 5 CBH01         1994        11       8 B-403       F                   1062\n 6 CBH01         1994        11       8 B-502       F                    978\n 7 CBH01         1994        11       8 B-503       F                   1068\n 8 CBH01         1994        11       8 B-504       F                   1024\n 9 CBH01         1994        11       8 B-601       F                    978\n10 CBH01         1994        11       8 B-602       F                   1188\n# ℹ 8,315 more rows\n# ℹ 1 more variable: animal_yob &lt;dbl&gt;",
+    "crumbs": [
+      "Dplyr",
+      "Row functions"
+    ]
+  },
+  {
+    "objectID": "dplyr/row_functions.html#arrange",
+    "href": "dplyr/row_functions.html#arrange",
+    "title": "Row functions",
+    "section": "Arrange",
+    "text": "Arrange\nThe dplyr::arrange() function allows you to arrange the rows of a tibble.\n\nNumeric columns\nArrange the tibble by rec_year (note seemingly won’t change):\n\ndplyr::arrange(knz_bison, rec_year)\n\n# A tibble: 8,325 × 8\n   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight\n   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;\n 1 CBH01         1994        11       8 813         F                    890\n 2 CBH01         1994        11       8 834         F                   1074\n 3 CBH01         1994        11       8 B-301       F                   1060\n 4 CBH01         1994        11       8 B-402       F                    989\n 5 CBH01         1994        11       8 B-403       F                   1062\n 6 CBH01         1994        11       8 B-502       F                    978\n 7 CBH01         1994        11       8 B-503       F                   1068\n 8 CBH01         1994        11       8 B-504       F                   1024\n 9 CBH01         1994        11       8 B-601       F                    978\n10 CBH01         1994        11       8 B-602       F                   1188\n# ℹ 8,315 more rows\n# ℹ 1 more variable: animal_yob &lt;dbl&gt;\n\n\ndplyr::arrange() will arrange the rows by the selected column in ascednign fashion (lowest to highest). You can use the desc() function on columns you wan’t to be orded in descing fashion.\nArrange the tibble by rec_year in descending fashion (note seemingly won’t change):\n\ndplyr::arrange(knz_bison, desc(rec_year))\n\n# A tibble: 8,325 × 8\n   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight\n   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;\n 1 CBH01         2020        10      29 Y-316       F                   1045\n 2 CBH01         2020        10      29 Y-358       F                   1110\n 3 CBH01         2020        10      29 Y-411       F                    825\n 4 CBH01         2020        10      29 Y-422       F                    930\n 5 CBH01         2020        10      29 Y-501       F                   1000\n 6 CBH01         2020        10      29 Y-527       F                    970\n 7 CBH01         2020        10      29 Y-573       F                   1065\n 8 CBH01         2020        10      29 Y-6008      F                   1110\n 9 CBH01         2020        10      29 Y-605       F                   1050\n10 CBH01         2020        10      29 Y-616       F                   1105\n# ℹ 8,315 more rows\n# ℹ 1 more variable: animal_yob &lt;dbl&gt;\n\n\n\n\nString columns\nStrings are order by alphabetical order.\nDefault is from A-Z (ascending).\n\ndplyr::arrange(knz_bison, animal_sex)\n\n# A tibble: 8,325 × 8\n   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight\n   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;\n 1 CBH01         1994        11       8 813         F                    890\n 2 CBH01         1994        11       8 834         F                   1074\n 3 CBH01         1994        11       8 B-301       F                   1060\n 4 CBH01         1994        11       8 B-402       F                    989\n 5 CBH01         1994        11       8 B-403       F                   1062\n 6 CBH01         1994        11       8 B-502       F                    978\n 7 CBH01         1994        11       8 B-503       F                   1068\n 8 CBH01         1994        11       8 B-504       F                   1024\n 9 CBH01         1994        11       8 B-601       F                    978\n10 CBH01         1994        11       8 B-602       F                   1188\n# ℹ 8,315 more rows\n# ℹ 1 more variable: animal_yob &lt;dbl&gt;\n\n\nSet it to descing will order it from Z-A.\n\ndplyr::arrange(knz_bison, desc(animal_sex))\n\n# A tibble: 8,325 × 8\n   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight\n   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;\n 1 CBH01         1994        11       8 910         M                    982\n 2 CBH01         1994        11       8 91C         M                   1020\n 3 CBH01         1994        11       8 91F         M                   1050\n 4 CBH01         1994        11       8 91H         M                   1037\n 5 CBH01         1994        11       8 91J         M                   1104\n 6 CBH01         1994        11       8 91K         M                   1306\n 7 CBH01         1994        11       8 91L         M                   1122\n 8 CBH01         1994        11       8 91M         M                   1136\n 9 CBH01         1994        11       8 91P         M                    996\n10 CBH01         1994        11       8 91W         M                    954\n# ℹ 8,315 more rows\n# ℹ 1 more variable: animal_yob &lt;dbl&gt;",
+    "crumbs": [
+      "Dplyr",
+      "Row functions"
+    ]
+  },
+  {
+    "objectID": "dplyr/arrange.html",
+    "href": "dplyr/arrange.html",
+    "title": "Arrange",
+    "section": "",
+    "text": "The dplyr::arrange() function allows you to arrange the rows of a tibble.",
+    "crumbs": [
+      "Dplyr",
+      "Arrange"
+    ]
+  },
+  {
+    "objectID": "dplyr/arrange.html#dataset",
+    "href": "dplyr/arrange.html#dataset",
+    "title": "Arrange",
+    "section": "Dataset",
+    "text": "Dataset\nFor demostration we’ll load the knz_bison data from the lterdatasampler package (hyperlink includes install instructions) and view it.\n\n#Load package\nlibrary(\"lterdatasampler\")\n#arc_weather tibble\ntibble::as_tibble(lterdatasampler::knz_bison)\n\n# A tibble: 8,325 × 8\n   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight\n   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;\n 1 CBH01         1994        11       8 813         F                    890\n 2 CBH01         1994        11       8 834         F                   1074\n 3 CBH01         1994        11       8 B-301       F                   1060\n 4 CBH01         1994        11       8 B-402       F                    989\n 5 CBH01         1994        11       8 B-403       F                   1062\n 6 CBH01         1994        11       8 B-502       F                    978\n 7 CBH01         1994        11       8 B-503       F                   1068\n 8 CBH01         1994        11       8 B-504       F                   1024\n 9 CBH01         1994        11       8 B-601       F                    978\n10 CBH01         1994        11       8 B-602       F                   1188\n# ℹ 8,315 more rows\n# ℹ 1 more variable: animal_yob &lt;dbl&gt;",
+    "crumbs": [
+      "Dplyr",
+      "Arrange"
+    ]
+  },
+  {
+    "objectID": "dplyr/arrange.html#numeric-columns",
+    "href": "dplyr/arrange.html#numeric-columns",
+    "title": "Arrange",
+    "section": "Numeric columns",
+    "text": "Numeric columns\nArrange the tibble by rec_year (note seemingly won’t change):\n\ndplyr::arrange(knz_bison, rec_year)\n\n# A tibble: 8,325 × 8\n   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight\n   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;\n 1 CBH01         1994        11       8 813         F                    890\n 2 CBH01         1994        11       8 834         F                   1074\n 3 CBH01         1994        11       8 B-301       F                   1060\n 4 CBH01         1994        11       8 B-402       F                    989\n 5 CBH01         1994        11       8 B-403       F                   1062\n 6 CBH01         1994        11       8 B-502       F                    978\n 7 CBH01         1994        11       8 B-503       F                   1068\n 8 CBH01         1994        11       8 B-504       F                   1024\n 9 CBH01         1994        11       8 B-601       F                    978\n10 CBH01         1994        11       8 B-602       F                   1188\n# ℹ 8,315 more rows\n# ℹ 1 more variable: animal_yob &lt;dbl&gt;\n\n\ndplyr::arrange() will arrange the rows by the selected column in ascednign fashion (lowest to highest). You can use the desc() function on columns you wan’t to be orded in descing fashion.\nArrange the tibble by rec_year in descending fashion (note seemingly won’t change):\n\ndplyr::arrange(knz_bison, desc(rec_year))\n\n# A tibble: 8,325 × 8\n   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight\n   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;\n 1 CBH01         2020        10      29 Y-316       F                   1045\n 2 CBH01         2020        10      29 Y-358       F                   1110\n 3 CBH01         2020        10      29 Y-411       F                    825\n 4 CBH01         2020        10      29 Y-422       F                    930\n 5 CBH01         2020        10      29 Y-501       F                   1000\n 6 CBH01         2020        10      29 Y-527       F                    970\n 7 CBH01         2020        10      29 Y-573       F                   1065\n 8 CBH01         2020        10      29 Y-6008      F                   1110\n 9 CBH01         2020        10      29 Y-605       F                   1050\n10 CBH01         2020        10      29 Y-616       F                   1105\n# ℹ 8,315 more rows\n# ℹ 1 more variable: animal_yob &lt;dbl&gt;",
+    "crumbs": [
+      "Dplyr",
+      "Arrange"
+    ]
+  },
+  {
+    "objectID": "dplyr/arrange.html#string-columns",
+    "href": "dplyr/arrange.html#string-columns",
+    "title": "Arrange",
+    "section": "String columns",
+    "text": "String columns\nStrings are order by alphabetical order.\nDefault is from A-Z (ascending).\n\ndplyr::arrange(knz_bison, animal_sex)\n\n# A tibble: 8,325 × 8\n   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight\n   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;\n 1 CBH01         1994        11       8 813         F                    890\n 2 CBH01         1994        11       8 834         F                   1074\n 3 CBH01         1994        11       8 B-301       F                   1060\n 4 CBH01         1994        11       8 B-402       F                    989\n 5 CBH01         1994        11       8 B-403       F                   1062\n 6 CBH01         1994        11       8 B-502       F                    978\n 7 CBH01         1994        11       8 B-503       F                   1068\n 8 CBH01         1994        11       8 B-504       F                   1024\n 9 CBH01         1994        11       8 B-601       F                    978\n10 CBH01         1994        11       8 B-602       F                   1188\n# ℹ 8,315 more rows\n# ℹ 1 more variable: animal_yob &lt;dbl&gt;\n\n\nSet it to descing will order it from Z-A.\n\ndplyr::arrange(knz_bison, desc(animal_sex))\n\n# A tibble: 8,325 × 8\n   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight\n   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;\n 1 CBH01         1994        11       8 910         M                    982\n 2 CBH01         1994        11       8 91C         M                   1020\n 3 CBH01         1994        11       8 91F         M                   1050\n 4 CBH01         1994        11       8 91H         M                   1037\n 5 CBH01         1994        11       8 91J         M                   1104\n 6 CBH01         1994        11       8 91K         M                   1306\n 7 CBH01         1994        11       8 91L         M                   1122\n 8 CBH01         1994        11       8 91M         M                   1136\n 9 CBH01         1994        11       8 91P         M                    996\n10 CBH01         1994        11       8 91W         M                    954\n# ℹ 8,315 more rows\n# ℹ 1 more variable: animal_yob &lt;dbl&gt;",
+    "crumbs": [
+      "Dplyr",
+      "Arrange"
     ]
   }
 ]

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Dplyr – NEOF Tidyverse</title>
+<title>Arrange – NEOF Tidyverse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../dplyr/row_functions.html" rel="next">
+<link href="../dplyr/bind_tibbles.html" rel="next">
+<link href="../dplyr/row_functions.html" rel="prev">
 <link href="..//images/NEOF_favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -327,7 +363,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../dplyr/dplyr.html">Dplyr</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../dplyr/arrange.html">Arrange</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -341,7 +377,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dplyr/dplyr.html" class="sidebar-item-text sidebar-link active">
+  <a href="../dplyr/dplyr.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dplyr</span></a>
   </div>
 </li>
@@ -349,6 +385,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../dplyr/row_functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Row functions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/arrange.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Arrange</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -373,7 +415,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link active" data-scroll-target="#dataset">Dataset</a></li>
+  <li><a href="#numeric-columns" id="toc-numeric-columns" class="nav-link" data-scroll-target="#numeric-columns">Numeric columns</a></li>
+  <li><a href="#string-columns" id="toc-string-columns" class="nav-link" data-scroll-target="#string-columns">String columns</a></li>
   </ul>
 </nav>
     </div>
@@ -383,7 +427,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Dplyr</h1>
+<h1 class="title">Arrange</h1>
 </div>
 
 
@@ -400,14 +444,125 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<center>
-<img src="../images/dplyr.png" class="img-fluid" style="width:150px">
-</center>
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p><strong>Dplyr</strong> is the main data manipulation package for <strong>tibbles</strong> in <strong>tidyverse</strong>.</p>
-<p><strong>Dplyr</strong> is described as a “grammar of data manipulation” using verbs as the name of its various functions.</p>
-<p><a href="https://dplyr.tidyverse.org//">dplyr homepage</a></p>
+<p>The <code>dplyr::arrange()</code> function allows you to arrange the rows of a <strong>tibble</strong>.</p>
+<section id="dataset" class="level2">
+<h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
+<p>For demostration we’ll load the <code>knz_bison</code> data from the <a href="../datasets/lterdatasampler.html">lterdatasampler package</a> (hyperlink includes install instructions) and view it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load package</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"lterdatasampler"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#arc_weather tibble</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">as_tibble</span>(lterdatasampler<span class="sc">::</span>knz_bison)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8,325 × 8
+   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight
+   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;
+ 1 CBH01         1994        11       8 813         F                    890
+ 2 CBH01         1994        11       8 834         F                   1074
+ 3 CBH01         1994        11       8 B-301       F                   1060
+ 4 CBH01         1994        11       8 B-402       F                    989
+ 5 CBH01         1994        11       8 B-403       F                   1062
+ 6 CBH01         1994        11       8 B-502       F                    978
+ 7 CBH01         1994        11       8 B-503       F                   1068
+ 8 CBH01         1994        11       8 B-504       F                   1024
+ 9 CBH01         1994        11       8 B-601       F                    978
+10 CBH01         1994        11       8 B-602       F                   1188
+# ℹ 8,315 more rows
+# ℹ 1 more variable: animal_yob &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="numeric-columns" class="level2">
+<h2 class="anchored" data-anchor-id="numeric-columns">Numeric columns</h2>
+<p>Arrange the <strong>tibble</strong> by rec_year (note seemingly won’t change):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">arrange</span>(knz_bison, rec_year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8,325 × 8
+   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight
+   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;
+ 1 CBH01         1994        11       8 813         F                    890
+ 2 CBH01         1994        11       8 834         F                   1074
+ 3 CBH01         1994        11       8 B-301       F                   1060
+ 4 CBH01         1994        11       8 B-402       F                    989
+ 5 CBH01         1994        11       8 B-403       F                   1062
+ 6 CBH01         1994        11       8 B-502       F                    978
+ 7 CBH01         1994        11       8 B-503       F                   1068
+ 8 CBH01         1994        11       8 B-504       F                   1024
+ 9 CBH01         1994        11       8 B-601       F                    978
+10 CBH01         1994        11       8 B-602       F                   1188
+# ℹ 8,315 more rows
+# ℹ 1 more variable: animal_yob &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p><code>dplyr::arrange()</code> will arrange the rows by the selected column in ascednign fashion (lowest to highest). You can use the <code>desc()</code> function on columns you wan’t to be orded in descing fashion.</p>
+<p>Arrange the <strong>tibble</strong> by rec_year in descending fashion (note seemingly won’t change):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">arrange</span>(knz_bison, <span class="fu">desc</span>(rec_year))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8,325 × 8
+   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight
+   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;
+ 1 CBH01         2020        10      29 Y-316       F                   1045
+ 2 CBH01         2020        10      29 Y-358       F                   1110
+ 3 CBH01         2020        10      29 Y-411       F                    825
+ 4 CBH01         2020        10      29 Y-422       F                    930
+ 5 CBH01         2020        10      29 Y-501       F                   1000
+ 6 CBH01         2020        10      29 Y-527       F                    970
+ 7 CBH01         2020        10      29 Y-573       F                   1065
+ 8 CBH01         2020        10      29 Y-6008      F                   1110
+ 9 CBH01         2020        10      29 Y-605       F                   1050
+10 CBH01         2020        10      29 Y-616       F                   1105
+# ℹ 8,315 more rows
+# ℹ 1 more variable: animal_yob &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="string-columns" class="level2">
+<h2 class="anchored" data-anchor-id="string-columns">String columns</h2>
+<p>Strings are order by alphabetical order.</p>
+<p>Default is from A-Z (ascending).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">arrange</span>(knz_bison, animal_sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8,325 × 8
+   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight
+   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;
+ 1 CBH01         1994        11       8 813         F                    890
+ 2 CBH01         1994        11       8 834         F                   1074
+ 3 CBH01         1994        11       8 B-301       F                   1060
+ 4 CBH01         1994        11       8 B-402       F                    989
+ 5 CBH01         1994        11       8 B-403       F                   1062
+ 6 CBH01         1994        11       8 B-502       F                    978
+ 7 CBH01         1994        11       8 B-503       F                   1068
+ 8 CBH01         1994        11       8 B-504       F                   1024
+ 9 CBH01         1994        11       8 B-601       F                    978
+10 CBH01         1994        11       8 B-602       F                   1188
+# ℹ 8,315 more rows
+# ℹ 1 more variable: animal_yob &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Set it to descing will order it from Z-A.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">arrange</span>(knz_bison, <span class="fu">desc</span>(animal_sex))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8,325 × 8
+   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight
+   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;
+ 1 CBH01         1994        11       8 910         M                    982
+ 2 CBH01         1994        11       8 91C         M                   1020
+ 3 CBH01         1994        11       8 91F         M                   1050
+ 4 CBH01         1994        11       8 91H         M                   1037
+ 5 CBH01         1994        11       8 91J         M                   1104
+ 6 CBH01         1994        11       8 91K         M                   1306
+ 7 CBH01         1994        11       8 91L         M                   1122
+ 8 CBH01         1994        11       8 91M         M                   1136
+ 9 CBH01         1994        11       8 91P         M                    996
+10 CBH01         1994        11       8 91W         M                    954
+# ℹ 8,315 more rows
+# ℹ 1 more variable: animal_yob &lt;dbl&gt;</code></pre>
+</div>
+</div>
 
 
 </section>
@@ -1033,10 +1188,13 @@ window.onload = function() {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../dplyr/row_functions.html" class="pagination-link" aria-label="Row functions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Row functions</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../dplyr/row_functions.html" class="pagination-link" aria-label="Row functions">
-        <span class="nav-page-text">Row functions</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../dplyr/bind_tibbles.html" class="pagination-link" aria-label="Bind tibbles">
+        <span class="nav-page-text">Bind tibbles</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

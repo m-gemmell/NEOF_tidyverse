@@ -421,12 +421,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#format" id="toc-format" class="nav-link active" data-scroll-target="#format">Format</a>
-  <ul class="collapse">
-  <li><a href="#size-info" id="toc-size-info" class="nav-link" data-scroll-target="#size-info">Size info</a></li>
+  <li><a href="#size-info" id="toc-size-info" class="nav-link active" data-scroll-target="#size-info">Size info</a></li>
   <li><a href="#rowsobservations" id="toc-rowsobservations" class="nav-link" data-scroll-target="#rowsobservations">Rows/observations</a></li>
   <li><a href="#variablescolumns" id="toc-variablescolumns" class="nav-link" data-scroll-target="#variablescolumns">Variables/columns</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -454,28 +451,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Tibbles are formatted like a <strong>data.frame</strong> but have some extra functions and terminology.</p>
-<section id="format" class="level2">
-<h2 class="anchored" data-anchor-id="format">Format</h2>
-<p>Below we load and subset the <code>hbr_maples</code> data from the <a href="../datasets/lterdatasampler.html">lterdatasampler package</a> (hyperlink includes install instructions) and view it.</p>
+<p>For demostration we’ll load and subset the <code>hbr_maples</code> data from the <a href="../datasets/lterdatasampler.html">lterdatasampler package</a> (hyperlink includes install instructions) and view it.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load package</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"lterdatasampler"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Subset of hbr_maples tibble</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">as_tibble</span>(lterdatasampler<span class="sc">::</span>hbr_maples)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">as_tibble</span>(lterdatasampler<span class="sc">::</span>hbr_maples)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 8
-    year watershed elevation transect sample stem_length leaf1area leaf2area
-   &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt;    &lt;fct&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
- 1  2003 Reference Low       R1       1             86.9     13.8      12.1 
- 2  2003 Reference Low       R1       2            114       14.6      15.3 
- 3  2003 Reference Low       R1       3             83.5     12.5       9.73
- 4  2003 Reference Low       R1       4             68.1      9.97     10.1 
- 5  2003 Reference Low       R1       5             72.1      6.84      5.48
- 6  2003 Reference Low       R1       6             77.7      9.66      7.64
- 7  2003 Reference Low       R1       7             85.5      8.82      9.23
- 8  2003 Reference Low       R1       8             81.6      5.83      6.18
- 9  2003 Reference Low       R1       9             92.9      8.11      7.13
-10  2003 Reference Low       R1       10            59.6      3.02      3.44</code></pre>
+<pre><code># A tibble: 10 × 7
+    year watershed elevation transect sample stem_length leaf1area
+   &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt;    &lt;fct&gt;        &lt;dbl&gt;     &lt;dbl&gt;
+ 1  2003 Reference Low       R1       1             86.9     13.8 
+ 2  2003 Reference Low       R1       2            114       14.6 
+ 3  2003 Reference Low       R1       3             83.5     12.5 
+ 4  2003 Reference Low       R1       4             68.1      9.97
+ 5  2003 Reference Low       R1       5             72.1      6.84
+ 6  2003 Reference Low       R1       6             77.7      9.66
+ 7  2003 Reference Low       R1       7             85.5      8.82
+ 8  2003 Reference Low       R1       8             81.6      5.83
+ 9  2003 Reference Low       R1       9             92.9      8.11
+10  2003 Reference Low       R1       10            59.6      3.02</code></pre>
 </div>
 </div>
 <p>Let’s go over some of its components:</p>
@@ -484,22 +479,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Variables/columns</li>
 <li>observations/rows</li>
 </ul>
-<section id="size-info" class="level3">
-<h3 class="anchored" data-anchor-id="size-info">Size info</h3>
+<section id="size-info" class="level2">
+<h2 class="anchored" data-anchor-id="size-info">Size info</h2>
 <p>At the top of the <strong>tibble</strong> it tells us the size. The first number is the rows and the second is the columns.</p>
 <p>In the above example we have:</p>
 <ul>
 <li>10 rows/observations</li>
-<li>8 columns/variables</li>
+<li>7 columns/variables</li>
 </ul>
 </section>
-<section id="rowsobservations" class="level3">
-<h3 class="anchored" data-anchor-id="rowsobservations">Rows/observations</h3>
+<section id="rowsobservations" class="level2">
+<h2 class="anchored" data-anchor-id="rowsobservations">Rows/observations</h2>
 <p>As in a <strong>data.frame</strong> each observation is within its own row. The contents of an observation/row is determined by your dataset and how you want to analyse or visualise it. There are many ways to manipulate <strong>tibbles</strong> with the <a href="../dplyr/dplyr.html">dplyr</a>, <a href="../tidyr/tidyr.html">tidyr</a>, and other tidyverse packages.</p>
 <p><strong>Tibble</strong> rows do not have row names and you cannot/should not give them row names. They are numbered/indexxed instead.</p>
 </section>
-<section id="variablescolumns" class="level3">
-<h3 class="anchored" data-anchor-id="variablescolumns">Variables/columns</h3>
+<section id="variablescolumns" class="level2">
+<h2 class="anchored" data-anchor-id="variablescolumns">Variables/columns</h2>
 <p>A <strong>tibble</strong> will have a certain number of columns.</p>
 <p>Each column has a name that is at the top. For example:</p>
 <ul>
@@ -532,7 +527,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Above you can see that when you view a <strong>tibble</strong>, by printing it or viewing it in an Rstudio tab, it will align the values in the columns in a easy to read manner. This is especially useful for numeric (integers &amp; doubles) columns where the numbers are aligned by place value. This allows you to easily compare the size of numbers in the same column.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

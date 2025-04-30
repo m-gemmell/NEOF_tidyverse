@@ -72,6 +72,8 @@ website:
     align: left
     contents:
     - href: dplyr/dplyr.qmd
+    - href: dplyr/row_functions.qmd
+    - href: dplyr/arrange.qmd
     - href: dplyr/bind_tibbles.qmd
     - href: dplyr/cheatsheets.qmd
   - id: Readr

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Dplyr – NEOF Tidyverse</title>
+<title>Row functions – NEOF Tidyverse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../dplyr/row_functions.html" rel="next">
+<link href="../dplyr/arrange.html" rel="next">
+<link href="../dplyr/dplyr.html" rel="prev">
 <link href="..//images/NEOF_favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -327,7 +328,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../dplyr/dplyr.html">Dplyr</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../dplyr/row_functions.html">Row functions</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -341,14 +342,20 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dplyr/dplyr.html" class="sidebar-item-text sidebar-link active">
+  <a href="../dplyr/dplyr.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dplyr</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dplyr/row_functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../dplyr/row_functions.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Row functions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/arrange.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Arrange</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -368,14 +375,8 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -383,7 +384,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Dplyr</h1>
+<h1 class="title">Row functions</h1>
 </div>
 
 
@@ -400,17 +401,15 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<center>
-<img src="../images/dplyr.png" class="img-fluid" style="width:150px">
-</center>
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p><strong>Dplyr</strong> is the main data manipulation package for <strong>tibbles</strong> in <strong>tidyverse</strong>.</p>
-<p><strong>Dplyr</strong> is described as a “grammar of data manipulation” using verbs as the name of its various functions.</p>
-<p><a href="https://dplyr.tidyverse.org//">dplyr homepage</a></p>
+<p>There four main verbs (i.e.&nbsp;functions) to manipulate rows. These are:</p>
+<ul>
+<li><code>arrange()</code>:</li>
+<li><code>distinct()</code>:</li>
+<li><code>filter()</code>:</li>
+<li><code>slice()</code>:</li>
+</ul>
 
 
-</section>
 
 </main> <!-- /main -->
 <script>
@@ -1033,10 +1032,13 @@ window.onload = function() {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../dplyr/dplyr.html" class="pagination-link" aria-label="Dplyr">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Dplyr</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../dplyr/row_functions.html" class="pagination-link" aria-label="Row functions">
-        <span class="nav-page-text">Row functions</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../dplyr/arrange.html" class="pagination-link" aria-label="Arrange">
+        <span class="nav-page-text">Arrange</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

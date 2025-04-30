@@ -1,0 +1,48 @@
+---
+title: "Arrange"
+---
+
+The `dplyr::arrange()` function allows you to arrange the rows of a __tibble__.
+
+## Dataset
+
+For demostration we'll load the `knz_bison` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (hyperlink includes install instructions) and view it.
+
+```{r}
+#Load package
+library("lterdatasampler")
+#arc_weather tibble
+tibble::as_tibble(lterdatasampler::knz_bison)
+```
+
+## Numeric columns
+
+Arrange the __tibble__ by rec_year (note seemingly won't change):
+
+```{r}
+dplyr::arrange(knz_bison, rec_year)
+```
+
+`dplyr::arrange()` will arrange the rows by the selected column in ascednign fashion (lowest to highest). You can use the `desc()` function on columns you wan't to be orded in descing fashion.
+
+Arrange the __tibble__ by rec_year in descending fashion (note seemingly won't change):
+
+```{r}
+dplyr::arrange(knz_bison, desc(rec_year))
+```
+
+## String columns
+
+Strings are order by alphabetical order.
+
+Default is from A-Z (ascending).
+
+```{r}
+dplyr::arrange(knz_bison, animal_sex)
+```
+
+Set it to descing will order it from Z-A.
+
+```{r}
+dplyr::arrange(knz_bison, desc(animal_sex))
+```

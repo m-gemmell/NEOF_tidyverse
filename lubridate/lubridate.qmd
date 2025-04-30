@@ -8,4 +8,6 @@ title: "Lubridate"
 
 Lubridate is a useful package to manipulate the date class.
 
-[purr homepage](https://lubridate.tidyverse.org/)
+[lubridate homepage](https://lubridate.tidyverse.org/)
+
+MG ONCE YOU ADD INFO ABOUT DATE CLASS ADD LINK TO IT IN /tibble/structure.qmd

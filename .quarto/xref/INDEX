@@ -121,5 +121,11 @@
   },
   "dplyr/bind_tibbles.qmd": {
     "bind_tibbles.html": "a06acf88"
+  },
+  "dplyr/row_functions.qmd": {
+    "row_functions.html": "eb29af49"
+  },
+  "dplyr/arrange.qmd": {
+    "arrange.html": "8be5942b"
   }
 }

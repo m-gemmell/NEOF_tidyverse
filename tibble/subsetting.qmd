@@ -18,7 +18,7 @@ library("lterdatasampler")
 
 Create a __tibble__ from a subset of the pie_crab data.
 ```{r}
-pie_crab_tbl <- tibble::as_tibble(lterdatasampler::pie_crab[1:10,1:8])
+pie_crab_tbl <- tibble::as_tibble(lterdatasampler::pie_crab[1:10,1:7])
 pie_crab_tbl
 ```
 

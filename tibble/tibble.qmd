@@ -20,6 +20,16 @@ However, __tibbles__ are generally always preferred over __data.frames__ when us
 
 [Tibble homepage](https://tibble.tidyverse.org/)
 
+## Sections
+
+The sections in this book are:
+
+- [Creating tibbles](/tibble/creating_tibbles.qmd): Creating __tibbles__ with code, data.frame coercion, and reading in from files.
+- [Structure](/tibble/structure.qmd): Demonstrates the sturcture/format of a __tibble__.
+- [Subsetting](/tibble/subsetting.qmd): Subsetting __tibbles__ and the difference between using `$` and `[]`.
+- [Printing or viewing](/tibble/printing.qmd): Unique features of viewing __tibbles__.
+- [Adding rows and columns](/tibble/add_rows_and_columns.qmd): How to add new rows/columns and bind tibbles together.
+
 ## Tibble example
 
 Below is an example of:

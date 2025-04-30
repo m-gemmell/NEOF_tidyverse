@@ -5,15 +5,13 @@ format: html
 
 Tibbles are formatted like a __data.frame__ but have some extra functions and terminology.
 
-## Format
-
-Below we load and subset the `hbr_maples` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (hyperlink includes install instructions) and view it.
+For demostration we'll load and subset the `hbr_maples` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (hyperlink includes install instructions) and view it.
 
 ```{r}
 #Load package
 library("lterdatasampler")
 #Subset of hbr_maples tibble
-tibble::as_tibble(lterdatasampler::hbr_maples)[1:10,1:8]
+tibble::as_tibble(lterdatasampler::hbr_maples)[1:10,1:7]
 ```
 
 Let's go over some of its components:
@@ -22,7 +20,7 @@ Let's go over some of its components:
 - Variables/columns
 - observations/rows
 
-### Size info
+## Size info
 
 At the top of the __tibble__ it tells us the size.
 The first number is the rows and the second is the columns.
@@ -30,9 +28,9 @@ The first number is the rows and the second is the columns.
 In the above example we have:
 
 - 10 rows/observations
-- 8 columns/variables
+- 7 columns/variables
 
-### Rows/observations
+## Rows/observations
 
 As in a __data.frame__ each observation is within its own row.
 The contents of an observation/row is determined by your dataset and how you want to analyse or visualise it.
@@ -41,7 +39,7 @@ There are many ways to manipulate __tibbles__ with the [dplyr](/dplyr/dplyr.qmd)
 __Tibble__ rows do not have row names and you cannot/should not give them row names.
 They are numbered/indexxed instead.
 
-### Variables/columns
+## Variables/columns
 
 A __tibble__ will have a certain number of columns.
 
