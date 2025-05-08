@@ -1,3 +1,67 @@
 ---
 title: "Slice"
 ---
+
+The `dplyr:slice()` function can be used to subset row.
+
+Their are multiple slice commands:
+
+- `slice()`: Index rows by numeric index location.
+- `slice_head()`: Select rows from the top of the __tibble__.
+- `slice_tail()`: Select rows from the bottom of the __tibble__.
+- `slice_sample()`: Randomly select rows.
+- `slice_min()`: Select rows with smallest values of variable.
+- `slice_max()`: Select rows with largest values of a variable.
+
+## Dataset
+
+For demonstration we'll load the `knz_bison` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (hyperlink includes install instructions).
+
+```{r}
+#Load package
+library("lterdatasampler")
+#knz_bison tibble for demonstration
+bison_tbl <- lterdatasampler::knz_bison |>
+    #Convert to tibble
+    tibble::as_tibble()
+bison_tbl
+```
+
+## Slice
+
+The base `slice()` function is incredibly similar to normal indexing of a __tibble/data.frame__.
+Its main advantage is that it can be more easily used with [pipes](/dplyr/pipes.qmd).
+
+Extract rows 1 to 5.
+
+```{r}
+bison_tbl |> dplyr::slice(1:5)
+```
+
+## Head and tail
+
+Extract the first 6 rows.
+
+```{r}
+bison_tbl |> dplyr::slice_head(n=6)
+```
+
+Extract the last 4 rows.
+
+```{r}
+bison_tbl |> dplyr::slice_tail(n=4)
+```
+
+## Max and min
+
+Extract the 3 observations with the highest animal_weight.
+
+```{r}
+bison_tbl |> dplyr::slice_max(animal_weight, n=3)
+```
+
+Extract the 9 observations with the lowest animal_weight.
+
+```{r}
+bison_tbl |> dplyr::slice_min(animal_weight, n=9)
+```

@@ -1,3 +1,81 @@
 ---
 title: "Filter"
 ---
+
+The `dplyr::filter()` function can be used to extract rows that meet a certain condition.
+
+This can be a useful method to:
+
+- Filter rows by numerics in a row, e.g. extract rows from years >= 2000.
+- Extract rows belonging to certain groups of metadata.
+
+## Dataset
+
+For demonstration we'll load the `knz_bison` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (hyperlink includes install instructions).
+
+```{r}
+#Load package
+library("lterdatasampler")
+#knz_bison tibble for demonstration
+bison_tbl <- lterdatasampler::knz_bison |>
+    #Convert to tibble
+    tibble::as_tibble()
+bison_tbl
+```
+
+## Numeric columns
+
+Filter the __tibble__ to only contain rows/observations from the year 2000 and onwards (>2000).
+
+```{r}
+bison_tbl |> dplyr::filter(rec_year > 2000)
+```
+
+## String columns
+
+Filter the __tibble__ to only contain male observations.
+
+```{r}
+bison_tbl |> dplyr::filter(animal_sex == "M")
+```
+
+## Multiple columns
+
+You can filter based on multiple columns with logical operators.
+
+The 2 main R logical operators are:
+
+- `&`: and (ampersand symbol)
+- `|`: or (pipe symbol)
+
+Extract females that have a weight greater or equal to 1000 pounds.
+
+```{r}
+bison_tbl |> dplyr::filter(animal_sex == "F" & animal_weight >= 1000)
+```
+
+Extract males or samples with a weight less than 900 pounds.
+
+```{r}
+bison_tbl |> dplyr::filter(animal_sex == "M" | animal_weight < 900)
+```
+
+## Pipes
+
+You can use pipes for finer control of multiple comparisons.
+
+The below command carries out the following filtering steps in order:
+
+1. Extract females. 
+2. Extract observations with animal weight between 900 and 1100. 
+3. Extract samples from the year 2000.
+
+```{r}
+bison_tbl |> 
+    #Filter to retain females
+    dplyr::filter(animal_sex == "F") |>
+    #Filter to retain samples with animal_weight between 900 and 1100
+    dplyr::filter(animal_weight > 900 & animal_weight < 1000) |>
+    #Retain samples from year 2000
+    dplyr::filter(rec_year == 2000)
+```

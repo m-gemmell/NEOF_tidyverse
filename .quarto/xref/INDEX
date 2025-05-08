@@ -133,5 +133,11 @@
   },
   "dplyr/filter.qmd": {
     "filter.html": "17bc6272"
+  },
+  "dplyr/slice.qmd": {
+    "slice.html": "9fc50ac3"
+  },
+  "dplyr/pipes.qmd": {
+    "pipes.html": "ffbfbfe7"
   }
 }

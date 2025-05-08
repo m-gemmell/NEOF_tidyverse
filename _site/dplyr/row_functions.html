@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../dplyr/arrange.html" rel="next">
-<link href="../dplyr/dplyr.html" rel="prev">
+<link href="../dplyr/pipes.html" rel="prev">
 <link href="..//images/NEOF_favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -175,6 +175,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Dplyr</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/pipes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pipes</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
@@ -199,7 +205,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../dplyr/distinct.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Row overview</span></a>
+ <span class="menu-text">Distinct</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -212,6 +218,23 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../dplyr/slice.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Slice</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Columns</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/select.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Select</span></a>
   </div>
 </li>
       </ul>
@@ -258,8 +281,8 @@ ul.task-list li input[type="checkbox"] {
 
 <p>There four main verbs (i.e.&nbsp;functions) to manipulate rows. These are:</p>
 <ul>
-<li><code>arrange()</code>:</li>
-<li><code>distinct()</code>:</li>
+<li><code>arrange()</code>: Arrange the rows of a <strong>tibble</strong>. Can be used to reorder the rows based on the values of a column.</li>
+<li><code>distinct()</code>: Extracts unique rows from a <strong>tibble</strong>.</li>
 <li><code>filter()</code>:</li>
 <li><code>slice()</code>:</li>
 </ul>
@@ -823,8 +846,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../dplyr/dplyr.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Dplyr</span>
+      <a href="../dplyr/pipes.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Pipes</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

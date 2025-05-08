@@ -1,0 +1,80 @@
+---
+title: "Pipes"
+---
+
+The preferred method when using `dplyr` and other __tidyverse__ package functions is to use pipes.
+
+The __tidyverse__ pipe symbol is `|>` (historically it was `%>%`).
+
+Pipes allow you to more easily combine multiple functions together with a logical flow.
+A big advantage of pipes is that they are generally easier to read compared to nesting functions within each other.
+
+This page will give a brief introduction to pipes using various functions that are covered in other pages of this section.
+Other pages will demonstrate further examples of pipes.
+
+## Dataset
+
+For demonstration we'll load the `hbr_maples` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (hyperlink includes install instructions).
+
+__Note:__ When piping, the first variable of the post pipe function is the piped data/object.
+
+```{r}
+#Load package
+library("lterdatasampler")
+#hbr_maples tibble for demonstration
+maples_tbl <- tibble::as_tibble(lterdatasampler::hbr_maples)
+maples_tbl
+```
+
+## One step pipe
+
+Below is a one step pipe command.
+In it we pipe our __tibble__ `maples_tbl` into the function [`slice()`](/dplyr/filter.qmd) to extract rows 1:5.
+
+```{r}
+maples_tbl |> dplyr::slice(1:5)
+```
+
+The above command acts the same as the below.
+
+```{r}
+dplyr::slice(maples_tbl,1:5)
+```
+
+To assign the output of piped function you can utilise the assignment operator as usual.
+
+```{r}
+maples_subset_tbl <- maples_tbl |> dplyr::slice(1:7)
+maples_subset_tbl
+```
+
+## Multi step pipe
+
+Pipes are great when you need to use multiple functions on one object.
+
+In the below case we:
+
+- Extract rows 1 to 1000 with [`dplyr::slice()`](/dplyr/slice.qmd)
+- Then filter the 1000 rows so we only retain observations/rows where the elevation column value is equal to "Low" with [`dplyr::filter()`](/dplyr/filter.qmd)
+- Select columns leaf1area and leaf2area with [`dplyr::select()`](/dplyr/select.qmd)
+- Summarise the resulting __tibble__ with `summary()`
+
+__Note:__ Pipes are not only limited to __tidyverse__ functions.
+
+```{r}
+maples_tbl |> 
+    #Extract indexes 1 to 1000
+    dplyr::slice(1:1000) |>
+    #Extract only low elevation samples
+    dplyr::filter(elevation == "Low") |>
+    #Select the columns leaf1are and leaf2area
+    dplyr::select(c(leaf1area,leaf2area)) |>
+    #Summarise tibble
+    summary()
+```
+
+Less visually clear method with nested functions.
+
+```{r}
+summary(dplyr::select(dplyr::filter(dplyr::slice(maples_tbl,1:1000),elevation=="Low"),c(leaf1area,leaf2area)))
+```

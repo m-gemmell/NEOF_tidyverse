@@ -6,13 +6,19 @@ The `dplyr::arrange()` function allows you to arrange the rows of a __tibble__.
 
 ## Dataset
 
-For demostration we'll load and subset the `knz_bison` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (hyperlink includes install instructions).
+For demonstration we'll load and subset the `knz_bison` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (hyperlink includes install instructions).
 
 ```{r}
 #Load package
 library("lterdatasampler")
 #Subset of knz_bison tibble for demonstration
-bison_tbl <- tibble::as_tibble(lterdatasampler::knz_bison)[c(5,4,3,2,1,6,7,8,9,10)*100,]
+bison_tbl <- lterdatasampler::knz_bison |>
+    #Convert to tibble
+    tibble::as_tibble() |>
+    #Slice to choose rows by index
+    dplyr::slice(c(1,2,911,145,146,179,181,34,35)) |>
+    #Select to choose columns based on column names
+    dplyr::select(c(data_code,rec_year,animal_sex))
 bison_tbl
 ```
 
@@ -21,15 +27,15 @@ bison_tbl
 Arrange the __tibble__ by rec_year:
 
 ```{r}
-dplyr::arrange(bison_tbl, rec_year)
+bison_tbl |> dplyr::arrange(rec_year)
 ```
 
-`dplyr::arrange()` will arrange the rows by the selected column in ascending fashion (lowest to highest). You can use the `desc()` function on columns you wan't to be orded in descing fashion.
+`dplyr::arrange()` will arrange the rows by the selected column in ascending fashion (lowest to highest). You can use the `desc()` function on columns you wan't to be ordered in descending fashion.
 
 Arrange the __tibble__ by rec_year in descending fashion:
 
 ```{r}
-dplyr::arrange(bison_tbl, desc(rec_year))
+bison_tbl |> dplyr::arrange(desc(rec_year))
 ```
 
 ## String columns
@@ -39,11 +45,21 @@ Strings are order by alphabetical order.
 Default is from A-Z (ascending).
 
 ```{r}
-dplyr::arrange(bison_tbl, animal_sex)
+bison_tbl |> dplyr::arrange(animal_sex)
 ```
 
-Set it to descing will order it from Z-A.
+Set it to descending will order it from Z-A.
 
 ```{r}
-dplyr::arrange(bison_tbl, desc(animal_sex))
+bison_tbl |> dplyr::arrange(desc(animal_sex))
+```
+
+## Multiple columns
+
+Multiple columns can be used to arrange a __tibble__.
+
+The priority of ordering is based on the order of the columns, from high to low priority.
+
+```{r}
+bison_tbl |> dplyr::arrange(rec_year, animal_sex)
 ```

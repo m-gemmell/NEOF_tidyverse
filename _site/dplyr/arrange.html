@@ -209,6 +209,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Dplyr</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/pipes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pipes</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
@@ -250,6 +256,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Columns</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/select.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Select</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../dplyr/bind_tibbles.html" class="sidebar-item-text sidebar-link">
@@ -275,6 +298,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#dataset" id="toc-dataset" class="nav-link active" data-scroll-target="#dataset">Dataset</a></li>
   <li><a href="#numeric-columns" id="toc-numeric-columns" class="nav-link" data-scroll-target="#numeric-columns">Numeric columns</a></li>
   <li><a href="#string-columns" id="toc-string-columns" class="nav-link" data-scroll-target="#string-columns">String columns</a></li>
+  <li><a href="#multiple-columns" id="toc-multiple-columns" class="nav-link" data-scroll-target="#multiple-columns">Multiple columns</a></li>
   </ul>
 </nav>
     </div>
@@ -301,28 +325,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The <code>dplyr::arrange()</code> function allows you to arrange the rows of a <strong>tibble</strong>.</p>
 <section id="dataset" class="level2">
 <h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
-<p>For demostration we’ll load and subset the <code>knz_bison</code> data from the <a href="../datasets/lterdatasampler.html">lterdatasampler package</a> (hyperlink includes install instructions).</p>
+<p>For demonstration we’ll load and subset the <code>knz_bison</code> data from the <a href="../datasets/lterdatasampler.html">lterdatasampler package</a> (hyperlink includes install instructions).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load package</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"lterdatasampler"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Subset of knz_bison tibble for demonstration</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>bison_tbl <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">as_tibble</span>(lterdatasampler<span class="sc">::</span>knz_bison)[<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>)<span class="sc">*</span><span class="dv">100</span>,]</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>bison_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>bison_tbl <span class="ot">&lt;-</span> lterdatasampler<span class="sc">::</span>knz_bison <span class="sc">|&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Convert to tibble</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    tibble<span class="sc">::</span><span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Slice to choose rows by index</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">slice</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">911</span>,<span class="dv">145</span>,<span class="dv">146</span>,<span class="dv">179</span>,<span class="dv">181</span>,<span class="dv">34</span>,<span class="dv">35</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Select to choose columns based on column names</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">c</span>(data_code,rec_year,animal_sex))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>bison_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 8
-   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight
-   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;
- 1 CBH01         1997        10      31 B-802       F                   1050
- 2 CBH01         1996        10      25 W-513       F                    532
- 3 CBH01         1996        10      25 B-701       F                   1002
- 4 CBH01         1995        11       6 90X         M                   1408
- 5 CBH01         1994        11       8 OR 6        F                    486
- 6 CBH01         1997        10      31 W-725       F                    256
- 7 CBH01         1998        11      13 W-513       F                    924
- 8 CBH01         1998        11      13 W-743       F                    604
- 9 CBH01         1999        11       5 B-403       F                   1092
-10 CBH01         1999        11       5 W-763       F                    758
-# ℹ 1 more variable: animal_yob &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 9 × 3
+  data_code rec_year animal_sex
+  &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;     
+1 CBH01         1994 F         
+2 CBH01         1994 F         
+3 CBH01         1999 F         
+4 CBH01         1995 M         
+5 CBH01         1995 F         
+6 CBH01         1995 M         
+7 CBH01         1995 M         
+8 CBH01         1994 M         
+9 CBH01         1994 M         </code></pre>
 </div>
 </div>
 </section>
@@ -330,43 +358,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="numeric-columns">Numeric columns</h2>
 <p>Arrange the <strong>tibble</strong> by rec_year:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">arrange</span>(bison_tbl, rec_year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>bison_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">arrange</span>(rec_year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 8
-   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight
-   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;
- 1 CBH01         1994        11       8 OR 6        F                    486
- 2 CBH01         1995        11       6 90X         M                   1408
- 3 CBH01         1996        10      25 W-513       F                    532
- 4 CBH01         1996        10      25 B-701       F                   1002
- 5 CBH01         1997        10      31 B-802       F                   1050
- 6 CBH01         1997        10      31 W-725       F                    256
- 7 CBH01         1998        11      13 W-513       F                    924
- 8 CBH01         1998        11      13 W-743       F                    604
- 9 CBH01         1999        11       5 B-403       F                   1092
-10 CBH01         1999        11       5 W-763       F                    758
-# ℹ 1 more variable: animal_yob &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 9 × 3
+  data_code rec_year animal_sex
+  &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;     
+1 CBH01         1994 F         
+2 CBH01         1994 F         
+3 CBH01         1994 M         
+4 CBH01         1994 M         
+5 CBH01         1995 M         
+6 CBH01         1995 F         
+7 CBH01         1995 M         
+8 CBH01         1995 M         
+9 CBH01         1999 F         </code></pre>
 </div>
 </div>
-<p><code>dplyr::arrange()</code> will arrange the rows by the selected column in ascending fashion (lowest to highest). You can use the <code>desc()</code> function on columns you wan’t to be orded in descing fashion.</p>
+<p><code>dplyr::arrange()</code> will arrange the rows by the selected column in ascending fashion (lowest to highest). You can use the <code>desc()</code> function on columns you wan’t to be ordered in descending fashion.</p>
 <p>Arrange the <strong>tibble</strong> by rec_year in descending fashion:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">arrange</span>(bison_tbl, <span class="fu">desc</span>(rec_year))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>bison_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="fu">desc</span>(rec_year))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 8
-   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight
-   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;
- 1 CBH01         1999        11       5 B-403       F                   1092
- 2 CBH01         1999        11       5 W-763       F                    758
- 3 CBH01         1998        11      13 W-513       F                    924
- 4 CBH01         1998        11      13 W-743       F                    604
- 5 CBH01         1997        10      31 B-802       F                   1050
- 6 CBH01         1997        10      31 W-725       F                    256
- 7 CBH01         1996        10      25 W-513       F                    532
- 8 CBH01         1996        10      25 B-701       F                   1002
- 9 CBH01         1995        11       6 90X         M                   1408
-10 CBH01         1994        11       8 OR 6        F                    486
-# ℹ 1 more variable: animal_yob &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 9 × 3
+  data_code rec_year animal_sex
+  &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;     
+1 CBH01         1999 F         
+2 CBH01         1995 M         
+3 CBH01         1995 F         
+4 CBH01         1995 M         
+5 CBH01         1995 M         
+6 CBH01         1994 F         
+7 CBH01         1994 F         
+8 CBH01         1994 M         
+9 CBH01         1994 M         </code></pre>
 </div>
 </div>
 </section>
@@ -375,42 +399,60 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Strings are order by alphabetical order.</p>
 <p>Default is from A-Z (ascending).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">arrange</span>(bison_tbl, animal_sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>bison_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">arrange</span>(animal_sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 8
-   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight
-   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;
- 1 CBH01         1997        10      31 B-802       F                   1050
- 2 CBH01         1996        10      25 W-513       F                    532
- 3 CBH01         1996        10      25 B-701       F                   1002
- 4 CBH01         1994        11       8 OR 6        F                    486
- 5 CBH01         1997        10      31 W-725       F                    256
- 6 CBH01         1998        11      13 W-513       F                    924
- 7 CBH01         1998        11      13 W-743       F                    604
- 8 CBH01         1999        11       5 B-403       F                   1092
- 9 CBH01         1999        11       5 W-763       F                    758
-10 CBH01         1995        11       6 90X         M                   1408
-# ℹ 1 more variable: animal_yob &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 9 × 3
+  data_code rec_year animal_sex
+  &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;     
+1 CBH01         1994 F         
+2 CBH01         1994 F         
+3 CBH01         1999 F         
+4 CBH01         1995 F         
+5 CBH01         1995 M         
+6 CBH01         1995 M         
+7 CBH01         1995 M         
+8 CBH01         1994 M         
+9 CBH01         1994 M         </code></pre>
 </div>
 </div>
-<p>Set it to descing will order it from Z-A.</p>
+<p>Set it to descending will order it from Z-A.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">arrange</span>(bison_tbl, <span class="fu">desc</span>(animal_sex))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>bison_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="fu">desc</span>(animal_sex))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 8
-   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight
-   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;
- 1 CBH01         1995        11       6 90X         M                   1408
- 2 CBH01         1997        10      31 B-802       F                   1050
- 3 CBH01         1996        10      25 W-513       F                    532
- 4 CBH01         1996        10      25 B-701       F                   1002
- 5 CBH01         1994        11       8 OR 6        F                    486
- 6 CBH01         1997        10      31 W-725       F                    256
- 7 CBH01         1998        11      13 W-513       F                    924
- 8 CBH01         1998        11      13 W-743       F                    604
- 9 CBH01         1999        11       5 B-403       F                   1092
-10 CBH01         1999        11       5 W-763       F                    758
-# ℹ 1 more variable: animal_yob &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 9 × 3
+  data_code rec_year animal_sex
+  &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;     
+1 CBH01         1995 M         
+2 CBH01         1995 M         
+3 CBH01         1995 M         
+4 CBH01         1994 M         
+5 CBH01         1994 M         
+6 CBH01         1994 F         
+7 CBH01         1994 F         
+8 CBH01         1999 F         
+9 CBH01         1995 F         </code></pre>
+</div>
+</div>
+</section>
+<section id="multiple-columns" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-columns">Multiple columns</h2>
+<p>Multiple columns can be used to arrange a <strong>tibble</strong>.</p>
+<p>The priority of ordering is based on the order of the columns, from high to low priority.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>bison_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">arrange</span>(rec_year, animal_sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 3
+  data_code rec_year animal_sex
+  &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;     
+1 CBH01         1994 F         
+2 CBH01         1994 F         
+3 CBH01         1994 M         
+4 CBH01         1994 M         
+5 CBH01         1995 F         
+6 CBH01         1995 M         
+7 CBH01         1995 M         
+8 CBH01         1995 M         
+9 CBH01         1999 F         </code></pre>
 </div>
 </div>
 

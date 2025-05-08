@@ -4,7 +4,7 @@ title: "Row overview"
 
 There four main verbs (i.e. functions) to manipulate rows. These are:
 
-- `arrange()`:
-- `distinct()`:
-- `filter()`:
+- `arrange()`: Arrange the rows of a __tibble__. Can be used to reorder the rows based on the values of a column.
+- `distinct()`: Extracts unique rows from a __tibble__.
+- `filter()`: 
 - `slice()`:

@@ -72,6 +72,7 @@ website:
     align: left
     contents:
     - href: dplyr/dplyr.qmd
+    - href: dplyr/pipes.qmd
     - section: "Rows"
       contents:
       - href: dplyr/row_functions.qmd
@@ -79,6 +80,9 @@ website:
       - href: dplyr/distinct.qmd
       - href: dplyr/filter.qmd
       - href: dplyr/slice.qmd
+    - section: "Columns"
+      contents:
+      - href: dplyr/select.qmd
     - href: dplyr/bind_tibbles.qmd
     - href: dplyr/cheatsheets.qmd
   - id: Readr

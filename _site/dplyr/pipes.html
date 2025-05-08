@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NEOF Tidyverse - Distinct</title>
+<title>NEOF Tidyverse - Pipes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../dplyr/filter.html" rel="next">
-<link href="../dplyr/arrange.html" rel="prev">
+<link href="../dplyr/row_functions.html" rel="next">
+<link href="../dplyr/dplyr.html" rel="prev">
 <link href="..//images/NEOF_favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -191,7 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../dplyr/row_functions.html">Rows</a></li><li class="breadcrumb-item"><a href="../dplyr/distinct.html">Distinct</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../dplyr/pipes.html">Pipes</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -211,7 +211,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dplyr/pipes.html" class="sidebar-item-text sidebar-link">
+  <a href="../dplyr/pipes.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Pipes</span></a>
   </div>
 </li>
@@ -238,7 +238,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dplyr/distinct.html" class="sidebar-item-text sidebar-link active">
+  <a href="../dplyr/distinct.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Distinct</span></a>
   </div>
 </li>
@@ -296,7 +296,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#dataset" id="toc-dataset" class="nav-link active" data-scroll-target="#dataset">Dataset</a></li>
-  <li><a href="#extract-unique-rows" id="toc-extract-unique-rows" class="nav-link" data-scroll-target="#extract-unique-rows">Extract unique rows</a></li>
+  <li><a href="#one-step-pipe" id="toc-one-step-pipe" class="nav-link" data-scroll-target="#one-step-pipe">One step pipe</a></li>
+  <li><a href="#multi-step-pipe" id="toc-multi-step-pipe" class="nav-link" data-scroll-target="#multi-step-pipe">Multi step pipe</a></li>
   </ul>
 </nav>
     </div>
@@ -305,7 +306,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Distinct</h1>
+<h1 class="title">Pipes</h1>
 </div>
 
 
@@ -320,53 +321,136 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>The <code>dplyr::distinct()</code> function extracts unique/distinct rows from a <strong>tibble</strong>.</p>
+<p>The preferred method when using <code>dplyr</code> and other <strong>tidyverse</strong> package functions is to use pipes.</p>
+<p>The <strong>tidyverse</strong> pipe symbol is <code>|&gt;</code> (historically it was <code>%&gt;%</code>).</p>
+<p>Pipes allow you to more easily combine multiple functions together with a logical flow. A big advantage of pipes is that they are generally easier to read compared to nesting functions within each other.</p>
+<p>This page will give a brief introduction to pipes using various functions that are covered in other pages of this section. Other pages will demonstrate further examples of pipes.</p>
 <section id="dataset" class="level2">
 <h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
-<p>For demonstration we’ll load and subset the knz_bison data from the lterdatasampler package (hyperlink includes install instructions). This time we will ensure to duplicate rows.</p>
+<p>For demonstration we’ll load the <code>hbr_maples</code> data from the <a href="../datasets/lterdatasampler.html">lterdatasampler package</a> (hyperlink includes install instructions).</p>
+<p><strong>Note:</strong> When piping, the first variable of the post pipe function is the piped data/object.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load package</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"lterdatasampler"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Subset of knz_bison tibble for demonstration</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>bison_tbl <span class="ot">&lt;-</span> lterdatasampler<span class="sc">::</span>knz_bison <span class="sc">|&gt;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Convert to tibble</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    tibble<span class="sc">::</span><span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Slice rows to get 1:5 duplicated once</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">slice</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>))</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>bison_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#hbr_maples tibble for demonstration</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>maples_tbl <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">as_tibble</span>(lterdatasampler<span class="sc">::</span>hbr_maples)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>maples_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 8
-   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight
-   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;
- 1 CBH01         1994        11       8 813         F                    890
- 2 CBH01         1994        11       8 813         F                    890
- 3 CBH01         1994        11       8 834         F                   1074
- 4 CBH01         1994        11       8 834         F                   1074
- 5 CBH01         1994        11       8 B-301       F                   1060
- 6 CBH01         1994        11       8 B-301       F                   1060
- 7 CBH01         1994        11       8 B-402       F                    989
- 8 CBH01         1994        11       8 B-402       F                    989
- 9 CBH01         1994        11       8 B-403       F                   1062
-10 CBH01         1994        11       8 B-403       F                   1062
-# ℹ 1 more variable: animal_yob &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 359 × 11
+    year watershed elevation transect sample stem_length leaf1area leaf2area
+   &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt;    &lt;fct&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+ 1  2003 Reference Low       R1       1             86.9     13.8      12.1 
+ 2  2003 Reference Low       R1       2            114       14.6      15.3 
+ 3  2003 Reference Low       R1       3             83.5     12.5       9.73
+ 4  2003 Reference Low       R1       4             68.1      9.97     10.1 
+ 5  2003 Reference Low       R1       5             72.1      6.84      5.48
+ 6  2003 Reference Low       R1       6             77.7      9.66      7.64
+ 7  2003 Reference Low       R1       7             85.5      8.82      9.23
+ 8  2003 Reference Low       R1       8             81.6      5.83      6.18
+ 9  2003 Reference Low       R1       9             92.9      8.11      7.13
+10  2003 Reference Low       R1       10            59.6      3.02      3.44
+# ℹ 349 more rows
+# ℹ 3 more variables: leaf_dry_mass &lt;dbl&gt;, stem_dry_mass &lt;dbl&gt;,
+#   corrected_leaf_area &lt;dbl&gt;</code></pre>
 </div>
 </div>
 </section>
-<section id="extract-unique-rows" class="level2">
-<h2 class="anchored" data-anchor-id="extract-unique-rows">Extract unique rows</h2>
-<p>Extract the unique rows.</p>
+<section id="one-step-pipe" class="level2">
+<h2 class="anchored" data-anchor-id="one-step-pipe">One step pipe</h2>
+<p>Below is a one step pipe command. In it we pipe our <strong>tibble</strong> <code>maples_tbl</code> into the function <a href="../dplyr/filter.html"><code>slice()</code></a> to extract rows 1:5.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">distinct</span>(bison_tbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>maples_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 8
-  data_code rec_year rec_month rec_day animal_code animal_sex animal_weight
-  &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;
-1 CBH01         1994        11       8 813         F                    890
-2 CBH01         1994        11       8 834         F                   1074
-3 CBH01         1994        11       8 B-301       F                   1060
-4 CBH01         1994        11       8 B-402       F                    989
-5 CBH01         1994        11       8 B-403       F                   1062
-# ℹ 1 more variable: animal_yob &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 5 × 11
+   year watershed elevation transect sample stem_length leaf1area leaf2area
+  &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt;    &lt;fct&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+1  2003 Reference Low       R1       1             86.9     13.8      12.1 
+2  2003 Reference Low       R1       2            114       14.6      15.3 
+3  2003 Reference Low       R1       3             83.5     12.5       9.73
+4  2003 Reference Low       R1       4             68.1      9.97     10.1 
+5  2003 Reference Low       R1       5             72.1      6.84      5.48
+# ℹ 3 more variables: leaf_dry_mass &lt;dbl&gt;, stem_dry_mass &lt;dbl&gt;,
+#   corrected_leaf_area &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>The above command acts the same as the below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">slice</span>(maples_tbl,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 11
+   year watershed elevation transect sample stem_length leaf1area leaf2area
+  &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt;    &lt;fct&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+1  2003 Reference Low       R1       1             86.9     13.8      12.1 
+2  2003 Reference Low       R1       2            114       14.6      15.3 
+3  2003 Reference Low       R1       3             83.5     12.5       9.73
+4  2003 Reference Low       R1       4             68.1      9.97     10.1 
+5  2003 Reference Low       R1       5             72.1      6.84      5.48
+# ℹ 3 more variables: leaf_dry_mass &lt;dbl&gt;, stem_dry_mass &lt;dbl&gt;,
+#   corrected_leaf_area &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>To assign the output of piped function you can utilise the assignment operator as usual.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>maples_subset_tbl <span class="ot">&lt;-</span> maples_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>maples_subset_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 11
+   year watershed elevation transect sample stem_length leaf1area leaf2area
+  &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt;    &lt;fct&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+1  2003 Reference Low       R1       1             86.9     13.8      12.1 
+2  2003 Reference Low       R1       2            114       14.6      15.3 
+3  2003 Reference Low       R1       3             83.5     12.5       9.73
+4  2003 Reference Low       R1       4             68.1      9.97     10.1 
+5  2003 Reference Low       R1       5             72.1      6.84      5.48
+6  2003 Reference Low       R1       6             77.7      9.66      7.64
+7  2003 Reference Low       R1       7             85.5      8.82      9.23
+# ℹ 3 more variables: leaf_dry_mass &lt;dbl&gt;, stem_dry_mass &lt;dbl&gt;,
+#   corrected_leaf_area &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="multi-step-pipe" class="level2">
+<h2 class="anchored" data-anchor-id="multi-step-pipe">Multi step pipe</h2>
+<p>Pipes are great when you need to use multiple functions on one object.</p>
+<p>In the below case we:</p>
+<ul>
+<li>Extract rows 1 to 1000 with <a href="../dplyr/slice.html"><code>dplyr::slice()</code></a></li>
+<li>Then filter the 1000 rows so we only retain observations/rows where the elevation column value is equal to “Low” with <a href="../dplyr/filter.html"><code>dplyr::filter()</code></a></li>
+<li>Select columns leaf1area and leaf2area with <a href="../dplyr/select.html"><code>dplyr::select()</code></a></li>
+<li>Summarise the resulting <strong>tibble</strong> with <code>summary()</code></li>
+</ul>
+<p><strong>Note:</strong> Pipes are not only limited to <strong>tidyverse</strong> functions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>maples_tbl <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Extract indexes 1 to 1000</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Extract only low elevation samples</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(elevation <span class="sc">==</span> <span class="st">"Low"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Select the columns leaf1are and leaf2area</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">c</span>(leaf1area,leaf2area)) <span class="sc">|&gt;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Summarise tibble</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   leaf1area        leaf2area     
+ Min.   : 2.480   Min.   : 3.444  
+ 1st Qu.: 9.308   1st Qu.: 9.548  
+ Median :12.110   Median :11.891  
+ Mean   :12.239   Mean   :12.305  
+ 3rd Qu.:15.405   3rd Qu.:15.588  
+ Max.   :26.198   Max.   :24.235  </code></pre>
+</div>
+</div>
+<p>Less visually clear method with nested functions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dplyr<span class="sc">::</span><span class="fu">select</span>(dplyr<span class="sc">::</span><span class="fu">filter</span>(dplyr<span class="sc">::</span><span class="fu">slice</span>(maples_tbl,<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>),elevation<span class="sc">==</span><span class="st">"Low"</span>),<span class="fu">c</span>(leaf1area,leaf2area)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   leaf1area        leaf2area     
+ Min.   : 2.480   Min.   : 3.444  
+ 1st Qu.: 9.308   1st Qu.: 9.548  
+ Median :12.110   Median :11.891  
+ Mean   :12.239   Mean   :12.305  
+ 3rd Qu.:15.405   3rd Qu.:15.588  
+ Max.   :26.198   Max.   :24.235  </code></pre>
 </div>
 </div>
 
@@ -930,13 +1014,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../dplyr/arrange.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Arrange</span>
+      <a href="../dplyr/dplyr.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Dplyr</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../dplyr/filter.html" class="pagination-link">
-        <span class="nav-page-text">Filter</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../dplyr/row_functions.html" class="pagination-link">
+        <span class="nav-page-text">Row overview</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
