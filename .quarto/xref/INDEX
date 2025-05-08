@@ -127,5 +127,11 @@
   },
   "dplyr/arrange.qmd": {
     "arrange.html": "8be5942b"
+  },
+  "dplyr/distinct.qmd": {
+    "distinct.html": "ef9afcc2"
+  },
+  "dplyr/filter.qmd": {
+    "filter.html": "17bc6272"
   }
 }

@@ -1,0 +1,26 @@
+---
+title: "Distinct"
+---
+
+The `dplyr::distinct()` function extracts unique/distinct rows from a __tibble__.
+
+## Dataset
+
+For demostration we’ll load and subset the knz_bison data from the lterdatasampler package (hyperlink includes install instructions). This time we will ensure to duplicate some rows.
+
+```{r}
+#Load package
+library("lterdatasampler")
+#Subset of knz_bison tibble for demonstration
+bison_tbl <- tibble::as_tibble(lterdatasampler::knz_bison)[rep(c(1,1,2,2,3,3,4,4,5,5)),]
+bison_tbl
+```
+
+## Extract unique rows
+
+Extract the unique rows.
+
+```{r}
+dplyr::distinct(bison_tbl)
+```
+

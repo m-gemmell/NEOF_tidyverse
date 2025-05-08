@@ -1,5 +1,5 @@
 ---
-title: "Row functions"
+title: "Row overview"
 ---
 
 There four main verbs (i.e. functions) to manipulate rows. These are:

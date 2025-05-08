@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NEOF Tidyverse - Cheatsheets</title>
+<title>NEOF Tidyverse - Distinct</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../readr/readr.html" rel="prev">
+<link href="../dplyr/filter.html" rel="next">
+<link href="../dplyr/arrange.html" rel="prev">
 <link href="..//images/NEOF_favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -93,11 +128,11 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Tibble</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../dplyr/dplyr.html" rel="" target="">
+    <a class="nav-link active" href="../dplyr/dplyr.html" rel="" target="" aria-current="page">
  <span class="menu-text">Dplyr</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../readr/readr.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../readr/readr.html" rel="" target="">
  <span class="menu-text">Readr</span></a>
   </li>  
   <li class="nav-item">
@@ -156,7 +191,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../readr/cheatsheets.html">Cheatsheets</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../dplyr/row_functions.html">Rows</a></li><li class="breadcrumb-item"><a href="../dplyr/distinct.html">Distinct</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -170,13 +205,60 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../readr/readr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Readr</span></a>
+  <a href="../dplyr/dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dplyr</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Rows</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/row_functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Row overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/arrange.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Arrange</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/distinct.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Distinct</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/filter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Filter</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/slice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Slice</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/bind_tibbles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bind tibbles</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../readr/cheatsheets.html" class="sidebar-item-text sidebar-link active">
+  <a href="../dplyr/cheatsheets.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cheatsheets</span></a>
   </div>
 </li>
@@ -186,14 +268,21 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link active" data-scroll-target="#dataset">Dataset</a></li>
+  <li><a href="#extract-unique-rows" id="toc-extract-unique-rows" class="nav-link" data-scroll-target="#extract-unique-rows">Extract unique rows</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Cheatsheets</h1>
+<h1 class="title">Distinct</h1>
 </div>
 
 
@@ -208,16 +297,54 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p><a href="https://github.com/rstudio/cheatsheets/blob/main/data-import.pdf">Source</a></p>
-<center>
-<img src="images/cheatsheet_1.png" class="img-fluid" style="width:100%">
-</center>
-<center>
-<img src="images/cheatsheet_2.png" class="img-fluid" style="width:100%">
-</center>
-<p>TEST</p>
+<p>The <code>dplyr::distinct()</code> function extracts unique/distinct rows from a <strong>tibble</strong>.</p>
+<section id="dataset" class="level2">
+<h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
+<p>For demostration we’ll load and subset the knz_bison data from the lterdatasampler package (hyperlink includes install instructions). This time we will ensure to duplicate some rows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load package</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"lterdatasampler"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Subset of knz_bison tibble for demonstration</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>bison_tbl <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">as_tibble</span>(lterdatasampler<span class="sc">::</span>knz_bison)[<span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>)),]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>bison_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 8
+   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight
+   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;
+ 1 CBH01         1994        11       8 813         F                    890
+ 2 CBH01         1994        11       8 813         F                    890
+ 3 CBH01         1994        11       8 834         F                   1074
+ 4 CBH01         1994        11       8 834         F                   1074
+ 5 CBH01         1994        11       8 B-301       F                   1060
+ 6 CBH01         1994        11       8 B-301       F                   1060
+ 7 CBH01         1994        11       8 B-402       F                    989
+ 8 CBH01         1994        11       8 B-402       F                    989
+ 9 CBH01         1994        11       8 B-403       F                   1062
+10 CBH01         1994        11       8 B-403       F                   1062
+# ℹ 1 more variable: animal_yob &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="extract-unique-rows" class="level2">
+<h2 class="anchored" data-anchor-id="extract-unique-rows">Extract unique rows</h2>
+<p>Extract the unique rows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">distinct</span>(bison_tbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 8
+  data_code rec_year rec_month rec_day animal_code animal_sex animal_weight
+  &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;
+1 CBH01         1994        11       8 813         F                    890
+2 CBH01         1994        11       8 834         F                   1074
+3 CBH01         1994        11       8 B-301       F                   1060
+4 CBH01         1994        11       8 B-402       F                    989
+5 CBH01         1994        11       8 B-403       F                   1062
+# ℹ 1 more variable: animal_yob &lt;dbl&gt;</code></pre>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script>
@@ -776,11 +903,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../readr/readr.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Readr</span>
+      <a href="../dplyr/arrange.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Arrange</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../dplyr/filter.html" class="pagination-link">
+        <span class="nav-page-text">Filter</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
