@@ -165,6 +165,8 @@ Daily average air temperature data for Madison, Wisconsin (1869 - 2019), North T
 
 ### nwt_pikas
 
+Pika observations for habitat and stress analysis at Niwot Ridge LTER, Colorado
+
 `r hide("List of variables")`
 - __date__: a date denoting the observation date of the fecal sample
 - __site__: a factor denoting the location where the fecal sample was collected within Niwot Ridge
@@ -176,11 +178,11 @@ Daily average air temperature data for Madison, Wisconsin (1869 - 2019), North T
 -__elev_m__: a number denoting the elevation in meters of the sampling station where the fecal sample was collected
 `r unhide()`
 
-Pika observations for habitat and stress analysis at Niwot Ridge LTER, Colorado
-
 [Webpage link](https://lter.github.io/lterdatasampler/reference/nwt_pikas.html)
 
 ### pie_crab
+
+Fiddler crab body size recorded summer 2016 in salt marshes from Florida to Massachusetts including Plum Island Ecosystem LTER, Virginia Coast LTER, and NOAA’s National Estuarine Research Reserve System
 
 `r hide("List of variables")`
 - __date__: a date denoting the date crabs were collected
@@ -193,8 +195,6 @@ Pika observations for habitat and stress analysis at Niwot Ridge LTER, Colorado
 - __water_temp_sd__: a number denoting the standard deviation of mean annual water temperature (Celsius)
 - __name__: full name of research site; LTER, Long-Term Ecological Research site; NERR, National Estuarine Research Reserve
 `r unhide()`
-
-Fiddler crab body size recorded summer 2016 in salt marshes from Florida to Massachusetts including Plum Island Ecosystem LTER, Virginia Coast LTER, and NOAA’s National Estuarine Research Reserve System
 
 [Webpage link](https://lter.github.io/lterdatasampler/reference/pie_crab.html)
 

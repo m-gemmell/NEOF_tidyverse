@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NEOF Tidyverse - Datasets</title>
+<title>NEOF Tidyverse - Glimpse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../datasets/lterdatasampler.html" rel="next">
+<link href="../dplyr/mutate.html" rel="next">
+<link href="../dplyr/slice.html" rel="prev">
 <link href="..//images/NEOF_favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -93,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Tibble</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../dplyr/dplyr.html" rel="" target="">
+    <a class="nav-link active" href="../dplyr/dplyr.html" rel="" target="" aria-current="page">
  <span class="menu-text">Dplyr</span></a>
   </li>  
   <li class="nav-item">
@@ -125,7 +160,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Lubridate</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../datasets/datasets.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../datasets/datasets.html" rel="" target="">
  <span class="menu-text">Datasets</span></a>
   </li>  
 </ul>
@@ -156,7 +191,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../datasets/datasets.html">Datasets</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../dplyr/glimpse.html">Columns</a></li><li class="breadcrumb-item"><a href="../dplyr/glimpse.html">Glimpse</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -170,20 +205,96 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../datasets/datasets.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Datasets</span></a>
+  <a href="../dplyr/dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dplyr</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../datasets/lterdatasampler.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lterdatasampler</span></a>
+  <a href="../dplyr/pipes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pipes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Rows</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/row_functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Row overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/arrange.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Arrange</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/distinct.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Distinct</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/filter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Filter</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/slice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Slice</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Columns</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/glimpse.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Glimpse</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/mutate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mutate</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/select.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Select</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/bind_tibbles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bind tibbles</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../datasets/mgrtibbles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Mgrtibbles</span></a>
+  <a href="../dplyr/cheatsheets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cheatsheets</span></a>
   </div>
 </li>
     </ul>
@@ -196,15 +307,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#suggestions-for-matthew" id="toc-suggestions-for-matthew" class="nav-link active" data-scroll-target="#suggestions-for-matthew">Suggestions for Matthew</a>
-  <ul class="collapse">
-  <li><a href="#houseplant-environment-characteristics" id="toc-houseplant-environment-characteristics" class="nav-link" data-scroll-target="#houseplant-environment-characteristics">Houseplant environment characteristics</a></li>
-  <li><a href="#crab-age-prediction" id="toc-crab-age-prediction" class="nav-link" data-scroll-target="#crab-age-prediction">Crab age prediction</a></li>
-  <li><a href="#shifting-seas-ocean-climate-marine-life-dataset" id="toc-shifting-seas-ocean-climate-marine-life-dataset" class="nav-link" data-scroll-target="#shifting-seas-ocean-climate-marine-life-dataset">Shifting Seas: Ocean Climate &amp; Marine Life Dataset</a></li>
-  <li><a href="#predict-age-abalone" id="toc-predict-age-abalone" class="nav-link" data-scroll-target="#predict-age-abalone">Predict age abalone</a></li>
-  <li><a href="#penguin-sizes-dataset" id="toc-penguin-sizes-dataset" class="nav-link" data-scroll-target="#penguin-sizes-dataset">Penguin Sizes Dataset</a></li>
-  <li><a href="#fish-and-overfishing" id="toc-fish-and-overfishing" class="nav-link" data-scroll-target="#fish-and-overfishing">Fish and Overfishing</a></li>
-  </ul></li>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link active" data-scroll-target="#dataset">Dataset</a></li>
+  <li><a href="#glimpse" id="toc-glimpse" class="nav-link" data-scroll-target="#glimpse">Glimpse</a></li>
   </ul>
 </nav>
     </div>
@@ -213,7 +317,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Datasets</h1>
+<h1 class="title">Glimpse</h1>
 </div>
 
 
@@ -228,41 +332,64 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>This website uses various datasets to demonstrate code. Below are explanations to the datasets and their download links.</p>
-<section id="suggestions-for-matthew" class="level2">
-<h2 class="anchored" data-anchor-id="suggestions-for-matthew">Suggestions for Matthew</h2>
-<section id="houseplant-environment-characteristics" class="level3">
-<h3 class="anchored" data-anchor-id="houseplant-environment-characteristics">Houseplant environment characteristics</h3>
-<p>all_plant_details.csv</p>
-<p>https://www.kaggle.com/datasets/noneee/houseplant-environment-characteristics</p>
+<p>The function <code>dplyr::glimpse()</code> allows you to print <strong>tibbles</strong> in a transposed manner. This will allow you to view all the columns with their data type and some of the first values.</p>
+<section id="dataset" class="level2">
+<h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
+<p>For demonstration we’ll load the <code>and_vertebrates</code> data from the <a href="../datasets/lterdatasampler.html">lterdatasampler package</a> (hyperlink includes install instructions).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load package</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"lterdatasampler"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#and_vertebrates tibble for demonstration</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>and_vertebrates_tbl <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">as_tibble</span>(lterdatasampler<span class="sc">::</span>and_vertebrates)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>and_vertebrates_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 32,209 × 16
+    year sitecode section reach  pass unitnum unittype vert_index pitnumber
+   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;
+ 1  1987 MACKCC-L CC      L         1       1 R                 1        NA
+ 2  1987 MACKCC-L CC      L         1       1 R                 2        NA
+ 3  1987 MACKCC-L CC      L         1       1 R                 3        NA
+ 4  1987 MACKCC-L CC      L         1       1 R                 4        NA
+ 5  1987 MACKCC-L CC      L         1       1 R                 5        NA
+ 6  1987 MACKCC-L CC      L         1       1 R                 6        NA
+ 7  1987 MACKCC-L CC      L         1       1 R                 7        NA
+ 8  1987 MACKCC-L CC      L         1       1 R                 8        NA
+ 9  1987 MACKCC-L CC      L         1       1 R                 9        NA
+10  1987 MACKCC-L CC      L         1       1 R                10        NA
+# ℹ 32,199 more rows
+# ℹ 7 more variables: species &lt;chr&gt;, length_1_mm &lt;dbl&gt;, length_2_mm &lt;dbl&gt;,
+#   weight_g &lt;dbl&gt;, clip &lt;chr&gt;, sampledate &lt;date&gt;, notes &lt;chr&gt;</code></pre>
+</div>
+</div>
 </section>
-<section id="crab-age-prediction" class="level3">
-<h3 class="anchored" data-anchor-id="crab-age-prediction">Crab age prediction</h3>
-<p>CrabAgePredictions.csv</p>
-<p>https://www.kaggle.com/datasets/sidhus/crab-age-prediction</p>
-</section>
-<section id="shifting-seas-ocean-climate-marine-life-dataset" class="level3">
-<h3 class="anchored" data-anchor-id="shifting-seas-ocean-climate-marine-life-dataset">Shifting Seas: Ocean Climate &amp; Marine Life Dataset</h3>
-<p>realistic_ocean_climate_dataset.csv</p>
-<p>https://www.kaggle.com/datasets/atharvasoundankar/shifting-seas-ocean-climate-and-marine-life-dataset</p>
-</section>
-<section id="predict-age-abalone" class="level3">
-<h3 class="anchored" data-anchor-id="predict-age-abalone">Predict age abalone</h3>
-<p>abalone.data.csv</p>
-<p>https://www.kaggle.com/datasets/farkhod77/abalone-age-predict</p>
-</section>
-<section id="penguin-sizes-dataset" class="level3">
-<h3 class="anchored" data-anchor-id="penguin-sizes-dataset">Penguin Sizes Dataset</h3>
-<p>penguins_size.csv</p>
-<p>https://www.kaggle.com/datasets/amulyas/penguin-size-dataset</p>
-</section>
-<section id="fish-and-overfishing" class="level3">
-<h3 class="anchored" data-anchor-id="fish-and-overfishing">Fish and Overfishing</h3>
-<p>capture-fisheries-vs-aquaculture.csv</p>
-<p>https://www.kaggle.com/datasets/sergegeukjian/fish-and-overfishing?select=capture-fisheries-vs-aquaculture.csv</p>
+<section id="glimpse" class="level2">
+<h2 class="anchored" data-anchor-id="glimpse">Glimpse</h2>
+<p>Glimpse the <strong>tibble</strong>. This allows you to preview all the columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>and_vertebrates_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 32,209
+Columns: 16
+$ year        &lt;dbl&gt; 1987, 1987, 1987, 1987, 1987, 1987, 1987, 1987, 1987, 1987…
+$ sitecode    &lt;chr&gt; "MACKCC-L", "MACKCC-L", "MACKCC-L", "MACKCC-L", "MACKCC-L"…
+$ section     &lt;chr&gt; "CC", "CC", "CC", "CC", "CC", "CC", "CC", "CC", "CC", "CC"…
+$ reach       &lt;chr&gt; "L", "L", "L", "L", "L", "L", "L", "L", "L", "L", "L", "L"…
+$ pass        &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+$ unitnum     &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2…
+$ unittype    &lt;chr&gt; "R", "R", "R", "R", "R", "R", "R", "R", "R", "R", "R", "R"…
+$ vert_index  &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1, …
+$ pitnumber   &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ species     &lt;chr&gt; "Cutthroat trout", "Cutthroat trout", "Cutthroat trout", "…
+$ length_1_mm &lt;dbl&gt; 58, 61, 89, 58, 93, 86, 107, 131, 103, 117, 100, 127, 99, …
+$ length_2_mm &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ weight_g    &lt;dbl&gt; 1.75, 1.95, 5.60, 2.15, 6.90, 5.90, 10.50, 20.60, 9.55, 13…
+$ clip        &lt;chr&gt; "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "N…
+$ sampledate  &lt;date&gt; 1987-10-07, 1987-10-07, 1987-10-07, 1987-10-07, 1987-10-0…
+$ notes       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</code></pre>
+</div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -822,10 +949,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../dplyr/slice.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Slice</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../datasets/lterdatasampler.html" class="pagination-link">
-        <span class="nav-page-text">Lterdatasampler</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../dplyr/mutate.html" class="pagination-link">
+        <span class="nav-page-text">Mutate</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

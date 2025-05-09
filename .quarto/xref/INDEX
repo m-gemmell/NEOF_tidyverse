@@ -139,5 +139,20 @@
   },
   "dplyr/pipes.qmd": {
     "pipes.html": "ffbfbfe7"
+  },
+  "dplyr/select.qmd": {
+    "select.html": "3c179307"
+  },
+  "datasets/mgrtibbles.qmd": {
+    "mgrtibbles.html": "273a0135"
+  },
+  "dplyr/glimpse.qmd": {
+    "glimpse.html": "98f67305"
+  },
+  "dplyr/mutate.qmd": {
+    "mutate.html": "2a4d2780"
+  },
+  "dplyr/na_removal.qmd": {
+    "na_removal.html": "28c6778a"
   }
 }

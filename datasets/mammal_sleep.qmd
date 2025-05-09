@@ -1,8 +1,0 @@
----
-title: "Sleep in mammals"
-format: html
----
-
-mammals.csv
-
-https://www.kaggle.com/datasets/volkandl/sleep-in-mammals

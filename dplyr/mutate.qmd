@@ -1,0 +1,42 @@
+---
+title: "Mutate"
+---
+
+The function `dplyr::mutate()` allows you to:
+
+- Create new columns based on existing columns.
+- Modify existing columns
+- Delete columns
+
+## Dataset
+
+For demonstration we'll load the `mammal_sleep_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+
+```{r}
+#Load package
+library("mgrtibbles")
+#mammal_sleep_tbl tibble for demonstration
+mgrtibbles::mammal_sleep_tbl
+```
+
+## Create new column
+
+Create a column of brain and body weight ratio.
+
+```{r}
+mammal_sleep_tbl |>
+    #Select columns of interest
+    dplyr::select(species, body_wt, brain_wt) |>
+    #Calculate and add brain_body_wt_ratio column
+    dplyr::mutate(brain_body_wt_ratio = brain_wt/(body_wt*1000))
+```
+
+Create a column for life time sleep
+
+```{r}
+mammal_sleep_tbl |>
+    #Select columns of interest
+    dplyr::select(species, total_sleep, life_span) |>
+    #Calculate and add total_life_sleep column
+    dplyr::mutate(total_life_sleep = (life_span*365.25) * total_sleep)
+```

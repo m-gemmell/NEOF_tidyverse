@@ -67,7 +67,7 @@ maples_tbl |>
     dplyr::slice(1:1000) |>
     #Extract only low elevation samples
     dplyr::filter(elevation == "Low") |>
-    #Select the columns leaf1are and leaf2area
+    #Select the columns leaf1area and leaf2area
     dplyr::select(c(leaf1area,leaf2area)) |>
     #Summarise tibble
     summary()

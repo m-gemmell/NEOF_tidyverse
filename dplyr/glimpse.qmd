@@ -1,0 +1,28 @@
+---
+title: "Glimpse"
+---
+
+The function `dplyr::glimpse()` allows you to print __tibbles__ in a transposed manner.
+This will allow you to view all the columns with their data type and some of the first values.
+
+## Dataset
+
+For demonstration we'll load the `and_vertebrates` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (hyperlink includes install instructions).
+
+```{r}
+#Load package
+library("lterdatasampler")
+#and_vertebrates tibble for demonstration
+and_vertebrates_tbl <- tibble::as_tibble(lterdatasampler::and_vertebrates)
+and_vertebrates_tbl
+```
+
+## Glimpse
+
+Glimpse the __tibble__.
+This allows you to preview all the columns.
+
+```{r}
+and_vertebrates_tbl |> dplyr::glimpse()
+```
+

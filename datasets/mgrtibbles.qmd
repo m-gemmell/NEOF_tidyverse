@@ -1,0 +1,32 @@
+---
+title: "Mgrtibbles"
+---
+
+__mgrtibbles__ is a R package containing various datasets in __tibbles__.
+They were curated into a R package by [Matthew Gemmell](https://m-gemmell.github.io/).
+
+For full information please see the [mgrtibbles github page](https://github.com/m-gemmell/mgrtibbles/tree/main)
+
+## Install and load
+
+Installation and loading instruction below:
+
+You will need the `remotes` package installed and loaded.
+
+```{r, eval=FALSE}
+install.packages("remotes")
+library(remotes)
+```
+
+```{r, eval=FALSE}
+remotes::install_github("m-gemmell/mgrtibbles")
+library(mgrtibbles)
+```
+
+## Accessing data
+
+Once you have installed and loaded the package you can access one of the various datasets as a [__tibble__](/tibble/tibble.qmd) like below:
+
+```{r}
+mgrtibbles::mammal_sleep_tbl
+```

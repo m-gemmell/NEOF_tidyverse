@@ -1,0 +1,56 @@
+---
+title: "NA removal"
+---
+
+You can remove rows with NAs in various ways with `dplyr`.
+
+- Remove rows that contain at least one NA value
+- Remove rows with NAs in one specific column
+- Remove rows with NAs in certain columns
+
+```{r, echo=FALSE, warning=FALSE,output=FALSE,error=FALSE}
+library("tidyverse")
+```
+
+## Dataset
+
+For demonstration we'll load the `mammal_sleep_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+
+```{r}
+#Load package
+library("mgrtibbles")
+#mammal_sleep_tbl tibble for demonstration
+mgrtibbles::mammal_sleep_tbl
+```
+
+## Na in any column
+
+Remove rows with an NA in any column with `na.omit()` from `stats` package in base R.
+
+```{r}
+mammal_sleep_tbl |>
+    na.omit()
+```
+
+## NA in one column
+
+Can remove rows with an NA in one specific column with `dplyr::filter()` and `!is.na()`.
+
+Remove rows where there is an NA in the `life_span` column.
+
+```{r}
+mammal_sleep_tbl |>
+    dplyr::filter(!is.na(life_span))
+```
+
+## NA in certain columns
+
+Remove rows with an NA in at least one of the specified columns with `dplyr::filter_at()`.
+
+Remove rows where there is an NA in the non_dreaming or dreaming columns.
+
+```{r}
+mammal_sleep_tbl |>
+    dplyr::filter_at(vars(non_dreaming, dreaming), all_vars(!is.na(.)))
+```
+

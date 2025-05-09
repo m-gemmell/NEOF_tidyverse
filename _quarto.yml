@@ -79,10 +79,13 @@ website:
       - href: dplyr/arrange.qmd
       - href: dplyr/distinct.qmd
       - href: dplyr/filter.qmd
+      - href: dplyr/na_removal.qmd
       - href: dplyr/slice.qmd
     - section: "Columns"
       contents:
+      - href: dplyr/glimpse.qmd
       - href: dplyr/select.qmd
+      - href: dplyr/mutate.qmd
     - href: dplyr/bind_tibbles.qmd
     - href: dplyr/cheatsheets.qmd
   - id: Readr
@@ -149,7 +152,7 @@ website:
     contents:
     - href: datasets/datasets.qmd
     - href: datasets/lterdatasampler.qmd
-    - href: datasets/mammal_sleep.qmd
+    - href: datasets/mgrtibbles.qmd
 format:
   html:
     grid:

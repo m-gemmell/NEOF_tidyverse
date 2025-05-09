@@ -4,7 +4,7 @@ title: "Row overview"
 
 There four main verbs (i.e. functions) to manipulate rows. These are:
 
-- `arrange()`: Arrange the rows of a __tibble__. Can be used to reorder the rows based on the values of a column.
-- `distinct()`: Extracts unique rows from a __tibble__.
-- `filter()`: 
-- `slice()`:
+- [`arrange()`](/dplyr/arrange.qmd): Arrange the rows of a __tibble__. Can be used to reorder the rows based on the values of a column.
+- [`distinct()`](/dplyr/distinct.qmd): Extracts unique rows from a __tibble__.
+- [`filter()`](/dplyr/filter.qmd): Extract rows using conditions. This can be used to pick rows of certain groups, filter based on numeric sizes, and more.
+- [`slice()`](/dplyr/slice.qmd): A set of methods to choose rows based on index positions, top and bottom observations, and min and max values based on a specific column. This is especially useful for piping (`|>`).
