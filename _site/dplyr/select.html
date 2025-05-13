@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../dplyr/bind_tibbles.html" rel="next">
-<link href="../dplyr/glimpse.html" rel="prev">
+<link href="../dplyr/group_by.html" rel="next">
+<link href="../dplyr/rename.html" rel="prev">
 <link href="..//images/NEOF_favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -192,12 +226,6 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dplyr/row_functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Row overview</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../dplyr/arrange.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Arrange</span></a>
   </div>
@@ -212,6 +240,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../dplyr/filter.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Filter</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/na_removal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NA removal</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -239,8 +273,61 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../dplyr/mutate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mutate</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/pull.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pull</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/relocate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Relocate</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/rename.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rename</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../dplyr/select.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Select</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Grouping</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/group_by.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Group by</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/count.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Count</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/summarise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">summarise.html</span></a>
   </div>
 </li>
       </ul>
@@ -263,7 +350,23 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link active" data-scroll-target="#dataset">Dataset</a></li>
+  <li><a href="#one-column" id="toc-one-column" class="nav-link" data-scroll-target="#one-column">One column</a></li>
+  <li><a href="#multiple-columns" id="toc-multiple-columns" class="nav-link" data-scroll-target="#multiple-columns">Multiple columns</a></li>
+  <li><a href="#consecutive-range-of-columns" id="toc-consecutive-range-of-columns" class="nav-link" data-scroll-target="#consecutive-range-of-columns">Consecutive range of columns</a></li>
+  <li><a href="#numeric-indexes" id="toc-numeric-indexes" class="nav-link" data-scroll-target="#numeric-indexes">Numeric indexes</a></li>
+  <li><a href="#last-column" id="toc-last-column" class="nav-link" data-scroll-target="#last-column">Last column</a></li>
+  <li><a href="#starts-with" id="toc-starts-with" class="nav-link" data-scroll-target="#starts-with">Starts with</a></li>
+  <li><a href="#ends-with" id="toc-ends-with" class="nav-link" data-scroll-target="#ends-with">Ends with</a></li>
+  <li><a href="#contains" id="toc-contains" class="nav-link" data-scroll-target="#contains">Contains</a></li>
+  <li><a href="#matches" id="toc-matches" class="nav-link" data-scroll-target="#matches">Matches</a></li>
+  <li><a href="#combine-with-c" id="toc-combine-with-c" class="nav-link" data-scroll-target="#combine-with-c">Combine with <code>c()</code></a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -285,8 +388,309 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>The function <code>dplyr::select()</code> allows you to select columns from a <strong>tibble</strong>. There are many different ways to do this with various helper functions.</p>
+<p>When subsetting with <code>dplyr::select()</code> the resulting object will always be a <strong>tibble</strong>.</p>
+<p><a href="https://dplyr.tidyverse.org//reference/select.html">Tidyverse reference page</a></p>
+<section id="dataset" class="level2">
+<h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
+<p>For demonstration we’ll load the <code>mammal_sleep_tbl</code> data from the <a href="../datasets/mgrtibbles.html">mgrtibbles package</a> (hyperlink includes install instructions). For easier viewing we’ll subset it so it only has 5 rows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load package</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"mgrtibbles"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#mammal_sleep_tbl tibble for demonstration</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>mammal_sleep_tbl<span class="ot">&lt;-</span> mgrtibbles<span class="sc">::</span>mammal_sleep_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>mammal_sleep_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 11
+  species body_wt brain_wt non_dreaming dreaming total_sleep life_span gestation
+  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+1 Africa… 6654      5.71           NA       NA           3.3      38.6       645
+2 Africa…    1      0.0066          6.3      2           8.3       4.5        42
+3 Arctic…    3.38   0.0445         NA       NA          12.5      14          60
+4 Arctic…    0.92   0.0057         NA       NA          16.5      NA          25
+5 Asiane… 2547      4.60            2.1      1.8         3.9      69         624
+# ℹ 3 more variables: predation &lt;fct&gt;, exposure &lt;fct&gt;, danger &lt;fct&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="one-column" class="level2">
+<h2 class="anchored" data-anchor-id="one-column">One column</h2>
+<p>Select one column</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mammal_sleep_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(dreaming)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 1
+  dreaming
+     &lt;dbl&gt;
+1     NA  
+2      2  
+3     NA  
+4     NA  
+5      1.8</code></pre>
+</div>
+</div>
+</section>
+<section id="multiple-columns" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-columns">Multiple columns</h2>
+<p>Select multiple columns individually.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mammal_sleep_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(species,dreaming,gestation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  species                dreaming gestation
+  &lt;chr&gt;                     &lt;dbl&gt;     &lt;dbl&gt;
+1 Africanelephant            NA         645
+2 Africangiantpouchedrat      2          42
+3 ArcticFox                  NA          60
+4 Arcticgroundsquirrel       NA          25
+5 Asianelephant               1.8       624</code></pre>
+</div>
+</div>
+</section>
+<section id="consecutive-range-of-columns" class="level2">
+<h2 class="anchored" data-anchor-id="consecutive-range-of-columns">Consecutive range of columns</h2>
+<p>Select a consecutive range of columns using the first and last column names of the range.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mammal_sleep_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(dreaming<span class="sc">:</span>gestation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 4
+  dreaming total_sleep life_span gestation
+     &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+1     NA           3.3      38.6       645
+2      2           8.3       4.5        42
+3     NA          12.5      14          60
+4     NA          16.5      NA          25
+5      1.8         3.9      69         624</code></pre>
+</div>
+</div>
+</section>
+<section id="numeric-indexes" class="level2">
+<h2 class="anchored" data-anchor-id="numeric-indexes">Numeric indexes</h2>
+<p>Numeric indexes can be used for column selection.</p>
+<p>Select the first column.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mammal_sleep_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 1
+  species               
+  &lt;chr&gt;                 
+1 Africanelephant       
+2 Africangiantpouchedrat
+3 ArcticFox             
+4 Arcticgroundsquirrel  
+5 Asianelephant         </code></pre>
+</div>
+</div>
+<p>Select columns 3:5.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mammal_sleep_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  brain_wt non_dreaming dreaming
+     &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;
+1   5.71           NA       NA  
+2   0.0066          6.3      2  
+3   0.0445         NA       NA  
+4   0.0057         NA       NA  
+5   4.60            2.1      1.8</code></pre>
+</div>
+</div>
+<p>Select columns 4, 7,and 2.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mammal_sleep_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  non_dreaming life_span body_wt
+         &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1         NA        38.6 6654   
+2          6.3       4.5    1   
+3         NA        14      3.38
+4         NA        NA      0.92
+5          2.1      69   2547   </code></pre>
+</div>
+</div>
+<p>Select all but the 6th column.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mammal_sleep_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 10
+  species   body_wt brain_wt non_dreaming dreaming life_span gestation predation
+  &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;fct&gt;    
+1 Africane… 6654      5.71           NA       NA        38.6       645 3        
+2 Africang…    1      0.0066          6.3      2         4.5        42 3        
+3 ArcticFox    3.38   0.0445         NA       NA        14          60 1        
+4 Arcticgr…    0.92   0.0057         NA       NA        NA          25 5        
+5 Asianele… 2547      4.60            2.1      1.8      69         624 3        
+# ℹ 2 more variables: exposure &lt;fct&gt;, danger &lt;fct&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="last-column" class="level2">
+<h2 class="anchored" data-anchor-id="last-column">Last column</h2>
+<p>Select the last column with <code>last_col()</code> helper function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mammal_sleep_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">last_col</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 1
+  danger
+  &lt;fct&gt; 
+1 3     
+2 3     
+3 1     
+4 3     
+5 4     </code></pre>
+</div>
+</div>
+<p>Select the fourth last column (i.e.&nbsp;3 spaces from the last column).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mammal_sleep_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">last_col</span>(<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 1
+  gestation
+      &lt;dbl&gt;
+1       645
+2        42
+3        60
+4        25
+5       624</code></pre>
+</div>
+</div>
+<p>Select the last 3 columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mammal_sleep_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">last_col</span>(<span class="dv">2</span>)<span class="sc">:</span><span class="fu">last_col</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  predation exposure danger
+  &lt;fct&gt;     &lt;fct&gt;    &lt;fct&gt; 
+1 3         5        3     
+2 3         1        3     
+3 1         1        1     
+4 5         2        3     
+5 3         5        4     </code></pre>
+</div>
+</div>
+</section>
+<section id="starts-with" class="level2">
+<h2 class="anchored" data-anchor-id="starts-with">Starts with</h2>
+<p>Select columns using a prefix of the column names to extract with the <code>starts_with()</code> helper function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>mammal_sleep_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"b"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  body_wt brain_wt
+    &lt;dbl&gt;    &lt;dbl&gt;
+1 6654      5.71  
+2    1      0.0066
+3    3.38   0.0445
+4    0.92   0.0057
+5 2547      4.60  </code></pre>
+</div>
+</div>
+</section>
+<section id="ends-with" class="level2">
+<h2 class="anchored" data-anchor-id="ends-with">Ends with</h2>
+<p>Select columns using a prefix of the column names to extract with the <code>ends_with()</code> helper function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>mammal_sleep_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"dreaming"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  non_dreaming dreaming
+         &lt;dbl&gt;    &lt;dbl&gt;
+1         NA       NA  
+2          6.3      2  
+3         NA       NA  
+4         NA       NA  
+5          2.1      1.8</code></pre>
+</div>
+</div>
+</section>
+<section id="contains" class="level2">
+<h2 class="anchored" data-anchor-id="contains">Contains</h2>
+<p>Select columns using a string the column names will contain with the <code>contains()</code> helper function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>mammal_sleep_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"in"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  brain_wt non_dreaming dreaming
+     &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;
+1   5.71           NA       NA  
+2   0.0066          6.3      2  
+3   0.0445         NA       NA  
+4   0.0057         NA       NA  
+5   4.60            2.1      1.8</code></pre>
+</div>
+</div>
+</section>
+<section id="matches" class="level2">
+<h2 class="anchored" data-anchor-id="matches">Matches</h2>
+<p>The <code>matches()</code> function is similar to the above <code>contains()</code> function but it can be used to select with regular expressions.</p>
+<p>In the below example we use <code>[]</code> to mean one of the letters within them. In other words <code>[eu]r</code> means <strong>“er”</strong> or <strong>“ur”</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>mammal_sleep_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">matches</span>(<span class="st">"[eu]r"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  exposure danger
+  &lt;fct&gt;    &lt;fct&gt; 
+1 5        3     
+2 1        3     
+3 1        1     
+4 2        3     
+5 5        4     </code></pre>
+</div>
+</div>
+<p>Another example where <code>s[lp]</code> mean <strong>“sl”</strong> or <strong>“sp”</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>mammal_sleep_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">matches</span>(<span class="st">"s[lp]"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  species                total_sleep life_span
+  &lt;chr&gt;                        &lt;dbl&gt;     &lt;dbl&gt;
+1 Africanelephant                3.3      38.6
+2 Africangiantpouchedrat         8.3       4.5
+3 ArcticFox                     12.5      14  
+4 Arcticgroundsquirrel          16.5      NA  
+5 Asianelephant                  3.9      69  </code></pre>
+</div>
+</div>
+</section>
+<section id="combine-with-c" class="level2">
+<h2 class="anchored" data-anchor-id="combine-with-c">Combine with <code>c()</code></h2>
+<p>You can combine many of the methods above with <code>c()</code>.</p>
+<p>Select the species column and the last three columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>mammal_sleep_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(species,<span class="fu">last_col</span>(<span class="dv">2</span>)<span class="sc">:</span><span class="fu">last_col</span>())</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 4
+  species                predation exposure danger
+  &lt;chr&gt;                  &lt;fct&gt;     &lt;fct&gt;    &lt;fct&gt; 
+1 Africanelephant        3         5        3     
+2 Africangiantpouchedrat 3         1        3     
+3 ArcticFox              1         1        1     
+4 Arcticgroundsquirrel   5         2        3     
+5 Asianelephant          3         5        4     </code></pre>
+</div>
+</div>
+<p>Select the species column, the columns containing dreaming, and the 6th to 7th columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>mammal_sleep_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(species, <span class="fu">contains</span>(<span class="st">"dreaming"</span>),<span class="dv">6</span><span class="sc">:</span><span class="dv">7</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 5
+  species                non_dreaming dreaming total_sleep life_span
+  &lt;chr&gt;                         &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+1 Africanelephant                NA       NA           3.3      38.6
+2 Africangiantpouchedrat          6.3      2           8.3       4.5
+3 ArcticFox                      NA       NA          12.5      14  
+4 Arcticgroundsquirrel           NA       NA          16.5      NA  
+5 Asianelephant                   2.1      1.8         3.9      69  </code></pre>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script>
@@ -845,13 +1249,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../dplyr/glimpse.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Glimpse</span>
+      <a href="../dplyr/rename.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Rename</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../dplyr/bind_tibbles.html" class="pagination-link">
-        <span class="nav-page-text">Bind tibbles</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../dplyr/group_by.html" class="pagination-link">
+        <span class="nav-page-text">Group by</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

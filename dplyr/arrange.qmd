@@ -4,6 +4,8 @@ title: "Arrange"
 
 The `dplyr::arrange()` function allows you to arrange the rows of a __tibble__.
 
+[Tidyverse reference page](https://dplyr.tidyverse.org//reference/arrange.html)
+
 ## Dataset
 
 For demonstration we'll load and subset the `knz_bison` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (hyperlink includes install instructions).

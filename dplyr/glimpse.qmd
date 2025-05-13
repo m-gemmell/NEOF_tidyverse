@@ -5,6 +5,8 @@ title: "Glimpse"
 The function `dplyr::glimpse()` allows you to print __tibbles__ in a transposed manner.
 This will allow you to view all the columns with their data type and some of the first values.
 
+[Tidyverse reference page](https://dplyr.tidyverse.org//reference/glimpse.html)
+
 ## Dataset
 
 For demonstration we'll load the `and_vertebrates` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (hyperlink includes install instructions).

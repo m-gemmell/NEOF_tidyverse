@@ -8,6 +8,8 @@ The function `dplyr::mutate()` allows you to:
 - Modify existing columns
 - Delete columns
 
+[Tidyverse reference page](https://dplyr.tidyverse.org//reference/mutate.html)
+
 ## Dataset
 
 For demonstration we'll load the `mammal_sleep_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).

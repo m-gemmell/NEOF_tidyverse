@@ -13,3 +13,33 @@ __Dplyr__ is the main data manipulation package for __tibbles__ in __tidyverse__
 __Dplyr__ is described as a "grammar of data manipulation" using verbs as the name of its various functions.
 
 [dplyr homepage](https://dplyr.tidyverse.org//)
+
+## Sections
+
+There are many sections for `dplyr`. These are summarised below.
+
+### Pipes
+
+[Pipes](/dplyr/pipes.qmd) (`|>`) are a vital part of creating efficient and clear code with __tidyverse__. 
+Pipes allow you to chain/pipe functions together.
+It can be used for all functions not just those from __tidyverse__.
+
+### Rows
+
+There four main verbs (i.e. functions) to manipulate rows. These are:
+
+- [`arrange()`](/dplyr/arrange.qmd): Arrange the rows of a __tibble__. Can be used to reorder the rows based on the values of a column.
+- [`distinct()`](/dplyr/distinct.qmd): Extracts unique/distinct rows from a __tibble__.
+- [`filter()`](/dplyr/filter.qmd): Extract rows by filtering with conditions. This can be used to pick rows of certain groups, filter based on numeric sizes, and more.
+- [`slice()`](/dplyr/slice.qmd): A set of methods to choose a slice of rows based on index positions, top and bottom observations, and min and max values based on a specific column. This is especially useful for piping (`|>`).
+
+### Columns
+
+There six main verbs (i.e. functions) to manipulate columns. These are:
+
+- [`glimpse()`](/dplyr/glimpse.qmd): Print a __tibble__ in a transposed manner. Useful for seeing the data types of all the columns.
+- [`mutate()`](/dplyr/mutate.qmd): Mutate columns to create new columns based on existing ones, modify existing columns, and delete columns.
+- [`pull()`](/dplyr/pull.qmd): Pull out a single column from a __tibble__, resulting in a __vector__.
+- [`relocate()`](/dplyr/relocate.qmd): Relocate columns. You can relocate columns to the start or end, and you can move them after or before specified columns.
+- [`select()`](/dplyr/select.qmd): Select specific columns of a __tibble__. Can be used with a variety of helper functions such as `starts_with()`, `ends_with()`, `contains()`, and `matches()`.
+

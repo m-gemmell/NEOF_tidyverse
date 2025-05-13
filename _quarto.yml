@@ -75,7 +75,6 @@ website:
     - href: dplyr/pipes.qmd
     - section: "Rows"
       contents:
-      - href: dplyr/row_functions.qmd
       - href: dplyr/arrange.qmd
       - href: dplyr/distinct.qmd
       - href: dplyr/filter.qmd
@@ -84,8 +83,16 @@ website:
     - section: "Columns"
       contents:
       - href: dplyr/glimpse.qmd
-      - href: dplyr/select.qmd
       - href: dplyr/mutate.qmd
+      - href: dplyr/pull.qmd
+      - href: dplyr/relocate.qmd
+      - href: dplyr/rename.qmd
+      - href: dplyr/select.qmd
+    - section: "Grouping"
+      contents:
+      - href: dplyr/group_by.qmd
+      - href: dplyr/count.qmd
+      - href: dplyr/summarise.qmd
     - href: dplyr/bind_tibbles.qmd
     - href: dplyr/cheatsheets.qmd
   - id: Readr
@@ -168,7 +175,7 @@ format:
       - styles.scss
       dark:
       - darkly
-      - styles.scss
+      - styles_dark.scss
     embed-resources: false
     toc: true
     mainfont: Lexend

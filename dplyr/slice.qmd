@@ -13,6 +13,8 @@ Their are multiple slice commands:
 - `slice_min()`: Select rows with smallest values of variable.
 - `slice_max()`: Select rows with largest values of a variable.
 
+[Tidyverse reference page](https://dplyr.tidyverse.org//reference/slice.html)
+
 ## Dataset
 
 For demonstration we'll load the `knz_bison` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (hyperlink includes install instructions).

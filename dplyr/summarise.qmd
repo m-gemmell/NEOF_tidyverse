@@ -1,0 +1,119 @@
+---
+title: "Summarise"
+---
+
+The function `summarise()` allows you to get a summary of the unique values within a grouped __tibble__.
+It will produce a __tibble_ of the summarised information.
+
+Various helper functions can be used to get specific info including:
+
+- `n()`: Count number of instances of group.
+- `mean()`: Calculate means of a columns.
+- `median()`: Calculate median of columns.
+- `sd()`: Calculate standard deviation.
+- `IQR()`: Calculate interquartile range. iqr = upper quartile - lower quartile
+- `first()`: Extract first value.
+- `last()`: Extract last value.
+- `nth()`: Extract specified nth value.
+
+[Tidyverse reference page](https://dplyr.tidyverse.org//reference/summarise.html)
+
+```{r, echo=FALSE, warning=FALSE,output=FALSE,error=FALSE}
+library("tidyverse")
+```
+
+## Dataset
+
+For demonstration we'll load the `amphibian_div_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions). 
+
+We'll remove any rows with NAs as NAs cause mean and other other calculations to return NA.
+
+```{r}
+#Load package
+library("mgrtibbles")
+#amphibian_div_tbl tibble for demonstration
+amphibian_div_tbl <- mgrtibbles::amphibian_div_tbl |> na.omit()
+```
+
+## Summarise
+
+The default of `summarise()` is to produce a __tibble__ of unique group values.
+
+```{r}
+amphibian_div_tbl |> 
+    dplyr::group_by(IUCN.Red.List.Status) |>
+    dplyr::summarise()
+```
+
+## Count
+
+The counts of each unique value can be added with `n()`. 
+
+Notice that the new column's name is specified before the `=` sign. This is the same as the [`count()`](/dplyr/count.qmd) function.
+
+```{r}
+amphibian_div_tbl |> 
+    dplyr::group_by(IUCN.Red.List.Status) |>
+    dplyr::summarise(n = n())
+```
+
+## Mean and median
+
+The `mean()` function can be used to calculate the mean of groups and specified columns/variables.
+
+```{r}
+amphibian_div_tbl |>
+    #Group by IUCN.Red.List.Status
+    dplyr::group_by(IUCN.Red.List.Status) |>
+    #Summarise
+    dplyr::summarise(n = n(), 
+                    mean_body_size = mean(Body_size_mm), 
+                    mean_max_litter_size = mean(Litter_size_max_n))
+```
+
+The `median()` function calculates medians.
+
+```{r}
+amphibian_div_tbl |>
+    #Group by IUCN.Red.List.Status
+    dplyr::group_by(IUCN.Red.List.Status) |>
+    #Summarise
+    dplyr::summarise(n = n(), 
+                    mean_body_size = mean(Body_size_mm),
+                    median_body_size = median(Body_size_mm))
+```
+
+## Standard deviation and IQR
+
+The `sd()` and `IQR()` function calculate standard deviation and inter quartile range (upper quartile - lower quartile).
+
+Note NAs are provided for standard deviation and 0 for IQR if there is only one value in the group.
+
+```{r}
+amphibian_div_tbl |>
+    #Group by IUCN.Red.List.Status
+    dplyr::group_by(IUCN.Red.List.Status) |>
+    #Summarise
+    dplyr::summarise(n = n(),
+                    sd_body_size = sd(Body_size_mm),
+                    iqr_body_size = IQR(Body_size_mm),
+                    )
+```
+
+## First, last and nth values
+
+The first, last, and nth value can be extracted with the function `first()`, `last()`, and `nth()`.
+
+Note NAs are provided for `nth()` as there is only one value. `first()` and `last()` work as the single value is the first and last value.
+
+```{r}
+amphibian_div_tbl |>
+    #Group by IUCN.Red.List.Status
+    dplyr::group_by(IUCN.Red.List.Status) |>
+    #Summarise
+    dplyr::summarise(n = n(),
+                    first_body_size = first(Body_size_mm),
+                    last_body_size = last(Body_size_mm),
+                    second_body_size = nth(Body_size_mm, 2)
+                    )
+```

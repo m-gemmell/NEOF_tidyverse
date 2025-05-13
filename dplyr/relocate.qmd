@@ -1,0 +1,88 @@
+---
+title: "Relocate"
+---
+
+The function `dplyr::relocate()` can change the order of columns.
+
+```{r, echo=FALSE, output=FALSE}
+library(tidyverse)
+```
+
+[Tidyverse reference page](https://dplyr.tidyverse.org//reference/relocate.html)
+
+## Dataset
+
+For demonstration we'll load the `mammal_sleep_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions). For easier viewing we'll subset it so it only has 5 rows.
+
+```{r}
+#Load package
+library("mgrtibbles")
+#mammal_sleep_tbl tibble for demonstration
+mammal_sleep_tbl<- mgrtibbles::mammal_sleep_tbl |> 
+    #Slice to extract rows 1:5
+    dplyr::slice(1:5)
+mammal_sleep_tbl
+```
+
+## Relocate to first column
+
+Relocating a column to the first column is the default behaviour of `dplyr::relocate()`
+
+Relocate column "body_wt" to first column.
+
+```{r}
+mammal_sleep_tbl |> dplyr::relocate(body_wt)
+```
+
+## Relocate after another column
+
+Relocate the __body_wt__ column after the __brain_wt__ column with the `.after=` option.
+
+```{r}
+mammal_sleep_tbl |> dplyr::relocate(body_wt, .after=brain_wt)
+```
+
+## Relocate before another column
+
+Relocate the __dreaming__ column before the __non_dreaming__ column with the `.before=` option.
+
+```{r}
+mammal_sleep_tbl |> dplyr::relocate(dreaming, .before=non_dreaming)
+```
+
+## Relocate a column to the last column
+
+Use the `last_col()` helper function as the `.after()` option to move the __predation__ column to the last column.
+
+```{r}
+mammal_sleep_tbl |> 
+    #Select columns predation to danger
+    dplyr::select(predation:danger) |>
+    #Relocate predation to last column
+    dplyr::relocate(predation, .after=last_col())
+```
+
+## Relocate all columns of a certain data type
+
+Relocate all numeric (integer and floats) columns to start of __tibble__.
+This utilises the `where()` function.
+
+```{r}
+mammal_sleep_tbl |> dplyr::relocate(where(is.numeric))
+```
+
+Relocate all factor columns after the species column.
+
+```{r}
+mammal_sleep_tbl |> dplyr::relocate(where(is.factor), .after=species)
+```
+
+Relocate all character (string) columns to the end.
+
+```{r}
+mammal_sleep_tbl |> 
+    #Relocate string columns to end
+    dplyr::relocate(where(is.character), .after=last_col()) |>
+    #Select last five columns
+    dplyr::select(last_col(4):last_col())
+```

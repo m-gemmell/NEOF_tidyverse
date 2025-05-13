@@ -1,3 +1,154 @@
 ---
 title: "Select"
 ---
+
+The function `dplyr::select()` allows you to select columns from a __tibble__.
+There are many different ways to do this with various helper functions.
+
+When subsetting with `dplyr::select()` the resulting object will always be a __tibble__.
+
+[Tidyverse reference page](https://dplyr.tidyverse.org//reference/select.html)
+
+## Dataset
+
+For demonstration we'll load the `mammal_sleep_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions). For easier viewing we'll subset it so it only has 5 rows.
+
+```{r}
+#Load package
+library("mgrtibbles")
+#mammal_sleep_tbl tibble for demonstration
+mammal_sleep_tbl<- mgrtibbles::mammal_sleep_tbl |> dplyr::slice(1:5)
+mammal_sleep_tbl
+```
+
+## One column
+
+Select one column
+
+```{r}
+mammal_sleep_tbl |> dplyr::select(dreaming)
+```
+
+## Multiple columns
+
+Select multiple columns individually.
+
+```{r}
+mammal_sleep_tbl |> dplyr::select(species,dreaming,gestation)
+```
+
+## Consecutive range of columns
+
+Select a consecutive range of columns using the first and last column names of the range.
+
+```{r}
+mammal_sleep_tbl |> dplyr::select(dreaming:gestation)
+```
+
+## Numeric indexes
+
+Numeric indexes can be used for column selection.
+
+Select the first column.
+
+```{r}
+mammal_sleep_tbl |> dplyr::select(1)
+```
+
+Select columns 3:5.
+
+```{r}
+mammal_sleep_tbl |> dplyr::select(3:5)
+```
+
+Select columns 4, 7,and 2.
+
+```{r}
+mammal_sleep_tbl |> dplyr::select(c(4,7,2))
+```
+
+Select all but the 6th column.
+
+```{r}
+mammal_sleep_tbl |> dplyr::select(-6)
+```
+
+## Last column
+
+Select the last column with `last_col()` helper function.
+
+```{r}
+mammal_sleep_tbl |> dplyr::select(last_col())
+```
+
+Select the fourth last column (i.e. 3 spaces from the last column).
+
+```{r}
+mammal_sleep_tbl |> dplyr::select(last_col(3))
+```
+
+Select the last 3 columns.
+
+```{r}
+mammal_sleep_tbl |> dplyr::select(last_col(2):last_col())
+```
+
+## Starts with
+
+Select columns using a prefix of the column names to extract with the `starts_with()` helper function.
+
+```{r}
+mammal_sleep_tbl |> dplyr::select(starts_with("b"))
+```
+
+## Ends with
+
+Select columns using a prefix of the column names to extract with the `ends_with()` helper function.
+
+```{r}
+mammal_sleep_tbl |> dplyr::select(ends_with("dreaming"))
+```
+
+## Contains
+
+Select columns using a string the column names will contain with the `contains()` helper function.
+
+```{r}
+mammal_sleep_tbl |> dplyr::select(contains("in"))
+```
+
+## Matches
+
+The `matches()` function is similar to the above `contains()` function but it can be used to select with regular expressions.
+
+In the below example we use `[]` to mean one of the letters within them. In other words `[eu]r` means __"er"__ or __"ur"__.
+
+```{r}
+mammal_sleep_tbl |> dplyr::select(matches("[eu]r"))
+```
+
+Another example where `s[lp]` mean __"sl"__ or __"sp"__.
+
+```{r}
+mammal_sleep_tbl |> dplyr::select(matches("s[lp]"))
+```
+
+## Combine with `c()`
+
+You can combine many of the methods above with `c()`.
+
+Select the species column and the last three columns.
+
+```{r}
+mammal_sleep_tbl |> dplyr::select(
+    c(species,last_col(2):last_col())
+)
+```
+
+Select the species column, the columns containing dreaming, and the 6th to 7th columns.
+
+```{r}
+mammal_sleep_tbl |> dplyr::select(
+    c(species, contains("dreaming"),6:7)
+)
+```

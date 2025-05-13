@@ -1,0 +1,42 @@
+---
+title: "Rename"
+---
+
+The function `dplyr::select()` allows you to select columns from a __tibble__.
+There are many different ways to do this with various helper functions.
+
+When subsetting with `dplyr::select()` the resulting object will always be a __tibble__.
+
+[Tidyverse reference page](https://dplyr.tidyverse.org//reference/select.html)
+
+## Dataset
+
+For demonstration we'll load the `mammal_sleep_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions). For easier viewing we'll subset it so it only has 5 rows.
+
+```{r}
+#Load package
+library("mgrtibbles")
+#mammal_sleep_tbl tibble for demonstration
+mammal_sleep_tbl<- mgrtibbles::mammal_sleep_tbl |> dplyr::slice(1:5)
+mammal_sleep_tbl
+```
+
+# Rename columns
+
+The format of the `rename()` function is:
+
+```{r, eval=FALSE}
+dplyr(new_name=old_name)
+```
+
+Rename column __total_sleep__ to __tot_sleep__. 
+
+```{r}
+mammal_sleep_tbl |> dplyr::rename(tot_sleep=total_sleep)
+```
+
+Rename columns __body_wt__ and __brain_wt__ to __body_kg__ and __brain_kg__.
+
+```{r}
+mammal_sleep_tbl |> dplyr::rename(body_kg=body_wt, brain_kg=brain_wt)
+```

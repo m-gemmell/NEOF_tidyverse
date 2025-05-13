@@ -226,12 +226,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dplyr/row_functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Row overview</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../dplyr/arrange.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Arrange</span></a>
   </div>
@@ -246,6 +240,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../dplyr/filter.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Filter</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/na_removal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NA removal</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -279,8 +279,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../dplyr/pull.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pull</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/relocate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Relocate</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/rename.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rename</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../dplyr/select.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Select</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Grouping</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/group_by.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Group by</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/count.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Count</span></a>
   </div>
 </li>
       </ul>
@@ -333,6 +374,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>The function <code>dplyr::glimpse()</code> allows you to print <strong>tibbles</strong> in a transposed manner. This will allow you to view all the columns with their data type and some of the first values.</p>
+<p><a href="https://dplyr.tidyverse.org//reference/glimpse.html">Tidyverse reference page</a></p>
 <section id="dataset" class="level2">
 <h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
 <p>For demonstration we’ll load the <code>and_vertebrates</code> data from the <a href="../datasets/lterdatasampler.html">lterdatasampler package</a> (hyperlink includes install instructions).</p>

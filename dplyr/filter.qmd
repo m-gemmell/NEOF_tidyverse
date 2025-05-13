@@ -9,6 +9,8 @@ This can be a useful method to:
 - Filter rows by numerics in a row, e.g. extract rows from years >= 2000.
 - Extract rows belonging to certain groups of metadata.
 
+[Tidyverse reference page](https://dplyr.tidyverse.org//reference/filter.html)
+
 ## Dataset
 
 For demonstration we'll load the `knz_bison` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (hyperlink includes install instructions).

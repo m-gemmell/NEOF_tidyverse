@@ -1,0 +1,72 @@
+/*-- scss:defaults --*/
+
+// Import fonts
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&family=Lexend&display=swap');;
+
+// Colors
+$ibm-blue: #648fff;
+$ibm-purple: #785ef0;
+$ibm-maroon: #dc267f;
+$ibm-orange: #fe6100;
+$ibm-yellow: #ffb000;
+$neof-green: #00af37;
+$neof-grey: #333e47;
+
+// Base document colors
+$navbar-bg: $neof-grey;
+$navbar-hl: $neof-green; // highlight color when hovering over navbar links
+$footer-bg: $neof-grey; // footer
+$sidebar-hl: $neof-green;
+
+$link-color: $ibm-blue;
+
+/*-- scss:rules --*/
+mainfont {
+  font-family: "Lexend";
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Lexend";
+}
+monofont {
+  font-family: "Fire+Mono";
+}
+
+// Code font
+code {
+  color: $ibm-yellow ;
+}
+
+// Placement of hex image rows in main index page
+.hexrowtop {
+  position: relative;
+  left:-50px;
+  display: flex;
+  flex-wrap:nowrap;
+  justify-content: center;
+}
+.hexrowmid {
+  position: relative;
+  top: -47px;
+  display: flex;
+  flex-wrap:nowrap;
+  justify-content: center;
+}
+.hexrowbottom {
+  position: relative;
+  top: -94px;
+  left: 50px;
+  display: flex;
+  justify-content: center;
+  height: 40px;
+}
+
+.hexcollast {
+}
+
+
+// Make images disappear if size of viewport is too small
+@media (max-width: 450px) {
+  .hexcollast {
+    display: none;
+  }
+}

@@ -154,5 +154,32 @@
   },
   "dplyr/na_removal.qmd": {
     "na_removal.html": "28c6778a"
+  },
+  "dplyr/column_functions.qmd": {
+    "column_functions.html": "340fd571"
+  },
+  "dplyr/pull.qmd": {
+    "pull.html": "00dd8481"
+  },
+  "dplyr/relocate.qmd": {
+    "relocate.html": "c827047b"
+  },
+  "dplyr/rename.qmd": {
+    "rename.html": "ffd4f3b7"
+  },
+  "dplyr/group.qmd": {
+    "group.html": "3363b6ab"
+  },
+  "dplyr/Group_by.qmd": {
+    "Group_by.html": "7e77b6e4"
+  },
+  "dplyr/group_by.qmd": {
+    "group_by.html": "bf8c761f"
+  },
+  "dplyr/count.qmd": {
+    "count.html": "9b6a10dd"
+  },
+  "dplyr/summarise.qmd": {
+    "summarise.html": "e1ea72c6"
   }
 }

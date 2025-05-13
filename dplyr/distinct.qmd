@@ -4,6 +4,8 @@ title: "Distinct"
 
 The `dplyr::distinct()` function extracts unique/distinct rows from a __tibble__.
 
+[Tidyverse reference page](https://dplyr.tidyverse.org//reference/distinct.html)
+
 ## Dataset
 
 For demonstration we’ll load and subset the knz_bison data from the lterdatasampler package (hyperlink includes install instructions). This time we will ensure to duplicate rows.

@@ -1,0 +1,44 @@
+---
+title: "Count"
+---
+
+The function `count()` counts the number of each unique value within one or more variables.
+
+[Tidyverse reference page](https://dplyr.tidyverse.org//reference/count.html)
+
+## Dataset
+
+For demonstration we'll load the `amphibian_div_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+
+```{r}
+#Load package
+library("mgrtibbles")
+#amphibian_div_tbl tibble for demonstration
+mgrtibbles::amphibian_div_tbl
+```
+
+## One variable/column
+
+The `count()` function will count the number of each unique value within one or more variables.
+
+```{r}
+amphibian_div_tbl |> dplyr::count(IUCN.Red.List.Status)
+```
+
+The `count()` function works on grouped __tibbles__, counting the unique values within the group.
+
+```{r}
+amphibian_div_tbl |> 
+    #Group by IUCN.Red.List.Status
+    dplyr::group_by(IUCN.Red.List.Status) |>
+    #Count will count grouped info
+    dplyr::count()
+```
+
+## Multiple variables/columns
+
+It also works when specifying multiple variables/columns to use together.
+
+```{r}
+amphibian_div_tbl |> dplyr::count(Order, Family, Genus)
+```

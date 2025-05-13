@@ -1,0 +1,35 @@
+---
+title: "Pull"
+---
+
+The function `dplyr::pull()` pull a single column as a vector.
+This is useful if you need to [pipe (`|>`)](/dplyr/pipes.qmd) a column as a vector into another function.
+
+[Tidyverse reference page](https://dplyr.tidyverse.org//reference/pull.html)
+
+## Dataset
+
+For demonstration we'll load the `mammal_sleep_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+
+```{r}
+#Load package
+library("mgrtibbles")
+#mammal_sleep_tbl tibble for demonstration
+mgrtibbles::mammal_sleep_tbl
+```
+
+## A single column to a vector
+
+Pull the column "species" to a vector.
+
+```{r}
+mammal_sleep_tbl |> dplyr::pull(species)
+```
+
+Pull the column "total_sleep" to a vector and calculate the mean value.
+
+__Note:__ Requires [NA removal](/dplyr/na_removal.qmd) (`dplyr::filter(!is.na(total_sleep))`) as if any NAs are passed to `mean()` the result will be NA.
+
+```{r}
+mammal_sleep_tbl |> dplyr::filter(!is.na(total_sleep)) |> dplyr::pull(total_sleep) |> mean()
+```

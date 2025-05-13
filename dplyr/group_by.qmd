@@ -1,0 +1,49 @@
+---
+title: "Group by"
+---
+
+The function `group_by()` converts a __tibble__ into a grouped __tbl__.
+The grouping is based on one or more specified columns/variables.
+
+This allows you to carry out various functions in a groupwise manner.
+These functions are covered in other pages in this section.
+
+[Tidyverse reference page](https://dplyr.tidyverse.org//reference/group_by.html)
+
+## Dataset
+
+For demonstration we'll load the `amphibian_div_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+
+```{r}
+#Load package
+library("mgrtibbles")
+#amphibian_div_tbl tibble for demonstration
+mgrtibbles::amphibian_div_tbl
+```
+
+## One variable/column
+
+Group by one variable/column.
+
+The grouped __tibble's__ second top line of info states the grouping and the number of different items in the group (`[]`).
+
+```{r}
+amphibian_div_tbl |> dplyr::group_by(IUCN.Red.List.Status)
+```
+
+## Multiple variables/columns into one group
+
+Group using multiple columns.
+
+```{r}
+amphibian_dv_lineage_group_tbl <- amphibian_div_tbl |> dplyr::group_by(Order, Family, Genus)
+amphibian_dv_lineage_group_tbl
+```
+
+## Ungroup
+
+If required you can remove the grouping from a __tibble__ with `dplyr::ungroup()`.
+
+```{r}
+amphibian_dv_lineage_group_tbl |> dplyr::ungroup()
+```

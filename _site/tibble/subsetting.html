@@ -251,7 +251,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#load-data" id="toc-load-data" class="nav-link active" data-scroll-target="#load-data">Load data</a></li>
   <li><a href="#one-column-with" id="toc-one-column-with" class="nav-link" data-scroll-target="#one-column-with">One column with $</a></li>
-  <li><a href="#columns-with" id="toc-columns-with" class="nav-link" data-scroll-target="#columns-with">Columns with []</a></li>
   <li><a href="#rows-and-columns-with" id="toc-rows-and-columns-with" class="nav-link" data-scroll-target="#rows-and-columns-with">Rows and columns with [,]</a>
   <ul class="collapse">
   <li><a href="#load-data.frame" id="toc-load-data.frame" class="nav-link" data-scroll-target="#load-data.frame">Load data.frame</a></li>
@@ -327,57 +326,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="columns-with" class="level2">
-<h2 class="anchored" data-anchor-id="columns-with">Columns with []</h2>
-<p>Subsetting 1 or more columns with <code>[]</code> will produce a <strong>tibble</strong>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pie_crab_tbl[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 1
-   date      
-   &lt;date&gt;    
- 1 2016-07-24
- 2 2016-07-24
- 3 2016-07-24
- 4 2016-07-24
- 5 2016-07-24
- 6 2016-07-24
- 7 2016-07-24
- 8 2016-07-24
- 9 2016-07-24
-10 2016-07-24</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pie_crab_tbl[<span class="fu">c</span>(<span class="st">"date"</span>,<span class="st">"air_temp"</span>,<span class="st">"size"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 3
-   date       air_temp  size
-   &lt;date&gt;        &lt;dbl&gt; &lt;dbl&gt;
- 1 2016-07-24     21.8  12.4
- 2 2016-07-24     21.8  14.2
- 3 2016-07-24     21.8  14.5
- 4 2016-07-24     21.8  12.9
- 5 2016-07-24     21.8  12.4
- 6 2016-07-24     21.8  13.0
- 7 2016-07-24     21.8  10.3
- 8 2016-07-24     21.8  11.2
- 9 2016-07-24     21.8  12.7
-10 2016-07-24     21.8  14.6</code></pre>
-</div>
-</div>
-</section>
 <section id="rows-and-columns-with" class="level2">
 <h2 class="anchored" data-anchor-id="rows-and-columns-with">Rows and columns with [,]</h2>
 <p>Subsetting a <strong>tibble</strong> with <code>[]</code> will always produce a <strong>tibble</strong>.</p>
 <p>This is different from a <strong>data.frame</strong> where you may extract a <a href="https://neof-workshops.github.io/R_j4c0xh/04-R_objects.html#scalar">scalar</a>, <a href="https://neof-workshops.github.io/R_j4c0xh/04-R_objects.html#vectors-lists">vector</a>, or <strong>data.frame</strong>.</p>
-<p>Below are examples using a subset of the <code>pie_crab</code> data from the <a href="../datasets/lterdatasampler.html">lterdatasampler package</a> (includes install instructions).</p>
 <section id="load-data.frame" class="level3">
 <h3 class="anchored" data-anchor-id="load-data.frame">Load data.frame</h3>
 <p>Create a <strong>data.frame</strong> from the <code>pie_crab_tbl</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pie_crab_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(pie_crab_tbl)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>pie_crab_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pie_crab_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(pie_crab_tbl)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pie_crab_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         date latitude site  size air_temp air_temp_sd water_temp
 1  2016-07-24       30  GTM 12.43   21.792       6.391     24.502
@@ -397,18 +355,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="extracting-a-value">Extracting a value</h3>
 <p>Subsetting one value from a <strong>data.frame</strong> leads to a <strong>scalar</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pie_crab_df[<span class="dv">1</span>,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pie_crab_df[<span class="dv">1</span>,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2016-07-24"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(pie_crab_df[<span class="dv">1</span>,<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(pie_crab_df[<span class="dv">1</span>,<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Date[1:1], format: "2016-07-24"</code></pre>
 </div>
 </div>
 <p>Subsetting one value from a <strong>tibble</strong> leads to a <strong>tibble</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>pie_crab_tbl[<span class="dv">1</span>,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pie_crab_tbl[<span class="dv">1</span>,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   date      
@@ -421,12 +379,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="extracting-a-row">Extracting a row</h3>
 <p>Subsetting a row from a <strong>data.frame</strong> leads to a <strong>data.frame</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>pie_crab_df[<span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pie_crab_df[<span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        date latitude site  size air_temp air_temp_sd water_temp
 1 2016-07-24       30  GTM 12.43   21.792       6.391     24.502</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(pie_crab_df[<span class="dv">1</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(pie_crab_df[<span class="dv">1</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   1 obs. of  7 variables:
  $ date       : Date, format: "2016-07-24"
@@ -440,7 +398,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Subsetting a row from a <strong>tibble</strong> leads to a <strong>tibble</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>pie_crab_tbl[<span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>pie_crab_tbl[<span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 7
   date       latitude site   size air_temp air_temp_sd water_temp
@@ -453,19 +411,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="extracting-a-column">Extracting a column</h3>
 <p>Subsetting a column from a <strong>data.frame</strong> leads to a <strong>vector</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>pie_crab_df[,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>pie_crab_df[,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "2016-07-24" "2016-07-24" "2016-07-24" "2016-07-24" "2016-07-24"
  [6] "2016-07-24" "2016-07-24" "2016-07-24" "2016-07-24" "2016-07-24"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(pie_crab_df[,<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(pie_crab_df[,<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Date[1:10], format: "2016-07-24" "2016-07-24" "2016-07-24" "2016-07-24" "2016-07-24" ...</code></pre>
 </div>
 </div>
 <p>Subsetting a column from a <strong>tibble</strong> leads to a <strong>tibble</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>pie_crab_tbl[,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>pie_crab_tbl[,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 1
    date      
@@ -487,14 +445,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="extracting-a-combo-of-columns-and-rows">Extracting a combo of columns and rows</h3>
 <p>Subsetting rows and columns together from a <strong>data.frame</strong> leads to a <strong>data.frame</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pie_crab_df[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="fu">c</span>(<span class="st">"date"</span>,<span class="st">"air_temp"</span>,<span class="st">"size"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>pie_crab_df[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="fu">c</span>(<span class="st">"date"</span>,<span class="st">"air_temp"</span>,<span class="st">"size"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        date air_temp  size
 1 2016-07-24   21.792 12.43
 2 2016-07-24   21.792 14.18
 3 2016-07-24   21.792 14.52</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(pie_crab_df[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="fu">c</span>(<span class="st">"date"</span>,<span class="st">"air_temp"</span>,<span class="st">"size"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(pie_crab_df[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="fu">c</span>(<span class="st">"date"</span>,<span class="st">"air_temp"</span>,<span class="st">"size"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   3 obs. of  3 variables:
  $ date    : Date, format: "2016-07-24" "2016-07-24" ...
@@ -504,7 +462,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Subsetting rows and columns together from a <strong>tibble</strong> leads to a <strong>tibble</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>pie_crab_tbl[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="fu">c</span>(<span class="st">"date"</span>,<span class="st">"air_temp"</span>,<span class="st">"size"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pie_crab_tbl[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="fu">c</span>(<span class="st">"date"</span>,<span class="st">"air_temp"</span>,<span class="st">"size"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   date       air_temp  size

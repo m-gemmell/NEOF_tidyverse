@@ -31,25 +31,11 @@ pie_crab_tbl$site
 str(pie_crab_tbl$site)
 ```
 
-## Columns with []
-
-Subsetting 1 or more columns with `[]` will produce a __tibble__.
-
-```{r}
-pie_crab_tbl[1]
-```
-
-```{r}
-pie_crab_tbl[c("date","air_temp","size")]
-```
-
 ## Rows and columns with [,]
 
 Subsetting a __tibble__ with `[]` will always produce a __tibble__.
 
 This is different from a __data.frame__ where you may extract a [scalar](https://neof-workshops.github.io/R_j4c0xh/04-R_objects.html#scalar), [vector](https://neof-workshops.github.io/R_j4c0xh/04-R_objects.html#vectors-lists), or __data.frame__.
-
-Below are examples using a subset of the `pie_crab` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (includes install instructions).
 
 ### Load data.frame
 

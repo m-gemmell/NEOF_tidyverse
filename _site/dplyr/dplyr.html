@@ -191,12 +191,6 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dplyr/row_functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Row overview</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../dplyr/arrange.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Arrange</span></a>
   </div>
@@ -211,6 +205,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../dplyr/filter.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Filter</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/na_removal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NA removal</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -232,8 +232,55 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../dplyr/glimpse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Glimpse</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/mutate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mutate</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/pull.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pull</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/relocate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Relocate</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/rename.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rename</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../dplyr/select.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Select</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Grouping</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/group_by.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Group by</span></a>
   </div>
 </li>
       </ul>
@@ -261,6 +308,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#sections" id="toc-sections" class="nav-link" data-scroll-target="#sections">Sections</a>
+  <ul class="collapse">
+  <li><a href="#pipes" id="toc-pipes" class="nav-link" data-scroll-target="#pipes">Pipes</a></li>
+  <li><a href="#rows" id="toc-rows" class="nav-link" data-scroll-target="#rows">Rows</a></li>
+  <li><a href="#columns" id="toc-columns" class="nav-link" data-scroll-target="#columns">Columns</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -292,8 +345,37 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Dplyr</strong> is the main data manipulation package for <strong>tibbles</strong> in <strong>tidyverse</strong>.</p>
 <p><strong>Dplyr</strong> is described as a “grammar of data manipulation” using verbs as the name of its various functions.</p>
 <p><a href="https://dplyr.tidyverse.org//">dplyr homepage</a></p>
+</section>
+<section id="sections" class="level2">
+<h2 class="anchored" data-anchor-id="sections">Sections</h2>
+<p>There are many sections for <code>dplyr</code>. These are summarised below.</p>
+<section id="pipes" class="level3">
+<h3 class="anchored" data-anchor-id="pipes">Pipes</h3>
+<p><a href="../dplyr/pipes.html">Pipes</a> (<code>|&gt;</code>) are a vital part of creating efficient and clear code with <strong>tidyverse</strong>. Pipes allow you to chain/pipe functions together. It can be used for all functions not just those from <strong>tidyverse</strong>.</p>
+</section>
+<section id="rows" class="level3">
+<h3 class="anchored" data-anchor-id="rows">Rows</h3>
+<p>There four main verbs (i.e.&nbsp;functions) to manipulate rows. These are:</p>
+<ul>
+<li><a href="../dplyr/arrange.html"><code>arrange()</code></a>: Arrange the rows of a <strong>tibble</strong>. Can be used to reorder the rows based on the values of a column.</li>
+<li><a href="../dplyr/distinct.html"><code>distinct()</code></a>: Extracts unique/distinct rows from a <strong>tibble</strong>.</li>
+<li><a href="../dplyr/filter.html"><code>filter()</code></a>: Extract rows by filtering with conditions. This can be used to pick rows of certain groups, filter based on numeric sizes, and more.</li>
+<li><a href="../dplyr/slice.html"><code>slice()</code></a>: A set of methods to choose a slice of rows based on index positions, top and bottom observations, and min and max values based on a specific column. This is especially useful for piping (<code>|&gt;</code>).</li>
+</ul>
+</section>
+<section id="columns" class="level3">
+<h3 class="anchored" data-anchor-id="columns">Columns</h3>
+<p>There six main verbs (i.e.&nbsp;functions) to manipulate columns. These are:</p>
+<ul>
+<li><a href="../dplyr/glimpse.html"><code>glimpse()</code></a>: Print a <strong>tibble</strong> in a transposed manner. Useful for seeing the data types of all the columns.</li>
+<li><a href="../dplyr/mutate.html"><code>mutate()</code></a>: Mutate columns to create new columns based on existing ones, modify existing columns, and delete columns.</li>
+<li><a href="../dplyr/pull.html"><code>pull()</code></a>: Pull out a single column from a <strong>tibble</strong>, resulting in a <strong>vector</strong>.</li>
+<li><a href="../dplyr/relocate.html"><code>relocate()</code></a>: Relocate columns. You can relocate columns to the start or end, and you can move them after or before specified columns.</li>
+<li><a href="../dplyr/select.html"><code>select()</code></a>: Select specific columns of a <strong>tibble</strong>. Can be used with a variety of helper functions such as <code>starts_with()</code>, <code>ends_with()</code>, <code>contains()</code>, and <code>matches()</code>.</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
