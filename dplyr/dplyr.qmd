@@ -14,6 +14,12 @@ __Dplyr__ is described as a "grammar of data manipulation" using verbs as the na
 
 [dplyr homepage](https://dplyr.tidyverse.org//)
 
+This website aims to quickly cover the most commonly used `dplyr` functions and uses.
+Therefore there are a lot more `dplyr` functions than those covered here.
+Please check the below link for the full list.
+
+[Full dplyr reference page](https://dplyr.tidyverse.org//reference/index.html)
+
 ## Sections
 
 There are many sections for `dplyr`. These are summarised below.
@@ -43,3 +49,18 @@ There six main verbs (i.e. functions) to manipulate columns. These are:
 - [`relocate()`](/dplyr/relocate.qmd): Relocate columns. You can relocate columns to the start or end, and you can move them after or before specified columns.
 - [`select()`](/dplyr/select.qmd): Select specific columns of a __tibble__. Can be used with a variety of helper functions such as `starts_with()`, `ends_with()`, `contains()`, and `matches()`.
 
+### Grouping
+
+__Tibbles__ can be grouped by a specific variable/column or multiple variables/columns. This allows for group wise calculations.
+
+- [`group_by()`](/dplyr/group_by.qmd): Converts a __tibble__ to a grouped __tibble__.
+- [`count()`](/dplyr/count.qmd): Counts the number of instances of each unique value for the grouping in a __tibble__.
+- [`summarise()`](/dplyr/summarise.qmd): Produces a __tibble__ with summary information on the group members in a grouped __tibble__. 
+    - Various functions can be used to calculate various summary information including `n()`, `mean()`, `median()`, `sd()`, `IQR()`, `first()`, `last()`, and `nth()`.
+
+## Bind tibbles
+
+__Tibbles__ can be combined/bound together with the following functions:
+
+- [`bind_cols()`](/dplyr/bind_tibbles.qmd#bind-by-columns): Bind 2 __tibbles__ by columns (i.e. bind the __tibbles__ side by side). The two __tibbles__ must have the same number of rows.
+- [`bind_row()`](/dplyr/bind_tibbles.qmd#bind-by-rows): Bind 2 __tibbles__ by rows (i.e. bind one __tibble__ on top of the other ). The two __tibbles__ must have the same column types and names.

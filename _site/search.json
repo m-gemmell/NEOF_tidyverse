@@ -105,6 +105,34 @@
     "text": "Source"
   },
   {
+    "objectID": "dplyr/count.html",
+    "href": "dplyr/count.html",
+    "title": "Count",
+    "section": "",
+    "text": "The function count() counts the number of each unique value within one or more variables.\nTidyverse reference page"
+  },
+  {
+    "objectID": "dplyr/count.html#dataset",
+    "href": "dplyr/count.html#dataset",
+    "title": "Count",
+    "section": "Dataset",
+    "text": "Dataset\nFor demonstration we’ll load the amphibian_div_tbl data from the mgrtibbles package (hyperlink includes install instructions).\n\n#Load package\nlibrary(\"mgrtibbles\")\n#amphibian_div_tbl tibble for demonstration\nmgrtibbles::amphibian_div_tbl\n\n# A tibble: 138 × 15\n   Species                  IUCN.Red.List.Status iucn_2cat Order   Family  Genus\n   &lt;chr&gt;                    &lt;fct&gt;                &lt;fct&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;\n 1 Acris blanchardi         &lt;NA&gt;                 &lt;NA&gt;      Anura   Hylidae Acris\n 2 Acris crepitans          Least Concern (LC)   LC        Anura   Hylidae Acris\n 3 Acris gryllus            Least Concern (LC)   LC        Anura   Hylidae Acris\n 4 Ambystoma barbouri       Near Threatened (NT) nonLC     Caudata Ambyst… Amby…\n 5 Ambystoma jeffersonianum Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 6 Ambystoma laterale       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 7 Ambystoma macrodactylum  Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 8 Ambystoma maculatum      Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 9 Ambystoma texanum        Least Concern (LC)   LC        Caudata Ambyst… Amby…\n10 Ambystoma tigrinum       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n# ℹ 128 more rows\n# ℹ 9 more variables: Age_at_maturity_min_y &lt;dbl&gt;, Age_at_maturity_max_y &lt;dbl&gt;,\n#   Body_size_mm &lt;dbl&gt;, Longevity_max_y &lt;dbl&gt;, Litter_size_min_n &lt;dbl&gt;,\n#   Litter_size_max_n &lt;dbl&gt;, Offspring_size_min_mm &lt;dbl&gt;,\n#   Offspring_size_max_mm &lt;fct&gt;, Development &lt;chr&gt;"
+  },
+  {
+    "objectID": "dplyr/count.html#one-variablecolumn",
+    "href": "dplyr/count.html#one-variablecolumn",
+    "title": "Count",
+    "section": "One variable/column",
+    "text": "One variable/column\nThe count() function will count the number of each unique value within one or more variables.\n\namphibian_div_tbl |&gt; dplyr::count(IUCN.Red.List.Status)\n\n# A tibble: 7 × 2\n  IUCN.Red.List.Status                 n\n  &lt;fct&gt;                            &lt;int&gt;\n1 Least Concern (LC)                  94\n2 Near Threatened (NT)                12\n3 Data Deficient (DD)                  8\n4 Vulnerable (VU)                     18\n5 Endangered (EN)                      4\n6 Least Concern (LC) - Provisional     1\n7 &lt;NA&gt;                                 1\n\n\nThe count() function works on grouped tibbles, counting the unique values within the group.\n\namphibian_div_tbl |&gt; \n    #Group by IUCN.Red.List.Status\n    dplyr::group_by(IUCN.Red.List.Status) |&gt;\n    #Count will count grouped info\n    dplyr::count()\n\n# A tibble: 7 × 2\n# Groups:   IUCN.Red.List.Status [7]\n  IUCN.Red.List.Status                 n\n  &lt;fct&gt;                            &lt;int&gt;\n1 Least Concern (LC)                  94\n2 Near Threatened (NT)                12\n3 Data Deficient (DD)                  8\n4 Vulnerable (VU)                     18\n5 Endangered (EN)                      4\n6 Least Concern (LC) - Provisional     1\n7 &lt;NA&gt;                                 1"
+  },
+  {
+    "objectID": "dplyr/count.html#multiple-variablescolumns",
+    "href": "dplyr/count.html#multiple-variablescolumns",
+    "title": "Count",
+    "section": "Multiple variables/columns",
+    "text": "Multiple variables/columns\nIt also works when specifying multiple variables/columns to use together.\n\namphibian_div_tbl |&gt; dplyr::count(Order, Family, Genus)\n\n# A tibble: 26 × 4\n   Order   Family         Genus          n\n   &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;      &lt;int&gt;\n 1 Anura   Ascaphidae     Ascaphus       2\n 2 Anura   Bufonidae      Anaxyrus       4\n 3 Anura   Bufonidae      Incilius       1\n 4 Anura   Hylidae        Acris          3\n 5 Anura   Hylidae        Hyla           7\n 6 Anura   Hylidae        Pseudacris     6\n 7 Anura   Ranidae        Rana          14\n 8 Anura   Scaphiopodidae Spea           2\n 9 Caudata Ambystomatidae Ambystoma      7\n10 Caudata Amphiumidae    Amphiuma       3\n# ℹ 16 more rows"
+  },
+  {
     "objectID": "dplyr/distinct.html",
     "href": "dplyr/distinct.html",
     "title": "Distinct",
@@ -130,14 +158,14 @@
     "href": "dplyr/dplyr.html#overview",
     "title": "Dplyr",
     "section": "Overview",
-    "text": "Overview\nDplyr is the main data manipulation package for tibbles in tidyverse.\nDplyr is described as a “grammar of data manipulation” using verbs as the name of its various functions.\ndplyr homepage"
+    "text": "Overview\nDplyr is the main data manipulation package for tibbles in tidyverse.\nDplyr is described as a “grammar of data manipulation” using verbs as the name of its various functions.\ndplyr homepage\nThis website aims to quickly cover the most commonly used dplyr functions and uses. Therefore there are a lot more dplyr functions than those covered here. Please check the below link for the full list.\nFull dplyr reference page"
   },
   {
     "objectID": "dplyr/dplyr.html#sections",
     "href": "dplyr/dplyr.html#sections",
     "title": "Dplyr",
     "section": "Sections",
-    "text": "Sections\nThere are many sections for dplyr. These are summarised below.\n\nPipes\nPipes (|&gt;) are a vital part of creating efficient and clear code with tidyverse. Pipes allow you to chain/pipe functions together. It can be used for all functions not just those from tidyverse.\n\n\nRows\nThere four main verbs (i.e. functions) to manipulate rows. These are:\n\narrange(): Arrange the rows of a tibble. Can be used to reorder the rows based on the values of a column.\ndistinct(): Extracts unique/distinct rows from a tibble.\nfilter(): Extract rows by filtering with conditions. This can be used to pick rows of certain groups, filter based on numeric sizes, and more.\nslice(): A set of methods to choose a slice of rows based on index positions, top and bottom observations, and min and max values based on a specific column. This is especially useful for piping (|&gt;).\n\n\n\nColumns\nThere six main verbs (i.e. functions) to manipulate columns. These are:\n\nglimpse(): Print a tibble in a transposed manner. Useful for seeing the data types of all the columns.\nmutate(): Mutate columns to create new columns based on existing ones, modify existing columns, and delete columns.\npull(): Pull out a single column from a tibble, resulting in a vector.\nrelocate(): Relocate columns. You can relocate columns to the start or end, and you can move them after or before specified columns.\nselect(): Select specific columns of a tibble. Can be used with a variety of helper functions such as starts_with(), ends_with(), contains(), and matches()."
+    "text": "Sections\nThere are many sections for dplyr. These are summarised below.\n\nPipes\nPipes (|&gt;) are a vital part of creating efficient and clear code with tidyverse. Pipes allow you to chain/pipe functions together. It can be used for all functions not just those from tidyverse.\n\n\nRows\nThere four main verbs (i.e. functions) to manipulate rows. These are:\n\narrange(): Arrange the rows of a tibble. Can be used to reorder the rows based on the values of a column.\ndistinct(): Extracts unique/distinct rows from a tibble.\nfilter(): Extract rows by filtering with conditions. This can be used to pick rows of certain groups, filter based on numeric sizes, and more.\nslice(): A set of methods to choose a slice of rows based on index positions, top and bottom observations, and min and max values based on a specific column. This is especially useful for piping (|&gt;).\n\n\n\nColumns\nThere six main verbs (i.e. functions) to manipulate columns. These are:\n\nglimpse(): Print a tibble in a transposed manner. Useful for seeing the data types of all the columns.\nmutate(): Mutate columns to create new columns based on existing ones, modify existing columns, and delete columns.\npull(): Pull out a single column from a tibble, resulting in a vector.\nrelocate(): Relocate columns. You can relocate columns to the start or end, and you can move them after or before specified columns.\nselect(): Select specific columns of a tibble. Can be used with a variety of helper functions such as starts_with(), ends_with(), contains(), and matches().\n\n\n\nGrouping\nTibbles can be grouped by a specific variable/column or multiple variables/columns. This allows for group wise calculations.\n\ngroup_by(): Converts a tibble to a grouped tibble.\ncount(): Counts the number of instances of each unique value for the grouping in a tibble.\nsummarise(): Produces a tibble with summary information on the group members in a grouped tibble.\n\nVarious functions can be used to calculate various summary information including n(), mean(), median(), sd(), IQR(), first(), last(), and nth()."
   },
   {
     "objectID": "dplyr/filter.html",
@@ -201,6 +229,41 @@
     "title": "Glimpse",
     "section": "Glimpse",
     "text": "Glimpse\nGlimpse the tibble. This allows you to preview all the columns.\n\nand_vertebrates_tbl |&gt; dplyr::glimpse()\n\nRows: 32,209\nColumns: 16\n$ year        &lt;dbl&gt; 1987, 1987, 1987, 1987, 1987, 1987, 1987, 1987, 1987, 1987…\n$ sitecode    &lt;chr&gt; \"MACKCC-L\", \"MACKCC-L\", \"MACKCC-L\", \"MACKCC-L\", \"MACKCC-L\"…\n$ section     &lt;chr&gt; \"CC\", \"CC\", \"CC\", \"CC\", \"CC\", \"CC\", \"CC\", \"CC\", \"CC\", \"CC\"…\n$ reach       &lt;chr&gt; \"L\", \"L\", \"L\", \"L\", \"L\", \"L\", \"L\", \"L\", \"L\", \"L\", \"L\", \"L\"…\n$ pass        &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ unitnum     &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2…\n$ unittype    &lt;chr&gt; \"R\", \"R\", \"R\", \"R\", \"R\", \"R\", \"R\", \"R\", \"R\", \"R\", \"R\", \"R\"…\n$ vert_index  &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1, …\n$ pitnumber   &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…\n$ species     &lt;chr&gt; \"Cutthroat trout\", \"Cutthroat trout\", \"Cutthroat trout\", \"…\n$ length_1_mm &lt;dbl&gt; 58, 61, 89, 58, 93, 86, 107, 131, 103, 117, 100, 127, 99, …\n$ length_2_mm &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…\n$ weight_g    &lt;dbl&gt; 1.75, 1.95, 5.60, 2.15, 6.90, 5.90, 10.50, 20.60, 9.55, 13…\n$ clip        &lt;chr&gt; \"NONE\", \"NONE\", \"NONE\", \"NONE\", \"NONE\", \"NONE\", \"NONE\", \"N…\n$ sampledate  &lt;date&gt; 1987-10-07, 1987-10-07, 1987-10-07, 1987-10-07, 1987-10-0…\n$ notes       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…"
+  },
+  {
+    "objectID": "dplyr/group_by.html",
+    "href": "dplyr/group_by.html",
+    "title": "Group by",
+    "section": "",
+    "text": "The function group_by() converts a tibble into a grouped tbl. The grouping is based on one or more specified columns/variables.\nThis allows you to carry out various functions in a groupwise manner. These functions are covered in other pages in this section.\nTidyverse reference page"
+  },
+  {
+    "objectID": "dplyr/group_by.html#dataset",
+    "href": "dplyr/group_by.html#dataset",
+    "title": "Group by",
+    "section": "Dataset",
+    "text": "Dataset\nFor demonstration we’ll load the amphibian_div_tbl data from the mgrtibbles package (hyperlink includes install instructions).\n\n#Load package\nlibrary(\"mgrtibbles\")\n#amphibian_div_tbl tibble for demonstration\nmgrtibbles::amphibian_div_tbl\n\n# A tibble: 138 × 15\n   Species                  IUCN.Red.List.Status iucn_2cat Order   Family  Genus\n   &lt;chr&gt;                    &lt;fct&gt;                &lt;fct&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;\n 1 Acris blanchardi         &lt;NA&gt;                 &lt;NA&gt;      Anura   Hylidae Acris\n 2 Acris crepitans          Least Concern (LC)   LC        Anura   Hylidae Acris\n 3 Acris gryllus            Least Concern (LC)   LC        Anura   Hylidae Acris\n 4 Ambystoma barbouri       Near Threatened (NT) nonLC     Caudata Ambyst… Amby…\n 5 Ambystoma jeffersonianum Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 6 Ambystoma laterale       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 7 Ambystoma macrodactylum  Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 8 Ambystoma maculatum      Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 9 Ambystoma texanum        Least Concern (LC)   LC        Caudata Ambyst… Amby…\n10 Ambystoma tigrinum       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n# ℹ 128 more rows\n# ℹ 9 more variables: Age_at_maturity_min_y &lt;dbl&gt;, Age_at_maturity_max_y &lt;dbl&gt;,\n#   Body_size_mm &lt;dbl&gt;, Longevity_max_y &lt;dbl&gt;, Litter_size_min_n &lt;dbl&gt;,\n#   Litter_size_max_n &lt;dbl&gt;, Offspring_size_min_mm &lt;dbl&gt;,\n#   Offspring_size_max_mm &lt;fct&gt;, Development &lt;chr&gt;"
+  },
+  {
+    "objectID": "dplyr/group_by.html#one-variablecolumn",
+    "href": "dplyr/group_by.html#one-variablecolumn",
+    "title": "Group by",
+    "section": "One variable/column",
+    "text": "One variable/column\nGroup by one variable/column.\nThe grouped tibble’s second top line of info states the grouping and the number of different items in the group ([]).\n\namphibian_div_tbl |&gt; dplyr::group_by(IUCN.Red.List.Status)\n\n# A tibble: 138 × 15\n# Groups:   IUCN.Red.List.Status [7]\n   Species                  IUCN.Red.List.Status iucn_2cat Order   Family  Genus\n   &lt;chr&gt;                    &lt;fct&gt;                &lt;fct&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;\n 1 Acris blanchardi         &lt;NA&gt;                 &lt;NA&gt;      Anura   Hylidae Acris\n 2 Acris crepitans          Least Concern (LC)   LC        Anura   Hylidae Acris\n 3 Acris gryllus            Least Concern (LC)   LC        Anura   Hylidae Acris\n 4 Ambystoma barbouri       Near Threatened (NT) nonLC     Caudata Ambyst… Amby…\n 5 Ambystoma jeffersonianum Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 6 Ambystoma laterale       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 7 Ambystoma macrodactylum  Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 8 Ambystoma maculatum      Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 9 Ambystoma texanum        Least Concern (LC)   LC        Caudata Ambyst… Amby…\n10 Ambystoma tigrinum       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n# ℹ 128 more rows\n# ℹ 9 more variables: Age_at_maturity_min_y &lt;dbl&gt;, Age_at_maturity_max_y &lt;dbl&gt;,\n#   Body_size_mm &lt;dbl&gt;, Longevity_max_y &lt;dbl&gt;, Litter_size_min_n &lt;dbl&gt;,\n#   Litter_size_max_n &lt;dbl&gt;, Offspring_size_min_mm &lt;dbl&gt;,\n#   Offspring_size_max_mm &lt;fct&gt;, Development &lt;chr&gt;"
+  },
+  {
+    "objectID": "dplyr/group_by.html#multiple-variablescolumns-into-one-group",
+    "href": "dplyr/group_by.html#multiple-variablescolumns-into-one-group",
+    "title": "Group by",
+    "section": "Multiple variables/columns into one group",
+    "text": "Multiple variables/columns into one group\nGroup using multiple columns.\n\namphibian_dv_lineage_group_tbl &lt;- amphibian_div_tbl |&gt; dplyr::group_by(Order, Family, Genus)\namphibian_dv_lineage_group_tbl\n\n# A tibble: 138 × 15\n# Groups:   Order, Family, Genus [26]\n   Species                  IUCN.Red.List.Status iucn_2cat Order   Family  Genus\n   &lt;chr&gt;                    &lt;fct&gt;                &lt;fct&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;\n 1 Acris blanchardi         &lt;NA&gt;                 &lt;NA&gt;      Anura   Hylidae Acris\n 2 Acris crepitans          Least Concern (LC)   LC        Anura   Hylidae Acris\n 3 Acris gryllus            Least Concern (LC)   LC        Anura   Hylidae Acris\n 4 Ambystoma barbouri       Near Threatened (NT) nonLC     Caudata Ambyst… Amby…\n 5 Ambystoma jeffersonianum Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 6 Ambystoma laterale       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 7 Ambystoma macrodactylum  Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 8 Ambystoma maculatum      Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 9 Ambystoma texanum        Least Concern (LC)   LC        Caudata Ambyst… Amby…\n10 Ambystoma tigrinum       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n# ℹ 128 more rows\n# ℹ 9 more variables: Age_at_maturity_min_y &lt;dbl&gt;, Age_at_maturity_max_y &lt;dbl&gt;,\n#   Body_size_mm &lt;dbl&gt;, Longevity_max_y &lt;dbl&gt;, Litter_size_min_n &lt;dbl&gt;,\n#   Litter_size_max_n &lt;dbl&gt;, Offspring_size_min_mm &lt;dbl&gt;,\n#   Offspring_size_max_mm &lt;fct&gt;, Development &lt;chr&gt;"
+  },
+  {
+    "objectID": "dplyr/group_by.html#ungroup",
+    "href": "dplyr/group_by.html#ungroup",
+    "title": "Group by",
+    "section": "Ungroup",
+    "text": "Ungroup\nIf required you can remove the grouping from a tibble with dplyr::ungroup().\n\namphibian_dv_lineage_group_tbl |&gt; dplyr::ungroup()\n\n# A tibble: 138 × 15\n   Species                  IUCN.Red.List.Status iucn_2cat Order   Family  Genus\n   &lt;chr&gt;                    &lt;fct&gt;                &lt;fct&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;\n 1 Acris blanchardi         &lt;NA&gt;                 &lt;NA&gt;      Anura   Hylidae Acris\n 2 Acris crepitans          Least Concern (LC)   LC        Anura   Hylidae Acris\n 3 Acris gryllus            Least Concern (LC)   LC        Anura   Hylidae Acris\n 4 Ambystoma barbouri       Near Threatened (NT) nonLC     Caudata Ambyst… Amby…\n 5 Ambystoma jeffersonianum Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 6 Ambystoma laterale       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 7 Ambystoma macrodactylum  Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 8 Ambystoma maculatum      Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 9 Ambystoma texanum        Least Concern (LC)   LC        Caudata Ambyst… Amby…\n10 Ambystoma tigrinum       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n# ℹ 128 more rows\n# ℹ 9 more variables: Age_at_maturity_min_y &lt;dbl&gt;, Age_at_maturity_max_y &lt;dbl&gt;,\n#   Body_size_mm &lt;dbl&gt;, Longevity_max_y &lt;dbl&gt;, Litter_size_min_n &lt;dbl&gt;,\n#   Litter_size_max_n &lt;dbl&gt;, Offspring_size_min_mm &lt;dbl&gt;,\n#   Offspring_size_max_mm &lt;fct&gt;, Development &lt;chr&gt;"
   },
   {
     "objectID": "dplyr/mutate.html",
@@ -490,6 +553,55 @@
     "text": "Max and min\nExtract the 3 observations with the highest animal_weight.\n\nbison_tbl |&gt; dplyr::slice_max(animal_weight, n=3)\n\n# A tibble: 3 × 8\n  data_code rec_year rec_month rec_day animal_code animal_sex animal_weight\n  &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;\n1 CBH01         2006        11       6 W-927       M                   2050\n2 CBH01         2005        11       7 W-927       M                   1894\n3 CBH01         1995        11       6 114         M                   1892\n# ℹ 1 more variable: animal_yob &lt;dbl&gt;\n\n\nExtract the 9 observations with the lowest animal_weight.\n\nbison_tbl |&gt; dplyr::slice_min(animal_weight, n=9)\n\n# A tibble: 9 × 8\n  data_code rec_year rec_month rec_day animal_code animal_sex animal_weight\n  &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;\n1 CBH01         2003        11      13 Y-3100      F                     90\n2 CBH01         2003        11      13 Y-3101      M                    100\n3 CBH01         1997        10      31 W-706       F                    112\n4 CBH01         1996        10      25 W-617       F                    118\n5 CBH01         2019        10      24 O-9104      F                    120\n6 CBH01         2004        11      18 Y-432       F                    126\n7 CBH01         1994        11       8 W-437       F                    132\n8 CBH01         2004        11      18 Y-417       F                    134\n9 CBH01         2006        11       6 Y-646       M                    134\n# ℹ 1 more variable: animal_yob &lt;dbl&gt;"
   },
   {
+    "objectID": "dplyr/summarise.html",
+    "href": "dplyr/summarise.html",
+    "title": "Summarise",
+    "section": "",
+    "text": "The function summarise() allows you to get a summary of the unique values within a grouped tibble. It will produce a __tibble_ of the summarised information.\nVarious helper functions can be used to get specific info including:\nTidyverse reference page"
+  },
+  {
+    "objectID": "dplyr/summarise.html#dataset",
+    "href": "dplyr/summarise.html#dataset",
+    "title": "Summarise",
+    "section": "Dataset",
+    "text": "Dataset\nFor demonstration we’ll load the amphibian_div_tbl data from the mgrtibbles package (hyperlink includes install instructions).\nWe’ll remove any rows with NAs as NAs cause mean and other other calculations to return NA.\n\n#Load package\nlibrary(\"mgrtibbles\")\n#amphibian_div_tbl tibble for demonstration\namphibian_div_tbl &lt;- mgrtibbles::amphibian_div_tbl |&gt; na.omit()"
+  },
+  {
+    "objectID": "dplyr/summarise.html#summarise",
+    "href": "dplyr/summarise.html#summarise",
+    "title": "Summarise",
+    "section": "Summarise",
+    "text": "Summarise\nThe default of summarise() is to produce a tibble of unique group values.\n\namphibian_div_tbl |&gt; \n    dplyr::group_by(IUCN.Red.List.Status) |&gt;\n    dplyr::summarise()\n\n# A tibble: 5 × 1\n  IUCN.Red.List.Status            \n  &lt;fct&gt;                           \n1 Least Concern (LC)              \n2 Near Threatened (NT)            \n3 Vulnerable (VU)                 \n4 Endangered (EN)                 \n5 Least Concern (LC) - Provisional"
+  },
+  {
+    "objectID": "dplyr/summarise.html#count",
+    "href": "dplyr/summarise.html#count",
+    "title": "Summarise",
+    "section": "Count",
+    "text": "Count\nThe counts of each unique value can be added with n().\nNotice that the new column’s name is specified before the = sign. This is the same as the count() function.\n\namphibian_div_tbl |&gt; \n    dplyr::group_by(IUCN.Red.List.Status) |&gt;\n    dplyr::summarise(n = n())\n\n# A tibble: 5 × 2\n  IUCN.Red.List.Status                 n\n  &lt;fct&gt;                            &lt;int&gt;\n1 Least Concern (LC)                  55\n2 Near Threatened (NT)                 5\n3 Vulnerable (VU)                      3\n4 Endangered (EN)                      1\n5 Least Concern (LC) - Provisional     1"
+  },
+  {
+    "objectID": "dplyr/summarise.html#mean-and-median",
+    "href": "dplyr/summarise.html#mean-and-median",
+    "title": "Summarise",
+    "section": "Mean and median",
+    "text": "Mean and median\nThe mean() function can be used to calculate the mean of groups and specified columns/variables.\n\namphibian_div_tbl |&gt;\n    #Group by IUCN.Red.List.Status\n    dplyr::group_by(IUCN.Red.List.Status) |&gt;\n    #Summarise\n    dplyr::summarise(n = n(), \n                    mean_body_size = mean(Body_size_mm), \n                    mean_max_litter_size = mean(Litter_size_max_n))\n\n# A tibble: 5 × 4\n  IUCN.Red.List.Status                 n mean_body_size mean_max_litter_size\n  &lt;fct&gt;                            &lt;int&gt;          &lt;dbl&gt;                &lt;dbl&gt;\n1 Least Concern (LC)                  55           173.                2570.\n2 Near Threatened (NT)                 5           114.                 369.\n3 Vulnerable (VU)                      3           133                   19 \n4 Endangered (EN)                      1            87                  350 \n5 Least Concern (LC) - Provisional     1            48                 1012 \n\n\nThe median() function calculates medians.\n\namphibian_div_tbl |&gt;\n    #Group by IUCN.Red.List.Status\n    dplyr::group_by(IUCN.Red.List.Status) |&gt;\n    #Summarise\n    dplyr::summarise(n = n(), \n                    mean_body_size = mean(Body_size_mm),\n                    median_body_size = median(Body_size_mm))\n\n# A tibble: 5 × 4\n  IUCN.Red.List.Status                 n mean_body_size median_body_size\n  &lt;fct&gt;                            &lt;int&gt;          &lt;dbl&gt;            &lt;dbl&gt;\n1 Least Concern (LC)                  55           173.              127\n2 Near Threatened (NT)                 5           114.              111\n3 Vulnerable (VU)                      3           133               170\n4 Endangered (EN)                      1            87                87\n5 Least Concern (LC) - Provisional     1            48                48"
+  },
+  {
+    "objectID": "dplyr/summarise.html#standard-deviation-and-iqr",
+    "href": "dplyr/summarise.html#standard-deviation-and-iqr",
+    "title": "Summarise",
+    "section": "Standard deviation and IQR",
+    "text": "Standard deviation and IQR\nThe sd() and IQR() function calculate standard deviation and inter quartile range (upper quartile - lower quartile).\nNote NAs are provided for standard deviation and 0 for IQR if there is only one value in the group.\n\namphibian_div_tbl |&gt;\n    #Group by IUCN.Red.List.Status\n    dplyr::group_by(IUCN.Red.List.Status) |&gt;\n    #Summarise\n    dplyr::summarise(n = n(),\n                    sd_body_size = sd(Body_size_mm),\n                    iqr_body_size = IQR(Body_size_mm),\n                    )\n\n# A tibble: 5 × 4\n  IUCN.Red.List.Status                 n sd_body_size iqr_body_size\n  &lt;fct&gt;                            &lt;int&gt;        &lt;dbl&gt;         &lt;dbl&gt;\n1 Least Concern (LC)                  55        200.           94.5\n2 Near Threatened (NT)                 5         51.7          83  \n3 Vulnerable (VU)                      3         71.1          63.5\n4 Endangered (EN)                      1         NA             0  \n5 Least Concern (LC) - Provisional     1         NA             0"
+  },
+  {
+    "objectID": "dplyr/summarise.html#first-last-and-nth-values",
+    "href": "dplyr/summarise.html#first-last-and-nth-values",
+    "title": "Summarise",
+    "section": "First, last and nth values",
+    "text": "First, last and nth values\nThe first, last, and nth value can be extracted with the function first(), last(), and nth().\nNote NAs are provided for nth() as there is only one value. first() and last() work as the single value is the first and last value.\n\namphibian_div_tbl |&gt;\n    #Group by IUCN.Red.List.Status\n    dplyr::group_by(IUCN.Red.List.Status) |&gt;\n    #Summarise\n    dplyr::summarise(n = n(),\n                    first_body_size = first(Body_size_mm),\n                    last_body_size = last(Body_size_mm),\n                    second_body_size = nth(Body_size_mm, 2)\n                    )\n\n# A tibble: 5 × 5\n  IUCN.Red.List.Status         n first_body_size last_body_size second_body_size\n  &lt;fct&gt;                    &lt;int&gt;           &lt;dbl&gt;          &lt;dbl&gt;            &lt;dbl&gt;\n1 Least Concern (LC)          55              38            197               33\n2 Near Threatened (NT)         5              51             76              111\n3 Vulnerable (VU)              3              51            170              178\n4 Endangered (EN)              1              87             87               NA\n5 Least Concern (LC) - Pr…     1              48             48               NA"
+  },
+  {
     "objectID": "forcats/cheatsheets.html",
     "href": "forcats/cheatsheets.html",
     "title": "Cheatsheets",
@@ -627,7 +739,7 @@
     "href": "tibble/add_rows_and_columns.html#binding-a-tibble-to-a-tibble",
     "title": "Adding rows and columns",
     "section": "Binding a tibble to a tibble",
-    "text": "Binding a tibble to a tibble\nTibbles can be bound together to create a new tibble with dplyr::bind_cols() and dplyr::bind_rows().\nBelow are 2 quick examples with more details in the Dplyr bind tibbles page\n\nBind by columns\nBind 2 or more tibbles by columns. In other words you will end up with more columns and the same amount of rows.\nWe will bind the two following tibbles by columns.\nNote that the two tibbles must have the same amount of rows. Additionally, they should have completely unique column names compared to each other.\n\nnum_tbl\n\n# A tibble: 3 × 3\n      x     y     z\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1     1     4     7\n2     2     5     8\n3     3     6     9\n\n\n\nnum_tbl_2\n\n# A tibble: 3 × 3\n     aa    ab    ac\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1    11    14    17\n2    12    15    18\n3    13    16    19\n\n\nColumn bind\n\nnum_tbl_col_bound &lt;- dplyr::bind_cols(num_tbl, num_tbl_2)\nnum_tbl_col_bound\n\n# A tibble: 3 × 6\n      x     y     z    aa    ab    ac\n  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1     1     4     7    11    14    17\n2     2     5     8    12    15    18\n3     3     6     9    13    16    19\n\n\n\n\nBind by rows\nBind 2 or more tibbles by rows with dplyr::bind_rows(). In other words you will end up with more rows and the same amount of columns.\nWe will bind the two following tibbles by rows.\nNote that the two tibbles must have the same amount of columns. Additionally, they should have the same column names.\n\nnum_tbl\n\n# A tibble: 3 × 3\n      x     y     z\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1     1     4     7\n2     2     5     8\n3     3     6     9\n\n\n\nnum_tbl_3\n\n# A tibble: 3 × 3\n      x     y     z\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1     4     7    10\n2     5     8    11\n3     6     9    12\n\n\nRow bind\n\nnum_tbl_row_bound &lt;- dplyr::bind_rows(num_tbl, num_tbl_3)\nnum_tbl_row_bound\n\n# A tibble: 6 × 3\n      x     y     z\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1     1     4     7\n2     2     5     8\n3     3     6     9\n4     4     7    10\n5     5     8    11\n6     6     9    12"
+    "text": "Binding a tibble to a tibble\nTibbles can be bound together to create a new tibble with dplyr::bind_cols() and dplyr::bind_rows().\nPlease view the Dplyr bind tibbles page for examples."
   },
   {
     "objectID": "tibble/creating_tibbles.html",
@@ -777,143 +889,38 @@
     "text": "tidyr homepage"
   },
   {
-    "objectID": "dplyr/group_by.html",
-    "href": "dplyr/group_by.html",
-    "title": "Group by",
+    "objectID": "dplyr/bind_tibbles.html",
+    "href": "dplyr/bind_tibbles.html",
+    "title": "Bind tibbles",
     "section": "",
-    "text": "The function group_by() converts a tibble into a grouped tbl. The grouping is based on one or more specified columns/variables.\nThis allows you to carry out various functions in a groupwise manner. These functions are covered in other pages in this section.\nTidyverse reference page"
+    "text": "Tibbles can be bound together to create a new tibble with dplyr::bind_cols() and dplyr::bind_rows().\nTidyverse reference page"
   },
   {
-    "objectID": "dplyr/group_by.html#dataset",
-    "href": "dplyr/group_by.html#dataset",
-    "title": "Group by",
-    "section": "Dataset",
-    "text": "Dataset\nFor demonstration we’ll load the amphibian_div_tbl data from the mgrtibbles package (hyperlink includes install instructions).\n\n#Load package\nlibrary(\"mgrtibbles\")\n#amphibian_div_tbl tibble for demonstration\nmgrtibbles::amphibian_div_tbl\n\n# A tibble: 138 × 15\n   Species                  IUCN.Red.List.Status iucn_2cat Order   Family  Genus\n   &lt;chr&gt;                    &lt;fct&gt;                &lt;fct&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;\n 1 Acris blanchardi         &lt;NA&gt;                 &lt;NA&gt;      Anura   Hylidae Acris\n 2 Acris crepitans          Least Concern (LC)   LC        Anura   Hylidae Acris\n 3 Acris gryllus            Least Concern (LC)   LC        Anura   Hylidae Acris\n 4 Ambystoma barbouri       Near Threatened (NT) nonLC     Caudata Ambyst… Amby…\n 5 Ambystoma jeffersonianum Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 6 Ambystoma laterale       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 7 Ambystoma macrodactylum  Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 8 Ambystoma maculatum      Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 9 Ambystoma texanum        Least Concern (LC)   LC        Caudata Ambyst… Amby…\n10 Ambystoma tigrinum       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n# ℹ 128 more rows\n# ℹ 9 more variables: Age_at_maturity_min_y &lt;dbl&gt;, Age_at_maturity_max_y &lt;dbl&gt;,\n#   Body_size_mm &lt;dbl&gt;, Longevity_max_y &lt;dbl&gt;, Litter_size_min_n &lt;dbl&gt;,\n#   Litter_size_max_n &lt;dbl&gt;, Offspring_size_min_mm &lt;dbl&gt;,\n#   Offspring_size_max_mm &lt;fct&gt;, Development &lt;chr&gt;"
+    "objectID": "dplyr/bind_tibbles.html#create-example-tibbles",
+    "href": "dplyr/bind_tibbles.html#create-example-tibbles",
+    "title": "Bind tibbles",
+    "section": "Create example tibbles",
+    "text": "Create example tibbles\nBefore demonstrating various examples we will create a few tibbles.\n\nnum_tbl &lt;- tibble::tibble(x = 1:3, y = 4:6, z = 7:9)\nnum_tbl_2 &lt;- tibble::tibble(aa = 11:13, ab = 14:16, ac = 17:19)\nnum_tbl_3 &lt;- tibble::tibble(x = 4:6, y = 7:9, z = 10:12)"
   },
   {
-    "objectID": "dplyr/group_by.html#one-variablecolumn",
-    "href": "dplyr/group_by.html#one-variablecolumn",
-    "title": "Group by",
-    "section": "One variable/column",
-    "text": "One variable/column\nGroup by one variable/column.\nThe grouped tibble’s second top line of info states the grouping and the number of different items in the group ([]).\n\namphibian_div_tbl |&gt; dplyr::group_by(IUCN.Red.List.Status)\n\n# A tibble: 138 × 15\n# Groups:   IUCN.Red.List.Status [7]\n   Species                  IUCN.Red.List.Status iucn_2cat Order   Family  Genus\n   &lt;chr&gt;                    &lt;fct&gt;                &lt;fct&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;\n 1 Acris blanchardi         &lt;NA&gt;                 &lt;NA&gt;      Anura   Hylidae Acris\n 2 Acris crepitans          Least Concern (LC)   LC        Anura   Hylidae Acris\n 3 Acris gryllus            Least Concern (LC)   LC        Anura   Hylidae Acris\n 4 Ambystoma barbouri       Near Threatened (NT) nonLC     Caudata Ambyst… Amby…\n 5 Ambystoma jeffersonianum Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 6 Ambystoma laterale       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 7 Ambystoma macrodactylum  Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 8 Ambystoma maculatum      Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 9 Ambystoma texanum        Least Concern (LC)   LC        Caudata Ambyst… Amby…\n10 Ambystoma tigrinum       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n# ℹ 128 more rows\n# ℹ 9 more variables: Age_at_maturity_min_y &lt;dbl&gt;, Age_at_maturity_max_y &lt;dbl&gt;,\n#   Body_size_mm &lt;dbl&gt;, Longevity_max_y &lt;dbl&gt;, Litter_size_min_n &lt;dbl&gt;,\n#   Litter_size_max_n &lt;dbl&gt;, Offspring_size_min_mm &lt;dbl&gt;,\n#   Offspring_size_max_mm &lt;fct&gt;, Development &lt;chr&gt;"
+    "objectID": "dplyr/bind_tibbles.html#bind-by-columns",
+    "href": "dplyr/bind_tibbles.html#bind-by-columns",
+    "title": "Bind tibbles",
+    "section": "Bind by columns",
+    "text": "Bind by columns\nBind 2 or more tibbles by columns. In other words you will end up with more columns and the same amount of rows.\nWe will bind the two following tibbles by columns.\nNote that the two tibbles must have the same amount of rows. Additionally, they should have completely unique column names compared to each other.\n\nnum_tbl\n\n# A tibble: 3 × 3\n      x     y     z\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1     1     4     7\n2     2     5     8\n3     3     6     9\n\n\n\nnum_tbl_2\n\n# A tibble: 3 × 3\n     aa    ab    ac\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1    11    14    17\n2    12    15    18\n3    13    16    19\n\n\nColumn bind\n\nnum_tbl_col_bound &lt;- dplyr::bind_cols(num_tbl, num_tbl_2)\nnum_tbl_col_bound\n\n# A tibble: 3 × 6\n      x     y     z    aa    ab    ac\n  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1     1     4     7    11    14    17\n2     2     5     8    12    15    18\n3     3     6     9    13    16    19"
   },
   {
-    "objectID": "dplyr/group_by.html#multiple-variablescolumns",
-    "href": "dplyr/group_by.html#multiple-variablescolumns",
-    "title": "Group by",
-    "section": "Multiple variables/columns",
-    "text": "Multiple variables/columns\nGroup using multiple columns.\n\namphibian_div_tbl |&gt; dplyr::group_by(Order, Family, Genus)\n\n# A tibble: 138 × 15\n# Groups:   Order, Family, Genus [26]\n   Species                  IUCN.Red.List.Status iucn_2cat Order   Family  Genus\n   &lt;chr&gt;                    &lt;fct&gt;                &lt;fct&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;\n 1 Acris blanchardi         &lt;NA&gt;                 &lt;NA&gt;      Anura   Hylidae Acris\n 2 Acris crepitans          Least Concern (LC)   LC        Anura   Hylidae Acris\n 3 Acris gryllus            Least Concern (LC)   LC        Anura   Hylidae Acris\n 4 Ambystoma barbouri       Near Threatened (NT) nonLC     Caudata Ambyst… Amby…\n 5 Ambystoma jeffersonianum Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 6 Ambystoma laterale       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 7 Ambystoma macrodactylum  Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 8 Ambystoma maculatum      Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 9 Ambystoma texanum        Least Concern (LC)   LC        Caudata Ambyst… Amby…\n10 Ambystoma tigrinum       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n# ℹ 128 more rows\n# ℹ 9 more variables: Age_at_maturity_min_y &lt;dbl&gt;, Age_at_maturity_max_y &lt;dbl&gt;,\n#   Body_size_mm &lt;dbl&gt;, Longevity_max_y &lt;dbl&gt;, Litter_size_min_n &lt;dbl&gt;,\n#   Litter_size_max_n &lt;dbl&gt;, Offspring_size_min_mm &lt;dbl&gt;,\n#   Offspring_size_max_mm &lt;fct&gt;, Development &lt;chr&gt;"
+    "objectID": "dplyr/bind_tibbles.html#bind-by-rows",
+    "href": "dplyr/bind_tibbles.html#bind-by-rows",
+    "title": "Bind tibbles",
+    "section": "Bind by rows",
+    "text": "Bind by rows\nBind 2 or more tibbles by rows with dplyr::bind_rows(). In other words you will end up with more rows and the same amount of columns.\nWe will bind the two following tibbles by rows.\nNote that the two tibbles must have the same amount of columns. Additionally, they should have the same column names.\n\nnum_tbl\n\n# A tibble: 3 × 3\n      x     y     z\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1     1     4     7\n2     2     5     8\n3     3     6     9\n\n\n\nnum_tbl_3\n\n# A tibble: 3 × 3\n      x     y     z\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1     4     7    10\n2     5     8    11\n3     6     9    12\n\n\nRow bind\n\nnum_tbl_row_bound &lt;- dplyr::bind_rows(num_tbl, num_tbl_3)\nnum_tbl_row_bound\n\n# A tibble: 6 × 3\n      x     y     z\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1     1     4     7\n2     2     5     8\n3     3     6     9\n4     4     7    10\n5     5     8    11\n6     6     9    12"
   },
   {
-    "objectID": "dplyr/group_by.html#ungroup",
-    "href": "dplyr/group_by.html#ungroup",
-    "title": "Group by",
-    "section": "Ungroup",
-    "text": "Ungroup\nIf required you can remove the grouping from a tibble with dplyr::ungroup().\n\namphibian_dv_lineage_group_tbl |&gt; dplyr::ungroup()\n\n# A tibble: 138 × 15\n   Species                  IUCN.Red.List.Status iucn_2cat Order   Family  Genus\n   &lt;chr&gt;                    &lt;fct&gt;                &lt;fct&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;\n 1 Acris blanchardi         &lt;NA&gt;                 &lt;NA&gt;      Anura   Hylidae Acris\n 2 Acris crepitans          Least Concern (LC)   LC        Anura   Hylidae Acris\n 3 Acris gryllus            Least Concern (LC)   LC        Anura   Hylidae Acris\n 4 Ambystoma barbouri       Near Threatened (NT) nonLC     Caudata Ambyst… Amby…\n 5 Ambystoma jeffersonianum Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 6 Ambystoma laterale       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 7 Ambystoma macrodactylum  Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 8 Ambystoma maculatum      Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 9 Ambystoma texanum        Least Concern (LC)   LC        Caudata Ambyst… Amby…\n10 Ambystoma tigrinum       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n# ℹ 128 more rows\n# ℹ 9 more variables: Age_at_maturity_min_y &lt;dbl&gt;, Age_at_maturity_max_y &lt;dbl&gt;,\n#   Body_size_mm &lt;dbl&gt;, Longevity_max_y &lt;dbl&gt;, Litter_size_min_n &lt;dbl&gt;,\n#   Litter_size_max_n &lt;dbl&gt;, Offspring_size_min_mm &lt;dbl&gt;,\n#   Offspring_size_max_mm &lt;fct&gt;, Development &lt;chr&gt;"
-  },
-  {
-    "objectID": "dplyr/group_by.html#multiple-variablescolumns-into-one-group",
-    "href": "dplyr/group_by.html#multiple-variablescolumns-into-one-group",
-    "title": "Group by",
-    "section": "Multiple variables/columns into one group",
-    "text": "Multiple variables/columns into one group\nGroup using multiple columns.\n\namphibian_dv_lineage_group_tbl &lt;- amphibian_div_tbl |&gt; dplyr::group_by(Order, Family, Genus)\namphibian_dv_lineage_group_tbl\n\n# A tibble: 138 × 15\n# Groups:   Order, Family, Genus [26]\n   Species                  IUCN.Red.List.Status iucn_2cat Order   Family  Genus\n   &lt;chr&gt;                    &lt;fct&gt;                &lt;fct&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;\n 1 Acris blanchardi         &lt;NA&gt;                 &lt;NA&gt;      Anura   Hylidae Acris\n 2 Acris crepitans          Least Concern (LC)   LC        Anura   Hylidae Acris\n 3 Acris gryllus            Least Concern (LC)   LC        Anura   Hylidae Acris\n 4 Ambystoma barbouri       Near Threatened (NT) nonLC     Caudata Ambyst… Amby…\n 5 Ambystoma jeffersonianum Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 6 Ambystoma laterale       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 7 Ambystoma macrodactylum  Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 8 Ambystoma maculatum      Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 9 Ambystoma texanum        Least Concern (LC)   LC        Caudata Ambyst… Amby…\n10 Ambystoma tigrinum       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n# ℹ 128 more rows\n# ℹ 9 more variables: Age_at_maturity_min_y &lt;dbl&gt;, Age_at_maturity_max_y &lt;dbl&gt;,\n#   Body_size_mm &lt;dbl&gt;, Longevity_max_y &lt;dbl&gt;, Litter_size_min_n &lt;dbl&gt;,\n#   Litter_size_max_n &lt;dbl&gt;, Offspring_size_min_mm &lt;dbl&gt;,\n#   Offspring_size_max_mm &lt;fct&gt;, Development &lt;chr&gt;"
-  },
-  {
-    "objectID": "dplyr/count.html",
-    "href": "dplyr/count.html",
-    "title": "Count",
-    "section": "",
-    "text": "The function count() counts the number of each unique value within one or more variables.\nTidyverse reference page"
-  },
-  {
-    "objectID": "dplyr/count.html#dataset",
-    "href": "dplyr/count.html#dataset",
-    "title": "Count",
-    "section": "Dataset",
-    "text": "Dataset\nFor demonstration we’ll load the amphibian_div_tbl data from the mgrtibbles package (hyperlink includes install instructions).\n\n#Load package\nlibrary(\"mgrtibbles\")\n#amphibian_div_tbl tibble for demonstration\nmgrtibbles::amphibian_div_tbl\n\n# A tibble: 138 × 15\n   Species                  IUCN.Red.List.Status iucn_2cat Order   Family  Genus\n   &lt;chr&gt;                    &lt;fct&gt;                &lt;fct&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;\n 1 Acris blanchardi         &lt;NA&gt;                 &lt;NA&gt;      Anura   Hylidae Acris\n 2 Acris crepitans          Least Concern (LC)   LC        Anura   Hylidae Acris\n 3 Acris gryllus            Least Concern (LC)   LC        Anura   Hylidae Acris\n 4 Ambystoma barbouri       Near Threatened (NT) nonLC     Caudata Ambyst… Amby…\n 5 Ambystoma jeffersonianum Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 6 Ambystoma laterale       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 7 Ambystoma macrodactylum  Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 8 Ambystoma maculatum      Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 9 Ambystoma texanum        Least Concern (LC)   LC        Caudata Ambyst… Amby…\n10 Ambystoma tigrinum       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n# ℹ 128 more rows\n# ℹ 9 more variables: Age_at_maturity_min_y &lt;dbl&gt;, Age_at_maturity_max_y &lt;dbl&gt;,\n#   Body_size_mm &lt;dbl&gt;, Longevity_max_y &lt;dbl&gt;, Litter_size_min_n &lt;dbl&gt;,\n#   Litter_size_max_n &lt;dbl&gt;, Offspring_size_min_mm &lt;dbl&gt;,\n#   Offspring_size_max_mm &lt;fct&gt;, Development &lt;chr&gt;"
-  },
-  {
-    "objectID": "dplyr/count.html#count",
-    "href": "dplyr/count.html#count",
-    "title": "Count",
-    "section": "Count",
-    "text": "Count\nThe count() function will count the number of each unique value within one or more variables.\n\namphibian_div_tbl |&gt; dplyr::count(IUCN.Red.List.Status)\n\n# A tibble: 7 × 2\n  IUCN.Red.List.Status                 n\n  &lt;fct&gt;                            &lt;int&gt;\n1 Least Concern (LC)                  94\n2 Near Threatened (NT)                12\n3 Data Deficient (DD)                  8\n4 Vulnerable (VU)                     18\n5 Endangered (EN)                      4\n6 Least Concern (LC) - Provisional     1\n7 &lt;NA&gt;                                 1\n\n\nThe count() function works on grouped tibbles, counting the unique values within the group.\n\namphibian_div_tbl |&gt; \n    #Group by IUCN.Red.List.Status\n    dplyr::group_by(IUCN.Red.List.Status) |&gt;\n    #Count will count grouped info\n    dplyr::count()\n\n# A tibble: 7 × 2\n# Groups:   IUCN.Red.List.Status [7]\n  IUCN.Red.List.Status                 n\n  &lt;fct&gt;                            &lt;int&gt;\n1 Least Concern (LC)                  94\n2 Near Threatened (NT)                12\n3 Data Deficient (DD)                  8\n4 Vulnerable (VU)                     18\n5 Endangered (EN)                      4\n6 Least Concern (LC) - Provisional     1\n7 &lt;NA&gt;                                 1\n\n\nIt also works when specifying multiple variables/columns to use together.\n\namphibian_div_tbl |&gt; dplyr::count(Order, Family, Genus)\n\n# A tibble: 26 × 4\n   Order   Family         Genus          n\n   &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;      &lt;int&gt;\n 1 Anura   Ascaphidae     Ascaphus       2\n 2 Anura   Bufonidae      Anaxyrus       4\n 3 Anura   Bufonidae      Incilius       1\n 4 Anura   Hylidae        Acris          3\n 5 Anura   Hylidae        Hyla           7\n 6 Anura   Hylidae        Pseudacris     6\n 7 Anura   Ranidae        Rana          14\n 8 Anura   Scaphiopodidae Spea           2\n 9 Caudata Ambystomatidae Ambystoma      7\n10 Caudata Amphiumidae    Amphiuma       3\n# ℹ 16 more rows"
-  },
-  {
-    "objectID": "dplyr/count.html#tally",
-    "href": "dplyr/count.html#tally",
-    "title": "Count",
-    "section": "Tally",
-    "text": "Tally"
-  },
-  {
-    "objectID": "dplyr/count.html#one-variablecolumn",
-    "href": "dplyr/count.html#one-variablecolumn",
-    "title": "Count",
-    "section": "One variable/column",
-    "text": "One variable/column\nThe count() function will count the number of each unique value within one or more variables.\n\namphibian_div_tbl |&gt; dplyr::count(IUCN.Red.List.Status)\n\n# A tibble: 7 × 2\n  IUCN.Red.List.Status                 n\n  &lt;fct&gt;                            &lt;int&gt;\n1 Least Concern (LC)                  94\n2 Near Threatened (NT)                12\n3 Data Deficient (DD)                  8\n4 Vulnerable (VU)                     18\n5 Endangered (EN)                      4\n6 Least Concern (LC) - Provisional     1\n7 &lt;NA&gt;                                 1\n\n\nThe count() function works on grouped tibbles, counting the unique values within the group.\n\namphibian_div_tbl |&gt; \n    #Group by IUCN.Red.List.Status\n    dplyr::group_by(IUCN.Red.List.Status) |&gt;\n    #Count will count grouped info\n    dplyr::count()\n\n# A tibble: 7 × 2\n# Groups:   IUCN.Red.List.Status [7]\n  IUCN.Red.List.Status                 n\n  &lt;fct&gt;                            &lt;int&gt;\n1 Least Concern (LC)                  94\n2 Near Threatened (NT)                12\n3 Data Deficient (DD)                  8\n4 Vulnerable (VU)                     18\n5 Endangered (EN)                      4\n6 Least Concern (LC) - Provisional     1\n7 &lt;NA&gt;                                 1"
-  },
-  {
-    "objectID": "dplyr/count.html#muktilpe-variablescolumns",
-    "href": "dplyr/count.html#muktilpe-variablescolumns",
-    "title": "Count",
-    "section": "Muktilpe variables/columns",
-    "text": "Muktilpe variables/columns\nIt also works when specifying multiple variables/columns to use together.\n\namphibian_div_tbl |&gt; dplyr::count(Order, Family, Genus)\n\n# A tibble: 26 × 4\n   Order   Family         Genus          n\n   &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;      &lt;int&gt;\n 1 Anura   Ascaphidae     Ascaphus       2\n 2 Anura   Bufonidae      Anaxyrus       4\n 3 Anura   Bufonidae      Incilius       1\n 4 Anura   Hylidae        Acris          3\n 5 Anura   Hylidae        Hyla           7\n 6 Anura   Hylidae        Pseudacris     6\n 7 Anura   Ranidae        Rana          14\n 8 Anura   Scaphiopodidae Spea           2\n 9 Caudata Ambystomatidae Ambystoma      7\n10 Caudata Amphiumidae    Amphiuma       3\n# ℹ 16 more rows"
-  },
-  {
-    "objectID": "dplyr/count.html#multiple-variablescolumns",
-    "href": "dplyr/count.html#multiple-variablescolumns",
-    "title": "Count",
-    "section": "Multiple variables/columns",
-    "text": "Multiple variables/columns\nIt also works when specifying multiple variables/columns to use together.\n\namphibian_div_tbl |&gt; dplyr::count(Order, Family, Genus)\n\n# A tibble: 26 × 4\n   Order   Family         Genus          n\n   &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;      &lt;int&gt;\n 1 Anura   Ascaphidae     Ascaphus       2\n 2 Anura   Bufonidae      Anaxyrus       4\n 3 Anura   Bufonidae      Incilius       1\n 4 Anura   Hylidae        Acris          3\n 5 Anura   Hylidae        Hyla           7\n 6 Anura   Hylidae        Pseudacris     6\n 7 Anura   Ranidae        Rana          14\n 8 Anura   Scaphiopodidae Spea           2\n 9 Caudata Ambystomatidae Ambystoma      7\n10 Caudata Amphiumidae    Amphiuma       3\n# ℹ 16 more rows"
-  },
-  {
-    "objectID": "dplyr/summarise.html",
-    "href": "dplyr/summarise.html",
-    "title": "Summarise",
-    "section": "",
-    "text": "The function summarise() allows you to get a summary of the unique values within a grouped tibble. It will produce a __tibble_ of the summarised information.\nVarious helper functions can be used to get specific info including:\nTidyverse reference page"
-  },
-  {
-    "objectID": "dplyr/summarise.html#dataset",
-    "href": "dplyr/summarise.html#dataset",
-    "title": "Summarise",
-    "section": "Dataset",
-    "text": "Dataset\nFor demonstration we’ll load the amphibian_div_tbl data from the mgrtibbles package (hyperlink includes install instructions).\nWe’ll remove any rows with NAs as NAs cause mean and other other calculations to return NA.\n\n#Load package\nlibrary(\"mgrtibbles\")\n#amphibian_div_tbl tibble for demonstration\namphibian_div_tbl &lt;- mgrtibbles::amphibian_div_tbl |&gt; na.omit()"
-  },
-  {
-    "objectID": "dplyr/summarise.html#summarise",
-    "href": "dplyr/summarise.html#summarise",
-    "title": "Summarise",
-    "section": "Summarise",
-    "text": "Summarise\nThe default of summarise() is to produce a tibble of unique group values.\n\namphibian_div_tbl |&gt; \n    dplyr::group_by(IUCN.Red.List.Status) |&gt;\n    dplyr::summarise()\n\n# A tibble: 5 × 1\n  IUCN.Red.List.Status            \n  &lt;fct&gt;                           \n1 Least Concern (LC)              \n2 Near Threatened (NT)            \n3 Vulnerable (VU)                 \n4 Endangered (EN)                 \n5 Least Concern (LC) - Provisional"
-  },
-  {
-    "objectID": "dplyr/summarise.html#count",
-    "href": "dplyr/summarise.html#count",
-    "title": "Summarise",
-    "section": "Count",
-    "text": "Count\nThe counts of each unique value can be added with n().\nNotice that the new column’s name is specified before the = sign. This is the same as the count() function.\n\namphibian_div_tbl |&gt; \n    dplyr::group_by(IUCN.Red.List.Status) |&gt;\n    dplyr::summarise(n = n())\n\n# A tibble: 5 × 2\n  IUCN.Red.List.Status                 n\n  &lt;fct&gt;                            &lt;int&gt;\n1 Least Concern (LC)                  55\n2 Near Threatened (NT)                 5\n3 Vulnerable (VU)                      3\n4 Endangered (EN)                      1\n5 Least Concern (LC) - Provisional     1"
-  },
-  {
-    "objectID": "dplyr/summarise.html#mean-and-median",
-    "href": "dplyr/summarise.html#mean-and-median",
-    "title": "Summarise",
-    "section": "Mean and median",
-    "text": "Mean and median\nThe mean() function can be used to calculate the mean of groups and specified columns/variables.\n\namphibian_div_tbl |&gt;\n    #Group by IUCN.Red.List.Status\n    dplyr::group_by(IUCN.Red.List.Status) |&gt;\n    #Summarise\n    dplyr::summarise(n = n(), \n                    mean_body_size = mean(Body_size_mm), \n                    mean_max_litter_size = mean(Litter_size_max_n))\n\n# A tibble: 5 × 4\n  IUCN.Red.List.Status                 n mean_body_size mean_max_litter_size\n  &lt;fct&gt;                            &lt;int&gt;          &lt;dbl&gt;                &lt;dbl&gt;\n1 Least Concern (LC)                  55           173.                2570.\n2 Near Threatened (NT)                 5           114.                 369.\n3 Vulnerable (VU)                      3           133                   19 \n4 Endangered (EN)                      1            87                  350 \n5 Least Concern (LC) - Provisional     1            48                 1012 \n\n\nThe median() function calculates medians.\n\namphibian_div_tbl |&gt;\n    #Group by IUCN.Red.List.Status\n    dplyr::group_by(IUCN.Red.List.Status) |&gt;\n    #Summarise\n    dplyr::summarise(n = n(), \n                    mean_body_size = mean(Body_size_mm),\n                    median_body_size = median(Body_size_mm))\n\n# A tibble: 5 × 4\n  IUCN.Red.List.Status                 n mean_body_size median_body_size\n  &lt;fct&gt;                            &lt;int&gt;          &lt;dbl&gt;            &lt;dbl&gt;\n1 Least Concern (LC)                  55           173.              127\n2 Near Threatened (NT)                 5           114.              111\n3 Vulnerable (VU)                      3           133               170\n4 Endangered (EN)                      1            87                87\n5 Least Concern (LC) - Provisional     1            48                48"
-  },
-  {
-    "objectID": "dplyr/summarise.html#standard-deviation-and-iqr",
-    "href": "dplyr/summarise.html#standard-deviation-and-iqr",
-    "title": "Summarise",
-    "section": "Standard deviation and IQR",
-    "text": "Standard deviation and IQR\nThe sd() and IQR() function calculate standard deviation and inter quartile range (upper quartile - lower quartile).\nNote NAs are provided for standard deviation and 0 for IQR if there is only one value in the group.\n\namphibian_div_tbl |&gt;\n    #Group by IUCN.Red.List.Status\n    dplyr::group_by(IUCN.Red.List.Status) |&gt;\n    #Summarise\n    dplyr::summarise(n = n(),\n                    sd_body_size = sd(Body_size_mm),\n                    iqr_body_size = IQR(Body_size_mm),\n                    )\n\n# A tibble: 5 × 4\n  IUCN.Red.List.Status                 n sd_body_size iqr_body_size\n  &lt;fct&gt;                            &lt;int&gt;        &lt;dbl&gt;         &lt;dbl&gt;\n1 Least Concern (LC)                  55        200.           94.5\n2 Near Threatened (NT)                 5         51.7          83  \n3 Vulnerable (VU)                      3         71.1          63.5\n4 Endangered (EN)                      1         NA             0  \n5 Least Concern (LC) - Provisional     1         NA             0"
-  },
-  {
-    "objectID": "dplyr/summarise.html#first-last-and-nth-values",
-    "href": "dplyr/summarise.html#first-last-and-nth-values",
-    "title": "Summarise",
-    "section": "First, last and nth values",
-    "text": "First, last and nth values\nThe first, last, and nth value can be extracted with the function first(), last(), and nth().\nNote NAs are provided for nth() as there is only one value. first() and last() work as the single value is the first and last value.\n\namphibian_div_tbl |&gt;\n    #Group by IUCN.Red.List.Status\n    dplyr::group_by(IUCN.Red.List.Status) |&gt;\n    #Summarise\n    dplyr::summarise(n = n(),\n                    first_body_size = first(Body_size_mm),\n                    last_body_size = last(Body_size_mm),\n                    second_body_size = nth(Body_size_mm, 2)\n                    )\n\n# A tibble: 5 × 5\n  IUCN.Red.List.Status         n first_body_size last_body_size second_body_size\n  &lt;fct&gt;                    &lt;int&gt;           &lt;dbl&gt;          &lt;dbl&gt;            &lt;dbl&gt;\n1 Least Concern (LC)          55              38            197               33\n2 Near Threatened (NT)         5              51             76              111\n3 Vulnerable (VU)              3              51            170              178\n4 Endangered (EN)              1              87             87               NA\n5 Least Concern (LC) - Pr…     1              48             48               NA"
+    "objectID": "dplyr/dplyr.html#bind-tibbles",
+    "href": "dplyr/dplyr.html#bind-tibbles",
+    "title": "Dplyr",
+    "section": "Bind tibbles",
+    "text": "Bind tibbles\nTibbles can be combined/bound together with the following functions:\n\nbind_cols(): Bind 2 tibbles by columns (i.e. bind the tibbles side by side). The two tibbles must have the same number of rows.\nbind_row(): Bind 2 tibbles by rows (i.e. bind one tibble on top of the other ). The two tibbles must have the same column types and names."
   }
 ]

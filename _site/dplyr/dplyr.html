@@ -283,6 +283,18 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Group by</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/count.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Count</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dplyr/summarise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Summarise</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -313,7 +325,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#pipes" id="toc-pipes" class="nav-link" data-scroll-target="#pipes">Pipes</a></li>
   <li><a href="#rows" id="toc-rows" class="nav-link" data-scroll-target="#rows">Rows</a></li>
   <li><a href="#columns" id="toc-columns" class="nav-link" data-scroll-target="#columns">Columns</a></li>
+  <li><a href="#grouping" id="toc-grouping" class="nav-link" data-scroll-target="#grouping">Grouping</a></li>
   </ul></li>
+  <li><a href="#bind-tibbles" id="toc-bind-tibbles" class="nav-link" data-scroll-target="#bind-tibbles">Bind tibbles</a></li>
   </ul>
 </nav>
     </div>
@@ -345,6 +359,8 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Dplyr</strong> is the main data manipulation package for <strong>tibbles</strong> in <strong>tidyverse</strong>.</p>
 <p><strong>Dplyr</strong> is described as a “grammar of data manipulation” using verbs as the name of its various functions.</p>
 <p><a href="https://dplyr.tidyverse.org//">dplyr homepage</a></p>
+<p>This website aims to quickly cover the most commonly used <code>dplyr</code> functions and uses. Therefore there are a lot more <code>dplyr</code> functions than those covered here. Please check the below link for the full list.</p>
+<p><a href="https://dplyr.tidyverse.org//reference/index.html">Full dplyr reference page</a></p>
 </section>
 <section id="sections" class="level2">
 <h2 class="anchored" data-anchor-id="sections">Sections</h2>
@@ -373,9 +389,29 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="../dplyr/relocate.html"><code>relocate()</code></a>: Relocate columns. You can relocate columns to the start or end, and you can move them after or before specified columns.</li>
 <li><a href="../dplyr/select.html"><code>select()</code></a>: Select specific columns of a <strong>tibble</strong>. Can be used with a variety of helper functions such as <code>starts_with()</code>, <code>ends_with()</code>, <code>contains()</code>, and <code>matches()</code>.</li>
 </ul>
-
-
 </section>
+<section id="grouping" class="level3">
+<h3 class="anchored" data-anchor-id="grouping">Grouping</h3>
+<p><strong>Tibbles</strong> can be grouped by a specific variable/column or multiple variables/columns. This allows for group wise calculations.</p>
+<ul>
+<li><a href="../dplyr/group_by.html"><code>group_by()</code></a>: Converts a <strong>tibble</strong> to a grouped <strong>tibble</strong>.</li>
+<li><a href="../dplyr/count.html"><code>count()</code></a>: Counts the number of instances of each unique value for the grouping in a <strong>tibble</strong>.</li>
+<li><a href="../dplyr/summarise.html"><code>summarise()</code></a>: Produces a <strong>tibble</strong> with summary information on the group members in a grouped <strong>tibble</strong>.
+<ul>
+<li>Various functions can be used to calculate various summary information including <code>n()</code>, <code>mean()</code>, <code>median()</code>, <code>sd()</code>, <code>IQR()</code>, <code>first()</code>, <code>last()</code>, and <code>nth()</code>.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="bind-tibbles" class="level2">
+<h2 class="anchored" data-anchor-id="bind-tibbles">Bind tibbles</h2>
+<p><strong>Tibbles</strong> can be combined/bound together with the following functions:</p>
+<ul>
+<li><a href="../dplyr/bind_tibbles.html#bind-by-columns"><code>bind_cols()</code></a>: Bind 2 <strong>tibbles</strong> by columns (i.e.&nbsp;bind the <strong>tibbles</strong> side by side). The two <strong>tibbles</strong> must have the same number of rows.</li>
+<li><a href="../dplyr/bind_tibbles.html#bind-by-rows"><code>bind_row()</code></a>: Bind 2 <strong>tibbles</strong> by rows (i.e.&nbsp;bind one <strong>tibble</strong> on top of the other ). The two <strong>tibbles</strong> must have the same column types and names.</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->
