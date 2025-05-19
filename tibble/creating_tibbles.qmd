@@ -52,7 +52,7 @@ More information: [readr](../readr/readr.qmd)
 
 Ensure you have the following file downloaded: 
 
-(MG ADD DL LINK)
+[all_plants_details.csv download](https://neof-workshops.github.io/Tidyverse/data/all_plant_details.csv)
 
 
 ```{r, eval=FALSE}

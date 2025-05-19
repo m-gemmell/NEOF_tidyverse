@@ -98,4 +98,5 @@ library("tidyverse")
 ## External links
 
 - [Tidyverse homepage](https://www.tidyverse.org/)
+- [Cheatsheets](https://rstudio.github.io/cheatsheets/)
 - [R for Data Science (2e)](https://r4ds.hadley.nz/): If you want a more structured course this is a good place to start.
