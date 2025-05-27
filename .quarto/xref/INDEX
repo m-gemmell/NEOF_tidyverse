@@ -181,5 +181,11 @@
   },
   "dplyr/summarise.qmd": {
     "summarise.html": "e1ea72c6"
+  },
+  "readr/read.qmd": {
+    "read.html": "7ce8d792"
+  },
+  "datasets/data_files.qmd": {
+    "data_files.html": "d5b8555c"
   }
 }

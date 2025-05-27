@@ -102,6 +102,7 @@ website:
     align: left
     contents:
     - href: readr/readr.qmd
+    - href: readr/read.qmd
     - href: readr/cheatsheets.qmd
   - id: Tidyr
     title: Tidyr
@@ -158,6 +159,7 @@ website:
     align: left
     contents:
     - href: datasets/datasets.qmd
+    - href: datasets/data_files.qmd
     - href: datasets/lterdatasampler.qmd
     - href: datasets/mgrtibbles.qmd
 format:

@@ -66,6 +66,15 @@ These are:
 - [purrr](/purrr/purrr.qmd): Functions & vectors
 - [lubridate](/lubridate/lubridate.qmd): Data-time data
 
+## Reading order
+
+If you are starting out with Tidyverse I recommend reading through the website in the above order. 
+The above sections can be grouped into the following chapters:
+
+- Fundamental Tidyverse: [tibble](/tibble/tibble.qmd), [dplyr](/dplyr/dplyr.qmd), and [readr](/readr/readr.qmd).
+- Plot generation: [tidyr](/tidyr/tidyr.qmd) & [ggplot2](/ggplot2/ggplot2.qmd).
+- Miscellaneous: [stringr](/stringr/stringr.qmd), [forcats](/forcats/forcats.qmd), [purrr](/purrr/purrr.qmd), and [lubridate](/lubridate/lubridate.qmd).
+
 ## Package names
 
 To keep consistent we will include the package name of each function used in code.

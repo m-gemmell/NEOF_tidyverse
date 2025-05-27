@@ -6,4 +6,14 @@ title: "Readr"
 ![](../images/readr.png){style="width:150px"}
 </center>
 
+## Overview
+
+`Readr` is primarily used to read in __rectangular data__ from a __delimited file__ into R as a [tibble](/tibble/tibble.qmd) or write data to a file.
+
+__Rectangular data__ generally refers to tables.
+
+__Delimited data__ means that the columns/fields are delimited/separated by a character. Common delimiting characters include spaces (` `), commas (`,`), and tabs (`\t`).
+
 [readr homepage](https://readr.tidyverse.org/)
+
+## Sections

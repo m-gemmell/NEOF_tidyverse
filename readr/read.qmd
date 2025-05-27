@@ -1,0 +1,48 @@
+---
+title: "Read"
+---
+
+The `readr::read_delim()` function allows you to read in __delimited rectangular data__ from a file to a __tibble__.
+
+We will only cover `readr::read_delim()` but the full list of read functions are below:
+
+- `readr::read_delim()`: The base read functions.
+- `readr::read_csv()`: As `readr::read_delim()` but uses commas (`,`) as the default delimiter.
+- `readr::read_csv2()`: For some European fromatted data. As `readr::read_delim()` but uses semi colons (`;`) as the default delimiter and uses commas (`,`) for decimal points.
+- `readr::read_tsv()`: As `readr::read_delim()` but uses tabs (`\t`) as the default delimiter.
+
+[Tidyverse reference page](https://readr.tidyverse.org/reference/read_delim.html)
+
+## Data
+
+Rather than downloading files to then read in to R, we will use the URL of files uploaded to this website.
+
+If you are interested in information and/or downloading the data you can view the following page: [Data files](/datasets/data_files.qmd)
+
+## Delimiters
+
+Although there are specific functions for some delimiters this webpage will show you how to read in data with any delimiter using `readr::read_delim()` and the `delim=` option.
+
+### CSV
+
+We'll read in the file [all_plant_details.csv](https://neof-workshops.github.io/Tidyverse/data/all_plant_details.csv) into R as a tibble.
+
+Prior to reading in the CSV file (comma separated value) first print out the first ten lines of the file with the base R function `readLines()`. 
+This shows the contents of the file with the delimiters, in this case commas (`,`).
+This step is for demonstration and can be skipped in your own analyses if you know the delimiter of your file.
+
+```{r}
+readLines("https://neof-workshops.github.io/Tidyverse/data/all_plant_details.csv", n=10)
+```
+
+Read in the CSV file with `readr_delim` setting the delimiter to commas with `delim = ","`.
+
+__Note:__ You can ignore the 2 lines beginning with __ℹ__. They are discussed in the column types section.
+
+```{r}
+readr::read_delim(
+    file = "https://neof-workshops.github.io/Tidyverse/data/all_plant_details.csv",
+    delim = ","
+    )
+```
+
