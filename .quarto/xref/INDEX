@@ -187,5 +187,20 @@
   },
   "datasets/data_files.qmd": {
     "data_files.html": "d5b8555c"
+  },
+  "readr/read_delimiters.qmd": {
+    "read_delimiters.html": "e5037d5b"
+  },
+  "readr/write.qmd": {
+    "write.html": "07ed3cc4"
+  },
+  "readr/write_delimters.qmd": {
+    "write_delimters.html": "4d27379d"
+  },
+  "readr/write_delimiters.qmd": {
+    "write_delimiters.html": "b21fc05c"
+  },
+  "readr/column_types.qmd": {
+    "column_types.html": "2dd0a3cf"
   }
 }

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NEOF Tidyverse - Readr</title>
+<title>NEOF Tidyverse - Write overview</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../readr/read.html" rel="next">
+<link href="../readr/write_delimiters.html" rel="next">
+<link href="../readr/read_delimiters.html" rel="prev">
 <link href="..//images/NEOF_favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -156,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../readr/readr.html">Readr</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../readr/write.html">Write</a></li><li class="breadcrumb-item"><a href="../readr/write.html">Write overview</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -170,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../readr/readr.html" class="sidebar-item-text sidebar-link active">
+  <a href="../readr/readr.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Readr</span></a>
   </div>
 </li>
@@ -208,8 +209,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../readr/write.html" class="sidebar-item-text sidebar-link">
+  <a href="../readr/write.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Write overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../readr/write_delimiters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Write delimiters</span></a>
   </div>
 </li>
       </ul>
@@ -226,21 +233,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#sections" id="toc-sections" class="nav-link" data-scroll-target="#sections">Sections</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Readr</h1>
+<h1 class="title">Write overview</h1>
 </div>
 
 
@@ -255,21 +255,9 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<center>
-<img src="../images/readr.png" class="img-fluid" style="width:150px">
-</center>
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p><code>Readr</code> is primarily used to read in <strong>rectangular data</strong> from a <strong>delimited file</strong> into R as a <a href="../tibble/tibble.html">tibble</a> or write data to a file.</p>
-<p><strong>Rectangular data</strong> generally refers to tables.</p>
-<p><strong>Delimited data</strong> means that the columns/fields are delimited/separated by a character. Common delimiting characters include spaces (<code></code>), commas (<code>,</code>), and tabs (<code>\t</code>).</p>
-<p><a href="https://readr.tidyverse.org/">readr homepage</a></p>
-</section>
-<section id="sections" class="level2">
-<h2 class="anchored" data-anchor-id="sections">Sections</h2>
+<p>The most important element of what delimiter to use and not use is to ensure that none of the values in your data have the delimiter you will use.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script>
@@ -828,10 +816,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../readr/read_delimiters.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Read delimiters</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../readr/read.html" class="pagination-link">
-        <span class="nav-page-text">Read overview</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../readr/write_delimiters.html" class="pagination-link">
+        <span class="nav-page-text">Write delimiters</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -1,0 +1,116 @@
+---
+title: "Write delimiters"
+---
+
+Although there are specific functions for some delimiters this webpage will show you how to write out data with any delimiter using `readr::write_delim()` and the `delim=` option.
+
+The most common types of delimiters for rectangular data files are:
+
+- Commas (`,`): Files with commas as delimiters are known as CSV files (Comma Separated Values) and commonly end with the suffix __.csv__.
+- Tabs (`\t`): Files with tabs as delimiters are known as TSV files (Tab Separated Values) and commonly end with the suffix __.tsv__.
+- Spaces (` `): Spaces are used as delimiters for many files but are generally not recommended in data science.
+
+## Data
+
+We'll write the first five lines of [all_plant_details.csv](https://neof-workshops.github.io/Tidyverse/data/all_plant_details.csv) to various files with different delimiters.
+
+For convenience read in the data, slice it and assign it to a variable called __plant_detail_slice_tbl__.
+
+```{r}
+plant_detail_slice_tbl <- readr::read_delim(
+    file = "https://neof-workshops.github.io/Tidyverse/data/all_plant_details.csv",
+    delim = ",", show_col_types = FALSE) |>
+    dplyr::slice(1:5) 
+```
+
+## Space delimited
+
+By default `readr::write_delim()` will use a space as the delimiter character.
+
+### Write space delimited file
+
+Write the variable __plant_detail_slice_tbl__ to a space delimited file called __all_plant_slice.txt__.
+
+```{r}
+readr::write_delim(plant_detail_slice_tbl, "plant_detail_slice.txt")
+```
+
+### Space delimited file contents
+
+Print the file contents of __all_plant_slice.txt__.
+
+You will notice the 6th line has __\"Jacob's coat\"__. As this value had a space the `\"` are used to indicate that __Jacob's coat__ is the value within one field. 
+
+```{r}
+readLines("plant_detail_slice.txt")
+```
+
+## Comma delimited
+
+To write a data to a file with comma (`,`) delimiters you can use the option `delim = ","`.
+
+### Write comma delimited file
+
+Write the variable __plant_detail_slice_tbl__ to a comma delimited file called __all_plant_slice.csv__.
+
+```{r}
+readr::write_delim(plant_detail_slice_tbl, "plant_detail_slice.csv", delim = ",")
+```
+
+### Comma delimited file contents
+
+Print the file contents of __all_plant_slice.txt__.
+
+```{r}
+readLines("plant_detail_slice.csv")
+```
+
+## Tab delimited
+
+To write a data to a file with comma (`\t`) delimiters you can use the option `delim = "\t"`.
+
+### Write tab delimited file
+
+Write the variable __plant_detail_slice_tbl__ to a tab delimited file called __all_plant_slice.tsv__.
+
+```{r}
+readr::write_delim(plant_detail_slice_tbl, "plant_detail_slice.tsv", delim = "\t")
+```
+
+### Tab delimited file contents
+
+Print the file contents of __all_plant_slice.tsv__.
+
+If you were to open the file in a text editor it would most likely represent the `\t` characters as tab space.
+
+```{r}
+readLines("plant_detail_slice.tsv")
+```
+
+## Non-standard delimiters
+
+You can use many other characters as delimiters when writing files.
+This can be useful if your data contains the three common delimiters (comm, tab, and space).
+
+The most common non-standard delimiters are:
+
+- __Tilde__ (`~`)
+- __Colon__ (`:`)
+- __Semi-colon__ (`;`)
+- __Pipe__ (`|`)
+
+### Write non-standard delimited file
+
+Write the variable __plant_detail_slice_tbl__ to a pipe (`|`) delimited file called __all_plant_slice.pipe_delimit.text__.
+
+```{r}
+readr::write_delim(plant_detail_slice_tbl, "plant_detail_slice.pipe_delimit.text", delim = "|")
+```
+
+### Non-standard delimited file contents
+
+Print the file contents of __all_plant_slice.pipe_delimit.text__.
+
+```{r}
+readLines("plant_detail_slice.pipe_delimit.text")
+```

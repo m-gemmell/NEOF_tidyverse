@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NEOF Tidyverse - Read</title>
+<title>NEOF Tidyverse - Read overview</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,7 +30,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../readr/cheatsheets.html" rel="next">
+<link href="../readr/read_delimiters.html" rel="next">
 <link href="../readr/readr.html" rel="prev">
 <link href="..//images/NEOF_favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -191,7 +157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../readr/read.html">Read</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../readr/read.html">Read</a></li><li class="breadcrumb-item"><a href="../readr/read.html">Read overview</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -209,12 +175,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Readr</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Read</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../readr/read.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Read</span></a>
+ <span class="menu-text">Read overview</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../readr/read_delimiters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Read delimiters</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Write</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../readr/write.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Write overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../readr/write_delimiters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Write delimiters</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../readr/cheatsheets.html" class="sidebar-item-text sidebar-link">
@@ -232,10 +238,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#data" id="toc-data" class="nav-link active" data-scroll-target="#data">Data</a></li>
-  <li><a href="#delimiters" id="toc-delimiters" class="nav-link" data-scroll-target="#delimiters">Delimiters</a>
-  <ul class="collapse">
-  <li><a href="#csv" id="toc-csv" class="nav-link" data-scroll-target="#csv">CSV</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -244,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Read</h1>
+<h1 class="title">Read overview</h1>
 </div>
 
 
@@ -272,72 +274,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="data">Data</h2>
 <p>Rather than downloading files to then read in to R, we will use the URL of files uploaded to this website.</p>
 <p>If you are interested in information and/or downloading the data you can view the following page: <a href="../datasets/data_files.html">Data files</a></p>
-</section>
-<section id="delimiters" class="level2">
-<h2 class="anchored" data-anchor-id="delimiters">Delimiters</h2>
-<p>Although there are specific functions for some delimiters this webpage will show you how to read in data with any delimiter using <code>readr::read_delim()</code> and the <code>delim=</code> option.</p>
-<section id="csv" class="level3">
-<h3 class="anchored" data-anchor-id="csv">CSV</h3>
-<p>We’ll read in the file <a href="https://neof-workshops.github.io/Tidyverse/data/all_plant_details.csv">all_plant_details.csv</a> into R as a tibble.</p>
-<p>Prior to reading in the CSV file (comma separated value) first print out the first ten lines of the file with the base R function <code>readLines()</code>. This shows the contents of the file with the delimiters, in this case commas (<code>,</code>). This step is for demonstration and can be skipped in your own analyses if you know the delimiter of your file.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">readLines</span>(<span class="st">"https://neof-workshops.github.io/Tidyverse/data/all_plant_details.csv"</span>, <span class="at">n=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "id,common_name,seeds,drought_tolerant,salt_tolerant,thorny,invasive,tropical,indoor,flowers,cones,fruits,edible_fruit,leaf,edible_leaf,cuisine,medicinal,poisonous_to_humans,poisonous_to_pets,sunlight_part_sun_part_shade,sunlight_full_shade,sunlight_deep_shade,sunlight_part_shade,sunlight_full_sun_only_if_soil_kept_moist,sunlight_full_sun,sunlight_filtered_shade,care_level_encoded,maintenance_encoded,watering_encoded,growth_rate_encoded,cycle_perennial,cycle_herbaceous_perennial,cycle_annual"
- [2] "425,flowering-maple,0,1,0,1,0,1,1,1,0,0,0,1,0,0,1,0,0,0,0,0,1,0,1,0,2,0,2,0,1,0,0"                                                                                                                                                                                                                                                                                                                                                                                                                              
- [3] "426,flowering-maple,0,1,0,0,0,0,1,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,1,0,1,0,1,0,1,0,0"                                                                                                                                                                                                                                                                                                                                                                                                                              
- [4] "427,flowering-maple,0,1,0,0,0,1,1,1,0,0,0,1,0,0,1,0,0,0,0,0,1,0,1,0,1,0,1,0,1,0,0"                                                                                                                                                                                                                                                                                                                                                                                                                              
- [5] "428,flowering-maple,0,1,1,0,0,1,1,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,1,0,2,1,1,0,1,0,0"                                                                                                                                                                                                                                                                                                                                                                                                                              
- [6] "434,Jacob's coat,0,0,0,0,0,0,1,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,1,0,2,0,2,0,1,0,0"                                                                                                                                                                                                                                                                                                                                                                                                                                 
- [7] "502,hot water plant,0,0,0,0,0,0,1,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,2,1,1,0,0,1,0"                                                                                                                                                                                                                                                                                                                                                                                                                              
- [8] "540,desert rose,0,1,1,1,0,1,1,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,1,0,2,0,0,0,1,0,0"                                                                                                                                                                                                                                                                                                                                                                                                                                  
- [9] "543,maidenhair fern,0,0,0,0,0,0,1,1,0,1,0,1,0,1,1,0,0,1,0,0,1,0,0,0,2,0,1,0,1,0,0"                                                                                                                                                                                                                                                                                                                                                                                                                              
-[10] "546,delta maidenhair fern,0,1,0,0,0,0,1,1,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,2,2,1,0,1,0,0"                                                                                                                                                                                                                                                                                                                                                                                                                        </code></pre>
-</div>
-</div>
-<p>Read in the CSV file with <code>readr_delim</code> setting the delimiter to commas with <code>delim = ","</code>.</p>
-<p><strong>Note:</strong> You can ignore the 2 lines beginning with <strong>ℹ</strong>. They are discussed in the column types section.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_delim</span>(</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">file =</span> <span class="st">"https://neof-workshops.github.io/Tidyverse/data/all_plant_details.csv"</span>,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">delim =</span> <span class="st">","</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 155 Columns: 33
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr  (1): common_name
-dbl (32): id, seeds, drought_tolerant, salt_tolerant, thorny, invasive, trop...
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 155 × 33
-      id common_name        seeds drought_tolerant salt_tolerant thorny invasive
-   &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;            &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
- 1   425 flowering-maple        0                1             0      1        0
- 2   426 flowering-maple        0                1             0      0        0
- 3   427 flowering-maple        0                1             0      0        0
- 4   428 flowering-maple        0                1             1      0        0
- 5   434 Jacob's coat           0                0             0      0        0
- 6   502 hot water plant        0                0             0      0        0
- 7   540 desert rose            0                1             1      1        0
- 8   543 maidenhair fern        0                0             0      0        0
- 9   546 delta maidenhair …     0                1             0      0        0
-10   549 urn plant              1                1             1      0        0
-# ℹ 145 more rows
-# ℹ 26 more variables: tropical &lt;dbl&gt;, indoor &lt;dbl&gt;, flowers &lt;dbl&gt;,
-#   cones &lt;dbl&gt;, fruits &lt;dbl&gt;, edible_fruit &lt;dbl&gt;, leaf &lt;dbl&gt;,
-#   edible_leaf &lt;dbl&gt;, cuisine &lt;dbl&gt;, medicinal &lt;dbl&gt;,
-#   poisonous_to_humans &lt;dbl&gt;, poisonous_to_pets &lt;dbl&gt;,
-#   sunlight_part_sun_part_shade &lt;dbl&gt;, sunlight_full_shade &lt;dbl&gt;,
-#   sunlight_deep_shade &lt;dbl&gt;, sunlight_part_shade &lt;dbl&gt;, …</code></pre>
-</div>
-</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -902,8 +840,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../readr/cheatsheets.html" class="pagination-link">
-        <span class="nav-page-text">Cheatsheets</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../readr/read_delimiters.html" class="pagination-link">
+        <span class="nav-page-text">Read delimiters</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

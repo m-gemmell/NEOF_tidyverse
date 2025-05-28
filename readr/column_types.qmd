@@ -1,0 +1,61 @@
+---
+title: "Column types"
+---
+
+When reading in a file with `readr::delim()` the function will try to infer the type/class of data in each column.
+
+More info on __tibbles__ and data classes in the [tibble structure page](/tibble/structure.qmd#variablescolumns).
+
+Inferring the column types is not always correct and you can choose the column types with the `col_types=` option of the `reader::read_delim()` function.
+
+Column types can be specified with a compact string of single character representations.
+Each character represents the type of each column, with a number of strings equal to the number of columns (examples below).
+The characters and their data type are:
+
+- c = character
+- i = integer
+- n = number
+- d = double
+- l = logical
+- f = factor
+- D = date
+- T = date time
+- t = time
+- ? = guess
+- _ or - = skip
+
+## Example
+```{r, echo=FALSE}
+#Vectors to be used as columns
+Integers <- as.integer(c(101,21,3.3,0.04))
+Doubles <- as.double(c(0.345,3.14,78.9,20000.9))
+Characters <- c("One","sentence","is","enough")
+Factors <- as.factor(c("A","B","B","A"))
+Logicals <- c(TRUE,TRUE,FALSE,FALSE)
+#Create a tibble and write to file as CSV
+tibble::tibble(Integers, Doubles, Characters,Factors,Logicals) |>
+    readr::write_delim("simple_example.csv", delim=",")
+```
+
+We'll read in a the file [simple_example.csv](https://neof-workshops.github.io/Tidyverse/data/simple_example.csv) to first specify column types.
+
+### Check file contents
+
+View the file contents before reading it as a __tibble__.
+
+```{r}
+readLines("https://neof-workshops.github.io/Tidyverse/data/simple_example.csv")
+```
+
+### Read in example file and specify column types
+
+Read in the file specifying the column types.
+
+```{r}
+readr::read_delim(
+    file = "https://neof-workshops.github.io/Tidyverse/data/simple_example.csv",
+    delim = ",", 
+    col_types = "idcfl")
+```
+
+
