@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../readr/write.html" rel="next">
-<link href="../readr/read_delimiters.html" rel="prev">
+<link href="../readr/read_misc.html" rel="next">
+<link href="../readr/read.html" rel="prev">
 <link href="..//images/NEOF_favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -221,13 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../readr/read.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Read overview</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../readr/read_delimiters.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Read delimiters</span></a>
+ <span class="menu-text">Read_delim()</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -236,31 +230,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Column types</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../readr/read_misc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Misc read options</span></a>
+  </div>
+</li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Write</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../readr/write.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Write overview</span></a>
+ <span class="menu-text">Write</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../readr/write_delimiters.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Write delimiters</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../readr/cheatsheets.html" class="sidebar-item-text sidebar-link">
@@ -277,10 +260,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example">Example</a>
+  <li><a href="#data" id="toc-data" class="nav-link active" data-scroll-target="#data">Data</a>
   <ul class="collapse">
   <li><a href="#check-file-contents" id="toc-check-file-contents" class="nav-link" data-scroll-target="#check-file-contents">Check file contents</a></li>
-  <li><a href="#read-in-example-file-and-specify-column-types" id="toc-read-in-example-file-and-specify-column-types" class="nav-link" data-scroll-target="#read-in-example-file-and-specify-column-types">Read in example file and specify column types</a></li>
+  </ul></li>
+  <li><a href="#specify-column-types" id="toc-specify-column-types" class="nav-link" data-scroll-target="#specify-column-types">Specify column types</a></li>
+  <li><a href="#default-inference" id="toc-default-inference" class="nav-link" data-scroll-target="#default-inference">Default inference</a>
+  <ul class="collapse">
+  <li><a href="#inference-with-message" id="toc-inference-with-message" class="nav-link" data-scroll-target="#inference-with-message">Inference with message</a></li>
+  <li><a href="#inference-without-message" id="toc-inference-without-message" class="nav-link" data-scroll-target="#inference-without-message">Inference without message</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -322,8 +310,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>? = guess</li>
 <li>_ or - = skip</li>
 </ul>
-<section id="example" class="level2">
-<h2 class="anchored" data-anchor-id="example">Example</h2>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
 <p>We’ll read in a the file <a href="https://neof-workshops.github.io/Tidyverse/data/simple_example.csv">simple_example.csv</a> to first specify column types.</p>
 <section id="check-file-contents" class="level3">
 <h3 class="anchored" data-anchor-id="check-file-contents">Check file contents</h3>
@@ -339,8 +327,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="read-in-example-file-and-specify-column-types" class="level3">
-<h3 class="anchored" data-anchor-id="read-in-example-file-and-specify-column-types">Read in example file and specify column types</h3>
+</section>
+<section id="specify-column-types" class="level2">
+<h2 class="anchored" data-anchor-id="specify-column-types">Specify column types</h2>
 <p>Read in the file specifying the column types.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_delim</span>(</span>
@@ -351,6 +340,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code># A tibble: 4 × 5
   Integers   Doubles Characters Factors Logicals
      &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;fct&gt;   &lt;lgl&gt;   
+1      101     0.345 One        A       TRUE    
+2       21     3.14  sentence   B       TRUE    
+3        3    78.9   is         B       FALSE   
+4        0 20001.    enough     A       FALSE   </code></pre>
+</div>
+</div>
+</section>
+<section id="default-inference" class="level2">
+<h2 class="anchored" data-anchor-id="default-inference">Default inference</h2>
+<p>By default the <code>readr::read_delim()</code> will infer the data types of the columns. If using this method it is always important to ensure the column types are what you want before further analysis.</p>
+<section id="inference-with-message" class="level3">
+<h3 class="anchored" data-anchor-id="inference-with-message">Inference with message</h3>
+<p>Read in the file and leave <code>col_types()</code> to the default inference method (i.e.&nbsp;do not specify the option).</p>
+<p>Note there is information on the Column specifications between the Row and Column amounts and the <strong>tibble</strong> itself.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_delim</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">file =</span> <span class="st">"https://neof-workshops.github.io/Tidyverse/data/simple_example.csv"</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">delim =</span> <span class="st">","</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 4 Columns: 5
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (2): Characters, Factors
+dbl (2): Integers, Doubles
+lgl (1): Logicals
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 5
+  Integers   Doubles Characters Factors Logicals
+     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;   &lt;lgl&gt;   
+1      101     0.345 One        A       TRUE    
+2       21     3.14  sentence   B       TRUE    
+3        3    78.9   is         B       FALSE   
+4        0 20001.    enough     A       FALSE   </code></pre>
+</div>
+</div>
+<p>Overall it is fairly good but it has:</p>
+<ul>
+<li>Set the <strong>Integers</strong> column to doubles. Doubles are a safer option to set numbers to than integers (doubles can have decimal points whilst integers cannot). However, in data science we may work with data that we want in whole numbers and therefore want the column to be an integer column, ie. discrete data. Examples of discrete data include number of individuals, items, or game points.</li>
+<li>Set the <strong>Factors</strong> column to the characters. Our factors are words which are interpreted as strings.</li>
+</ul>
+</section>
+<section id="inference-without-message" class="level3">
+<h3 class="anchored" data-anchor-id="inference-without-message">Inference without message</h3>
+<p>I do not find the column specification message to be that useful. You can quiet the message by setting the option <code>show_col_types = FALSE</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_delim</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">file =</span> <span class="st">"https://neof-workshops.github.io/Tidyverse/data/simple_example.csv"</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">delim =</span> <span class="st">","</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 5
+  Integers   Doubles Characters Factors Logicals
+     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;   &lt;lgl&gt;   
 1      101     0.345 One        A       TRUE    
 2       21     3.14  sentence   B       TRUE    
 3        3    78.9   is         B       FALSE   
@@ -919,13 +965,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../readr/read_delimiters.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Read delimiters</span>
+      <a href="../readr/read.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Read_delim()</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../readr/write.html" class="pagination-link">
-        <span class="nav-page-text">Write overview</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../readr/read_misc.html" class="pagination-link">
+        <span class="nav-page-text">Misc read options</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

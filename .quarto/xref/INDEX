@@ -202,5 +202,8 @@
   },
   "readr/column_types.qmd": {
     "column_types.html": "2dd0a3cf"
+  },
+  "readr/read_misc.qmd": {
+    "read_misc.html": "c024b679"
   }
 }

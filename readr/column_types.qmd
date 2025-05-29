@@ -24,7 +24,7 @@ The characters and their data type are:
 - ? = guess
 - _ or - = skip
 
-## Example
+## Data
 ```{r, echo=FALSE}
 #Vectors to be used as columns
 Integers <- as.integer(c(101,21,3.3,0.04))
@@ -47,7 +47,7 @@ View the file contents before reading it as a __tibble__.
 readLines("https://neof-workshops.github.io/Tidyverse/data/simple_example.csv")
 ```
 
-### Read in example file and specify column types
+## Specify column types
 
 Read in the file specifying the column types.
 
@@ -57,5 +57,41 @@ readr::read_delim(
     delim = ",", 
     col_types = "idcfl")
 ```
+
+## Default inference
+
+By default the `readr::read_delim()` will infer the data types of the columns.
+If using this method it is always important to ensure the column types are what you want before further analysis.
+
+### Inference with message
+
+Read in the file and leave `col_types()` to the default inference method (i.e. do not specify the option).
+
+Note there is information on the Column specifications between the Row and Column amounts and the __tibble__ itself.
+
+```{r}
+readr::read_delim(
+    file = "https://neof-workshops.github.io/Tidyverse/data/simple_example.csv",
+    delim = ",")
+```
+
+Overall it is fairly good but it has:
+
+- Set the __Integers__ column to doubles. Doubles are a safer option to set numbers to than integers (doubles can have decimal points whilst integers cannot). However, in data science we may work with data that we want in whole numbers and therefore want the column to be an integer column, ie. discrete data. Examples of discrete data include number of individuals, items, or game points.
+- Set the __Factors__ column to the characters. Our factors are words which are interpreted as strings.
+
+### Inference without message
+
+I do not find the column specification message to be that useful.
+You can quiet the message by setting the option `show_col_types = FALSE`.
+
+```{r}
+readr::read_delim(
+    file = "https://neof-workshops.github.io/Tidyverse/data/simple_example.csv",
+    delim = ",",
+    show_col_types = FALSE)
+```
+
+
 
 

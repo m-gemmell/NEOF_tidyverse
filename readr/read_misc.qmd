@@ -1,0 +1,97 @@
+---
+title: "Misc read options"
+---
+
+On top of choosing the delimiter (`delim=`) and the column types (`col_types=`) there are other useful options for `readr::read_delim()`.
+
+The three covered here are:
+
+- `id=`: Adds an ID column containing the file path. Useful when reading in multiple files and combining the data into one __tibble__.
+- `skip=`: Skips a specified number of lines from the top of the file. Useful if the top of the file contains information (e.g. annotation) on the data that you don't want included in the __tibble__.
+- `n_max=`: Specify the max number of lines/rows to read into the __tibble__. Useful for only getting a small amount of the data for creating/testing/debugging code.
+
+## File path column
+
+The `id=` option can be used to add an ID column with the file path of the data. The important features of this are:
+
+- The column's name is specified as a string e.g. `id = "file_path"`.
+- The file path column is added as the first column to the resulting __tibble__.
+- The string specified as `file=` is used as the values in the created column.
+- The values of the resulting column are identical.
+
+### ID as file path
+
+Read in the file [https://neof-workshops.github.io/Tidyverse/data/all_plant_details.csv](https://neof-workshops.github.io/Tidyverse/data/all_plant_details.csv) setting "file_path" to `id=`.
+
+```{r}
+readr::read_delim(
+    file = "https://neof-workshops.github.io/Tidyverse/data/all_plant_details.csv",
+    delim = ",",
+    id = "file_path") |>
+    #Slice and select the first 5 rows and 6 columns
+    dplyr::slice(1:5) |>  dplyr::select(1:6)
+```
+
+### ID as file name
+
+Repeat the above using the functions `dplyr::mutate()` and `basename()` to only contain the file name (i.e. remove the entire file path except the file name).
+
+```{r}
+readr::read_delim(
+    file = "https://neof-workshops.github.io/Tidyverse/data/all_plant_details.csv",
+    delim = ",",
+    id = "file_name") |>
+    #Mutate to only retain file name in the file_name column
+    dplyr::mutate(file_name = basename(file_name)) |>
+    #Slice and select the first 5 rows and 6 columns
+    dplyr::slice(1:5) |>  dplyr::select(1:6)
+```
+
+## Skip lines
+
+Data files may contain information related to the data that is not part of the table at the top of the file. 
+The `skip=` option allows the first X lines to be skipped for these data files.
+
+If these information lines are not skipped it can confuse the parsing of the data based on the delimiter since the information lines will not have the same amount of the delimiter character as the actual data.
+
+### File contents
+
+Check the top 8 lines of the file: [https://neof-workshops.github.io/Tidyverse/data/all_plant_details_w_info.csv](https://neof-workshops.github.io/Tidyverse/data/all_plant_details_w_info.csv).
+
+Notice the first three lines are information and not data lines.
+
+```{r}
+readLines("https://neof-workshops.github.io/Tidyverse/data/all_plant_details_w_info.csv", n=8)
+```
+
+### Read in and skip lines
+
+Read in the data skipping the first 3 lines.
+
+```{r}
+readr::read_delim(
+    file = "https://neof-workshops.github.io/Tidyverse/data/all_plant_details_w_info.csv",
+    delim = ",",
+    skip = 3) |>
+    #Slice and select the first 5 rows and 6 columns
+    dplyr::slice(1:5) |>  dplyr::select(1:6)
+```
+
+## Max number of lines
+
+If you have a very large file and only want to read in a specified amount of lines it is best to use `n_max=`.
+
+This is better than piping to `dplyr::slice()` as it saves the computer from needing to read in the whole file to memory (RAM) only to then slice it.
+
+Read in the first 8 lines from [https://neof-workshops.github.io/Tidyverse/data/all_plant_details.csv](https://neof-workshops.github.io/Tidyverse/data/all_plant_details.csv).
+
+__Note:__ The header line is not considered for `n_max=` therefore the header line and first 8 rows ar read in.
+
+```{r}
+readr::read_delim(
+    file = "https://neof-workshops.github.io/Tidyverse/data/all_plant_details.csv",
+    delim = ",",
+    n_max = 8) |>
+    #Select the first 6 columns to view
+    dplyr::select(1:6)
+```

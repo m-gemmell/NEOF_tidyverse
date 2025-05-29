@@ -186,34 +186,29 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../readr/read.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Read overview</span></a>
+ <span class="menu-text">Read_delim()</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../readr/read_delimiters.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Read delimiters</span></a>
+  <a href="../readr/column_types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Column types</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../readr/read_misc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Misc read options</span></a>
   </div>
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Write</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../readr/write.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Write overview</span></a>
+ <span class="menu-text">Write</span></a>
   </div>
 </li>
-      </ul>
-  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../readr/cheatsheets.html" class="sidebar-item-text sidebar-link">
@@ -231,7 +226,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#sections" id="toc-sections" class="nav-link" data-scroll-target="#sections">Sections</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#sections" id="toc-sections" class="nav-link" data-scroll-target="#sections">Sections</a>
+  <ul class="collapse">
+  <li><a href="#read" id="toc-read" class="nav-link" data-scroll-target="#read">Read</a></li>
+  <li><a href="#write" id="toc-write" class="nav-link" data-scroll-target="#write">Write</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -265,10 +265,36 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Delimited data</strong> means that the columns/fields are delimited/separated by a character. Common delimiting characters include spaces (<code></code>), commas (<code>,</code>), and tabs (<code>\t</code>).</p>
 <p><a href="https://readr.tidyverse.org/">readr homepage</a></p>
 </section>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>Rather than downloading files to then read in to R, we will use the URL of files uploaded to this website.</p>
+<p>If you are interested in information and/or downloading the data you can view the following page: <a href="../datasets/data_files.html">Data files</a></p>
+</section>
 <section id="sections" class="level2">
 <h2 class="anchored" data-anchor-id="sections">Sections</h2>
+<p>The sections of <code>readr</code> are summarised below.</p>
+<section id="read" class="level3">
+<h3 class="anchored" data-anchor-id="read">Read</h3>
+<p>The <code>readr::read_delim()</code> function reads in <strong>delimited rectangular data</strong> from a file to a <strong>tibble</strong>.</p>
+<p>Topics covered are:</p>
+<ul>
+<li><a href="../readr/read.html">Read_delim()</a>: Reading in data with <code>readr::read_delim()</code> and specifying the delimiter with <code>delim=</code>. Common delimiters are comma (<code>,</code>), tab (<code>\t</code>), and space (<code></code>).</li>
+<li><a href="../readr/column_types.html">Column types</a>: Specifying the data types (double, integer, character, factor, logical etc.) of the columns when reading in data with <code>readr::read_delim()</code>. Particularly important when you want integer or factor columns.</li>
+<li><a href="../readr/read_misc.html">Misc read options</a>: Three miscellaneous options for <code>readr::read_delim()</code>.
+<ul>
+<li><code>id=</code>: Adds an ID column containing the file path.</li>
+<li><code>skip=</code>: Skips a specified number of lines from the top of the file.</li>
+<li><code>n_max=</code>: Specify the max number of lines/rows to read into a <strong>tibble</strong>.</li>
+</ul></li>
+</ul>
+<p><a href="https://readr.tidyverse.org/reference/read_delim.html">Tidyverse reference page</a></p>
+</section>
+<section id="write" class="level3">
+<h3 class="anchored" data-anchor-id="write">Write</h3>
+<p>The <a href="../readr/write.html"><code>readr::write_delim()</code></a> writes <strong>tibbles</strong> and other table data to files.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -831,7 +857,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="../readr/read.html" class="pagination-link">
-        <span class="nav-page-text">Read overview</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Read_delim()</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

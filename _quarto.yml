@@ -105,12 +105,9 @@ website:
     - section: "Read"
       contents:
       - href: readr/read.qmd
-      - href: readr/read_delimiters.qmd
       - href: readr/column_types.qmd
-    - section: "Write"
-      contents:
-      - href: readr/write.qmd
-      - href: readr/write_delimiters.qmd
+      - href: readr/read_misc.qmd
+    - href: readr/write.qmd
     - href: readr/cheatsheets.qmd
   - id: Tidyr
     title: Tidyr
