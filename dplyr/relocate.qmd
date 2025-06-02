@@ -2,6 +2,10 @@
 title: "Relocate"
 ---
 
+<center>
+![](images/dplyr_relocate.png){style="width:200px"}
+</center>
+
 The function `dplyr::relocate()` can change the order of columns.
 
 ```{r, echo=FALSE, output=FALSE}

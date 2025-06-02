@@ -1,6 +1,10 @@
 ---
 title: "Pipes"
 ---
+<center>
+![](images/dplyr_pipe.png){style="width:150px"}
+</center>
+
 
 The preferred method when using `dplyr` and other __tidyverse__ package functions is to use pipes.
 

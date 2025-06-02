@@ -2,6 +2,10 @@
 title: "Filter"
 ---
 
+<center>
+![](images/dplyr_filter.png){style="width:200px"}
+</center>
+
 The `dplyr::filter()` function can be used to extract rows that meet a certain condition.
 
 This can be a useful method to:

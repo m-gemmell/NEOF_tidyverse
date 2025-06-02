@@ -2,6 +2,10 @@
 title: "Count"
 ---
 
+<center>
+![](images/dplyr_count.png){style="width:200px"}
+</center>
+
 The function `count()` counts the number of each unique value within one or more variables.
 
 [Tidyverse reference page](https://dplyr.tidyverse.org//reference/count.html)

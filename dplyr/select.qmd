@@ -2,6 +2,10 @@
 title: "Select"
 ---
 
+<center>
+![](images/dplyr_select.png){style="width:200px"}
+</center>
+
 The function `dplyr::select()` allows you to select columns from a __tibble__.
 There are many different ways to do this with various helper functions.
 

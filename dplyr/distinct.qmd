@@ -2,6 +2,10 @@
 title: "Distinct"
 ---
 
+<center>
+![](images/dplyr_distinct.png){style="width:200px"}
+</center>
+
 The `dplyr::distinct()` function extracts unique/distinct rows from a __tibble__.
 
 [Tidyverse reference page](https://dplyr.tidyverse.org//reference/distinct.html)

@@ -2,12 +2,13 @@
 title: "Rename"
 ---
 
-The function `dplyr::select()` allows you to select columns from a __tibble__.
-There are many different ways to do this with various helper functions.
+<center>
+![](images/dplyr_rename.png){style="width:200px"}
+</center>
 
-When subsetting with `dplyr::select()` the resulting object will always be a __tibble__.
+The function `dplyr::rename()` allows you to rename column names in a __tibble__.
 
-[Tidyverse reference page](https://dplyr.tidyverse.org//reference/select.html)
+[Tidyverse reference page](https://dplyr.tidyverse.org//reference/rename.html)
 
 ## Dataset
 

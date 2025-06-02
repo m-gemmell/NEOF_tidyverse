@@ -2,6 +2,10 @@
 title: "Slice"
 ---
 
+<center>
+![](images/dplyr_slice.png){style="width:200px"}
+</center>
+
 The `dplyr:slice()` function can be used to subset row.
 
 Their are multiple slice commands:

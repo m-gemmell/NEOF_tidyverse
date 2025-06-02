@@ -2,6 +2,10 @@
 title: "Glimpse"
 ---
 
+<center>
+![](images/dplyr_glimpse.png){style="width:200px"}
+</center>
+
 The function `dplyr::glimpse()` allows you to print __tibbles__ in a transposed manner.
 This will allow you to view all the columns with their data type and some of the first values.
 

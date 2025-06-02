@@ -2,6 +2,10 @@
 title: "Mutate"
 ---
 
+<center>
+![](images/dplyr_mutate.png){style="width:200px"}
+</center>
+
 The function `dplyr::mutate()` allows you to:
 
 - Create new columns based on existing columns.

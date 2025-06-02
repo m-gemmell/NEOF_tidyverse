@@ -55,12 +55,40 @@ monofont {
   height: 40px;
 }
 
+// Placement of hex image in one row
+.hexrow {
+  position: relative;
+  display: flex;
+  flex-wrap:nowrap;
+  justify-content: center;
+}
+
+// Placement of hex image rows in /dplyr/dplyr.qmd
+.hexdplyrcolumnstop {
+  left: -37.5px;
+  position: relative;
+  display: flex;
+  flex-wrap:nowrap;
+  justify-content: center;
+}
+.hexdplyrcolumnsbottom{
+  left:37.5px;
+  top:-61px;
+  height:130px;
+  position: relative;
+  display: flex;
+  flex-wrap:nowrap;
+  justify-content: center;
+}
+
+
+
 .hexcollast {
 }
 
 
 // Make images disappear if size of viewport is too small
-@media (max-width: 450px) {
+@media (max-width: 600px) {
   .hexcollast {
     display: none;
   }

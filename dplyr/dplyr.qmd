@@ -22,15 +22,43 @@ Please check the below link for the full list.
 
 ## Sections
 
+
+
+
 There are many sections for `dplyr`. These are summarised below.
 
 ### Pipes
+
+<div class="hexrow">
+  <p><a href="/dplyr/pipes.qmd">
+  <img src="images/dplyr_pipe.png" width="150px">
+  </a></p>
+</div>
 
 [Pipes](/dplyr/pipes.qmd) (`|>`) are a vital part of creating efficient and clear code with __tidyverse__. 
 Pipes allow you to chain/pipe functions together.
 It can be used for all functions not just those from __tidyverse__.
 
 ### Rows
+
+<div class="hexrow">
+  <p><a href="/dplyr/arrange.qmd">
+  <img src="images/dplyr_arrange.png" width="150px">
+  </a></p>
+  
+  <p><a href="/dplyr/distinct.qmd">
+  <img src="images/dplyr_distinct.png" width="150px">
+  </a></p>
+
+  <p><a href="/dplyr/filter.qmd">
+  <img src="images/dplyr_filter.png" width="150px" class="hexcollast">
+  </a></p>
+
+  <p><a href="/dplyr/slice.qmd">
+  <img src="images/dplyr_slice.png" width="150px" class="hexcollast">
+  </a></p>
+
+</div>
 
 There four main verbs (i.e. functions) to manipulate rows. These are:
 
@@ -41,15 +69,60 @@ There four main verbs (i.e. functions) to manipulate rows. These are:
 
 ### Columns
 
+<div class="hexdplyrcolumnstop">
+  <p><a href="/dplyr/glimpse.qmd">
+  <img src="images/dplyr_glimpse.png" width="150px">
+  </a></p>
+
+  <p><a href="/dplyr/mutate.qmd">
+  <img src="images/dplyr_mutate.png" width="150px">
+  </a></p>
+
+  <p><a href="/dplyr/pull.qmd">
+  <img src="images/dplyr_pull.png" width="150px" class="hexcollast">
+  </a></p>
+</div>
+
+
+<div class="hexdplyrcolumnsbottom">
+  <p><a href="/dplyr/relocate.qmd">
+  <img src="images/dplyr_relocate.png" width="150px">
+  </a></p>
+
+  <p><a href="/dplyr/rename.qmd">
+  <img src="images/dplyr_rename.png" width="150px">
+  </a></p>
+
+  <p><a href="/dplyr/select.qmd">
+  <img src="images/dplyr_select.png" width="150px" class="hexcollast">
+  </a></p>
+</div>
+
 There six main verbs (i.e. functions) to manipulate columns. These are:
 
 - [`glimpse()`](/dplyr/glimpse.qmd): Print a __tibble__ in a transposed manner. Useful for seeing the data types of all the columns.
 - [`mutate()`](/dplyr/mutate.qmd): Mutate columns to create new columns based on existing ones, modify existing columns, and delete columns.
 - [`pull()`](/dplyr/pull.qmd): Pull out a single column from a __tibble__, resulting in a __vector__.
 - [`relocate()`](/dplyr/relocate.qmd): Relocate columns. You can relocate columns to the start or end, and you can move them after or before specified columns.
+- [`rename()`](/dplyr/rename.qmd): Rename columns in a __tibble__.
 - [`select()`](/dplyr/select.qmd): Select specific columns of a __tibble__. Can be used with a variety of helper functions such as `starts_with()`, `ends_with()`, `contains()`, and `matches()`.
 
 ### Grouping
+
+<div class="hexrow">
+  <p><a href="/dplyr/group_by.qmd">
+  <img src="images/dplyr_group_by.png" width="150px">
+  </a></p>
+
+  <p><a href="/dplyr/count.qmd">
+  <img src="images/dplyr_count.png" width="150px">
+  </a></p>
+
+  <p><a href="/dplyr/summarise.qmd">
+  <img src="images/dplyr_summarise.png" width="150px" class="hexcollast">
+  </a></p>
+
+</div>
 
 __Tibbles__ can be grouped by a specific variable/column or multiple variables/columns. This allows for group wise calculations.
 
@@ -58,9 +131,20 @@ __Tibbles__ can be grouped by a specific variable/column or multiple variables/c
 - [`summarise()`](/dplyr/summarise.qmd): Produces a __tibble__ with summary information on the group members in a grouped __tibble__. 
     - Various functions can be used to calculate various summary information including `n()`, `mean()`, `median()`, `sd()`, `IQR()`, `first()`, `last()`, and `nth()`.
 
-## Bind tibbles
+### Bind tibbles
+
+<div class="hexrow">
+  <p><a href="/dplyr/bind_tibbles.qmd">
+  <img src="images/dplyr_bind_cols.png" width="150px">
+  </a></p>
+
+  <p><a href="/dplyr/bind_tibbles.qmd">
+  <img src="images/dplyr_bind_rows.png" width="150px">
+  </a></p>
+
+</div>
 
 __Tibbles__ can be combined/bound together with the following functions:
 
-- [`bind_cols()`](/dplyr/bind_tibbles.qmd#bind-by-columns): Bind 2 __tibbles__ by columns (i.e. bind the __tibbles__ side by side). The two __tibbles__ must have the same number of rows.
-- [`bind_row()`](/dplyr/bind_tibbles.qmd#bind-by-rows): Bind 2 __tibbles__ by rows (i.e. bind one __tibble__ on top of the other ). The two __tibbles__ must have the same column types and names.
+- [`bind_cols()`](/dplyr/bind_tibbles.qmd): Bind 2 __tibbles__ by columns (i.e. bind the __tibbles__ side by side). The two __tibbles__ must have the same number of rows.
+- [`bind_row()`](/dplyr/bind_tibbles.qmd): Bind 2 __tibbles__ by rows (i.e. bind one __tibble__ on top of the other ). The two __tibbles__ must have the same column types and names.
