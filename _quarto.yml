@@ -78,7 +78,6 @@ website:
       - href: dplyr/arrange.qmd
       - href: dplyr/distinct.qmd
       - href: dplyr/filter.qmd
-      - href: dplyr/na_removal.qmd
       - href: dplyr/slice.qmd
     - section: "Columns"
       contents:
@@ -116,6 +115,18 @@ website:
     align: left
     contents:
     - href: tidyr/tidyr.qmd
+    - section: "Pivot"
+      contents:
+      - href: tidyr/pivot_longer.qmd
+      - href: tidyr/pivot_wider.qmd
+    - section: "Character vectors"
+      contents:
+      - href: tidyr/separate_wider.qmd
+      - href: tidyr/unite.qmd
+    - section: "Missing data"
+      contents:
+      - href: tidyr/drop_na.qmd
+      - href: tidyr/na_filling.qmd
     - href: tidyr/cheatsheets.qmd
   - id: Ggplot2
     title: Ggplot2

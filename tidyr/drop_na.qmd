@@ -1,0 +1,59 @@
+---
+title: "Drop NA"
+---
+
+<center>
+![](images/tidyr_drop_na.png){style="width:200px"}
+</center>
+
+You can remove rows with NAs in various ways with the `drop_na()` function.
+
+- Remove rows that contain at least one NA value
+- Remove rows with NAs in one specific column
+- Remove rows with NAs in multiple specific columns
+
+[Tidyverse reference page](https://tidyr.tidyverse.org//reference/drop_na.html)
+
+## Dataset
+
+For demonstration we'll load the `mammal_sleep_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+
+```{r}
+#Load package
+library("mgrtibbles")
+#mammal_sleep_tbl tibble for demonstration
+mgrtibbles::mammal_sleep_tbl
+```
+
+## Na in any column
+
+Drop rows with an NA in any column with `drop_na()`.
+
+```{r}
+mammal_sleep_tbl |>
+    tidyr::drop_na()
+```
+
+## NA in one column
+
+Drop rows with an NA in one specific column.
+
+```{r}
+mammal_sleep_tbl |>
+    tidyr::drop_na(life_span)
+```
+
+## NA in multiple specific columns
+
+Drop rows with an NA in at least one of the specified columns.
+
+Below a character vector of column names is used `c("non_dreaming","dreaming")`.
+The following range of column names would also work in this situation (`non_dreaming:dreaming`).
+
+__Note:__ There is an NA in the 10th row of the __life_span__ column as we did not specify it with `drop_na()`.
+
+```{r}
+mammal_sleep_tbl |>
+    tidyr::drop_na(c("non_dreaming","dreaming"))
+```
+

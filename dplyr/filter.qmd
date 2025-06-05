@@ -85,3 +85,7 @@ bison_tbl |>
     #Retain samples from year 2000
     dplyr::filter(rec_year == 2000)
 ```
+
+## NA removal
+
+For removal of NAs please see the [tidyr drop NA page](/tidyr/drop_na.qmd).

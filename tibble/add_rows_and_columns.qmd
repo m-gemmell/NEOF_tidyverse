@@ -6,7 +6,7 @@ format: html
 Data can be added to a __tibble__ by various methods. this includes:
 
 - Adding a new row or column with [`tibble::add_row()`](https://tibble.tidyverse.org/reference/add_row.html) and [`tibble::add_column()`](https://tibble.tidyverse.org/reference/add_column.html).
-- Binding rows or columns with [Dplyr](/dplyr/bind_tibbles)
+- Binding rows or columns with [Dplyr](/dplyr/bind_tibbles.qmd)
 
 ## Create example tibbles
 
@@ -71,6 +71,17 @@ mixed_tbl_add_row
 
 
 ## Binding a tibble to a tibble
+
+<div class="hexrow">
+  <p><a href="/dplyr/bind_tibbles.qmd">
+  <img src="/dplyr/images/dplyr_bind_cols.png" width="150px">
+  </a></p>
+
+  <p><a href="/dplyr/bind_tibbles.qmd">
+  <img src="/dplyr/images/dplyr_bind_rows.png" width="150px">
+  </a></p>
+
+</div>
 
 __Tibbles__ can be bound together to create a new __tibble__ with `dplyr::bind_cols()` and `dplyr::bind_rows()`.
 

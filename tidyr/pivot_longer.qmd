@@ -1,0 +1,51 @@
+---
+title: "Pivot longer"
+---
+
+<center>
+![](images/tidyr_pivot_longer.png){style="width:200px"}
+</center>
+
+The function `pivot_longer()` lengthens data, converting it from wide to long.
+Long data is generally the preferred format for __Tidyverse__, and is especially useful for [`ggplot2`](/ggplot2/ggplot2.qmd).
+
+When data is lengthened:
+
+- The number of rows increases.
+- The number of columns decreases.
+
+To lengthen data a set of columns are chosen.
+
+- The column names are assigned as data of a __names__ column.
+- The values within the columns are assigned to a __value__ column. Each value is within its own row.
+
+[Tidyverse reference page](https://tidyr.tidyverse.org//reference/pivot_longer.html)
+
+## Dataset
+
+For demonstration we'll load the `fisheries_wide_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+
+```{r}
+#Load package
+library("mgrtibbles")
+#mammal_sleep_tbl tibble for demonstration
+mgrtibbles::fisheries_wide_tbl |>
+    #View first 11 columns with select
+    dplyr::select(1:11)
+```
+
+## Wide to long
+
+Pivot the __wide tibble__ to a __long tibble__.
+
+The three options provided below are:
+
+- The columns to use for lengthening.
+    - Below `!Entity` is used to lengthen all but the `Entity` column.
+    - String vectors can be used.
+- `names_to=`: New column in long data containing the __names__ of the lengthened columns.
+- `values_to=`: New column in long data containing the __values__ of the lengthened columns.
+
+```{r}
+fisheries_wide_tbl |> tidyr::pivot_longer(!Entity, names_to="Year", values_to = "Metric_tons")
+```

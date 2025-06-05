@@ -56,7 +56,7 @@ readr::read_delim(
 ## TSV
 
 We'll read in the file [all_plant_details.csv](https://neof-workshops.github.io/Tidyverse/data/plant_detail_slice.tsv) into R as a tibble.
-This tab delimited file was created with the [`readr::write_delim()`](/readr/write_delimiters.qmd#tab-delimited) and only contains the header line plus the first 5 rows of the __all_plant_details.csv__ file.
+This tab delimited file was created with the [`readr::write_delim()`](/readr/write.qmd#comma-delimited) and only contains the header line plus the first 5 rows of the __all_plant_details.csv__ file.
 
 ### TSV file contents
 
@@ -84,7 +84,7 @@ readr::read_delim(
 ## Space
 
 We'll read in the file [all_plant_details.txt](https://neof-workshops.github.io/Tidyverse/data/plant_detail_slice.txt) into R as a tibble.
-This space delimited file was created with the [`readr::write_delim()`](/readr/write_delimiters.qmd#space-delimited) and only contains the header line plus the first 5 rows of the __all_plant_details.csv__ file.
+This space delimited file was created with the [`readr::write_delim()`](/readr/write.qmd#space-delimited) and only contains the header line plus the first 5 rows of the __all_plant_details.csv__ file.
 
 ### Space delimited file contents
 
@@ -122,7 +122,7 @@ The most common non-standard delimiters are:
 - __Pipe__ (`|`)
 
 We'll read in the file [plant_detail_slice.pipe_delimit.text](https://neof-workshops.github.io/Tidyverse/data/plant_detail_slice.txt) into R as a tibble.
-This pipe (`|`) delimited file was created with the [`readr::write_delim()`](/readr/write_delimiters.qmd#non-standard-delimiters) and only contains the header line plus the first 5 rows of the __all_plant_details.csv__ file.
+This pipe (`|`) delimited file was created with the [`readr::write_delim()`](/readr/write.qmd#non-standard-delimiters) and only contains the header line plus the first 5 rows of the __all_plant_details.csv__ file.
 
 ### Non-standard delimited file contents
 

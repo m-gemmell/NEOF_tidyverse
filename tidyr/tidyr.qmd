@@ -6,4 +6,75 @@ title: "Tidyr"
 ![](../images/tidyr.png){style="width:150px"}
 </center>
 
+The purpose of `tidyr` is to create __tidy data__. Tidy data has three main features:
+
+- Each variable is a column; each column is a variable.
+- Each observation is a row; each row is an observation.
+- Each value is a cell; each cell is a single value.
+
+The aim of tidy data is to work within the tidyverse so less time is needed to manipulate data and fight with tools.
+This allows you to spend your time and effort analysing the data.
+
 [tidyr homepage](https://tidyr.tidyverse.org/)
+
+This website aims to quickly cover the most commonly used `tidyr` functions and uses.
+Therefore there are a lot more `tidyr` functions than those covered here.
+Please check the below link for the full list.
+
+[Full tidyr reference page](https://tidyr.tidyverse.org//reference/index.html)
+
+## Sections
+
+The sections for `tidyr` are summarised below.
+
+### Pivoting
+
+<div class="hexrow">
+  <p><a href="/tidyr/pivot_longer.qmd">
+  <img src="images/tidyr_pivot_longer.png" width="150px">
+  </a></p>
+  
+  <p><a href="/tidyr/pivot_wider.qmd">
+  <img src="images/tidyr_pivot_wider.png" width="150px">
+  </a></p>
+
+</div>
+
+Certain analyses and tools require data to be in a specific structure.
+Two rectangular/table data structures are __wide__ and __long__.
+The two pivot functions transform data between these two types.
+
+- [`pivot_longer()`](/tidyr/pivot_longer.qmd): Lengthens data, transforming it from wide to long. Many __Tidyverse__ packages are built with long data in mind, especially [`ggplot2`](/ggplot2/ggplot2.qmd).
+- [`pivot_wider()`](/tidyr/pivot_wider.qmd): Widens data, transforming it from long to wide.
+
+### Character vectors
+
+<div class="hexrow">
+  <p><a href="/tidyr/separate_wider.qmd">
+  <img src="/tidyr/images/tidyr_separate_wider.png" width="150px">
+  </a></p>
+
+  <p><a href="/tidyr/unite.qmd">
+  <img src="/tidyr/images/tidyr_unite.png" width="150px">
+  </a></p>
+</div>
+
+A column may contain multiple pieces of character/string data or you may want to create a column by uniting multiple character/string columns.
+The below functions can be used for these purposes.
+
+- [`separate_wider_delim()`](/tidyr/separate_wider.qmd): Splits a string column into multiple columns by a delimiter. 
+- [`unite()`](/tidyr/unite.qmd): Combines/unites multiple string columns into one column. 
+
+### Missing values
+
+<div class="hexrow">
+  <p><a href="/tidyr/drop_na.qmd">
+  <img src="/tidyr/images/tidyr_drop_na.png" width="150px">
+  </a></p>
+
+  <p><a href="/tidyr/unite.qmd">
+  <img src="/tidyr/images/tidyr_unite.png" width="150px">
+  </a></p>
+</div>
+
+- [`drop_na()`](/tidyr/drop_na.qmd): Remove rows with NAs.

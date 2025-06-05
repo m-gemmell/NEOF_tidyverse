@@ -205,5 +205,32 @@
   },
   "readr/read_misc.qmd": {
     "read_misc.html": "c024b679"
+  },
+  "tidyr/pivot_longer.qmd": {
+    "pivot_longer.html": "143e0a5a"
+  },
+  "tidyr/pivot_wider.qmd": {
+    "pivot_wider.html": "348d6236"
+  },
+  "tidyr/separate_wider.qmd": {
+    "separate_wider.html": "768b2454"
+  },
+  "tidyr/separate_longer.qmd": {
+    "separate_longer.html": "8130ccf3"
+  },
+  "tibble/unite.qmd": {
+    "unite.html": "1dcb3c43"
+  },
+  "tidyr/unite.qmd": {
+    "unite.html": "2388fe40"
+  },
+  "tidyr/na_removal.qmd": {
+    "na_removal.html": "36abbf76"
+  },
+  "tidyr/na_filling.qmd": {
+    "na_filling.html": "f97b56a8"
+  },
+  "tidyr/drop_na.qmd": {
+    "drop_na.html": "9ef8f171"
   }
 }

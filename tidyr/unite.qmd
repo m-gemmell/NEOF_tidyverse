@@ -1,0 +1,69 @@
+---
+title: "Unite"
+---
+
+<center>
+![](/tidyr/images/tidyr_unite.png){style="width:150px"}
+</center>
+
+The `unite()` function combines/pastes multiple string/character columns into one.
+This can be useful when combing multiple metadata columns into one for analyses/statistics/plotting purposes.
+
+[Tidyverse reference page](https://tidyr.tidyverse.org//reference/pivot_longer.html)
+
+## Dataset
+
+For demonstration we'll load the `crop_and_soil_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+
+```{r}
+#Load package
+library("mgrtibbles")
+#mammal_sleep_tbl tibble for demonstration
+mgrtibbles::crop_and_soil_tbl |>
+    #Select all but the fourth column
+    dplyr::select(-4)
+```
+
+## Unite columns
+
+Unite 2 columns into one.
+This will remove the columns to be united.
+
+The two options below are:
+
+- The name of the new united column (`Crop_fertiliser`).
+- The columns to unite (`Crop_type:Fertiliser`).
+
+```{r}
+crop_and_soil_tbl |>
+    #Select all but the fourth column
+    dplyr::select(-4) |>
+    #Unite the Crop and fertiliser columns
+    tidyr::unite("Crop_Fertiliser", Crop_type:Fertiliser)
+```
+
+## Further unite options
+
+With `tidyr::unite()` you can:
+
+
+- Choose specific columns and their order in the united column with a string vector of the column names.
+- Choose the delimiter/separator for the strings in the united column (`sep=`).
+- Retain the original columns with the option `remove=FALSE`.
+
+```{r}
+crop_and_soil_tbl |>
+    #Select all but the fourth column
+    dplyr::select(-4) |>
+    #Unite columns
+    tidyr::unite(
+        #United column name
+        "Crop.Soil.Fertiliser",
+        #Columns to unite
+        c("Crop_type","Soil_type","Fertiliser"), 
+        #Separator for stings in united column
+        sep=".", 
+        #Do not remove the original columns to be united
+        remove=FALSE
+        )
+```

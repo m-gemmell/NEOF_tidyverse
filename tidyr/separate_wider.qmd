@@ -1,0 +1,41 @@
+---
+title: "Separate wider"
+---
+
+<center>
+![](/tidyr/images/tidyr_separate_wider.png){style="width:150px"}
+</center>
+
+The `separate_wider_delim()` function splits a string column into multiple columns by a delimiter. 
+
+[Tidyverse reference page](https://tidyr.tidyverse.org//reference/pivot_longer.html)
+
+
+## Dataset
+
+For demonstration we'll load the `crop_and_soil_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+
+```{r}
+#Load package
+library("mgrtibbles")
+#mammal_sleep_tbl tibble for demonstration
+mgrtibbles::crop_and_soil_tbl |>
+    #View first four columns with select
+    dplyr::select(1:4)
+```
+
+## Separate a column
+
+Split the column __Temperature_celsius_kelvin__ into 2 columns by the delimiter "_".
+This will produce a __Temp_celsius__ column and a _-Temp_kelvin__ column.
+
+```{r}
+crop_and_soil_tbl |>
+    #Select first four columns
+    dplyr::select(1:4) |>
+    #Separate wider
+    tidyr::separate_wider_delim(Temperature_celsius_kelvin, delim="_",
+    names = c("Temp_celsius", "Temp_kelvin")) |>
+    #Mutate across the two columns to convert them to numeric columns
+    dplyr::mutate(dplyr::across(Temp_celsius:Temp_kelvin, as.numeric))
+```

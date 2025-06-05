@@ -46,3 +46,7 @@ mammal_sleep_tbl |>
     #Calculate and add total_life_sleep column
     dplyr::mutate(total_life_sleep = (life_span*365.25) * total_sleep)
 ```
+
+## NA filling
+
+For NA filling/editing please see the [tidyr NA filling page](/tidyr/na_filling.qmd).

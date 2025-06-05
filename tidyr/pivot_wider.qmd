@@ -1,0 +1,47 @@
+---
+title: "Pivot wider"
+---
+
+<center>
+![](images/tidyr_pivot_wider.png){style="width:200px"}
+</center>
+
+The function `pivot_wider()` widens data, converting it from long to wide.
+
+When data is widened:
+
+- The number of rows decreases.
+- The number of columns increases.
+
+To widen data two columns are chosen.
+
+- A __names__ column is chosen. These names are used to name the widened columns.
+- A __values__ column is chosen. These values populate the widened columns.
+
+[Tidyverse reference page](https://tidyr.tidyverse.org//reference/pivot_wider.html)
+
+## Dataset
+
+For demonstration we'll load the `fisheries_long_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+
+```{r}
+#Load package
+library("mgrtibbles")
+#mammal_sleep_tbl tibble for demonstration
+mgrtibbles::fisheries_long_tbl
+```
+
+## Long to wide
+
+Pivot the __long tibble__ to a __wide tibble__.
+
+The two options provided below are:
+
+- `names_from=`: Column in long data to use as the widened column __names__.
+- `values_from=`: Column in long data to use as the widened __values__.
+
+```{r}
+fisheries_long_tbl |> tidyr::pivot_wider(names_from=Year, values_from=Metric_tons) |>
+    #View first 11 columns with select
+    dplyr::select(1:11)
+```

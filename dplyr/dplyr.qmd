@@ -22,9 +22,6 @@ Please check the below link for the full list.
 
 ## Sections
 
-
-
-
 There are many sections for `dplyr`. These are summarised below.
 
 ### Pipes
