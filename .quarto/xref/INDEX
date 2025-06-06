@@ -232,5 +232,8 @@
   },
   "tidyr/drop_na.qmd": {
     "drop_na.html": "9ef8f171"
+  },
+  "tidyr/replace_na.qmd": {
+    "replace_na.html": "323ab118"
   }
 }

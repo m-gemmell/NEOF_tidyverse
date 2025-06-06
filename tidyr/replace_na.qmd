@@ -1,0 +1,97 @@
+---
+title: "Replace NA"
+---
+
+<center>
+![](images/tidyr_replace_na.png){style="width:200px"}
+</center>
+
+It is common to have NAs in your data. 
+However, sometimes instead of removing them you may want to replace them.
+below are three methods to carry this out.
+
+- Replace all NAs in a column with a specific value with `tidyr::replace_na()`. A common example is to replace all NAs with 0.
+- Use the corresponding value of another column to replace NAs. 
+
+[Tidyverse reference page](https://tidyr.tidyverse.org//reference/replace_na.html)
+
+## Dataset
+
+For demonstration we'll load the `mammal_sleep_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions). Additionally, we'll subset it to:
+
+- Keep the first ten rows with at least one NA.
+- COlumns species to life_span
+
+```{r}
+#Load package
+library("mgrtibbles")
+#mammal_sleep_tbl tibble for demonstration
+#Subset to only keep rows with at least one NA
+mammal_sleep_na_tbl <- mgrtibbles::mammal_sleep_tbl[!complete.cases(mammal_sleep_tbl),] |>
+    #Slice to keep first ten rows and select columns species to life_span
+    dplyr::slice(1:10) |> dplyr::select(species:life_span)
+#View tibble
+mammal_sleep_na_tbl
+```
+
+## Replace with a value
+
+Replace NAs in specified columns with `tidyr::replace_na()`.
+
+When used with a __tibble__/__data.frame__ the function needs to be provided with a __list__.
+The list contains the column names and the replacement value.
+
+### One column
+
+Replaces NAs in the `dreaming` column with 0.
+
+```{r}
+mammal_sleep_na_tbl |>
+    tidyr::replace_na(list(dreaming=0))
+```
+
+### Multiple columns
+
+Replaces:
+
+- NAs in the `dreaming` column with 0.
+- NAs in the `life_span` column with 1.
+
+```{r}
+mammal_sleep_na_tbl |>
+    tidyr::replace_na(list(dreaming=0, life_span=1))
+```
+
+### Vector
+
+the `replace_na()` function can be used with vectors.
+In this case the function only needs to value to be replace NAs with.
+
+```{r}
+mammal_sleep_na_tbl |>
+    #Pull out non_dreaming column as a vector
+    dplyr::pull(non_dreaming) |>
+    #Replace NAs with 0
+    tidyr::replace_na(0)
+```
+
+## Replace with other column
+
+NAs can be replaced with the corresponding value in another column. This carried out with the following functions:
+
+- [`dplyr::mutate`](/dplyr/mutate.qmd): Mutate columns to create new columns based on existing ones, modify existing columns, and delete columns.
+- [`dplyr::coalesce`](https://dplyr.tidyverse.org//reference/coalesce.html): Finds the first non-missing value at each point.
+
+```{r}
+mammal_sleep_na_tbl |>
+    dplyr::mutate(dreaming = dplyr::coalesce(dreaming, total_sleep))
+```
+
+## Replace all NAs
+
+All NAs can be replaced with a value using base R's `is.na()` function.
+
+```{r}
+mammal_sleep_na_tbl[is.na(mammal_sleep_na_tbl)] <- 0
+mammal_sleep_na_tbl
+```

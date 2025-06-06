@@ -72,9 +72,13 @@ The below functions can be used for these purposes.
   <img src="/tidyr/images/tidyr_drop_na.png" width="150px">
   </a></p>
 
-  <p><a href="/tidyr/unite.qmd">
-  <img src="/tidyr/images/tidyr_unite.png" width="150px">
+  <p><a href="/tidyr/replace_na.qmd">
+  <img src="/tidyr/images/tidyr_replace_na.png" width="150px">
   </a></p>
 </div>
 
+It is common to encounter NAs in tabular data.
+Dropping columns with NAs or replacing NA values are common approaches to deal with them.
+
 - [`drop_na()`](/tidyr/drop_na.qmd): Remove rows with NAs.
+- [`replace_na()`](/tidyr/replace_na.qmd): Replace NA values.

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NEOF Tidyverse - NA filling</title>
+<title>NEOF Tidyverse - Replace NA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -191,7 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tidyr/drop_na.html">Missing data</a></li><li class="breadcrumb-item"><a href="../tidyr/na_filling.html">NA filling</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tidyr/drop_na.html">Missing data</a></li><li class="breadcrumb-item"><a href="../tidyr/na_filling.html">Replace NA</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -273,7 +273,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../tidyr/na_filling.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">NA filling</span></a>
+ <span class="menu-text">Replace NA</span></a>
   </div>
 </li>
       </ul>
@@ -306,7 +306,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">NA filling</h1>
+<h1 class="title">Replace NA</h1>
 </div>
 
 
@@ -321,6 +321,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<p>It is common to have NAs in your data. However, sometimes instead of removing them you may want to replace them. below are three methods to carry this out.</p>
+<ul>
+<li>Replace all NAs in a column with a specific value with <code>tidyr::replace_na()</code>. A common example is to replace all NAs with 0.</li>
+<li>Use the corresponding value of another column to replace NAs.</li>
+</ul>
 <section id="dataset" class="level2">
 <h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
 <p>For demonstration we’ll load the <code>mammal_sleep_tbl</code> data from the <a href="../datasets/mgrtibbles.html">mgrtibbles package</a> (hyperlink includes install instructions).</p>

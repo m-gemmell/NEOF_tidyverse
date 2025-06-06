@@ -126,7 +126,7 @@ website:
     - section: "Missing data"
       contents:
       - href: tidyr/drop_na.qmd
-      - href: tidyr/na_filling.qmd
+      - href: tidyr/replace_na.qmd
     - href: tidyr/cheatsheets.qmd
   - id: Ggplot2
     title: Ggplot2
