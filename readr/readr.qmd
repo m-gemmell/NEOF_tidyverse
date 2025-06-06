@@ -28,6 +28,12 @@ The sections of `readr` are summarised below.
 
 ### Read
 
+<div class="hexrow">
+  <p><a href="/readr/read.qmd">
+  <img src="/readr/images/readr_read.png" width="150px">
+  </a></p>
+</div>
+
 The `readr::read_delim()` function reads in __delimited rectangular data__ from a file to a __tibble__.
 
 Topics covered are:
@@ -42,5 +48,11 @@ Topics covered are:
 [Tidyverse reference page](https://readr.tidyverse.org/reference/read_delim.html)
 
 ### Write
+
+<div class="hexrow">
+  <p><a href="/readr/read.qmd">
+  <img src="/readr/images/readr_write.png" width="150px">
+  </a></p>
+</div>
 
 The [`readr::write_delim()`](/readr/write.qmd) writes __tibbles__ and other table data to files.

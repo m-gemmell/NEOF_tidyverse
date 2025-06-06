@@ -2,6 +2,10 @@
 title: "Misc read options"
 ---
 
+<center>
+![](images/readr_misc_options.png){style="width:200px"}
+</center>
+
 On top of choosing the delimiter (`delim=`) and the column types (`col_types=`) there are other useful options for `readr::read_delim()`.
 
 The three covered here are:

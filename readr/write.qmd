@@ -2,6 +2,10 @@
 title: "Write"
 ---
 
+<center>
+![](images/readr_write.png){style="width:200px"}
+</center>
+
 Although there are specific functions for some delimiters this page will show you how to write out data with any delimiter using `readr::write_delim()` and the `delim=` option.
 
 The most common types of delimiters for rectangular data files are:

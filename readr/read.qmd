@@ -1,6 +1,9 @@
 ---
 title: "Read_delim()"
 ---
+<center>
+![](images/readr_read.png){style="width:200px"}
+</center>
 
 The `readr::read_delim()` function allows you to read in __delimited rectangular data__ from a file to a __tibble__.
 

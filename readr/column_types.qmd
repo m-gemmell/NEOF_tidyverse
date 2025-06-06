@@ -2,6 +2,10 @@
 title: "Column types"
 ---
 
+<center>
+![](images/readr_column_types.png){style="width:200px"}
+</center>
+
 When reading in a file with `readr::delim()` the function will try to infer the type/class of data in each column.
 
 More info on __tibbles__ and data classes in the [tibble structure page](/tibble/structure.qmd#variablescolumns).
