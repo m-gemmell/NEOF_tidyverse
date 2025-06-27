@@ -322,13 +322,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <center>
 <img src="images/tidyr_pivot_longer.png" class="img-fluid" style="width:200px">
 </center>
-<p>The function <code>pivot_longer()</code> lengthens data, converting it from wide to long. Long data is generally the preferred format for <strong>Tidyverse</strong>, and is especially useful for <a href="../ggplot2/ggplot2.html"><code>ggplot2</code></a>.</p>
-<p>When data is lengthened:</p>
+<p>The function <code>pivot_longer()</code> longifys data, converting it from wide to long. Long data is generally the preferred format for <strong>Tidyverse</strong>, and is especially useful for <a href="../ggplot2/ggplot2.html"><code>ggplot2</code></a>.</p>
+<p>When data is longified:</p>
 <ul>
 <li>The number of rows increases.</li>
 <li>The number of columns decreases.</li>
 </ul>
-<p>To lengthen data a set of columns are chosen.</p>
+<p>To longify data a set of columns are chosen.</p>
 <ul>
 <li>The column names are assigned as data of a <strong>names</strong> column.</li>
 <li>The values within the columns are assigned to a <strong>value</strong> column. Each value is within its own row.</li>
@@ -367,13 +367,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Pivot the <strong>wide tibble</strong> to a <strong>long tibble</strong>.</p>
 <p>The three options provided below are:</p>
 <ul>
-<li>The columns to use for lengthening.
+<li>The columns to use for longifying.
 <ul>
-<li>Below <code>!Entity</code> is used to lengthen all but the <code>Entity</code> column.</li>
+<li>Below <code>!Entity</code> is used to longify all but the <code>Entity</code> column.</li>
 <li>String vectors can be used.</li>
 </ul></li>
-<li><code>names_to=</code>: New column in long data containing the <strong>names</strong> of the lengthened columns.</li>
-<li><code>values_to=</code>: New column in long data containing the <strong>values</strong> of the lengthened columns.</li>
+<li><code>names_to=</code>: New column in long data containing the <strong>names</strong> of the longified columns.</li>
+<li><code>values_to=</code>: New column in long data containing the <strong>values</strong> of the longified columns.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fisheries_wide_tbl <span class="sc">|&gt;</span> tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="sc">!</span>Entity, <span class="at">names_to=</span><span class="st">"Year"</span>, <span class="at">values_to =</span> <span class="st">"Metric_tons"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

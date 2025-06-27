@@ -104,6 +104,11 @@ There six main verbs (i.e. functions) to manipulate columns. These are:
 - [`rename()`](/dplyr/rename.qmd): Rename columns in a __tibble__.
 - [`select()`](/dplyr/select.qmd): Select specific columns of a __tibble__. Can be used with a variety of helper functions such as `starts_with()`, `ends_with()`, `contains()`, and `matches()`.
 
+If you would like to carry out one of the column functions with multiple columns you can look at the official documentation for the following functions: 
+
+- [`across()`](https://dplyr.tidyverse.org/reference/across.html): Operate on multiple columns simultaneously.
+- [`pick()`](https://dplyr.tidyverse.org/reference/pick.html): Select a subset of columns.
+
 ### Grouping
 
 <div class="hexrow">

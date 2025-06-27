@@ -180,13 +180,43 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Cheatsheets</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Anatomy</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ggplot2/basic_plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic plot</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#sections" id="toc-sections" class="nav-link" data-scroll-target="#sections">Sections</a>
+  <ul class="collapse">
+  <li><a href="#anatomy" id="toc-anatomy" class="nav-link" data-scroll-target="#anatomy">Anatomy</a></li>
+  <li><a href="#output" id="toc-output" class="nav-link" data-scroll-target="#output">Output</a></li>
+  <li><a href="#geoms" id="toc-geoms" class="nav-link" data-scroll-target="#geoms">Geoms</a></li>
+  <li><a href="#customisation" id="toc-customisation" class="nav-link" data-scroll-target="#customisation">Customisation</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -211,9 +241,71 @@ ul.task-list li input[type="checkbox"] {
 <center>
 <img src="../images/ggplot2.png" class="img-fluid" style="width:150px">
 </center>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p><strong>Ggplot2</strong> is the visualisation package of <strong>Tidyverse</strong>. It utilises the <strong>grammar of graphics</strong> (the gg in ggplot2) to create plots/figures in a layered/compartmentalised fashion.</p>
+<p>There are multiple parts of a <strong>ggplot2</strong> figure including:</p>
+<ul>
+<li>The <strong>ggplot2</strong> object that contains the aesthetics</li>
+<li>The <strong>aesthetics</strong>: This is the data and what they are mapped to (x axis, y-axis, colour etc.)</li>
+<li>The <strong>geom</strong> layers: This is how the aesthetics are visualised (bar chart, boxplot, histogram etc.)</li>
+<li>The <strong>guides</strong>: The text and other information on the axes abd legends (labels, titles, etc.)</li>
+<li><strong>Facetting</strong>: Splitting of data to multiple plots (e.g.&nbsp;side by side box plots displaying different metrics)</li>
+</ul>
 <p><a href="https://ggplot2.tidyverse.org//">ggplot2 homepage</a></p>
+<p>This website aims to quickly cover the most commonly used <code>ggplot2</code> functions and uses. Therefore there are a lot more <code>ggplot2</code> functions than those covered here. Please check the below link for the full list.</p>
+<p><a href="https://ggplot2.tidyverse.org//reference/index.html">Full ggplot2 reference page</a></p>
+</section>
+<section id="sections" class="level2">
+<h2 class="anchored" data-anchor-id="sections">Sections</h2>
+<p>There are various sections for <code>ggplot2</code>. These are summarised below.</p>
+<section id="anatomy" class="level3">
+<h3 class="anchored" data-anchor-id="anatomy">Anatomy</h3>
+<p>Creating a basic plot with <code>ggplot2</code>. In essence the introduction to <code>ggplot2</code> usage.</p>
+<ul>
+<li><a href="../ggplot2/basic_plot.html"><strong>Basic plot</strong></a>: Creation of a basic plot with <code>ggplot2</code></li>
+<li><a href="../ggplot2/ggplot_object.html"><strong>Ggplot object</strong></a>: Details about the creation of a ggplot2 object.
+<ul>
+<li>Input data: The required input format data for <code>ggplot2</code>.</li>
+<li>Aesthetics: What they are, the different types, and their usage.</li>
+</ul></li>
+<li>Layers: What layers are and how to add them to a <code>ggplot2</code> object.</li>
+</ul>
+</section>
+<section id="output" class="level3">
+<h3 class="anchored" data-anchor-id="output">Output</h3>
+<p>How to save the output of <code>ggplot2</code> objects.</p>
+<ul>
+<li><code>ggsave()</code>: Save a <code>ggplot</code> object/figure to a static image file.</li>
+<li><code>pathcwork</code>: Combing multiple <code>gpglot2</code> objects into the same graphic/image. (https://patchwork.data-imaginist.com/)</li>
+<li><code>ggplotly()</code>: Convert a <code>ggplot2</code> object to an interactive plotly object and save it as an HTML file.</li>
+</ul>
+</section>
+<section id="geoms" class="level3">
+<h3 class="anchored" data-anchor-id="geoms">Geoms</h3>
+<p>There are many different geoms (i.e.&nbsp;types of plots). This website will cover a few of the most commonly used ones.</p>
+<ul>
+<li><code>geom_bar()</code>: Bar chart.</li>
+<li><code>geom_histogram()</code>: histogram.</li>
+<li><code>geom_line()</code>: Line graph.</li>
+<li><code>geom_point()</code>: Scatter plot.</li>
+<li><code>geom_boxplot()</code>: Box and whisker plot.</li>
+</ul>
+</section>
+<section id="customisation" class="level3">
+<h3 class="anchored" data-anchor-id="customisation">Customisation</h3>
+<ul>
+<li>Labels: Modifying labels on the axes, legend, and other plot labels.</li>
+<li>Scale values: How to modify the scale of the x and y axis (e.g.&nbsp;plot values as log10 values or square root values)</li>
+<li>Colour scales: How to set the colours for aesthetics.</li>
+<li>Facetting: Creation of multiple of the same type of plot by subsetting the visualised data by one or two metadata categories.</li>
+<li>Abline: Adding a straight line to a plot and its corresponding y=mx+c equation.</li>
+<li>Coordinate systems: Modify how the x and y aesthetics combine.</li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script>

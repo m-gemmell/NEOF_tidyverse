@@ -6,4 +6,68 @@ title: "Ggplot2"
 ![](../images/ggplot2.png){style="width:150px"}
 </center>
 
+## Overview
+
+__Ggplot2__ is the visualisation package of __Tidyverse__.
+It utilises the __grammar of graphics__ (the gg in ggplot2) to create plots/figures in a layered/compartmentalised fashion.
+
+There are multiple parts of a __ggplot2__ figure including:
+
+- The __ggplot2__ object that contains the aesthetics
+- The __aesthetics__: This is the data and what they are mapped to (x axis, y-axis, colour etc.)
+- The __geom__ layers: This is how the aesthetics are visualised (bar chart, boxplot, histogram etc.)
+- The __guides__: The text and other information on the axes abd legends (labels, titles, etc.)
+- __Facetting__: Splitting of data to multiple plots (e.g. side by side box plots displaying different metrics)
+
+
 [ggplot2 homepage](https://ggplot2.tidyverse.org//)
+
+This website aims to quickly cover the most commonly used `ggplot2` functions and uses.
+Therefore there are a lot more `ggplot2` functions than those covered here.
+Please check the below link for the full list.
+
+[Full ggplot2 reference page](https://ggplot2.tidyverse.org//reference/index.html)
+
+## Sections
+
+There are various sections for `ggplot2`. These are summarised below.
+
+### Anatomy
+
+Creating a basic plot with `ggplot2`. In essence the introduction to `ggplot2` usage.
+
+- [__Basic plot__](/ggplot2/basic_plot.qmd): Creation of a basic plot with `ggplot2`
+- [__Ggplot object__](/ggplot2/ggplot_object.qmd): Details about the creation of a ggplot2 object.
+    - Input data: The required input format data for `ggplot2`. 
+    - Aesthetics: What they are, the different types, and their usage.
+- Layers: What layers are and how to add them to a `ggplot2` object.
+
+### Output
+
+How to save the output of `ggplot2` objects.
+
+- `ggsave()`: Save a `ggplot` object/figure to a static image file.
+- `pathcwork`: Combing multiple `gpglot2` objects into the same graphic/image. (https://patchwork.data-imaginist.com/)
+- `ggplotly()`: Convert a `ggplot2` object to an interactive plotly object and save it as an HTML file.
+
+### Geoms
+
+There are many different geoms (i.e. types of plots). 
+This website will cover a few of the most commonly used ones.
+
+- `geom_bar()`: Bar chart.
+- `geom_histogram()`: histogram.
+- `geom_line()`: Line graph.
+- `geom_point()`: Scatter plot.
+- `geom_boxplot()`: Box and whisker plot.
+
+### Customisation
+
+- Labels: Modifying labels on the axes, legend, and other plot labels.
+- Scale values: How to modify the scale of the x and y axis (e.g. plot values as log10 values or square root values)
+- Colour scales: How to set the colours for aesthetics.
+- Facetting: Creation of multiple of the same type of plot by subsetting the visualised data by one or two metadata categories.
+- Abline: Adding a straight line to a plot and its corresponding y=mx+c equation.
+- Coordinate systems: Modify how the x and y aesthetics combine. 
+
+

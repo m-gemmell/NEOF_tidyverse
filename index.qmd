@@ -44,6 +44,11 @@ title: "NEOF Tidyverse"
   </a></p>
 </div>
 
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+
 This is a resource for the R Tidyverse suite of packages.
 It is intended as a quick one-stop reference for the various tidyverse packages and their functions, also known as a cookbook.
 

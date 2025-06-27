@@ -136,6 +136,11 @@ website:
     contents:
     - href: ggplot2/ggplot2.qmd
     - href: ggplot2/cheatsheets.qmd
+    - section: "Anatomy"
+      contents:
+      - href: ggplot2/basic_plot.qmd
+      - href: ggplot2/ggplot_object.qmd
+      - href: ggplot2/layers.qmd
   - id: Stringr
     title: Stringr
     style: floating

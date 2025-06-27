@@ -235,5 +235,11 @@
   },
   "tidyr/replace_na.qmd": {
     "replace_na.html": "323ab118"
+  },
+  "ggplot2/basic_plot.qmd": {
+    "basic_plot.html": "8fd21841"
+  },
+  "ggplot2/ggplot_object.qmd": {
+    "ggplot_object.html": "69fd1168"
   }
 }
