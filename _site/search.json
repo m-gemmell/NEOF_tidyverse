@@ -644,6 +644,27 @@
     "text": "Let’s create a simple dot/scatter plot of crab age against weight.\nOne of the useful features of a ggplot object is that you can assign it to a variable name (scatter_plot &lt;-). This allows you to edit it, save it to a file, and display it. These features are covered in further pages.\n\n#Create ggplot2 object and set the aesthetics\nscatter_plot &lt;- ggplot2::ggplot(data=crab_age_weight_tbl, mapping=aes(x=Age, y = Weight)) +\n    #Set plot as a dot/scatter plot \n    ggplot2::geom_point() +\n    #Add title to plot\n    labs(title=\"Crab age against weight scatter plot\")\n#Display plot\nscatter_plot\n\n\n\n\nWe have three lines, each with a function, for our ggplot2 code. They are described below."
   },
   {
+    "objectID": "ggplot2/basic_plot.html#ggplot-object-creation",
+    "href": "ggplot2/basic_plot.html#ggplot-object-creation",
+    "title": "Basic plot",
+    "section": "",
+    "text": "To create a ggplot object we use the function ggplot2::ggplot() and provide it with 2 different parts.\nThe first part is the data (data=crab_age_weight_tbl). Data for ggplot() needs to be long formatted so each column can be assigned to an aesthetic.\nThe second part is the aesthetic mapping information (mapping=aes(x=Age, y = Weight)). This maps the information/values in our data’s columns to the different aesthetics in our plot (e.g. axes). One important note is that you do not need to use quotes when referring to column names in the aes() brackets.\nMore information: Ggplot object"
+  },
+  {
+    "objectID": "ggplot2/basic_plot.html#components",
+    "href": "ggplot2/basic_plot.html#components",
+    "title": "Basic plot",
+    "section": "",
+    "text": "Components can be added to the base ggplot object (ggplot2:ggplot()) with the + icon. Similar to piping (|&gt;) this allows you to start simple and then build up more complex code to create sophisticated plots.\nThere are many components with most being layers.\nMore information: Layers"
+  },
+  {
+    "objectID": "ggplot2/basic_plot.html#parameter-names-piping",
+    "href": "ggplot2/basic_plot.html#parameter-names-piping",
+    "title": "Basic plot",
+    "section": "",
+    "text": "Parameter names (e.g. data=) do not always need to be specified as long as you provide them in the order the function expects. We do not need to provide ggplot2::ggplot() with data= and mapping= as long as we provide the data first and the mapping second.\nSince the data= parameter is first we can pipe our data/tibble/data.frame to our ggplot2::ggplot() function. This is useful if you want to carry out some data manipulation unique to the plot you will create.\n\nscatter_plot &lt;- crab_age_weight_tbl |&gt;\n#Filter to keep crabs with an age up to 15 years\n    dplyr::filter(Age &lt;= 15) |&gt;\n    #Create ggplot2 object and set the aesthetics\n    ggplot2::ggplot(aes(x=Age, y = Weight)) +\n        #Set plot as a dot/scatter plot \n        ggplot2::geom_point() +\n        #Add title to plot\n        labs(title=\"Crab age against weight scatter plot (15 years or younger)\")\nscatter_plot"
+  },
+  {
     "objectID": "ggplot2/cheatsheets.html",
     "href": "ggplot2/cheatsheets.html",
     "title": "Cheatsheets",
@@ -663,6 +684,20 @@
     "title": "Ggplot2",
     "section": "Sections",
     "text": "Sections\nThere are various sections for ggplot2. These are summarised below.\n\nAnatomy\nCreating a basic plot with ggplot2. In essence the introduction to ggplot2 usage.\n\nBasic plot: Creation of a basic plot with ggplot2\nGgplot object: Details about the creation of a ggplot2 object.\n\nInput data: The required input format data for ggplot2.\nAesthetics: What they are, the different types, and their usage.\n\nLayers: What layers are and how to add them to a ggplot2 object.\n\n\n\nOutput\nHow to save the output of ggplot2 objects.\n\nggsave(): Save a ggplot object/figure to a static image file.\npathcwork: Combing multiple gpglot2 objects into the same graphic/image. (https://patchwork.data-imaginist.com/)\nggplotly(): Convert a ggplot2 object to an interactive plotly object and save it as an HTML file.\n\n\n\nGeoms\nThere are many different geoms (i.e. types of plots). This website will cover a few of the most commonly used ones.\n\ngeom_bar(): Bar chart.\ngeom_histogram(): histogram.\ngeom_line(): Line graph.\ngeom_point(): Scatter plot.\ngeom_boxplot(): Box and whisker plot.\n\n\n\nCustomisation\n\nLabels: Modifying labels on the axes, legend, and other plot labels.\nScale values: How to modify the scale of the x and y axis (e.g. plot values as log10 values or square root values)\nColour scales: How to set the colours for aesthetics.\nFacetting: Creation of multiple of the same type of plot by subsetting the visualised data by one or two metadata categories.\nAbline: Adding a straight line to a plot and its corresponding y=mx+c equation.\nCoordinate systems: Modify how the x and y aesthetics combine."
+  },
+  {
+    "objectID": "ggplot2/ggplot_object.html",
+    "href": "ggplot2/ggplot_object.html",
+    "title": "Ggplot object",
+    "section": "",
+    "text": "Ggplot object"
+  },
+  {
+    "objectID": "ggplot2/layers.html",
+    "href": "ggplot2/layers.html",
+    "title": "Layers",
+    "section": "",
+    "text": "Layers"
   },
   {
     "objectID": "index.html",
@@ -1258,40 +1293,5 @@
     "title": "Unite",
     "section": "Further unite options",
     "text": "Further unite options\nWith tidyr::unite() you can:\n\nChoose specific columns and their order in the united column with a string vector of the column names.\nChoose the delimiter/separator for the strings in the united column (sep=).\nRetain the original columns with the option remove=FALSE.\n\n\ncrop_and_soil_tbl |&gt;\n    #Select all but the fourth column\n    dplyr::select(-4) |&gt;\n    #Unite columns\n    tidyr::unite(\n        #United column name\n        \"Crop.Soil.Fertiliser\",\n        #Columns to unite\n        c(\"Crop_type\",\"Soil_type\",\"Fertiliser\"), \n        #Separator for stings in united column\n        sep=\".\", \n        #Do not remove the original columns to be united\n        remove=FALSE\n        )\n\n# A tibble: 8,000 × 9\n   Crop.Soil.Fertiliser     Soil_type Crop_type Fertiliser Humidity Moisture\n   &lt;chr&gt;                    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;\n 1 Maize.Sandy.Urea         Sandy     Maize     Urea             52       38\n 2 Sugarcane.Loamy.DAP      Loamy     Sugarcane DAP              52       45\n 3 Cotton.Black.14-35-14    Black     Cotton    14-35-14         65       62\n 4 Tobacco.Red.28-28        Red       Tobacco   28-28            62       34\n 5 Paddy.Clayey.Urea        Clayey    Paddy     Urea             54       46\n 6 Barley.Sandy.17-17-17    Sandy     Barley    17-17-17         52       35\n 7 Cotton.Red.20-20         Red       Cotton    20-20            50       64\n 8 Wheat.Loamy.Urea         Loamy     Wheat     Urea             64       50\n 9 Millets.Sandy.28-28      Sandy     Millets   28-28            60       42\n10 Oil seeds.Black.14-35-14 Black     Oil seeds 14-35-14         58       33\n# ℹ 7,990 more rows\n# ℹ 3 more variables: Nitrogen &lt;dbl&gt;, Potassium &lt;dbl&gt;, Phosphorous &lt;dbl&gt;"
-  },
-  {
-    "objectID": "ggplot2/basic_plot.html#parameter-names",
-    "href": "ggplot2/basic_plot.html#parameter-names",
-    "title": "Basis plot",
-    "section": "",
-    "text": "Parameter names do not always need to be specified as long as you provide them in the order the function expects. We do not need to provide ggplot2::ggplot() with data= and mapping= as long as we provide the data first and the mapping second.\n\ncrab_age_weight_tbl |&gt;\n#Create ggplot2 object and set the aesthetics\nggplot2::ggplot(aes(x=Age, y = Weight)) +\n    #Set plot as a dot/scatter plot \n    ggplot2::geom_point() +\n    #Add title to plot\n    labs(title=\"Crab age against weight scatter plot\")"
-  },
-  {
-    "objectID": "ggplot2/basic_plot.html#parameter-names-piping",
-    "href": "ggplot2/basic_plot.html#parameter-names-piping",
-    "title": "Basic plot",
-    "section": "",
-    "text": "Parameter names (e.g. data=) do not always need to be specified as long as you provide them in the order the function expects. We do not need to provide ggplot2::ggplot() with data= and mapping= as long as we provide the data first and the mapping second.\nSince the data= parameter is first we can pipe our data/tibble/data.frame to our ggplot2::ggplot() function. This is useful if you want to carry out some data manipulation unique to the plot you will create.\n\nscatter_plot &lt;- crab_age_weight_tbl |&gt;\n#Filter to keep crabs with an age up to 15 years\n    dplyr::filter(Age &lt;= 15) |&gt;\n    #Create ggplot2 object and set the aesthetics\n    ggplot2::ggplot(aes(x=Age, y = Weight)) +\n        #Set plot as a dot/scatter plot \n        ggplot2::geom_point() +\n        #Add title to plot\n        labs(title=\"Crab age against weight scatter plot (15 years or younger)\")\nscatter_plot"
-  },
-  {
-    "objectID": "ggplot2/ggplot_object.html",
-    "href": "ggplot2/ggplot_object.html",
-    "title": "Ggplot object",
-    "section": "",
-    "text": "Ggplot object"
-  },
-  {
-    "objectID": "ggplot2/basic_plot.html#ggplot-object-creation",
-    "href": "ggplot2/basic_plot.html#ggplot-object-creation",
-    "title": "Basic plot",
-    "section": "",
-    "text": "To create a ggplot object we use the function ggplot2::ggplot() and provide it with 2 different parts.\nThe first part is the data (data=crab_age_weight_tbl). Data for ggplot() needs to be long formatted so each column can be assigned to an aesthetic.\nThe second part is the aesthetic mapping information (mapping=aes(x=Age, y = Weight)). This maps the information/values in our data’s columns to the different aesthetics in our plot (e.g. axes). One important note is that you do not need to use quotes when referring to column names in the aes() brackets.\nMore information: Ggplot object"
-  },
-  {
-    "objectID": "ggplot2/basic_plot.html#components",
-    "href": "ggplot2/basic_plot.html#components",
-    "title": "Basic plot",
-    "section": "",
-    "text": "Components can be added to the base ggplot object (ggplot2:ggplot()) with the + icon. Similar to piping (|&gt;) this allows you to start simple and then build up more complex code to create sophisticated plots.\nThere are many components with most being layers.\nMore information: Layers"
   }
 ]

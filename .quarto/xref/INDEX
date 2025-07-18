@@ -241,5 +241,8 @@
   },
   "ggplot2/ggplot_object.qmd": {
     "ggplot_object.html": "69fd1168"
+  },
+  "ggplot2/layers.qmd": {
+    "layers.html": "d5fd536e"
   }
 }
