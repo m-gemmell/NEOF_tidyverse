@@ -12,7 +12,72 @@ When creating a `ggplot2` object two pieces of information are vital:
 
 This page describes the input data whilst the next describes aesthetics.
 
-## One continuous column
+## Long/tidy data
+
+When using the __tidyverse__ we are primarily working with __tidy/long__ data.
+This is by design.
+
+### Purpose of long/tidy data
+
+There is a definite learning curve to using __tidy/long__ data.
+We humans have used __messy/wide__ data for most of our education and so tend to find it more intuitive.
+The purpose of __tidy/long__ data is to:
+
+- Make data manipulation and analysis more consistent
+- Reduce the overall time spent on cleaning and preparing data
+
+There are many ways to have data formatted in a __wide/messy__ format but only a few ways to have data in a __long/tidy__ format.
+
+### Format of long/tidy data
+
+Although hard to give a specific definition, __tidy/long__ data have the three following features:
+
+- [Each __variable__ is a __column__; each __column__ is a __variable__](/tibble/structure.qmd#variablescolumns)
+- [Each __observation__ is a __row__; each __row__ is an __observation__](/tibble/structure.qmd#rowsobservations)
+- Each __value__ is a __cell__; each __cell__ is a single __value__
+
+In essence you never want __column__ names to be __values__, rather having those __values__ inhabit the __cells__ of a __column/variable__.
+For example, instead of 10 __columns__ of ten different years (1990, 1991, 1993, etc) where the __cell values__ are the fish metric ton __values__ you would have:
+
+- A __column/variable__ called "Year" containing the years as __values__
+- A __column/variable__ called "Metric_tons" containing the fish metric ton __values__
+- Each "Year" __value__ and corresponding "Metric_tons" __value__ would be one __observation/row__
+
+The below __tibble__ shows a small slice of this __tidy/long tibble__.
+
+```{r, echo=FALSE}
+#Load package
+library("mgrtibbles")
+#fisheries_long_tbl tibble for demonstration
+mgrtibbles::fisheries_long_tbl |>
+    dplyr::select(2:3) |>
+    dplyr::slice(1:5)
+```
+
+To go from __wide/messy__ to __long/tidy__ you can use the function [`tidyr::pivot_longer()`](/tidyr/pivot_longer.qmd).
+
+### The long and wide of it
+
+If __long/tidy__ data is so great why do we still use __wide/messy__ data?
+
+Although __long data__ is very useful in R it is not as human readable as __wide/messy__ data.
+When learning maths, stats etc., or displaying tables it is better/easier to use __wide__ data.
+In other words:
+
+> Messy humans like messy data. Tidy computers like tidy data.
+>
+>> <cite>Matthew R. Gemmell</cite>
+
+Links with more information:
+
+- [Tidyr tidy data info](https://tidyr.tidyverse.org/articles/tidy-data.html)
+- [Structure of a tibble](/tibble/structure.qmd#variablescolumns)
+
+## Tidy/long data examples
+
+Below are two examples of __tidy/long__ data.
+
+### One continuous column
 
 Many common plots require a __tibble__ where all the continuous/numerical values are in one column whilst the other columns contain categorical data (i.e. metadata).
 An example includes a box plot of weight (kg) against age ranges (teen, adult etc.).
@@ -37,7 +102,7 @@ ggplot2::ggplot(weight_age_tbl, aes(x=age_range,y=weight)) +
     ggplot2::geom_boxplot()
 ```
 
-## Multiple continuous columns
+### Multiple continuous columns
 
 The format of columns in your long __tibble__ is highly dependant on your specific data and the type of plots you will create.
 For example, you may have a scatterplot comparing 2 continuous measues from 2 different columns (e.g. height vs weight).

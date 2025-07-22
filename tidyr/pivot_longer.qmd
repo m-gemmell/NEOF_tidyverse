@@ -28,7 +28,7 @@ For demonstration we'll load the `fisheries_wide_tbl` data from the [mgrtibbles 
 ```{r}
 #Load package
 library("mgrtibbles")
-#mammal_sleep_tbl tibble for demonstration
+#fisheries_wide_tbl tibble for demonstration
 mgrtibbles::fisheries_wide_tbl |>
     #View first 11 columns with select
     dplyr::select(1:11)
@@ -47,5 +47,6 @@ The three options provided below are:
 - `values_to=`: New column in long data containing the __values__ of the longified columns.
 
 ```{r}
-fisheries_wide_tbl |> tidyr::pivot_longer(!Entity, names_to="Year", values_to = "Metric_tons")
+fisheries_wide_tbl |> 
+    tidyr::pivot_longer(!Entity, names_to="Year", values_to = "Metric_tons")
 ```
