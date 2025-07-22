@@ -1,0 +1,69 @@
+# Input data
+
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+
+When creating a `ggplot2` object two pieces of information are vital:
+
+- __Input data:__ A __tibble/data.frame__ in a long format.
+- __Aesthetics:__ Specifies which columns of the input data are used for the different parts of the plot.
+
+This page describes the input data whilst the next describes aesthetics.
+
+## One continuous column
+
+Many common plots require a __tibble__ where all the continuous/numerical values are in one column whilst the other columns contain categorical data (i.e. metadata).
+An example includes a box plot of weight (kg) against age ranges (teen, adult etc.).
+
+The below code blocks creates an example __tibble__ and a box plot with the data.
+
+__Note:__ `set.seed()` is used to have consistent randomness for the `rep()` function. It is good practice to set the seed to its normal operation afterwards with `set.seed(NULL)`.
+
+```{r}
+#Create tibble
+set.seed(6836)
+age_range <- rep(c("teen","adult", "Middle age adult", "Senior adult"), 25)
+weight <- sample(150:195, size = 100, replace=TRUE)
+weight_age_tbl <- tibble::tibble(weight, age_range)
+set.seed(NULL)
+#Display top of tibble
+head(weight_age_tbl)
+```
+```{r}
+#Histogram plot
+ggplot2::ggplot(weight_age_tbl, aes(x=age_range,y=weight)) +
+    ggplot2::geom_boxplot()
+```
+
+## Multiple continuous columns
+
+The format of columns in your long __tibble__ is highly dependant on your specific data and the type of plots you will create.
+For example, you may have a scatterplot comparing 2 continuous measues from 2 different columns (e.g. height vs weight).
+In this case each row would contain the height and weight of one individual.
+
+The below code blocks creates an example __tibble__ and a scatter plot with the data.
+
+```{r}
+#Create tibble
+set.seed(6836)
+weight <- sample(150:195, size = 100, replace=TRUE)
+height <- sample(50:130, size = 100, replace=TRUE)
+set.seed(NULL)
+weight_height_tbl <- tibble::tibble(weight, height)
+#Display top of tibble
+head(weight_height_tbl)
+```
+```{r}
+#Scatterplot
+ggplot2::ggplot(weight_height_tbl, aes(x=weight,y=height)) +
+    ggplot2::geom_point()
+```
+
+In this case there seems to be no linear correlation but that is because we randomly created the dataset in a very niave manner.
+
+## The surface
+
+The above is a very brief intro to the input data of `ggplot2`.
+We could show more here but it is better/easier to demonstrate with more examples as we introduce more topics.

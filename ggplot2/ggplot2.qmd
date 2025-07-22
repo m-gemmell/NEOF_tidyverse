@@ -40,7 +40,7 @@ Creating a basic plot with `ggplot2`. In essence the introduction to `ggplot2` u
 - [__Ggplot object__](/ggplot2/ggplot_object.qmd): Details about the creation of a ggplot2 object.
     - Input data: The required input format data for `ggplot2`. 
     - Aesthetics: What they are, the different types, and their usage.
-- Layers: What layers are and how to add them to a `ggplot2` object.
+- [__Layers__](/ggplot2/layers.qmd): What layers are and how to add them to a `ggplot2` object.
 
 ### Output
 

@@ -2,6 +2,10 @@
 title: "Creating tibbles"
 format: html
 ---
+<center>
+![](images/tibble_create.png){style="width:200px"}
+</center>
+
 
 There are various ways to create __tibbles__. 
 Below are three methods:

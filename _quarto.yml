@@ -2,6 +2,7 @@ project:
   type: website
 editor: source
 website:
+  bread-crumbs: false
   favicon: /images/NEOF_favicon.png
   page-navigation: true
   title: NEOF Tidyverse
@@ -135,12 +136,13 @@ website:
     align: left
     contents:
     - href: ggplot2/ggplot2.qmd
-    - href: ggplot2/cheatsheets.qmd
     - section: "Anatomy"
       contents:
       - href: ggplot2/basic_plot.qmd
-      - href: ggplot2/ggplot_object.qmd
+      - href: ggplot2/input_data.qmd
+      - href: ggplot2/aesthetics.qmd
       - href: ggplot2/layers.qmd
+    - href: ggplot2/cheatsheets.qmd
   - id: Stringr
     title: Stringr
     style: floating

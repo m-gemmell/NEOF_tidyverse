@@ -46,7 +46,7 @@ They are described below.
 To create a `ggplot` object we use the function `ggplot2::ggplot()` and provide it with 2 different parts.
 
 The first part is the __data__ (`data=crab_age_weight_tbl`).
-__Data__ for `ggplot()` needs to be [long formatted](http://localhost:7619/tidyr/pivot_longer.html) so each column can be assigned to an __aesthetic__.
+__Data__ for `ggplot()` needs to be [long formatted](/tidyr/pivot_longer.html) so each column can be assigned to an __aesthetic__.
 
 The second part is the __aesthetic mapping__ information (`mapping=aes(x=Age, y = Weight)`). 
 This maps the information/values in our data's columns to the different __aesthetics__ in our plot (e.g. axes).
@@ -61,19 +61,19 @@ Similar to [piping (`|>`)](/dplyr/pipes.qmd) this allows you to start simple and
 
 There are many components with most being __layers__.
 
-More information: [Layers](/ggplot2/)
+More information: [Layers](/ggplot2/layers.qmd)
 
 ## Parameter names & piping
 
 Parameter names (e.g. `data=`) do not always need to be specified as long as you provide them in the order the function expects.
-We do not need to provide `ggplot2::ggplot()` with `data=` and `mapping=` as long as we provide the __data first__ and the __mapping second__.
+We do not need to provide `ggplot2::ggplot()` with the parmaeter names,`data=` and `mapping=`, as long as we provide the __data first__ and the __mapping second__.
 
 Since the `data=` parameter is first we can pipe our __data/tibble/data.frame__ to our `ggplot2::ggplot()` function.
 This is useful if you want to carry out some data manipulation unique to the plot you will create.
 
 ```{r}
 scatter_plot <- crab_age_weight_tbl |>
-#Filter to keep crabs with an age up to 15 years
+    #Filter to keep crabs with an age up to 15 years
     dplyr::filter(Age <= 15) |>
     #Create ggplot2 object and set the aesthetics
     ggplot2::ggplot(aes(x=Age, y = Weight)) +

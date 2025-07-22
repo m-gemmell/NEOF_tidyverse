@@ -244,5 +244,11 @@
   },
   "ggplot2/layers.qmd": {
     "layers.html": "d5fd536e"
+  },
+  "ggplot2/input_data.qmd": {
+    "input_data.html": "d223b458"
+  },
+  "ggplot2/aesthetics.qmd": {
+    "aesthetics.html": "b9aeb3dc"
   }
 }

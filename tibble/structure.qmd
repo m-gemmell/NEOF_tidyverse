@@ -2,6 +2,9 @@
 title: "Structure"
 format: html
 ---
+<center>
+![](images/tibble_structure.png){style="width:200px"}
+</center>
 
 Tibbles are formatted like a __data.frame__ but have some extra functions and terminology.
 

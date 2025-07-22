@@ -32,7 +32,7 @@ mammal_sleep_tbl |> dplyr::pull(species)
 
 Pull the column "total_sleep" to a vector and calculate the mean value.
 
-__Note:__ Requires [NA removal](/dplyr/na_removal.qmd) (`dplyr::filter(!is.na(total_sleep))`) as if any NAs are passed to `mean()` the result will be NA.
+__Note:__ Requires [`dplyr::filter(!is.na(total_sleep))`](/tidyr/drop_na.qmd) as if any NAs are passed to `mean()` the result will be NA.
 
 ```{r}
 mammal_sleep_tbl |> dplyr::filter(!is.na(total_sleep)) |> dplyr::pull(total_sleep) |> mean()

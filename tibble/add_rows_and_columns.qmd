@@ -2,6 +2,9 @@
 title: "Adding rows and columns"
 format: html
 ---
+<center>
+![](images/tibble_add_rows_columns.png){style="width:200px"}
+</center>
 
 Data can be added to a __tibble__ by various methods. this includes:
 
