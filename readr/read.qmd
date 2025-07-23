@@ -58,7 +58,7 @@ readr::read_delim(
 
 ## TSV
 
-We'll read in the file [all_plant_details.csv](https://neof-workshops.github.io/Tidyverse/data/plant_detail_slice.tsv) into R as a tibble.
+We'll read in the file [all_plant_details.tsv](https://neof-workshops.github.io/Tidyverse/data/plant_detail_slice.tsv) into R as a tibble.
 This tab delimited file was created with the [`readr::write_delim()`](/readr/write.qmd#comma-delimited) and only contains the header line plus the first 5 rows of the __all_plant_details.csv__ file.
 
 ### TSV file contents
@@ -73,7 +73,7 @@ readLines("https://neof-workshops.github.io/Tidyverse/data/plant_detail_slice.ts
 
 ### Read in TSV file
 
-Read in the TSV file with `readr::read_delim()` setting the delimiter to commas with `delim = "\t"`.
+Read in the TSV file with `readr::read_delim()` setting the delimiter to tabs with `delim = "\t"`.
 
 Additionally, we'll specify the option `show_col_types = FALSE` to quiet the column types message (more info covered in the [column types page](/readr/column_types.qmd)).
 
@@ -87,7 +87,7 @@ readr::read_delim(
 ## Space
 
 We'll read in the file [all_plant_details.txt](https://neof-workshops.github.io/Tidyverse/data/plant_detail_slice.txt) into R as a tibble.
-This space delimited file was created with the [`readr::write_delim()`](/readr/write.qmd#space-delimited) and only contains the header line plus the first 5 rows of the __all_plant_details.csv__ file.
+This space delimited file was created with the [`readr::write_delim()`](/readr/write.qmd#space-delimited) function and only contains the header line plus the first 5 rows of the __all_plant_details.csv__ file.
 
 ### Space delimited file contents
 
@@ -101,7 +101,7 @@ readLines("https://neof-workshops.github.io/Tidyverse/data/plant_detail_slice.tx
 
 ### Read in space delimited file file
 
-Read in the space delimited file with `readr::read_delim()` setting the delimiter to commas with `delim = " "`.
+Read in the space delimited file with `readr::read_delim()` setting the delimiter to spaces with `delim = " "`.
 
 Additionally, we'll specify the option `show_col_types = FALSE` to quiet the column types message (more info covered in the [column types page](/readr/column_types.qmd)).
 
@@ -115,7 +115,7 @@ readr::read_delim(
 ## Non-standard delimiter
 
 You can use many other characters as delimiters when reading files.
-This can be useful if the data contains the three common delimiters (comm, tab, and space).
+This can be useful if values in the data contain the three common delimiters (comm, tab, and space).
 
 The most common non-standard delimiters are:
 
@@ -135,9 +135,9 @@ View the file contents before reading it as a __tibble__.
 readLines("https://neof-workshops.github.io/Tidyverse/data/plant_detail_slice.pipe_delimit.text")
 ```
 
-### Read in non-standard delimited file file
+### Read in non-standard delimited file
 
-Read in the pipe (`|`) delimited file with `readr::read_delim()` setting the delimiter to commas with `delim = " "`.
+Read in the pipe (`|`) delimited file with `readr::read_delim()` setting the delimiter to pipes with `delim = "|"`.
 
 Additionally, we'll specify the option `show_col_types = FALSE` to quiet the column types message (more info covered in the [column types page](/readr/column_types.qmd)).
 

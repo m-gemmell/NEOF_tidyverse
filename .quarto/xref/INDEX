@@ -250,5 +250,8 @@
   },
   "ggplot2/aesthetics.qmd": {
     "aesthetics.html": "b9aeb3dc"
+  },
+  "ggplot2/components.qmd": {
+    "components.html": "992af22b"
   }
 }

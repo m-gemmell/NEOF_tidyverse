@@ -141,7 +141,7 @@ website:
       - href: ggplot2/basic_plot.qmd
       - href: ggplot2/input_data.qmd
       - href: ggplot2/aesthetics.qmd
-      - href: ggplot2/layers.qmd
+      - href: ggplot2/components.qmd
     - href: ggplot2/cheatsheets.qmd
   - id: Stringr
     title: Stringr

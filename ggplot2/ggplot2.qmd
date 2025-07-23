@@ -3,7 +3,7 @@ title: "Ggplot2"
 ---
 
 <center>
-![](../images/ggplot2.png){style="width:150px"}
+![](/images/ggplot2.png){style="width:150px"}
 </center>
 
 ## Overview
@@ -15,7 +15,7 @@ There are multiple parts of a __ggplot2__ figure including:
 
 - The __ggplot2__ object that contains the aesthetics
 - The __aesthetics__: This is the data and what they are mapped to (x axis, y-axis, colour etc.)
-- The __geom__ layers: This is how the aesthetics are visualised (bar chart, boxplot, histogram etc.)
+- The __geom layers__: This is how the aesthetics are visualised (bar chart, boxplot, histogram etc.)
 - The __guides__: The text and other information on the axes abd legends (labels, titles, etc.)
 - __Facetting__: Splitting of data to multiple plots (e.g. side by side box plots displaying different metrics)
 
@@ -34,13 +34,44 @@ There are various sections for `ggplot2`. These are summarised below.
 
 ### Anatomy
 
+<div class="hexrow">
+  <p><a href="/ggplot2/basic_plot.qmd">
+  <img src="images/ggplot2_basic_plot.png" width="150px">
+  </a></p>
+  
+  <p><a href="/ggplot2/input_data.qmd">
+  <img src="images/ggplot2_input.png" width="150px">
+  </a></p>
+
+  <p><a href="/ggplot2/aesthetics.qmd">
+  <img src="images/ggplot2_aesthetics.png" width="150px" class="hexcollast">
+  </a></p>
+
+  <p><a href="/ggplot2/components.qmd">
+  <img src="images/ggplot2_components.png" width="150px" class="hexcollast">
+  </a></p>
+</div>
+
+
 Creating a basic plot with `ggplot2`. In essence the introduction to `ggplot2` usage.
 
 - [__Basic plot__](/ggplot2/basic_plot.qmd): Creation of a basic plot with `ggplot2`
-- [__Ggplot object__](/ggplot2/ggplot_object.qmd): Details about the creation of a ggplot2 object.
-    - Input data: The required input format data for `ggplot2`. 
-    - Aesthetics: What they are, the different types, and their usage.
-- [__Layers__](/ggplot2/layers.qmd): What layers are and how to add them to a `ggplot2` object.
+- [__Input data__](/ggplot2/input_data.qmd): The required input format data for `ggplot2`. 
+    - Discusses the difference between __tidy/long__ data and __wide/messy__ data.
+- [__Aesthetics__](/ggplot2/aesthetics.qmd): What they are, the different types, and their usage.
+- [__Components__](/ggplot2/components.qmd): What components are and how to add (`+`) them to a `ggplot2` object.
+
+### Layers
+
+Arguably the most important __component__ for `ggplot2` are the __layers__.
+__Layers__ (also known as geom) are used to plot the data in different ways, i.e. different plots.
+This website will cover a few of the most commonly used ones.
+
+- `geom_bar()`: Bar chart.
+- `geom_histogram()`: histogram.
+- `geom_line()`: Line graph.
+- `geom_point()`: Scatter plot.
+- `geom_boxplot()`: Box and whisker plot.
 
 ### Output
 
@@ -50,24 +81,16 @@ How to save the output of `ggplot2` objects.
 - `pathcwork`: Combing multiple `gpglot2` objects into the same graphic/image. (https://patchwork.data-imaginist.com/)
 - `ggplotly()`: Convert a `ggplot2` object to an interactive plotly object and save it as an HTML file.
 
-### Geoms
-
-There are many different geoms (i.e. types of plots). 
-This website will cover a few of the most commonly used ones.
-
-- `geom_bar()`: Bar chart.
-- `geom_histogram()`: histogram.
-- `geom_line()`: Line graph.
-- `geom_point()`: Scatter plot.
-- `geom_boxplot()`: Box and whisker plot.
-
 ### Customisation
 
-- Labels: Modifying labels on the axes, legend, and other plot labels.
-- Scale values: How to modify the scale of the x and y axis (e.g. plot values as log10 values or square root values)
-- Colour scales: How to set the colours for aesthetics.
-- Facetting: Creation of multiple of the same type of plot by subsetting the visualised data by one or two metadata categories.
-- Abline: Adding a straight line to a plot and its corresponding y=mx+c equation.
-- Coordinate systems: Modify how the x and y aesthetics combine. 
+On top of __layers__ there are various other __components__.
+These include:
+
+- __Labels__: Modifying labels on the axes, legend, and other plot labels.
+- __Scale values__: How to modify the scale of the x and y axis (e.g. plot values as log10 values or square root values)
+- __Colour scales__: How to set the colours for aesthetics.
+- __Facetting__: Creation of multiple of the same type of plot by subsetting the visualised data by one or two metadata categories.
+- __Abline__: Adding a straight line to a plot and its corresponding y=mx+c equation.
+- __Coordinate systems__: Modify how the x and y aesthetics combine. 
 
 

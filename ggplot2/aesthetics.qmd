@@ -1,4 +1,7 @@
 # Aesthetics
+<center>
+![](images/ggplot2_aesthetics.png){style="width:200px"}
+</center>
 
 ```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
 #Load library so functions run smoothly

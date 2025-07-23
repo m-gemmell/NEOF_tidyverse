@@ -49,4 +49,4 @@ mammal_sleep_tbl |>
 
 ## NA filling
 
-For NA filling/editing please see the [tidyr NA filling page](/tidyr/na_filling.qmd).
+For NA filling/editing please see the [tidyr drop NA page](/tidyr/drop_na.qmd).

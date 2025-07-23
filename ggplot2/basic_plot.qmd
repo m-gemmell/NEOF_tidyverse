@@ -3,6 +3,9 @@
 library(tidyverse)
 ```
 # Basic plot
+<center>
+![](images/ggplot2_basic_plot.png){style="width:200px"}
+</center>
 
 In this page we will create a simple scatter/dot plot with `ggplot2`.
 This will demonstrate the basic anatomy of `ggplot2` code.
@@ -52,7 +55,7 @@ The second part is the __aesthetic mapping__ information (`mapping=aes(x=Age, y 
 This maps the information/values in our data's columns to the different __aesthetics__ in our plot (e.g. axes).
 One important note is that you do not need to use quotes when referring to column names in the `aes()` brackets.
 
-More information: [Ggplot object](/ggplot2/ggplot_object.qmd)
+More information: [Ggplot aesthetics](/ggplot2/aesthetics.qmd)
 
 ## Components
 

@@ -1,0 +1,166 @@
+# Components
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+<center>
+![](images/ggplot2_components.png){style="width:200px"}
+</center>
+
+One of the main principles of `ggplot2` is starting with a relatively simpe plot and then adding components to add complexity/sophistication.
+
+This is facilitated by being able to add components with `+`.
+
+## Dataset
+
+For demonstration we'll load the `mammal_sleep_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+For ease and clarity we'll [select](/dplyr/select.qmd) the "body_wt", "brain_wt", and "predation" columns.
+Additionally, we'll [filter](/dplyr/filter.qmd) the rows to only retain observations where the body weight is less than 10 and the brain weight is less than 0.1.
+
+```{r}
+mammal_sleep_tbl <- mgrtibbles::mammal_sleep_tbl |>
+    dplyr::select(body_wt, brain_wt, predation) |>
+    dplyr::filter(body_wt < 10 & brain_wt < 0.1)
+mammal_sleep_tbl
+```
+
+## Building up complexity
+
+This page will demonstrate building a more complex `ggplot2` plot by creating the following plots:
+
+1. A scatter plot.
+2. A scatter plot with customised labels.
+3. A scatter plot with customised labels, and a linear regression line.
+4. A scatter plot with customised labels, a linear regression line, and linear regression equation.
+
+With these examples we will reuse the code of the previous step and add the one component to add an extra feature to the plot.
+
+For the official `ggplot2` infom,ration about components please see: [Intorduction to ggplot2](https://ggplot2.tidyverse.org/articles/ggplot2.html)
+
+### Scatterplot
+
+First we will create a scatter plot. For this we will use 2 components.
+
+The first component is the `ggplot2::ggplot()` function which must always be the first __component__. 
+This will create the `ggplot` object from our [dataset](/ggplot2/input_data.qmd). 
+Additonally, we will specify the [aesthetics](/ggplot2/aesthetics.qmd) for our plot with this function.
+
+The __aesthetics__ can be specified in other components as you will find out in later sections.
+
+The second component is the layer, `ggplot2:geom_point()`. 
+This will create a scatter/point plot from our `ggplot` object.
+
+When adding a new component we need to add the plus symblol (`+`) to the end of our previous component.
+It is very easy to miss a `+` when adding new components, especially if you add a component between other components.
+This is a similar principle to using `|>` for [piping](/dplyr/pipes.qmd) with other `tidyverse` packages and functions.
+
+Create a scatterplot of "body_wt" (x) against "brain_wt" (y).
+
+```{r}
+mammal_sleep_tbl |>
+    ggplot2::ggplot(aes(x=body_wt, y = brain_wt)) +
+    ggplot2::geom_point()
+```
+
+### Add labels
+
+Next we will customise the x and y labels and add a title by adding the `ggplot2::labs()` __component/function__.
+
+```{r}
+mammal_sleep_tbl |>
+    ggplot2::ggplot(aes(x=body_wt, y = brain_wt)) +
+    ggplot2::geom_point() +
+    ggplot2::labs(x = "Body weight (kg)", y = "Brain weight (kg)",
+                    title = "Body versus Brain weight of mammals")
+```
+
+### Add linear regression line
+
+Our fourth component is `geom_smooth(method = 'lm)` to add a linear regression line to our plot.
+Ensure to add this below `ggplot2::geom_point()` component.
+
+```{r}
+mammal_sleep_tbl |>
+    ggplot2::ggplot(aes(x=body_wt, y = brain_wt)) +
+    ggplot2::geom_point() +
+    ggplot2::geom_smooth(method='lm') +
+    ggplot2::labs(x = "Body weight (kg)", y = "Brain weight (kg)",
+                    title = "Body versus Brain weight of mammals")
+```
+
+### Add linear regression equation
+
+Finally we will add the linear equation on top of our plot.
+
+Before adding the component we'll create the equation with the below code using [`lm()`](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm).
+
+```{r}
+#Calculate linear model
+brain_body_lm <- lm(brain_wt ~ body_wt, data = mammal_sleep_tbl)
+#Extract interecpt (c) and gradient (m)
+c <- brain_body_lm$coefficients[1]
+m <- brain_body_lm$coefficients[2]
+lm_equation <- paste0("y = ",as.character(m),"x + ",as.character(c))
+lm_equation
+```
+
+Now we can a __text__ annotation of the equation with [`ggplot2::annotate()`](https://ggplot2.tidyverse.org/reference/annotate.html).
+
+```{r}
+mammal_sleep_tbl |>
+    ggplot2::ggplot(aes(x=body_wt, y = brain_wt)) +
+    ggplot2::geom_point() +
+    ggplot2::geom_smooth(method='lm') +
+    ggplot2::annotate("text", x = 1.5, y = 0.05, label = lm_equation) +
+    ggplot2::labs(x = "Body weight (kg)", y = "Brain weight (kg)",
+                    title = "Body versus Brain weight of mammals")
+```
+
+## Order of components
+
+The order of your components in your code can effect the final output.
+
+### Order of component types
+
+Generally many order their components as so:
+
+1. __Creation__: The `ggplot2::ggplot()` must be the first component to create a `ggplot2` object.
+2. __Layers/geoms__
+3. __Scales__
+4. __Facets__
+5. __Coordinates__
+6. __Theme__
+
+__Note:__ Many of the above types of components are covered in later sections.
+
+### Order of layers
+
+The order of __components__ of the same type (e.g. __layers/geoms__) can drastically change a plot.
+
+__Layers/geoms__ will be overlayed on top of each other.
+A __layer__ added after another one will be on top.
+In other words, the first __layer__ will be below the second which will be below the third etc.
+
+If you want to have a boxplot (`ggplot2::geom_boxplot()`) with the points (`ggplot2::geom_jitter()`) on top of the points needed to be added after (on top of) the boxplot component.
+
+```{r}
+mammal_sleep_tbl |>
+    ggplot2::ggplot(aes(x=predation, y = brain_wt)) +
+    #First layer is below the second layer
+    ggplot2::geom_boxplot() +
+    #Second layer is above the first layer
+    #Adds horizontal (x) space between points
+    # to reduce number of points overlapping
+    ggplot2::geom_jitter()
+```
+
+If you add the box plot layer after the points layer the boxes will be on top.
+
+```{r}
+mammal_sleep_tbl |>
+    ggplot2::ggplot(aes(x=predation, y = brain_wt)) +
+    #First layer is below the second layer
+    ggplot2::geom_jitter() +
+    #Second layer is above the first layer
+    ggplot2::geom_boxplot()
+```
