@@ -63,7 +63,7 @@ monofont {
   justify-content: center;
 }
 
-// Placement of hex image rows in /dplyr/dplyr.qmd
+// Placement of hex image rows in /dplyr/dplyr.qmd at others
 .hexdplyrcolumnstop {
   left: -37.5px;
   position: relative;
@@ -73,6 +73,17 @@ monofont {
 }
 .hexdplyrcolumnsbottom{
   left:37.5px;
+  top:-61px;
+  height:130px;
+  position: relative;
+  display: flex;
+  flex-wrap:nowrap;
+  justify-content: center;
+}
+
+// Placement of hex images in /ggplot2/ggplot2.qmd
+.hexggplotcolumnsbottom{
+  left:-37.5px;
   top:-61px;
   height:130px;
   position: relative;

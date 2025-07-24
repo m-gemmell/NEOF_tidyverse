@@ -142,6 +142,13 @@ website:
       - href: ggplot2/input_data.qmd
       - href: ggplot2/aesthetics.qmd
       - href: ggplot2/components.qmd
+    - section: "Layers"
+      contents:
+      - href: ggplot2/geom_bar.qmd
+      - href: ggplot2/geom_histogram.qmd
+      - href: ggplot2/geom_line.qmd
+      - href: ggplot2/geom_point.qmd
+      - href: ggplot2/geom_boxplot.qmd
     - href: ggplot2/cheatsheets.qmd
   - id: Stringr
     title: Stringr

@@ -253,5 +253,20 @@
   },
   "ggplot2/components.qmd": {
     "components.html": "992af22b"
+  },
+  "ggplot2/geom_bar.qmd": {
+    "geom_bar.html": "9fde2c54"
+  },
+  "ggplot2/geom_histogram.qmd": {
+    "geom_histogram.html": "1ec0d042"
+  },
+  "ggplot2/geom_line.qmd": {
+    "geom_line.html": "8147d849"
+  },
+  "ggplot2/geom_point.qmd": {
+    "geom_point.html": "48bbba73"
+  },
+  "ggplot2/geom_boxplot.qmd": {
+    "geom_boxplot.html": "5ca250b7"
   }
 }

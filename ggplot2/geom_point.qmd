@@ -1,0 +1,5 @@
+# Geom point
+
+<center>
+![](images/ggplot2_geom_point.png){style="width:200px"}
+</center>

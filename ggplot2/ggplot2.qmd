@@ -63,15 +63,42 @@ Creating a basic plot with `ggplot2`. In essence the introduction to `ggplot2` u
 
 ### Layers
 
+<div class="hexdplyrcolumnstop">
+  <p><a href="/ggplot2/geom_bar.qmd">
+  <img src="images/ggplot2_geom_bar.png" width="150px">
+  </a></p>
+
+  <p><a href="/ggplot2/geom_histogram.qmd">
+  <img src="images/ggplot2_geom_histogram.png" width="150px">
+  </a></p>
+
+  <p><a href="/ggplot2/geom_line.qmd">
+  <img src="images/ggplot2_geom_line.png" width="150px">
+  </a></p>
+</div>
+
+
+<div class="hexggplotcolumnsbottom">
+  <p><a href="/ggplot2/geom_point.qmd">
+  <img src="images/ggplot2_geom_point.png" width="150px">
+  </a></p>
+
+  <p><a href="/ggplot2/geom_boxplot.qmd">
+  <img src="images/ggplot2_geom_boxplot.png" width="150px">
+  </a></p>
+
+</div>
+
+
 Arguably the most important __component__ for `ggplot2` are the __layers__.
 __Layers__ (also known as geom) are used to plot the data in different ways, i.e. different plots.
 This website will cover a few of the most commonly used ones.
 
-- `geom_bar()`: Bar chart.
-- `geom_histogram()`: histogram.
-- `geom_line()`: Line graph.
-- `geom_point()`: Scatter plot.
-- `geom_boxplot()`: Box and whisker plot.
+- [`geom_bar()`](/ggplot2/geom_bar.qmd): Bar chart.
+- [`geom_histogram()`](/ggplot2/geom_histogram.qmd): histogram.
+- [`geom_line()`](/ggplot2/geom_line.qmd): Line graph.
+- [`geom_point()`](/ggplot2/geom_point.qmd): Scatter plot.
+- [`geom_boxplot()`](/ggplot2/geom_boxplot.qmd): Box and whisker plot.
 
 ### Output
 

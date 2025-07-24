@@ -1,0 +1,5 @@
+# Geom histogram
+
+<center>
+![](images/ggplot2_geom_histogram.png){style="width:200px"}
+</center>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>input_data – NEOF Tidyverse</title>
+<title>geom_bar – NEOF Tidyverse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../ggplot2/aesthetics.html" rel="next">
-<link href="../ggplot2/basic_plot.html" rel="prev">
+<link href="../ggplot2/geom_histogram.html" rel="next">
+<link href="../ggplot2/components.html" rel="prev">
 <link href="..//images/NEOF_favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -79,9 +79,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-b719d3d4935f2b08311a76135e2bf442.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-894105e437a26210fe9cd53271a1dbf4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-87c9da65a1cede1e78d6c724d25213f2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark-eda7f37292e96dac74d07b0223522396.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-894105e437a26210fe9cd53271a1dbf4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-87c9da65a1cede1e78d6c724d25213f2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -398,7 +398,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ggplot2/input_data.html" class="sidebar-item-text sidebar-link active">
+  <a href="../ggplot2/input_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Input data</span></a>
   </div>
 </li>
@@ -427,8 +427,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ggplot2/geom_bar.html" class="sidebar-item-text sidebar-link">
+  <a href="../ggplot2/geom_bar.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Geom bar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ggplot2/geom_histogram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geom histogram</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ggplot2/geom_line.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geom line</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ggplot2/geom_point.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geom point</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ggplot2/geom_boxplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geom boxplot</span></a>
   </div>
 </li>
       </ul>
@@ -449,20 +473,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#input-data" id="toc-input-data" class="nav-link active" data-scroll-target="#input-data">Input data</a>
+  <li><a href="#geom-bar" id="toc-geom-bar" class="nav-link active" data-scroll-target="#geom-bar">Geom bar</a>
   <ul class="collapse">
-  <li><a href="#longtidy-data" id="toc-longtidy-data" class="nav-link" data-scroll-target="#longtidy-data">Long/tidy data</a>
-  <ul class="collapse">
-  <li><a href="#purpose-of-longtidy-data" id="toc-purpose-of-longtidy-data" class="nav-link" data-scroll-target="#purpose-of-longtidy-data">Purpose of long/tidy data</a></li>
-  <li><a href="#format-of-longtidy-data" id="toc-format-of-longtidy-data" class="nav-link" data-scroll-target="#format-of-longtidy-data">Format of long/tidy data</a></li>
-  <li><a href="#the-long-and-wide-of-it" id="toc-the-long-and-wide-of-it" class="nav-link" data-scroll-target="#the-long-and-wide-of-it">The long and wide of it</a></li>
-  </ul></li>
-  <li><a href="#tidylong-data-examples" id="toc-tidylong-data-examples" class="nav-link" data-scroll-target="#tidylong-data-examples">Tidy/long data examples</a>
-  <ul class="collapse">
-  <li><a href="#one-continuous-column" id="toc-one-continuous-column" class="nav-link" data-scroll-target="#one-continuous-column">One continuous column</a></li>
-  <li><a href="#multiple-continuous-columns" id="toc-multiple-continuous-columns" class="nav-link" data-scroll-target="#multiple-continuous-columns">Multiple continuous columns</a></li>
-  </ul></li>
-  <li><a href="#the-surface" id="toc-the-surface" class="nav-link" data-scroll-target="#the-surface">The surface</a></li>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset">Dataset</a></li>
+  <li><a href="#default-bar-chart" id="toc-default-bar-chart" class="nav-link" data-scroll-target="#default-bar-chart">Default bar chart</a></li>
+  <li><a href="#flipped-bar-chart" id="toc-flipped-bar-chart" class="nav-link" data-scroll-target="#flipped-bar-chart">Flipped bar chart</a></li>
+  <li><a href="#stacked-bar-chart" id="toc-stacked-bar-chart" class="nav-link" data-scroll-target="#stacked-bar-chart">Stacked bar chart</a></li>
+  <li><a href="#side-by-side-bar-chart" id="toc-side-by-side-bar-chart" class="nav-link" data-scroll-target="#side-by-side-bar-chart">Side-by-side bar chart</a></li>
+  <li><a href="#relative-proportion-bar-chart" id="toc-relative-proportion-bar-chart" class="nav-link" data-scroll-target="#relative-proportion-bar-chart">Relative proportion bar chart</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -474,160 +492,141 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="input-data" class="level1">
-<h1>Input data</h1>
+<section id="geom-bar" class="level1">
+<h1>Geom bar</h1>
 <center>
-<img src="images/ggplot2_input.png" class="img-fluid" style="width:200px">
+<img src="images/ggplot2_geom_bar.png" class="img-fluid" style="width:200px">
 </center>
-<p>When creating a <code>ggplot2</code> object two pieces of information are vital:</p>
+<p><strong>Bar charts</strong> are commonly used to display the counts of different <strong>categorical values</strong>.</p>
+<p>In this page we will create bar chart with <code>ggplot2::geom_bar()</code>. Through examples we will demonstrate creating:</p>
 <ul>
-<li><strong>Input data:</strong> A <strong>tibble/data.frame</strong> in a long format.</li>
-<li><strong>Aesthetics:</strong> Specifies which columns of the input data are used for the different parts of the plot.</li>
+<li>The <strong>default bar chart</strong></li>
+<li>A <strong>flipped bar chart</strong></li>
+<li>A <strong>stacked bar chart</strong> using a <strong>second categorical variable</strong></li>
+<li>A <strong>side-by-side bar chart</strong> using a <strong>second categorical variable</strong></li>
+<li>A <strong>relative proportion bar chart</strong></li>
 </ul>
-<p>This page describes the input data whilst the next describes aesthetics.</p>
-<section id="longtidy-data" class="level2">
-<h2 class="anchored" data-anchor-id="longtidy-data">Long/tidy data</h2>
-<p>When using the <strong>tidyverse</strong> we are primarily working with <strong>tidy/long</strong> data. This is by design.</p>
-<section id="purpose-of-longtidy-data" class="level3">
-<h3 class="anchored" data-anchor-id="purpose-of-longtidy-data">Purpose of long/tidy data</h3>
-<p>There is a definite learning curve to using <strong>tidy/long</strong> data. We humans have used <strong>messy/wide</strong> data for most of our education and so tend to find it more intuitive. The purpose of <strong>tidy/long</strong> data is to:</p>
-<ul>
-<li>Make data manipulation and analysis more consistent</li>
-<li>Reduce the overall time spent on cleaning and preparing data</li>
-</ul>
-<p>There are many ways to have data formatted in a <strong>wide/messy</strong> format but only a few ways to have data in a <strong>long/tidy</strong> format.</p>
-</section>
-<section id="format-of-longtidy-data" class="level3">
-<h3 class="anchored" data-anchor-id="format-of-longtidy-data">Format of long/tidy data</h3>
-<p>Although hard to give a specific definition, <strong>tidy/long</strong> data have the three following features:</p>
-<ul>
-<li><a href="../tibble/structure.html#variablescolumns">Each <strong>variable</strong> is a <strong>column</strong>; each <strong>column</strong> is a <strong>variable</strong></a></li>
-<li><a href="../tibble/structure.html#rowsobservations">Each <strong>observation</strong> is a <strong>row</strong>; each <strong>row</strong> is an <strong>observation</strong></a></li>
-<li>Each <strong>value</strong> is a <strong>cell</strong>; each <strong>cell</strong> is a single <strong>value</strong></li>
-</ul>
-<p>In essence you never want <strong>column</strong> names to be <strong>values</strong>, rather having those <strong>values</strong> inhabit the <strong>cells</strong> of a <strong>column/variable</strong>. For example, instead of 10 <strong>columns</strong> of ten different years (1990, 1991, 1993, etc) where the <strong>cell values</strong> are the fish metric ton <strong>values</strong> you would have:</p>
-<ul>
-<li>A <strong>column/variable</strong> called “Year” containing the years as <strong>values</strong></li>
-<li>A <strong>column/variable</strong> called “Metric_tons” containing the fish metric ton <strong>values</strong></li>
-<li>Each “Year” <strong>value</strong> and corresponding “Metric_tons” <strong>value</strong> would be one <strong>observation/row</strong></li>
-</ul>
-<p>The below <strong>tibble</strong> shows a small slice of this <strong>tidy/long tibble</strong>.</p>
+<p><a href="https://ggplot2.tidyverse.org//reference/geom_bar.html">Tidyverse reference page</a></p>
+<section id="dataset" class="level2">
+<h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
+<p>For demonstration we’ll load the <code>amphibian_div_tbl</code> data from the <a href="../datasets/mgrtibbles.html">mgrtibbles package</a> (hyperlink includes install instructions). Additionally, we’ll <a href="../dplyr/select.html">select</a> the columns “iucn_2cat”, “Order”, and “Family” which we will use for plotting. Then we’ll remove any rows with an NA value using <a href="../tidry/drop_na.qmd"><code>tidyr::drop_na</code></a>.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Library</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"mgrtibbles"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Data</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>amphibian_div_tbl <span class="ot">&lt;-</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    mgrtibbles<span class="sc">::</span>amphibian_div_tbl <span class="sc">|&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Select to retain only the iucn_2cat and Order columns</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(iucn_2cat,Order,Family) <span class="sc">|&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Drop any rows with an NA</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">drop_na</span>()</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>amphibian_div_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 2
-   Year Metric_tons
-  &lt;dbl&gt;       &lt;dbl&gt;
-1  1969         400
-2  1970         400
-3  1971         500
-4  1972         500
-5  1973         500</code></pre>
+<pre><code># A tibble: 129 × 3
+   iucn_2cat Order   Family        
+   &lt;fct&gt;     &lt;chr&gt;   &lt;chr&gt;         
+ 1 LC        Anura   Hylidae       
+ 2 LC        Anura   Hylidae       
+ 3 nonLC     Caudata Ambystomatidae
+ 4 LC        Caudata Ambystomatidae
+ 5 LC        Caudata Ambystomatidae
+ 6 LC        Caudata Ambystomatidae
+ 7 LC        Caudata Ambystomatidae
+ 8 LC        Caudata Ambystomatidae
+ 9 LC        Caudata Ambystomatidae
+10 LC        Caudata Amphiumidae   
+# ℹ 119 more rows</code></pre>
 </div>
 </div>
-<p>To go from <strong>wide/messy</strong> to <strong>long/tidy</strong> you can use the function <a href="../tidyr/pivot_longer.html"><code>tidyr::pivot_longer()</code></a>.</p>
 </section>
-<section id="the-long-and-wide-of-it" class="level3">
-<h3 class="anchored" data-anchor-id="the-long-and-wide-of-it">The long and wide of it</h3>
-<p>If <strong>long/tidy</strong> data is so great why do we still use <strong>wide/messy</strong> data?</p>
-<p>Although <strong>long data</strong> is very useful in R it is not as human readable as <strong>wide/messy</strong> data. When learning maths, stats etc., or displaying tables it is better/easier to use <strong>wide</strong> data. In other words:</p>
-<blockquote class="blockquote">
-<p>Messy humans like messy data. Tidy computers like tidy data.</p>
-<blockquote class="blockquote">
-<p><cite>Matthew R. Gemmell</cite></p>
-</blockquote>
-</blockquote>
-<p>Links with more information:</p>
+<section id="default-bar-chart" class="level2">
+<h2 class="anchored" data-anchor-id="default-bar-chart">Default bar chart</h2>
+<p>When creating a bar chart with <code>geom_bar()</code> a <strong>categorical variable/column</strong> can be <strong>mapped</strong> to the <strong>x aesthetic</strong>. The function will then calculate the count numbers.</p>
+<p>Create a bar chart of the <code>iucn_2cat</code> <strong>variable/column</strong>. This is a <strong>column</strong> of <strong>categorical</strong> <a href="../tibble/structure.html#variablescolumns">factors (<code>&lt;fct&gt;</code>)</a> representing IUCN categories of:</p>
 <ul>
-<li><a href="https://tidyr.tidyverse.org/articles/tidy-data.html">Tidyr tidy data info</a></li>
-<li><a href="../tibble/structure.html#variablescolumns">Structure of a tibble</a></li>
+<li><strong>LC:</strong> Least Concern</li>
+<li><strong>nonLC:</strong> non Least Concern including Near Threatened, Vulnerable, and Endangered</li>
 </ul>
-</section>
-</section>
-<section id="tidylong-data-examples" class="level2">
-<h2 class="anchored" data-anchor-id="tidylong-data-examples">Tidy/long data examples</h2>
-<p>Below are two examples of <strong>tidy/long</strong> data.</p>
-<section id="one-continuous-column" class="level3">
-<h3 class="anchored" data-anchor-id="one-continuous-column">One continuous column</h3>
-<p>Many common plots require a <strong>tibble</strong> where all the continuous/numerical values are in one column whilst the other columns contain categorical data (i.e.&nbsp;metadata). An example includes a box plot of weight (kg) against age ranges (teen, adult etc.).</p>
-<p>The below code blocks creates an example <strong>tibble</strong> and a box plot with the data.</p>
-<p><strong>Note:</strong> <code>set.seed()</code> is used to have consistent randomness for the <code>rep()</code> function. It is good practice to set the seed to its normal operation afterwards with <code>set.seed(NULL)</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create tibble</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">6836</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>age_range <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"teen"</span>,<span class="st">"adult"</span>, <span class="st">"Middle age adult"</span>, <span class="st">"Senior adult"</span>), <span class="dv">25</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">150</span><span class="sc">:</span><span class="dv">195</span>, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace=</span><span class="cn">TRUE</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>weight_age_tbl <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(weight, age_range)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="cn">NULL</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Display top of tibble</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(weight_age_tbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 2
-  weight age_range       
-   &lt;int&gt; &lt;chr&gt;           
-1    194 teen            
-2    190 adult           
-3    159 Middle age adult
-4    171 Senior adult    
-5    162 teen            
-6    167 adult           </code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Histogram plot</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(weight_age_tbl, <span class="fu">aes</span>(<span class="at">x=</span>age_range,<span class="at">y=</span>weight)) <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>amphibian_div_tbl <span class="sc">|&gt;</span>    </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> iucn_2cat)) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="input_data_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="geom_bar_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="multiple-continuous-columns" class="level3">
-<h3 class="anchored" data-anchor-id="multiple-continuous-columns">Multiple continuous columns</h3>
-<p>The format of columns in your long <strong>tibble</strong> is highly dependant on your specific data and the type of plots you will create. For example, you may have a scatterplot comparing 2 continuous measues from 2 different columns (e.g.&nbsp;height vs weight). In this case each row would contain the height and weight of one individual.</p>
-<p>The below code blocks creates an example <strong>tibble</strong> and a scatter plot with the data.</p>
+<section id="flipped-bar-chart" class="level2">
+<h2 class="anchored" data-anchor-id="flipped-bar-chart">Flipped bar chart</h2>
+<p>If there are a lot of unique <strong>values</strong> in the <strong>categorical variable</strong> you can <strong>map</strong> it to the <strong>y aesthetic</strong> to create a <strong>flipped bar chart</strong>. This is especially useful if the <strong>values</strong> have long names that would struggle to fit as labels side by side on the x-axis.</p>
+<p>Create a <strong>flipped bar chart</strong> of the <code>Family</code> <strong>categorical character variable/column</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create tibble</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">6836</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">150</span><span class="sc">:</span><span class="dv">195</span>, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace=</span><span class="cn">TRUE</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">50</span><span class="sc">:</span><span class="dv">130</span>, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace=</span><span class="cn">TRUE</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="cn">NULL</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>weight_height_tbl <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(weight, height)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Display top of tibble</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(weight_height_tbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 2
-  weight height
-   &lt;int&gt;  &lt;int&gt;
-1    194    116
-2    190     90
-3    159    130
-4    171    127
-5    162     78
-6    167     58</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Scatterplot</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(weight_height_tbl, <span class="fu">aes</span>(<span class="at">x=</span>weight,<span class="at">y=</span>height)) <span class="sc">+</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>amphibian_div_tbl <span class="sc">|&gt;</span>    </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> Family)) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="input_data_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="geom_bar_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>In this case there seems to be no linear correlation but that is because we randomly created the dataset in a very niave manner.</p>
 </section>
+<section id="stacked-bar-chart" class="level2">
+<h2 class="anchored" data-anchor-id="stacked-bar-chart">Stacked bar chart</h2>
+<p>It is common to <strong>map</strong> a second <strong>categorical variable/column</strong> to the <strong>fill aesthetic</strong>. By default this will create a <strong>stacked bar chart</strong> where the <strong>fill variable</strong> is represented by colours filling the bar chart. This is useful is you are more interested in the <strong>differences between</strong> the x-axis groupings.</p>
+<p>Create a <strong>stacked bar chart</strong> of “iucn_2cat” counts where the fill of the bar chart is coloured by “Order”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>amphibian_div_tbl <span class="sc">|&gt;</span>    </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> iucn_2cat, <span class="at">fill =</span> Order)) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="geom_bar_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="the-surface" class="level2">
-<h2 class="anchored" data-anchor-id="the-surface">The surface</h2>
-<p>The above is a very brief intro to the input data of <code>ggplot2</code>. We could show more here but it is better/easier to demonstrate with more examples as we introduce more topics.</p>
+<section id="side-by-side-bar-chart" class="level2">
+<h2 class="anchored" data-anchor-id="side-by-side-bar-chart">Side-by-side bar chart</h2>
+<p>When you are interested in the <strong>differences within</strong> the x-axis groupings you can created a <strong>side-by-side</strong> bar chart. This is carried out by using the <code>position=</code> option in <code>ggplot2::geom_bar()</code> and setting it to <code>"dodge"</code>.</p>
+<p>Create a <strong>side-by-side bar chart</strong> of “iucn_2cat” counts where the fill of the bar chart is coloured by “Order”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>amphibian_div_tbl <span class="sc">|&gt;</span>    </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> iucn_2cat, <span class="at">fill =</span> Order)) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="geom_bar_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="relative-proportion-bar-chart" class="level2">
+<h2 class="anchored" data-anchor-id="relative-proportion-bar-chart">Relative proportion bar chart</h2>
+<p>ALthough <strong>absoulte count</strong> values are useful for <strong>bar charts</strong> you will sometimes want <strong>relative proporitions</strong>. To convert the values so the total x-axis count per group equals 1 you can set <code>position=</code> to <code>"fill"</code>.</p>
+<p>Create a <strong>relative proportion bar chart</strong> of “iucn_2cat” counts where the fill of the bar chart is coloured by “Order”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>amphibian_div_tbl <span class="sc">|&gt;</span>    </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> iucn_2cat, <span class="at">fill =</span> Order)) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="geom_bar_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -1254,13 +1253,13 @@ window.onload = function() {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../ggplot2/basic_plot.html" class="pagination-link" aria-label="Basic plot">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Basic plot</span>
+      <a href="../ggplot2/components.html" class="pagination-link" aria-label="Components">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Components</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../ggplot2/aesthetics.html" class="pagination-link" aria-label="Aesthetics">
-        <span class="nav-page-text">Aesthetics</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../ggplot2/geom_histogram.html" class="pagination-link" aria-label="Geom histogram">
+        <span class="nav-page-text">Geom histogram</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

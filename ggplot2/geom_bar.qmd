@@ -1,0 +1,110 @@
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+# Geom bar
+<center>
+![](images/ggplot2_geom_bar.png){style="width:200px"}
+</center>
+
+__Bar charts__ are commonly used to display the counts of different __categorical values__.
+
+In this page we will create bar chart with `ggplot2::geom_bar()`.
+Through examples we will demonstrate creating: 
+
+- The __default bar chart__
+- A __flipped bar chart__
+- A __stacked bar chart__ using a __second categorical variable__
+- A __side-by-side bar chart__ using a __second categorical variable__
+- A __relative proportion bar chart__
+
+[Tidyverse reference page](https://ggplot2.tidyverse.org//reference/geom_bar.html)
+
+## Dataset
+
+For demonstration we'll load the `amphibian_div_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+Additionally, we'll [select](/dplyr/select.qmd) the columns "iucn_2cat", "Order", and "Family" which we will use for plotting.
+Then we'll remove any rows with an NA value using [`tidyr::drop_na`](/tidry/drop_na.qmd).
+
+```{r}
+#Library
+library("mgrtibbles")
+#Data
+amphibian_div_tbl <- 
+    mgrtibbles::amphibian_div_tbl |>
+    #Select to retain only the iucn_2cat and Order columns
+    dplyr::select(iucn_2cat,Order,Family) |>
+    #Drop any rows with an NA
+    tidyr::drop_na()
+amphibian_div_tbl
+```
+
+## Default bar chart
+
+When creating a bar chart with `geom_bar()` a __categorical variable/column__ can be __mapped__ to the __x aesthetic__.
+The function will then calculate the count numbers.
+
+Create a bar chart of the `iucn_2cat` __variable/column__.
+This is a __column__ of __categorical__ [factors (`<fct>`)](/tibble/structure.html#variablescolumns) representing IUCN categories of:
+
+- __LC:__ Least Concern
+- __nonLC:__ non Least Concern including  Near Threatened, Vulnerable, and Endangered
+
+```{r}
+amphibian_div_tbl |>    
+    ggplot2::ggplot(aes(x = iucn_2cat)) +
+    ggplot2::geom_bar()
+```
+
+## Flipped bar chart
+
+If there are a lot of unique __values__ in the __categorical variable__ you can __map__ it to the __y aesthetic__ to create a __flipped bar chart__.
+This is especially useful if the __values__ have long names that would struggle to fit as labels side by side on the x-axis.
+
+Create a __flipped bar chart__ of the `Family` __categorical character variable/column__.
+
+```{r}
+amphibian_div_tbl |>    
+    ggplot2::ggplot(aes(y = Family)) +
+    ggplot2::geom_bar()
+```
+
+## Stacked bar chart
+
+It is common to __map__ a second __categorical variable/column__ to the __fill aesthetic__.
+By default this will create a __stacked bar chart__ where the __fill variable__ is represented by colours filling the bar chart.
+This is useful is you are more interested in the __differences between__ the x-axis groupings.
+
+Create a __stacked bar chart__ of "iucn_2cat" counts where the fill of the bar chart is coloured by "Order".
+
+```{r}
+amphibian_div_tbl |>    
+    ggplot2::ggplot(aes(x = iucn_2cat, fill = Order)) +
+    ggplot2::geom_bar()
+```
+
+## Side-by-side bar chart
+
+When you are interested in the __differences within__ the x-axis groupings you can created a __side-by-side__ bar chart.
+This is carried out by using the `position=` option in `ggplot2::geom_bar()` and setting it to `"dodge"`.
+
+Create a __side-by-side bar chart__ of "iucn_2cat" counts where the fill of the bar chart is coloured by "Order".
+
+```{r}
+amphibian_div_tbl |>    
+    ggplot2::ggplot(aes(x = iucn_2cat, fill = Order)) +
+    ggplot2::geom_bar(position = "dodge")
+```
+
+## Relative proportion bar chart
+
+ALthough __absoulte count__ values are useful for __bar charts__ you will sometimes want __relative proporitions__.
+To convert the values so the total x-axis count per group equals 1 you can set `position=` to `"fill"`.
+
+Create a __relative proportion bar chart__ of "iucn_2cat" counts where the fill of the bar chart is coloured by "Order".
+
+```{r}
+amphibian_div_tbl |>    
+    ggplot2::ggplot(aes(x = iucn_2cat, fill = Order)) +
+    ggplot2::geom_bar(position = "fill")
+```
