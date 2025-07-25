@@ -64,7 +64,7 @@ Similar to [piping (`|>`)](/dplyr/pipes.qmd) this allows you to start simple and
 
 There are many components with most being __layers__.
 
-More information: [Layers](/ggplot2/layers.qmd)
+More information: [Components](/ggplot2/components.qmd)
 
 ## Parameter names & piping
 

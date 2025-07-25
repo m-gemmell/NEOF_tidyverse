@@ -498,7 +498,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <img src="images/ggplot2_geom_bar.png" class="img-fluid" style="width:200px">
 </center>
 <p><strong>Bar charts</strong> are commonly used to display the counts of different <strong>categorical values</strong>.</p>
-<p>In this page we will create bar chart with <code>ggplot2::geom_bar()</code>. Through examples we will demonstrate creating:</p>
+<p>In this page we will create bar charts with <code>ggplot2::geom_bar()</code>. Through examples we will demonstrate creating:</p>
 <ul>
 <li>The <strong>default bar chart</strong></li>
 <li>A <strong>flipped bar chart</strong></li>
@@ -509,7 +509,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="https://ggplot2.tidyverse.org//reference/geom_bar.html">Tidyverse reference page</a></p>
 <section id="dataset" class="level2">
 <h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
-<p>For demonstration we’ll load the <code>amphibian_div_tbl</code> data from the <a href="../datasets/mgrtibbles.html">mgrtibbles package</a> (hyperlink includes install instructions). Additionally, we’ll <a href="../dplyr/select.html">select</a> the columns “iucn_2cat”, “Order”, and “Family” which we will use for plotting. Then we’ll remove any rows with an NA value using <a href="../tidry/drop_na.qmd"><code>tidyr::drop_na</code></a>.</p>
+<p>For demonstration we’ll load the <code>amphibian_div_tbl</code> data from the <a href="../datasets/mgrtibbles.html">mgrtibbles package</a> (hyperlink includes install instructions). Additionally, we’ll <a href="../dplyr/select.html">select</a> the columns “iucn_2cat”, “Order”, and “Family” which we will use for plotting. Then we’ll remove any rows with an NA value using <a href="../tidyr/drop_na.html"><code>tidyr::drop_na</code></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Library</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"mgrtibbles"</span>)</span>

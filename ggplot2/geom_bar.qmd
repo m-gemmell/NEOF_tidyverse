@@ -9,7 +9,7 @@ library(tidyverse)
 
 __Bar charts__ are commonly used to display the counts of different __categorical values__.
 
-In this page we will create bar chart with `ggplot2::geom_bar()`.
+In this page we will create bar charts with `ggplot2::geom_bar()`.
 Through examples we will demonstrate creating: 
 
 - The __default bar chart__
@@ -24,7 +24,7 @@ Through examples we will demonstrate creating:
 
 For demonstration we'll load the `amphibian_div_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
 Additionally, we'll [select](/dplyr/select.qmd) the columns "iucn_2cat", "Order", and "Family" which we will use for plotting.
-Then we'll remove any rows with an NA value using [`tidyr::drop_na`](/tidry/drop_na.qmd).
+Then we'll remove any rows with an NA value using [`tidyr::drop_na`](/tidyr/drop_na.qmd).
 
 ```{r}
 #Library

@@ -1,5 +1,76 @@
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
 # Geom histogram
-
 <center>
 ![](images/ggplot2_geom_histogram.png){style="width:200px"}
 </center>
+
+Histograms are commonly used to display the distrubiton of a single __continuous variable__.
+This is carried out by creating bins (i.e. number ranges) and counting the number of values that are within each bin.
+These bin counts displayed as a bar chart.
+
+In this page we will create histograms with `ggplot2::geom_histogram()`. Theourgh examples we will deomstrate creating:
+
+- A histogram with default options.
+- A histogram when specifying bin width.
+- A histogram when specifying the number of bins.
+- A flipped histoogram.
+- A frequency polygon.
+
+[Tidyverse reference page](https://ggplot2.tidyverse.org//reference/geom_histogram.html)
+
+## Dataset
+
+For demonstration we'll load the `mammal_sleep_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+We will select the "total_sleep" and "predation" columns for our plots.
+
+```{r}
+#Load package
+library("mgrtibbles")
+#mammal_sleep_tbl tibble for demonstration
+mammal_sleep_tbl<- mgrtibbles::mammal_sleep_tbl |> 
+    dplyr::select("total_sleep","predation")
+mammal_sleep_tbl
+```
+
+## Deafult histogram
+
+```{r}
+mammal_sleep_tbl |>
+    ggplot2::ggplot(aes(x = total_sleep)) +
+    ggplot2::geom_histogram()
+```
+
+## Bin width
+
+```{r}
+mammal_sleep_tbl |>
+    ggplot2::ggplot(aes(x = total_sleep)) +
+    ggplot2::geom_histogram(binwidth = 1)
+```
+
+## Amount of bins
+
+```{r}
+mammal_sleep_tbl |>
+    ggplot2::ggplot(aes(x = total_sleep)) +
+    ggplot2::geom_histogram(bins = 15)
+```
+
+## Flipped histogram
+
+```{r}
+mammal_sleep_tbl |>
+    ggplot2::ggplot(aes(y = total_sleep)) +
+    ggplot2::geom_histogram()
+```
+
+## Frequency polygon
+
+```{r}
+mammal_sleep_tbl |>
+    ggplot2::ggplot(aes(x = total_sleep, colour = predation)) +
+    ggplot2::geom_freqpoly(binwidth = 5)
+```
