@@ -149,6 +149,7 @@ website:
       - href: ggplot2/geom_line.qmd
       - href: ggplot2/geom_point.qmd
       - href: ggplot2/geom_boxplot.qmd
+      - href: ggplot2/geom_others.qmd
     - href: ggplot2/cheatsheets.qmd
   - id: Stringr
     title: Stringr
@@ -194,6 +195,8 @@ website:
     - href: datasets/mgrtibbles.qmd
 format:
   html:
+    fig-width: 10
+    fig-height: 6
     grid:
       sidebar-width: 200px
       body-width: 1000px

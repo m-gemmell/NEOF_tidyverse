@@ -1,0 +1,29 @@
+# Other geoms
+
+## 2D bin counts
+
+https://ggplot2.tidyverse.org//reference/geom_bin_2d.html
+
+https://ggplot2.tidyverse.org//reference/geom_hex.html
+
+## Density plots
+
+https://ggplot2.tidyverse.org//reference/geom_density.html
+
+https://ggplot2.tidyverse.org//reference/geom_density_2d.html
+
+## Jitter
+
+https://ggplot2.tidyverse.org//reference/geom_jitter.html
+
+## Smooth
+
+https://ggplot2.tidyverse.org//reference/geom_smooth.html
+
+## Rug
+
+https://ggplot2.tidyverse.org//reference/geom_rug.html
+
+## Violin plot
+
+https://ggplot2.tidyverse.org//reference/geom_violin.html

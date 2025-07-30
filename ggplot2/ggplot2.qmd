@@ -99,6 +99,7 @@ This website will cover a few of the most commonly used ones.
 - [`geom_line()`](/ggplot2/geom_line.qmd): Line graph.
 - [`geom_point()`](/ggplot2/geom_point.qmd): Scatter plot.
 - [`geom_boxplot()`](/ggplot2/geom_boxplot.qmd): Box and whisker plot.
+- [Other geoms](/ggplot2/geom_others.qmd): Other useful geom layers.
 
 ### Output
 

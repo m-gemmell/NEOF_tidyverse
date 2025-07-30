@@ -1,5 +1,137 @@
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+
 # Geom boxplot
 
 <center>
 ![](images/ggplot2_geom_boxplot.png){style="width:200px"}
 </center>
+
+Box plots can display the distribution of a single __continuos variable__.
+It can be particularly useful with large amounts of data where other plots cannot effectively display all the values.
+
+In this page we will create scatter plots with `ggplot2::geom_boxplot()`. Through examples we will demonstrate creating:
+
+- A default box plot.
+- A box plot split by a __categorical variable__.
+- A flipped box plot.
+- A box plot with a layer of jittered points.
+- A violin plot with jittered points.
+
+[Tidyverse reference page](https://ggplot2.tidyverse.org//reference/geom_point.html)
+
+## Dataset
+
+For demonstration we'll load the `bat_roost_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+To preprocess the data we will:
+
+- Remove the `RoostCode` __variable/column__ with [`dplyr::select`](/dplyr/select.qmd).
+- Remove __rows/observations__ with a MaxCountInAnyYear greater than or equal to 250 with [`dplyr::filter()`](/dplyr/filter.qmd)
+- Remove __rows/observations__ from the __Country__ grouping "British Crown Dependencies" to reatin the countries England, Northern Ireland, Scotland, and Wales with [`dplyr::filter()`](/dplyr/filter.qmd)
+- Remove __rows/observations__ where the the Country or Species value is NA with [`tidyr:drop_na()`](/tidyr/drop_na.qmd)
+
+```{r}
+#Load package
+library("mgrtibbles")
+#mushroom_tbl tibble for demonstration
+bat_roost_tbl <- mgrtibbles::bat_roost_tbl |>
+    #Select all but roost code column
+    dplyr::select(!RoostCode) |>
+    #Filter out rows with a MaxCountInAnyYear greater than or equal to 250
+    # and remove observations from "British Crown Dependencies"
+    dplyr::filter(MaxCountInAnyYear < 250 & Country != "British Crown Dependencies") |>
+    #Remove rows where Country or Species is NA
+    tidyr::drop_na(c("Country","Species"))
+bat_roost_tbl |> dplyr::glimpse()
+```
+
+## Default box plot
+
+Create a box plot of the __MaxCountInAnyYear__ (y axis).
+This will show the distribution of the max yearly population count within each of the tracked roosts in the UK.
+
+```{r}
+bat_roost_tbl |>
+    ggplot2::ggplot(aes(y = MaxCountInAnyYear)) +
+        ggplot2::geom_boxplot()
+```
+
+## Split by categorical variable
+
+Box plots become very powerful when comparing distributions of the same __continuous variable__ across different __categorical variables__.
+
+Create a box plot of __MaxCountInAnyYear__(y) against the __categorical variable Country__ (x).
+In `aes()` set `x=Country` so there is a box and whisker for each Country, separated on the x-axis.
+
+```{r}
+bat_roost_tbl |>
+    #Box plot
+    ggplot2::ggplot(aes(y = MaxCountInAnyYear, x = Country)) +
+        ggplot2::geom_boxplot()
+```
+
+## Flipped box plot
+
+If the __categorical variable__ has a lot of groups, long names, or both, you can create a flipped box plot.
+
+Create a box plot of  the __numerical variable MaxCountInAnyYear__ on the x-axis against the __categorical variable Species__ on the y-axis.
+In `aes()` set `y=Country` so there is a box and whisker for each Country, separated up on the y-axis.
+
+```{r}
+bat_roost_tbl |>
+    #Box plot
+    ggplot2::ggplot(aes(x = MaxCountInAnyYear, y = Species)) +
+        ggplot2::geom_boxplot()
+```
+
+## Layer of jittered points
+
+You can add points on top of a box plot so you can visualise the individual values on top of the distribution.
+We can add these points with [`ggplot2::geom_jitter()`](https://ggplot2.tidyverse.org//reference/geom_jitter.html) which will cause the points to "jitter".
+With this the points will be randomly distributed across the x axis if mapped to the y axis and vice versa.
+This is useful so points are less likely to overlap and so are easier to read.
+
+This also allows us to add a second __categorical variable__ that we can colour the points with.
+
+Create a box plot of __MaxCountInAnyYear__(y) against the __County__ (x) of Northern Ireland __observations/rows__.
+
+To the box plot add the layer [`ggplot2::geom_jitter()`](https://ggplot2.tidyverse.org//reference/geom_jitter.html).
+In the function add `aes(colour_species)` so the points, and not the box and whiskers, are coloured by species.
+Additionally, set `size=2` in [`ggplot2::geom_jitter()`](https://ggplot2.tidyverse.org//reference/geom_jitter.html) but outside of its `aes()` to make the points larger.
+
+```{r fig.width=10, fig.height=6}
+#Random sample and boxplot
+bat_roost_tbl |>
+    #Filter to only retain Northern Ireland rows
+    dplyr::filter(Country == "Northern Ireland") |>
+    #Box plot
+    ggplot2::ggplot(aes(y = MaxCountInAnyYear, x = County)) +
+        ggplot2::geom_boxplot() +
+        ggplot2::geom_jitter(aes(colour=Species), size=2)
+```
+
+## Violin plot
+
+Violin plots are very similar to box plots but they display the probability density across the different values.
+This can be more appropriate to datasets that do not follow bell curve/normal distributions.
+
+We will create a violin plot with jittered points of the different Pipistrelle species across the four countries.
+
+Create a violin plot of __MaxCountInAnyYear__(y) against __Country__ (x).
+Add a layer of jittered points coloured by __Species__.
+
+```{r fig.width=10, fig.height=6}
+#Random sample and boxplot
+bat_roost_tbl |>
+    #Filter to only retain Northern Ireland rows
+    dplyr::filter(Species %in% c("Common pipistrelle", "Pipistrelle species",
+                                    "Soprano pipistrelle")) |>
+    #Box plot
+    ggplot2::ggplot(aes(y = MaxCountInAnyYear, x = Country)) +
+        ggplot2::geom_violin() +
+        ggplot2::geom_jitter(aes(colour=Species), size=2)
+```
+
+

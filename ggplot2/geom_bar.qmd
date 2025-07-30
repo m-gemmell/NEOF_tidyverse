@@ -53,7 +53,7 @@ This is a __column__ of __categorical__ [factors (`<fct>`)](/tibble/structure.ht
 ```{r}
 amphibian_div_tbl |>    
     ggplot2::ggplot(aes(x = iucn_2cat)) +
-    ggplot2::geom_bar()
+        ggplot2::geom_bar()
 ```
 
 ## Flipped bar chart
@@ -66,7 +66,7 @@ Create a __flipped bar chart__ of the `Family` __categorical character variable/
 ```{r}
 amphibian_div_tbl |>    
     ggplot2::ggplot(aes(y = Family)) +
-    ggplot2::geom_bar()
+        ggplot2::geom_bar()
 ```
 
 ## Stacked bar chart
@@ -80,7 +80,7 @@ Create a __stacked bar chart__ of "iucn_2cat" counts where the fill of the bar c
 ```{r}
 amphibian_div_tbl |>    
     ggplot2::ggplot(aes(x = iucn_2cat, fill = Order)) +
-    ggplot2::geom_bar()
+        ggplot2::geom_bar()
 ```
 
 ## Side-by-side bar chart
@@ -93,12 +93,12 @@ Create a __side-by-side bar chart__ of "iucn_2cat" counts where the fill of the 
 ```{r}
 amphibian_div_tbl |>    
     ggplot2::ggplot(aes(x = iucn_2cat, fill = Order)) +
-    ggplot2::geom_bar(position = "dodge")
+        ggplot2::geom_bar(position = "dodge")
 ```
 
 ## Relative proportion bar chart
 
-ALthough __absoulte count__ values are useful for __bar charts__ you will sometimes want __relative proporitions__.
+ALthough __absolute count__ values are useful for __bar charts__ you will sometimes want __relative proportions__.
 To convert the values so the total x-axis count per group equals 1 you can set `position=` to `"fill"`.
 
 Create a __relative proportion bar chart__ of "iucn_2cat" counts where the fill of the bar chart is coloured by "Order".
@@ -106,5 +106,5 @@ Create a __relative proportion bar chart__ of "iucn_2cat" counts where the fill 
 ```{r}
 amphibian_div_tbl |>    
     ggplot2::ggplot(aes(x = iucn_2cat, fill = Order)) +
-    ggplot2::geom_bar(position = "fill")
+        ggplot2::geom_bar(position = "fill")
 ```

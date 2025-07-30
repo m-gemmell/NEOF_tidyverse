@@ -65,9 +65,9 @@ On top of the x and y aesthetics we'll set the __shape__ to the __Crop_type__ an
 
 ```{r}
 crop_and_soil_tbl |>
-ggplot2::ggplot(aes(x = Humidity, y = Moisture, 
-                colour = Crop_type, shape = Soil_type)) +
-    ggplot2::geom_point()
+    ggplot2::ggplot(aes(x = Humidity, y = Moisture, 
+                    colour = Crop_type, shape = Soil_type)) +
+        ggplot2::geom_point()
 ```
 
 You'll notice corresponding legends appear which is handy.
@@ -84,9 +84,9 @@ Additonally map:
 
 ```{r}
 crop_and_soil_tbl |>
-ggplot2::ggplot(aes(x = Humidity, y = Moisture, 
-                color = Temp_celsius, size = Nitrogen)) +
-    ggplot2::geom_point()
+    ggplot2::ggplot(aes(x = Humidity, y = Moisture, 
+                        color = Temp_celsius, size = Nitrogen)) +
+        ggplot2::geom_point()
 ```
 
 ## Correct use of aesthetics

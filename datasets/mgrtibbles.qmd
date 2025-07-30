@@ -30,3 +30,10 @@ Once you have installed and loaded the package you can access one of the various
 ```{r}
 mgrtibbles::mammal_sleep_tbl
 ```
+
+To see the format and variable description use `?`.
+For example:
+
+```{r, eval=FALSE}
+?mgrtibbles::crab_age_pred_tbl
+```

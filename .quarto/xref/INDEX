@@ -268,5 +268,8 @@
   },
   "ggplot2/geom_boxplot.qmd": {
     "geom_boxplot.html": "5ca250b7"
+  },
+  "ggplot2/geom_others.qmd": {
+    "geom_others.html": "c53a14f6"
   }
 }
