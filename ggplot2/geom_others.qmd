@@ -1,29 +1,118 @@
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+library(ggplot2)
+```
+
 # Other geoms
+
+There are many other __geom layers__ that can used to create different plots.
+
+Below are a quick reference to a few of these.
+
+## Dataset
+
+For demonstration we'll load the `mushroom_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+
+```{r}
+#Load package
+library("mgrtibbles")
+#mushroom_tbl tibble for demonstration
+mushroom_tbl <- mgrtibbles::mushroom_tbl
+#Glimpse tibble
+mushroom_tbl |> dplyr::glimpse()
+```
 
 ## 2D bin counts
 
-https://ggplot2.tidyverse.org//reference/geom_bin_2d.html
+2D bin counts add another dimension on top of a [histogram](/ggplot2/geom_histogram.qmd).
+They allow you to plot the count distribution of 2 __continuous variables__ whilst seeing the relationship between the two.
 
-https://ggplot2.tidyverse.org//reference/geom_hex.html
+Two methods to create 2D bin counts are with:
+
+- [Heatmap of 2D bin counts](https://ggplot2.tidyverse.org//reference/geom_bin_2d.html)
+- [Hexagonal heatmap of 2D bin counts](https://ggplot2.tidyverse.org//reference/geom_hex.html)
+
+### 2D bin count heatmap
+
+[Heatmap of 2D bin counts reference](https://ggplot2.tidyverse.org//reference/geom_bin_2d.html)
+
+```{r}
+mushroom_tbl |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
+        ggplot2::geom_bin_2d()
+```
+
+### Hexagonal 2D bin count heatmap
+
+[Hexagonal heatmap of 2D bin counts reference](https://ggplot2.tidyverse.org//reference/geom_hex.html) requires the `hexbin` package to be installed.
+
+```{r}
+#Install hexbin if not already installed
+if (!require("hexbin")) install.packages("hexbin")
+library("hexbin")
+```
+
+Generally hex bin heatmaps are better than square based 2D bin count heatmaps as the regular square tiles can cause unwanted artifacts.
+
+```{r}
+mushroom_tbl |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
+        ggplot2::geom_hex()
+```
 
 ## Density plots
 
-https://ggplot2.tidyverse.org//reference/geom_density.html
+Denisty plots can display the density of data points in a plot.
 
-https://ggplot2.tidyverse.org//reference/geom_density_2d.html
+Two types include:
 
-## Jitter
+- [Smooth density plot](https://ggplot2.tidyverse.org//reference/geom_density.html)
+- [2D density plot](https://ggplot2.tidyverse.org//reference/geom_density_2d.html)
 
-https://ggplot2.tidyverse.org//reference/geom_jitter.html
+### Smooth density plot
+
+A smooth density plot is like a histogram but instead of bars the count distribution of one __continuous variable__ is displayed as a smooth line graph.
+The main advantage of a density plot of a histogram is that you can easily visualise the distribution shape as it does not rely on choosing the bin sizes or number of bins.
+
+[Smooth density plot reference](https://ggplot2.tidyverse.org//reference/geom_density.html)
+
+```{r}
+mushroom_tbl |>
+    ggplot2::ggplot(aes(x = cap_diameter)) +
+        ggplot2::geom_density(linewidth=1)
+```
+
+### 2D density plot
+
+A 2D density plot is a scatter plot with added density lines.
+These density lines look similar to the contour lines of a geographical map.
+The closer the lines are together the higher the density of points.
+Additionally, the shape of the lines can help display patterns in the data.
+
+[2D density plot reference](https://ggplot2.tidyverse.org//reference/geom_density_2d.html)
+
+```{r}
+#Too many points for succesful viewing of plot
+#therefore will randomly subsample the dataset
+#Set seed for random sampling
+set.seed("483")
+#Smmoth density plot
+mushroom_tbl |>
+    #Random sample of 150 rows
+    dplyr::slice_sample(n = 150, replace=FALSE) |>
+    #ggplot code
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
+        ggplot2::geom_point() +
+        ggplot2::geom_density_2d(linewidth=1)
+#Reset random seed to normal operation
+set.seed(NULL)
+```
 
 ## Smooth
 
-https://ggplot2.tidyverse.org//reference/geom_smooth.html
+[Smooth line](https://ggplot2.tidyverse.org//reference/geom_smooth.html)
 
 ## Rug
 
-https://ggplot2.tidyverse.org//reference/geom_rug.html
-
-## Violin plot
-
-https://ggplot2.tidyverse.org//reference/geom_violin.html
+[Rug plot](https://ggplot2.tidyverse.org//reference/geom_rug.html)

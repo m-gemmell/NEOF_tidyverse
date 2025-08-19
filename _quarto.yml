@@ -195,7 +195,7 @@ website:
     - href: datasets/mgrtibbles.qmd
 format:
   html:
-    fig-width: 10
+    fig-width: 10.2
     fig-height: 6
     grid:
       sidebar-width: 200px

@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -448,12 +483,19 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#other-geoms" id="toc-other-geoms" class="nav-link active" data-scroll-target="#other-geoms">Other geoms</a>
   <ul class="collapse">
-  <li><a href="#d-bin-counts" id="toc-d-bin-counts" class="nav-link" data-scroll-target="#d-bin-counts">2D bin counts</a></li>
-  <li><a href="#density-plots" id="toc-density-plots" class="nav-link" data-scroll-target="#density-plots">Density plots</a></li>
-  <li><a href="#jitter" id="toc-jitter" class="nav-link" data-scroll-target="#jitter">Jitter</a></li>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset">Dataset</a></li>
+  <li><a href="#d-bin-counts" id="toc-d-bin-counts" class="nav-link" data-scroll-target="#d-bin-counts">2D bin counts</a>
+  <ul class="collapse">
+  <li><a href="#d-bin-count-heatmap" id="toc-d-bin-count-heatmap" class="nav-link" data-scroll-target="#d-bin-count-heatmap">2D bin count heatmap</a></li>
+  <li><a href="#hexagonal-2d-bin-count-heatmap" id="toc-hexagonal-2d-bin-count-heatmap" class="nav-link" data-scroll-target="#hexagonal-2d-bin-count-heatmap">Hexagonal 2D bin count heatmap</a></li>
+  </ul></li>
+  <li><a href="#density-plots" id="toc-density-plots" class="nav-link" data-scroll-target="#density-plots">Density plots</a>
+  <ul class="collapse">
+  <li><a href="#smooth-density-plot" id="toc-smooth-density-plot" class="nav-link" data-scroll-target="#smooth-density-plot">Smooth density plot</a></li>
+  <li><a href="#d-density-plot" id="toc-d-density-plot" class="nav-link" data-scroll-target="#d-density-plot">2D density plot</a></li>
+  </ul></li>
   <li><a href="#smooth" id="toc-smooth" class="nav-link" data-scroll-target="#smooth">Smooth</a></li>
   <li><a href="#rug" id="toc-rug" class="nav-link" data-scroll-target="#rug">Rug</a></li>
-  <li><a href="#violin-plot" id="toc-violin-plot" class="nav-link" data-scroll-target="#violin-plot">Violin plot</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -467,31 +509,145 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="other-geoms" class="level1">
 <h1>Other geoms</h1>
+<p>There are many other <strong>geom layers</strong> that can used to create different plots.</p>
+<p>Below are a quick reference to a few of these.</p>
+<section id="dataset" class="level2">
+<h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
+<p>For demonstration we’ll load the <code>mushroom_tbl</code> data from the <a href="../datasets/mgrtibbles.html">mgrtibbles package</a> (hyperlink includes install instructions).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load package</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"mgrtibbles"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#mushroom_tbl tibble for demonstration</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>mushroom_tbl <span class="ot">&lt;-</span> mgrtibbles<span class="sc">::</span>mushroom_tbl</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Glimpse tibble</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>mushroom_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 61,069
+Columns: 10
+$ class                &lt;fct&gt; poisonous, poisonous, poisonous, poisonous, poiso…
+$ cap_diameter         &lt;dbl&gt; 15.26, 16.60, 14.07, 14.17, 14.64, 15.34, 14.85, …
+$ cap_shape            &lt;fct&gt; convex, convex, convex, flat, convex, convex, fla…
+$ cap_surface          &lt;fct&gt; grooves, grooves, grooves, shiny, shiny, grooves,…
+$ cap_color            &lt;fct&gt; orange, orange, orange, red, orange, orange, oran…
+$ does_bruise_or_bleed &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
+$ gill_attachment      &lt;fct&gt; free, free, free, free, free, free, free, free, f…
+$ gill_color           &lt;fct&gt; white, white, white, white, white, white, white, …
+$ stem_height          &lt;dbl&gt; 16.95, 17.99, 17.80, 15.77, 16.53, 17.84, 17.71, …
+$ stem_width           &lt;dbl&gt; 17.09, 18.19, 17.74, 15.98, 17.20, 18.79, 16.89, …</code></pre>
+</div>
+</div>
+</section>
 <section id="d-bin-counts" class="level2">
 <h2 class="anchored" data-anchor-id="d-bin-counts">2D bin counts</h2>
-<p>https://ggplot2.tidyverse.org//reference/geom_bin_2d.html</p>
-<p>https://ggplot2.tidyverse.org//reference/geom_hex.html</p>
+<p>2D bin counts add another dimension on top of a <a href="../ggplot2/geom_histogram.html">histogram</a>. They allow you to plot the count distribution of 2 <strong>continuous variables</strong> whilst seeing the relationship between the two.</p>
+<p>Two methods to create 2D bin counts are with:</p>
+<ul>
+<li><a href="https://ggplot2.tidyverse.org//reference/geom_bin_2d.html">Heatmap of 2D bin counts</a></li>
+<li><a href="https://ggplot2.tidyverse.org//reference/geom_hex.html">Hexagonal heatmap of 2D bin counts</a></li>
+</ul>
+<section id="d-bin-count-heatmap" class="level3">
+<h3 class="anchored" data-anchor-id="d-bin-count-heatmap">2D bin count heatmap</h3>
+<p><a href="https://ggplot2.tidyverse.org//reference/geom_bin_2d.html">Heatmap of 2D bin counts reference</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mushroom_tbl <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stem_width, <span class="at">y =</span> stem_height)) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">geom_bin_2d</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="geom_others_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="979"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="hexagonal-2d-bin-count-heatmap" class="level3">
+<h3 class="anchored" data-anchor-id="hexagonal-2d-bin-count-heatmap">Hexagonal 2D bin count heatmap</h3>
+<p><a href="https://ggplot2.tidyverse.org//reference/geom_hex.html">Hexagonal heatmap of 2D bin counts reference</a> requires the <code>hexbin</code> package to be installed.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Install hexbin if not already installed</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"hexbin"</span>)) <span class="fu">install.packages</span>(<span class="st">"hexbin"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: hexbin</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"hexbin"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Generally hex bin heatmaps are better than square based 2D bin count heatmaps as the regular square tiles can cause unwanted artifacts.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mushroom_tbl <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stem_width, <span class="at">y =</span> stem_height)) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">geom_hex</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="geom_others_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="979"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="density-plots" class="level2">
 <h2 class="anchored" data-anchor-id="density-plots">Density plots</h2>
-<p>https://ggplot2.tidyverse.org//reference/geom_density.html</p>
-<p>https://ggplot2.tidyverse.org//reference/geom_density_2d.html</p>
+<p>Denisty plots can display the density of data points in a plot.</p>
+<p>Two types include:</p>
+<ul>
+<li><a href="https://ggplot2.tidyverse.org//reference/geom_density.html">Smooth density plot</a></li>
+<li><a href="https://ggplot2.tidyverse.org//reference/geom_density_2d.html">2D density plot</a></li>
+</ul>
+<section id="smooth-density-plot" class="level3">
+<h3 class="anchored" data-anchor-id="smooth-density-plot">Smooth density plot</h3>
+<p>A smooth density plot is like a histogram but instead of bars the count distribution of one <strong>continuous variable</strong> is displayed as a smooth line graph. The main advantage of a density plot of a histogram is that you can easily visualise the distribution shape as it does not rely on choosing the bin sizes or number of bins.</p>
+<p><a href="https://ggplot2.tidyverse.org//reference/geom_density.html">Smooth density plot reference</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mushroom_tbl <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cap_diameter)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">geom_density</span>(<span class="at">linewidth=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="geom_others_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="979"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="jitter" class="level2">
-<h2 class="anchored" data-anchor-id="jitter">Jitter</h2>
-<p>https://ggplot2.tidyverse.org//reference/geom_jitter.html</p>
+<section id="d-density-plot" class="level3">
+<h3 class="anchored" data-anchor-id="d-density-plot">2D density plot</h3>
+<p>A 2D density plot is a scatter plot with added density lines. These density lines look similar to the contour lines of a geographical map. The closer the lines are together the higher the density of points. Additionally, the shape of the lines can help display patterns in the data.</p>
+<p><a href="https://ggplot2.tidyverse.org//reference/geom_density_2d.html">2D density plot reference</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Too many points for succesful viewing of plot</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#therefore will randomly subsample the dataset</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Set seed for random sampling</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="st">"483"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Smmoth density plot</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>mushroom_tbl <span class="sc">|&gt;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Random sample of 150 rows</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">150</span>, <span class="at">replace=</span><span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#ggplot code</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stem_width, <span class="at">y =</span> stem_height)) <span class="sc">+</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">geom_density_2d</span>(<span class="at">linewidth=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="geom_others_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="979"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Reset random seed to normal operation</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 </section>
 <section id="smooth" class="level2">
 <h2 class="anchored" data-anchor-id="smooth">Smooth</h2>
-<p>https://ggplot2.tidyverse.org//reference/geom_smooth.html</p>
+<p><a href="https://ggplot2.tidyverse.org//reference/geom_smooth.html">Smooth line</a></p>
 </section>
 <section id="rug" class="level2">
 <h2 class="anchored" data-anchor-id="rug">Rug</h2>
-<p>https://ggplot2.tidyverse.org//reference/geom_rug.html</p>
-</section>
-<section id="violin-plot" class="level2">
-<h2 class="anchored" data-anchor-id="violin-plot">Violin plot</h2>
-<p>https://ggplot2.tidyverse.org//reference/geom_violin.html</p>
+<p><a href="https://ggplot2.tidyverse.org//reference/geom_rug.html">Rug plot</a></p>
 
 
 </section>

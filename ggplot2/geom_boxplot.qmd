@@ -20,7 +20,7 @@ In this page we will create scatter plots with `ggplot2::geom_boxplot()`. Throug
 - A box plot with a layer of jittered points.
 - A violin plot with jittered points.
 
-[Tidyverse reference page](https://ggplot2.tidyverse.org//reference/geom_point.html)
+[Tidyverse reference page](https://ggplot2.tidyverse.org//reference/geom_boxplot.html)
 
 ## Dataset
 
@@ -62,7 +62,7 @@ bat_roost_tbl |>
 
 Box plots become very powerful when comparing distributions of the same __continuous variable__ across different __categorical variables__.
 
-Create a box plot of __MaxCountInAnyYear__(y) against the __categorical variable Country__ (x).
+Create a box plot of __MaxCountInAnyYear__ (y) against the __categorical variable Country__ (x).
 In `aes()` set `x=Country` so there is a box and whisker for each Country, separated on the x-axis.
 
 ```{r}
@@ -77,7 +77,7 @@ bat_roost_tbl |>
 If the __categorical variable__ has a lot of groups, long names, or both, you can create a flipped box plot.
 
 Create a box plot of  the __numerical variable MaxCountInAnyYear__ on the x-axis against the __categorical variable Species__ on the y-axis.
-In `aes()` set `y=Country` so there is a box and whisker for each Country, separated up on the y-axis.
+In `aes()` set `y=Species` and `x=MaxCountInAnyYear` so there is a box and whisker for each Species, separated up on the y-axis.
 
 ```{r}
 bat_roost_tbl |>
@@ -88,21 +88,21 @@ bat_roost_tbl |>
 
 ## Layer of jittered points
 
-You can add points on top of a box plot so you can visualise the individual values on top of the distribution.
+You can add points on top of a box plot to visualise the individual values on top of the distribution.
 We can add these points with [`ggplot2::geom_jitter()`](https://ggplot2.tidyverse.org//reference/geom_jitter.html) which will cause the points to "jitter".
 With this the points will be randomly distributed across the x axis if mapped to the y axis and vice versa.
 This is useful so points are less likely to overlap and so are easier to read.
 
-This also allows us to add a second __categorical variable__ that we can colour the points with.
+Adding points allows us to add a second __categorical variable__ that we can colour the points with.
 
-Create a box plot of __MaxCountInAnyYear__(y) against the __County__ (x) of Northern Ireland __observations/rows__.
+Create a box plot of __MaxCountInAnyYear__ (y) against the __County__ (x) of Northern Ireland __observations/rows__.
 
 To the box plot add the layer [`ggplot2::geom_jitter()`](https://ggplot2.tidyverse.org//reference/geom_jitter.html).
 In the function add `aes(colour_species)` so the points, and not the box and whiskers, are coloured by species.
 Additionally, set `size=2` in [`ggplot2::geom_jitter()`](https://ggplot2.tidyverse.org//reference/geom_jitter.html) but outside of its `aes()` to make the points larger.
 
-```{r fig.width=10, fig.height=6}
-#Random sample and boxplot
+```{r}
+#Boxplot of max population count in bat colonies within counties of Northern Ireland
 bat_roost_tbl |>
     #Filter to only retain Northern Ireland rows
     dplyr::filter(Country == "Northern Ireland") |>
@@ -114,16 +114,17 @@ bat_roost_tbl |>
 
 ## Violin plot
 
-Violin plots are very similar to box plots but they display the probability density across the different values.
+Violin plots are very similar to box plots but they display the probability density across the values.
 This can be more appropriate to datasets that do not follow bell curve/normal distributions.
+In fact, some people prefer using violin plots to box plots, myself included.
 
 We will create a violin plot with jittered points of the different Pipistrelle species across the four countries.
 
-Create a violin plot of __MaxCountInAnyYear__(y) against __Country__ (x).
+Create a violin plot of __MaxCountInAnyYear__ (y) against __Country__ (x).
 Add a layer of jittered points coloured by __Species__.
 
-```{r fig.width=10, fig.height=6}
-#Random sample and boxplot
+```{r}
+#Violin plot of max population count of Pipistrelle colonies in the UK countries
 bat_roost_tbl |>
     #Filter to only retain Northern Ireland rows
     dplyr::filter(Species %in% c("Common pipistrelle", "Pipistrelle species",
