@@ -78,13 +78,17 @@ Creating a basic plot with `ggplot2`. In essence the introduction to `ggplot2` u
 </div>
 
 
-<div class="hexggplotcolumnsbottom">
+<div class="hexdplyrcolumnsbottom">
   <p><a href="/ggplot2/geom_point.qmd">
   <img src="images/ggplot2_geom_point.png" width="150px">
   </a></p>
 
   <p><a href="/ggplot2/geom_boxplot.qmd">
   <img src="images/ggplot2_geom_boxplot.png" width="150px">
+  </a></p>
+
+  <p><a href="/ggplot2/geom_others.qmd">
+  <img src="images/ggplot2_other_geoms.png" width="150px">
   </a></p>
 
 </div>
@@ -103,11 +107,25 @@ This website will cover a few of the most commonly used ones.
 
 ### Output
 
+<div class="hexrow">
+  <p><a href="/ggplot2/ggsave.qmd">
+  <img src="images/ggplot2_ggsave.png" width="150px">
+  </a></p>
+  
+  <p><a href="/ggplot2/patchwork.qmd">
+  <img src="images/ggplot2_patchwork.png" width="150px">
+  </a></p>
+
+  <p><a href="/ggplot2/ggplotly.qmd">
+  <img src="images/ggplot2_ggplotly.png" width="150px" class="hexcollast">
+  </a></p>
+</div>
+
 How to save the output of `ggplot2` objects.
 
-- `ggsave()`: Save a `ggplot` object/figure to a static image file.
-- `pathcwork`: Combing multiple `gpglot2` objects into the same graphic/image. (https://patchwork.data-imaginist.com/)
-- `ggplotly()`: Convert a `ggplot2` object to an interactive plotly object and save it as an HTML file.
+- [`ggsave()`](/ggplot2/ggsave.qmd): Save a `ggplot` object/figure to a static image file.
+- [`pathcwork`](/ggplot2/patchwork.qmd): Combing multiple `gpglot2` objects into the same graphic/image. (https://patchwork.data-imaginist.com/)
+- [`ggplotly()`](/ggplot2/ggplotly.qmd): Convert a `ggplot2` object to an interactive plotly object and save it as an HTML file.
 
 ### Customisation
 

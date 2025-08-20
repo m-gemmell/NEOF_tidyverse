@@ -271,5 +271,14 @@
   },
   "ggplot2/geom_others.qmd": {
     "geom_others.html": "c53a14f6"
+  },
+  "ggplot2/ggplotly.qmd": {
+    "ggplotly.html": "788d56a9"
+  },
+  "ggplot2/ggsave.qmd": {
+    "ggsave.html": "3af23168"
+  },
+  "ggplot2/patchwork.qmd": {
+    "patchwork.html": "ad301a72"
   }
 }

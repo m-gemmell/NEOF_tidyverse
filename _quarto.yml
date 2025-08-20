@@ -150,6 +150,11 @@ website:
       - href: ggplot2/geom_point.qmd
       - href: ggplot2/geom_boxplot.qmd
       - href: ggplot2/geom_others.qmd
+    - section: "Output"
+      contents:
+      - href: ggplot2/ggsave.qmd
+      - href: ggplot2/patchwork.qmd
+      - href: ggplot2/ggplotly.qmd
     - href: ggplot2/cheatsheets.qmd
   - id: Stringr
     title: Stringr
