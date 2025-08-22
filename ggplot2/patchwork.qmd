@@ -1,8 +1,124 @@
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+
 # Patchwork
 
 <center>
 ![](images/ggplot2_patchwork.png){style="width:200px"}
 </center>
 
+The `patchwork` package allows you to combine multiple ggplots into one graphic.
+
+It is a separate package to tidyverse and requires installing.
+The install instructions are in the below link.
 
 [Patchwork home page](https://patchwork.data-imaginist.com/)
+
+Once installed you can load the library.
+
+```{r}
+library("patchwork")
+```
+
+## Dataset
+
+For demonstration we'll load the `mushroom_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+For easier plot visualisation we'll subsample the data.
+
+```{r}
+#Subsampled dataset
+#Set seed for random sampling
+set.seed("483")
+mushroom_tbl <- mgrtibbles::mushroom_tbl |>
+    #Random sample of 150 rows
+    dplyr::slice_sample(n = 150, replace=FALSE)
+#Reset random seed to normal operation
+set.seed(NULL)
+#Glimpse tibble
+mushroom_tbl |> dplyr::glimpse()
+```
+
+## Create ggplots
+
+To create a patchwork we need a few ggplots saved as objects first.
+
+```{r}
+barchart <- mushroom_tbl |> 
+    ggplot2::ggplot(aes(x = class)) + ggplot2::geom_bar()
+histogram <- mushroom_tbl |> 
+    ggplot2::ggplot(aes(x = cap_diameter)) + ggplot2::geom_histogram()
+line <- mushroom_tbl |> 
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) + ggplot2::geom_line()
+point <- mushroom_tbl |> 
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) + ggplot2::geom_point()
+box <- mushroom_tbl |> 
+    ggplot2::ggplot(aes(x = class, y = cap_diameter)) + ggplot2::geom_boxplot()
+```
+
+## Horizontal
+
+To create a graphic with plots side by side you can use `|`.
+
+The below code creates a graphic with the line and point ggplots side by side.
+
+```{r}
+line | point
+```
+
+## Vertical
+
+To put one plot on top of another in a graphic you can use `/`
+
+The below code creates a graphic with the barchart above the histogram.
+
+```{r}
+barchart / histogram
+```
+
+## Grid
+
+A more complicated graphic can be created by mixing the use of `|` and `/`.
+If doing this it is common to put all the plots in the same row in brackets `()`.
+
+Example code and plot below.
+
+```{r}
+(barchart | histogram | box) / (line | point)
+```
+
+## Save as a file
+
+You can save a patchworked graphic with [`ggsave()`](/ggplot2/ggsave.qmd)
+
+```{r, eval=FALSE}
+patchwork_ggplot <- (barchart | histogram | box) / (line | point)
+ggplot2::ggsave(filename="images/patchwork.png", plot=patchwork_ggplot,
+                device="png", units="mm", height=200, width = 200)
+```
+```{r, echo=FALSE}
+patchwork_ggplot <- (barchart | histogram | box) / (line | point)
+ggplot2::ggsave(filename="images/patchwork.png", plot=patchwork_ggplot,
+                device="png", units="mm", height=200, width = 250)
+```
+
+The PNG file contains the following image:
+
+<center>
+![](images/patchwork.png){style="width:700px"}
+</center>
+
+## Layout
+
+As you may have noticed when laying out the plots on a graphic `patchwork` will divide spaces equally between the rows and the columns within each row.
+In the last plot:
+
+- Each of the 2 rows are given 50% of the height.
+- The first row has 3 plots so each plot is given a third of the graphic width.
+- The second row has 2 plots so each plot is given a half of the graphic width.
+
+There are many ways to control the layout.
+To see these various methods please check the following link:
+
+[Patchwork controlling layouts webpage](https://patchwork.data-imaginist.com/articles/guides/layout.html)

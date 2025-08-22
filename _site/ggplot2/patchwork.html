@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -475,7 +510,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#patchwork" id="toc-patchwork" class="nav-link active" data-scroll-target="#patchwork">Patchwork</a></li>
+  <li><a href="#patchwork" id="toc-patchwork" class="nav-link active" data-scroll-target="#patchwork">Patchwork</a>
+  <ul class="collapse">
+  <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset">Dataset</a></li>
+  <li><a href="#create-ggplots" id="toc-create-ggplots" class="nav-link" data-scroll-target="#create-ggplots">Create ggplots</a></li>
+  <li><a href="#horizontal" id="toc-horizontal" class="nav-link" data-scroll-target="#horizontal">Horizontal</a></li>
+  <li><a href="#vertical" id="toc-vertical" class="nav-link" data-scroll-target="#vertical">Vertical</a></li>
+  <li><a href="#grid" id="toc-grid" class="nav-link" data-scroll-target="#grid">Grid</a></li>
+  <li><a href="#save-as-a-file" id="toc-save-as-a-file" class="nav-link" data-scroll-target="#save-as-a-file">Save as a file</a></li>
+  <li><a href="#layout" id="toc-layout" class="nav-link" data-scroll-target="#layout">Layout</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -491,9 +535,141 @@ ul.task-list li input[type="checkbox"] {
 <center>
 <img src="images/ggplot2_patchwork.png" class="img-fluid" style="width:200px">
 </center>
+<p>The <code>patchwork</code> package allows you to combine multiple ggplots into one graphic.</p>
+<p>It is a separate package to tidyverse and requires installing. The install instructions are in the below link.</p>
 <p><a href="https://patchwork.data-imaginist.com/">Patchwork home page</a></p>
+<p>Once installed you can load the library.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"patchwork"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="dataset" class="level2">
+<h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
+<p>For demonstration we’ll load the <code>mushroom_tbl</code> data from the <a href="../datasets/mgrtibbles.html">mgrtibbles package</a> (hyperlink includes install instructions). For easier plot visualisation we’ll subsample the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Subsampled dataset</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Set seed for random sampling</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="st">"483"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>mushroom_tbl <span class="ot">&lt;-</span> mgrtibbles<span class="sc">::</span>mushroom_tbl <span class="sc">|&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Random sample of 150 rows</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">150</span>, <span class="at">replace=</span><span class="cn">FALSE</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Reset random seed to normal operation</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="cn">NULL</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Glimpse tibble</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>mushroom_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 150
+Columns: 10
+$ class                &lt;fct&gt; edible, poisonous, edible, poisonous, poisonous, …
+$ cap_diameter         &lt;dbl&gt; 15.52, 6.39, 7.58, 0.66, 2.26, 11.79, 6.25, 4.78,…
+$ cap_shape            &lt;fct&gt; convex, flat, flat, convex, convex, convex, conve…
+$ cap_surface          &lt;fct&gt; fleshy, scaly, NA, NA, brous, NA, sticky, NA, smo…
+$ cap_color            &lt;fct&gt; brown, purple, yellow, orange, black, brown, brow…
+$ does_bruise_or_bleed &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, F…
+$ gill_attachment      &lt;fct&gt; free, sinuate, adnate, decurrent, adnate, free, f…
+$ gill_color           &lt;fct&gt; white, yellow, white, orange, white, white, white…
+$ stem_height          &lt;dbl&gt; 10.81, 5.20, 6.09, 4.89, 3.84, 10.51, 13.15, 8.07…
+$ stem_width           &lt;dbl&gt; 19.22, 11.46, 13.92, 1.08, 2.47, 14.33, 13.24, 9.…</code></pre>
+</div>
+</div>
+</section>
+<section id="create-ggplots" class="level2">
+<h2 class="anchored" data-anchor-id="create-ggplots">Create ggplots</h2>
+<p>To create a patchwork we need a few ggplots saved as objects first.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>barchart <span class="ot">&lt;-</span> mushroom_tbl <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> class)) <span class="sc">+</span> ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>()</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>histogram <span class="ot">&lt;-</span> mushroom_tbl <span class="sc">|&gt;</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cap_diameter)) <span class="sc">+</span> ggplot2<span class="sc">::</span><span class="fu">geom_histogram</span>()</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>line <span class="ot">&lt;-</span> mushroom_tbl <span class="sc">|&gt;</span> </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stem_width, <span class="at">y =</span> stem_height)) <span class="sc">+</span> ggplot2<span class="sc">::</span><span class="fu">geom_line</span>()</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>point <span class="ot">&lt;-</span> mushroom_tbl <span class="sc">|&gt;</span> </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stem_width, <span class="at">y =</span> stem_height)) <span class="sc">+</span> ggplot2<span class="sc">::</span><span class="fu">geom_point</span>()</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>box <span class="ot">&lt;-</span> mushroom_tbl <span class="sc">|&gt;</span> </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">y =</span> cap_diameter)) <span class="sc">+</span> ggplot2<span class="sc">::</span><span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="horizontal" class="level2">
+<h2 class="anchored" data-anchor-id="horizontal">Horizontal</h2>
+<p>To create a graphic with plots side by side you can use <code>|</code>.</p>
+<p>The below code creates a graphic with the line and point ggplots side by side.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>line <span class="sc">|</span> point</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="patchwork_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="979"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="vertical" class="level2">
+<h2 class="anchored" data-anchor-id="vertical">Vertical</h2>
+<p>To put one plot on top of another in a graphic you can use <code>/</code></p>
+<p>The below code creates a graphic with the barchart above the histogram.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>barchart <span class="sc">/</span> histogram</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="patchwork_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="979"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="grid" class="level2">
+<h2 class="anchored" data-anchor-id="grid">Grid</h2>
+<p>A more complicated graphic can be created by mixing the use of <code>|</code> and <code>/</code>. If doing this it is common to put all the plots in the same row in brackets <code>()</code>.</p>
+<p>Example code and plot below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(barchart <span class="sc">|</span> histogram <span class="sc">|</span> box) <span class="sc">/</span> (line <span class="sc">|</span> point)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="patchwork_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="979"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="save-as-a-file" class="level2">
+<h2 class="anchored" data-anchor-id="save-as-a-file">Save as a file</h2>
+<p>You can save a patchworked graphic with <a href="../ggplot2/ggsave.html"><code>ggsave()</code></a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>patchwork_ggplot <span class="ot">&lt;-</span> (barchart <span class="sc">|</span> histogram <span class="sc">|</span> box) <span class="sc">/</span> (line <span class="sc">|</span> point)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(<span class="at">filename=</span><span class="st">"images/patchwork.png"</span>, <span class="at">plot=</span>patchwork_ggplot,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">device=</span><span class="st">"png"</span>, <span class="at">units=</span><span class="st">"mm"</span>, <span class="at">height=</span><span class="dv">200</span>, <span class="at">width =</span> <span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+</div>
+<p>The PNG file contains the following image:</p>
+<center>
+<img src="images/patchwork.png" class="img-fluid" style="width:700px">
+</center>
+</section>
+<section id="layout" class="level2">
+<h2 class="anchored" data-anchor-id="layout">Layout</h2>
+<p>As you may have noticed when laying out the plots on a graphic <code>patchwork</code> will divide spaces equally between the rows and the columns within each row. In the last plot:</p>
+<ul>
+<li>Each of the 2 rows are given 50% of the height.</li>
+<li>The first row has 3 plots so each plot is given a third of the graphic width.</li>
+<li>The second row has 2 plots so each plot is given a half of the graphic width.</li>
+</ul>
+<p>There are many ways to control the layout. To see these various methods please check the following link:</p>
+<p><a href="https://patchwork.data-imaginist.com/articles/guides/layout.html">Patchwork controlling layouts webpage</a></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

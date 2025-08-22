@@ -579,7 +579,7 @@
     "href": "ggplot2/ggplotly.html",
     "title": "Ggplotly",
     "section": "",
-    "text": "Ggplotly\n\n\n\nPlotly ggplotly refernce page",
+    "text": "Plotly is a graphing library that allows you to create interactive charts and maps. These are in the form of html files.\nThis works with python, R, ggplot2, and other languages. You can create plots with plotly’s own library in R. However, we’ll demonstrate how to plotlyify plots with ggplot2 using ggplotly().\nThe package plotly is separate to tidyverse and therefore needs installing. Install instruction.\nOnce installed you can load the library.\n\nlibrary(\"plotly\")\n\n\nAttaching package: 'plotly'\n\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\n\nThe following object is masked from 'package:graphics':\n\n    layout\n\n\nPlotly ggplotly refernce page\n\n\nFor demonstration we’ll load the mushroom_tbl data from the mgrtibbles package (hyperlink includes install instructions). We will extract a random sample of 150 rows with slice_sample().\n\n#Load package\nlibrary(\"mgrtibbles\")\n#Set seed for random sampling\nset.seed(\"483\")\n#mushroom_tbl tibble for demonstration\nmushroom_tbl &lt;- mgrtibbles::mushroom_tbl |&gt;\n    #Random sample of 150 rows\n    dplyr::slice_sample(n = 150, replace=FALSE)\n#Reset random seed to normal operation\nset.seed(NULL)\n#Glimpse tibble\nmushroom_tbl |&gt; dplyr::glimpse()\n\nRows: 150\nColumns: 10\n$ class                &lt;fct&gt; edible, poisonous, edible, poisonous, poisonous, …\n$ cap_diameter         &lt;dbl&gt; 15.52, 6.39, 7.58, 0.66, 2.26, 11.79, 6.25, 4.78,…\n$ cap_shape            &lt;fct&gt; convex, flat, flat, convex, convex, convex, conve…\n$ cap_surface          &lt;fct&gt; fleshy, scaly, NA, NA, brous, NA, sticky, NA, smo…\n$ cap_color            &lt;fct&gt; brown, purple, yellow, orange, black, brown, brow…\n$ does_bruise_or_bleed &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, F…\n$ gill_attachment      &lt;fct&gt; free, sinuate, adnate, decurrent, adnate, free, f…\n$ gill_color           &lt;fct&gt; white, yellow, white, orange, white, white, white…\n$ stem_height          &lt;dbl&gt; 10.81, 5.20, 6.09, 4.89, 3.84, 10.51, 13.15, 8.07…\n$ stem_width           &lt;dbl&gt; 19.22, 11.46, 13.92, 1.08, 2.47, 14.33, 13.24, 9.…\n\n\n\n\n\nTo create a plotly plot from a ggplot we first create a ggplot pbject\nCreate a scatter plot of stem_height (y) against stem_width (x).\n\nscatterplot &lt;- mushroom_tbl |&gt;\n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +\n        ggplot2::geom_point()\n\nNext we can pipe the ggplot object to the function plotly::ggplotly().\nThe html based plot is interactive allowing you to:\n\nZoom in horizontally, vertically, or with both axes.\nRest the zoom with the home ( ) symbol on the top right.\n\n\n\n\n\n\n                                                                                                          \n\nand                                                                                                             and                                                                                                             and                                                                                                            \n\nscatterplot |&gt; plotly::ggplotly()",
     "crumbs": [
       "Ggplot2",
       "Output",
@@ -2301,7 +2301,7 @@
     "href": "ggplot2/ggsave.html",
     "title": "Ggsave",
     "section": "",
-    "text": "Ggsave\n\n\n\nTidyverse reference page",
+    "text": "To save a ggplot object as an image the function ggsave() can be used.\nTidyverse reference page\n\n\nFor demonstration we’ll load the amphibian_div_tbl data from the mgrtibbles package (hyperlink includes install instructions). Additionally, we’ll select the columns “iucn_2cat”, “Order”, and “Family” which we will use for plotting. Then we’ll remove any rows with an NA value using tidyr::drop_na.\n\n#Library\nlibrary(\"mgrtibbles\")\n#Data\namphibian_div_tbl &lt;- \n    mgrtibbles::amphibian_div_tbl |&gt;\n    #Select to retain only the iucn_2cat and Order columns\n    dplyr::select(iucn_2cat,Order,Family) |&gt;\n    #Drop any rows with an NA\n    tidyr::drop_na()\namphibian_div_tbl\n\n# A tibble: 129 × 3\n   iucn_2cat Order   Family        \n   &lt;fct&gt;     &lt;chr&gt;   &lt;chr&gt;         \n 1 LC        Anura   Hylidae       \n 2 LC        Anura   Hylidae       \n 3 nonLC     Caudata Ambystomatidae\n 4 LC        Caudata Ambystomatidae\n 5 LC        Caudata Ambystomatidae\n 6 LC        Caudata Ambystomatidae\n 7 LC        Caudata Ambystomatidae\n 8 LC        Caudata Ambystomatidae\n 9 LC        Caudata Ambystomatidae\n10 LC        Caudata Amphiumidae   \n# ℹ 119 more rows\n\n\n\n\n\nTo save a plot we first need to create a ggplot2 object containing a plot. Instead of calling the fucntions to outpu the plot we will instead save it to an object.\nCreate a bar chart of the iucn_2cat variable and save it to the object iucn_barchart. We will use this object to save to various files.\n\niucn_barchart &lt;- amphibian_div_tbl |&gt;    \n    ggplot2::ggplot(aes(x = iucn_2cat)) +\n        ggplot2::geom_bar()\n\nIf we call the object we can display it like below.\n\niucn_barchart\n\n\n\n\n\n\n\n\n\n\n\nA common type of image file to save to is the PNG file.\nSave/export the ggplot2 object iucn_barchart to a png file called “iucn_barchart.png”.\n\nggplot2::ggsave(filename=\"iucn_barchart.png\", plot=iucn_barchart)\n\n\n\nSaving 10.2 x 6 in image\n\n\nThe PNG file contains the following image:\n\n\n\n\n\n\nThere are more options for the ggsave() function including:\n\ndevice=: The type of the output file which includes “png”, “pdf”, “jpeg”, “svg”, “tiff”, and others.\nwidth= and height=: The specified height and width of the output image.\nunits=: The measurement units when specifying the width and height. Options include inches (in), centimetres (cm), millimetres (mm), and pixels (px).\ndpi=: Stands for dots per inch, i.e. the plot resolution. I always use 300 as it is the dpi most, if not all, journals ask for images to be in.\n\n\n\nI tend to use mm as I find it gives the second best precision. Pixels give the best precision level but I find physical measurements (inches, cm, mm) are more intuitive than using pixels. When using pixels the DPI (dot per inch) and number of pixels will determine the size of the image.\nList of measurement conversions:\n\n1 inch = 2.54cm\n1cm = 10mm\n1 inch = 300 pixels at 300 DPI\n1 inch = 200 pixels at 200 DPI\n1cm = 118 pixels at 300 DPI (300/2.54=118)\n1cm = 79 pixels at 200 DPI (200/2.54=79)\n\n\n\n\nLets save another PNG file specifying all these options.\n\nggplot2::ggsave(filename=\"iucn_barchart_2.png\", plot=iucn_barchart,\n                device=\"png\", units=\"mm\", height=200, width=200)\n\nThe PNG file contains the following image:\n\n\n\n\n\n\nMaking the height and width smaller or larger can make a plot clearer. It is best to choose these values through your knowledge, and trial and error. Some considerations include:\n\nMaking a plot larger can allow you to visualise lots of points better.\nMaking a plot smaller will make the text larger in comparison.\nThe ratio of the width and height can be important. Square plots are good for ordination plots (e.g. PCoA) whilst plots with a larger height can be good for histograms.\n\nLet’s change the height and width to make a better output. We’ll choose quite small values as the plot is very compact, allowing the text to be bigger. Additionally, we’ll make the height larger than the width as there are only 2 x axis values whilst the y axis contains a continuous variable.\n\nggplot2::ggsave(filename=\"iucn_barchart_3.png\", plot=iucn_barchart,\n                device=\"png\", units=\"mm\", height=125, width=100)\n\nThe PNG file contains the following image:",
     "crumbs": [
       "Ggplot2",
       "Output",
@@ -2313,7 +2313,7 @@
     "href": "ggplot2/patchwork.html",
     "title": "Patchwork",
     "section": "",
-    "text": "Patchwork\n\n\n\nPatchwork home page",
+    "text": "The patchwork package allows you to combine multiple ggplots into one graphic.\nIt is a separate package to tidyverse and requires installing. The install instructions are in the below link.\nPatchwork home page\nOnce installed you can load the library.\n\nlibrary(\"patchwork\")\n\n\n\nFor demonstration we’ll load the mushroom_tbl data from the mgrtibbles package (hyperlink includes install instructions). For easier plot visualisation we’ll subsample the data.\n\n#Subsampled dataset\n#Set seed for random sampling\nset.seed(\"483\")\nmushroom_tbl &lt;- mgrtibbles::mushroom_tbl |&gt;\n    #Random sample of 150 rows\n    dplyr::slice_sample(n = 150, replace=FALSE)\n#Reset random seed to normal operation\nset.seed(NULL)\n#Glimpse tibble\nmushroom_tbl |&gt; dplyr::glimpse()\n\nRows: 150\nColumns: 10\n$ class                &lt;fct&gt; edible, poisonous, edible, poisonous, poisonous, …\n$ cap_diameter         &lt;dbl&gt; 15.52, 6.39, 7.58, 0.66, 2.26, 11.79, 6.25, 4.78,…\n$ cap_shape            &lt;fct&gt; convex, flat, flat, convex, convex, convex, conve…\n$ cap_surface          &lt;fct&gt; fleshy, scaly, NA, NA, brous, NA, sticky, NA, smo…\n$ cap_color            &lt;fct&gt; brown, purple, yellow, orange, black, brown, brow…\n$ does_bruise_or_bleed &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, F…\n$ gill_attachment      &lt;fct&gt; free, sinuate, adnate, decurrent, adnate, free, f…\n$ gill_color           &lt;fct&gt; white, yellow, white, orange, white, white, white…\n$ stem_height          &lt;dbl&gt; 10.81, 5.20, 6.09, 4.89, 3.84, 10.51, 13.15, 8.07…\n$ stem_width           &lt;dbl&gt; 19.22, 11.46, 13.92, 1.08, 2.47, 14.33, 13.24, 9.…\n\n\n\n\n\nTo create a patchwork we need a few ggplots saved as objects first.\n\nbarchart &lt;- mushroom_tbl |&gt; \n    ggplot2::ggplot(aes(x = class)) + ggplot2::geom_bar()\nhistogram &lt;- mushroom_tbl |&gt; \n    ggplot2::ggplot(aes(x = cap_diameter)) + ggplot2::geom_histogram()\nline &lt;- mushroom_tbl |&gt; \n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) + ggplot2::geom_line()\npoint &lt;- mushroom_tbl |&gt; \n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) + ggplot2::geom_point()\nbox &lt;- mushroom_tbl |&gt; \n    ggplot2::ggplot(aes(x = class, y = cap_diameter)) + ggplot2::geom_boxplot()\n\n\n\n\nTo create a graphic with plots side by side you can use |.\nThe below code creates a graphic with the line and point ggplots side by side.\n\nline | point\n\n\n\n\n\n\n\n\n\n\n\nTo put one plot on top of another in a graphic you can use /\nThe below code creates a graphic with the barchart above the histogram.\n\nbarchart / histogram\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\n\nA more complicated graphic can be created by mixing the use of | and /. If doing this it is common to put all the plots in the same row in brackets ().\nExample code and plot below.\n\n(barchart | histogram | box) / (line | point)\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\n\nYou can save a patchworked graphic with ggsave()\n\npatchwork_ggplot &lt;- (barchart | histogram | box) / (line | point)\nggplot2::ggsave(filename=\"images/patchwork.png\", plot=patchwork_ggplot,\n                device=\"png\", units=\"mm\", height=200, width = 200)\n\n\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\nThe PNG file contains the following image:\n\n\n\n\n\n\nAs you may have noticed when laying out the plots on a graphic patchwork will divide spaces equally between the rows and the columns within each row. In the last plot:\n\nEach of the 2 rows are given 50% of the height.\nThe first row has 3 plots so each plot is given a third of the graphic width.\nThe second row has 2 plots so each plot is given a half of the graphic width.\n\nThere are many ways to control the layout. To see these various methods please check the following link:\nPatchwork controlling layouts webpage",
     "crumbs": [
       "Ggplot2",
       "Output",
@@ -2752,6 +2752,198 @@
     "text": "Sections\nThe sections for tidyr are summarised below.\n\nPivoting\n\n\n  \n\n\n  \n\n\nCertain analyses and tools require data to be in a specific structure. Two rectangular/table data structures are wide and long. The two pivot functions transform data between these two types.\n\npivot_longer(): Lengthens data, transforming it from wide to long. Many Tidyverse packages are built with long data in mind, especially ggplot2.\npivot_wider(): Widens data, transforming it from long to wide.\n\n\n\nCharacter vectors\n\n\n  \n\n\n  \n\n\nA column may contain multiple pieces of character/string data or you may want to create a column by uniting multiple character/string columns. The below functions can be used for these purposes.\n\nseparate_wider_delim(): Splits a string column into multiple columns by a delimiter.\nunite(): Combines/unites multiple string columns into one column.\n\n\n\nMissing values\n\n\n  \n\n\n  \n\n\nIt is common to encounter NAs in tabular data. Dropping columns with NAs or replacing NA values are common approaches to deal with them.\n\ndrop_na(): Remove rows with NAs.\nreplace_na(): Replace NA values.",
     "crumbs": [
       "Tidyr"
+    ]
+  },
+  {
+    "objectID": "ggplot2/ggsave.html#dataset",
+    "href": "ggplot2/ggsave.html#dataset",
+    "title": "Ggsave",
+    "section": "",
+    "text": "For demonstration we’ll load the amphibian_div_tbl data from the mgrtibbles package (hyperlink includes install instructions). Additionally, we’ll select the columns “iucn_2cat”, “Order”, and “Family” which we will use for plotting. Then we’ll remove any rows with an NA value using tidyr::drop_na.\n\n#Library\nlibrary(\"mgrtibbles\")\n#Data\namphibian_div_tbl &lt;- \n    mgrtibbles::amphibian_div_tbl |&gt;\n    #Select to retain only the iucn_2cat and Order columns\n    dplyr::select(iucn_2cat,Order,Family) |&gt;\n    #Drop any rows with an NA\n    tidyr::drop_na()\namphibian_div_tbl\n\n# A tibble: 129 × 3\n   iucn_2cat Order   Family        \n   &lt;fct&gt;     &lt;chr&gt;   &lt;chr&gt;         \n 1 LC        Anura   Hylidae       \n 2 LC        Anura   Hylidae       \n 3 nonLC     Caudata Ambystomatidae\n 4 LC        Caudata Ambystomatidae\n 5 LC        Caudata Ambystomatidae\n 6 LC        Caudata Ambystomatidae\n 7 LC        Caudata Ambystomatidae\n 8 LC        Caudata Ambystomatidae\n 9 LC        Caudata Ambystomatidae\n10 LC        Caudata Amphiumidae   \n# ℹ 119 more rows",
+    "crumbs": [
+      "Ggplot2",
+      "Output",
+      "Ggsave"
+    ]
+  },
+  {
+    "objectID": "ggplot2/ggsave.html#ggplot2-creation",
+    "href": "ggplot2/ggsave.html#ggplot2-creation",
+    "title": "Ggsave",
+    "section": "",
+    "text": "To save a plot we first need to create a ggplot2 object containing a plot. Instead of calling the fucntions to outpu the plot we will instead save it to an object.\nCreate a bar chart of the iucn_2cat variable and save it to the object iucn_barchart. We will use this object to save to various files.\n\niucn_barchart &lt;- amphibian_div_tbl |&gt;    \n    ggplot2::ggplot(aes(x = iucn_2cat)) +\n        ggplot2::geom_bar()\n\nIf we call the object we can display it like below.\n\niucn_barchart\n\n\n\n\n\n\n\n\nsomething",
+    "crumbs": [
+      "Ggplot2",
+      "Output",
+      "Ggsave"
+    ]
+  },
+  {
+    "objectID": "ggplot2/ggsave.html#ggplot2-object-creation",
+    "href": "ggplot2/ggsave.html#ggplot2-object-creation",
+    "title": "Ggsave",
+    "section": "",
+    "text": "To save a plot we first need to create a ggplot2 object containing a plot. Instead of calling the fucntions to outpu the plot we will instead save it to an object.\nCreate a bar chart of the iucn_2cat variable and save it to the object iucn_barchart. We will use this object to save to various files.\n\niucn_barchart &lt;- amphibian_div_tbl |&gt;    \n    ggplot2::ggplot(aes(x = iucn_2cat)) +\n        ggplot2::geom_bar()\n\nIf we call the object we can display it like below.\n\niucn_barchart",
+    "crumbs": [
+      "Ggplot2",
+      "Output",
+      "Ggsave"
+    ]
+  },
+  {
+    "objectID": "ggplot2/ggsave.html#png-file",
+    "href": "ggplot2/ggsave.html#png-file",
+    "title": "Ggsave",
+    "section": "",
+    "text": "A common type of image file to save to is the PNG file.\nSave/export the ggplot2 object iucn_barchart to a png file called “iucn_barchart.png”.\n\nggplot2::ggsave(filename=\"iucn_barchart.png\", plot=iucn_barchart)\n\n\n\nSaving 10.2 x 6 in image\n\n\nThe PNG file contains the following image:",
+    "crumbs": [
+      "Ggplot2",
+      "Output",
+      "Ggsave"
+    ]
+  },
+  {
+    "objectID": "ggplot2/ggsave.html#customisation",
+    "href": "ggplot2/ggsave.html#customisation",
+    "title": "Ggsave",
+    "section": "",
+    "text": "There are more options for the ggsave() function including:\n\ndevice=: The type of the output file which includes “png”, “pdf”, “jpeg”, “svg”, “tiff”, and others.\nwidth= and height=: The specified height and width of the output image.\nunits=: The measurement units when specifying the width and height. Options include inches (in), centimetres (cm), millimetres (mm), and pixels (px).\ndpi=: Stands for dots per inch, i.e. the plot resolution. I always use 300 as it is the dpi most, if not all, journals ask for images to be in.\n\n\n\nI tend to use mm as I find it gives the second best precision. Pixels give the best precision level but I find physical measurements (inches, cm, mm) are more intuitive than using pixels. When using pixels the DPI (dot per inch) and number of pixels will determine the size of the image.\nList of measurement conversions:\n\n1 inch = 2.54cm\n1cm = 10mm\n1 inch = 300 pixels at 300 DPI\n1 inch = 200 pixels at 200 DPI\n1cm = 118 pixels at 300 DPI (300/2.54=118)\n1cm = 79 pixels at 200 DPI (200/2.54=79)\n\n\n\n\nLets save another PNG file specifying all these options.\n\nggplot2::ggsave(filename=\"iucn_barchart_2.png\", plot=iucn_barchart,\n                device=\"png\", units=\"mm\", height=200, width=200)\n\nThe PNG file contains the following image:\n\n\n\n\n\n\nMaking the height and width smaller or larger can make a plot clearer. It is best to choose these values through your knowledge, and trial and error. Some considerations include:\n\nMaking a plot larger can allow you to visualise lots of points better.\nMaking a plot smaller will make the text larger in comparison.\nThe ratio of the width and height can be important. Square plots are good for ordination plots (e.g. PCoA) whilst plots with a larger height can be good for histograms.\n\nLet’s change the height and width to make a better output. We’ll choose quite small values as the plot is very compact, allowing the text to be bigger. Additionally, we’ll make the height larger than the width as there are only 2 x axis values whilst the y axis contains a continuous variable.\n\nggplot2::ggsave(filename=\"iucn_barchart_3.png\", plot=iucn_barchart,\n                device=\"png\", units=\"mm\", height=125, width=100)\n\nThe PNG file contains the following image:",
+    "crumbs": [
+      "Ggplot2",
+      "Output",
+      "Ggsave"
+    ]
+  },
+  {
+    "objectID": "ggplot2/ggsave.html#save-an-image-file",
+    "href": "ggplot2/ggsave.html#save-an-image-file",
+    "title": "Ggsave",
+    "section": "",
+    "text": "A common type of image file to save to is the PNG file.\nSave/export the ggplot2 object iucn_barchart to a png file called “iucn_barchart.png”.\n\nggplot2::ggsave(filename=\"iucn_barchart.png\", plot=iucn_barchart)\n\n\n\nSaving 10.2 x 6 in image\n\n\nThe PNG file contains the following image:",
+    "crumbs": [
+      "Ggplot2",
+      "Output",
+      "Ggsave"
+    ]
+  },
+  {
+    "objectID": "ggplot2/patchwork.html#dataset",
+    "href": "ggplot2/patchwork.html#dataset",
+    "title": "Patchwork",
+    "section": "",
+    "text": "For demonstration we’ll load the mushroom_tbl data from the mgrtibbles package (hyperlink includes install instructions). For easier plot visualisation we’ll subsample the data.\n\n#Subsampled dataset\n#Set seed for random sampling\nset.seed(\"483\")\nmushroom_tbl &lt;- mgrtibbles::mushroom_tbl |&gt;\n    #Random sample of 150 rows\n    dplyr::slice_sample(n = 150, replace=FALSE)\n#Reset random seed to normal operation\nset.seed(NULL)\n#Glimpse tibble\nmushroom_tbl |&gt; dplyr::glimpse()\n\nRows: 150\nColumns: 10\n$ class                &lt;fct&gt; edible, poisonous, edible, poisonous, poisonous, …\n$ cap_diameter         &lt;dbl&gt; 15.52, 6.39, 7.58, 0.66, 2.26, 11.79, 6.25, 4.78,…\n$ cap_shape            &lt;fct&gt; convex, flat, flat, convex, convex, convex, conve…\n$ cap_surface          &lt;fct&gt; fleshy, scaly, NA, NA, brous, NA, sticky, NA, smo…\n$ cap_color            &lt;fct&gt; brown, purple, yellow, orange, black, brown, brow…\n$ does_bruise_or_bleed &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, F…\n$ gill_attachment      &lt;fct&gt; free, sinuate, adnate, decurrent, adnate, free, f…\n$ gill_color           &lt;fct&gt; white, yellow, white, orange, white, white, white…\n$ stem_height          &lt;dbl&gt; 10.81, 5.20, 6.09, 4.89, 3.84, 10.51, 13.15, 8.07…\n$ stem_width           &lt;dbl&gt; 19.22, 11.46, 13.92, 1.08, 2.47, 14.33, 13.24, 9.…",
+    "crumbs": [
+      "Ggplot2",
+      "Output",
+      "Patchwork"
+    ]
+  },
+  {
+    "objectID": "ggplot2/patchwork.html#create-ggplots",
+    "href": "ggplot2/patchwork.html#create-ggplots",
+    "title": "Patchwork",
+    "section": "",
+    "text": "To create a patchwork we need a few ggplots saved as objects first.\n\nbarchart &lt;- mushroom_tbl |&gt; \n    ggplot2::ggplot(aes(x = class)) + ggplot2::geom_bar()\nhistogram &lt;- mushroom_tbl |&gt; \n    ggplot2::ggplot(aes(x = cap_diameter)) + ggplot2::geom_histogram()\nline &lt;- mushroom_tbl |&gt; \n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) + ggplot2::geom_line()\npoint &lt;- mushroom_tbl |&gt; \n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) + ggplot2::geom_point()\nbox &lt;- mushroom_tbl |&gt; \n    ggplot2::ggplot(aes(x = class, y = cap_diameter)) + ggplot2::geom_boxplot()",
+    "crumbs": [
+      "Ggplot2",
+      "Output",
+      "Patchwork"
+    ]
+  },
+  {
+    "objectID": "ggplot2/patchwork.html#side-by-side",
+    "href": "ggplot2/patchwork.html#side-by-side",
+    "title": "Patchwork",
+    "section": "",
+    "text": "To create a graphic with plots sid eby side you can use |.\nThe below code create a graphic with the line and point ggplots side by side.\n\nline | point",
+    "crumbs": [
+      "Ggplot2",
+      "Output",
+      "Patchwork"
+    ]
+  },
+  {
+    "objectID": "ggplot2/patchwork.html#horizontal",
+    "href": "ggplot2/patchwork.html#horizontal",
+    "title": "Patchwork",
+    "section": "",
+    "text": "To create a graphic with plots side by side you can use |.\nThe below code creates a graphic with the line and point ggplots side by side.\n\nline | point",
+    "crumbs": [
+      "Ggplot2",
+      "Output",
+      "Patchwork"
+    ]
+  },
+  {
+    "objectID": "ggplot2/patchwork.html#vertical",
+    "href": "ggplot2/patchwork.html#vertical",
+    "title": "Patchwork",
+    "section": "",
+    "text": "To put one plot on top of another in a graphic you can use /\nThe below code creates a graphic with the barchart above the histogram.\n\nbarchart / histogram\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.",
+    "crumbs": [
+      "Ggplot2",
+      "Output",
+      "Patchwork"
+    ]
+  },
+  {
+    "objectID": "ggplot2/patchwork.html#grid",
+    "href": "ggplot2/patchwork.html#grid",
+    "title": "Patchwork",
+    "section": "",
+    "text": "A more complicated graphic can be created by mixing the use of | and /. If doing this it is common to put all the plots in the same row in brackets ().\nExample code and plot below.\n\n(barchart | histogram | box) / (line | point)\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.",
+    "crumbs": [
+      "Ggplot2",
+      "Output",
+      "Patchwork"
+    ]
+  },
+  {
+    "objectID": "ggplot2/patchwork.html#save-as-a-file",
+    "href": "ggplot2/patchwork.html#save-as-a-file",
+    "title": "Patchwork",
+    "section": "",
+    "text": "You can save a patchworked graphic with ggsave()\n\npatchwork_ggplot &lt;- (barchart | histogram | box) / (line | point)\nggplot2::ggsave(filename=\"images/patchwork.png\", plot=patchwork_ggplot,\n                device=\"png\", units=\"mm\", height=200, width = 200)\n\n\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\nThe PNG file contains the following image:",
+    "crumbs": [
+      "Ggplot2",
+      "Output",
+      "Patchwork"
+    ]
+  },
+  {
+    "objectID": "ggplot2/patchwork.html#layout",
+    "href": "ggplot2/patchwork.html#layout",
+    "title": "Patchwork",
+    "section": "",
+    "text": "As you may have noticed when laying out the plots on a graphic patchwork will divide spaces equally between the rows and the columns within each row. In the last plot:\n\nEach of the 2 rows are given 50% of the height.\nThe first row has 3 plots so each plot is given a third of the graphic width.\nThe second row has 2 plots so each plot is given a half of the graphic width.\n\nThere are many ways to control the layout. To see these various methods please check the following link:\nPatchwork controlling layouts webpage",
+    "crumbs": [
+      "Ggplot2",
+      "Output",
+      "Patchwork"
+    ]
+  },
+  {
+    "objectID": "ggplot2/ggplotly.html#dataset",
+    "href": "ggplot2/ggplotly.html#dataset",
+    "title": "Ggplotly",
+    "section": "",
+    "text": "For demonstration we’ll load the mushroom_tbl data from the mgrtibbles package (hyperlink includes install instructions). We will extract a random sample of 150 rows with slice_sample().\n\n#Load package\nlibrary(\"mgrtibbles\")\n#Set seed for random sampling\nset.seed(\"483\")\n#mushroom_tbl tibble for demonstration\nmushroom_tbl &lt;- mgrtibbles::mushroom_tbl |&gt;\n    #Random sample of 150 rows\n    dplyr::slice_sample(n = 150, replace=FALSE)\n#Reset random seed to normal operation\nset.seed(NULL)\n#Glimpse tibble\nmushroom_tbl |&gt; dplyr::glimpse()\n\nRows: 150\nColumns: 10\n$ class                &lt;fct&gt; edible, poisonous, edible, poisonous, poisonous, …\n$ cap_diameter         &lt;dbl&gt; 15.52, 6.39, 7.58, 0.66, 2.26, 11.79, 6.25, 4.78,…\n$ cap_shape            &lt;fct&gt; convex, flat, flat, convex, convex, convex, conve…\n$ cap_surface          &lt;fct&gt; fleshy, scaly, NA, NA, brous, NA, sticky, NA, smo…\n$ cap_color            &lt;fct&gt; brown, purple, yellow, orange, black, brown, brow…\n$ does_bruise_or_bleed &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, F…\n$ gill_attachment      &lt;fct&gt; free, sinuate, adnate, decurrent, adnate, free, f…\n$ gill_color           &lt;fct&gt; white, yellow, white, orange, white, white, white…\n$ stem_height          &lt;dbl&gt; 10.81, 5.20, 6.09, 4.89, 3.84, 10.51, 13.15, 8.07…\n$ stem_width           &lt;dbl&gt; 19.22, 11.46, 13.92, 1.08, 2.47, 14.33, 13.24, 9.…",
+    "crumbs": [
+      "Ggplot2",
+      "Output",
+      "Ggplotly"
+    ]
+  },
+  {
+    "objectID": "ggplot2/ggplotly.html#scatter-plot",
+    "href": "ggplot2/ggplotly.html#scatter-plot",
+    "title": "Ggplotly",
+    "section": "",
+    "text": "To create a plotly plot from a ggplot we first create a ggplot pbject\nCreate a scatter plot of stem_height (y) against stem_width (x).\n\nscatterplot &lt;- mushroom_tbl |&gt;\n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +\n        ggplot2::geom_point()\n\nNext we can pipe the ggplot object to the function plotly::ggplotly().\nThe html based plot is interactive allowing you to:\n\nZoom in horizontally, vertically, or with both axes.\nRest the zoom with the home ( ) symbol on the top right.\n\n\n\n\n\n\n                                                                                                          \n\nand                                                                                                             and                                                                                                             and                                                                                                            \n\nscatterplot |&gt; plotly::ggplotly()",
+    "crumbs": [
+      "Ggplot2",
+      "Output",
+      "Ggplotly"
     ]
   }
 ]

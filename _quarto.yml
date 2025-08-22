@@ -1,6 +1,7 @@
 project:
   type: website
-editor: source
+editor:
+  render-on-save: true
 website:
   bread-crumbs: false
   favicon: /images/NEOF_favicon.png

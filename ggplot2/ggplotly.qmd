@@ -1,8 +1,69 @@
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+
 # Ggplotly
 
-<center>
-![](images/ggplot2_ggplotly.png){style="width:200px"}
-</center>
+<center>![](images/ggplot2_ggplotly.png){style="width:200px"}</center>
 
+Plotly is a graphing library that allows you to create interactive charts and maps. These are in the form of html files.
+
+This works with python, R, ggplot2, and other languages. You can create plots with plotly's own library in R. However, we'll demonstrate how to plotlyify plots with ggplot2 using `ggplotly()`.
+
+The package `plotly` is separate to `tidyverse` and therefore needs installing. [Install instruction](https://plotly.com/r/getting-started/).
+
+Once installed you can load the library.
+
+```{r}
+library("plotly")
+```
 
 [Plotly ggplotly refernce page](https://plotly.com/ggplot2/)
+
+## Dataset
+
+For demonstration we'll load the `mushroom_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions). We will extract a random sample of 150 rows with `slice_sample()`.
+
+```{r}
+#Load package
+library("mgrtibbles")
+#Set seed for random sampling
+set.seed("483")
+#mushroom_tbl tibble for demonstration
+mushroom_tbl <- mgrtibbles::mushroom_tbl |>
+    #Random sample of 150 rows
+    dplyr::slice_sample(n = 150, replace=FALSE)
+#Reset random seed to normal operation
+set.seed(NULL)
+#Glimpse tibble
+mushroom_tbl |> dplyr::glimpse()
+```
+
+## Scatter plot
+
+To create a plotly plot from a ggplot we first create a ggplot pbject
+
+Create a scatter plot of **stem_height** (y) against **stem_width** (x).
+
+```{r}
+scatterplot <- mushroom_tbl |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
+        ggplot2::geom_point()
+```
+
+Next we can pipe the ggplot object to the function `plotly::ggplotly()`.
+
+The html based plot is interactive allowing you to:
+
+-   Zoom in horizontally, vertically, or with both axes.
+-   Rest the zoom with the home (`r icons::icon_style(icons::fontawesome("home", style="solid"), fill = "#648fff")`) symbol on the top right.
+
+`r icons::icon_style(icons::ionicons("calculator"), fill = "#648fff")`
+ \br
+
+`r icons::bioicons("dna-7")` and `r icons::bioicons("dna-7")` and `r icons::bioicons("dna-7")`  and `r icons::bioicons("dna-7")` 
+
+```{r}
+scatterplot |> plotly::ggplotly()
+```
