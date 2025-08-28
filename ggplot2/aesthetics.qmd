@@ -45,6 +45,8 @@ This contains:
 - Five continuos column: Humidity, Moisture, Nitrogen, Potassium, and Phosphorus.
 - A combine column: The Temperature_clesius_kelvin column contains the celsius and kelvin values. This will be [split into 2 columns](/tidyr/separate_wider.html#separate-a-column).
 
+[crop_and_soil_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/crop_and_soil_tbl)
+
 ```{r}
 crop_and_soil_tbl <- mgrtibbles::crop_and_soil_tbl |> 
     #Separate wider

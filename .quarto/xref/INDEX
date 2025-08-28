@@ -280,5 +280,32 @@
   },
   "ggplot2/patchwork.qmd": {
     "patchwork.html": "ad301a72"
+  },
+  "ggplot2/abline.qmd": {
+    "abline.html": "5a670f48"
+  },
+  "ggplot2/colour_scales.qmd": {
+    "colour_scales.html": "4340099f"
+  },
+  "ggplot2/coordinate_systems.qmd": {
+    "coordinate_systems.html": "13cd4f94"
+  },
+  "ggplot2/facet.qmd": {
+    "facet.html": "83465fac"
+  },
+  "ggplot2/labels.qmd": {
+    "labels.html": "59d8083b"
+  },
+  "ggplot2/scale_values.qmd": {
+    "scale_values.html": "3c191b35"
+  },
+  "ggplot2/guides.qmd": {
+    "guides.html": "3fc04e23"
+  },
+  "ggplot2/theme.qmd": {
+    "theme.html": "a752fbfe"
+  },
+  "ggplot2/text_and_lines.qmd": {
+    "text_and_lines.html": "4966738d"
   }
 }

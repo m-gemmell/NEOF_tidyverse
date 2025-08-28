@@ -8,7 +8,7 @@ format: html
 
 Tibbles are formatted like a __data.frame__ but have some extra functions and terminology.
 
-For demostration we'll load and subset the `hbr_maples` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (hyperlink includes install instructions) and view it.
+For demonstration we'll load and subset the `hbr_maples` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (hyperlink includes install instructions) and view it.
 
 ```{r}
 #Load package
@@ -62,7 +62,7 @@ These include:
 - __\<chr>__: [Character/String](https://neof-workshops.github.io/R_j4c0xh/04-R_objects.html#string)
 - __\<fct>__: [Factor](https://neof-workshops.github.io/R_j4c0xh/04-R_objects.html#string)
 - __\<lgl>__: [Logical](https://neof-workshops.github.io/R_j4c0xh/04-R_objects.html#string)
-- __\<date>__: Date (MG ADD LINK TO INFO ABOUT DATE CLASS, MOST LIKELY IN LUBRIDATE SECTION)
+- __\<date>__: Date (Lubridate link to be added)
 - __\<list>__: List
 
 Below is an example of a __tibble__ with a column for each of these classes.

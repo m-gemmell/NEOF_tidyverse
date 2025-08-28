@@ -1,0 +1,90 @@
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+
+# Labels
+
+<center>
+![](images/ggplot2_labs.png){style="width:200px"}
+</center>
+
+The __column/variable__ names in a `tibble` are used to specify the various [aesthetics](/ggplot2/aesthetics.qmd).
+By default these names are used as the labels of the various aesthetics (e.g. x and y labels).
+
+However, what makes a good __column/variable__ name does not always make a good label.
+The __column/variable__ names we use in these materials have underscores (`_`) and are all uncapitalised (e.g. `mushroom_tbl`).
+For our labels we want spaces instead of underscores and we want some capitalisation.
+
+To specify our __aesthetic__ labels we will use the __component__ `labs()`.
+
+[Tidyverse reference page](https://ggplot2.tidyverse.org//reference/labs.html)
+
+## Dataset
+
+We'll recreate many of the plots in the [`geom_point()` chapter](/ggplot2/geom_point.qmd), so we'll load the `mushroom_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+We will extract a random sample of 150 rows with `slice_sample()`.
+
+[mushroom_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/mushroom_tbl)
+
+```{r}
+#Load package
+library("mgrtibbles")
+#Set seed for random sampling
+set.seed("483")
+#mushroom_tbl tibble for demonstration
+mushroom_tbl <- mgrtibbles::mushroom_tbl |>
+    #Random sample of 150 rows
+    dplyr::slice_sample(n = 150, replace=FALSE)
+#Reset random seed to normal operation
+set.seed(NULL)
+#Glimpse tibble
+mushroom_tbl |> dplyr::glimpse()
+```
+
+## Axes labels
+
+The most common labels to add to a ggplot are the x and y labels.
+
+Create the [default scatter plot](/ggplot2/geom_point.qmd#default-scatter-plot).
+We'll specify the x and y labels in the `ggplot2::lab()` function with `x=`, and `y=`.
+
+```{r}
+mushroom_tbl |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
+        ggplot2::geom_point() +
+        ggplot2::labs(x = "Stem width", y = "Stem height")
+```
+
+## Legend labels
+
+When some __aesthetics__ are added a corresponding __legend__ is added to the plot.
+We can change the labels of these legends with `labs()`.
+
+Create the [scatter plot with colour & shape groups](/ggplot2/geom_point.qmd#colour--shape-groups).
+Assign label names for the x, y, shape, and colour __aesthetics__.
+
+```{r}
+mushroom_tbl |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height, 
+                        shape = class, colour = cap_shape)) +
+        ggplot2::geom_point(size = 2) +
+        ggplot2::labs(x = "Stem width", y = "Stem height", 
+                        shape = "Class", colour = "Cap shape")
+```
+
+## Title
+
+Two other useful labels to add to a plot is the title and sub title labels.
+
+Create the [Scatter plot with points sized by a continuous variable](/ggplot2/geom_point.qmd#size-by-continuous-variable).
+This time we'll include a title (`title=`) and sub title (`subtitle=`), as well as setting the size legend with `size=` in the `labs()` function.
+
+```{r}
+mushroom_tbl |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height, size = cap_diameter)) +
+        ggplot2::geom_point() +
+        ggplot2::labs(x = "Stem width", y = "Stem height", size = "Cap diameter",
+                        title = "Mushroom stem height (y) against stem width (x)",
+                        subtitle = "The size of the points are based in the cap diameters")
+```

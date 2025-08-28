@@ -24,6 +24,8 @@ In this page we will create scatter plots with `ggplot2::geom_point()`. Through 
 For demonstration we'll load the `mushroom_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
 We will extract a random sample of 150 rows with `slice_sample()`.
 
+[mushroom_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/mushroom_tbl)
+
 ```{r}
 #Load package
 library("mgrtibbles")

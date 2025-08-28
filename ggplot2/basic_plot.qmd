@@ -15,6 +15,8 @@ This will demonstrate the basic anatomy of `ggplot2` code.
 For demonstration we'll load the `crab_age_pred_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
 Additionally, we'll [slice](/dplyr/slice.qmd) out the first 200 rows and [select](/dplyr/select.qmd) the columns we will utilise in the plot for a clear demonstration.
 
+[crab_age_pred_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/crab_age_pred_tbl)
+
 ```{r}
 crab_age_weight_tbl <- mgrtibbles::crab_age_pred_tbl |>
     dplyr::slice(1:200) |>

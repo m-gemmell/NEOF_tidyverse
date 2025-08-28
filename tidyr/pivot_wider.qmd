@@ -24,6 +24,8 @@ To widen data two columns are chosen.
 
 For demonstration we'll load the `fisheries_long_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
 
+[fisheries_long_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/fisheries_long_tbl)
+
 ```{r}
 #Load package
 library("mgrtibbles")

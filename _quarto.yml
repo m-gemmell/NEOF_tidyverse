@@ -156,6 +156,16 @@ website:
       - href: ggplot2/ggsave.qmd
       - href: ggplot2/patchwork.qmd
       - href: ggplot2/ggplotly.qmd
+    - section: "Customisation"
+      contents:
+      - href: ggplot2/labels.qmd
+      - href: ggplot2/theme.qmd
+      - href: ggplot2/scale_values.qmd
+      - href: ggplot2/colour_scales.qmd
+      - href: ggplot2/guides.qmd
+      - href: ggplot2/text_and_lines.qmd
+      - href: ggplot2/coordinate_systems.qmd
+      - href: ggplot2/facet.qmd
     - href: ggplot2/cheatsheets.qmd
   - id: Stringr
     title: Stringr

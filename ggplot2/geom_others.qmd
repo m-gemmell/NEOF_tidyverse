@@ -20,6 +20,8 @@ For a full list please see: [ggplot2 geoms list](https://ggplot2.tidyverse.org//
 
 For demonstration we'll load the `mushroom_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
 
+[mushroom_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/mushroom_tbl)
+
 ```{r}
 #Load package
 library("mgrtibbles")

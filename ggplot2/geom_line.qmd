@@ -24,6 +24,8 @@ In this page we will create line charts with `ggplot2::geom_line()`. Through exa
 For demonstration we'll load the `fisheries_long_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
 We will filter to keep only rows from EU, Japan, Peru, and USA, and the year 2000 onwards.
 
+[fisheries_long_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/fisheries_long_tbl)
+
 ```{r}
 #Load package
 library("mgrtibbles")

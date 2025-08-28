@@ -17,6 +17,8 @@ For demonstration we'll load the `mammal_sleep_tbl` data from the [mgrtibbles pa
 For ease and clarity we'll [select](/dplyr/select.qmd) the "body_wt", "brain_wt", and "predation" columns.
 Additionally, we'll [filter](/dplyr/filter.qmd) the rows to only retain observations where the body weight is less than 10 and the brain weight is less than 0.1.
 
+[mammal_sleep_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/mammal_sleep_tbl)
+
 ```{r}
 mammal_sleep_tbl <- mgrtibbles::mammal_sleep_tbl |>
     dplyr::select(body_wt, brain_wt, predation) |>
@@ -43,7 +45,7 @@ First we will create a scatter plot. For this we will use 2 components.
 
 The first component is the `ggplot2::ggplot()` function which must always be the first __component__. 
 This will create the `ggplot` object from our [dataset](/ggplot2/input_data.qmd). 
-Additonally, we will specify the [aesthetics](/ggplot2/aesthetics.qmd) for our plot with this function.
+Additionally, we will specify the [aesthetics](/ggplot2/aesthetics.qmd) for our plot with this function.
 
 The __aesthetics__ can be specified in other components as you will find out in later sections.
 

@@ -26,6 +26,8 @@ For demonstration we'll load the `amphibian_div_tbl` data from the [mgrtibbles p
 Additionally, we'll [select](/dplyr/select.qmd) the columns "iucn_2cat", "Order", and "Family" which we will use for plotting.
 Then we'll remove any rows with an NA value using [`tidyr::drop_na`](/tidyr/drop_na.qmd).
 
+[amphibian_div_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/amphibian_div_tbl)
+
 ```{r}
 #Library
 library("mgrtibbles")

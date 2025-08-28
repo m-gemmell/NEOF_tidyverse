@@ -15,6 +15,8 @@ This can be useful when combing multiple metadata columns into one for analyses/
 
 For demonstration we'll load the `crop_and_soil_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
 
+[crop_and_soil_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/crop_and_soil_tbl)
+
 ```{r}
 #Load package
 library("mgrtibbles")

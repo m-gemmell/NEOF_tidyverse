@@ -1,0 +1,14 @@
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+# Colour scales
+
+<center>
+![](images/ggplot2_colour_scales.png.png){style="width:200px"}
+</center>
+
+[Tidyverse reference page](https://ggplot2.tidyverse.org//reference/index.html#scales)
+
+- Colourbrewer scales: https://ggplot2.tidyverse.org//reference/scale_brewer.html
+- Manual colour scale: https://ggplot2.tidyverse.org//reference/scale_manual.html

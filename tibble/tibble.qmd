@@ -22,6 +22,32 @@ However, __tibbles__ are generally always preferred over __data.frames__ when us
 
 ## Sections
 
+<div class="hexdplyrcolumnstop">
+  <p><a href="/tibble/creating_tibbles.qmd">
+  <img src="images/tibble_create.png" width="150px">
+  </a></p>
+
+  <p><a href="/tibble/structure.qmd">
+  <img src="images/tibble_structure.png" width="150px">
+  </a></p>
+
+  <p><a href="/tibble/subsetting.qmd">
+  <img src="images/tibble_subset.png" width="150px" class="hexcollast">
+  </a></p>
+</div>
+
+
+<div class="hextblrowbottom">
+  <p><a href="/tibble/printing.qmd">
+  <img src="images/tibble_print.png" width="150px">
+  </a></p>
+
+  <p><a href="/tibble/add_rows_and_columns.qmd">
+  <img src="images/tibble_add_rows_columns.png" width="150px">
+  </a></p>
+
+</div>
+
 The sections in this book are:
 
 - [Creating tibbles](/tibble/creating_tibbles.qmd): Creating __tibbles__ with code, data.frame coercion, and reading in from files.

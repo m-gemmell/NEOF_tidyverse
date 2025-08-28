@@ -1,0 +1,7 @@
+# Guides
+
+[Tidyverse reference page](https://ggplot2.tidyverse.org//reference/index.html#guides-axes-and-legends)
+
+
+- More control over the display of legends: https://ggplot2.tidyverse.org//reference/guide_legend.html
+- More control of display of values on axes: https://ggplot2.tidyverse.org//reference/guide_axis.html

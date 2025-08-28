@@ -1,0 +1,112 @@
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+# Scale values
+
+<center>
+![](images/ggplot2_scale_values.png){style="width:200px"}
+</center>
+
+The axes of __continuous variables__ on plots can be scaled to view the data in different ways.
+This includes:
+
+- Changing various options of a continuous scale with `scale_x_continuous` and `scale_y_continuous`
+- Transforming the axes scale from continuous (1,2,3...) to log10 or square root
+
+[Tidyverse reference page](https://ggplot2.tidyverse.org//reference/scale_continuous.html)
+
+## Dataset
+
+We'll recreate many of the plots in the [`geom_point()` chapter](/ggplot2/geom_point.qmd), so we'll load the `mushroom_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+We will extract a random sample of 150 rows with `slice_sample()`.
+
+[mushroom_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/mushroom_tbl)
+
+```{r}
+#Load package
+library("mgrtibbles")
+#Set seed for random sampling
+set.seed("483")
+#mushroom_tbl tibble for demonstration
+mushroom_tbl <- mgrtibbles::mushroom_tbl |>
+    #Random sample of 150 rows
+    dplyr::slice_sample(n = 150, replace=FALSE)
+#Reset random seed to normal operation
+set.seed(NULL)
+#Glimpse tibble
+mushroom_tbl |> dplyr::glimpse()
+```
+
+## Continuous scale
+
+There are many options that can be included in `scale_x_continuous` and `scale_y_continuous` to effect each of the axis scales.
+These include:
+
+- `name=`: set the label name (can be used instead of [`labs()`](/ggplot2/labels.qmd))
+- `breaks=`: specify the numbers to be displayed as the major breaks on the scale
+- `limits=`: Set the upper and lower limit of the axis scale
+
+[Full list of options](https://ggplot2.tidyverse.org//reference/scale_continuous.html)
+
+__Note:__ When using limits R will inform you of the number of rows (i.e. __observations__) that are not included in the plot. The below plot is missing 70 __rows/observations__.
+
+```{r}
+mushroom_tbl |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
+        ggplot2::geom_point() +
+        ggplot2::scale_x_continuous(name="Stem width", 
+                                    breaks=c(0:10), 
+                                    limits = c(0,10)) +
+        ggplot2::scale_y_continuous(name="Stem height", 
+                                    breaks=seq(from=0, to=20, by=2), 
+                                    limits = c(0,20))
+```
+
+## Scale transformation
+
+Certain data is better suited to be displayed with log10 or square root scales.
+
+These transformations can be carried out with other scale functions that take the same options as `scale_x_continuous()` and `scale_y_continuous()`.
+
+It is important to note that the values on the axes are not transformed, rather where they are placed and the distances are transformed.
+
+### Log10
+
+To convert an axis scale to log10 one of the below __components__ needs to be added:
+
+- `scale_x_log10()`: transform x axis to log10 scale
+- `scale_y_log10()`: transform y axis to log10 scale
+
+Create the [default scatter plot](/ggplot2/geom_point.qmd#default-scatter-plot).
+Transform both the x and y axis scales to log10.
+
+__Note:__ R will give you a warning that the log-10 transformation has introduced infinite values. This occurs because `log10(0)` produces the result `-inf` in R. This warning can therefore normally be ignored as long as the plot looks fine.
+
+```{r}
+mushroom_tbl |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
+        ggplot2::geom_point() +
+        #Log10 scale
+        ggplot2::scale_x_log10(name="Stem width") + 
+        ggplot2::scale_y_log10(name="Stem height")
+```
+
+## Square root
+
+To convert an axis scale to square root one of the below __components__ needs to be added:
+
+- `scale_x_sqrt()`: transform x axis to log10 scale
+- `scale_y_sqrt()`: transform y axis to log10 scale
+
+Create the [default scatter plot](/ggplot2/geom_point.qmd#default-scatter-plot).
+Transform both the x and y axis scales to square root.
+
+```{r}
+mushroom_tbl |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
+        ggplot2::geom_point() +
+        #Log10 scale
+        ggplot2::scale_x_sqrt(name="Stem width") + 
+        ggplot2::scale_y_sqrt(name="Stem height")
+```

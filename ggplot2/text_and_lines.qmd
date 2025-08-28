@@ -1,0 +1,4 @@
+# Text and lines
+
+- text: https://ggplot2.tidyverse.org//reference/geom_text.html 
+- abline: https://ggplot2.tidyverse.org//reference/geom_abline.html

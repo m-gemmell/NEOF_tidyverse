@@ -15,7 +15,7 @@ The package `plotly` is separate to `tidyverse` and therefore needs installing. 
 
 Once installed you can load the library.
 
-```{r}
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
 library("plotly")
 ```
 
@@ -24,6 +24,8 @@ library("plotly")
 ## Dataset
 
 For demonstration we'll load the `mushroom_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions). We will extract a random sample of 150 rows with `slice_sample()`.
+
+[mushroom_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/mushroom_tbl)
 
 ```{r}
 #Load package
@@ -58,11 +60,6 @@ The html based plot is interactive allowing you to:
 
 -   Zoom in horizontally, vertically, or with both axes.
 -   Rest the zoom with the home (`r icons::icon_style(icons::fontawesome("home", style="solid"), fill = "#648fff")`) symbol on the top right.
-
-`r icons::icon_style(icons::ionicons("calculator"), fill = "#648fff")`
- \br
-
-`r icons::bioicons("dna-7")` and `r icons::bioicons("dna-7")` and `r icons::bioicons("dna-7")`  and `r icons::bioicons("dna-7")` 
 
 ```{r}
 scatterplot |> plotly::ggplotly()

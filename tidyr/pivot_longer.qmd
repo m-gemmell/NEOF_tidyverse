@@ -25,6 +25,8 @@ To longify data a set of columns are chosen.
 
 For demonstration we'll load the `fisheries_wide_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
 
+[fisheries_wide_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/fisheries_wide_tbl)
+
 ```{r}
 #Load package
 library("mgrtibbles")

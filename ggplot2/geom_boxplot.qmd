@@ -32,6 +32,8 @@ To preprocess the data we will:
 - Remove __rows/observations__ from the __Country__ grouping "British Crown Dependencies" to reatin the countries England, Northern Ireland, Scotland, and Wales with [`dplyr::filter()`](/dplyr/filter.qmd)
 - Remove __rows/observations__ where the the Country or Species value is NA with [`tidyr:drop_na()`](/tidyr/drop_na.qmd)
 
+[bat_roost_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/bat_roost_tbl)
+
 ```{r}
 #Load package
 library("mgrtibbles")

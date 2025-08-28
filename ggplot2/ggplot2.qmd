@@ -129,14 +129,58 @@ How to save the output of `ggplot2` objects.
 
 ### Customisation
 
+<div class="hexdplyrcolumnstop">
+  <p><a href="/ggplot2/labels.qmd">
+  <img src="images/ggplot2_labs.png" width="150px">
+  </a></p>
+
+  <p><a href="/ggplot2/theme.qmd">
+  <img src="images/ggplot2_theme.png" width="150px">
+  </a></p>
+
+  <p><a href="/ggplot2/scale_values.qmd">
+  <img src="images/ggplot2_scale_values.png" width="150px">
+  </a></p>
+</div>
+
+
+<div class="hexdplyrcolumnsbottom">
+  <p><a href="/ggplot2/colour_scales.qmd">
+  <img src="images/ggplot2_colour_scales.png" width="150px">
+  </a></p>
+
+  <p><a href="/ggplot2/guides.qmd">
+  <img src="images/ggplot2_labs.png" width="150px">
+  </a></p>
+
+  <p><a href="/ggplot2/text_and_lines.qmd">
+  <img src="images/ggplot2_labs.png" width="150px">
+  </a></p>
+
+</div>
+
+<div class="hexggplot2customisationcolumnsbottom">
+  <p><a href="/ggplot2/coordinate_systems.qmd">
+  <img src="images/ggplot2_labs.png" width="150px">
+  </a></p>
+
+  <p><a href="/ggplot2/facet.qmd">
+  <img src="images/ggplot2_labs.png" width="150px">
+  </a></p>
+
+</div>
+
 On top of __layers__ there are various other __components__.
 These include:
 
-- __Labels__: Modifying labels on the axes, legend, and other plot labels.
-- __Scale values__: How to modify the scale of the x and y axis (e.g. plot values as log10 values or square root values)
-- __Colour scales__: How to set the colours for aesthetics.
-- __Facetting__: Creation of multiple of the same type of plot by subsetting the visualised data by one or two metadata categories.
-- __Abline__: Adding a straight line to a plot and its corresponding y=mx+c equation.
-- __Coordinate systems__: Modify how the x and y aesthetics combine. 
+- [__`labs()`__](/ggplot2/labels.qmd): Modifying labels on the axes, legend, and other plot labels.
+- [__`theme()`__](/ggplot2/theme.qmd): Modifying components of a theme including the legend position and the font sizes in the plot.
+- [__Scale values__](/ggplot2/scale_values.qmd): How to modify the scale of the x and y axis (e.g. plot values as log10 values or square root values)
+- [__Colour scales__](/ggplot2/colour_scales.qmd): How to set the colours for aesthetics.
+- [__Guides__](/ggplot2/guides.qmd): Modify the appearance of guides including the layout of the legend and axes values.
+- [__Text and lines__](/ggplot2/text_and_lines.qmd): Adding text and lines onto a the plotting area. Includes adding a straight line to a plot and its corresponding y=mx+c equation.
+- [__Coordinate systems__](/ggplot2/coordinate_systems.qmd): Modify how the x and y aesthetics combine. 
+- [__Faceting__](/ggplot2/facet.qmd): Creation of multiple of the same type of plot by subsetting the visualised data by one or two metadata categories.
+
 
 

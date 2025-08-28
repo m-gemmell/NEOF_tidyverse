@@ -27,6 +27,8 @@ library("patchwork")
 For demonstration we'll load the `mushroom_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
 For easier plot visualisation we'll subsample the data.
 
+[mushroom_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/mushroom_tbl)
+
 ```{r}
 #Subsampled dataset
 #Set seed for random sampling

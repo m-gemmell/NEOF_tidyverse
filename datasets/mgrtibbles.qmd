@@ -37,3 +37,21 @@ For example:
 ```{r, eval=FALSE}
 ?mgrtibbles::crab_age_pred_tbl
 ```
+
+## Tibble details
+
+[amphibian_div_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/amphibian_div_tbl)
+
+[bat_roost_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/bat_roost_tbl)
+
+[crab_age_pred_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/crab_age_pred_tbl)
+
+[crop_and_soil_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/crop_and_soil_tbl)
+
+[fisheries_long_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/fisheries_long_tbl)
+
+[fisheries_wide_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/fisheries_wide_tbl)
+
+[mammal_sleep_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/mammal_sleep_tbl)
+
+[mushroom_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/mushroom_tbl)

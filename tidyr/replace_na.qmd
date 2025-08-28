@@ -20,7 +20,9 @@ below are three methods to carry this out.
 For demonstration we'll load the `mammal_sleep_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions). Additionally, we'll subset it to:
 
 - Keep the first ten rows with at least one NA.
-- COlumns species to life_span
+- Columns species to life_span
+
+[mammal_sleep_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/mammal_sleep_tbl)
 
 ```{r}
 #Load package

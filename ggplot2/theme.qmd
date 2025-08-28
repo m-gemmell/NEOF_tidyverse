@@ -1,0 +1,136 @@
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+# Theme
+
+<center>
+![](images/ggplot2_theme.png){style="width:200px"}
+</center>
+
+The `theme()` component can be used to alter appearance of a ggplot.
+There are many options but this page will show the following:
+
+- Altering the size and colour of text.
+- Changing the legend position.
+
+For a full list of options please see the below web links:
+
+[`Theme()` reference page](https://ggplot2.tidyverse.org//reference/theme.html)
+
+[Theme elements reference page](https://ggplot2.tidyverse.org//reference/element.html)
+
+## Dataset
+
+We'll recreate many of the plots in the [`geom_boxplot()` chapter](/ggplot2/geom_boxplot.qmd), so we'll load the `bat_roost_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+To preprocess the data we will:
+
+- Remove the `RoostCode` __variable/column__ with [`dplyr::select`](/dplyr/select.qmd).
+- Remove __rows/observations__ with a MaxCountInAnyYear greater than or equal to 250 with [`dplyr::filter()`](/dplyr/filter.qmd)
+- Remove __rows/observations__ from the __Country__ grouping "British Crown Dependencies" to reatin the countries England, Northern Ireland, Scotland, and Wales with [`dplyr::filter()`](/dplyr/filter.qmd)
+- Remove __rows/observations__ where the the Country or Species value is NA with [`tidyr:drop_na()`](/tidyr/drop_na.qmd)
+
+[bat_roost_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/bat_roost_tbl)
+
+```{r}
+#Load package
+library("mgrtibbles")
+#mushroom_tbl tibble for demonstration
+bat_roost_tbl <- mgrtibbles::bat_roost_tbl |>
+    #Select all but roost code column
+    dplyr::select(!RoostCode) |>
+    #Filter out rows with a MaxCountInAnyYear greater than or equal to 250
+    # and remove observations from "British Crown Dependencies"
+    dplyr::filter(MaxCountInAnyYear < 250 & Country != "British Crown Dependencies") |>
+    #Remove rows where Country or Species is NA
+    tidyr::drop_na(c("Country","Species"))
+bat_roost_tbl |> dplyr::glimpse()
+```
+
+## Text
+
+Although you can set the plot size with [`ggsave()`](/ggplot2/ggsave.qmd#height-and-width-choice) to help get appropriate text sizes this is not always the optimal way.
+Instead the text/font size can be chosen in the `theme()` function.
+
+### All text
+
+Create the [default box plot](/ggplot2/geom_boxplot.qmd#default-box-plot).
+We will set the the text size with the `theme()` option `text=`
+
+This options then needs to be provided with the function `element_text()` which itself has different options.
+These include:
+
+- `size=`: Text size
+- `colour=`: Text colour
+
+[Theme elements reference page](https://ggplot2.tidyverse.org//reference/element.html)
+
+In the plot we will set the text size to __20__.
+
+```{r}
+bat_roost_tbl |>
+    ggplot2::ggplot(aes(y = MaxCountInAnyYear)) +
+        ggplot2::geom_boxplot() +
+        #Theme
+        ggplot2::theme(text=element_text(size = 20))
+```
+
+### Sets of text
+
+We can set all the text to one set of options or we can individualise the different sets of text.
+
+Examples of different text theme elements include:
+
+- `text=`: All text
+- `axis.text`: All axis values text
+- `axis.text.x`: Text of x axis values
+- `axis.text.y`: Text of y axis values
+- `axis.title`: All axis title text
+- `axis.title.x`: Text of x axis title
+- `axis.title.y`: Text of y axis title
+- `legend.text`: Text of legend labels
+- `legend.title`: Text of legend title
+
+Lets show some of these in action with the [box plot with a layer of jittered points](/ggplot2/geom_boxplot.qmd#layer-of-jittered-points).
+As well as changing the size and colour of text we will also change the angle with `angle=`.
+
+```{r}
+#Boxplot of max population count in bat colonies within counties of Northern Ireland
+bat_roost_tbl |>
+    #Filter to only retain Northern Ireland rows
+    dplyr::filter(Country == "Northern Ireland") |>
+    #Box plot
+    ggplot2::ggplot(aes(y = MaxCountInAnyYear, x = County)) +
+        ggplot2::geom_boxplot() +
+        ggplot2::geom_jitter(aes(colour=Species), size=2) +
+        #Theme
+        ggplot2::theme(axis.title = element_text(size=20, colour = "blue"),
+                        axis.text.x = element_text(size=12, angle = 10),
+                        axis.text.y = element_text(size=12),
+                        legend.text = element_text(size = 12),
+                        legend.title = element_text(size = 20, colour="red")
+                        )
+```
+
+## Legend position
+
+Depending on the shape and size of your plot you may want to change the position of your legend.
+
+### Legend below plot
+
+You can set the legend to be below the plot, rather that to the right, with `theme(legend.position="bottom")`.
+This is useful to give the plot the entire width of the plotting space.
+
+```{r}
+#Boxplot of max population count in bat colonies within counties of Northern Ireland
+bat_roost_tbl |>
+    #Filter to only retain Northern Ireland rows
+    dplyr::filter(Country == "Northern Ireland") |>
+    #Box plot
+    ggplot2::ggplot(aes(y = MaxCountInAnyYear, x = County)) +
+        ggplot2::geom_boxplot() +
+        ggplot2::geom_jitter(aes(colour=Species), size=2) +
+        #Theme
+        ggplot2::theme(legend.position="bottom")
+```
+
