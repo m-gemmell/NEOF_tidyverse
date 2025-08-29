@@ -1,0 +1,167 @@
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+
+# Annotation
+
+<center>
+![](images/ggplot2_annotation.png){style="width:200px"}
+</center>
+
+Text and lines can be added to a plot as a form of annotation.
+
+[Tidyverse reference page](https://ggplot2.tidyverse.org//reference/index.html#annotations)
+
+## Dataset
+
+We'll recreate many of the plots in the [basic plot chapter](/ggplot2/basic_plot.qmd), so we'll load the `crab_age_pred_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+Additionally, we'll [slice](/dplyr/slice.qmd) out the first 200 rows and [select](/dplyr/select.qmd) the columns we will utilise in the plot for a clear demonstration.
+
+[crab_age_pred_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/crab_age_pred_tbl)
+
+```{r}
+crab_age_weight_tbl <- mgrtibbles::crab_age_pred_tbl |>
+    dplyr::slice(1:200) |>
+    dplyr::select(Weight, Age)
+crab_age_weight_tbl
+```
+
+## Annotation
+
+### Text annotation
+
+Text can be placed anywhere on a plot.
+
+To add text to a plot we use the `annotate()` component/function with the following options:
+
+- `geom=`: This sets the type of geom to use for annotation. In this case it is "text" but others are demonstrated below.
+- `x=`: The x position to place the annotation.
+- `y=`: The y position to place the annotation.
+- `label=`: Specifies the text.
+
+[`annotate()` web page](https://ggplot2.tidyverse.org//reference/scale_brewer.html)
+
+```{r}
+ggplot2::ggplot(data=crab_age_weight_tbl, mapping=aes(x=Age, y = Weight)) +
+    #Set plot as a dot/scatter plot 
+    ggplot2::geom_point() +
+    #Add text annotation
+    ggplot2::annotate(geom="text", x = 22.5, y = 50, label = "Text annotation")
+```
+
+If you want to plot points as text you can look at the [`geom_text()` function](https://ggplot2.tidyverse.org//reference/geom_text.html).
+
+### Multiple annotations
+
+The below codes demonstrates how to add multiple annotations and how to create rectangles (`geom="rect"`) and lines (`geom="segment"`).
+
+__Note:__ Alpha refers to the transparency of an object. 0 = completely transparent, 1= completely opaque/no transparency.
+
+```{r}
+ggplot2::ggplot(data=crab_age_weight_tbl, mapping=aes(x=Age, y = Weight)) +
+    #Set plot as a dot/scatter plot 
+    ggplot2::geom_point() +
+    #Add text annotation "Blue box"
+    ggplot2::annotate(geom="text", x = 10.5, y = 58, label = "Red lined box", size = 7) +
+    #Add annotation "Red lined box"
+    ggplot2::annotate(geom="text", x = 16.5, y = 62, label = "Blue box", size = 7) +
+    #Add a shaded rectangle with transparency and an outer line colour of red
+    ggplot2::annotate(geom="rect", xmin = 8.5, xmax = 12.5, 
+                        ymin=2, ymax=55, alpha=0.2, colour="red") +
+    #Add a shaded blue rectangle with transparency
+    ggplot2::annotate(geom="rect", xmin = 14.5, xmax = 18.5, 
+                        ymin=43, ymax=60, alpha=0.2, fill="blue") +
+    #Add a green line
+    ggplot2::annotate("segment", x = 13, xend = 20, y = 10, yend=40, colour= "green" )
+```
+
+## Reference lines
+
+Three different types of reference lines can be added to a ggplot.
+
+- `geom_abline()`: A diagonal line based on the slope and intercept
+- `geom_hline()`: A horizontal line based on the y intercept
+- `geom_vline()`: A vertical line based on the x intercept
+
+[Tidyverse reference web page](https://ggplot2.tidyverse.org//reference/geom_abline.html)
+
+## Horizontal and vertical
+
+Vertical and horizontal lines can be added with `geom_vline()` and `geom_hline()`.
+
+The below code demonstrates adding both these lines.
+
+```{r}
+ggplot2::ggplot(data=crab_age_weight_tbl, mapping=aes(x=Age, y = Weight)) +
+    #Set plot as a dot/scatter plot 
+    ggplot2::geom_point() +
+    #Vertical lines
+    ggplot2::geom_vline(xintercept=15) +
+    #Horizontal lines
+    ggplot2::geom_hline(yintercept=20)
+```
+
+## Abline
+
+An abline is a straight diagonal line based on the intercept and slope.
+
+### Manual abline
+
+One can be manually added with `geom_abline()` by setting the intercept (`intercept=`) and the slope (`slope=`)
+
+```{r}
+ggplot2::ggplot(data=crab_age_weight_tbl, mapping=aes(x=Age, y = Weight)) +
+    #Set plot as a dot/scatter plot 
+    ggplot2::geom_point() +
+    #Abline
+    ggplot2::geom_abline(intercept = 5, slope = 2)
+```
+
+### Statistical abline
+
+An abline calculated with a linear model can be added with [`geom_smooth()`](/ggplot2/geom_others.qmd#smooth-line).
+
+```{r}
+ggplot2::ggplot(data=crab_age_weight_tbl, mapping=aes(x=Age, y = Weight)) +
+    #Set plot as a dot/scatter plot 
+    ggplot2::geom_point() +
+    #Linear model abline
+    ggplot2::geom_smooth(method="lm")
+```
+
+You can also include the linear equation on the plot.
+
+First we need to calculate the linear model with the base R stats package (preinstalled in R).
+
+```{r}
+#Calculate and extract the slope and gradient
+lm_res <- lm(Weight~Age, data = crab_age_weight_tbl)
+#Intercept
+c <- coef(lm_res)[[1]]
+#Slope
+m <- coef(lm_res)[[2]]
+#R squared value
+r_squared <- summary(lm_res)$adj.r.squared
+#Equation
+lm_equation <- paste0("y = ", round(m, 3), "x + ", round(c, 3), ", R^2 = ", round(r_squared, 3))
+#Print lm equation
+lm_equation
+```
+
+The equation can then be included with [`annotate()`](#text-annotation).
+
+```{r}
+ggplot2::ggplot(data=crab_age_weight_tbl, mapping=aes(x=Age, y = Weight)) +
+    #Set plot as a dot/scatter plot 
+    ggplot2::geom_point() +
+    #Linear model abline
+    ggplot2::geom_smooth(method="lm") +
+    ggplot2::annotate(geom="text", x = 7.5, y = 60, label = lm_equation)
+```
+
+
+
+
+
+

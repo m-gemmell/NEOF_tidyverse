@@ -150,11 +150,11 @@ How to save the output of `ggplot2` objects.
   </a></p>
 
   <p><a href="/ggplot2/guides.qmd">
-  <img src="images/ggplot2_labs.png" width="150px">
+  <img src="images/ggplot2_guides.png" width="150px">
   </a></p>
 
-  <p><a href="/ggplot2/text_and_lines.qmd">
-  <img src="images/ggplot2_labs.png" width="150px">
+  <p><a href="/ggplot2/annotation.qmd">
+  <img src="images/ggplot2_annotation.png" width="150px">
   </a></p>
 
 </div>
@@ -178,7 +178,9 @@ These include:
 - [__Scale values__](/ggplot2/scale_values.qmd): How to modify the scale of the x and y axis (e.g. plot values as log10 values or square root values)
 - [__Colour scales__](/ggplot2/colour_scales.qmd): How to set the colours for aesthetics.
 - [__Guides__](/ggplot2/guides.qmd): Modify the appearance of guides including the layout of the legend and axes values.
-- [__Text and lines__](/ggplot2/text_and_lines.qmd): Adding text and lines onto a the plotting area. Includes adding a straight line to a plot and its corresponding y=mx+c equation.
+  - Setting number of rows for legend values
+  - Allowing axis value/guides to dodge each other when they would otherwise overlap
+- [__Annotations__](/ggplot2/annotation.qmd): Adding text and lines onto the plotting area.
 - [__Coordinate systems__](/ggplot2/coordinate_systems.qmd): Modify how the x and y aesthetics combine. 
 - [__Faceting__](/ggplot2/facet.qmd): Creation of multiple of the same type of plot by subsetting the visualised data by one or two metadata categories.
 

@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -500,8 +535,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ggplot2/text_and_lines.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Text and lines</span></a>
+  <a href="../ggplot2/annotation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Annotation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -534,7 +569,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#colour-scales" id="toc-colour-scales" class="nav-link active" data-scroll-target="#colour-scales">Colour scales</a></li>
+  <li><a href="#colour-scales" id="toc-colour-scales" class="nav-link active" data-scroll-target="#colour-scales">Colour scales</a>
+  <ul class="collapse">
+  <li><a href="#colour-brewer" id="toc-colour-brewer" class="nav-link" data-scroll-target="#colour-brewer">Colour brewer</a></li>
+  <li><a href="#manual-colour" id="toc-manual-colour" class="nav-link" data-scroll-target="#manual-colour">Manual colour</a></li>
+  <li><a href="#number-of-colours" id="toc-number-of-colours" class="nav-link" data-scroll-target="#number-of-colours">Number of colours</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -547,13 +587,116 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="colour-scales" class="level1">
 <h1>Colour scales</h1>
-<p><a href="https://ggplot2.tidyverse.org//reference/index.html#scales">Tidyverse reference page</a></p>
+<center>
+<img src="images/ggplot2_colour_scales.png" class="img-fluid" style="width:200px">
+</center>
+<p>The default colours used for ggplot2 are suitable for small amounts of groups but they can be improved. In this page we will demonstrate how to change the colour scale of the colour aesthetic with:</p>
 <ul>
-<li>Colourbrewer scales: https://ggplot2.tidyverse.org//reference/scale_brewer.html</li>
-<li>Manual colour scale: https://ggplot2.tidyverse.org//reference/scale_manual.html</li>
+<li><code>scale_colour_brewer()</code>: Change the colours used to the colour brewer palette.</li>
+<li><code>scale_colour_manual()</code>: Set the colours to be used manually. This lets the use of colour blind friendly palettes.</li>
 </ul>
+<p>There are many other ways ot change the colour scale. Please see the below link for the full list of functions.</p>
+<p><a href="https://ggplot2.tidyverse.org//reference/index.html#scales">Tidyverse reference page</a></p>
+<p>We’ll recreate many of the plots in the <a href="../ggplot2/geom_boxplot.html"><code>geom_boxplot()</code> chapter</a>, so we’ll load the <code>bat_roost_tbl</code> data from the <a href="../datasets/mgrtibbles.html">mgrtibbles package</a> (hyperlink includes install instructions). To preprocess the data we will:</p>
+<ul>
+<li>Remove the <code>RoostCode</code> <strong>variable/column</strong> with <a href="../dplyr/select.html"><code>dplyr::select</code></a>.</li>
+<li>Remove <strong>rows/observations</strong> with a MaxCountInAnyYear greater than or equal to 250 with <a href="../dplyr/filter.html"><code>dplyr::filter()</code></a></li>
+<li>Remove <strong>rows/observations</strong> from the <strong>Country</strong> grouping “British Crown Dependencies” to retain the countries England, Northern Ireland, Scotland, and Wales with <a href="../dplyr/filter.html"><code>dplyr::filter()</code></a></li>
+<li>Remove <strong>rows/observations</strong> where the the Country or Species value is NA with <a href="../tidyr/drop_na.html"><code>tidyr:drop_na()</code></a></li>
+</ul>
+<p><a href="https://github.com/m-gemmell/mgrtibbles/wiki/bat_roost_tbl">bat_roost_tbl details</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load package</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"mgrtibbles"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#mushroom_tbl tibble for demonstration</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>bat_roost_tbl <span class="ot">&lt;-</span> mgrtibbles<span class="sc">::</span>bat_roost_tbl <span class="sc">|&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Select all but roost code column</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">!</span>RoostCode) <span class="sc">|&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Filter out rows with a MaxCountInAnyYear greater than or equal to 250</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># and remove observations from "British Crown Dependencies"</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(MaxCountInAnyYear <span class="sc">&lt;</span> <span class="dv">250</span> <span class="sc">&amp;</span> Country <span class="sc">!=</span> <span class="st">"British Crown Dependencies"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Remove rows where Country or Species is NA</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">drop_na</span>(<span class="fu">c</span>(<span class="st">"Country"</span>,<span class="st">"Species"</span>))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>bat_roost_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 2,461
+Columns: 5
+$ Species           &lt;chr&gt; "Bat (species unknown)", "Bat (species unknown)", "B…
+$ MaxCountInAnyYear &lt;dbl&gt; 218, 202, 198, 177, 169, 143, 130, 104, 103, 102, 97…
+$ County            &lt;chr&gt; "Worcestershire", "Antrim", "Oxfordshire", "Pembroke…
+$ Region            &lt;chr&gt; "West Midlands", "Northern Ireland", "South East", "…
+$ Country           &lt;chr&gt; "England", "Northern Ireland", "England", "Wales", "…</code></pre>
+</div>
+</div>
+<section id="colour-brewer" class="level2">
+<h2 class="anchored" data-anchor-id="colour-brewer">Colour brewer</h2>
+<p>Colour brewer is a popular set of palettes used for maps and other data visualisation plots.</p>
+<p>The full set of palettes can be seen below.</p>
+<center>
+<img src="images/colourbrewer.png" class="img-fluid" style="width:600px; border-radius:5px">
+</center>
+<p><br> Create the <a href="../ggplot2/geom_boxplot.html#layer-of-jittered-points">boxplot with a layer of jittered points</a>. We’ll colour the points with Colour brewer set 2 using the component <code>scale_colour_brewer()</code>. As an option we provide <code>palette=</code> with the name of the palette matching that in the above image of palettes.</p>
+<p><a href="https://ggplot2.tidyverse.org//reference/scale_brewer.html"><code>scale_colour_brewer()</code> web page</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Boxplot of max population count in bat colonies within counties of Northern Ireland</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>bat_roost_tbl <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Filter to only retain Northern Ireland rows</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(Country <span class="sc">==</span> <span class="st">"Northern Ireland"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Box plot</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> MaxCountInAnyYear, <span class="at">x =</span> County)) <span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">colour=</span>Species), <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Colour brewer scale</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">scale_colour_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="colour_scales_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="979"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="manual-colour" class="level2">
+<h2 class="anchored" data-anchor-id="manual-colour">Manual colour</h2>
+<p>I am a fan of using other colour palettes outside of ggplot2’s options with the component <code>scale_colour_manual()</code>.</p>
+<p><a href="https://ggplot2.tidyverse.org//reference/scale_manual.html"><code>scale_colour_brewer()</code> web page</a></p>
+<p>With this component I like to utilise colour blind friendly palettes. Specifically I use palettes from:</p>
+<p><a href="https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40">Colouring for Colourblindness by David Nichols</a></p>
+<p>Below are the three palettes in the above link. They have been assigned as <strong>vectors</strong> that can be easily used with <code>scale_colour_manual()</code>. I like to save them as objects so they can be used for multiple plots easily.</p>
+<p><strong>Note:</strong> The colours are assigned as hexadecimal values. If you want more information on this please see: <a href="https://en.wikipedia.org/wiki/Web_colors">wikipedia page on web colours</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ibm_pal <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#648fff"</span>,<span class="st">"#785ef0"</span>,<span class="st">"#dc267f"</span>,<span class="st">"#fe6100"</span>,<span class="st">"#ffb000"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>wong_pal <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#e69f00"</span>,<span class="st">"#56b4e9"</span>,<span class="st">"#009e73"</span>,<span class="st">"#f0e442"</span>,<span class="st">"#0072b2"</span>,<span class="st">"#d55e00"</span>,<span class="st">"#cc79a7"</span>,<span class="st">"#000000"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>tol_pal <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#332288"</span>,<span class="st">"#117733"</span>,<span class="st">"#44aa99"</span>,<span class="st">"#88ccee"</span>,<span class="st">"#ddcc77"</span>,<span class="st">"#cc6677"</span>,<span class="st">"#aa4499"</span>,<span class="st">"#882255"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Create the <a href="../ggplot2/geom_boxplot.html#layer-of-jittered-points">boxplot with a layer of jittered points</a>. We’ll colour the points with the Wong palette (<code>wong_pal</code>) using the component <code>scale_colour_manual()</code> and the option <code>values=</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Boxplot of max population count in bat colonies within counties of Northern Ireland</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>bat_roost_tbl <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Filter to only retain Northern Ireland rows</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(Country <span class="sc">==</span> <span class="st">"Northern Ireland"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Box plot</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> MaxCountInAnyYear, <span class="at">x =</span> County)) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">colour=</span>Species), <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Colour brewer scale</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">scale_colour_manual</span>(<span class="at">values =</span> wong_pal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="colour_scales_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="979"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="number-of-colours" class="level2">
+<h2 class="anchored" data-anchor-id="number-of-colours">Number of colours</h2>
+<p>An important note when choosing palettes is that you need as many colours as you have groupings. The colour blind friendly palettes only have a maximum of 8 colours so if you have more you will need to use another palette. Of course once you start to have lots of groups it can be hard to differentiate between a lot of colours. If this is the case you may need to split up groups in different ways such as with <a href="../ggplot2/facet.html">faceting</a>.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

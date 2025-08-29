@@ -1,7 +1,103 @@
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
 # Guides
+
+<center>
+![](images/ggplot2_guides.png){style="width:200px"}
+</center>
+
+The guides of legends and axes values can be customised to make the data clearer.
+This can be carried out with the __functions/components__:
+
+- `legend_guide()`: Change the position of the title and change the number of rows/columns the values are placed within.
+- `guide_axis()`: Allow the axis values to dodge each other or change their angle.
+
+When using these functions we place them within the `guide()` __function/component__ so we can set the __aesthetic__ we specifically want to change.
+This will be demonstrated below.
 
 [Tidyverse reference page](https://ggplot2.tidyverse.org//reference/index.html#guides-axes-and-legends)
 
+## Dataset
 
-- More control over the display of legends: https://ggplot2.tidyverse.org//reference/guide_legend.html
-- More control of display of values on axes: https://ggplot2.tidyverse.org//reference/guide_axis.html
+We'll recreate many of the plots in the [`geom_boxplot()` chapter](/ggplot2/geom_boxplot.qmd), so we'll load the `bat_roost_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+To preprocess the data we will:
+
+- Remove the `RoostCode` __variable/column__ with [`dplyr::select`](/dplyr/select.qmd).
+- Remove __rows/observations__ with a MaxCountInAnyYear greater than or equal to 250 with [`dplyr::filter()`](/dplyr/filter.qmd)
+- Remove __rows/observations__ from the __Country__ grouping "British Crown Dependencies" to retain the countries England, Northern Ireland, Scotland, and Wales with [`dplyr::filter()`](/dplyr/filter.qmd)
+- Remove __rows/observations__ where the the Country or Species value is NA with [`tidyr:drop_na()`](/tidyr/drop_na.qmd)
+
+[bat_roost_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/bat_roost_tbl)
+
+```{r}
+#Load package
+library("mgrtibbles")
+#mushroom_tbl tibble for demonstration
+bat_roost_tbl <- mgrtibbles::bat_roost_tbl |>
+    #Select all but roost code column
+    dplyr::select(!RoostCode) |>
+    #Filter out rows with a MaxCountInAnyYear greater than or equal to 250
+    # and remove observations from "British Crown Dependencies"
+    dplyr::filter(MaxCountInAnyYear < 250 & Country != "British Crown Dependencies") |>
+    #Remove rows where Country or Species is NA
+    tidyr::drop_na(c("Country","Species"))
+bat_roost_tbl |> dplyr::glimpse()
+```
+
+## Legend guide column numbers
+
+The number of columns to display the legend values can be set.
+This is useful when you have a large amount of values to display or setting the legend below the plot.
+
+Create the [boxplot with a layer of jittered points](/ggplot2/geom_boxplot.qmd#layer-of-jittered-points).
+We'll cause the colour legend values to be spread over 2 columns with:
+
+`guides(col = guide_legend(ncol = 2))`
+
+[`guide_legend()` reference](https://ggplot2.tidyverse.org//reference/guide_legend.html)
+
+```{r}
+#Boxplot of max population count in bat colonies within counties of Northern Ireland
+bat_roost_tbl |>
+    #Filter to only retain Northern Ireland rows
+    dplyr::filter(Country == "Northern Ireland") |>
+    #Box plot
+    ggplot2::ggplot(aes(y = MaxCountInAnyYear, x = County)) +
+        ggplot2::geom_boxplot() +
+        ggplot2::geom_jitter(aes(colour=Species), size=3) +
+        #Colour legend values over 2 columns
+        ggplot2::guides(col = guide_legend(ncol = 2))
+```
+
+
+## Axis guides dodging
+
+The axis guides can be used to angle the values or cause them to dodge each other.
+We showed how to angle them in [the theme page](/ggplot2/theme.qmd#sets-of-text) (there are multiple ways to do some of the same things in ggplot2).
+We will therefore only demonstrate how to allow axis labels to dodge each other.
+
+Create the [boxplot with a layer of jittered points](/ggplot2/geom_boxplot.qmd#layer-of-jittered-points).
+We'll carry out the following changes:
+
+- Set all the text to 20 ([Set all text size with `theme()`](/ggplot2/theme.qmd#all-text))
+- Set the x axis text to dodge with `guide(x = guide_axis(n.dodge = 2))`. The 2 represents the number of rows/columns used for dodging.
+
+[`guide_axis()` reference](https://ggplot2.tidyverse.org//reference/guide_axis.html)
+
+```{r}
+#Boxplot of max population count in bat colonies within counties of Northern Ireland
+bat_roost_tbl |>
+    #Filter to only retain Northern Ireland rows
+    dplyr::filter(Country == "Northern Ireland") |>
+    #Box plot
+    ggplot2::ggplot(aes(y = MaxCountInAnyYear, x = County)) +
+        ggplot2::geom_boxplot() +
+        ggplot2::geom_jitter(aes(colour=Species), size=3) +
+        #Theme to increase all text size
+        ggplot2::theme(text=element_text(size=20)) +
+        #Guide for x axis guides dodge
+        ggplot2::guides(x = guide_axis(n.dodge = 2))
+```
+

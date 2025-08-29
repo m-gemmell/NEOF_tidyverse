@@ -5,10 +5,116 @@ library(tidyverse)
 # Colour scales
 
 <center>
-![](images/ggplot2_colour_scales.png.png){style="width:200px"}
+![](images/ggplot2_colour_scales.png){style="width:200px"}
 </center>
+
+The default colours used for ggplot2 are suitable for small amounts of groups but they can be improved.
+In this page we will demonstrate how to change the colour scale of the colour aesthetic with:
+
+- `scale_colour_brewer()`: Change the colours used to the colour brewer palette.
+- `scale_colour_manual()`: Set the colours to be used manually. This lets the use of colour blind friendly palettes.
+
+There are many other ways ot change the colour scale. Please see the below link for the full list of functions.
 
 [Tidyverse reference page](https://ggplot2.tidyverse.org//reference/index.html#scales)
 
-- Colourbrewer scales: https://ggplot2.tidyverse.org//reference/scale_brewer.html
-- Manual colour scale: https://ggplot2.tidyverse.org//reference/scale_manual.html
+We'll recreate many of the plots in the [`geom_boxplot()` chapter](/ggplot2/geom_boxplot.qmd), so we'll load the `bat_roost_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+To preprocess the data we will:
+
+- Remove the `RoostCode` __variable/column__ with [`dplyr::select`](/dplyr/select.qmd).
+- Remove __rows/observations__ with a MaxCountInAnyYear greater than or equal to 250 with [`dplyr::filter()`](/dplyr/filter.qmd)
+- Remove __rows/observations__ from the __Country__ grouping "British Crown Dependencies" to retain the countries England, Northern Ireland, Scotland, and Wales with [`dplyr::filter()`](/dplyr/filter.qmd)
+- Remove __rows/observations__ where the the Country or Species value is NA with [`tidyr:drop_na()`](/tidyr/drop_na.qmd)
+
+[bat_roost_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/bat_roost_tbl)
+
+```{r}
+#Load package
+library("mgrtibbles")
+#mushroom_tbl tibble for demonstration
+bat_roost_tbl <- mgrtibbles::bat_roost_tbl |>
+    #Select all but roost code column
+    dplyr::select(!RoostCode) |>
+    #Filter out rows with a MaxCountInAnyYear greater than or equal to 250
+    # and remove observations from "British Crown Dependencies"
+    dplyr::filter(MaxCountInAnyYear < 250 & Country != "British Crown Dependencies") |>
+    #Remove rows where Country or Species is NA
+    tidyr::drop_na(c("Country","Species"))
+bat_roost_tbl |> dplyr::glimpse()
+```
+
+## Colour brewer
+
+Colour brewer is a popular set of palettes used for maps and other data visualisation plots.
+
+The full set of palettes can be seen below.
+
+<center>
+![](images/colourbrewer.png){style="width:600px; border-radius:5px"}
+</center>
+ <br>
+Create the [boxplot with a layer of jittered points](/ggplot2/geom_boxplot.qmd#layer-of-jittered-points).
+We'll colour the points with Colour brewer set 2 using the component `scale_colour_brewer()`.
+As an option we provide `palette=` with the name of the palette matching that in the above image of palettes.
+
+[`scale_colour_brewer()` web page](https://ggplot2.tidyverse.org//reference/scale_brewer.html)
+
+```{r}
+#Boxplot of max population count in bat colonies within counties of Northern Ireland
+bat_roost_tbl |>
+    #Filter to only retain Northern Ireland rows
+    dplyr::filter(Country == "Northern Ireland") |>
+    #Box plot
+    ggplot2::ggplot(aes(y = MaxCountInAnyYear, x = County)) +
+        ggplot2::geom_boxplot() +
+        ggplot2::geom_jitter(aes(colour=Species), size=3) +
+        #Colour brewer scale
+        ggplot2::scale_colour_brewer(palette = "Set2")
+```
+
+
+## Manual colour
+
+I am a fan of using other colour palettes outside of ggplot2's options with the component `scale_colour_manual()`.
+
+[`scale_colour_brewer()` web page](https://ggplot2.tidyverse.org//reference/scale_manual.html)
+
+With this component I like to utilise colour blind friendly palettes.
+Specifically I use palettes from:
+
+[Colouring for Colourblindness by David Nichols](https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40)
+
+Below are the three palettes in the above link.
+They have been assigned as __vectors__ that can be easily used with `scale_colour_manual()`.
+I like to save them as objects so they can be used for multiple plots easily.
+
+__Note:__ The colours are assigned as hexadecimal values. If you want more information on this please see: [wikipedia page on web colours](https://en.wikipedia.org/wiki/Web_colors)
+
+```{r}
+ibm_pal <- c("#648fff","#785ef0","#dc267f","#fe6100","#ffb000")
+wong_pal <- c("#e69f00","#56b4e9","#009e73","#f0e442","#0072b2","#d55e00","#cc79a7","#000000")
+tol_pal <- c("#332288","#117733","#44aa99","#88ccee","#ddcc77","#cc6677","#aa4499","#882255")
+```
+
+Create the [boxplot with a layer of jittered points](/ggplot2/geom_boxplot.qmd#layer-of-jittered-points).
+We'll colour the points with the Wong palette (`wong_pal`) using the component `scale_colour_manual()` and the option `values=`.
+
+```{r}
+#Boxplot of max population count in bat colonies within counties of Northern Ireland
+bat_roost_tbl |>
+    #Filter to only retain Northern Ireland rows
+    dplyr::filter(Country == "Northern Ireland") |>
+    #Box plot
+    ggplot2::ggplot(aes(y = MaxCountInAnyYear, x = County)) +
+        ggplot2::geom_boxplot() +
+        ggplot2::geom_jitter(aes(colour=Species), size=3) +
+        #Colour brewer scale
+        ggplot2::scale_colour_manual(values = wong_pal)
+```
+
+## Number of colours
+
+An important note when choosing palettes is that you need as many colours as you have groupings.
+The colour blind friendly palettes only have a maximum of 8 colours so if you have more you will need to use another palette.
+Of course once you start to have lots of groups it can be hard to differentiate between a lot of colours.
+If this is the case you may need to split up groups in different ways such as with [faceting](/ggplot2/facet.qmd).

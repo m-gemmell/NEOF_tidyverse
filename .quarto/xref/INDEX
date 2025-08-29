@@ -307,5 +307,8 @@
   },
   "ggplot2/text_and_lines.qmd": {
     "text_and_lines.html": "4966738d"
+  },
+  "ggplot2/annotation.qmd": {
+    "annotation.html": "acc8bfe4"
   }
 }
