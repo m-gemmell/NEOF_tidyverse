@@ -1,3 +1,7 @@
 # Facetting
 
+<center>
+![](images/ggplot2_facet.png){style="width:200px"}
+</center>
+
 [Tidyverse reference page](https://ggplot2.tidyverse.org//reference/index.html#facetting)

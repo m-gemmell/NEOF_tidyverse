@@ -43,8 +43,26 @@ bat_roost_tbl <- mgrtibbles::bat_roost_tbl |>
     dplyr::filter(MaxCountInAnyYear < 250 & Country != "British Crown Dependencies") |>
     #Remove rows where Country or Species is NA
     tidyr::drop_na(c("Country","Species"))
-bat_roost_tbl |> dplyr::glimpse()
 ```
+
+`r hide("View bat_roost_tbl contents")`
+```{r, echo=FALSE}
+library("reactable")
+options(reactable.theme = reactableTheme(
+  color = "hsl(233, 9%, 87%)",
+  backgroundColor = "hsl(233, 9%, 19%)",
+  borderColor = "hsl(233, 9%, 22%)",
+  stripedColor = "hsl(233, 12%, 22%)",
+  highlightColor = "hsl(233, 12%, 24%)",
+  inputStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  selectStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonHoverStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonActiveStyle = list(backgroundColor = "hsl(233, 9%, 28%)")
+))
+bat_roost_tbl |>
+    reactable::reactable()
+```
+`r unhide()`
 
 ## Legend guide column numbers
 

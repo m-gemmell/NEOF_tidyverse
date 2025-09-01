@@ -1,3 +1,90 @@
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+
 # Coordinate systems
 
+<center>
+![](images/ggplot2_coordinate_system.png){style="width:200px"}
+</center>
+
+The coordinate system (x and y) can be modified with various functions/components.
+This page will only show how to modify the aspect ratio with `coord_fixed()`.
+
+Other coordinate systems are in the below link.
+
 [Tidyverse reference page](https://ggplot2.tidyverse.org//reference/index.html#coordinate-systems)
+
+## Dataset
+
+We'll recreate many of the plots in the [`geom_point()` chapter](/ggplot2/geom_point.qmd), so we'll load the `mushroom_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+We will extract a random sample of 150 rows with `slice_sample()`.
+
+[mushroom_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/mushroom_tbl)
+
+```{r}
+#Load package
+library("mgrtibbles")
+#Set seed for random sampling
+set.seed("483")
+#mushroom_tbl tibble for demonstration
+mushroom_tbl <- mgrtibbles::mushroom_tbl |>
+    #Random sample of 150 rows
+    dplyr::slice_sample(n = 150, replace=FALSE)
+#Reset random seed to normal operation
+set.seed(NULL)
+```
+
+`r hide("View mushroom_tbl contents")`
+```{r, echo=FALSE}
+library("reactable")
+options(reactable.theme = reactableTheme(
+  color = "hsl(233, 9%, 87%)",
+  backgroundColor = "hsl(233, 9%, 19%)",
+  borderColor = "hsl(233, 9%, 22%)",
+  stripedColor = "hsl(233, 12%, 22%)",
+  highlightColor = "hsl(233, 12%, 24%)",
+  inputStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  selectStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonHoverStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonActiveStyle = list(backgroundColor = "hsl(233, 9%, 28%)")
+))
+mushroom_tbl |>
+    reactable::reactable()
+```
+`r unhide()`
+
+## Fixed ratio
+
+By default when a ggplot is created the x and y axis will each take up as much space as the width and height of the plot allow.
+However, this can lead to an extreme aspect ratio for the x and y axes.
+This may be unwanted for certain types of data.
+For example, ordination plots (such as PCoA and NMDs) are generally better with an aspect ratio of 1.
+
+To control the aspect ratio of the x and y axes the function/component `coord_fixed()` can be added.
+The ratio can be specified with the option `ratio=`.
+The numeric value equals the y:x ratio.
+Examples:
+
+- `ratio=1` = 1:1 y:x ratio
+- `ratio=5` = 5:1 y:x ratio
+- `ratio=1/5` = 1:5 y:x ratio
+
+[`coord_fixed()` reference page](https://ggplot2.tidyverse.org//reference/coord_fixed.html)
+
+Create the [default scatter plot](/ggplot2/geom_point.qmd#default-scatter-plot).
+
+In this case we will have an aspect ratio of 1 for the x and y axis.
+This is carried out by adding `ggplot2::coord_fixed(ratio = 1)`.
+
+```{r, fig.height = 4}
+mushroom_tbl |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
+        ggplot2::geom_point() +
+        #Fixed aspect ratio 
+        ggplot2::coord_fixed(ratio = 1)
+```
+
+__Note:__ When saving a plot with [`ggsave()`](/ggplot2/ggsave.qmd) ensure your chosen height and width have the same/similar aspect ratio.
+Otherwise you may end up with blank space on the sides or the top and bottom.

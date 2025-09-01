@@ -56,9 +56,26 @@ crop_and_soil_tbl <- mgrtibbles::crop_and_soil_tbl |>
     dplyr::mutate(dplyr::across(Temp_celsius:Temp_kelvin, as.numeric)) |>
     #Slice first 200 rows
     slice(1:50)
-#Glimpse tibble
-crop_and_soil_tbl |> dplyr::glimpse()
 ```
+
+`r hide("View crop_and_soil_tbl contents")`
+```{r, echo=FALSE}
+library("reactable")
+options(reactable.theme = reactableTheme(
+  color = "hsl(233, 9%, 87%)",
+  backgroundColor = "hsl(233, 9%, 19%)",
+  borderColor = "hsl(233, 9%, 22%)",
+  stripedColor = "hsl(233, 12%, 22%)",
+  highlightColor = "hsl(233, 12%, 24%)",
+  inputStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  selectStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonHoverStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonActiveStyle = list(backgroundColor = "hsl(233, 9%, 28%)")
+))
+crop_and_soil_tbl |>
+    reactable::reactable()
+```
+`r unhide()`
 
 ### Categorical mappings
 

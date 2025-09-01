@@ -27,9 +27,26 @@ For demonstration we'll load the `mushroom_tbl` data from the [mgrtibbles packag
 library("mgrtibbles")
 #mushroom_tbl tibble for demonstration
 mushroom_tbl <- mgrtibbles::mushroom_tbl
-#Glimpse tibble
-mushroom_tbl |> dplyr::glimpse()
 ```
+
+`r hide("View mushroom_tbl contents")`
+```{r, echo=FALSE}
+library("reactable")
+options(reactable.theme = reactableTheme(
+  color = "hsl(233, 9%, 87%)",
+  backgroundColor = "hsl(233, 9%, 19%)",
+  borderColor = "hsl(233, 9%, 22%)",
+  stripedColor = "hsl(233, 12%, 22%)",
+  highlightColor = "hsl(233, 12%, 24%)",
+  inputStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  selectStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonHoverStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonActiveStyle = list(backgroundColor = "hsl(233, 9%, 28%)")
+))
+mushroom_tbl |>
+    reactable::reactable()
+```
+`r unhide()`
 
 We'll also make a randomly subsampled dataset for plots that are better with less data.
 
@@ -42,9 +59,26 @@ mushroom_sample_tbl <- mushroom_tbl |>
     dplyr::slice_sample(n = 150, replace=FALSE)
 #Reset random seed to normal operation
 set.seed(NULL)
-#Glimpse tibble
-mushroom_sample_tbl |> dplyr::glimpse()
 ```
+
+`r hide("View mushroom_sample_tbl contents")`
+```{r, echo=FALSE}
+library("reactable")
+options(reactable.theme = reactableTheme(
+  color = "hsl(233, 9%, 87%)",
+  backgroundColor = "hsl(233, 9%, 19%)",
+  borderColor = "hsl(233, 9%, 22%)",
+  stripedColor = "hsl(233, 12%, 22%)",
+  highlightColor = "hsl(233, 12%, 24%)",
+  inputStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  selectStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonHoverStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonActiveStyle = list(backgroundColor = "hsl(233, 9%, 28%)")
+))
+mushroom_sample_tbl |>
+    reactable::reactable()
+```
+`r unhide()`
 
 ## 2D bin counts
 

@@ -37,9 +37,26 @@ mushroom_tbl <- mgrtibbles::mushroom_tbl |>
     dplyr::slice_sample(n = 150, replace=FALSE)
 #Reset random seed to normal operation
 set.seed(NULL)
-#Glimpse tibble
-mushroom_tbl |> dplyr::glimpse()
 ```
+
+`r hide("View mushroom_tbl contents")`
+```{r, echo=FALSE}
+library("reactable")
+options(reactable.theme = reactableTheme(
+  color = "hsl(233, 9%, 87%)",
+  backgroundColor = "hsl(233, 9%, 19%)",
+  borderColor = "hsl(233, 9%, 22%)",
+  stripedColor = "hsl(233, 12%, 22%)",
+  highlightColor = "hsl(233, 12%, 24%)",
+  inputStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  selectStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonHoverStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonActiveStyle = list(backgroundColor = "hsl(233, 9%, 28%)")
+))
+mushroom_tbl |>
+    reactable::reactable()
+```
+`r unhide()`
 
 ## Default scatter plot
 

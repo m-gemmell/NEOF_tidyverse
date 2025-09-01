@@ -161,11 +161,11 @@ How to save the output of `ggplot2` objects.
 
 <div class="hexggplot2customisationcolumnsbottom">
   <p><a href="/ggplot2/coordinate_systems.qmd">
-  <img src="images/ggplot2_labs.png" width="150px">
+  <img src="images/ggplot2_coordinate_system.png" width="150px">
   </a></p>
 
   <p><a href="/ggplot2/facet.qmd">
-  <img src="images/ggplot2_labs.png" width="150px">
+  <img src="images/ggplot2_facet.png" width="150px">
   </a></p>
 
 </div>
@@ -181,8 +181,10 @@ These include:
   - Setting number of rows for legend values
   - Allowing axis value/guides to dodge each other when they would otherwise overlap
 - [__Annotations__](/ggplot2/annotation.qmd): Adding text and lines onto the plotting area.
+  - Includes how to create a [statistical lm abline with the equation on the plot](/ggplot2/annotation.qmd#statistical-abline-and-equation)
 - [__Coordinate systems__](/ggplot2/coordinate_systems.qmd): Modify how the x and y aesthetics combine. 
-- [__Faceting__](/ggplot2/facet.qmd): Creation of multiple of the same type of plot by subsetting the visualised data by one or two metadata categories.
+  - Modify the x and y aspect ratio.
+- [__Facetting__](/ggplot2/facet.qmd): Creation of multiple of the same type of plot by subsetting the visualised data by one or two metadata categories.
 
 
 

@@ -21,8 +21,26 @@ Additionally, we'll [slice](/dplyr/slice.qmd) out the first 200 rows and [select
 crab_age_weight_tbl <- mgrtibbles::crab_age_pred_tbl |>
     dplyr::slice(1:200) |>
     dplyr::select(Weight, Age)
-crab_age_weight_tbl
 ```
+
+`r hide("View crab_age_weight_tbl contents")`
+```{r, echo=FALSE}
+library("reactable")
+options(reactable.theme = reactableTheme(
+  color = "hsl(233, 9%, 87%)",
+  backgroundColor = "hsl(233, 9%, 19%)",
+  borderColor = "hsl(233, 9%, 22%)",
+  stripedColor = "hsl(233, 12%, 22%)",
+  highlightColor = "hsl(233, 12%, 24%)",
+  inputStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  selectStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonHoverStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonActiveStyle = list(backgroundColor = "hsl(233, 9%, 28%)")
+))
+crab_age_weight_tbl |>
+    reactable::reactable()
+```
+`r unhide()`
 
 ## Plot
 

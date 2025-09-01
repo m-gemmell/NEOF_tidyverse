@@ -12,6 +12,7 @@ The axes of __continuous variables__ on plots can be scaled to view the data in 
 This includes:
 
 - Changing various options of a continuous scale with `scale_x_continuous` and `scale_y_continuous`
+    - Includes the axes limits and the breaks
 - Transforming the axes scale from continuous (1,2,3...) to log10 or square root
 
 [Tidyverse reference page](https://ggplot2.tidyverse.org//reference/scale_continuous.html)
@@ -34,9 +35,26 @@ mushroom_tbl <- mgrtibbles::mushroom_tbl |>
     dplyr::slice_sample(n = 150, replace=FALSE)
 #Reset random seed to normal operation
 set.seed(NULL)
-#Glimpse tibble
-mushroom_tbl |> dplyr::glimpse()
 ```
+
+`r hide("View mushroom_tbl contents")`
+```{r, echo=FALSE}
+library("reactable")
+options(reactable.theme = reactableTheme(
+  color = "hsl(233, 9%, 87%)",
+  backgroundColor = "hsl(233, 9%, 19%)",
+  borderColor = "hsl(233, 9%, 22%)",
+  stripedColor = "hsl(233, 12%, 22%)",
+  highlightColor = "hsl(233, 12%, 24%)",
+  inputStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  selectStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonHoverStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonActiveStyle = list(backgroundColor = "hsl(233, 9%, 28%)")
+))
+mushroom_tbl |>
+    reactable::reactable()
+```
+`r unhide()`
 
 ## Continuous scale
 
@@ -69,7 +87,46 @@ Certain data is better suited to be displayed with log10 or square root scales.
 
 These transformations can be carried out with other scale functions that take the same options as `scale_x_continuous()` and `scale_y_continuous()`.
 
-It is important to note that the values on the axes are not transformed, rather where they are placed and the distances are transformed.
+[Full list of options](https://ggplot2.tidyverse.org//reference/scale_continuous.html)
+
+It is important to note that the values displayed on the axes are not transformed (i.e. values of cm will stay as cm and not log10(cm)). Instead, the distance between values (scale) are transformed. Please see the expandable box below for a comparison.
+
+`r hide("Normal scale and transformed scale comparison")`
+
+Below are the same plot with and without scale transformation.
+
+The breaks are chosen to be identical in both for clarity.
+Notice the scale difference (i.e where the points and values are placed) but the actual values are the same (i.e. x values go from 0-50 and y values go from 0 to 20).
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+mushroom_tbl |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
+        ggplot2::geom_point() +
+        ggplot2::scale_x_continuous(name="Stem width", 
+                                    breaks=seq(from = 0, to=50, by = 5), 
+                                    limits = c(1,50)) +
+        ggplot2::scale_y_continuous(name="Stem height", 
+                                    breaks=seq(from=0, to=20, by=2), 
+                                    limits = c(1,20)) +
+        ggplot2::labs(title="Untransformed scale")   
+
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+mushroom_tbl |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
+        ggplot2::geom_point() +
+        #Log10 scale
+        ggplot2::scale_x_log10(name="Stem width",
+                                breaks=seq(from = 0, to=50, by = 5), 
+                                limits = c(1,50)) + 
+        ggplot2::scale_y_log10(name="Stem height",
+                                breaks=seq(from=0, to=20, by=2), 
+                                    limits = c(1,20)) +
+        ggplot2::labs(title="Log10 transformed scale")
+```
+
+`r unhide()`
 
 ### Log10
 
@@ -81,8 +138,6 @@ To convert an axis scale to log10 one of the below __components__ needs to be ad
 Create the [default scatter plot](/ggplot2/geom_point.qmd#default-scatter-plot).
 Transform both the x and y axis scales to log10.
 
-__Note:__ R will give you a warning that the log-10 transformation has introduced infinite values. This occurs because `log10(0)` produces the result `-inf` in R. This warning can therefore normally be ignored as long as the plot looks fine.
-
 ```{r}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
@@ -91,6 +146,27 @@ mushroom_tbl |>
         ggplot2::scale_x_log10(name="Stem width") + 
         ggplot2::scale_y_log10(name="Stem height")
 ```
+
+
+`r hide("log-10 transformation introduced infinite values")`
+R has given a warning that the log-10 transformation has introduced infinite values. This occurs because `log10(0)` produces the result `-inf` in R. This warning can therefore normally be ignored as long as the plot looks fine.
+
+Sometimes this will cause a plot to become empty.
+This can be best avoided by removing rows were both the x and y axis values equal 0 with [`filter()`](/dplyr/filter.qmd).
+An example of this is below.
+
+```{r, message=FALSE}
+mushroom_tbl |>
+    #Filter to remove rows with 0 values for stem width and height
+    dplyr::filter(stem_width != 0 & stem_height != 0) |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
+        ggplot2::geom_point() +
+        #Log10 scale
+        ggplot2::scale_x_log10(name="Stem width") + 
+        ggplot2::scale_y_log10(name="Stem height")
+```
+
+`r unhide()`
 
 ## Square root
 
@@ -106,7 +182,8 @@ Transform both the x and y axis scales to square root.
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
         ggplot2::geom_point() +
-        #Log10 scale
+        #Sqrt scale
         ggplot2::scale_x_sqrt(name="Stem width") + 
         ggplot2::scale_y_sqrt(name="Stem height")
 ```
+

@@ -62,6 +62,63 @@ monofont {
   height: 40px;
 }
 
+// Placement of hex image in one row
+.hexrow {
+  position: relative;
+  display: flex;
+  flex-wrap:nowrap;
+  justify-content: center;
+}
+
+// Placement of hex image rows in /tibble/tibble.qmd at others
+.hextblrowbottom {
+  left: -37.5px;
+  top:-61px;
+  height:130px;
+  position: relative;
+  display: flex;
+  flex-wrap:nowrap;
+  justify-content: center;
+}
+
+// Placement of hex image rows in /dplyr/dplyr.qmd at others
+.hexdplyrcolumnstop {
+  left: -37.5px;
+  position: relative;
+  display: flex;
+  flex-wrap:nowrap;
+  justify-content: center;
+}
+.hexdplyrcolumnsbottom{
+  left:37.5px;
+  top:-61px;
+  height:130px;
+  position: relative;
+  display: flex;
+  flex-wrap:nowrap;
+  justify-content: center;
+}
+
+// Placement of hex images in /ggplot2/ggplot2.qmd
+.hexggplotcolumnsbottom{
+  left:-37.5px;
+  top:-61px;
+  height:130px;
+  position: relative;
+  display: flex;
+  flex-wrap:nowrap;
+  justify-content: center;
+}
+.hexggplot2customisationcolumnsbottom{
+  left:37.5px;
+  top:-63px;
+  height:130px;
+  position: relative;
+  display: flex;
+  flex-wrap:nowrap;
+  justify-content: center;
+}
+
 .hexcollast {
 }
 

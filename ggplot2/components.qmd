@@ -23,8 +23,26 @@ Additionally, we'll [filter](/dplyr/filter.qmd) the rows to only retain observat
 mammal_sleep_tbl <- mgrtibbles::mammal_sleep_tbl |>
     dplyr::select(body_wt, brain_wt, predation) |>
     dplyr::filter(body_wt < 10 & brain_wt < 0.1)
-mammal_sleep_tbl
 ```
+
+`r hide("View mammal_sleep_tbl contents")`
+```{r, echo=FALSE}
+library("reactable")
+options(reactable.theme = reactableTheme(
+  color = "hsl(233, 9%, 87%)",
+  backgroundColor = "hsl(233, 9%, 19%)",
+  borderColor = "hsl(233, 9%, 22%)",
+  stripedColor = "hsl(233, 12%, 22%)",
+  highlightColor = "hsl(233, 12%, 24%)",
+  inputStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  selectStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonHoverStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonActiveStyle = list(backgroundColor = "hsl(233, 9%, 28%)")
+))
+mammal_sleep_tbl |>
+    reactable::reactable()
+```
+`r unhide()`
 
 ## Building up complexity
 

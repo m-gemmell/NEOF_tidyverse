@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-25059e4d91fec21ebefc6ef88706a87a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-0d9c7956207bb5d5b2b6f51c3a8df664.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-dark-6decc73b1e135c526ab77f89a73dcf54.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/bootstrap/bootstrap-25059e4d91fec21ebefc6ef88706a87a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -109,6 +109,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="../site_libs/core-js-2.5.3/shim.min.js"></script>
+
+<script src="../site_libs/react-18.2.0/react.min.js"></script>
+
+<script src="../site_libs/react-18.2.0/react-dom.min.js"></script>
+
+<script src="../site_libs/reactwidget-2.0.0/react-tools.js"></script>
+
+<link href="../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<link href="../site_libs/reactable-0.4.4/reactable.css" rel="stylesheet">
+
+<script src="../site_libs/reactable-binding-0.4.4/reactable.js"></script>
+
 
 
 <link rel="stylesheet" href="../include/webex.css">
@@ -616,23 +632,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Select to retain only the iucn_2cat and Order columns</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(iucn_2cat,Order,Family) <span class="sc">|&gt;</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Drop any rows with an NA</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">drop_na</span>()</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>amphibian_div_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 129 × 3
-   iucn_2cat Order   Family        
-   &lt;fct&gt;     &lt;chr&gt;   &lt;chr&gt;         
- 1 LC        Anura   Hylidae       
- 2 LC        Anura   Hylidae       
- 3 nonLC     Caudata Ambystomatidae
- 4 LC        Caudata Ambystomatidae
- 5 LC        Caudata Ambystomatidae
- 6 LC        Caudata Ambystomatidae
- 7 LC        Caudata Ambystomatidae
- 8 LC        Caudata Ambystomatidae
- 9 LC        Caudata Ambystomatidae
-10 LC        Caudata Amphiumidae   
-# ℹ 119 more rows</code></pre>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">drop_na</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="webex-solution">
+<button>
+View amphibian_div_tbl contents
+</button>
+<div class="cell">
+<div class="cell-output-display">
+<div class="reactable html-widget html-fill-item" id="htmlwidget-f5ce309f65134f235f78" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-f5ce309f65134f235f78">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"iucn_2cat":["LC","LC","nonLC","LC","LC","LC","LC","LC","LC","LC","nonLC","LC","LC","LC","LC","LC","nonLC","LC","LC","LC","LC","LC","LC","LC","LC","LC","nonLC","nonLC","nonLC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","nonLC","LC","LC","LC","LC","LC","LC","LC","LC","nonLC","nonLC","nonLC","LC","nonLC","nonLC","LC","nonLC","nonLC","nonLC","LC","nonLC","LC","nonLC","nonLC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","nonLC","LC","LC","nonLC","nonLC","LC","nonLC","LC","nonLC","nonLC","LC","LC","nonLC","nonLC","nonLC","nonLC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","nonLC","nonLC","LC","LC","nonLC","LC","nonLC","nonLC","LC","nonLC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC"],"Order":["Anura","Anura","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Anura","Anura","Anura","Anura","Caudata","Caudata","Anura","Anura","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Anura","Anura","Anura","Anura","Caudata","Caudata","Caudata","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Caudata","Caudata","Caudata","Anura","Anura","Caudata","Caudata","Caudata","Caudata"],"Family":["Hylidae","Hylidae","Ambystomatidae","Ambystomatidae","Ambystomatidae","Ambystomatidae","Ambystomatidae","Ambystomatidae","Ambystomatidae","Amphiumidae","Amphiumidae","Amphiumidae","Bufonidae","Bufonidae","Bufonidae","Bufonidae","Plethodontidae","Plethodontidae","Ascaphidae","Ascaphidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Dicamptodontidae","Dicamptodontidae","Dicamptodontidae","Dicamptodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Hylidae","Hylidae","Hylidae","Hylidae","Hylidae","Hylidae","Hylidae","Hylidae","Hylidae","Bufonidae","Proteidae","Salamandridae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Hylidae","Hylidae","Hylidae","Hylidae","Sirenidae","Sirenidae","Plethodontidae","Ranidae","Ranidae","Ranidae","Ranidae","Ranidae","Ranidae","Ranidae","Ranidae","Ranidae","Ranidae","Ranidae","Ranidae","Ranidae","Ranidae","Rhyacotritonidae","Sirenidae","Sirenidae","Scaphiopodidae","Scaphiopodidae","Salamandridae","Salamandridae","Salamandridae","Salamandridae"]},"columns":[{"id":"iucn_2cat","name":"iucn_2cat","type":"factor"},{"id":"Order","name":"Order","type":"character"},{"id":"Family","name":"Family","type":"character"}],"theme":{"color":"hsl(233, 9%, 87%)","backgroundColor":"hsl(233, 9%, 19%)","borderColor":"hsl(233, 9%, 22%)","stripedColor":"hsl(233, 12%, 22%)","highlightColor":"hsl(233, 12%, 24%)","inputStyle":{"backgroundColor":"hsl(233, 9%, 25%)"},"selectStyle":{"backgroundColor":"hsl(233, 9%, 25%)"},"pageButtonHoverStyle":{"backgroundColor":"hsl(233, 9%, 25%)"},"pageButtonActiveStyle":{"backgroundColor":"hsl(233, 9%, 28%)"}},"dataKey":"fcbe7decb2fc2e84862e832c99644cb9"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
 </div>
 </div>
 </section>
@@ -645,13 +655,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>nonLC:</strong> non Least Concern including Near Threatened, Vulnerable, and Endangered</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>amphibian_div_tbl <span class="sc">|&gt;</span>    </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> iucn_2cat)) <span class="sc">+</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>amphibian_div_tbl <span class="sc">|&gt;</span>    </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> iucn_2cat)) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="geom_bar_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="979"></p>
+<p><img src="geom_bar_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="979"></p>
 </figure>
 </div>
 </div>
@@ -662,13 +672,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If there are a lot of unique <strong>values</strong> in the <strong>categorical variable</strong> you can <strong>map</strong> it to the <strong>y aesthetic</strong> to create a <strong>flipped bar chart</strong>. This is especially useful if the <strong>values</strong> have long names that would struggle to fit as labels side by side on the x-axis.</p>
 <p>Create a <strong>flipped bar chart</strong> of the <code>Family</code> <strong>categorical character variable/column</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>amphibian_div_tbl <span class="sc">|&gt;</span>    </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> Family)) <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>amphibian_div_tbl <span class="sc">|&gt;</span>    </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> Family)) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="geom_bar_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="979"></p>
+<p><img src="geom_bar_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="979"></p>
 </figure>
 </div>
 </div>
@@ -679,13 +689,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>It is common to <strong>map</strong> a second <strong>categorical variable/column</strong> to the <strong>fill aesthetic</strong>. By default this will create a <strong>stacked bar chart</strong> where the <strong>fill variable</strong> is represented by colours filling the bar chart. This is useful is you are more interested in the <strong>differences between</strong> the x-axis groupings.</p>
 <p>Create a <strong>stacked bar chart</strong> of “iucn_2cat” counts where the fill of the bar chart is coloured by “Order”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>amphibian_div_tbl <span class="sc">|&gt;</span>    </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> iucn_2cat, <span class="at">fill =</span> Order)) <span class="sc">+</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>amphibian_div_tbl <span class="sc">|&gt;</span>    </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> iucn_2cat, <span class="at">fill =</span> Order)) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="geom_bar_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="979"></p>
+<p><img src="geom_bar_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="979"></p>
 </figure>
 </div>
 </div>
@@ -696,13 +706,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>When you are interested in the <strong>differences within</strong> the x-axis groupings you can created a <strong>side-by-side</strong> bar chart. This is carried out by using the <code>position=</code> option in <code>ggplot2::geom_bar()</code> and setting it to <code>"dodge"</code>.</p>
 <p>Create a <strong>side-by-side bar chart</strong> of “iucn_2cat” counts where the fill of the bar chart is coloured by “Order”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>amphibian_div_tbl <span class="sc">|&gt;</span>    </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> iucn_2cat, <span class="at">fill =</span> Order)) <span class="sc">+</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>amphibian_div_tbl <span class="sc">|&gt;</span>    </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> iucn_2cat, <span class="at">fill =</span> Order)) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="geom_bar_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="979"></p>
+<p><img src="geom_bar_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="979"></p>
 </figure>
 </div>
 </div>
@@ -713,13 +723,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>ALthough <strong>absolute count</strong> values are useful for <strong>bar charts</strong> you will sometimes want <strong>relative proportions</strong>. To convert the values so the total x-axis count per group equals 1 you can set <code>position=</code> to <code>"fill"</code>.</p>
 <p>Create a <strong>relative proportion bar chart</strong> of “iucn_2cat” counts where the fill of the bar chart is coloured by “Order”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>amphibian_div_tbl <span class="sc">|&gt;</span>    </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> iucn_2cat, <span class="at">fill =</span> Order)) <span class="sc">+</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>amphibian_div_tbl <span class="sc">|&gt;</span>    </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> iucn_2cat, <span class="at">fill =</span> Order)) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="geom_bar_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="979"></p>
+<p><img src="geom_bar_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="979"></p>
 </figure>
 </div>
 </div>

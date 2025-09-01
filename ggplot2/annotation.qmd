@@ -10,6 +10,13 @@ library(tidyverse)
 </center>
 
 Text and lines can be added to a plot as a form of annotation.
+This page will demonstrate how to:
+
+- [Add text annotation on top of a plot](#text-annotation)
+- [Add multiple annotations including boxes and lines](#multiple-annotations)
+- [Add horizontal & vertical lines](#horizontal-and-vertical)
+- [Add a diagonal abline](#abline)
+- [Add a linear model abline with the equation](#statistical-abline-and-equation)
 
 [Tidyverse reference page](https://ggplot2.tidyverse.org//reference/index.html#annotations)
 
@@ -24,8 +31,26 @@ Additionally, we'll [slice](/dplyr/slice.qmd) out the first 200 rows and [select
 crab_age_weight_tbl <- mgrtibbles::crab_age_pred_tbl |>
     dplyr::slice(1:200) |>
     dplyr::select(Weight, Age)
-crab_age_weight_tbl
 ```
+
+`r hide("View crab_age_weight_tbl contents")`
+```{r, echo=FALSE}
+library("reactable")
+options(reactable.theme = reactableTheme(
+  color = "hsl(233, 9%, 87%)",
+  backgroundColor = "hsl(233, 9%, 19%)",
+  borderColor = "hsl(233, 9%, 22%)",
+  stripedColor = "hsl(233, 12%, 22%)",
+  highlightColor = "hsl(233, 12%, 24%)",
+  inputStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  selectStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonHoverStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonActiveStyle = list(backgroundColor = "hsl(233, 9%, 28%)")
+))
+crab_age_weight_tbl |>
+    reactable::reactable()
+```
+`r unhide()`
 
 ## Annotation
 
@@ -130,7 +155,9 @@ ggplot2::ggplot(data=crab_age_weight_tbl, mapping=aes(x=Age, y = Weight)) +
     ggplot2::geom_smooth(method="lm")
 ```
 
-You can also include the linear equation on the plot.
+### Statistical abline and equation
+
+You can include the linear equation on the plot.
 
 First we need to calculate the linear model with the base R stats package (preinstalled in R).
 

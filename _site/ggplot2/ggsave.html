@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-25059e4d91fec21ebefc6ef88706a87a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-0d9c7956207bb5d5b2b6f51c3a8df664.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-dark-6decc73b1e135c526ab77f89a73dcf54.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/bootstrap/bootstrap-25059e4d91fec21ebefc6ef88706a87a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -109,6 +109,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="../site_libs/core-js-2.5.3/shim.min.js"></script>
+
+<script src="../site_libs/react-18.2.0/react.min.js"></script>
+
+<script src="../site_libs/react-18.2.0/react-dom.min.js"></script>
+
+<script src="../site_libs/reactwidget-2.0.0/react-tools.js"></script>
+
+<link href="../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<link href="../site_libs/reactable-0.4.4/reactable.css" rel="stylesheet">
+
+<script src="../site_libs/reactable-binding-0.4.4/reactable.js"></script>
+
 
 
 <link rel="stylesheet" href="../include/webex.css">
@@ -611,23 +627,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Select to retain only the iucn_2cat and Order columns</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(iucn_2cat,Order,Family) <span class="sc">|&gt;</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Drop any rows with an NA</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">drop_na</span>()</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>amphibian_div_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 129 × 3
-   iucn_2cat Order   Family        
-   &lt;fct&gt;     &lt;chr&gt;   &lt;chr&gt;         
- 1 LC        Anura   Hylidae       
- 2 LC        Anura   Hylidae       
- 3 nonLC     Caudata Ambystomatidae
- 4 LC        Caudata Ambystomatidae
- 5 LC        Caudata Ambystomatidae
- 6 LC        Caudata Ambystomatidae
- 7 LC        Caudata Ambystomatidae
- 8 LC        Caudata Ambystomatidae
- 9 LC        Caudata Ambystomatidae
-10 LC        Caudata Amphiumidae   
-# ℹ 119 more rows</code></pre>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">drop_na</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="webex-solution">
+<button>
+View amphibian_div_tbl contents
+</button>
+<div class="cell">
+<div class="cell-output-display">
+<div class="reactable html-widget html-fill-item" id="htmlwidget-1fd409dd711c6d1433fb" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-1fd409dd711c6d1433fb">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"iucn_2cat":["LC","LC","nonLC","LC","LC","LC","LC","LC","LC","LC","nonLC","LC","LC","LC","LC","LC","nonLC","LC","LC","LC","LC","LC","LC","LC","LC","LC","nonLC","nonLC","nonLC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","nonLC","LC","LC","LC","LC","LC","LC","LC","LC","nonLC","nonLC","nonLC","LC","nonLC","nonLC","LC","nonLC","nonLC","nonLC","LC","nonLC","LC","nonLC","nonLC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","nonLC","LC","LC","nonLC","nonLC","LC","nonLC","LC","nonLC","nonLC","LC","LC","nonLC","nonLC","nonLC","nonLC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","nonLC","nonLC","LC","LC","nonLC","LC","nonLC","nonLC","LC","nonLC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC","LC"],"Order":["Anura","Anura","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Anura","Anura","Anura","Anura","Caudata","Caudata","Anura","Anura","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Caudata","Anura","Anura","Anura","Anura","Caudata","Caudata","Caudata","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Anura","Caudata","Caudata","Caudata","Anura","Anura","Caudata","Caudata","Caudata","Caudata"],"Family":["Hylidae","Hylidae","Ambystomatidae","Ambystomatidae","Ambystomatidae","Ambystomatidae","Ambystomatidae","Ambystomatidae","Ambystomatidae","Amphiumidae","Amphiumidae","Amphiumidae","Bufonidae","Bufonidae","Bufonidae","Bufonidae","Plethodontidae","Plethodontidae","Ascaphidae","Ascaphidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Dicamptodontidae","Dicamptodontidae","Dicamptodontidae","Dicamptodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Hylidae","Hylidae","Hylidae","Hylidae","Hylidae","Hylidae","Hylidae","Hylidae","Hylidae","Bufonidae","Proteidae","Salamandridae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Plethodontidae","Hylidae","Hylidae","Hylidae","Hylidae","Sirenidae","Sirenidae","Plethodontidae","Ranidae","Ranidae","Ranidae","Ranidae","Ranidae","Ranidae","Ranidae","Ranidae","Ranidae","Ranidae","Ranidae","Ranidae","Ranidae","Ranidae","Rhyacotritonidae","Sirenidae","Sirenidae","Scaphiopodidae","Scaphiopodidae","Salamandridae","Salamandridae","Salamandridae","Salamandridae"]},"columns":[{"id":"iucn_2cat","name":"iucn_2cat","type":"factor"},{"id":"Order","name":"Order","type":"character"},{"id":"Family","name":"Family","type":"character"}],"theme":{"color":"hsl(233, 9%, 87%)","backgroundColor":"hsl(233, 9%, 19%)","borderColor":"hsl(233, 9%, 22%)","stripedColor":"hsl(233, 12%, 22%)","highlightColor":"hsl(233, 12%, 24%)","inputStyle":{"backgroundColor":"hsl(233, 9%, 25%)"},"selectStyle":{"backgroundColor":"hsl(233, 9%, 25%)"},"pageButtonHoverStyle":{"backgroundColor":"hsl(233, 9%, 25%)"},"pageButtonActiveStyle":{"backgroundColor":"hsl(233, 9%, 28%)"}},"dataKey":"fcbe7decb2fc2e84862e832c99644cb9"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
 </div>
 </div>
 </section>
@@ -636,17 +646,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To save a plot we first need to create a <strong>ggplot2</strong> object containing a plot. Instead of calling the fucntions to outpu the plot we will instead save it to an object.</p>
 <p>Create a bar chart of the <code>iucn_2cat</code> <strong>variable</strong> and save it to the object <code>iucn_barchart</code>. We will use this object to save to various files.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>iucn_barchart <span class="ot">&lt;-</span> amphibian_div_tbl <span class="sc">|&gt;</span>    </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> iucn_2cat)) <span class="sc">+</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>iucn_barchart <span class="ot">&lt;-</span> amphibian_div_tbl <span class="sc">|&gt;</span>    </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> iucn_2cat)) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If we call the object we can display it like below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>iucn_barchart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>iucn_barchart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ggsave_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="979"></p>
+<p><img src="ggsave_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="979"></p>
 </figure>
 </div>
 </div>
@@ -657,7 +667,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>A common type of image file to save to is the PNG file.</p>
 <p>Save/export the ggplot2 object <code>iucn_barchart</code> to a png file called “iucn_barchart.png”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(<span class="at">filename=</span><span class="st">"iucn_barchart.png"</span>, <span class="at">plot=</span>iucn_barchart)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(<span class="at">filename=</span><span class="st">"iucn_barchart.png"</span>, <span class="at">plot=</span>iucn_barchart)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
@@ -695,8 +705,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="save-an-image-with-extra-options">Save an image with extra options</h3>
 <p>Lets save another PNG file specifying all these options.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(<span class="at">filename=</span><span class="st">"iucn_barchart_2.png"</span>, <span class="at">plot=</span>iucn_barchart,</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">device=</span><span class="st">"png"</span>, <span class="at">units=</span><span class="st">"mm"</span>, <span class="at">height=</span><span class="dv">200</span>, <span class="at">width=</span><span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(<span class="at">filename=</span><span class="st">"iucn_barchart_2.png"</span>, <span class="at">plot=</span>iucn_barchart,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">device=</span><span class="st">"png"</span>, <span class="at">units=</span><span class="st">"mm"</span>, <span class="at">height=</span><span class="dv">200</span>, <span class="at">width=</span><span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The PNG file contains the following image:</p>
 <center>
@@ -713,8 +723,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Let’s change the height and width to make a better output. We’ll choose quite small values as the plot is very compact, allowing the text to be bigger. Additionally, we’ll make the height larger than the width as there are only 2 x axis values whilst the y axis contains a <strong>continuous variable</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(<span class="at">filename=</span><span class="st">"iucn_barchart_3.png"</span>, <span class="at">plot=</span>iucn_barchart,</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">device=</span><span class="st">"png"</span>, <span class="at">units=</span><span class="st">"mm"</span>, <span class="at">height=</span><span class="dv">125</span>, <span class="at">width=</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(<span class="at">filename=</span><span class="st">"iucn_barchart_3.png"</span>, <span class="at">plot=</span>iucn_barchart,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">device=</span><span class="st">"png"</span>, <span class="at">units=</span><span class="st">"mm"</span>, <span class="at">height=</span><span class="dv">125</span>, <span class="at">width=</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The PNG file contains the following image:</p>
 <center>
