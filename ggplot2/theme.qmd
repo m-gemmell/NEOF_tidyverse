@@ -8,7 +8,7 @@ library(tidyverse)
 ![](images/ggplot2_theme.png){style="width:200px"}
 </center>
 
-The `theme()` component can be used to alter appearance of a ggplot.
+The `ggplot2::theme()` component can be used to alter the appearance of a ggplot.
 There are many options but this page will show the following:
 
 - Altering the size and colour of text.
@@ -27,7 +27,7 @@ To preprocess the data we will:
 
 - Remove the `RoostCode` __variable/column__ with [`dplyr::select`](/dplyr/select.qmd).
 - Remove __rows/observations__ with a MaxCountInAnyYear greater than or equal to 250 with [`dplyr::filter()`](/dplyr/filter.qmd)
-- Remove __rows/observations__ from the __Country__ grouping "British Crown Dependencies" to reatin the countries England, Northern Ireland, Scotland, and Wales with [`dplyr::filter()`](/dplyr/filter.qmd)
+- Remove __rows/observations__ from the __Country__ grouping "British Crown Dependencies" to retain the countries England, Northern Ireland, Scotland, and Wales with [`dplyr::filter()`](/dplyr/filter.qmd)
 - Remove __rows/observations__ where the the Country or Species value is NA with [`tidyr:drop_na()`](/tidyr/drop_na.qmd)
 
 [bat_roost_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/bat_roost_tbl)
@@ -67,15 +67,15 @@ bat_roost_tbl |>
 
 ## Text
 
-Although you can set the plot size with [`ggsave()`](/ggplot2/ggsave.qmd#height-and-width-choice) to help get appropriate text sizes this is not always the optimal way.
-Instead the text/font size can be chosen in the `theme()` function.
+Although you can set the plot size with [`ggplot2::ggsave()`](/ggplot2/ggsave.qmd#height-and-width-choice) to try to get appropriate text sizes this is not always the optimal way.
+Instead the text/font size can be chosen in the `ggplot2::theme()` function.
 
 ### All text
 
 Create the [default box plot](/ggplot2/geom_boxplot.qmd#default-box-plot).
-We will set the the text size with the `theme()` option `text=`
+We will set the the text size with the `ggplot2::theme()` option `text=`
 
-This options then needs to be provided with the function `element_text()` which itself has different options.
+This options then needs to be provided with the function `ggplot2::element_text()` which itself has different options.
 These include:
 
 - `size=`: Text size
@@ -90,24 +90,24 @@ bat_roost_tbl |>
     ggplot2::ggplot(aes(y = MaxCountInAnyYear)) +
         ggplot2::geom_boxplot() +
         #Theme
-        ggplot2::theme(text=element_text(size = 20))
+        ggplot2::theme(text=ggplot2::element_text(size = 20))
 ```
 
 ### Sets of text
 
-We can set all the text to one set of options or we can individualise the different sets of text.
+We can set all the text in a plot to one set of options or we can individualise the different sets of text.
 
-Examples of different text theme elements include:
+Examples of different text theme arguments include:
 
 - `text=`: All text
-- `axis.text`: All axis values text
-- `axis.text.x`: Text of x axis values
-- `axis.text.y`: Text of y axis values
-- `axis.title`: All axis title text
-- `axis.title.x`: Text of x axis title
-- `axis.title.y`: Text of y axis title
-- `legend.text`: Text of legend labels
-- `legend.title`: Text of legend title
+- `axis.text=`: All axis values text
+- `axis.text.x=`: Text of x axis values
+- `axis.text.y=`: Text of y axis values
+- `axis.title=`: All axis title text
+- `axis.title.x=`: Text of x axis title
+- `axis.title.y=`: Text of y axis title
+- `legend.text=`: Text of legend labels
+- `legend.title=`: Text of legend title
 
 Lets show some of these in action with the [box plot with a layer of jittered points](/ggplot2/geom_boxplot.qmd#layer-of-jittered-points).
 As well as changing the size and colour of text we will also change the angle with `angle=`.
@@ -122,11 +122,11 @@ bat_roost_tbl |>
         ggplot2::geom_boxplot() +
         ggplot2::geom_jitter(aes(colour=Species), size=2) +
         #Theme
-        ggplot2::theme(axis.title = element_text(size=20, colour = "blue"),
-                        axis.text.x = element_text(size=12, angle = 10),
-                        axis.text.y = element_text(size=12),
-                        legend.text = element_text(size = 12),
-                        legend.title = element_text(size = 20, colour="red")
+        ggplot2::theme(axis.title = ggplot2::element_text(size=20, colour = "blue"),
+                        axis.text.x = ggplot2::element_text(size=12, angle = 10),
+                        axis.text.y = ggplot2::element_text(size=12),
+                        legend.text = ggplot2::element_text(size = 12),
+                        legend.title = ggplot2::element_text(size = 20, colour="red")
                         )
 ```
 

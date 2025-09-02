@@ -184,7 +184,7 @@ These include:
   - Includes how to create a [statistical lm abline with the equation on the plot](/ggplot2/annotation.qmd#statistical-abline-and-equation)
 - [__Coordinate systems__](/ggplot2/coordinate_systems.qmd): Modify how the x and y aesthetics combine. 
   - Modify the x and y aspect ratio.
-- [__Facetting__](/ggplot2/facet.qmd): Creation of multiple of the same type of plot by subsetting the visualised data by one or two metadata categories.
+- [__Facetting__](/ggplot2/facet.qmd): Splitting a plot into multiple panels by subsetting the visualised data by one or two metadata categories.
 
 
 

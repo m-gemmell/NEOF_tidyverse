@@ -6,4 +6,6 @@ title: "Purrr"
 ![](../images/purrr.png){style="width:150px"}
 </center>
 
+In development
+
 [purr homepage](https://purrr.tidyverse.org/)

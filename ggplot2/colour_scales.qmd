@@ -11,10 +11,10 @@ library(tidyverse)
 The default colours used for ggplot2 are suitable for small amounts of groups but they can be improved.
 In this page we will demonstrate how to change the colour scale of the colour aesthetic with:
 
-- `scale_colour_brewer()`: Change the colours used to the colour brewer palette.
-- `scale_colour_manual()`: Set the colours to be used manually. This lets the use of colour blind friendly palettes.
+- `ggplot2::scale_colour_brewer()`: Change the colours used to the colour brewer palette.
+- `ggplot2::scale_colour_manual()`: Set the colours to be used manually. This lets the use of colour blind friendly palettes.
 
-There are many other ways ot change the colour scale. Please see the below link for the full list of functions.
+There are many other ways to change the colour scale. Please see the below link for the full list of functions.
 
 [Tidyverse reference page](https://ggplot2.tidyverse.org//reference/index.html#scales)
 
@@ -65,14 +65,20 @@ bat_roost_tbl |>
 
 ## Colour brewer
 
-Colour brewer is a popular set of palettes used for maps and other data visualisation plots.
+[Colour brewer](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) is a popular set of palettes used for maps and other data visualisation plots.
+Its colours can be used in a ggplot with the __function/component__ `ggplot2::scale_colour_brewer()`.
 
-The full set of palettes can be seen below.
+### Colour brewer palettes
+
+The full set of colour brewer palettes can be seen below.
 
 <center>
 ![](images/colourbrewer.png){style="width:600px; border-radius:5px"}
 </center>
  <br>
+
+### Colour brewer plot
+
 Create the [boxplot with a layer of jittered points](/ggplot2/geom_boxplot.qmd#layer-of-jittered-points).
 We'll colour the points with Colour brewer set 2 using the component `scale_colour_brewer()`.
 As an option we provide `palette=` with the name of the palette matching that in the above image of palettes.
@@ -95,17 +101,19 @@ bat_roost_tbl |>
 
 ## Manual colour
 
-I am a fan of using other colour palettes outside of ggplot2's options with the component `scale_colour_manual()`.
+I am a fan of using other colour palettes outside of ggplot2's options with the component `ggplot2::scale_colour_manual()`.
 
 [`scale_colour_brewer()` web page](https://ggplot2.tidyverse.org//reference/scale_manual.html)
 
-With this component I like to utilise colour blind friendly palettes.
+### Colour blind friendly palettes
+
+With the __component__ I like to utilise colour blind friendly palettes.
 Specifically I use palettes from:
 
-[Colouring for Colourblindness by David Nichols](https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40)
+[Colouring for Colour blindness by David Nichols](https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40)
 
 Below are the three palettes in the above link.
-They have been assigned as __vectors__ that can be easily used with `scale_colour_manual()`.
+They have been assigned as __vectors__ that can be easily used with `ggplot2::scale_colour_manual()`.
 I like to save them as objects so they can be used for multiple plots easily.
 
 __Note:__ The colours are assigned as hexadecimal values. If you want more information on this please see: [wikipedia page on web colours](https://en.wikipedia.org/wiki/Web_colors)
@@ -116,8 +124,10 @@ wong_pal <- c("#e69f00","#56b4e9","#009e73","#f0e442","#0072b2","#d55e00","#cc79
 tol_pal <- c("#332288","#117733","#44aa99","#88ccee","#ddcc77","#cc6677","#aa4499","#882255")
 ```
 
+### Colour blind friendly plot
+
 Create the [boxplot with a layer of jittered points](/ggplot2/geom_boxplot.qmd#layer-of-jittered-points).
-We'll colour the points with the Wong palette (`wong_pal`) using the component `scale_colour_manual()` and the option `values=`.
+We'll colour the points with the Wong palette (`wong_pal`) using the component `ggplot2::scale_colour_manual()` and the argument `values=`.
 
 ```{r}
 #Boxplot of max population count in bat colonies within counties of Northern Ireland
@@ -137,4 +147,4 @@ bat_roost_tbl |>
 An important note when choosing palettes is that you need as many colours as you have groupings.
 The colour blind friendly palettes only have a maximum of 8 colours so if you have more you will need to use another palette.
 Of course once you start to have lots of groups it can be hard to differentiate between a lot of colours.
-If this is the case you may need to split up groups in different ways such as with [faceting](/ggplot2/facet.qmd).
+If this is the case you may need to split up groups in different ways such as with [facetting](/ggplot2/facet.qmd#facets-as-an-aesthetic).

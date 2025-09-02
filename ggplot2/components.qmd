@@ -124,7 +124,7 @@ lm_equation <- paste0("y = ",as.character(m),"x + ",as.character(c))
 lm_equation
 ```
 
-Now we can a __text__ annotation of the equation with [`ggplot2::annotate()`](https://ggplot2.tidyverse.org/reference/annotate.html).
+Now we can a __text__ annotation of the equation with [`ggplot2::annotate()`](/ggplot2/annotation.qmd).
 
 ```{r}
 mammal_sleep_tbl |>

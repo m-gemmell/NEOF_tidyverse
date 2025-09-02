@@ -6,6 +6,6 @@ title: "Stringr"
 ![](../images/stringr.png){style="width:150px"}
 </center>
 
-test
+In development
 
 [readr homepage](https://stringr.tidyverse.org/)

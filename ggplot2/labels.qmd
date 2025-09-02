@@ -10,7 +10,7 @@ library(tidyverse)
 </center>
 
 The __column/variable__ names in a `tibble` are used to specify the various [aesthetics](/ggplot2/aesthetics.qmd).
-By default these names are used as the labels of the various aesthetics (e.g. x and y labels).
+By default these names are used as the labels of the specified aesthetics (e.g. x and y labels).
 
 However, what makes a good __column/variable__ name does not always make a good label.
 The __column/variable__ names we use in these materials have underscores (`_`) and are all uncapitalised (e.g. `mushroom_tbl`).
@@ -76,7 +76,7 @@ mushroom_tbl |>
 ## Legend labels
 
 When some __aesthetics__ are added a corresponding __legend__ is added to the plot.
-We can change the labels of these legends with `labs()`.
+We can change the labels of these legends with `ggplot2::labs()`.
 
 Create the [scatter plot with colour & shape groups](/ggplot2/geom_point.qmd#colour--shape-groups).
 Assign label names for the x, y, shape, and colour __aesthetics__.
@@ -92,10 +92,10 @@ mushroom_tbl |>
 
 ## Title
 
-Two other useful labels to add to a plot is the title and sub title labels.
+Two other useful labels to add to a plot is the title and sub title.
 
 Create the [Scatter plot with points sized by a continuous variable](/ggplot2/geom_point.qmd#size-by-continuous-variable).
-This time we'll include a title (`title=`) and sub title (`subtitle=`), as well as setting the size legend with `size=` in the `labs()` function.
+This time we'll include a title (`title=`) and sub title (`subtitle=`), as well as setting the size legend with `size=` in the `ggplot2::labs()` function.
 
 ```{r}
 mushroom_tbl |>
@@ -103,5 +103,5 @@ mushroom_tbl |>
         ggplot2::geom_point() +
         ggplot2::labs(x = "Stem width", y = "Stem height", size = "Cap diameter",
                         title = "Mushroom stem height (y) against stem width (x)",
-                        subtitle = "The size of the points are based in the cap diameters")
+                        subtitle = "The size of the points are based on the mushroom cap diameters")
 ```

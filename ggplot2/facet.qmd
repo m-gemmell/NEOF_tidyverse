@@ -1,7 +1,253 @@
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
 # Facetting
 
 <center>
 ![](images/ggplot2_facet.png){style="width:200px"}
 </center>
 
+__Facetting__ splits a plot into multiple __panels__ using one or two metadata __variables__.
+This allows you to separate groups so you can more easily see the differences within and between the groups.
+
 [Tidyverse reference page](https://ggplot2.tidyverse.org//reference/index.html#facetting)
+
+## Dataset
+
+We'll create scatter plots similar to those in the [`geom_point()` chapter](/ggplot2/geom_point.qmd), so we'll load the `mushroom_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
+We will extract a random sample of 300 rows with `slice_sample()`.
+
+[mushroom_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/mushroom_tbl)
+
+```{r}
+#Load package
+library("mgrtibbles")
+#Set seed for random sampling
+set.seed("483")
+#mushroom_tbl tibble for demonstration
+mushroom_tbl <- mgrtibbles::mushroom_tbl |>
+    #Random sample of 150 rows
+    dplyr::slice_sample(n = 300, replace=FALSE)
+#Reset random seed to normal operation
+set.seed(NULL)
+```
+
+`r hide("View mushroom_tbl contents")`
+```{r, echo=FALSE}
+library("reactable")
+options(reactable.theme = reactableTheme(
+  color = "hsl(233, 9%, 87%)",
+  backgroundColor = "hsl(233, 9%, 19%)",
+  borderColor = "hsl(233, 9%, 22%)",
+  stripedColor = "hsl(233, 12%, 22%)",
+  highlightColor = "hsl(233, 12%, 24%)",
+  inputStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  selectStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonHoverStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonActiveStyle = list(backgroundColor = "hsl(233, 9%, 28%)")
+))
+mushroom_tbl |>
+    reactable::reactable()
+```
+`r unhide()`
+
+## Facet grid
+
+The function `ggplot2::facet_grid()` allows you to split/__facet__ a plot by columns and rows.
+This can be used if you have one or two discrete __variables__ you want to __facet__ by.
+
+It is important to note that with this method the scales are fixed (i.e. all the __panels__ have the same scale) by default.
+To learn more and edit this see the [facet scales section](#facet-scales).
+
+[`facet_grid()` reference webpage](https://ggplot2.tidyverse.org//reference/facet_grid.html)
+
+### Facet grid by columns
+
+Create a scatter plot of __stem_height__ (y) against __stem_width__ (x).
+
+We'll __facet__ the data by the __variable__ `class`.
+We'll __facet__ by columns (i.e. the __facet panels__ are separated by rows on the plot) with `dplyr::facet_grid(cols = dplyr::vars(class))`.
+
+__Note:__ We have to place the __variable/column__ name into the [`dplyr::vars()`](https://dplyr.tidyverse.org/reference/vars.html) function for this.
+
+```{r}
+mushroom_tbl |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
+        ggplot2::geom_point() +
+        #Facet grid class by columns
+        ggplot2::facet_grid(cols = dplyr::vars(class))
+```
+
+### Facet grid by rows
+
+Create a scatter plot of __stem_height__ (y) against __stem_width__ (x).
+
+We'll __facet__ the data by the __variable__ `cap_color`.
+We'll __facet__ by rows (i.e. the __facet panels__ are separated by rows on the plot) with `ggplot2::facet_grid(rows = dplyr::vars(cap_color))`.
+
+__Note:__ We have to place the __variable/column__ name into the [`dplyr::vars()`](https://dplyr.tidyverse.org/reference/vars.html) function for this.
+
+```{r}
+mushroom_tbl |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
+        ggplot2::geom_point() +
+        #Facet grid cap_color by rows
+        ggplot2::facet_grid(rows = dplyr::vars(cap_color))
+```
+
+### Facet grid by columns and rows
+
+We'll combine the column and row __facetting__ of the 2 above plots into one plot.
+
+```{r}
+mushroom_tbl |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
+        ggplot2::geom_point() +
+        #Facet grid class by columns and cap_color by rows
+        ggplot2::facet_grid(cols = dplyr::vars(class), rows = dplyr::vars(cap_color))
+```
+
+## Facet wrap
+
+The function `ggplot2::facet_wrap()` will wrap __panels__ over multiple rows.
+The number of rows/columns to wrap around can be set with `nrow=`/`ncol=`.
+This is the preferred method when you are __facetting__ by one __discrete variable__.
+
+It is important to note with this method the scales are fixed (i.e. all the __panels__ have the same scale).
+To learn more and edit this see the [facet scales section](#facet-scales).
+
+[`facet_wrap()` reference webpage](https://ggplot2.tidyverse.org//reference/facet_wrap.html)
+
+### Default facet wrap
+
+Create a scatter plot of __stem_height__ (y) against __stem_width__ (x).
+
+We'll __facet__ the data by the __variable__ `cap_color`.
+This will be carried out with `ggplot2::facet_wrap(dplyr::vars(cap_color))`.
+
+__Note:__ We have to place the __variable/column__ name into the [`dplyr::vars()`](https://dplyr.tidyverse.org/reference/vars.html) function for this.
+
+```{r}
+mushroom_tbl |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
+        ggplot2::geom_point() +
+        #Facet wrap cap_color
+        ggplot2::facet_wrap(dplyr::vars(cap_color))
+```
+
+### Facet wrap with number of columns
+
+The number of columns to wrap the __panels__ around can be chosen with the `ncol=` option.
+
+Create a scatter plot of __stem_height__ (y) against __stem_width__ (x).
+
+We'll __facet__ the data by the __variable__ `cap_color`.
+Additionally, we'll set the number of columns to wrap the __panels__ around to 2 with `ncol=2`
+
+```{r}
+mushroom_tbl |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
+        ggplot2::geom_point() +
+        #Facet wrap cap_color with 2 wrapping columns
+        ggplot2::facet_wrap(dplyr::vars(cap_color), ncol=2)
+```
+
+### Facet wrap with number of rows
+
+The number of rows to wrap the __panels__ around can be chosen with the `nrow=` option.
+
+Create a scatter plot of __stem_height__ (y) against __stem_width__ (x).
+
+We'll __facet__ the data by the __variable__ `cap_color`.
+Additionally, we'll set the number of rows to wrap the __panels__ around to 2 with `nrow=2`
+
+```{r}
+mushroom_tbl |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
+        ggplot2::geom_point() +
+        #Facet wrap cap_color with 2 wrapping rows
+        ggplot2::facet_wrap(dplyr::vars(cap_color), nrow=2)
+```
+
+## Facet scales
+
+By default both `ggplot2::facet_wrap()` and `ggplot2::facet_grid()` will have their scales be "fixed".
+This means that the scales will be the same for each __panel__.
+In other words the __panels__ in the same row share the same scales which are identical across the columns.
+This also means the __panels__ in the same column share the same scales which are identical across the rows.
+
+Having the scales as "fixed" allows you to visualise the difference between the different __facetting__ __variables__.
+However, this can make it difficult to view the difference within a __panel__.
+This can be seen in the above plots with the `colour_cap` __variables__: pink, purple, buff, green, and blue.
+In these __variables__ the points are very close together (overclustered) so it is hard to differentiate between the points.
+
+To change the scales we can use the options `scales=` with one of the following:
+
+- `"fixed"`: This is the default with both scales being fixed.
+- `"free"`: This allows both axes scales to be free.
+- `"free_x"`: The x axis scale is free but the y axis scale is fixed.
+- `"free_y"`: The y axis scale is free but the x axis scale is fixed.
+
+### Free scales for facet_grid()
+
+Create the same plot as that made in the [__facet__ grid by columns and rows](#facet-grid-by-columns-and-rows) and set the scales to free.
+This is carried out with the option `scales="free"` within the function `ggplot2::facet_grid()`.
+
+In the below plot notice that the scales for each row and each column are "free".
+In other words the scales have been chosen to fit the data in each row and in each column.
+It is important to note that the scales for each __panel__ are not free.
+
+```{r}
+mushroom_tbl |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
+        ggplot2::geom_point() +
+        #Facet grid class by columns and cap_color by rows
+        #Set scales to free
+        ggplot2::facet_grid(cols = dplyr::vars(class), rows = dplyr::vars(cap_color),
+                            scales="free")
+```
+
+### Free scales for facet_wrap()
+
+Create the same plot as that made in the [Default __facet__ wrap](#default-facet-wrap) and set the scales to free.
+This is carried out with the option `scales="free"` within the function `facet_wrap()`.
+
+In the below plot notice that the scales for each __panel__ are "free".
+In other words the scale have been chosen to fit the data in each __panel__.
+
+```{r}
+mushroom_tbl |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
+        ggplot2::geom_point() +
+        #Facet wrap cap_color
+        ggplot2::facet_wrap(dplyr::vars(cap_color), scales="free")
+```
+
+## Facets as an aesthetic
+
+__Facets__ become especially useufl when you have a lot of __variables__ you would like to represent as aesthetics.
+There are no limits to the the number of __facets__ you can use, unlike colours and shapes.
+
+Let's create a final scatter plot plot with the `mushroom_tbl` tibble.
+The aesthetics we will set are:
+
+- `x=stem_width`
+- `y=stem_height`
+- `colour=cap_shape`
+- `shape=class`
+
+Additionally, we will __facet__ with `gill_attachment` and `gill_color`
+
+```{r}
+mushroom_tbl |>
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height, color = cap_shape, shape = class)) +
+        ggplot2::geom_point() +
+        #Facet grid class by columns and cap_color by rows
+        ggplot2::facet_grid(cols = dplyr::vars(gill_attachment), rows = dplyr::vars(gill_color)) +
+        #Labels
+        ggplot2::labs(title="Scatter plot showing features of mushrooms",
+                        subtitle="Facetted by gill colour (rows/x axis) and gill attachment (columsn/y axis)",
+                        x = "Stem width", y = "Stem height",
+                        color = "Cap shape", shape = "Edibility")
+```

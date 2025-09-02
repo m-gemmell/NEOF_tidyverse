@@ -11,7 +11,7 @@ library(tidyverse)
 The axes of __continuous variables__ on plots can be scaled to view the data in different ways.
 This includes:
 
-- Changing various options of a continuous scale with `scale_x_continuous` and `scale_y_continuous`
+- Changing various options of a continuous scale with `ggplot2::scale_x_continuous` and `ggplot2::scale_y_continuous`
     - Includes the axes limits and the breaks
 - Transforming the axes scale from continuous (1,2,3...) to log10 or square root
 
@@ -58,7 +58,7 @@ mushroom_tbl |>
 
 ## Continuous scale
 
-There are many options that can be included in `scale_x_continuous` and `scale_y_continuous` to effect each of the axis scales.
+There are many arguments that can be included in `ggplot2::scale_x_continuous` and `ggplot2::scale_y_continuous` to effect each of the axis scales.
 These include:
 
 - `name=`: set the label name (can be used instead of [`labs()`](/ggplot2/labels.qmd))
@@ -85,18 +85,18 @@ mushroom_tbl |>
 
 Certain data is better suited to be displayed with log10 or square root scales.
 
-These transformations can be carried out with other scale functions that take the same options as `scale_x_continuous()` and `scale_y_continuous()`.
+These transformations can be carried out with other scale functions that take the same options as `ggplot2::scale_x_continuous()` and `ggplot2::scale_y_continuous()`.
 
 [Full list of options](https://ggplot2.tidyverse.org//reference/scale_continuous.html)
 
-It is important to note that the values displayed on the axes are not transformed (i.e. values of cm will stay as cm and not log10(cm)). Instead, the distance between values (scale) are transformed. Please see the expandable box below for a comparison.
+It is important to note that the values displayed on the axes are not transformed (i.e. values of cm will stay as cm and not `log10(cm)`). Instead, the distance between values (scale) are transformed. Please see the expandable box below for a comparison.
 
 `r hide("Normal scale and transformed scale comparison")`
 
 Below are the same plot with and without scale transformation.
 
 The breaks are chosen to be identical in both for clarity.
-Notice the scale difference (i.e where the points and values are placed) but the actual values are the same (i.e. x values go from 0-50 and y values go from 0 to 20).
+Notice the scale difference (i.e where the points and values are placed) but the actual values on the breaks are the same (i.e. x values go from 0-50 and y values go from 0-20).
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 mushroom_tbl |>
@@ -132,8 +132,8 @@ mushroom_tbl |>
 
 To convert an axis scale to log10 one of the below __components__ needs to be added:
 
-- `scale_x_log10()`: transform x axis to log10 scale
-- `scale_y_log10()`: transform y axis to log10 scale
+- `ggplot2::scale_x_log10()`: transform x axis to log10 scale
+- `ggplot2::scale_y_log10()`: transform y axis to log10 scale
 
 Create the [default scatter plot](/ggplot2/geom_point.qmd#default-scatter-plot).
 Transform both the x and y axis scales to log10.
@@ -172,8 +172,8 @@ mushroom_tbl |>
 
 To convert an axis scale to square root one of the below __components__ needs to be added:
 
-- `scale_x_sqrt()`: transform x axis to log10 scale
-- `scale_y_sqrt()`: transform y axis to log10 scale
+- `ggplot2::scale_x_sqrt()`: transform x axis to log10 scale
+- `ggplot2::scale_y_sqrt()`: transform y axis to log10 scale
 
 Create the [default scatter plot](/ggplot2/geom_point.qmd#default-scatter-plot).
 Transform both the x and y axis scales to square root.

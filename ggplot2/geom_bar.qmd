@@ -61,7 +61,7 @@ amphibian_div_tbl |>
 
 ## Default bar chart
 
-When creating a bar chart with `geom_bar()` a __categorical variable/column__ can be __mapped__ to the __x aesthetic__.
+When creating a bar chart with `ggplot2::geom_bar()` a __categorical variable/column__ can be __mapped__ to the __x aesthetic__.
 The function will then calculate the count numbers.
 
 Create a bar chart of the `iucn_2cat` __variable/column__.

@@ -66,10 +66,12 @@ These are:
 - [readr](/readr/readr.qmd): Read in tabular data
 - [tidyr](/tidyr/tidyr.qmd): Tidying tibbles, includes going from wide to long tibbles/data frames
 - [ggplot2](/ggplot2/ggplot2.qmd): Visualisation with the grammar of graphics
-- [stringr](/stringr/stringr.qmd): String manipulation
-- [forcats](/forcats/forcats.qmd): Factor manipulation
-- [purrr](/purrr/purrr.qmd): Functions & vectors
-- [lubridate](/lubridate/lubridate.qmd): Data-time data
+- [stringr](/stringr/stringr.qmd): String manipulation (in development)
+- [forcats](/forcats/forcats.qmd): Factor manipulation (in development)
+- [purrr](/purrr/purrr.qmd): Functions & vectors (in development)
+- [lubridate](/lubridate/lubridate.qmd): Data-time data (in development)
+
+__Note:__ The sections marked with "in development" are currently empty.
 
 ## Reading order
 

@@ -8,7 +8,7 @@ library(tidyverse)
 ![](images/ggplot2_ggsave.png){style="width:200px"}
 </center>
 
-To save a ggplot object as an image the function `ggsave()` can be used.
+To save a ggplot object as an image the function `ggplot2::ggsave()` can be used.
 
 [Tidyverse reference page](https://ggplot2.tidyverse.org//reference/ggsave.html)
 
@@ -54,7 +54,7 @@ amphibian_div_tbl |>
 ## Ggplot2 object creation
 
 To save a plot we first need to create a __ggplot2__ object containing a plot.
-Instead of calling the fucntions to outpu the plot we will instead save it to an object.
+Instead of calling the functions to output the plot we will instead save it to an object.
 
 Create a bar chart of the `iucn_2cat` __variable__ and save it to the object `iucn_barchart`.
 We will use this object to save to various files.
@@ -75,7 +75,7 @@ iucn_barchart
 
 A common type of image file to save to is the PNG file.
 
-Save/export the ggplot2 object `iucn_barchart` to a png file called "iucn_barchart.png".
+Save/export the ggplot object `iucn_barchart` to a png file called "iucn_barchart.png".
 
 ```{r, eval=FALSE}
 ggplot2::ggsave(filename="iucn_barchart.png", plot=iucn_barchart)
@@ -92,7 +92,7 @@ The PNG file contains the following image:
 
 ## Customisation
 
-There are more options for the `ggsave()` function including:
+There are more options for the `ggplot2::ggsave()` function including:
 
 - `device=`: The type of the output file which includes "png", "pdf", "jpeg", "svg", "tiff", and others.
 - `width=` and `height=`: The specified height and width of the output image. 

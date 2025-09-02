@@ -58,9 +58,9 @@ crab_age_weight_tbl |>
 
 Text can be placed anywhere on a plot.
 
-To add text to a plot we use the `annotate()` component/function with the following options:
+To add text to a plot we can use the `ggplot2::annotate()` component/function with the following options:
 
-- `geom=`: This sets the type of geom to use for annotation. In this case it is "text" but others are demonstrated below.
+- `geom=`: This sets the type of geom to use for annotation. In this case it is "text" but others are demonstrated further below.
 - `x=`: The x position to place the annotation.
 - `y=`: The y position to place the annotation.
 - `label=`: Specifies the text.
@@ -79,7 +79,7 @@ If you want to plot points as text you can look at the [`geom_text()` function](
 
 ### Multiple annotations
 
-The below codes demonstrates how to add multiple annotations and how to create rectangles (`geom="rect"`) and lines (`geom="segment"`).
+The below code demonstrates how to add multiple annotations and how to create rectangles (`geom="rect"`) and lines (`geom="segment"`).
 
 __Note:__ Alpha refers to the transparency of an object. 0 = completely transparent, 1= completely opaque/no transparency.
 
@@ -105,15 +105,15 @@ ggplot2::ggplot(data=crab_age_weight_tbl, mapping=aes(x=Age, y = Weight)) +
 
 Three different types of reference lines can be added to a ggplot.
 
-- `geom_abline()`: A diagonal line based on the slope and intercept
-- `geom_hline()`: A horizontal line based on the y intercept
-- `geom_vline()`: A vertical line based on the x intercept
+- `ggplot2::geom_abline()`: A diagonal line based on the slope and intercept
+- `ggplot2::geom_hline()`: A horizontal line based on the y intercept
+- `ggplot2::geom_vline()`: A vertical line based on the x intercept
 
 [Tidyverse reference web page](https://ggplot2.tidyverse.org//reference/geom_abline.html)
 
 ## Horizontal and vertical
 
-Vertical and horizontal lines can be added with `geom_vline()` and `geom_hline()`.
+Vertical and horizontal lines can be added with `ggplot2::geom_vline()` and `ggplot2::geom_hline()`.
 
 The below code demonstrates adding both these lines.
 
@@ -133,7 +133,7 @@ An abline is a straight diagonal line based on the intercept and slope.
 
 ### Manual abline
 
-One can be manually added with `geom_abline()` by setting the intercept (`intercept=`) and the slope (`slope=`)
+An abline can be manually added with `ggplot2::geom_abline()` by setting the intercept (`intercept=`) and the slope (`slope=`).
 
 ```{r}
 ggplot2::ggplot(data=crab_age_weight_tbl, mapping=aes(x=Age, y = Weight)) +
@@ -145,7 +145,7 @@ ggplot2::ggplot(data=crab_age_weight_tbl, mapping=aes(x=Age, y = Weight)) +
 
 ### Statistical abline
 
-An abline calculated with a linear model can be added with [`geom_smooth()`](/ggplot2/geom_others.qmd#smooth-line).
+An abline calculated with a linear model can be added with [`ggplot2::geom_smooth()`](/ggplot2/geom_others.qmd#smooth-line).
 
 ```{r}
 ggplot2::ggplot(data=crab_age_weight_tbl, mapping=aes(x=Age, y = Weight)) +
@@ -176,7 +176,7 @@ lm_equation <- paste0("y = ", round(m, 3), "x + ", round(c, 3), ", R^2 = ", roun
 lm_equation
 ```
 
-The equation can then be included with [`annotate()`](#text-annotation).
+The equation can then be included with [`ggplot2::annotate()`](#text-annotation).
 
 ```{r}
 ggplot2::ggplot(data=crab_age_weight_tbl, mapping=aes(x=Age, y = Weight)) +
