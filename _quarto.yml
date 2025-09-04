@@ -41,8 +41,9 @@ website:
     - icon: linkedin
       href: https://www.linkedin.com/in/training-neof/
       aria-label: LinkedIn
-    - text: '![](/images/Bluesky_quarto_navbar.svg){height=20px}'
+    - icon: bluesky
       href: https://bsky.app/profile/nerc-eof.bsky.social
+      aria-label: bluesky
   page-footer:
     left: |
       [![](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png){fig-alt="CC BY-SA 4.0" height=30px}](https://creativecommons.org/licenses/by-nc-sa/4.0/)
