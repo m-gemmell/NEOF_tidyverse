@@ -21,11 +21,10 @@ $navbar-hl: $neof-green; // highlight color when hovering over navbar links
 $footer-bg: $neof-grey; // footer
 $sidebar-hl: $neof-green;
 
-$link-color: $blue;
+$link-color: $ibm-blue;
 
 //Inline code
-$code-bg: $light-grey;
-$code-color: $code-purple;
+$code-bg: #383838;
 
 /*-- scss:rules --*/
 mainfont {
@@ -36,6 +35,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 monofont {
   font-family: "Fira+Mono";
+}
+
+// Code font
+code {
+  color: $ibm-yellow ;
 }
 
 // Placement of hex image rows in main index page
