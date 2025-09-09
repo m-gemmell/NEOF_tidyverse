@@ -98,11 +98,11 @@ Arguably the most important __component__ for `ggplot2` are the __layers__.
 __Layers__ (also known as geom) are used to plot the data in different ways, i.e. different plots.
 This website will cover a few of the most commonly used ones.
 
-- [`geom_bar()`](/ggplot2/geom_bar.qmd): Bar chart.
-- [`geom_histogram()`](/ggplot2/geom_histogram.qmd): histogram.
-- [`geom_line()`](/ggplot2/geom_line.qmd): Line graph.
-- [`geom_point()`](/ggplot2/geom_point.qmd): Scatter plot.
-- [`geom_boxplot()`](/ggplot2/geom_boxplot.qmd): Box and whisker plot.
+- [__`geom_bar()`__](/ggplot2/geom_bar.qmd): Bar chart.
+- [__`geom_histogram()`__](/ggplot2/geom_histogram.qmd): histogram.
+- [__`geom_line()`__](/ggplot2/geom_line.qmd): Line graph.
+- [__`geom_point()`__](/ggplot2/geom_point.qmd): Scatter plot.
+- [__`geom_boxplot()`__](/ggplot2/geom_boxplot.qmd): Box and whisker plot.
 - [Other geoms](/ggplot2/geom_others.qmd): Other useful geom layers.
 
 ### Output
@@ -123,9 +123,9 @@ This website will cover a few of the most commonly used ones.
 
 How to save the output of `ggplot2` objects.
 
-- [`ggsave()`](/ggplot2/ggsave.qmd): Save a `ggplot` object/figure to a static image file.
-- [`pathcwork`](/ggplot2/patchwork.qmd): Combing multiple `gpglot2` objects into the same graphic/image. (https://patchwork.data-imaginist.com/)
-- [`ggplotly()`](/ggplot2/ggplotly.qmd): Convert a `ggplot2` object to an interactive plotly object and save it as an HTML file.
+- [__`ggsave()`__](/ggplot2/ggsave.qmd): Save a `ggplot` object/figure to a static image file.
+- [__`pathcwork`__](/ggplot2/patchwork.qmd): Combing multiple `gpglot2` objects into the same graphic/image. (https://patchwork.data-imaginist.com/)
+- [__`ggplotly()`__](/ggplot2/ggplotly.qmd): Convert a `ggplot2` object to an interactive plotly object and save it as an HTML file.
 
 ### Customisation
 
