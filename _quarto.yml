@@ -230,4 +230,3 @@ format:
       - styles_dark.scss
     embed-resources: false
     toc: true
-    mainfont: Lexend
