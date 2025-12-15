@@ -45,6 +45,16 @@ Filter the __tibble__ to only contain male observations.
 bison_tbl |> dplyr::filter(animal_sex == "M")
 ```
 
+Filter to contain observations with animal codes of B-301, A1, and W-008.
+This is carried out below with the [match operator (`%in%`)](https://stat.ethz.ch/R-manual/R-devel/library/base/html/match.html).
+
+```{r}
+#Vector of animal codes
+animal_codes <- c("B-301", "A1", "W-008")
+#Filter to retain rows/observations with one of the specified animal codes
+bison_tbl |> dplyr::filter(animal_code %in% animal_codes)
+```
+
 ## Multiple columns
 
 You can filter based on multiple columns with logical operators.

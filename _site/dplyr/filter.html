@@ -80,9 +80,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-fca58e9f69dc892b99c24a3df0237aa3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-06a566e2819fa17a1525e9f062343ece.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-fca58e9f69dc892b99c24a3df0237aa3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-4fe5f8073d572edab971eec995afb315.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-3821d62aacf32ecfa7b1f79d3644b881.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-4fe5f8073d572edab971eec995afb315.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -649,6 +649,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 # ℹ 1 more variable: animal_yob &lt;dbl&gt;</code></pre>
 </div>
 </div>
+<p>Filter to contain observations with animal codes of B-301, A1, and W-008. This is carried out below with the <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/match.html">match operator (<code>%in%</code>)</a>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Vector of animal codes</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>animal_codes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"B-301"</span>, <span class="st">"A1"</span>, <span class="st">"W-008"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Filter to retain rows/observations with one of the specified animal codes</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>bison_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(animal_code <span class="sc">%in%</span> animal_codes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 30 × 8
+   data_code rec_year rec_month rec_day animal_code animal_sex animal_weight
+   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;
+ 1 CBH01         1994        11       8 B-301       F                   1060
+ 2 CBH01         1994        11       8 W-008       F                    884
+ 3 CBH01         1995        11       6 B-301       F                   1016
+ 4 CBH01         1996        10      25 B-301       F                   1120
+ 5 CBH01         1996        10      25 W-008       F                    952
+ 6 CBH01         1997        10      31 B-301       F                   1118
+ 7 CBH01         1998        11      13 B-301       F                   1092
+ 8 CBH01         1998        11      13 W-008       F                    950
+ 9 CBH01         1999        11       5 A1          F                    822
+10 CBH01         1999        11       5 B-301       F                   1138
+# ℹ 20 more rows
+# ℹ 1 more variable: animal_yob &lt;dbl&gt;</code></pre>
+</div>
+</div>
 </section>
 <section id="multiple-columns" class="level2">
 <h2 class="anchored" data-anchor-id="multiple-columns">Multiple columns</h2>
@@ -660,7 +684,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Extract females that have a weight greater or equal to 1000 pounds.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>bison_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(animal_sex <span class="sc">==</span> <span class="st">"F"</span> <span class="sc">&amp;</span> animal_weight <span class="sc">&gt;=</span> <span class="dv">1000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>bison_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(animal_sex <span class="sc">==</span> <span class="st">"F"</span> <span class="sc">&amp;</span> animal_weight <span class="sc">&gt;=</span> <span class="dv">1000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,215 × 8
    data_code rec_year rec_month rec_day animal_code animal_sex animal_weight
@@ -681,7 +705,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Extract males or samples with a weight less than 900 pounds.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>bison_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(animal_sex <span class="sc">==</span> <span class="st">"M"</span> <span class="sc">|</span> animal_weight <span class="sc">&lt;</span> <span class="dv">900</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>bison_tbl <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(animal_sex <span class="sc">==</span> <span class="st">"M"</span> <span class="sc">|</span> animal_weight <span class="sc">&lt;</span> <span class="dv">900</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5,982 × 8
    data_code rec_year rec_month rec_day animal_code animal_sex animal_weight
@@ -711,13 +735,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Extract samples from the year 2000.</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>bison_tbl <span class="sc">|&gt;</span> </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Filter to retain females</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(animal_sex <span class="sc">==</span> <span class="st">"F"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Filter to retain samples with animal_weight between 900 and 1100</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(animal_weight <span class="sc">&gt;</span> <span class="dv">900</span> <span class="sc">&amp;</span> animal_weight <span class="sc">&lt;</span> <span class="dv">1000</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Retain samples from year 2000</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(rec_year <span class="sc">==</span> <span class="dv">2000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>bison_tbl <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Filter to retain females</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(animal_sex <span class="sc">==</span> <span class="st">"F"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Filter to retain samples with animal_weight between 900 and 1100</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(animal_weight <span class="sc">&gt;</span> <span class="dv">900</span> <span class="sc">&amp;</span> animal_weight <span class="sc">&lt;</span> <span class="dv">1000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Retain samples from year 2000</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(rec_year <span class="sc">==</span> <span class="dv">2000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 39 × 8
    data_code rec_year rec_month rec_day animal_code animal_sex animal_weight

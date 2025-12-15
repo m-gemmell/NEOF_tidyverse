@@ -6,7 +6,7 @@ title: "Select"
 ![](images/dplyr_select.png){style="width:200px"}
 </center>
 
-The function `dplyr::select()` allows you to select columns from a __tibble__.
+The function `dplyr::select()` allows you to select columns/variables from a __tibble__.
 There are many different ways to do this with various helper functions.
 
 When subsetting with `dplyr::select()` the resulting object will always be a __tibble__.
@@ -33,6 +33,14 @@ Select one column
 mammal_sleep_tbl |> dplyr::select(dreaming)
 ```
 
+## Consecutive range of columns
+
+Select a consecutive range of columns using the first and last column names of the range.
+
+```{r}
+mammal_sleep_tbl |> dplyr::select(dreaming:gestation)
+```
+
 ## Multiple columns
 
 Select multiple columns individually.
@@ -41,12 +49,40 @@ Select multiple columns individually.
 mammal_sleep_tbl |> dplyr::select(species,dreaming,gestation)
 ```
 
-## Consecutive range of columns
+## All of
 
-Select a consecutive range of columns using the first and last column names of the range.
+You can create a vector containing the column/variable names you want to select.
+This requires the use of the [`all_of()`](https://tidyselect.r-lib.org/reference/all_of.html) function.
 
 ```{r}
-mammal_sleep_tbl |> dplyr::select(dreaming:gestation)
+#Vector of column names
+vars <- c("species", "brain_wt", "total_sleep", "life_span")
+#Select columns from vector
+mammal_sleep_tbl |> dplyr::select(all_of(vars))
+```
+
+If you include variables/column names that do not exist in the __tibble__ then an error will occur and the command will not run.
+
+## Any of
+
+The [`any_of()`](https://tidyselect.r-lib.org/reference/all_of.html) function won't check if a variable exists or not.
+This means you can include variables/column names that don't exist and the function will work with no error.
+
+```{r}
+#Vector of column names
+vars <- c("genus", "species", "brain_wt", "total_sleep", "total_awake", "life_span")
+#Select columns from vector
+mammal_sleep_tbl |> dplyr::select(any_of(vars))
+```
+
+This is especially useful to remove variables as if you try to remove a variable after already removing it the function will still work.
+To unselect variables place a `-` in front of the `any_of()` function.
+
+```{r}
+#Vector of column names
+vars <- c("genus", "species", "brain_wt", "total_sleep", "total_awake", "life_span")
+#Unselect columns from vector
+mammal_sleep_tbl |> dplyr::select(-any_of(vars))
 ```
 
 ## Numeric indexes
@@ -79,7 +115,7 @@ mammal_sleep_tbl |> dplyr::select(-6)
 
 ## Last column
 
-Select the last column with `last_col()` helper function.
+Select the last column with [`last_col()`](https://tidyselect.r-lib.org/reference/everything.html) helper function.
 
 ```{r}
 mammal_sleep_tbl |> dplyr::select(last_col())
@@ -99,7 +135,7 @@ mammal_sleep_tbl |> dplyr::select(last_col(2):last_col())
 
 ## Starts with
 
-Select columns using a prefix of the column names to extract with the `starts_with()` helper function.
+Select columns using a prefix of the column names to extract with the [`starts_with()`](https://tidyselect.r-lib.org/reference/starts_with.html) helper function.
 
 ```{r}
 mammal_sleep_tbl |> dplyr::select(starts_with("b"))
@@ -107,7 +143,7 @@ mammal_sleep_tbl |> dplyr::select(starts_with("b"))
 
 ## Ends with
 
-Select columns using a prefix of the column names to extract with the `ends_with()` helper function.
+Select columns using a prefix of the column names to extract with the [`ends_with()`](https://tidyselect.r-lib.org/reference/starts_with.html) helper function.
 
 ```{r}
 mammal_sleep_tbl |> dplyr::select(ends_with("dreaming"))
@@ -115,7 +151,7 @@ mammal_sleep_tbl |> dplyr::select(ends_with("dreaming"))
 
 ## Contains
 
-Select columns using a string the column names will contain with the `contains()` helper function.
+Select columns using a string the column names will contain with the [`contains()`](https://tidyselect.r-lib.org/reference/starts_with.html) helper function.
 
 ```{r}
 mammal_sleep_tbl |> dplyr::select(contains("in"))
@@ -123,7 +159,7 @@ mammal_sleep_tbl |> dplyr::select(contains("in"))
 
 ## Matches
 
-The `matches()` function is similar to the above `contains()` function but it can be used to select with regular expressions.
+The [`matches()`](https://tidyselect.r-lib.org/reference/starts_with.html) function is similar to the above [`contains()`](https://tidyselect.r-lib.org/reference/starts_with.html) function but it can be used to select with regular expressions.
 
 In the below example we use `[]` to mean one of the letters within them. In other words `[eu]r` means __"er"__ or __"ur"__.
 

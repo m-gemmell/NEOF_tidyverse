@@ -138,7 +138,7 @@ bat_roost_tbl |>
     ggplot2::ggplot(aes(y = MaxCountInAnyYear, x = County)) +
         ggplot2::geom_boxplot() +
         ggplot2::geom_jitter(aes(colour=Species), size=3) +
-        #Colour brewer scale
+        #Manually use wong colour palette
         ggplot2::scale_colour_manual(values = wong_pal)
 ```
 
