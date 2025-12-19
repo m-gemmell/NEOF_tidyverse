@@ -1188,7 +1188,7 @@
     "href": "dplyr/summarise.html#dataset",
     "title": "Summarise",
     "section": "Dataset",
-    "text": "Dataset\nFor demonstration we’ll load the amphibian_div_tbl data from the mgrtibbles package (hyperlink includes install instructions).\nWe’ll remove any rows with NAs as NAs cause mean and other other calculations to return NA.\n\n#Load package\nlibrary(\"mgrtibbles\")\n#amphibian_div_tbl tibble for demonstration\namphibian_div_tbl &lt;- mgrtibbles::amphibian_div_tbl |&gt; na.omit()",
+    "text": "Dataset\nFor demonstration we’ll load the amphibian_div_tbl data from the mgrtibbles package (hyperlink includes install instructions).\nWe’ll remove any rows with NAs as NAs cause mean and other other calculations to return NA.\n\n#Load package\nlibrary(\"mgrtibbles\")\n#amphibian_div_tbl tibble for demonstration\namphibian_div_tbl &lt;- mgrtibbles::amphibian_div_tbl |&gt; na.omit()\n#View tibble\namphibian_div_tbl\n\n# A tibble: 65 × 15\n   Species                  IUCN.Red.List.Status iucn_2cat Order   Family  Genus\n   &lt;chr&gt;                    &lt;fct&gt;                &lt;fct&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;\n 1 Acris crepitans          Least Concern (LC)   LC        Anura   Hylidae Acris\n 2 Acris gryllus            Least Concern (LC)   LC        Anura   Hylidae Acris\n 3 Ambystoma jeffersonianum Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 4 Ambystoma macrodactylum  Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 5 Ambystoma maculatum      Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 6 Ambystoma texanum        Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 7 Ambystoma tigrinum       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 8 Amphiuma means           Least Concern (LC)   LC        Caudata Amphiu… Amph…\n 9 Amphiuma tridactylum     Least Concern (LC)   LC        Caudata Amphiu… Amph…\n10 Anaxyrus boreas          Least Concern (LC)   LC        Anura   Bufoni… Anax…\n# ℹ 55 more rows\n# ℹ 9 more variables: Age_at_maturity_min_y &lt;dbl&gt;, Age_at_maturity_max_y &lt;dbl&gt;,\n#   Body_size_mm &lt;dbl&gt;, Longevity_max_y &lt;dbl&gt;, Litter_size_min_n &lt;dbl&gt;,\n#   Litter_size_max_n &lt;dbl&gt;, Offspring_size_min_mm &lt;dbl&gt;,\n#   Offspring_size_max_mm &lt;fct&gt;, Development &lt;chr&gt;",
     "crumbs": [
       "Dplyr",
       "Grouping",
@@ -1316,11 +1316,23 @@
     ]
   },
   {
-    "objectID": "dplyr/select.html#with-a-vector",
-    "href": "dplyr/select.html#with-a-vector",
+    "objectID": "dplyr/select.html#all-of",
+    "href": "dplyr/select.html#all-of",
     "title": "Select",
-    "section": "With a vector",
-    "text": "With a vector\nYou can create a vector containing the column/variable names you want to select. This requires the use of the tidyselect::all_of() function.\n\n#Vector of column names\nvars &lt;- c(\"species\", \"brain_wt\", \"total_sleep\", \"life_span\")\n#Select columns from vector\nmammal_sleep_tbl |&gt; dplyr::select(all_of(vars))\n\n# A tibble: 5 × 4\n  species                brain_wt total_sleep life_span\n  &lt;chr&gt;                     &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n1 Africanelephant          5.71           3.3      38.6\n2 Africangiantpouchedrat   0.0066         8.3       4.5\n3 ArcticFox                0.0445        12.5      14  \n4 Arcticgroundsquirrel     0.0057        16.5      NA  \n5 Asianelephant            4.60           3.9      69  \n\n\nOptionally you can use tidyselect::any_of(). This won’t check if a variable exists or not so you can include variables/columns that don’t exist and the function will work fine.\n\n#Vector of column names\nvars &lt;- c(\"genus\", \"species\", \"brain_wt\", \"total_sleep\", \"total_awake\", \"life_span\")\n#Select columns from vector\nmammal_sleep_tbl |&gt; dplyr::select(any_of(vars))\n\n# A tibble: 5 × 4\n  species                brain_wt total_sleep life_span\n  &lt;chr&gt;                     &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n1 Africanelephant          5.71           3.3      38.6\n2 Africangiantpouchedrat   0.0066         8.3       4.5\n3 ArcticFox                0.0445        12.5      14  \n4 Arcticgroundsquirrel     0.0057        16.5      NA  \n5 Asianelephant            4.60           3.9      69  \n\n\nThis is especially useful to remove variables as if you try to remove a variable after already removing it the function will still work. To unselect variables we place a - in front of the any_of() function.\n\n#Vector of column names\nvars &lt;- c(\"genus\", \"species\", \"brain_wt\", \"total_sleep\", \"total_awake\", \"life_span\")\n#Unselect columns from vector\nmammal_sleep_tbl |&gt; dplyr::select(-any_of(vars))\n\n# A tibble: 5 × 7\n  body_wt non_dreaming dreaming gestation predation exposure danger\n    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt;    &lt;fct&gt; \n1 6654            NA       NA         645 3         5        3     \n2    1             6.3      2          42 3         1        3     \n3    3.38         NA       NA          60 1         1        1     \n4    0.92         NA       NA          25 5         2        3     \n5 2547             2.1      1.8       624 3         5        4",
+    "section": "All of",
+    "text": "All of\nYou can create a vector containing the column/variable names you want to select. This requires the use of the all_of() function.\n\n#Vector of column names\nvars &lt;- c(\"species\", \"brain_wt\", \"total_sleep\", \"life_span\")\n#Select columns from vector\nmammal_sleep_tbl |&gt; dplyr::select(all_of(vars))\n\n# A tibble: 5 × 4\n  species                brain_wt total_sleep life_span\n  &lt;chr&gt;                     &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n1 Africanelephant          5.71           3.3      38.6\n2 Africangiantpouchedrat   0.0066         8.3       4.5\n3 ArcticFox                0.0445        12.5      14  \n4 Arcticgroundsquirrel     0.0057        16.5      NA  \n5 Asianelephant            4.60           3.9      69  \n\n\nIf you include variables/column names that do not exist in the tibble then an error will occur and the command will not run.",
+    "crumbs": [
+      "Dplyr",
+      "Columns",
+      "Select"
+    ]
+  },
+  {
+    "objectID": "dplyr/select.html#any-of",
+    "href": "dplyr/select.html#any-of",
+    "title": "Select",
+    "section": "Any of",
+    "text": "Any of\nThe any_of() function won’t check if a variable exists or not. This means you can include variables/column names that don’t exist and the function will work with no error.\n\n#Vector of column names\nvars &lt;- c(\"genus\", \"species\", \"brain_wt\", \"total_sleep\", \"total_awake\", \"life_span\")\n#Select columns from vector\nmammal_sleep_tbl |&gt; dplyr::select(any_of(vars))\n\n# A tibble: 5 × 4\n  species                brain_wt total_sleep life_span\n  &lt;chr&gt;                     &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n1 Africanelephant          5.71           3.3      38.6\n2 Africangiantpouchedrat   0.0066         8.3       4.5\n3 ArcticFox                0.0445        12.5      14  \n4 Arcticgroundsquirrel     0.0057        16.5      NA  \n5 Asianelephant            4.60           3.9      69  \n\n\nThis is especially useful to remove variables as if you try to remove a variable after already removing it the function will still work. To unselect variables place a - in front of the any_of() function.\n\n#Vector of column names\nvars &lt;- c(\"genus\", \"species\", \"brain_wt\", \"total_sleep\", \"total_awake\", \"life_span\")\n#Unselect columns from vector\nmammal_sleep_tbl |&gt; dplyr::select(-any_of(vars))\n\n# A tibble: 5 × 7\n  body_wt non_dreaming dreaming gestation predation exposure danger\n    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt;    &lt;fct&gt; \n1 6654            NA       NA         645 3         5        3     \n2    1             6.3      2          42 3         1        3     \n3    3.38         NA       NA          60 1         1        1     \n4    0.92         NA       NA          25 5         2        3     \n5 2547             2.1      1.8       624 3         5        4",
     "crumbs": [
       "Dplyr",
       "Columns",
@@ -1764,70 +1776,25 @@
     ]
   },
   {
-    "objectID": "datasets/mgrtibbles.html",
-    "href": "datasets/mgrtibbles.html",
-    "title": "Mgrtibbles",
+    "objectID": "dplyr/across.html",
+    "href": "dplyr/across.html",
+    "title": "Across",
     "section": "",
-    "text": "mgrtibbles is a R package containing various datasets in tibbles. They were curated into a R package by Matthew Gemmell.\nFor full information please see the mgrtibbles github page",
-    "crumbs": [
-      "Datasets",
-      "Mgrtibbles"
-    ]
+    "text": "The dplyr::across() function can be used within another function to work across multiple columns.\nTidyverse reference page\n\n\nFor demonstration we’ll load the mammal_sleep_tbl data from the mgrtibbles package (hyperlink includes install instructions).\n\n#Load package\nlibrary(\"mgrtibbles\")\n#mammal_sleep_tbl tibble for demonstration\nmgrtibbles::mammal_sleep_tbl\n\n# A tibble: 62 × 11\n   species          body_wt brain_wt non_dreaming dreaming total_sleep life_span\n   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n 1 Africanelephant  6.65e+3   5.71           NA       NA           3.3      38.6\n 2 Africangiantpou… 1   e+0   0.0066          6.3      2           8.3       4.5\n 3 ArcticFox        3.38e+0   0.0445         NA       NA          12.5      14  \n 4 Arcticgroundsqu… 9.2 e-1   0.0057         NA       NA          16.5      NA  \n 5 Asianelephant    2.55e+3   4.60            2.1      1.8         3.9      69  \n 6 Baboon           1.06e+1   0.180           9.1      0.7         9.8      27  \n 7 Bigbrownbat      2.3 e-2   0.0003         15.8      3.9        19.7      19  \n 8 Braziliantapir   1.6 e+2   0.169           5.2      1           6.2      30.4\n 9 Cat              3.3 e+0   0.0256         10.9      3.6        14.5      28  \n10 Chimpanzee       5.22e+1   0.44            8.3      1.4         9.7      50  \n# ℹ 52 more rows\n# ℹ 4 more variables: gestation &lt;dbl&gt;, predation &lt;fct&gt;, exposure &lt;fct&gt;,\n#   danger &lt;fct&gt;\n\n\n\n\n\nFor demonstration we’ll load the amphibian_div_tbl data from the mgrtibbles package (hyperlink includes install instructions).\nWe’ll remove any rows with NAs as NAs cause mean and other other calculations to return NA.\n\n#Load package\nlibrary(\"mgrtibbles\")\n#amphibian_div_tbl tibble for demonstration\namphibian_div_tbl &lt;- mgrtibbles::amphibian_div_tbl |&gt; na.omit()\n#glimpse tibble\namphibian_div_tbl |&gt; dplyr::glimpse()\n\nRows: 65\nColumns: 15\n$ Species               &lt;chr&gt; \"Acris crepitans\", \"Acris gryllus\", \"Ambystoma j…\n$ IUCN.Red.List.Status  &lt;fct&gt; Least Concern (LC), Least Concern (LC), Least Co…\n$ iucn_2cat             &lt;fct&gt; LC, LC, LC, LC, LC, LC, LC, LC, LC, LC, LC, LC, …\n$ Order                 &lt;chr&gt; \"Anura\", \"Anura\", \"Caudata\", \"Caudata\", \"Caudata…\n$ Family                &lt;chr&gt; \"Hylidae\", \"Hylidae\", \"Ambystomatidae\", \"Ambysto…\n$ Genus                 &lt;chr&gt; \"Acris\", \"Acris\", \"Ambystoma\", \"Ambystoma\", \"Amb…\n$ Age_at_maturity_min_y &lt;dbl&gt; 1.0, 1.0, 2.0, 1.0, 2.0, 2.0, 4.0, 4.0, 3.0, 4.0…\n$ Age_at_maturity_max_y &lt;dbl&gt; 1.0, 1.0, 3.0, 3.0, 3.0, 2.0, 4.0, 4.0, 3.0, 6.0…\n$ Body_size_mm          &lt;dbl&gt; 38, 33, 210, 248, 248, 191, 330, 1162, 1060, 127…\n$ Longevity_max_y       &lt;dbl&gt; 4.9, 1.0, 3.0, 10.0, 32.0, 13.8, 25.0, 27.0, 15.…\n$ Litter_size_min_n     &lt;dbl&gt; 40, 99, 140, 90, 144, 550, 421, 106, 200, 5213, …\n$ Litter_size_max_n     &lt;dbl&gt; 500, 250, 280, 411, 370, 700, 7000, 354, 350, 16…\n$ Offspring_size_min_mm &lt;dbl&gt; 1.30, 0.90, 2.00, 2.00, 2.00, 1.60, 2.00, 8.20, …\n$ Offspring_size_max_mm &lt;fct&gt; 1.5, 1.4, 2.5, 2.3, 2.8, 2.5, 3, 10.1, 7, 1.75, …\n$ Development           &lt;chr&gt; \"larval\", \"larval\", \"larval\", \"larval\", \"larval\"…\n\n\n\n\n\n\namphibian_div_tbl |&gt;\n    dplyr::mutate(across(c()))\n\n# A tibble: 65 × 15\n   Species                  IUCN.Red.List.Status iucn_2cat Order   Family  Genus\n   &lt;chr&gt;                    &lt;fct&gt;                &lt;fct&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;\n 1 Acris crepitans          Least Concern (LC)   LC        Anura   Hylidae Acris\n 2 Acris gryllus            Least Concern (LC)   LC        Anura   Hylidae Acris\n 3 Ambystoma jeffersonianum Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 4 Ambystoma macrodactylum  Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 5 Ambystoma maculatum      Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 6 Ambystoma texanum        Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 7 Ambystoma tigrinum       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 8 Amphiuma means           Least Concern (LC)   LC        Caudata Amphiu… Amph…\n 9 Amphiuma tridactylum     Least Concern (LC)   LC        Caudata Amphiu… Amph…\n10 Anaxyrus boreas          Least Concern (LC)   LC        Anura   Bufoni… Anax…\n# ℹ 55 more rows\n# ℹ 9 more variables: Age_at_maturity_min_y &lt;dbl&gt;, Age_at_maturity_max_y &lt;dbl&gt;,\n#   Body_size_mm &lt;dbl&gt;, Longevity_max_y &lt;dbl&gt;, Litter_size_min_n &lt;dbl&gt;,\n#   Litter_size_max_n &lt;dbl&gt;, Offspring_size_min_mm &lt;dbl&gt;,\n#   Offspring_size_max_mm &lt;fct&gt;, Development &lt;chr&gt;\n\n\n\n\n\n\nmammal_sleep_tbl |&gt;\n    dplyr::summarise(across(c(predation, exposure, danger)))\n\nWarning: Returning more (or less) than 1 row per `summarise()` group was deprecated in\ndplyr 1.1.0.\nℹ Please use `reframe()` instead.\nℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`\n  always returns an ungrouped data frame and adjust accordingly.\n\n\n# A tibble: 62 × 3\n   predation exposure danger\n   &lt;fct&gt;     &lt;fct&gt;    &lt;fct&gt; \n 1 3         5        3     \n 2 3         1        3     \n 3 1         1        1     \n 4 5         2        3     \n 5 3         5        4     \n 6 4         4        4     \n 7 1         1        1     \n 8 4         5        4     \n 9 1         2        1     \n10 1         1        1     \n# ℹ 52 more rows"
   },
   {
-    "objectID": "datasets/mgrtibbles.html#install-and-load",
-    "href": "datasets/mgrtibbles.html#install-and-load",
-    "title": "Mgrtibbles",
-    "section": "Install and load",
-    "text": "Install and load\nInstallation and loading instruction below:\nYou will need the remotes package installed and loaded.\n\ninstall.packages(\"remotes\")\nlibrary(remotes)\n\n\nremotes::install_github(\"m-gemmell/mgrtibbles\")\nlibrary(mgrtibbles)",
-    "crumbs": [
-      "Datasets",
-      "Mgrtibbles"
-    ]
-  },
-  {
-    "objectID": "datasets/mgrtibbles.html#accessing-data",
-    "href": "datasets/mgrtibbles.html#accessing-data",
-    "title": "Mgrtibbles",
-    "section": "Accessing data",
-    "text": "Accessing data\nOnce you have installed and loaded the package you can access one of the various datasets as a tibble like below:\n\nmgrtibbles::mammal_sleep_tbl\n\n# A tibble: 62 × 11\n   species          body_wt brain_wt non_dreaming dreaming total_sleep life_span\n   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n 1 Africanelephant  6.65e+3   5.71           NA       NA           3.3      38.6\n 2 Africangiantpou… 1   e+0   0.0066          6.3      2           8.3       4.5\n 3 ArcticFox        3.38e+0   0.0445         NA       NA          12.5      14  \n 4 Arcticgroundsqu… 9.2 e-1   0.0057         NA       NA          16.5      NA  \n 5 Asianelephant    2.55e+3   4.60            2.1      1.8         3.9      69  \n 6 Baboon           1.06e+1   0.180           9.1      0.7         9.8      27  \n 7 Bigbrownbat      2.3 e-2   0.0003         15.8      3.9        19.7      19  \n 8 Braziliantapir   1.6 e+2   0.169           5.2      1           6.2      30.4\n 9 Cat              3.3 e+0   0.0256         10.9      3.6        14.5      28  \n10 Chimpanzee       5.22e+1   0.44            8.3      1.4         9.7      50  \n# ℹ 52 more rows\n# ℹ 4 more variables: gestation &lt;dbl&gt;, predation &lt;fct&gt;, exposure &lt;fct&gt;,\n#   danger &lt;fct&gt;\n\n\nTo see the format and variable description use ?. For example:\n\n?mgrtibbles::crab_age_pred_tbl",
-    "crumbs": [
-      "Datasets",
-      "Mgrtibbles"
-    ]
-  },
-  {
-    "objectID": "datasets/mgrtibbles.html#tibble-details",
-    "href": "datasets/mgrtibbles.html#tibble-details",
-    "title": "Mgrtibbles",
-    "section": "Tibble details",
-    "text": "Tibble details\namphibian_div_tbl details\nbat_roost_tbl details\ncrab_age_pred_tbl details\ncrop_and_soil_tbl details\nfisheries_long_tbl details\nfisheries_wide_tbl details\nmammal_sleep_tbl details\nmushroom_tbl details",
-    "crumbs": [
-      "Datasets",
-      "Mgrtibbles"
-    ]
-  },
-  {
-    "objectID": "datasets/data_files.html",
-    "href": "datasets/data_files.html",
-    "title": "Data files",
+    "objectID": "dplyr/across.html#dataset",
+    "href": "dplyr/across.html#dataset",
+    "title": "Across",
     "section": "",
-    "text": "This website uses various datasets to demonstrate code. Below are explanations to the datasets and their download links.",
-    "crumbs": [
-      "Datasets",
-      "Data files"
-    ]
+    "text": "For demonstration we’ll load the mammal_sleep_tbl data from the mgrtibbles package (hyperlink includes install instructions).\n\n#Load package\nlibrary(\"mgrtibbles\")\n#mammal_sleep_tbl tibble for demonstration\nmgrtibbles::mammal_sleep_tbl\n\n# A tibble: 62 × 11\n   species          body_wt brain_wt non_dreaming dreaming total_sleep life_span\n   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n 1 Africanelephant  6.65e+3   5.71           NA       NA           3.3      38.6\n 2 Africangiantpou… 1   e+0   0.0066          6.3      2           8.3       4.5\n 3 ArcticFox        3.38e+0   0.0445         NA       NA          12.5      14  \n 4 Arcticgroundsqu… 9.2 e-1   0.0057         NA       NA          16.5      NA  \n 5 Asianelephant    2.55e+3   4.60            2.1      1.8         3.9      69  \n 6 Baboon           1.06e+1   0.180           9.1      0.7         9.8      27  \n 7 Bigbrownbat      2.3 e-2   0.0003         15.8      3.9        19.7      19  \n 8 Braziliantapir   1.6 e+2   0.169           5.2      1           6.2      30.4\n 9 Cat              3.3 e+0   0.0256         10.9      3.6        14.5      28  \n10 Chimpanzee       5.22e+1   0.44            8.3      1.4         9.7      50  \n# ℹ 52 more rows\n# ℹ 4 more variables: gestation &lt;dbl&gt;, predation &lt;fct&gt;, exposure &lt;fct&gt;,\n#   danger &lt;fct&gt;"
   },
   {
-    "objectID": "datasets/data_files.html#suggestions-for-matthew",
-    "href": "datasets/data_files.html#suggestions-for-matthew",
-    "title": "Data files",
-    "section": "Suggestions for Matthew",
-    "text": "Suggestions for Matthew\n\nHouseplant environment characteristics\nall_plant_details.csv\nhttps://www.kaggle.com/datasets/noneee/houseplant-environment-characteristics\n\n\nCrab age prediction\nCrabAgePredictions.csv\nhttps://www.kaggle.com/datasets/sidhus/crab-age-prediction\n\n\nShifting Seas: Ocean Climate & Marine Life Dataset\nrealistic_ocean_climate_dataset.csv\nhttps://www.kaggle.com/datasets/atharvasoundankar/shifting-seas-ocean-climate-and-marine-life-dataset\n\n\nPredict age abalone\nabalone.data.csv\nhttps://www.kaggle.com/datasets/farkhod77/abalone-age-predict\n\n\nPenguin Sizes Dataset\npenguins_size.csv\nhttps://www.kaggle.com/datasets/amulyas/penguin-size-dataset\n\n\nFish and Overfishing\ncapture-fisheries-vs-aquaculture.csv\nhttps://www.kaggle.com/datasets/sergegeukjian/fish-and-overfishing?select=capture-fisheries-vs-aquaculture.csv",
-    "crumbs": [
-      "Datasets",
-      "Data files"
-    ]
+    "objectID": "dplyr/across.html#summarise",
+    "href": "dplyr/across.html#summarise",
+    "title": "Across",
+    "section": "",
+    "text": "mammal_sleep_tbl |&gt;\n    dplyr::summarise(across(c(predation, exposure, danger)))\n\nWarning: Returning more (or less) than 1 row per `summarise()` group was deprecated in\ndplyr 1.1.0.\nℹ Please use `reframe()` instead.\nℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`\n  always returns an ungrouped data frame and adjust accordingly.\n\n\n# A tibble: 62 × 3\n   predation exposure danger\n   &lt;fct&gt;     &lt;fct&gt;    &lt;fct&gt; \n 1 3         5        3     \n 2 3         1        3     \n 3 1         1        1     \n 4 5         2        3     \n 5 3         5        4     \n 6 4         4        4     \n 7 1         1        1     \n 8 4         5        4     \n 9 1         2        1     \n10 1         1        1     \n# ℹ 52 more rows"
   },
   {
     "objectID": "datasets/lterdatasampler.html",
@@ -1871,6 +1838,72 @@
     "crumbs": [
       "Datasets",
       "Lterdatasampler"
+    ]
+  },
+  {
+    "objectID": "datasets/data_files.html",
+    "href": "datasets/data_files.html",
+    "title": "Data files",
+    "section": "",
+    "text": "This website uses various datasets to demonstrate code. Below are explanations to the datasets and their download links.",
+    "crumbs": [
+      "Datasets",
+      "Data files"
+    ]
+  },
+  {
+    "objectID": "datasets/data_files.html#suggestions-for-matthew",
+    "href": "datasets/data_files.html#suggestions-for-matthew",
+    "title": "Data files",
+    "section": "Suggestions for Matthew",
+    "text": "Suggestions for Matthew\n\nHouseplant environment characteristics\nall_plant_details.csv\nhttps://www.kaggle.com/datasets/noneee/houseplant-environment-characteristics\n\n\nCrab age prediction\nCrabAgePredictions.csv\nhttps://www.kaggle.com/datasets/sidhus/crab-age-prediction\n\n\nShifting Seas: Ocean Climate & Marine Life Dataset\nrealistic_ocean_climate_dataset.csv\nhttps://www.kaggle.com/datasets/atharvasoundankar/shifting-seas-ocean-climate-and-marine-life-dataset\n\n\nPredict age abalone\nabalone.data.csv\nhttps://www.kaggle.com/datasets/farkhod77/abalone-age-predict\n\n\nPenguin Sizes Dataset\npenguins_size.csv\nhttps://www.kaggle.com/datasets/amulyas/penguin-size-dataset\n\n\nFish and Overfishing\ncapture-fisheries-vs-aquaculture.csv\nhttps://www.kaggle.com/datasets/sergegeukjian/fish-and-overfishing?select=capture-fisheries-vs-aquaculture.csv",
+    "crumbs": [
+      "Datasets",
+      "Data files"
+    ]
+  },
+  {
+    "objectID": "datasets/mgrtibbles.html",
+    "href": "datasets/mgrtibbles.html",
+    "title": "Mgrtibbles",
+    "section": "",
+    "text": "mgrtibbles is a R package containing various datasets in tibbles. They were curated into a R package by Matthew Gemmell.\nFor full information please see the mgrtibbles github page",
+    "crumbs": [
+      "Datasets",
+      "Mgrtibbles"
+    ]
+  },
+  {
+    "objectID": "datasets/mgrtibbles.html#install-and-load",
+    "href": "datasets/mgrtibbles.html#install-and-load",
+    "title": "Mgrtibbles",
+    "section": "Install and load",
+    "text": "Install and load\nInstallation and loading instruction below:\nYou will need the remotes package installed and loaded.\n\ninstall.packages(\"remotes\")\nlibrary(remotes)\n\n\nremotes::install_github(\"m-gemmell/mgrtibbles\")\nlibrary(mgrtibbles)",
+    "crumbs": [
+      "Datasets",
+      "Mgrtibbles"
+    ]
+  },
+  {
+    "objectID": "datasets/mgrtibbles.html#accessing-data",
+    "href": "datasets/mgrtibbles.html#accessing-data",
+    "title": "Mgrtibbles",
+    "section": "Accessing data",
+    "text": "Accessing data\nOnce you have installed and loaded the package you can access one of the various datasets as a tibble like below:\n\nmgrtibbles::mammal_sleep_tbl\n\n# A tibble: 62 × 11\n   species          body_wt brain_wt non_dreaming dreaming total_sleep life_span\n   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n 1 Africanelephant  6.65e+3   5.71           NA       NA           3.3      38.6\n 2 Africangiantpou… 1   e+0   0.0066          6.3      2           8.3       4.5\n 3 ArcticFox        3.38e+0   0.0445         NA       NA          12.5      14  \n 4 Arcticgroundsqu… 9.2 e-1   0.0057         NA       NA          16.5      NA  \n 5 Asianelephant    2.55e+3   4.60            2.1      1.8         3.9      69  \n 6 Baboon           1.06e+1   0.180           9.1      0.7         9.8      27  \n 7 Bigbrownbat      2.3 e-2   0.0003         15.8      3.9        19.7      19  \n 8 Braziliantapir   1.6 e+2   0.169           5.2      1           6.2      30.4\n 9 Cat              3.3 e+0   0.0256         10.9      3.6        14.5      28  \n10 Chimpanzee       5.22e+1   0.44            8.3      1.4         9.7      50  \n# ℹ 52 more rows\n# ℹ 4 more variables: gestation &lt;dbl&gt;, predation &lt;fct&gt;, exposure &lt;fct&gt;,\n#   danger &lt;fct&gt;\n\n\nTo see the format and variable description use ?. For example:\n\n?mgrtibbles::crab_age_pred_tbl",
+    "crumbs": [
+      "Datasets",
+      "Mgrtibbles"
+    ]
+  },
+  {
+    "objectID": "datasets/mgrtibbles.html#tibble-details",
+    "href": "datasets/mgrtibbles.html#tibble-details",
+    "title": "Mgrtibbles",
+    "section": "Tibble details",
+    "text": "Tibble details\namphibian_div_tbl details\nbat_roost_tbl details\ncrab_age_pred_tbl details\ncrop_and_soil_tbl details\nfisheries_long_tbl details\nfisheries_wide_tbl details\nmammal_sleep_tbl details\nmushroom_tbl details",
+    "crumbs": [
+      "Datasets",
+      "Mgrtibbles"
     ]
   },
   {
@@ -3390,27 +3423,65 @@
     ]
   },
   {
-    "objectID": "dplyr/select.html#all-of",
-    "href": "dplyr/select.html#all-of",
-    "title": "Select",
-    "section": "All of",
-    "text": "All of\nYou can create a vector containing the column/variable names you want to select. This requires the use of the all_of() function.\n\n#Vector of column names\nvars &lt;- c(\"species\", \"brain_wt\", \"total_sleep\", \"life_span\")\n#Select columns from vector\nmammal_sleep_tbl |&gt; dplyr::select(all_of(vars))\n\n# A tibble: 5 × 4\n  species                brain_wt total_sleep life_span\n  &lt;chr&gt;                     &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n1 Africanelephant          5.71           3.3      38.6\n2 Africangiantpouchedrat   0.0066         8.3       4.5\n3 ArcticFox                0.0445        12.5      14  \n4 Arcticgroundsquirrel     0.0057        16.5      NA  \n5 Asianelephant            4.60           3.9      69  \n\n\nIf you include variables/column names that do not exist in the tibble then an error will occur and the command will not run.",
+    "objectID": "dplyr/across.html#dataset-1",
+    "href": "dplyr/across.html#dataset-1",
+    "title": "Across",
+    "section": "",
+    "text": "For demonstration we’ll load the amphibian_div_tbl data from the mgrtibbles package (hyperlink includes install instructions).\nWe’ll remove any rows with NAs as NAs cause mean and other other calculations to return NA.\n\n#Load package\nlibrary(\"mgrtibbles\")\n#amphibian_div_tbl tibble for demonstration\namphibian_div_tbl &lt;- mgrtibbles::amphibian_div_tbl |&gt; na.omit()\n#glimpse tibble\namphibian_div_tbl |&gt; dplyr::glimpse()\n\nRows: 65\nColumns: 15\n$ Species               &lt;chr&gt; \"Acris crepitans\", \"Acris gryllus\", \"Ambystoma j…\n$ IUCN.Red.List.Status  &lt;fct&gt; Least Concern (LC), Least Concern (LC), Least Co…\n$ iucn_2cat             &lt;fct&gt; LC, LC, LC, LC, LC, LC, LC, LC, LC, LC, LC, LC, …\n$ Order                 &lt;chr&gt; \"Anura\", \"Anura\", \"Caudata\", \"Caudata\", \"Caudata…\n$ Family                &lt;chr&gt; \"Hylidae\", \"Hylidae\", \"Ambystomatidae\", \"Ambysto…\n$ Genus                 &lt;chr&gt; \"Acris\", \"Acris\", \"Ambystoma\", \"Ambystoma\", \"Amb…\n$ Age_at_maturity_min_y &lt;dbl&gt; 1.0, 1.0, 2.0, 1.0, 2.0, 2.0, 4.0, 4.0, 3.0, 4.0…\n$ Age_at_maturity_max_y &lt;dbl&gt; 1.0, 1.0, 3.0, 3.0, 3.0, 2.0, 4.0, 4.0, 3.0, 6.0…\n$ Body_size_mm          &lt;dbl&gt; 38, 33, 210, 248, 248, 191, 330, 1162, 1060, 127…\n$ Longevity_max_y       &lt;dbl&gt; 4.9, 1.0, 3.0, 10.0, 32.0, 13.8, 25.0, 27.0, 15.…\n$ Litter_size_min_n     &lt;dbl&gt; 40, 99, 140, 90, 144, 550, 421, 106, 200, 5213, …\n$ Litter_size_max_n     &lt;dbl&gt; 500, 250, 280, 411, 370, 700, 7000, 354, 350, 16…\n$ Offspring_size_min_mm &lt;dbl&gt; 1.30, 0.90, 2.00, 2.00, 2.00, 1.60, 2.00, 8.20, …\n$ Offspring_size_max_mm &lt;fct&gt; 1.5, 1.4, 2.5, 2.3, 2.8, 2.5, 3, 10.1, 7, 1.75, …\n$ Development           &lt;chr&gt; \"larval\", \"larval\", \"larval\", \"larval\", \"larval\"…"
+  },
+  {
+    "objectID": "dplyr/mutate.html#mutate-existing-column",
+    "href": "dplyr/mutate.html#mutate-existing-column",
+    "title": "Mutate",
+    "section": "Mutate existing column",
+    "text": "Mutate existing column\n\nmammal_sleep_tbl |&gt;\n    #Round numbers of body_wt ad brain_wt columns\n    dplyr::mutate(body_wt = round(body_wt))\n\n# A tibble: 62 × 11\n   species          body_wt brain_wt non_dreaming dreaming total_sleep life_span\n   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n 1 Africanelephant     6654   5.71           NA       NA           3.3      38.6\n 2 Africangiantpou…       1   0.0066          6.3      2           8.3       4.5\n 3 ArcticFox              3   0.0445         NA       NA          12.5      14  \n 4 Arcticgroundsqu…       1   0.0057         NA       NA          16.5      NA  \n 5 Asianelephant       2547   4.60            2.1      1.8         3.9      69  \n 6 Baboon                11   0.180           9.1      0.7         9.8      27  \n 7 Bigbrownbat            0   0.0003         15.8      3.9        19.7      19  \n 8 Braziliantapir       160   0.169           5.2      1           6.2      30.4\n 9 Cat                    3   0.0256         10.9      3.6        14.5      28  \n10 Chimpanzee            52   0.44            8.3      1.4         9.7      50  \n# ℹ 52 more rows\n# ℹ 4 more variables: gestation &lt;dbl&gt;, predation &lt;fct&gt;, exposure &lt;fct&gt;,\n#   danger &lt;fct&gt;",
     "crumbs": [
       "Dplyr",
       "Columns",
-      "Select"
+      "Mutate"
     ]
   },
   {
-    "objectID": "dplyr/select.html#any-of",
-    "href": "dplyr/select.html#any-of",
-    "title": "Select",
-    "section": "Any of",
-    "text": "Any of\nThe any_of() function won’t check if a variable exists or not. This means you can include variables/column names that don’t exist and the function will work with no error.\n\n#Vector of column names\nvars &lt;- c(\"genus\", \"species\", \"brain_wt\", \"total_sleep\", \"total_awake\", \"life_span\")\n#Select columns from vector\nmammal_sleep_tbl |&gt; dplyr::select(any_of(vars))\n\n# A tibble: 5 × 4\n  species                brain_wt total_sleep life_span\n  &lt;chr&gt;                     &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n1 Africanelephant          5.71           3.3      38.6\n2 Africangiantpouchedrat   0.0066         8.3       4.5\n3 ArcticFox                0.0445        12.5      14  \n4 Arcticgroundsquirrel     0.0057        16.5      NA  \n5 Asianelephant            4.60           3.9      69  \n\n\nThis is especially useful to remove variables as if you try to remove a variable after already removing it the function will still work. To unselect variables place a - in front of the any_of() function.\n\n#Vector of column names\nvars &lt;- c(\"genus\", \"species\", \"brain_wt\", \"total_sleep\", \"total_awake\", \"life_span\")\n#Unselect columns from vector\nmammal_sleep_tbl |&gt; dplyr::select(-any_of(vars))\n\n# A tibble: 5 × 7\n  body_wt non_dreaming dreaming gestation predation exposure danger\n    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt;    &lt;fct&gt; \n1 6654            NA       NA         645 3         5        3     \n2    1             6.3      2          42 3         1        3     \n3    3.38         NA       NA          60 1         1        1     \n4    0.92         NA       NA          25 5         2        3     \n5 2547             2.1      1.8       624 3         5        4",
+    "objectID": "dplyr/mutate.html#multiple-columns-with-across",
+    "href": "dplyr/mutate.html#multiple-columns-with-across",
+    "title": "Mutate",
+    "section": "Multiple columns with across()",
+    "text": "Multiple columns with across()\nThe dplyr::across() function can be used within a dplyr::mutate() function to apply a change across multiple columns.\nacross() Tidyverse reference page\nNumerically round the body_wt and brain_wt columns.\n\nmammal_sleep_tbl |&gt;\n    #Round numbers of body_wt ad brain_wt columns\n    dplyr::mutate(\n        dplyr::across(c(body_wt, brain_wt), round)\n        )\n\n# A tibble: 62 × 11\n   species          body_wt brain_wt non_dreaming dreaming total_sleep life_span\n   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n 1 Africanelephant     6654        6         NA       NA           3.3      38.6\n 2 Africangiantpou…       1        0          6.3      2           8.3       4.5\n 3 ArcticFox              3        0         NA       NA          12.5      14  \n 4 Arcticgroundsqu…       1        0         NA       NA          16.5      NA  \n 5 Asianelephant       2547        5          2.1      1.8         3.9      69  \n 6 Baboon                11        0          9.1      0.7         9.8      27  \n 7 Bigbrownbat            0        0         15.8      3.9        19.7      19  \n 8 Braziliantapir       160        0          5.2      1           6.2      30.4\n 9 Cat                    3        0         10.9      3.6        14.5      28  \n10 Chimpanzee            52        0          8.3      1.4         9.7      50  \n# ℹ 52 more rows\n# ℹ 4 more variables: gestation &lt;dbl&gt;, predation &lt;fct&gt;, exposure &lt;fct&gt;,\n#   danger &lt;fct&gt;\n\n\nConvert hour values of non_dreaming, dreaming, and total_sleep to minutes by multiplying by 60.\nNote: \\(x) x*60 is a purrr formula.\n\nmammal_sleep_tbl |&gt;\n    #Round numbers of body_wt ad brain_wt columns\n    dplyr::mutate(\n        dplyr::across(c(non_dreaming, dreaming, total_sleep), \\(x) x*60)\n        )\n\n# A tibble: 62 × 11\n   species          body_wt brain_wt non_dreaming dreaming total_sleep life_span\n   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n 1 Africanelephant  6.65e+3   5.71             NA       NA         198      38.6\n 2 Africangiantpou… 1   e+0   0.0066          378      120         498       4.5\n 3 ArcticFox        3.38e+0   0.0445           NA       NA         750      14  \n 4 Arcticgroundsqu… 9.2 e-1   0.0057           NA       NA         990      NA  \n 5 Asianelephant    2.55e+3   4.60            126      108         234      69  \n 6 Baboon           1.06e+1   0.180           546       42         588      27  \n 7 Bigbrownbat      2.3 e-2   0.0003          948      234        1182      19  \n 8 Braziliantapir   1.6 e+2   0.169           312       60         372      30.4\n 9 Cat              3.3 e+0   0.0256          654      216         870      28  \n10 Chimpanzee       5.22e+1   0.44            498       84         582      50  \n# ℹ 52 more rows\n# ℹ 4 more variables: gestation &lt;dbl&gt;, predation &lt;fct&gt;, exposure &lt;fct&gt;,\n#   danger &lt;fct&gt;",
     "crumbs": [
       "Dplyr",
       "Columns",
-      "Select"
+      "Mutate"
     ]
+  },
+  {
+    "objectID": "dplyr/mutate.html#modify-existing-column",
+    "href": "dplyr/mutate.html#modify-existing-column",
+    "title": "Mutate",
+    "section": "Modify existing column",
+    "text": "Modify existing column\nModify the body_wt column with the round() function.\n\nmammal_sleep_tbl |&gt;\n    #Round numbers of body_wt columns\n    dplyr::mutate(body_wt = round(body_wt))\n\n# A tibble: 62 × 11\n   species          body_wt brain_wt non_dreaming dreaming total_sleep life_span\n   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n 1 Africanelephant     6654   5.71           NA       NA           3.3      38.6\n 2 Africangiantpou…       1   0.0066          6.3      2           8.3       4.5\n 3 ArcticFox              3   0.0445         NA       NA          12.5      14  \n 4 Arcticgroundsqu…       1   0.0057         NA       NA          16.5      NA  \n 5 Asianelephant       2547   4.60            2.1      1.8         3.9      69  \n 6 Baboon                11   0.180           9.1      0.7         9.8      27  \n 7 Bigbrownbat            0   0.0003         15.8      3.9        19.7      19  \n 8 Braziliantapir       160   0.169           5.2      1           6.2      30.4\n 9 Cat                    3   0.0256         10.9      3.6        14.5      28  \n10 Chimpanzee            52   0.44            8.3      1.4         9.7      50  \n# ℹ 52 more rows\n# ℹ 4 more variables: gestation &lt;dbl&gt;, predation &lt;fct&gt;, exposure &lt;fct&gt;,\n#   danger &lt;fct&gt;",
+    "crumbs": [
+      "Dplyr",
+      "Columns",
+      "Mutate"
+    ]
+  },
+  {
+    "objectID": "dplyr/mutate.html#delete-columns",
+    "href": "dplyr/mutate.html#delete-columns",
+    "title": "Mutate",
+    "section": "Delete columns",
+    "text": "Delete columns\nRemove the species column by setting it to NULL\n\nmammal_sleep_tbl |&gt;\n    #Remove species column\n    dplyr::mutate(species = NULL)\n\n# A tibble: 62 × 10\n    body_wt brain_wt non_dreaming dreaming total_sleep life_span gestation\n      &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n 1 6654       5.71           NA       NA           3.3      38.6       645\n 2    1       0.0066          6.3      2           8.3       4.5        42\n 3    3.38    0.0445         NA       NA          12.5      14          60\n 4    0.92    0.0057         NA       NA          16.5      NA          25\n 5 2547       4.60            2.1      1.8         3.9      69         624\n 6   10.6     0.180           9.1      0.7         9.8      27         180\n 7    0.023   0.0003         15.8      3.9        19.7      19          35\n 8  160       0.169           5.2      1           6.2      30.4       392\n 9    3.3     0.0256         10.9      3.6        14.5      28          63\n10   52.2     0.44            8.3      1.4         9.7      50         230\n# ℹ 52 more rows\n# ℹ 3 more variables: predation &lt;fct&gt;, exposure &lt;fct&gt;, danger &lt;fct&gt;",
+    "crumbs": [
+      "Dplyr",
+      "Columns",
+      "Mutate"
+    ]
+  },
+  {
+    "objectID": "dplyr/across.html#mutate",
+    "href": "dplyr/across.html#mutate",
+    "title": "Across",
+    "section": "",
+    "text": "amphibian_div_tbl |&gt;\n    dplyr::mutate(across(c()))\n\n# A tibble: 65 × 15\n   Species                  IUCN.Red.List.Status iucn_2cat Order   Family  Genus\n   &lt;chr&gt;                    &lt;fct&gt;                &lt;fct&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;\n 1 Acris crepitans          Least Concern (LC)   LC        Anura   Hylidae Acris\n 2 Acris gryllus            Least Concern (LC)   LC        Anura   Hylidae Acris\n 3 Ambystoma jeffersonianum Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 4 Ambystoma macrodactylum  Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 5 Ambystoma maculatum      Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 6 Ambystoma texanum        Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 7 Ambystoma tigrinum       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 8 Amphiuma means           Least Concern (LC)   LC        Caudata Amphiu… Amph…\n 9 Amphiuma tridactylum     Least Concern (LC)   LC        Caudata Amphiu… Amph…\n10 Anaxyrus boreas          Least Concern (LC)   LC        Anura   Bufoni… Anax…\n# ℹ 55 more rows\n# ℹ 9 more variables: Age_at_maturity_min_y &lt;dbl&gt;, Age_at_maturity_max_y &lt;dbl&gt;,\n#   Body_size_mm &lt;dbl&gt;, Longevity_max_y &lt;dbl&gt;, Litter_size_min_n &lt;dbl&gt;,\n#   Litter_size_max_n &lt;dbl&gt;, Offspring_size_min_mm &lt;dbl&gt;,\n#   Offspring_size_max_mm &lt;fct&gt;, Development &lt;chr&gt;"
   }
 ]

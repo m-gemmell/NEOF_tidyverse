@@ -11,6 +11,7 @@ The function `dplyr::mutate()` allows you to:
 - Create new columns based on existing columns.
 - Modify existing columns
 - Delete columns
+- Modify multiple columns at once with `dplyr::across()`
 
 [Tidyverse reference page](https://dplyr.tidyverse.org//reference/mutate.html)
 
@@ -46,6 +47,55 @@ mammal_sleep_tbl |>
     #Calculate and add total_life_sleep column
     dplyr::mutate(total_life_sleep = (life_span*365.25) * total_sleep)
 ```
+
+## Modify existing column
+
+Modify the body_wt column with the `round()` function.
+
+```{r}
+mammal_sleep_tbl |>
+    #Round numbers of body_wt columns
+    dplyr::mutate(body_wt = round(body_wt))
+```
+
+## Delete columns
+
+Remove the species column by setting it to `NULL`
+
+```{r}
+mammal_sleep_tbl |>
+    #Remove species column
+    dplyr::mutate(species = NULL)
+```
+
+## Multiple columns with across()
+
+The `dplyr::across()` function can be used within a `dplyr::mutate()` function to apply a change across multiple columns.
+
+[across() Tidyverse reference page](https://dplyr.tidyverse.org/reference/across.html)
+
+Numerically round the body_wt and brain_wt columns.
+
+```{r}
+mammal_sleep_tbl |>
+    #Round numbers of body_wt ad brain_wt columns
+    dplyr::mutate(
+        dplyr::across(c(body_wt, brain_wt), round)
+        )
+```
+
+Convert hour values of non_dreaming, dreaming, and total_sleep to minutes by multiplying by 60.
+
+__Note:__ `\(x) x*60` is a [purrr](/purrr/purrr.qmd) formula.
+
+```{r}
+mammal_sleep_tbl |>
+    #Round numbers of body_wt ad brain_wt columns
+    dplyr::mutate(
+        dplyr::across(c(non_dreaming, dreaming, total_sleep), \(x) x*60)
+        )
+```
+
 
 ## NA filling
 
