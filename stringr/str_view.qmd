@@ -1,0 +1,150 @@
+# str_view
+
+<center>
+![](images/stringr_str_view.png){style="width:200px"}
+</center>
+
+
+The function `stringr::str_view()` allows you to view/print the "raw contents" of a string.
+
+## View a character scalar
+
+Normal R method to view a string.
+
+```{R}
+"tga"
+```
+
+Tidyverse method to view string with `stringr::str_view()`.
+
+```{r}
+stringr::str_view("tga")
+```
+
+The differences of `str_view()` to the normal method are:
+
+- The inclusion of `|` between the index (`[1]`) and the string (`tga`).
+- The quotes around the string are not included.
+
+## View a character vector
+
+Create a character vector.
+
+```{r}
+vec <- c("rose", "thistle", "leek", "shamrock")
+```
+
+Print vector through normal R method.
+
+```{r}
+vec
+```
+
+View vector with `str_view()`.
+
+```{r}
+vec |> stringr::str_view()
+```
+
+Notice that each vector element is printed on a new line with `str_view()`.
+
+## Special characters
+
+There are may special characters that can be used in strings.
+`str_view()` is especially useful in how it presents these.
+
+### White spaces
+
+The three main white spaces in R are:
+
+- `" "`: A space.
+- `"\t"`: A tab.
+- `"\n"`: A new line.
+
+Create a vector demonstrating these three.
+
+```{r}
+#Create a vector of strings
+vec <- c("gataac", "gat aac", "gat\taac", "gat\naac")
+```
+
+Print this vector with the normal R method.
+
+```{r}
+vec
+```
+
+View with `str_view()`.
+
+```{r}
+stringr::str_view(vec)
+```
+
+In this case notice:
+
+- The tab character (`\t`) is within curly braces (`{}`), represented as `{\t}`.
+- The space is shown as a space and the newline creates a new line, causing the fourth element to be split over 2 lines.
+
+### Special characters
+
+To include double quotes within strings denoted by double quotes we need to "escape" the double quotes.
+We can carry this out with `\`.
+
+Create a string containing a double quote.
+Note, we can include single quotes (`'`) normally as we are not using them to denote the string.
+
+```{r}
+sentence <- "A double quote is: \"."
+```
+
+Printing the string normally with R shows the escape character (`\`)
+
+```{r}
+sentence
+```
+
+Viewing the string with `str_view()` does not show the escape character.
+Instead it aims to display the text how a human would read it, rather than a computer.
+This is very useful to ensure any escape characters in the string work as intended.
+
+```{r}
+stringr::str_view(sentence)
+```
+
+To add to the complexity you can escape escape characters with an escape character.
+```{r}
+#Create vector
+vec <- c("A double quote is: \"", "A single quote is: '", "An escape character is: \\")
+#View vector
+vec |> stringr::str_view()
+```
+
+### Uncode
+
+Unicode can be used to include other various special symbols.
+Examples include:
+
+- &pi;: Th pi symbol represented by `\u00b5`
+- &euro;: The euro symbol represented by `\u20ac`
+- 😎: Smiling face with sunglasses represented by `\U0001f60e`
+
+```{r}
+#Create vector
+vec <- c("\u00b5", "\u20ac", "\U0001f60e")
+```
+
+Normal R will print out symbol.
+
+```{r}
+vec
+```
+
+`str_view()` will also print out the symbol.
+
+```{r}
+vec |> stringr::str_view()
+```
+
+For more unicode characters please see: [Wikipedia page of List of Unicode characters](https://en.wikipedia.org/wiki/List_of_Unicode_characters).
+For these you need to change `U+` to `u` and you can use lower case letters instead of upper case.
+

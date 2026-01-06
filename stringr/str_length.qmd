@@ -1,0 +1,51 @@
+# str_length
+
+<center>
+![](images/stringr_str_length.png){style="width:200px"}
+</center>
+
+The function `stringr::str_length()` allows you to determine the length of a string.
+This will give you the number of characters each string has.
+
+[Tidyverse reference page](https://stringr.tidyverse.org/reference/str_length.html)
+
+## str_length
+
+First we'll count the number of characters in one string (a scalar).
+
+```{r}
+stringr::str_length("abc")
+```
+
+Next we can count the number of characters within each string of a vector.
+
+```{r}
+#Create a vector of strings
+vec <- c("abc", "defghijk", "lmnopqrstuvwxyz")
+#Count with a vector
+stringr::str_length(vec)
+```
+
+## White spaces
+
+What about counting white spaces such as spaces (`" "`), tabs (`\t`), and new spaces (`\n`)?
+
+```{r}
+#Create a vector of strings
+vec <- c("gataac", "gat aac", "gat\taac", "gat\naac")
+```
+
+View the strings with [`stringr::str_view()`](/stringr/str_view.qmd).
+```{r}
+#View the strings
+stringr::str_view(vec)
+```
+
+Count the characters in the strings.
+
+```{r}
+#Count characters of strings
+stringr::str_length(vec)
+```
+
+You'll notice that these three white spaces count as 1 character.

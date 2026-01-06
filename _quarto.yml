@@ -175,6 +175,14 @@ website:
     align: left
     contents:
     - href: stringr/stringr.qmd
+    - section: "Viewing strings"
+      contents:
+      - href: stringr/str_view.qmd
+    - section: "Character maniplation"
+      contents:
+      - href: stringr/str_length.qmd
+      - href: stringr/str_sub.qmd
+      - href: stringr/str_dup.qmd
     - href: stringr/cheatsheets.qmd
   - id: Forcats
     title: Forcats

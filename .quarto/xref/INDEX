@@ -313,5 +313,17 @@
   },
   "dplyr/across.qmd": {
     "across.html": "47280fe4"
+  },
+  "stringr/str_length.qmd": {
+    "str_length.html": "837fae99"
+  },
+  "stringr/str_view.qmd": {
+    "str_view.html": "89e8cf48"
+  },
+  "stringr/str_sub.qmd": {
+    "str_sub.html": "1b682c32"
+  },
+  "stringr/str_dup.qmd": {
+    "str_dup.html": "0b68cfc9"
   }
 }

@@ -110,6 +110,9 @@ Once installed you can load the package suite:
 library("tidyverse")
 ```
 
+TO update Tidyverse check the foloowing link:
+
+[UPdate tidyverse packages](https://tidyverse.tidyverse.org/reference/tidyverse_update.html)
 
 ## External links
 

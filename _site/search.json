@@ -298,11 +298,69 @@
     ]
   },
   {
-    "objectID": "stringr/stringr.html",
-    "href": "stringr/stringr.html",
-    "title": "Stringr",
+    "objectID": "stringr/str_view.html",
+    "href": "stringr/str_view.html",
+    "title": "str_view",
     "section": "",
-    "text": "In development\nreadr homepage",
+    "text": "The function stringr::str_view() allows you to view/print the “raw contents” of a string.\n\n\nNormal R method to view a string.\n\n\"tga\"\n\n[1] \"tga\"\n\n\nTidyverse method to view string with stringr::str_view().\n\nstringr::str_view(\"tga\")\n\n[1] │ tga\n\n\nThe differences of str_view() to the normal method are:\n\nThe inclusion of | between the index ([1]) and the string (tga).\nThe quotes around the string are not included.\n\n\n\n\nCreate a character vector.\n\nvec &lt;- c(\"rose\", \"thistle\", \"leek\", \"shamrock\")\n\nPrint vector through normal R method.\n\nvec\n\n[1] \"rose\"     \"thistle\"  \"leek\"     \"shamrock\"\n\n\nView vector with str_view().\n\nvec |&gt; stringr::str_view()\n\n[1] │ rose\n[2] │ thistle\n[3] │ leek\n[4] │ shamrock\n\n\nNotice that each vector element is printed on a new line with str_view().\n\n\n\nThere are may special characters that can be used in strings. str_view() is especially useful in how it presents these.\n\n\nThe three main white spaces in R are:\n\n\" \": A space.\n\"\\t\": A tab.\n\"\\n\": A new line.\n\nCreate a vector demonstrating these three.\n\n#Create a vector of strings\nvec &lt;- c(\"gataac\", \"gat aac\", \"gat\\taac\", \"gat\\naac\")\n\nPrint this vector with the normal R method.\n\nvec\n\n[1] \"gataac\"   \"gat aac\"  \"gat\\taac\" \"gat\\naac\"\n\n\nView with str_view().\n\nstringr::str_view(vec)\n\n[1] │ gataac\n[2] │ gat aac\n[3] │ gat{\\t}aac\n[4] │ gat\n    │ aac\n\n\nIn this case notice:\n\nThe tab character (\\t) is within curly braces ({}), represented as {\\t}.\nThe space is shown as a space and the newline creates a new line, causing the fourth element to be split over 2 lines.\n\n\n\n\nTo include double quotes within strings denoted by double quotes we need to “escape” the double quotes. We can carry this out with \\.\nCreate a string containing a double quote. Note, we can include single quotes (') normally as we are not using them to denote the string.\n\nsentence &lt;- \"A double quote is: \\\".\"\n\nPrinting the string normally with R shows the escape character (\\)\n\nsentence\n\n[1] \"A double quote is: \\\".\"\n\n\nViewing the string with str_view() does not show the escape character. Instead it aims to display the text how a human would read it, rather than a computer. This is very useful to ensure any escape characters in the string work as intended.\n\nstringr::str_view(sentence)\n\n[1] │ A double quote is: \".\n\n\nTo add to the complexity you can escape escape characters with an escape character.\n\n#Create vector\nvec &lt;- c(\"A double quote is: \\\"\", \"A single quote is: '\", \"An escape character is: \\\\\")\n#View vector\nvec |&gt; stringr::str_view()\n\n[1] │ A double quote is: \"\n[2] │ A single quote is: '\n[3] │ An escape character is: \\\n\n\n\n\n\nUnicode can be used to include other various special symbols. Examples include:\n\nπ: Th pi symbol represented by \\u00b5\n€: The euro symbol represented by \\u20ac\n😎: Smiling face with sunglasses represented by \\U0001f60e\n\n\n#Create vector\nvec &lt;- c(\"\\u00b5\", \"\\u20ac\", \"\\U0001f60e\")\n\nNormal R will print out symbol.\n\nvec\n\n[1] \"µ\"  \"€\"  \"😎\"\n\n\nstr_view() will also print out the symbol.\n\nvec |&gt; stringr::str_view()\n\n[1] │ µ\n[2] │ €\n[3] │ 😎\n\n\nFor more unicode characters please see: Wikipedia page of List of Unicode characters. For these you need to change U+ to u and you can use lower case letters instead of upper case.",
+    "crumbs": [
+      "Stringr",
+      "Viewing strings",
+      "str_view"
+    ]
+  },
+  {
+    "objectID": "stringr/str_length.html",
+    "href": "stringr/str_length.html",
+    "title": "str_length",
+    "section": "",
+    "text": "The function stringr::str_length() allows you to determine the length of a string. This will give you the number of characters each string has.\nTidyverse reference page\n\n\nFirst we’ll count the number of characters in one string (a scalar).\n\nstringr::str_length(\"abc\")\n\n[1] 3\n\n\nNext we can count the number of characters within each string of a vector.\n\n#Create a vector of strings\nvec &lt;- c(\"abc\", \"defghijk\", \"lmnopqrstuvwxyz\")\n#Count with a vector\nstringr::str_length(vec)\n\n[1]  3  8 15\n\n\n\n\n\nWhat about counting white spaces such as spaces (\" \"), tabs (\\t), and new spaces (\\n)?\n\n#Create a vector of strings\nvec &lt;- c(\"gataac\", \"gat aac\", \"gat\\taac\", \"gat\\naac\")\n\nView the strings with stringr::str_view().\n\n#View the strings\nstringr::str_view(vec)\n\n[1] │ gataac\n[2] │ gat aac\n[3] │ gat{\\t}aac\n[4] │ gat\n    │ aac\n\n\nCount the characters in the strings.\n\n#Count characters of strings\nstringr::str_length(vec)\n\n[1] 6 7 7 7\n\n\nYou’ll notice that these three white spaces count as 1 character.",
+    "crumbs": [
+      "Stringr",
+      "Character maniplation",
+      "str_length"
+    ]
+  },
+  {
+    "objectID": "stringr/str_length.html#str_length-1",
+    "href": "stringr/str_length.html#str_length-1",
+    "title": "str_length",
+    "section": "",
+    "text": "First we’ll count the number of characters in one string (a scalar).\n\nstringr::str_length(\"abc\")\n\n[1] 3\n\n\nNext we can count the number of characters within each string of a vector.\n\n#Create a vector of strings\nvec &lt;- c(\"abc\", \"defghijk\", \"lmnopqrstuvwxyz\")\n#Count with a vector\nstringr::str_length(vec)\n\n[1]  3  8 15",
+    "crumbs": [
+      "Stringr",
+      "Character maniplation",
+      "str_length"
+    ]
+  },
+  {
+    "objectID": "stringr/str_length.html#white-spaces",
+    "href": "stringr/str_length.html#white-spaces",
+    "title": "str_length",
+    "section": "",
+    "text": "What about counting white spaces such as spaces (\" \"), tabs (\\t), and new spaces (\\n)?\n\n#Create a vector of strings\nvec &lt;- c(\"gataac\", \"gat aac\", \"gat\\taac\", \"gat\\naac\")\n\nView the strings with stringr::str_view().\n\n#View the strings\nstringr::str_view(vec)\n\n[1] │ gataac\n[2] │ gat aac\n[3] │ gat{\\t}aac\n[4] │ gat\n    │ aac\n\n\nCount the characters in the strings.\n\n#Count characters of strings\nstringr::str_length(vec)\n\n[1] 6 7 7 7\n\n\nYou’ll notice that these three white spaces count as 1 character.",
+    "crumbs": [
+      "Stringr",
+      "Character maniplation",
+      "str_length"
+    ]
+  },
+  {
+    "objectID": "stringr/stringr.html#overview",
+    "href": "stringr/stringr.html#overview",
+    "title": "Stringr",
+    "section": "Overview",
+    "text": "Overview\nStringr is the main string manipulation package in tidyverse.\nStringr focusses on the most important and comonly used string manipulation functions. It is based on stringi which has a comprehensive set of functions.\nstringr homepage\nThis website aims to quickly cover some of the stringr functions and uses. Therefore, there are a lot more stringr functions than covered here. Please check the below link for the full list.\nFull stringr reference page\nIf you are unfamiliar with strings please see:\nString chapter in R for Data Science 2e",
+    "crumbs": [
+      "Stringr"
+    ]
+  },
+  {
+    "objectID": "stringr/stringr.html#sections",
+    "href": "stringr/stringr.html#sections",
+    "title": "Stringr",
+    "section": "Sections",
+    "text": "Sections\nThere are many sections for stringr. These are summarised below.\n\nViewing strings\n\n\n  \n\n\n\nstr_view: View the raw contents of a string.\n\nIncludes information about various special characters and how to escape them with \\.\n\n\n\n\nCharacter manipulation\n\n\n  \n\n\n  \n\n\n  \n\n\nThese functions allow you to manipulate strings in vectors.\n\nstr_length(): Determine the length of a string (i.e. count the number of characters in a string).\nstr_sub(): Extract or modify a substring using a start and end position.\nstr_dup(): Duplicate a string a specified number of times.\n\n\n\nCombining strings\nstr_c() str_flatten() str_glue()\n\n\nWhite space tools\nThese functions allow you to add, remove, and manipulate whitespaces (e.g. spaces and tabs)\n\n\nPattern matching\nThese functions allow you to carry out various tasks with regular expressions.\nFor an introduction to regular expressions please see the Regular expressions chapter in R for Data Science 2e",
     "crumbs": [
       "Stringr"
     ]
@@ -509,7 +567,7 @@
     "href": "index.html#installation-loading",
     "title": "NEOF Tidyverse",
     "section": "Installation & loading",
-    "text": "Installation & loading\nEnsure you have tidyverse installed and loaded before running commands within the rest of these materials.\nYou can install all the tidyverse packages with the following command:\n\ninstall.packages(\"tidyverse\")\n\nOnce installed you can load the package suite:\n\nlibrary(\"tidyverse\")",
+    "text": "Installation & loading\nEnsure you have tidyverse installed and loaded before running commands within the rest of these materials.\nYou can install all the tidyverse packages with the following command:\n\ninstall.packages(\"tidyverse\")\n\nOnce installed you can load the package suite:\n\nlibrary(\"tidyverse\")\n\nTO update Tidyverse check the foloowing link:\nUPdate tidyverse packages",
     "crumbs": [
       "Overview",
       "NEOF Tidyverse"
@@ -1776,25 +1834,70 @@
     ]
   },
   {
-    "objectID": "dplyr/across.html",
-    "href": "dplyr/across.html",
-    "title": "Across",
+    "objectID": "datasets/mgrtibbles.html",
+    "href": "datasets/mgrtibbles.html",
+    "title": "Mgrtibbles",
     "section": "",
-    "text": "The dplyr::across() function can be used within another function to work across multiple columns.\nTidyverse reference page\n\n\nFor demonstration we’ll load the mammal_sleep_tbl data from the mgrtibbles package (hyperlink includes install instructions).\n\n#Load package\nlibrary(\"mgrtibbles\")\n#mammal_sleep_tbl tibble for demonstration\nmgrtibbles::mammal_sleep_tbl\n\n# A tibble: 62 × 11\n   species          body_wt brain_wt non_dreaming dreaming total_sleep life_span\n   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n 1 Africanelephant  6.65e+3   5.71           NA       NA           3.3      38.6\n 2 Africangiantpou… 1   e+0   0.0066          6.3      2           8.3       4.5\n 3 ArcticFox        3.38e+0   0.0445         NA       NA          12.5      14  \n 4 Arcticgroundsqu… 9.2 e-1   0.0057         NA       NA          16.5      NA  \n 5 Asianelephant    2.55e+3   4.60            2.1      1.8         3.9      69  \n 6 Baboon           1.06e+1   0.180           9.1      0.7         9.8      27  \n 7 Bigbrownbat      2.3 e-2   0.0003         15.8      3.9        19.7      19  \n 8 Braziliantapir   1.6 e+2   0.169           5.2      1           6.2      30.4\n 9 Cat              3.3 e+0   0.0256         10.9      3.6        14.5      28  \n10 Chimpanzee       5.22e+1   0.44            8.3      1.4         9.7      50  \n# ℹ 52 more rows\n# ℹ 4 more variables: gestation &lt;dbl&gt;, predation &lt;fct&gt;, exposure &lt;fct&gt;,\n#   danger &lt;fct&gt;\n\n\n\n\n\nFor demonstration we’ll load the amphibian_div_tbl data from the mgrtibbles package (hyperlink includes install instructions).\nWe’ll remove any rows with NAs as NAs cause mean and other other calculations to return NA.\n\n#Load package\nlibrary(\"mgrtibbles\")\n#amphibian_div_tbl tibble for demonstration\namphibian_div_tbl &lt;- mgrtibbles::amphibian_div_tbl |&gt; na.omit()\n#glimpse tibble\namphibian_div_tbl |&gt; dplyr::glimpse()\n\nRows: 65\nColumns: 15\n$ Species               &lt;chr&gt; \"Acris crepitans\", \"Acris gryllus\", \"Ambystoma j…\n$ IUCN.Red.List.Status  &lt;fct&gt; Least Concern (LC), Least Concern (LC), Least Co…\n$ iucn_2cat             &lt;fct&gt; LC, LC, LC, LC, LC, LC, LC, LC, LC, LC, LC, LC, …\n$ Order                 &lt;chr&gt; \"Anura\", \"Anura\", \"Caudata\", \"Caudata\", \"Caudata…\n$ Family                &lt;chr&gt; \"Hylidae\", \"Hylidae\", \"Ambystomatidae\", \"Ambysto…\n$ Genus                 &lt;chr&gt; \"Acris\", \"Acris\", \"Ambystoma\", \"Ambystoma\", \"Amb…\n$ Age_at_maturity_min_y &lt;dbl&gt; 1.0, 1.0, 2.0, 1.0, 2.0, 2.0, 4.0, 4.0, 3.0, 4.0…\n$ Age_at_maturity_max_y &lt;dbl&gt; 1.0, 1.0, 3.0, 3.0, 3.0, 2.0, 4.0, 4.0, 3.0, 6.0…\n$ Body_size_mm          &lt;dbl&gt; 38, 33, 210, 248, 248, 191, 330, 1162, 1060, 127…\n$ Longevity_max_y       &lt;dbl&gt; 4.9, 1.0, 3.0, 10.0, 32.0, 13.8, 25.0, 27.0, 15.…\n$ Litter_size_min_n     &lt;dbl&gt; 40, 99, 140, 90, 144, 550, 421, 106, 200, 5213, …\n$ Litter_size_max_n     &lt;dbl&gt; 500, 250, 280, 411, 370, 700, 7000, 354, 350, 16…\n$ Offspring_size_min_mm &lt;dbl&gt; 1.30, 0.90, 2.00, 2.00, 2.00, 1.60, 2.00, 8.20, …\n$ Offspring_size_max_mm &lt;fct&gt; 1.5, 1.4, 2.5, 2.3, 2.8, 2.5, 3, 10.1, 7, 1.75, …\n$ Development           &lt;chr&gt; \"larval\", \"larval\", \"larval\", \"larval\", \"larval\"…\n\n\n\n\n\n\namphibian_div_tbl |&gt;\n    dplyr::mutate(across(c()))\n\n# A tibble: 65 × 15\n   Species                  IUCN.Red.List.Status iucn_2cat Order   Family  Genus\n   &lt;chr&gt;                    &lt;fct&gt;                &lt;fct&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;\n 1 Acris crepitans          Least Concern (LC)   LC        Anura   Hylidae Acris\n 2 Acris gryllus            Least Concern (LC)   LC        Anura   Hylidae Acris\n 3 Ambystoma jeffersonianum Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 4 Ambystoma macrodactylum  Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 5 Ambystoma maculatum      Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 6 Ambystoma texanum        Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 7 Ambystoma tigrinum       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 8 Amphiuma means           Least Concern (LC)   LC        Caudata Amphiu… Amph…\n 9 Amphiuma tridactylum     Least Concern (LC)   LC        Caudata Amphiu… Amph…\n10 Anaxyrus boreas          Least Concern (LC)   LC        Anura   Bufoni… Anax…\n# ℹ 55 more rows\n# ℹ 9 more variables: Age_at_maturity_min_y &lt;dbl&gt;, Age_at_maturity_max_y &lt;dbl&gt;,\n#   Body_size_mm &lt;dbl&gt;, Longevity_max_y &lt;dbl&gt;, Litter_size_min_n &lt;dbl&gt;,\n#   Litter_size_max_n &lt;dbl&gt;, Offspring_size_min_mm &lt;dbl&gt;,\n#   Offspring_size_max_mm &lt;fct&gt;, Development &lt;chr&gt;\n\n\n\n\n\n\nmammal_sleep_tbl |&gt;\n    dplyr::summarise(across(c(predation, exposure, danger)))\n\nWarning: Returning more (or less) than 1 row per `summarise()` group was deprecated in\ndplyr 1.1.0.\nℹ Please use `reframe()` instead.\nℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`\n  always returns an ungrouped data frame and adjust accordingly.\n\n\n# A tibble: 62 × 3\n   predation exposure danger\n   &lt;fct&gt;     &lt;fct&gt;    &lt;fct&gt; \n 1 3         5        3     \n 2 3         1        3     \n 3 1         1        1     \n 4 5         2        3     \n 5 3         5        4     \n 6 4         4        4     \n 7 1         1        1     \n 8 4         5        4     \n 9 1         2        1     \n10 1         1        1     \n# ℹ 52 more rows"
+    "text": "mgrtibbles is a R package containing various datasets in tibbles. They were curated into a R package by Matthew Gemmell.\nFor full information please see the mgrtibbles github page",
+    "crumbs": [
+      "Datasets",
+      "Mgrtibbles"
+    ]
   },
   {
-    "objectID": "dplyr/across.html#dataset",
-    "href": "dplyr/across.html#dataset",
-    "title": "Across",
-    "section": "",
-    "text": "For demonstration we’ll load the mammal_sleep_tbl data from the mgrtibbles package (hyperlink includes install instructions).\n\n#Load package\nlibrary(\"mgrtibbles\")\n#mammal_sleep_tbl tibble for demonstration\nmgrtibbles::mammal_sleep_tbl\n\n# A tibble: 62 × 11\n   species          body_wt brain_wt non_dreaming dreaming total_sleep life_span\n   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n 1 Africanelephant  6.65e+3   5.71           NA       NA           3.3      38.6\n 2 Africangiantpou… 1   e+0   0.0066          6.3      2           8.3       4.5\n 3 ArcticFox        3.38e+0   0.0445         NA       NA          12.5      14  \n 4 Arcticgroundsqu… 9.2 e-1   0.0057         NA       NA          16.5      NA  \n 5 Asianelephant    2.55e+3   4.60            2.1      1.8         3.9      69  \n 6 Baboon           1.06e+1   0.180           9.1      0.7         9.8      27  \n 7 Bigbrownbat      2.3 e-2   0.0003         15.8      3.9        19.7      19  \n 8 Braziliantapir   1.6 e+2   0.169           5.2      1           6.2      30.4\n 9 Cat              3.3 e+0   0.0256         10.9      3.6        14.5      28  \n10 Chimpanzee       5.22e+1   0.44            8.3      1.4         9.7      50  \n# ℹ 52 more rows\n# ℹ 4 more variables: gestation &lt;dbl&gt;, predation &lt;fct&gt;, exposure &lt;fct&gt;,\n#   danger &lt;fct&gt;"
+    "objectID": "datasets/mgrtibbles.html#install-and-load",
+    "href": "datasets/mgrtibbles.html#install-and-load",
+    "title": "Mgrtibbles",
+    "section": "Install and load",
+    "text": "Install and load\nInstallation and loading instruction below:\nYou will need the remotes package installed and loaded.\n\ninstall.packages(\"remotes\")\nlibrary(remotes)\n\n\nremotes::install_github(\"m-gemmell/mgrtibbles\")\nlibrary(mgrtibbles)",
+    "crumbs": [
+      "Datasets",
+      "Mgrtibbles"
+    ]
   },
   {
-    "objectID": "dplyr/across.html#summarise",
-    "href": "dplyr/across.html#summarise",
-    "title": "Across",
+    "objectID": "datasets/mgrtibbles.html#accessing-data",
+    "href": "datasets/mgrtibbles.html#accessing-data",
+    "title": "Mgrtibbles",
+    "section": "Accessing data",
+    "text": "Accessing data\nOnce you have installed and loaded the package you can access one of the various datasets as a tibble like below:\n\nmgrtibbles::mammal_sleep_tbl\n\n# A tibble: 62 × 11\n   species          body_wt brain_wt non_dreaming dreaming total_sleep life_span\n   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n 1 Africanelephant  6.65e+3   5.71           NA       NA           3.3      38.6\n 2 Africangiantpou… 1   e+0   0.0066          6.3      2           8.3       4.5\n 3 ArcticFox        3.38e+0   0.0445         NA       NA          12.5      14  \n 4 Arcticgroundsqu… 9.2 e-1   0.0057         NA       NA          16.5      NA  \n 5 Asianelephant    2.55e+3   4.60            2.1      1.8         3.9      69  \n 6 Baboon           1.06e+1   0.180           9.1      0.7         9.8      27  \n 7 Bigbrownbat      2.3 e-2   0.0003         15.8      3.9        19.7      19  \n 8 Braziliantapir   1.6 e+2   0.169           5.2      1           6.2      30.4\n 9 Cat              3.3 e+0   0.0256         10.9      3.6        14.5      28  \n10 Chimpanzee       5.22e+1   0.44            8.3      1.4         9.7      50  \n# ℹ 52 more rows\n# ℹ 4 more variables: gestation &lt;dbl&gt;, predation &lt;fct&gt;, exposure &lt;fct&gt;,\n#   danger &lt;fct&gt;\n\n\nTo see the format and variable description use ?. For example:\n\n?mgrtibbles::crab_age_pred_tbl",
+    "crumbs": [
+      "Datasets",
+      "Mgrtibbles"
+    ]
+  },
+  {
+    "objectID": "datasets/mgrtibbles.html#tibble-details",
+    "href": "datasets/mgrtibbles.html#tibble-details",
+    "title": "Mgrtibbles",
+    "section": "Tibble details",
+    "text": "Tibble details\namphibian_div_tbl details\nbat_roost_tbl details\ncrab_age_pred_tbl details\ncrop_and_soil_tbl details\nfisheries_long_tbl details\nfisheries_wide_tbl details\nmammal_sleep_tbl details\nmushroom_tbl details",
+    "crumbs": [
+      "Datasets",
+      "Mgrtibbles"
+    ]
+  },
+  {
+    "objectID": "datasets/data_files.html",
+    "href": "datasets/data_files.html",
+    "title": "Data files",
     "section": "",
-    "text": "mammal_sleep_tbl |&gt;\n    dplyr::summarise(across(c(predation, exposure, danger)))\n\nWarning: Returning more (or less) than 1 row per `summarise()` group was deprecated in\ndplyr 1.1.0.\nℹ Please use `reframe()` instead.\nℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`\n  always returns an ungrouped data frame and adjust accordingly.\n\n\n# A tibble: 62 × 3\n   predation exposure danger\n   &lt;fct&gt;     &lt;fct&gt;    &lt;fct&gt; \n 1 3         5        3     \n 2 3         1        3     \n 3 1         1        1     \n 4 5         2        3     \n 5 3         5        4     \n 6 4         4        4     \n 7 1         1        1     \n 8 4         5        4     \n 9 1         2        1     \n10 1         1        1     \n# ℹ 52 more rows"
+    "text": "This website uses various datasets to demonstrate code. Below are explanations to the datasets and their download links.",
+    "crumbs": [
+      "Datasets",
+      "Data files"
+    ]
+  },
+  {
+    "objectID": "datasets/data_files.html#suggestions-for-matthew",
+    "href": "datasets/data_files.html#suggestions-for-matthew",
+    "title": "Data files",
+    "section": "Suggestions for Matthew",
+    "text": "Suggestions for Matthew\n\nHouseplant environment characteristics\nall_plant_details.csv\nhttps://www.kaggle.com/datasets/noneee/houseplant-environment-characteristics\n\n\nCrab age prediction\nCrabAgePredictions.csv\nhttps://www.kaggle.com/datasets/sidhus/crab-age-prediction\n\n\nShifting Seas: Ocean Climate & Marine Life Dataset\nrealistic_ocean_climate_dataset.csv\nhttps://www.kaggle.com/datasets/atharvasoundankar/shifting-seas-ocean-climate-and-marine-life-dataset\n\n\nPredict age abalone\nabalone.data.csv\nhttps://www.kaggle.com/datasets/farkhod77/abalone-age-predict\n\n\nPenguin Sizes Dataset\npenguins_size.csv\nhttps://www.kaggle.com/datasets/amulyas/penguin-size-dataset\n\n\nFish and Overfishing\ncapture-fisheries-vs-aquaculture.csv\nhttps://www.kaggle.com/datasets/sergegeukjian/fish-and-overfishing?select=capture-fisheries-vs-aquaculture.csv",
+    "crumbs": [
+      "Datasets",
+      "Data files"
+    ]
   },
   {
     "objectID": "datasets/lterdatasampler.html",
@@ -1838,72 +1941,6 @@
     "crumbs": [
       "Datasets",
       "Lterdatasampler"
-    ]
-  },
-  {
-    "objectID": "datasets/data_files.html",
-    "href": "datasets/data_files.html",
-    "title": "Data files",
-    "section": "",
-    "text": "This website uses various datasets to demonstrate code. Below are explanations to the datasets and their download links.",
-    "crumbs": [
-      "Datasets",
-      "Data files"
-    ]
-  },
-  {
-    "objectID": "datasets/data_files.html#suggestions-for-matthew",
-    "href": "datasets/data_files.html#suggestions-for-matthew",
-    "title": "Data files",
-    "section": "Suggestions for Matthew",
-    "text": "Suggestions for Matthew\n\nHouseplant environment characteristics\nall_plant_details.csv\nhttps://www.kaggle.com/datasets/noneee/houseplant-environment-characteristics\n\n\nCrab age prediction\nCrabAgePredictions.csv\nhttps://www.kaggle.com/datasets/sidhus/crab-age-prediction\n\n\nShifting Seas: Ocean Climate & Marine Life Dataset\nrealistic_ocean_climate_dataset.csv\nhttps://www.kaggle.com/datasets/atharvasoundankar/shifting-seas-ocean-climate-and-marine-life-dataset\n\n\nPredict age abalone\nabalone.data.csv\nhttps://www.kaggle.com/datasets/farkhod77/abalone-age-predict\n\n\nPenguin Sizes Dataset\npenguins_size.csv\nhttps://www.kaggle.com/datasets/amulyas/penguin-size-dataset\n\n\nFish and Overfishing\ncapture-fisheries-vs-aquaculture.csv\nhttps://www.kaggle.com/datasets/sergegeukjian/fish-and-overfishing?select=capture-fisheries-vs-aquaculture.csv",
-    "crumbs": [
-      "Datasets",
-      "Data files"
-    ]
-  },
-  {
-    "objectID": "datasets/mgrtibbles.html",
-    "href": "datasets/mgrtibbles.html",
-    "title": "Mgrtibbles",
-    "section": "",
-    "text": "mgrtibbles is a R package containing various datasets in tibbles. They were curated into a R package by Matthew Gemmell.\nFor full information please see the mgrtibbles github page",
-    "crumbs": [
-      "Datasets",
-      "Mgrtibbles"
-    ]
-  },
-  {
-    "objectID": "datasets/mgrtibbles.html#install-and-load",
-    "href": "datasets/mgrtibbles.html#install-and-load",
-    "title": "Mgrtibbles",
-    "section": "Install and load",
-    "text": "Install and load\nInstallation and loading instruction below:\nYou will need the remotes package installed and loaded.\n\ninstall.packages(\"remotes\")\nlibrary(remotes)\n\n\nremotes::install_github(\"m-gemmell/mgrtibbles\")\nlibrary(mgrtibbles)",
-    "crumbs": [
-      "Datasets",
-      "Mgrtibbles"
-    ]
-  },
-  {
-    "objectID": "datasets/mgrtibbles.html#accessing-data",
-    "href": "datasets/mgrtibbles.html#accessing-data",
-    "title": "Mgrtibbles",
-    "section": "Accessing data",
-    "text": "Accessing data\nOnce you have installed and loaded the package you can access one of the various datasets as a tibble like below:\n\nmgrtibbles::mammal_sleep_tbl\n\n# A tibble: 62 × 11\n   species          body_wt brain_wt non_dreaming dreaming total_sleep life_span\n   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n 1 Africanelephant  6.65e+3   5.71           NA       NA           3.3      38.6\n 2 Africangiantpou… 1   e+0   0.0066          6.3      2           8.3       4.5\n 3 ArcticFox        3.38e+0   0.0445         NA       NA          12.5      14  \n 4 Arcticgroundsqu… 9.2 e-1   0.0057         NA       NA          16.5      NA  \n 5 Asianelephant    2.55e+3   4.60            2.1      1.8         3.9      69  \n 6 Baboon           1.06e+1   0.180           9.1      0.7         9.8      27  \n 7 Bigbrownbat      2.3 e-2   0.0003         15.8      3.9        19.7      19  \n 8 Braziliantapir   1.6 e+2   0.169           5.2      1           6.2      30.4\n 9 Cat              3.3 e+0   0.0256         10.9      3.6        14.5      28  \n10 Chimpanzee       5.22e+1   0.44            8.3      1.4         9.7      50  \n# ℹ 52 more rows\n# ℹ 4 more variables: gestation &lt;dbl&gt;, predation &lt;fct&gt;, exposure &lt;fct&gt;,\n#   danger &lt;fct&gt;\n\n\nTo see the format and variable description use ?. For example:\n\n?mgrtibbles::crab_age_pred_tbl",
-    "crumbs": [
-      "Datasets",
-      "Mgrtibbles"
-    ]
-  },
-  {
-    "objectID": "datasets/mgrtibbles.html#tibble-details",
-    "href": "datasets/mgrtibbles.html#tibble-details",
-    "title": "Mgrtibbles",
-    "section": "Tibble details",
-    "text": "Tibble details\namphibian_div_tbl details\nbat_roost_tbl details\ncrab_age_pred_tbl details\ncrop_and_soil_tbl details\nfisheries_long_tbl details\nfisheries_wide_tbl details\nmammal_sleep_tbl details\nmushroom_tbl details",
-    "crumbs": [
-      "Datasets",
-      "Mgrtibbles"
     ]
   },
   {
@@ -2111,6 +2148,42 @@
     "title": "Mutate",
     "section": "Create new column",
     "text": "Create new column\nCreate a column of brain and body weight ratio.\n\nmammal_sleep_tbl |&gt;\n    #Select columns of interest\n    dplyr::select(species, body_wt, brain_wt) |&gt;\n    #Calculate and add brain_body_wt_ratio column\n    dplyr::mutate(brain_body_wt_ratio = brain_wt/(body_wt*1000))\n\n# A tibble: 62 × 4\n   species                 body_wt brain_wt brain_body_wt_ratio\n   &lt;chr&gt;                     &lt;dbl&gt;    &lt;dbl&gt;               &lt;dbl&gt;\n 1 Africanelephant        6654       5.71           0.000000858\n 2 Africangiantpouchedrat    1       0.0066         0.0000066  \n 3 ArcticFox                 3.38    0.0445         0.0000131  \n 4 Arcticgroundsquirrel      0.92    0.0057         0.00000620 \n 5 Asianelephant          2547       4.60           0.00000181 \n 6 Baboon                   10.6     0.180          0.0000170  \n 7 Bigbrownbat               0.023   0.0003         0.0000130  \n 8 Braziliantapir          160       0.169          0.00000106 \n 9 Cat                       3.3     0.0256         0.00000776 \n10 Chimpanzee               52.2     0.44           0.00000844 \n# ℹ 52 more rows\n\n\nCreate a column for life time sleep\n\nmammal_sleep_tbl |&gt;\n    #Select columns of interest\n    dplyr::select(species, total_sleep, life_span) |&gt;\n    #Calculate and add total_life_sleep column\n    dplyr::mutate(total_life_sleep = (life_span*365.25) * total_sleep)\n\n# A tibble: 62 × 4\n   species                total_sleep life_span total_life_sleep\n   &lt;chr&gt;                        &lt;dbl&gt;     &lt;dbl&gt;            &lt;dbl&gt;\n 1 Africanelephant                3.3      38.6           46526.\n 2 Africangiantpouchedrat         8.3       4.5           13642.\n 3 ArcticFox                     12.5      14             63919.\n 4 Arcticgroundsquirrel          16.5      NA                NA \n 5 Asianelephant                  3.9      69             98289.\n 6 Baboon                         9.8      27             96645.\n 7 Bigbrownbat                   19.7      19            136713.\n 8 Braziliantapir                 6.2      30.4           68842.\n 9 Cat                           14.5      28            148292.\n10 Chimpanzee                     9.7      50            177146.\n# ℹ 52 more rows",
+    "crumbs": [
+      "Dplyr",
+      "Columns",
+      "Mutate"
+    ]
+  },
+  {
+    "objectID": "dplyr/mutate.html#modify-existing-column",
+    "href": "dplyr/mutate.html#modify-existing-column",
+    "title": "Mutate",
+    "section": "Modify existing column",
+    "text": "Modify existing column\nModify the body_wt column with the round() function.\n\nmammal_sleep_tbl |&gt;\n    #Round numbers of body_wt columns\n    dplyr::mutate(body_wt = round(body_wt))\n\n# A tibble: 62 × 11\n   species          body_wt brain_wt non_dreaming dreaming total_sleep life_span\n   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n 1 Africanelephant     6654   5.71           NA       NA           3.3      38.6\n 2 Africangiantpou…       1   0.0066          6.3      2           8.3       4.5\n 3 ArcticFox              3   0.0445         NA       NA          12.5      14  \n 4 Arcticgroundsqu…       1   0.0057         NA       NA          16.5      NA  \n 5 Asianelephant       2547   4.60            2.1      1.8         3.9      69  \n 6 Baboon                11   0.180           9.1      0.7         9.8      27  \n 7 Bigbrownbat            0   0.0003         15.8      3.9        19.7      19  \n 8 Braziliantapir       160   0.169           5.2      1           6.2      30.4\n 9 Cat                    3   0.0256         10.9      3.6        14.5      28  \n10 Chimpanzee            52   0.44            8.3      1.4         9.7      50  \n# ℹ 52 more rows\n# ℹ 4 more variables: gestation &lt;dbl&gt;, predation &lt;fct&gt;, exposure &lt;fct&gt;,\n#   danger &lt;fct&gt;",
+    "crumbs": [
+      "Dplyr",
+      "Columns",
+      "Mutate"
+    ]
+  },
+  {
+    "objectID": "dplyr/mutate.html#delete-columns",
+    "href": "dplyr/mutate.html#delete-columns",
+    "title": "Mutate",
+    "section": "Delete columns",
+    "text": "Delete columns\nRemove the species column by setting it to NULL\n\nmammal_sleep_tbl |&gt;\n    #Remove species column\n    dplyr::mutate(species = NULL)\n\n# A tibble: 62 × 10\n    body_wt brain_wt non_dreaming dreaming total_sleep life_span gestation\n      &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n 1 6654       5.71           NA       NA           3.3      38.6       645\n 2    1       0.0066          6.3      2           8.3       4.5        42\n 3    3.38    0.0445         NA       NA          12.5      14          60\n 4    0.92    0.0057         NA       NA          16.5      NA          25\n 5 2547       4.60            2.1      1.8         3.9      69         624\n 6   10.6     0.180           9.1      0.7         9.8      27         180\n 7    0.023   0.0003         15.8      3.9        19.7      19          35\n 8  160       0.169           5.2      1           6.2      30.4       392\n 9    3.3     0.0256         10.9      3.6        14.5      28          63\n10   52.2     0.44            8.3      1.4         9.7      50         230\n# ℹ 52 more rows\n# ℹ 3 more variables: predation &lt;fct&gt;, exposure &lt;fct&gt;, danger &lt;fct&gt;",
+    "crumbs": [
+      "Dplyr",
+      "Columns",
+      "Mutate"
+    ]
+  },
+  {
+    "objectID": "dplyr/mutate.html#multiple-columns-with-across",
+    "href": "dplyr/mutate.html#multiple-columns-with-across",
+    "title": "Mutate",
+    "section": "Multiple columns with across()",
+    "text": "Multiple columns with across()\nThe dplyr::across() function can be used within a dplyr::mutate() function to apply a change across multiple columns.\nacross() Tidyverse reference page\nNumerically round the body_wt and brain_wt columns.\n\nmammal_sleep_tbl |&gt;\n    #Round numbers of body_wt ad brain_wt columns\n    dplyr::mutate(\n        dplyr::across(c(body_wt, brain_wt), round)\n        )\n\n# A tibble: 62 × 11\n   species          body_wt brain_wt non_dreaming dreaming total_sleep life_span\n   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n 1 Africanelephant     6654        6         NA       NA           3.3      38.6\n 2 Africangiantpou…       1        0          6.3      2           8.3       4.5\n 3 ArcticFox              3        0         NA       NA          12.5      14  \n 4 Arcticgroundsqu…       1        0         NA       NA          16.5      NA  \n 5 Asianelephant       2547        5          2.1      1.8         3.9      69  \n 6 Baboon                11        0          9.1      0.7         9.8      27  \n 7 Bigbrownbat            0        0         15.8      3.9        19.7      19  \n 8 Braziliantapir       160        0          5.2      1           6.2      30.4\n 9 Cat                    3        0         10.9      3.6        14.5      28  \n10 Chimpanzee            52        0          8.3      1.4         9.7      50  \n# ℹ 52 more rows\n# ℹ 4 more variables: gestation &lt;dbl&gt;, predation &lt;fct&gt;, exposure &lt;fct&gt;,\n#   danger &lt;fct&gt;\n\n\nConvert hour values of non_dreaming, dreaming, and total_sleep to minutes by multiplying by 60.\nNote: \\(x) x*60 is a purrr formula.\n\nmammal_sleep_tbl |&gt;\n    #Round numbers of body_wt ad brain_wt columns\n    dplyr::mutate(\n        dplyr::across(c(non_dreaming, dreaming, total_sleep), \\(x) x*60)\n        )\n\n# A tibble: 62 × 11\n   species          body_wt brain_wt non_dreaming dreaming total_sleep life_span\n   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n 1 Africanelephant  6.65e+3   5.71             NA       NA         198      38.6\n 2 Africangiantpou… 1   e+0   0.0066          378      120         498       4.5\n 3 ArcticFox        3.38e+0   0.0445           NA       NA         750      14  \n 4 Arcticgroundsqu… 9.2 e-1   0.0057           NA       NA         990      NA  \n 5 Asianelephant    2.55e+3   4.60            126      108         234      69  \n 6 Baboon           1.06e+1   0.180           546       42         588      27  \n 7 Bigbrownbat      2.3 e-2   0.0003          948      234        1182      19  \n 8 Braziliantapir   1.6 e+2   0.169           312       60         372      30.4\n 9 Cat              3.3 e+0   0.0256          654      216         870      28  \n10 Chimpanzee       5.22e+1   0.44            498       84         582      50  \n# ℹ 52 more rows\n# ℹ 4 more variables: gestation &lt;dbl&gt;, predation &lt;fct&gt;, exposure &lt;fct&gt;,\n#   danger &lt;fct&gt;",
     "crumbs": [
       "Dplyr",
       "Columns",
@@ -2565,7 +2638,7 @@
     "href": "ggplot2/geom_histogram.html",
     "title": "Geom histogram",
     "section": "",
-    "text": "Histograms are commonly used to display the distribution of a single continuous variable. This is carried out by creating bins (i.e. number ranges) and counting the number of values that are within each bin. These bin counts displayed as a bar chart.\nIn this page we will create histograms with ggplot2::geom_histogram(). Through examples we will demonstrate creating:\n\nA histogram with default options.\nA histogram when specifying bin width.\nA histogram when specifying the number of bins.\nA flipped histogram.\nA frequency polygon.\n\nTidyverse reference page\n\n\nFor demonstration we’ll load the mammal_sleep_tbl data from the mgrtibbles package (hyperlink includes install instructions). We will select the “total_sleep” and “predation” columns for our plots.\nmammal_sleep_tbl details\n\n#Load package\nlibrary(\"mgrtibbles\")\n#mammal_sleep_tbl tibble for demonstration\nmammal_sleep_tbl&lt;- mgrtibbles::mammal_sleep_tbl |&gt; \n    dplyr::select(\"total_sleep\",\"danger\") |&gt;\n    #Remove rows with NA values\n    tidyr::drop_na() |&gt;\n    #Reorder danger factor levels\n    mutate(danger = forcats::fct_relevel(danger, \"1\",\"2\",\"3\",\"4\",\"5\"))\n\n\n\nView mammal_sleep_tbl contents\n\n\n\n\n\n\n\n\n\n\n\nWhen creating a histogram with geom_histogram() a continuous numerical variable/column can be mapped to the x aesthetic. The function will create bins (number ranges) and count the number of values that fit within each bin.\nFor our default histogram the data will be fit into 30 bins. This is always the default value of ggplot2::geom_histogram() and the function will output a message saying how to choose a better value. However, the best method on choosing a better value is to create the default plot first and then experiment with bin numbers afterwards. Choosing bin widths or bin numbers is shown below.\nCreate a histogram of the total_sleep variable/column. This is a column of continuous doubles &lt;dbl&gt; representing the total hours of sleep per day for different mammals.\n\nmammal_sleep_tbl |&gt;\n    ggplot2::ggplot(aes(x = total_sleep)) +\n        ggplot2::geom_histogram()\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\n\nThe default number of bins for ggplot2::geom_histogram() is rarely going to be the best option. To choose the bin width (i.e. the number range of the bins) we can use the option binwidth=.\nCreate a histogram of total_sleep with a bin size of 1 hour (i.e. 1).\n\nmammal_sleep_tbl |&gt;\n    ggplot2::ggplot(aes(x = total_sleep)) +\n        ggplot2::geom_histogram(binwidth = 1)\n\n\n\n\n\n\n\n\n\n\n\nThe amount of bins to fit the data into can be set with the option bins=.\nCreate a histogram of total_sleep with a total of 15 bins.\n\nmammal_sleep_tbl |&gt;\n    ggplot2::ggplot(aes(x = total_sleep)) +\n        ggplot2::geom_histogram(bins = 15)\n\n\n\n\n\n\n\n\n\n\n\nTo create a flipped histogram you can map the continuous variable to the y aesthetic.\nCreate a flipped histogram of the total_sleep continuous double variable/column.\n\nmammal_sleep_tbl |&gt;\n    ggplot2::ggplot(aes(y = total_sleep)) +\n        ggplot2::geom_histogram()\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\n\nHistograms are great if you are only looking at one group but not as suitable for looking at distributions between groups. Instead you can create a frequency polygon with ggplot2::geom_freqpoly(). A frequency polygon shows the same information as a histogram but uses lines instead of bars.\nCreate a frequency polygon of total__sleep separated by the danger levels of the mammals (1 = least danger from other animals, 5 = most danger from other animals).\n\nmammal_sleep_tbl |&gt;\n    ggplot2::ggplot(aes(x = total_sleep, colour = danger)) +\n        ggplot2::geom_freqpoly(binwidth = 5)",
+    "text": "Histograms are commonly used to display the distribution of a single continuous variable. This is carried out by creating bins (i.e. number ranges) and counting the number of values that are within each bin. These bin counts displayed as a bar chart.\nIn this page we will create histograms with ggplot2::geom_histogram(). Through examples we will demonstrate creating:\n\nA histogram with default options.\nA histogram when specifying bin width.\nA histogram when specifying the number of bins.\nA flipped histogram.\nA frequency polygon.\n\nTidyverse reference page\n\n\nFor demonstration we’ll load the mammal_sleep_tbl data from the mgrtibbles package (hyperlink includes install instructions). We will select the “total_sleep” and “predation” columns for our plots.\nmammal_sleep_tbl details\n\n#Load package\nlibrary(\"mgrtibbles\")\n#mammal_sleep_tbl tibble for demonstration\nmammal_sleep_tbl&lt;- mgrtibbles::mammal_sleep_tbl |&gt; \n    dplyr::select(\"total_sleep\",\"danger\") |&gt;\n    #Remove rows with NA values\n    tidyr::drop_na() |&gt;\n    #Reorder danger factor levels\n    mutate(danger = forcats::fct_relevel(danger, \"1\",\"2\",\"3\",\"4\",\"5\"))\n\n\n\nView mammal_sleep_tbl contents\n\n\n\n\n\n\n\n\n\n\n\nWhen creating a histogram with geom_histogram() a continuous numerical variable/column can be mapped to the x aesthetic. The function will create bins (number ranges) and count the number of values that fit within each bin.\nFor our default histogram the data will be fit into 30 bins. This is always the default value of ggplot2::geom_histogram() and the function will output a message saying how to choose a better value. However, the best method on choosing a better value is to create the default plot first and then experiment with bin numbers afterwards. Choosing bin widths or bin numbers is shown below.\nCreate a histogram of the total_sleep variable/column. This is a column of continuous doubles &lt;dbl&gt; representing the total hours of sleep per day for different mammals.\n\nmammal_sleep_tbl |&gt;\n    ggplot2::ggplot(aes(x = total_sleep)) +\n        ggplot2::geom_histogram()\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\n\nThe default number of bins for ggplot2::geom_histogram() is rarely going to be the best option. To choose the bin width (i.e. the number range of the bins) we can use the option binwidth=.\nCreate a histogram of total_sleep with a bin size of 1 hour (i.e. 1).\n\nmammal_sleep_tbl |&gt;\n    ggplot2::ggplot(aes(x = total_sleep)) +\n        ggplot2::geom_histogram(binwidth = 1)\n\n\n\n\n\n\n\n\n\n\n\nThe amount of bins to fit the data into can be set with the option bins=.\nCreate a histogram of total_sleep with a total of 15 bins.\n\nmammal_sleep_tbl |&gt;\n    ggplot2::ggplot(aes(x = total_sleep)) +\n        ggplot2::geom_histogram(bins = 15)\n\n\n\n\n\n\n\n\n\n\n\nTo create a flipped histogram you can map the continuous variable to the y aesthetic.\nCreate a flipped histogram of the total_sleep continuous double variable/column.\n\nmammal_sleep_tbl |&gt;\n    ggplot2::ggplot(aes(y = total_sleep)) +\n        ggplot2::geom_histogram()\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\n\nHistograms are great if you are only looking at one group but not as suitable for looking at distributions between groups. Instead you can create a frequency polygon with ggplot2::geom_freqpoly(). A frequency polygon shows the same information as a histogram but uses lines instead of bars.\nCreate a frequency polygon of total__sleep separated by the danger levels of the mammals (1 = least danger from other animals, 5 = most danger from other animals).\n\nmammal_sleep_tbl |&gt;\n    ggplot2::ggplot(aes(x = total_sleep, colour = danger)) +\n        ggplot2::geom_freqpoly(binwidth = 5)",
     "crumbs": [
       "Ggplot2",
       "Layers",
@@ -2589,7 +2662,7 @@
     "href": "ggplot2/geom_histogram.html#default-histogram",
     "title": "Geom histogram",
     "section": "",
-    "text": "When creating a histogram with geom_histogram() a continuous numerical variable/column can be mapped to the x aesthetic. The function will create bins (number ranges) and count the number of values that fit within each bin.\nFor our default histogram the data will be fit into 30 bins. This is always the default value of ggplot2::geom_histogram() and the function will output a message saying how to choose a better value. However, the best method on choosing a better value is to create the default plot first and then experiment with bin numbers afterwards. Choosing bin widths or bin numbers is shown below.\nCreate a histogram of the total_sleep variable/column. This is a column of continuous doubles &lt;dbl&gt; representing the total hours of sleep per day for different mammals.\n\nmammal_sleep_tbl |&gt;\n    ggplot2::ggplot(aes(x = total_sleep)) +\n        ggplot2::geom_histogram()\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.",
+    "text": "When creating a histogram with geom_histogram() a continuous numerical variable/column can be mapped to the x aesthetic. The function will create bins (number ranges) and count the number of values that fit within each bin.\nFor our default histogram the data will be fit into 30 bins. This is always the default value of ggplot2::geom_histogram() and the function will output a message saying how to choose a better value. However, the best method on choosing a better value is to create the default plot first and then experiment with bin numbers afterwards. Choosing bin widths or bin numbers is shown below.\nCreate a histogram of the total_sleep variable/column. This is a column of continuous doubles &lt;dbl&gt; representing the total hours of sleep per day for different mammals.\n\nmammal_sleep_tbl |&gt;\n    ggplot2::ggplot(aes(x = total_sleep)) +\n        ggplot2::geom_histogram()\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.",
     "crumbs": [
       "Ggplot2",
       "Layers",
@@ -2625,7 +2698,7 @@
     "href": "ggplot2/geom_histogram.html#flipped-histogram",
     "title": "Geom histogram",
     "section": "",
-    "text": "To create a flipped histogram you can map the continuous variable to the y aesthetic.\nCreate a flipped histogram of the total_sleep continuous double variable/column.\n\nmammal_sleep_tbl |&gt;\n    ggplot2::ggplot(aes(y = total_sleep)) +\n        ggplot2::geom_histogram()\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.",
+    "text": "To create a flipped histogram you can map the continuous variable to the y aesthetic.\nCreate a flipped histogram of the total_sleep continuous double variable/column.\n\nmammal_sleep_tbl |&gt;\n    ggplot2::ggplot(aes(y = total_sleep)) +\n        ggplot2::geom_histogram()\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.",
     "crumbs": [
       "Ggplot2",
       "Layers",
@@ -2649,7 +2722,7 @@
     "href": "ggplot2/geom_others.html",
     "title": "Other geoms",
     "section": "",
-    "text": "There are many other geom layers that can used to create different plots.\nBelow are a quick reference to a few of these.\nFor a full list please see: ggplot2 geoms list\n\n\nFor demonstration we’ll load the mushroom_tbl data from the mgrtibbles package (hyperlink includes install instructions).\nmushroom_tbl details\n\n#Load package\nlibrary(\"mgrtibbles\")\n#mushroom_tbl tibble for demonstration\nmushroom_tbl &lt;- mgrtibbles::mushroom_tbl\n\n\n\nView mushroom_tbl contents\n\n\n\n\n\n\n\n\nWe’ll also make a randomly subsampled dataset for plots that are better with less data.\n\n#Subsampled dataset\n#Set seed for random sampling\nset.seed(\"483\")\nmushroom_sample_tbl &lt;- mushroom_tbl |&gt;\n    #Random sample of 150 rows\n    dplyr::slice_sample(n = 150, replace=FALSE)\n#Reset random seed to normal operation\nset.seed(NULL)\n\n\n\nView mushroom_sample_tbl contents\n\n\n\n\n\n\n\n\n\n\n\n2D bin counts add another dimension on top of a histogram. They allow you to plot the count distribution of 2 continuous variables whilst seeing the relationship between the two.\nTwo methods to create 2D bin counts are with:\n\nHeatmap of 2D bin counts with geom_bin_2d()\nHexagonal heatmap of 2D bin counts with geom_hex()\n\n\n\nHeatmap of 2D bin counts reference\n\nmushroom_tbl |&gt;\n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +\n        ggplot2::geom_bin_2d()\n\n\n\n\n\n\n\n\n\n\n\nHexagonal heatmap of 2D bin counts reference\nThe function requires the hexbin package to be installed.\n\n#Install hexbin if not already installed\nif (!require(\"hexbin\")) install.packages(\"hexbin\")\n\nLoading required package: hexbin\n\nlibrary(\"hexbin\")\n\nGenerally hex bin heatmaps are better than square based 2D bin count heatmaps (above) as the regular square tiles can cause unwanted artifacts.\n\nmushroom_tbl |&gt;\n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +\n        ggplot2::geom_hex()\n\n\n\n\n\n\n\n\n\n\n\n\nA smooth density plot is like a histogram but instead of bars the count distribution of one continuous variable is displayed as a smooth line graph. The main advantage of a density plot over a histogram is that you can easily visualise the distribution shape as it does not rely on choosing the bin sizes or number of bins.\nSmooth density plot reference\n\nmushroom_tbl |&gt;\n    ggplot2::ggplot(aes(x = cap_diameter)) +\n        ggplot2::geom_density(linewidth=1)\n\n\n\n\n\n\n\n\n\n\n\nGeom layers can be added on top of a main geom layer (e.g. box plot, histogram, scatter plot etc.). Three different layers that can be used with scatter plots (geom_point()) are shown below.\n\n2D density plots with geom_density_2d()\nSmooth line scatter plot with geom_smooth()\nRug plot with geom_rug()\n\n\n\nA 2D density plot is a scatter plot with added density lines. These density lines look similar to the contour lines of a geographical map. The closer the lines are together the higher the density of points. Additionally, the shape of the lines can help display patterns in the data.\n2D density plot reference\n\n#Smooth density plot\n#Use subsampled tibble\nmushroom_sample_tbl |&gt;\n    #ggplot code\n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +\n        ggplot2::geom_point() +\n        ggplot2::geom_density_2d(linewidth=1)\n\n\n\n\n\n\n\n\n\n\n\nA smooth line can be added to view patterns in a scatter plot. By default the smoothing method will be automatically chosen based on the data but it can be set to other methods including “lm” or “glm”. The below plot automatically uses “loess”.\nSmooth line reference\n\n#Scatter plot with smooth line\n#Use subsampled tibble\nmushroom_sample_tbl |&gt;\n    #ggplot code\n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +\n        ggplot2::geom_point() +\n        ggplot2::geom_smooth()\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\n\nA rug plot is an addition to scatter plot. The rug plot displays the the distribution of points on the x and y margins. Each point is represented by a tick on the x and y axis locations and is therefore best used with a smaller dataset.\nRug plot reference\n\n#Scatter plot with rug plot\n#Use subsampled tibble\nmushroom_sample_tbl |&gt;\n    #ggplot code\n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +\n        ggplot2::geom_point() +\n        ggplot2::geom_rug()\n\n\n\n\n\n\n\n\n\n\n\nOf course more than one additional layer can be added to a plot if appropriate. Below the code and image of a scatter plot with 2D density contours, a smooth line, and a rug plot is shown.\n\n#Multple layed scatter plot\n#Use subsampled tibble\nmushroom_sample_tbl |&gt;\n    #ggplot code\n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +\n        ggplot2::geom_point() +\n        ggplot2::geom_density_2d(linewidth=1) +\n        ggplot2::geom_smooth(colour = \"red\") +\n        ggplot2::geom_rug()\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\n\n\nThere are even more geoms that can used. For a full list please see: ggplot2 geoms list",
+    "text": "There are many other geom layers that can used to create different plots.\nBelow are a quick reference to a few of these.\nFor a full list please see: ggplot2 geoms list\n\n\nFor demonstration we’ll load the mushroom_tbl data from the mgrtibbles package (hyperlink includes install instructions).\nmushroom_tbl details\n\n#Load package\nlibrary(\"mgrtibbles\")\n#mushroom_tbl tibble for demonstration\nmushroom_tbl &lt;- mgrtibbles::mushroom_tbl\n\n\n\nView mushroom_tbl contents\n\n\n\n\n\n\n\n\nWe’ll also make a randomly subsampled dataset for plots that are better with less data.\n\n#Subsampled dataset\n#Set seed for random sampling\nset.seed(\"483\")\nmushroom_sample_tbl &lt;- mushroom_tbl |&gt;\n    #Random sample of 150 rows\n    dplyr::slice_sample(n = 150, replace=FALSE)\n#Reset random seed to normal operation\nset.seed(NULL)\n\n\n\nView mushroom_sample_tbl contents\n\n\n\n\n\n\n\n\n\n\n\n2D bin counts add another dimension on top of a histogram. They allow you to plot the count distribution of 2 continuous variables whilst seeing the relationship between the two.\nTwo methods to create 2D bin counts are with:\n\nHeatmap of 2D bin counts with geom_bin_2d()\nHexagonal heatmap of 2D bin counts with geom_hex()\n\n\n\nHeatmap of 2D bin counts reference\n\nmushroom_tbl |&gt;\n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +\n        ggplot2::geom_bin_2d()\n\n`stat_bin2d()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\n\nHexagonal heatmap of 2D bin counts reference\nThe function requires the hexbin package to be installed.\n\n#Install hexbin if not already installed\nif (!require(\"hexbin\")) install.packages(\"hexbin\")\n\nLoading required package: hexbin\n\nlibrary(\"hexbin\")\n\nGenerally hex bin heatmaps are better than square based 2D bin count heatmaps (above) as the regular square tiles can cause unwanted artifacts.\n\nmushroom_tbl |&gt;\n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +\n        ggplot2::geom_hex()\n\n\n\n\n\n\n\n\n\n\n\n\nA smooth density plot is like a histogram but instead of bars the count distribution of one continuous variable is displayed as a smooth line graph. The main advantage of a density plot over a histogram is that you can easily visualise the distribution shape as it does not rely on choosing the bin sizes or number of bins.\nSmooth density plot reference\n\nmushroom_tbl |&gt;\n    ggplot2::ggplot(aes(x = cap_diameter)) +\n        ggplot2::geom_density(linewidth=1)\n\n\n\n\n\n\n\n\n\n\n\nGeom layers can be added on top of a main geom layer (e.g. box plot, histogram, scatter plot etc.). Three different layers that can be used with scatter plots (geom_point()) are shown below.\n\n2D density plots with geom_density_2d()\nSmooth line scatter plot with geom_smooth()\nRug plot with geom_rug()\n\n\n\nA 2D density plot is a scatter plot with added density lines. These density lines look similar to the contour lines of a geographical map. The closer the lines are together the higher the density of points. Additionally, the shape of the lines can help display patterns in the data.\n2D density plot reference\n\n#Smooth density plot\n#Use subsampled tibble\nmushroom_sample_tbl |&gt;\n    #ggplot code\n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +\n        ggplot2::geom_point() +\n        ggplot2::geom_density_2d(linewidth=1)\n\n\n\n\n\n\n\n\n\n\n\nA smooth line can be added to view patterns in a scatter plot. By default the smoothing method will be automatically chosen based on the data but it can be set to other methods including “lm” or “glm”. The below plot automatically uses “loess”.\nSmooth line reference\n\n#Scatter plot with smooth line\n#Use subsampled tibble\nmushroom_sample_tbl |&gt;\n    #ggplot code\n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +\n        ggplot2::geom_point() +\n        ggplot2::geom_smooth()\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\n\nA rug plot is an addition to scatter plot. The rug plot displays the the distribution of points on the x and y margins. Each point is represented by a tick on the x and y axis locations and is therefore best used with a smaller dataset.\nRug plot reference\n\n#Scatter plot with rug plot\n#Use subsampled tibble\nmushroom_sample_tbl |&gt;\n    #ggplot code\n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +\n        ggplot2::geom_point() +\n        ggplot2::geom_rug()\n\n\n\n\n\n\n\n\n\n\n\nOf course more than one additional layer can be added to a plot if appropriate. Below the code and image of a scatter plot with 2D density contours, a smooth line, and a rug plot is shown.\n\n#Multple layed scatter plot\n#Use subsampled tibble\nmushroom_sample_tbl |&gt;\n    #ggplot code\n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +\n        ggplot2::geom_point() +\n        ggplot2::geom_density_2d(linewidth=1) +\n        ggplot2::geom_smooth(colour = \"red\") +\n        ggplot2::geom_rug()\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\n\n\nThere are even more geoms that can used. For a full list please see: ggplot2 geoms list",
     "crumbs": [
       "Ggplot2",
       "Layers",
@@ -2673,7 +2746,7 @@
     "href": "ggplot2/geom_others.html#d-bin-counts",
     "title": "Other geoms",
     "section": "",
-    "text": "2D bin counts add another dimension on top of a histogram. They allow you to plot the count distribution of 2 continuous variables whilst seeing the relationship between the two.\nTwo methods to create 2D bin counts are with:\n\nHeatmap of 2D bin counts with geom_bin_2d()\nHexagonal heatmap of 2D bin counts with geom_hex()\n\n\n\nHeatmap of 2D bin counts reference\n\nmushroom_tbl |&gt;\n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +\n        ggplot2::geom_bin_2d()\n\n\n\n\n\n\n\n\n\n\n\nHexagonal heatmap of 2D bin counts reference\nThe function requires the hexbin package to be installed.\n\n#Install hexbin if not already installed\nif (!require(\"hexbin\")) install.packages(\"hexbin\")\n\nLoading required package: hexbin\n\nlibrary(\"hexbin\")\n\nGenerally hex bin heatmaps are better than square based 2D bin count heatmaps (above) as the regular square tiles can cause unwanted artifacts.\n\nmushroom_tbl |&gt;\n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +\n        ggplot2::geom_hex()",
+    "text": "2D bin counts add another dimension on top of a histogram. They allow you to plot the count distribution of 2 continuous variables whilst seeing the relationship between the two.\nTwo methods to create 2D bin counts are with:\n\nHeatmap of 2D bin counts with geom_bin_2d()\nHexagonal heatmap of 2D bin counts with geom_hex()\n\n\n\nHeatmap of 2D bin counts reference\n\nmushroom_tbl |&gt;\n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +\n        ggplot2::geom_bin_2d()\n\n`stat_bin2d()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\n\nHexagonal heatmap of 2D bin counts reference\nThe function requires the hexbin package to be installed.\n\n#Install hexbin if not already installed\nif (!require(\"hexbin\")) install.packages(\"hexbin\")\n\nLoading required package: hexbin\n\nlibrary(\"hexbin\")\n\nGenerally hex bin heatmaps are better than square based 2D bin count heatmaps (above) as the regular square tiles can cause unwanted artifacts.\n\nmushroom_tbl |&gt;\n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +\n        ggplot2::geom_hex()",
     "crumbs": [
       "Ggplot2",
       "Layers",
@@ -2849,7 +2922,7 @@
     "href": "ggplot2/patchwork.html",
     "title": "Patchwork",
     "section": "",
-    "text": "The patchwork package allows you to combine multiple ggplots into one graphic.\nIt is a separate package to tidyverse and requires installing. The install instructions are in the below link.\nPatchwork home page\nOnce installed you can load the library.\n\nlibrary(\"patchwork\")\n\n\n\nFor demonstration we’ll load the mushroom_tbl data from the mgrtibbles package (hyperlink includes install instructions). For easier plot visualisation we’ll subsample the data.\nmushroom_tbl details\n\n#Subsampled dataset\n#Set seed for random sampling\nset.seed(\"483\")\nmushroom_tbl &lt;- mgrtibbles::mushroom_tbl |&gt;\n    #Random sample of 150 rows\n    dplyr::slice_sample(n = 150, replace=FALSE)\n#Reset random seed to normal operation\nset.seed(NULL)\n\n\n\nView mushroom_tbl contents\n\n\n\n\n\n\n\n\n\n\n\nTo create a patchwork we need a few ggplots saved as objects first.\n\n#Bar chart\nbarchart &lt;- mushroom_tbl |&gt; \n    ggplot2::ggplot(aes(x = class)) + ggplot2::geom_bar()\n#Histogram\nhistogram &lt;- mushroom_tbl |&gt; \n    ggplot2::ggplot(aes(x = cap_diameter)) + ggplot2::geom_histogram()\n#Line graph\nline &lt;- mushroom_tbl |&gt; \n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) + ggplot2::geom_line()\n#Scatter plot\npoint &lt;- mushroom_tbl |&gt; \n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) + ggplot2::geom_point()\n#Box plot\nbox &lt;- mushroom_tbl |&gt; \n    ggplot2::ggplot(aes(x = class, y = cap_diameter)) + ggplot2::geom_boxplot()\n\n\n\n\nTo create a graphic with plots side by side you can use |.\nThe below code creates a graphic with the line and point ggplots side by side.\n\nline | point\n\n\n\n\n\n\n\n\n\n\n\nTo put one plot on top of another in a graphic you can use /\nThe below code creates a graphic with the barchart above the histogram.\n\nbarchart / histogram\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\n\nA more complicated graphic can be created by mixing the use of | and /. If doing this it is common to put all the plots in the same row in brackets ().\nExample code and plot below.\n\n(barchart | histogram | box) / (line | point)\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\n\nYou can save a patchworked graphic with ggsave()\n\npatchwork_ggplot &lt;- (barchart | histogram | box) / (line | point)\nggplot2::ggsave(filename=\"images/patchwork.png\", plot=patchwork_ggplot,\n                device=\"png\", units=\"mm\", height=200, width = 200)\n\n\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\nThe PNG file contains the following image:\n\n\n\n\n\n\nAs you may have noticed when laying out the plots on a graphic patchwork will divide spaces equally between the rows and the columns within each row. In the last plot:\n\nEach of the 2 rows are given 50% of the height.\nThe first row has 3 plots so each plot is given a third of the graphic width.\nThe second row has 2 plots so each plot is given a half of the graphic width.\n\nThere are many ways to control the layout. To see these various methods please check the following link:\nPatchwork controlling layouts webpage",
+    "text": "The patchwork package allows you to combine multiple ggplots into one graphic.\nIt is a separate package to tidyverse and requires installing. The install instructions are in the below link.\nPatchwork home page\nOnce installed you can load the library.\n\nlibrary(\"patchwork\")\n\n\n\nFor demonstration we’ll load the mushroom_tbl data from the mgrtibbles package (hyperlink includes install instructions). For easier plot visualisation we’ll subsample the data.\nmushroom_tbl details\n\n#Subsampled dataset\n#Set seed for random sampling\nset.seed(\"483\")\nmushroom_tbl &lt;- mgrtibbles::mushroom_tbl |&gt;\n    #Random sample of 150 rows\n    dplyr::slice_sample(n = 150, replace=FALSE)\n#Reset random seed to normal operation\nset.seed(NULL)\n\n\n\nView mushroom_tbl contents\n\n\n\n\n\n\n\n\n\n\n\nTo create a patchwork we need a few ggplots saved as objects first.\n\n#Bar chart\nbarchart &lt;- mushroom_tbl |&gt; \n    ggplot2::ggplot(aes(x = class)) + ggplot2::geom_bar()\n#Histogram\nhistogram &lt;- mushroom_tbl |&gt; \n    ggplot2::ggplot(aes(x = cap_diameter)) + ggplot2::geom_histogram()\n#Line graph\nline &lt;- mushroom_tbl |&gt; \n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) + ggplot2::geom_line()\n#Scatter plot\npoint &lt;- mushroom_tbl |&gt; \n    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) + ggplot2::geom_point()\n#Box plot\nbox &lt;- mushroom_tbl |&gt; \n    ggplot2::ggplot(aes(x = class, y = cap_diameter)) + ggplot2::geom_boxplot()\n\n\n\n\nTo create a graphic with plots side by side you can use |.\nThe below code creates a graphic with the line and point ggplots side by side.\n\nline | point\n\n\n\n\n\n\n\n\n\n\n\nTo put one plot on top of another in a graphic you can use /\nThe below code creates a graphic with the barchart above the histogram.\n\nbarchart / histogram\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\n\nA more complicated graphic can be created by mixing the use of | and /. If doing this it is common to put all the plots in the same row in brackets ().\nExample code and plot below.\n\n(barchart | histogram | box) / (line | point)\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\n\nYou can save a patchworked graphic with ggsave()\n\npatchwork_ggplot &lt;- (barchart | histogram | box) / (line | point)\nggplot2::ggsave(filename=\"images/patchwork.png\", plot=patchwork_ggplot,\n                device=\"png\", units=\"mm\", height=200, width = 200)\n\n\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\nThe PNG file contains the following image:\n\n\n\n\n\n\nAs you may have noticed when laying out the plots on a graphic patchwork will divide spaces equally between the rows and the columns within each row. In the last plot:\n\nEach of the 2 rows are given 50% of the height.\nThe first row has 3 plots so each plot is given a third of the graphic width.\nThe second row has 2 plots so each plot is given a half of the graphic width.\n\nThere are many ways to control the layout. To see these various methods please check the following link:\nPatchwork controlling layouts webpage",
     "crumbs": [
       "Ggplot2",
       "Output",
@@ -2897,7 +2970,7 @@
     "href": "ggplot2/patchwork.html#vertical",
     "title": "Patchwork",
     "section": "",
-    "text": "To put one plot on top of another in a graphic you can use /\nThe below code creates a graphic with the barchart above the histogram.\n\nbarchart / histogram\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.",
+    "text": "To put one plot on top of another in a graphic you can use /\nThe below code creates a graphic with the barchart above the histogram.\n\nbarchart / histogram\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.",
     "crumbs": [
       "Ggplot2",
       "Output",
@@ -2909,7 +2982,7 @@
     "href": "ggplot2/patchwork.html#grid",
     "title": "Patchwork",
     "section": "",
-    "text": "A more complicated graphic can be created by mixing the use of | and /. If doing this it is common to put all the plots in the same row in brackets ().\nExample code and plot below.\n\n(barchart | histogram | box) / (line | point)\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.",
+    "text": "A more complicated graphic can be created by mixing the use of | and /. If doing this it is common to put all the plots in the same row in brackets ().\nExample code and plot below.\n\n(barchart | histogram | box) / (line | point)\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.",
     "crumbs": [
       "Ggplot2",
       "Output",
@@ -2921,7 +2994,7 @@
     "href": "ggplot2/patchwork.html#save-as-a-file",
     "title": "Patchwork",
     "section": "",
-    "text": "You can save a patchworked graphic with ggsave()\n\npatchwork_ggplot &lt;- (barchart | histogram | box) / (line | point)\nggplot2::ggsave(filename=\"images/patchwork.png\", plot=patchwork_ggplot,\n                device=\"png\", units=\"mm\", height=200, width = 200)\n\n\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\nThe PNG file contains the following image:",
+    "text": "You can save a patchworked graphic with ggsave()\n\npatchwork_ggplot &lt;- (barchart | histogram | box) / (line | point)\nggplot2::ggsave(filename=\"images/patchwork.png\", plot=patchwork_ggplot,\n                device=\"png\", units=\"mm\", height=200, width = 200)\n\n\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\nThe PNG file contains the following image:",
     "crumbs": [
       "Ggplot2",
       "Output",
@@ -3150,6 +3223,66 @@
     "crumbs": [
       "Stringr",
       "Cheatsheets"
+    ]
+  },
+  {
+    "objectID": "stringr/str_dup.html",
+    "href": "stringr/str_dup.html",
+    "title": "str_dup",
+    "section": "",
+    "text": "Duplicates a string a designated number of times.\nTidyverse reference page\n\n\nDuplicate the string “hat” 3 times.\n\nstringr::str_dup(\"hat\", 3)\n\n[1] \"hathathat\"\n\n\nA separator can be included.\n\nstringr::str_dup(\"lime\", 4, sep = \" \")\n\n[1] \"lime lime lime lime\"\n\n\nThis can be carried out with a vector.\n\n#Create a vector\nvec &lt;- c(\"rose\", \"thistle\", \"leek\", \"shamrock\")\n#Duplicate\nvec |&gt; stringr::str_dup(2, sep = \",\")\n\n[1] \"rose,rose\"         \"thistle,thistle\"   \"leek,leek\"        \n[4] \"shamrock,shamrock\"\n\n\nWith a vector you can duplicate the different elements to differing amounts.\n\n#Create a vector\nvec &lt;- c(\"once\", \"twice\", \"thrice\")\n#Duplicate\nvec |&gt; stringr::str_dup(1:3, sep = \"|\")\n\n[1] \"once\"                 \"twice|twice\"          \"thrice|thrice|thrice\"",
+    "crumbs": [
+      "Stringr",
+      "Character maniplation",
+      "str_dup"
+    ]
+  },
+  {
+    "objectID": "stringr/str_dup.html#duplicate-a-string",
+    "href": "stringr/str_dup.html#duplicate-a-string",
+    "title": "str_dup",
+    "section": "",
+    "text": "Duplicate the string “hat” 3 times.\n\nstringr::str_dup(\"hat\", 3)\n\n[1] \"hathathat\"\n\n\nA separator can be included.\n\nstringr::str_dup(\"lime\", 4, sep = \" \")\n\n[1] \"lime lime lime lime\"\n\n\nThis can be carried out with a vector.\n\n#Create a vector\nvec &lt;- c(\"rose\", \"thistle\", \"leek\", \"shamrock\")\n#Duplicate\nvec |&gt; stringr::str_dup(2, sep = \",\")\n\n[1] \"rose,rose\"         \"thistle,thistle\"   \"leek,leek\"        \n[4] \"shamrock,shamrock\"\n\n\nWith a vector you can duplicate the different elements to differing amounts.\n\n#Create a vector\nvec &lt;- c(\"once\", \"twice\", \"thrice\")\n#Duplicate\nvec |&gt; stringr::str_dup(1:3, sep = \"|\")\n\n[1] \"once\"                 \"twice|twice\"          \"thrice|thrice|thrice\"",
+    "crumbs": [
+      "Stringr",
+      "Character maniplation",
+      "str_dup"
+    ]
+  },
+  {
+    "objectID": "stringr/str_sub.html",
+    "href": "stringr/str_sub.html",
+    "title": "str_sub",
+    "section": "",
+    "text": "The function stringr::str_sub() allows you to extract sub strings from strings. The function requires three arguments:\n\nA character vector/scalar\nA start position\nAn end position\n\nThe positions are integers/whole numbers and are inclusive.\nAdditionally, this function can be used to replace the specified strings.\nTidyverse reference page\n\n\nSubstrings can be extracted from scalars.\n\n\nExtract position 3:5 in one string (i.e. a scalar).\n\nstringr::str_sub(\"abcdefgh\", 3, 5)\n\n[1] \"cde\"\n\n\n\n\n\nOne character can be extracted by setting the start and end positions to the same integer.\n\nstringr::str_sub(\"abcdefgh\", 2, 2)\n\n[1] \"b\"\n\n\n\n\n\nProviding an end position longer than the vector will still work, only providing the characters from the specified start position to the end of the vector.\nBelow we specify 7 to 10 on 8 length string and we are provided characters 7-8.\n\nstringr::str_sub(\"abcdefgh\", 7, 10)\n\n[1] \"gh\"\n\n\n\n\n\nYou can use negative numbers to represent a position relative to the end. For example, -4 would mean the 4th-to-last character and -2 would represent the 2nd-to-last character.\nExtract the fourth last to the 2nd last characters.\n\nstringr::str_sub(\"abcdefgh\", -4, -2)\n\n[1] \"efg\"\n\n\nThis means you can use -1 to represent the last character.\nExtract the 6th to last character.\n\nstringr::str_sub(\"abcdefgh\", 6, -1)\n\n[1] \"fgh\"\n\n\n\n\n\nIf our start position is higher than our end position we extract nothing.\n\nstringr::str_sub(\"abcdefgh\", 5, 3)\n\n[1] \"\"\n\n\n\n\n\nAny of the above methods can be used on a vector of strings. With a vector the function acts on each string separately.\nFirst create a vector.\n\nvec &lt;- c(\"abc\", \"defghijk\", \"lmnopqrstuvwxyz\")\n\nExtract the 2nd to 3rd positions.\n\nvec |&gt; stringr::str_sub(2,3)\n\n[1] \"bc\" \"ef\" \"mn\"\n\n\nExtract the 2nd to 10th position.\n\nvec |&gt; stringr::str_sub(2,10)\n\n[1] \"bc\"        \"efghijk\"   \"mnopqrstu\"\n\n\nExtract the 2nd to the last position\n\nvec |&gt; stringr::str_sub(2,-1)\n\n[1] \"bc\"             \"efghijk\"        \"mnopqrstuvwxyz\"\n\n\nExtract the first to the third last position.\n\nvec |&gt; stringr::str_sub(1,-3)\n\n[1] \"a\"             \"defghi\"        \"lmnopqrstuvwx\"\n\n\nExtract the 10th to the 15th position.\n\nvec |&gt; stringr::str_sub(10,15)\n\n[1] \"\"       \"\"       \"uvwxyz\"\n\n\n\n\n\n\nstr_sub() can be used to modify strings by replacing the characters of the specified positions.\nThis can be carried out by running the function followed by an assignment operator (&lt;-) with the string fro replacement.\nReplace the last two characters with “re”\n\n#Create a string\nword &lt;- \"saber\"\n#Replace substring\nstringr::str_sub(word, -2, -1) &lt;- \"re\"\n#View modified string\nstringr::str_view(word)\n\n[1] │ sabre\n\n\nThe replacement does not need to have the same number of characters as the original substring.\nReplace the fourth character with “ou”.\n\n#Create a string\nword &lt;- \"color\"\n#Replace substring\nstringr::str_sub(word, 4, 4) &lt;- \"ou\"\n#View modified string\nstringr::str_view(word)\n\n[1] │ colour\n\n\nYou can remove a substring by replacing with nothing (i.e. \"\").\n\n#Create a string\nword &lt;- \"burglarized\"\n#Replace substring\nstringr::str_sub(word, 6, -3) &lt;- \"\"\n#View modified string\nstringr::str_view(word)\n\n[1] │ burgled\n\n\nThis works with vectors too.\n\n#Create a string\nvec &lt;- c(\"saber\", \"meter\", \"saltpeter\", \"somber\", \"theater\", \"luster\")\n#Replace substring er to re\nstringr::str_sub(vec, -2, -1) &lt;- \"re\"\n#View modified string\nstringr::str_view(vec)\n\n[1] │ sabre\n[2] │ metre\n[3] │ saltpetre\n[4] │ sombre\n[5] │ theatre\n[6] │ lustre",
+    "crumbs": [
+      "Stringr",
+      "Character maniplation",
+      "str_sub"
+    ]
+  },
+  {
+    "objectID": "stringr/str_sub.html#extract-sub-strings",
+    "href": "stringr/str_sub.html#extract-sub-strings",
+    "title": "str_sub",
+    "section": "",
+    "text": "Substrings can be extracted from scalars.\n\n\nExtract position 3:5 in one string (i.e. a scalar).\n\nstringr::str_sub(\"abcdefgh\", 3, 5)\n\n[1] \"cde\"\n\n\n\n\n\nOne character can be extracted by setting the start and end positions to the same integer.\n\nstringr::str_sub(\"abcdefgh\", 2, 2)\n\n[1] \"b\"\n\n\n\n\n\nProviding an end position longer than the vector will still work, only providing the characters from the specified start position to the end of the vector.\nBelow we specify 7 to 10 on 8 length string and we are provided characters 7-8.\n\nstringr::str_sub(\"abcdefgh\", 7, 10)\n\n[1] \"gh\"\n\n\n\n\n\nYou can use negative numbers to represent a position relative to the end. For example, -4 would mean the 4th-to-last character and -2 would represent the 2nd-to-last character.\nExtract the fourth last to the 2nd last characters.\n\nstringr::str_sub(\"abcdefgh\", -4, -2)\n\n[1] \"efg\"\n\n\nThis means you can use -1 to represent the last character.\nExtract the 6th to last character.\n\nstringr::str_sub(\"abcdefgh\", 6, -1)\n\n[1] \"fgh\"\n\n\n\n\n\nIf our start position is higher than our end position we extract nothing.\n\nstringr::str_sub(\"abcdefgh\", 5, 3)\n\n[1] \"\"\n\n\n\n\n\nAny of the above methods can be used on a vector of strings. With a vector the function acts on each string separately.\nFirst create a vector.\n\nvec &lt;- c(\"abc\", \"defghijk\", \"lmnopqrstuvwxyz\")\n\nExtract the 2nd to 3rd positions.\n\nvec |&gt; stringr::str_sub(2,3)\n\n[1] \"bc\" \"ef\" \"mn\"\n\n\nExtract the 2nd to 10th position.\n\nvec |&gt; stringr::str_sub(2,10)\n\n[1] \"bc\"        \"efghijk\"   \"mnopqrstu\"\n\n\nExtract the 2nd to the last position\n\nvec |&gt; stringr::str_sub(2,-1)\n\n[1] \"bc\"             \"efghijk\"        \"mnopqrstuvwxyz\"\n\n\nExtract the first to the third last position.\n\nvec |&gt; stringr::str_sub(1,-3)\n\n[1] \"a\"             \"defghi\"        \"lmnopqrstuvwx\"\n\n\nExtract the 10th to the 15th position.\n\nvec |&gt; stringr::str_sub(10,15)\n\n[1] \"\"       \"\"       \"uvwxyz\"",
+    "crumbs": [
+      "Stringr",
+      "Character maniplation",
+      "str_sub"
+    ]
+  },
+  {
+    "objectID": "stringr/str_sub.html#modify-strings",
+    "href": "stringr/str_sub.html#modify-strings",
+    "title": "str_sub",
+    "section": "",
+    "text": "str_sub() can be used to modify strings by replacing the characters of the specified positions.\nThis can be carried out by running the function followed by an assignment operator (&lt;-) with the string fro replacement.\nReplace the last two characters with “re”\n\n#Create a string\nword &lt;- \"saber\"\n#Replace substring\nstringr::str_sub(word, -2, -1) &lt;- \"re\"\n#View modified string\nstringr::str_view(word)\n\n[1] │ sabre\n\n\nThe replacement does not need to have the same number of characters as the original substring.\nReplace the fourth character with “ou”.\n\n#Create a string\nword &lt;- \"color\"\n#Replace substring\nstringr::str_sub(word, 4, 4) &lt;- \"ou\"\n#View modified string\nstringr::str_view(word)\n\n[1] │ colour\n\n\nYou can remove a substring by replacing with nothing (i.e. \"\").\n\n#Create a string\nword &lt;- \"burglarized\"\n#Replace substring\nstringr::str_sub(word, 6, -3) &lt;- \"\"\n#View modified string\nstringr::str_view(word)\n\n[1] │ burgled\n\n\nThis works with vectors too.\n\n#Create a string\nvec &lt;- c(\"saber\", \"meter\", \"saltpeter\", \"somber\", \"theater\", \"luster\")\n#Replace substring er to re\nstringr::str_sub(vec, -2, -1) &lt;- \"re\"\n#View modified string\nstringr::str_view(vec)\n\n[1] │ sabre\n[2] │ metre\n[3] │ saltpetre\n[4] │ sombre\n[5] │ theatre\n[6] │ lustre",
+    "crumbs": [
+      "Stringr",
+      "Character maniplation",
+      "str_sub"
     ]
   },
   {
@@ -3423,65 +3556,51 @@
     ]
   },
   {
-    "objectID": "dplyr/across.html#dataset-1",
-    "href": "dplyr/across.html#dataset-1",
-    "title": "Across",
+    "objectID": "stringr/str_view.html#view-a-string",
+    "href": "stringr/str_view.html#view-a-string",
+    "title": "str_view",
     "section": "",
-    "text": "For demonstration we’ll load the amphibian_div_tbl data from the mgrtibbles package (hyperlink includes install instructions).\nWe’ll remove any rows with NAs as NAs cause mean and other other calculations to return NA.\n\n#Load package\nlibrary(\"mgrtibbles\")\n#amphibian_div_tbl tibble for demonstration\namphibian_div_tbl &lt;- mgrtibbles::amphibian_div_tbl |&gt; na.omit()\n#glimpse tibble\namphibian_div_tbl |&gt; dplyr::glimpse()\n\nRows: 65\nColumns: 15\n$ Species               &lt;chr&gt; \"Acris crepitans\", \"Acris gryllus\", \"Ambystoma j…\n$ IUCN.Red.List.Status  &lt;fct&gt; Least Concern (LC), Least Concern (LC), Least Co…\n$ iucn_2cat             &lt;fct&gt; LC, LC, LC, LC, LC, LC, LC, LC, LC, LC, LC, LC, …\n$ Order                 &lt;chr&gt; \"Anura\", \"Anura\", \"Caudata\", \"Caudata\", \"Caudata…\n$ Family                &lt;chr&gt; \"Hylidae\", \"Hylidae\", \"Ambystomatidae\", \"Ambysto…\n$ Genus                 &lt;chr&gt; \"Acris\", \"Acris\", \"Ambystoma\", \"Ambystoma\", \"Amb…\n$ Age_at_maturity_min_y &lt;dbl&gt; 1.0, 1.0, 2.0, 1.0, 2.0, 2.0, 4.0, 4.0, 3.0, 4.0…\n$ Age_at_maturity_max_y &lt;dbl&gt; 1.0, 1.0, 3.0, 3.0, 3.0, 2.0, 4.0, 4.0, 3.0, 6.0…\n$ Body_size_mm          &lt;dbl&gt; 38, 33, 210, 248, 248, 191, 330, 1162, 1060, 127…\n$ Longevity_max_y       &lt;dbl&gt; 4.9, 1.0, 3.0, 10.0, 32.0, 13.8, 25.0, 27.0, 15.…\n$ Litter_size_min_n     &lt;dbl&gt; 40, 99, 140, 90, 144, 550, 421, 106, 200, 5213, …\n$ Litter_size_max_n     &lt;dbl&gt; 500, 250, 280, 411, 370, 700, 7000, 354, 350, 16…\n$ Offspring_size_min_mm &lt;dbl&gt; 1.30, 0.90, 2.00, 2.00, 2.00, 1.60, 2.00, 8.20, …\n$ Offspring_size_max_mm &lt;fct&gt; 1.5, 1.4, 2.5, 2.3, 2.8, 2.5, 3, 10.1, 7, 1.75, …\n$ Development           &lt;chr&gt; \"larval\", \"larval\", \"larval\", \"larval\", \"larval\"…"
-  },
-  {
-    "objectID": "dplyr/mutate.html#mutate-existing-column",
-    "href": "dplyr/mutate.html#mutate-existing-column",
-    "title": "Mutate",
-    "section": "Mutate existing column",
-    "text": "Mutate existing column\n\nmammal_sleep_tbl |&gt;\n    #Round numbers of body_wt ad brain_wt columns\n    dplyr::mutate(body_wt = round(body_wt))\n\n# A tibble: 62 × 11\n   species          body_wt brain_wt non_dreaming dreaming total_sleep life_span\n   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n 1 Africanelephant     6654   5.71           NA       NA           3.3      38.6\n 2 Africangiantpou…       1   0.0066          6.3      2           8.3       4.5\n 3 ArcticFox              3   0.0445         NA       NA          12.5      14  \n 4 Arcticgroundsqu…       1   0.0057         NA       NA          16.5      NA  \n 5 Asianelephant       2547   4.60            2.1      1.8         3.9      69  \n 6 Baboon                11   0.180           9.1      0.7         9.8      27  \n 7 Bigbrownbat            0   0.0003         15.8      3.9        19.7      19  \n 8 Braziliantapir       160   0.169           5.2      1           6.2      30.4\n 9 Cat                    3   0.0256         10.9      3.6        14.5      28  \n10 Chimpanzee            52   0.44            8.3      1.4         9.7      50  \n# ℹ 52 more rows\n# ℹ 4 more variables: gestation &lt;dbl&gt;, predation &lt;fct&gt;, exposure &lt;fct&gt;,\n#   danger &lt;fct&gt;",
+    "text": "Normal R method to view a string.\n\n\"tga\"\n\n[1] \"tga\"\n\n\nTidyverse method to view string with stringr::str_view().\n\nstringr::str_view(\"tga\")\n\n[1] │ tga",
     "crumbs": [
-      "Dplyr",
-      "Columns",
-      "Mutate"
+      "Stringr",
+      "Viewing strings",
+      "str_view"
     ]
   },
   {
-    "objectID": "dplyr/mutate.html#multiple-columns-with-across",
-    "href": "dplyr/mutate.html#multiple-columns-with-across",
-    "title": "Mutate",
-    "section": "Multiple columns with across()",
-    "text": "Multiple columns with across()\nThe dplyr::across() function can be used within a dplyr::mutate() function to apply a change across multiple columns.\nacross() Tidyverse reference page\nNumerically round the body_wt and brain_wt columns.\n\nmammal_sleep_tbl |&gt;\n    #Round numbers of body_wt ad brain_wt columns\n    dplyr::mutate(\n        dplyr::across(c(body_wt, brain_wt), round)\n        )\n\n# A tibble: 62 × 11\n   species          body_wt brain_wt non_dreaming dreaming total_sleep life_span\n   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n 1 Africanelephant     6654        6         NA       NA           3.3      38.6\n 2 Africangiantpou…       1        0          6.3      2           8.3       4.5\n 3 ArcticFox              3        0         NA       NA          12.5      14  \n 4 Arcticgroundsqu…       1        0         NA       NA          16.5      NA  \n 5 Asianelephant       2547        5          2.1      1.8         3.9      69  \n 6 Baboon                11        0          9.1      0.7         9.8      27  \n 7 Bigbrownbat            0        0         15.8      3.9        19.7      19  \n 8 Braziliantapir       160        0          5.2      1           6.2      30.4\n 9 Cat                    3        0         10.9      3.6        14.5      28  \n10 Chimpanzee            52        0          8.3      1.4         9.7      50  \n# ℹ 52 more rows\n# ℹ 4 more variables: gestation &lt;dbl&gt;, predation &lt;fct&gt;, exposure &lt;fct&gt;,\n#   danger &lt;fct&gt;\n\n\nConvert hour values of non_dreaming, dreaming, and total_sleep to minutes by multiplying by 60.\nNote: \\(x) x*60 is a purrr formula.\n\nmammal_sleep_tbl |&gt;\n    #Round numbers of body_wt ad brain_wt columns\n    dplyr::mutate(\n        dplyr::across(c(non_dreaming, dreaming, total_sleep), \\(x) x*60)\n        )\n\n# A tibble: 62 × 11\n   species          body_wt brain_wt non_dreaming dreaming total_sleep life_span\n   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n 1 Africanelephant  6.65e+3   5.71             NA       NA         198      38.6\n 2 Africangiantpou… 1   e+0   0.0066          378      120         498       4.5\n 3 ArcticFox        3.38e+0   0.0445           NA       NA         750      14  \n 4 Arcticgroundsqu… 9.2 e-1   0.0057           NA       NA         990      NA  \n 5 Asianelephant    2.55e+3   4.60            126      108         234      69  \n 6 Baboon           1.06e+1   0.180           546       42         588      27  \n 7 Bigbrownbat      2.3 e-2   0.0003          948      234        1182      19  \n 8 Braziliantapir   1.6 e+2   0.169           312       60         372      30.4\n 9 Cat              3.3 e+0   0.0256          654      216         870      28  \n10 Chimpanzee       5.22e+1   0.44            498       84         582      50  \n# ℹ 52 more rows\n# ℹ 4 more variables: gestation &lt;dbl&gt;, predation &lt;fct&gt;, exposure &lt;fct&gt;,\n#   danger &lt;fct&gt;",
-    "crumbs": [
-      "Dplyr",
-      "Columns",
-      "Mutate"
-    ]
-  },
-  {
-    "objectID": "dplyr/mutate.html#modify-existing-column",
-    "href": "dplyr/mutate.html#modify-existing-column",
-    "title": "Mutate",
-    "section": "Modify existing column",
-    "text": "Modify existing column\nModify the body_wt column with the round() function.\n\nmammal_sleep_tbl |&gt;\n    #Round numbers of body_wt columns\n    dplyr::mutate(body_wt = round(body_wt))\n\n# A tibble: 62 × 11\n   species          body_wt brain_wt non_dreaming dreaming total_sleep life_span\n   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n 1 Africanelephant     6654   5.71           NA       NA           3.3      38.6\n 2 Africangiantpou…       1   0.0066          6.3      2           8.3       4.5\n 3 ArcticFox              3   0.0445         NA       NA          12.5      14  \n 4 Arcticgroundsqu…       1   0.0057         NA       NA          16.5      NA  \n 5 Asianelephant       2547   4.60            2.1      1.8         3.9      69  \n 6 Baboon                11   0.180           9.1      0.7         9.8      27  \n 7 Bigbrownbat            0   0.0003         15.8      3.9        19.7      19  \n 8 Braziliantapir       160   0.169           5.2      1           6.2      30.4\n 9 Cat                    3   0.0256         10.9      3.6        14.5      28  \n10 Chimpanzee            52   0.44            8.3      1.4         9.7      50  \n# ℹ 52 more rows\n# ℹ 4 more variables: gestation &lt;dbl&gt;, predation &lt;fct&gt;, exposure &lt;fct&gt;,\n#   danger &lt;fct&gt;",
-    "crumbs": [
-      "Dplyr",
-      "Columns",
-      "Mutate"
-    ]
-  },
-  {
-    "objectID": "dplyr/mutate.html#delete-columns",
-    "href": "dplyr/mutate.html#delete-columns",
-    "title": "Mutate",
-    "section": "Delete columns",
-    "text": "Delete columns\nRemove the species column by setting it to NULL\n\nmammal_sleep_tbl |&gt;\n    #Remove species column\n    dplyr::mutate(species = NULL)\n\n# A tibble: 62 × 10\n    body_wt brain_wt non_dreaming dreaming total_sleep life_span gestation\n      &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n 1 6654       5.71           NA       NA           3.3      38.6       645\n 2    1       0.0066          6.3      2           8.3       4.5        42\n 3    3.38    0.0445         NA       NA          12.5      14          60\n 4    0.92    0.0057         NA       NA          16.5      NA          25\n 5 2547       4.60            2.1      1.8         3.9      69         624\n 6   10.6     0.180           9.1      0.7         9.8      27         180\n 7    0.023   0.0003         15.8      3.9        19.7      19          35\n 8  160       0.169           5.2      1           6.2      30.4       392\n 9    3.3     0.0256         10.9      3.6        14.5      28          63\n10   52.2     0.44            8.3      1.4         9.7      50         230\n# ℹ 52 more rows\n# ℹ 3 more variables: predation &lt;fct&gt;, exposure &lt;fct&gt;, danger &lt;fct&gt;",
-    "crumbs": [
-      "Dplyr",
-      "Columns",
-      "Mutate"
-    ]
-  },
-  {
-    "objectID": "dplyr/across.html#mutate",
-    "href": "dplyr/across.html#mutate",
-    "title": "Across",
+    "objectID": "stringr/str_view.html#view-a-character-scalar",
+    "href": "stringr/str_view.html#view-a-character-scalar",
+    "title": "str_view",
     "section": "",
-    "text": "amphibian_div_tbl |&gt;\n    dplyr::mutate(across(c()))\n\n# A tibble: 65 × 15\n   Species                  IUCN.Red.List.Status iucn_2cat Order   Family  Genus\n   &lt;chr&gt;                    &lt;fct&gt;                &lt;fct&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;\n 1 Acris crepitans          Least Concern (LC)   LC        Anura   Hylidae Acris\n 2 Acris gryllus            Least Concern (LC)   LC        Anura   Hylidae Acris\n 3 Ambystoma jeffersonianum Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 4 Ambystoma macrodactylum  Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 5 Ambystoma maculatum      Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 6 Ambystoma texanum        Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 7 Ambystoma tigrinum       Least Concern (LC)   LC        Caudata Ambyst… Amby…\n 8 Amphiuma means           Least Concern (LC)   LC        Caudata Amphiu… Amph…\n 9 Amphiuma tridactylum     Least Concern (LC)   LC        Caudata Amphiu… Amph…\n10 Anaxyrus boreas          Least Concern (LC)   LC        Anura   Bufoni… Anax…\n# ℹ 55 more rows\n# ℹ 9 more variables: Age_at_maturity_min_y &lt;dbl&gt;, Age_at_maturity_max_y &lt;dbl&gt;,\n#   Body_size_mm &lt;dbl&gt;, Longevity_max_y &lt;dbl&gt;, Litter_size_min_n &lt;dbl&gt;,\n#   Litter_size_max_n &lt;dbl&gt;, Offspring_size_min_mm &lt;dbl&gt;,\n#   Offspring_size_max_mm &lt;fct&gt;, Development &lt;chr&gt;"
+    "text": "Normal R method to view a string.\n\n\"tga\"\n\n[1] \"tga\"\n\n\nTidyverse method to view string with stringr::str_view().\n\nstringr::str_view(\"tga\")\n\n[1] │ tga\n\n\nThe differences of str_view() to the normal method are:\n\nThe inclusion of | between the index ([1]) and the string (tga).\nThe quotes around the string are not included.",
+    "crumbs": [
+      "Stringr",
+      "Viewing strings",
+      "str_view"
+    ]
+  },
+  {
+    "objectID": "stringr/str_view.html#view-a-character-vector",
+    "href": "stringr/str_view.html#view-a-character-vector",
+    "title": "str_view",
+    "section": "",
+    "text": "Create a character vector.\n\nvec &lt;- c(\"rose\", \"thistle\", \"leek\", \"shamrock\")\n\nPrint vector through normal R method.\n\nvec\n\n[1] \"rose\"     \"thistle\"  \"leek\"     \"shamrock\"\n\n\nView vector with str_view().\n\nvec |&gt; stringr::str_view()\n\n[1] │ rose\n[2] │ thistle\n[3] │ leek\n[4] │ shamrock\n\n\nNotice that each vector element is printed on a new line with str_view().",
+    "crumbs": [
+      "Stringr",
+      "Viewing strings",
+      "str_view"
+    ]
+  },
+  {
+    "objectID": "stringr/str_view.html#special-characters",
+    "href": "stringr/str_view.html#special-characters",
+    "title": "str_view",
+    "section": "",
+    "text": "There are may special characters that can be used in strings. str_view() is especially useful in how it presents these.\n\n\nThe three main white spaces in R are:\n\n\" \": A space.\n\"\\t\": A tab.\n\"\\n\": A new line.\n\nCreate a vector demonstrating these three.\n\n#Create a vector of strings\nvec &lt;- c(\"gataac\", \"gat aac\", \"gat\\taac\", \"gat\\naac\")\n\nPrint this vector with the normal R method.\n\nvec\n\n[1] \"gataac\"   \"gat aac\"  \"gat\\taac\" \"gat\\naac\"\n\n\nView with str_view().\n\nstringr::str_view(vec)\n\n[1] │ gataac\n[2] │ gat aac\n[3] │ gat{\\t}aac\n[4] │ gat\n    │ aac\n\n\nIn this case notice:\n\nThe tab character (\\t) is within curly braces ({}), represented as {\\t}.\nThe space is shown as a space and the newline creates a new line, causing the fourth element to be split over 2 lines.\n\n\n\n\nTo include double quotes within strings denoted by double quotes we need to “escape” the double quotes. We can carry this out with \\.\nCreate a string containing a double quote. Note, we can include single quotes (') normally as we are not using them to denote the string.\n\nsentence &lt;- \"A double quote is: \\\".\"\n\nPrinting the string normally with R shows the escape character (\\)\n\nsentence\n\n[1] \"A double quote is: \\\".\"\n\n\nViewing the string with str_view() does not show the escape character. Instead it aims to display the text how a human would read it, rather than a computer. This is very useful to ensure any escape characters in the string work as intended.\n\nstringr::str_view(sentence)\n\n[1] │ A double quote is: \".\n\n\nTo add to the complexity you can escape escape characters with an escape character.\n\n#Create vector\nvec &lt;- c(\"A double quote is: \\\"\", \"A single quote is: '\", \"An escape character is: \\\\\")\n#View vector\nvec |&gt; stringr::str_view()\n\n[1] │ A double quote is: \"\n[2] │ A single quote is: '\n[3] │ An escape character is: \\\n\n\n\n\n\nUnicode can be used to include other various special symbols. Examples include:\n\nπ: Th pi symbol represented by \\u00b5\n€: The euro symbol represented by \\u20ac\n😎: Smiling face with sunglasses represented by \\U0001f60e\n\n\n#Create vector\nvec &lt;- c(\"\\u00b5\", \"\\u20ac\", \"\\U0001f60e\")\n\nNormal R will print out symbol.\n\nvec\n\n[1] \"µ\"  \"€\"  \"😎\"\n\n\nstr_view() will also print out the symbol.\n\nvec |&gt; stringr::str_view()\n\n[1] │ µ\n[2] │ €\n[3] │ 😎\n\n\nFor more unicode characters please see: Wikipedia page of List of Unicode characters. For these you need to change U+ to u and you can use lower case letters instead of upper case.",
+    "crumbs": [
+      "Stringr",
+      "Viewing strings",
+      "str_view"
+    ]
   }
 ]

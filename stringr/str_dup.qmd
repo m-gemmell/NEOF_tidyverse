@@ -1,0 +1,41 @@
+# str_dup
+
+<center>
+![](images/stringr_str_dup.png){style="width:200px"}
+</center>
+
+Duplicates a string a designated number of times.
+
+[Tidyverse reference page](https://stringr.tidyverse.org/reference/str_dup.html)
+
+## Duplicate a string
+
+Duplicate the string "hat" 3 times.
+
+```{r}
+stringr::str_dup("hat", 3)
+```
+
+A separator can be included.
+
+```{r}
+stringr::str_dup("lime", 4, sep = " ")
+```
+
+This can be carried out with a vector.
+
+```{r}
+#Create a vector
+vec <- c("rose", "thistle", "leek", "shamrock")
+#Duplicate
+vec |> stringr::str_dup(2, sep = ",")
+```
+
+With a vector you can duplicate the different elements to differing amounts.
+
+```{r}
+#Create a vector
+vec <- c("once", "twice", "thrice")
+#Duplicate
+vec |> stringr::str_dup(1:3, sep = "|")
+```

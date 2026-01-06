@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../stringr/cheatsheets.html" rel="next">
+<link href="../stringr/str_view.html" rel="next">
 <link href="..//images/NEOF_favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -355,6 +355,52 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Stringr</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Viewing strings</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../stringr/str_view.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">str_view</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Character maniplation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../stringr/str_length.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">str_length</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../stringr/str_sub.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">str_sub</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../stringr/str_dup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">str_dup</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../stringr/cheatsheets.html" class="sidebar-item-text sidebar-link">
@@ -366,8 +412,22 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#sections" id="toc-sections" class="nav-link" data-scroll-target="#sections">Sections</a>
+  <ul class="collapse">
+  <li><a href="#viewing-strings" id="toc-viewing-strings" class="nav-link" data-scroll-target="#viewing-strings">Viewing strings</a></li>
+  <li><a href="#character-manipulation" id="toc-character-manipulation" class="nav-link" data-scroll-target="#character-manipulation">Character manipulation</a></li>
+  <li><a href="#combining-strings" id="toc-combining-strings" class="nav-link" data-scroll-target="#combining-strings">Combining strings</a></li>
+  <li><a href="#white-space-tools" id="toc-white-space-tools" class="nav-link" data-scroll-target="#white-space-tools">White space tools</a></li>
+  <li><a href="#pattern-matching" id="toc-pattern-matching" class="nav-link" data-scroll-target="#pattern-matching">Pattern matching</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -395,10 +455,69 @@ ul.task-list li input[type="checkbox"] {
 <center>
 <img src="../images/stringr.png" class="img-fluid" style="width:150px">
 </center>
-<p>In development</p>
-<p><a href="https://stringr.tidyverse.org/">readr homepage</a></p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p><strong>Stringr</strong> is the main string manipulation package in <strong>tidyverse</strong>.</p>
+<p><strong>Stringr</strong> focusses on the most important and comonly used string manipulation functions. It is based on <a href="https://github.com/gagolews/stringi">stringi</a> which has a comprehensive set of functions.</p>
+<p><a href="https://stringr.tidyverse.org/">stringr homepage</a></p>
+<p>This website aims to quickly cover some of the <code>stringr</code> functions and uses. Therefore, there are a lot more <code>stringr</code> functions than covered here. Please check the below link for the full list.</p>
+<p><a href="https://stringr.tidyverse.org/reference/index.html">Full stringr reference page</a></p>
+<p>If you are unfamiliar with strings please see:</p>
+<p><a href="https://r4ds.hadley.nz/strings">String chapter in R for Data Science 2e</a></p>
+</section>
+<section id="sections" class="level2">
+<h2 class="anchored" data-anchor-id="sections">Sections</h2>
+<p>There are many sections for <code>stringr</code>. These are summarised below.</p>
+<section id="viewing-strings" class="level3">
+<h3 class="anchored" data-anchor-id="viewing-strings">Viewing strings</h3>
+<div class="hexrow">
+<p>
+<a href="../stringr/str_view.html"> <img src="images/stringr_str_view.png" width="150px"> </a>
+</p>
+</div>
+<ul>
+<li><a href="../stringr/str_view.html">str_view</a>: View the raw contents of a string.
+<ul>
+<li>Includes information about various special characters and how to escape them with <code>\</code>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="character-manipulation" class="level3">
+<h3 class="anchored" data-anchor-id="character-manipulation">Character manipulation</h3>
+<div class="hexrow">
+<p>
+<a href="../stringr/str_length.html"> <img src="images/stringr_str_length.png" width="150px"> </a>
+</p>
+<p>
+<a href="../stringr/str_sub.html"> <img src="images/stringr_str_sub.png" width="150px"> </a>
+</p>
+<p>
+<a href="../stringr/str_dup.html"> <img src="images/stringr_str_dup.png" width="150px"> </a>
+</p>
+</div>
+<p>These functions allow you to manipulate strings in vectors.</p>
+<ul>
+<li><a href="../stringr/str_length.html"><code>str_length()</code></a>: Determine the length of a string (i.e.&nbsp;count the number of characters in a string).</li>
+<li><a href="../stringr/str_sub.html"><code>str_sub()</code></a>: Extract or modify a substring using a start and end position.</li>
+<li><a href="../stringr/str_dup.html"><code>str_dup()</code></a>: Duplicate a string a specified number of times.</li>
+</ul>
+</section>
+<section id="combining-strings" class="level3">
+<h3 class="anchored" data-anchor-id="combining-strings">Combining strings</h3>
+<p>str_c() str_flatten() str_glue()</p>
+</section>
+<section id="white-space-tools" class="level3">
+<h3 class="anchored" data-anchor-id="white-space-tools">White space tools</h3>
+<p>These functions allow you to add, remove, and manipulate whitespaces (e.g.&nbsp;spaces and tabs)</p>
+</section>
+<section id="pattern-matching" class="level3">
+<h3 class="anchored" data-anchor-id="pattern-matching">Pattern matching</h3>
+<p>These functions allow you to carry out various tasks with regular expressions.</p>
+<p>For an introduction to regular expressions please see the <a href="https://r4ds.hadley.nz/regexps.html">Regular expressions chapter in R for Data Science 2e</a></p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script>
@@ -1024,8 +1143,8 @@ window.onload = function() {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../stringr/cheatsheets.html" class="pagination-link" aria-label="Cheatsheets">
-        <span class="nav-page-text">Cheatsheets</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../stringr/str_view.html" class="pagination-link" aria-label="str_view">
+        <span class="nav-page-text">str_view</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

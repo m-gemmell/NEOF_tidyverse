@@ -6,6 +6,77 @@ title: "Stringr"
 ![](../images/stringr.png){style="width:150px"}
 </center>
 
-In development
+## Overview
 
-[readr homepage](https://stringr.tidyverse.org/)
+__Stringr__ is the main string manipulation package in __tidyverse__.
+
+__Stringr__ focusses on the most important and comonly used string manipulation functions.
+It is based on [stringi](https://github.com/gagolews/stringi) which has a comprehensive set of functions.
+
+[stringr homepage](https://stringr.tidyverse.org/)
+
+This website aims to quickly cover some of the `stringr` functions and uses.
+Therefore, there are a lot more `stringr` functions than covered here.
+Please check the below link for the full list.
+
+[Full stringr reference page](https://stringr.tidyverse.org/reference/index.html)
+
+If you are unfamiliar with strings please see:
+
+[String chapter in R for Data Science 2e](https://r4ds.hadley.nz/strings)
+
+## Sections
+
+There are many sections for `stringr`. These are summarised below.
+
+### Viewing strings
+<div class="hexrow">
+  <p><a href="/stringr/str_view.qmd">
+  <img src="images/stringr_str_view.png" width="150px">
+  </a></p>
+
+</div>
+
+- [str_view](/stringr/str_view.qmd): View the raw contents of a string.
+    - Includes information about various special characters and how to escape them with `\`.
+
+### Character manipulation
+
+<div class="hexrow">
+  <p><a href="/stringr/str_length.qmd">
+  <img src="images/stringr_str_length.png" width="150px">
+  </a></p>
+
+  <p><a href="/stringr/str_sub.qmd">
+  <img src="images/stringr_str_sub.png" width="150px">
+  </a></p>
+
+  <p><a href="/stringr/str_dup.qmd">
+  <img src="images/stringr_str_dup.png" width="150px">
+  </a></p>
+
+</div>
+
+These functions allow you to manipulate strings in vectors.
+
+- [`str_length()`](/stringr/str_length.qmd): Determine the length of a string (i.e. count the number of characters in a string).
+- [`str_sub()`](/stringr/str_sub.qmd): Extract or modify a substring using a start and end position.
+- [`str_dup()`](/stringr/str_dup.qmd): Duplicate a string a specified number of times.
+
+### Combining strings
+
+str_c()
+str_flatten()
+str_glue()
+
+
+### White space tools
+
+These functions allow you to add, remove, and manipulate whitespaces (e.g. spaces and tabs)
+
+### Pattern matching
+
+These functions allow you to carry out various tasks with regular expressions.
+
+For an introduction to regular expressions please see the [Regular expressions chapter in R for Data Science 2e](https://r4ds.hadley.nz/regexps.html)
+

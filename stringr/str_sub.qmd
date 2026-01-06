@@ -1,0 +1,168 @@
+# str_sub
+
+<center>
+![](images/stringr_str_sub.png){style="width:200px"}
+</center>
+
+The function `stringr::str_sub()` allows you to extract sub strings from strings.
+The function requires three arguments:
+
+- A character vector/scalar
+- A start position
+- An end position
+
+The positions are integers/whole numbers and are inclusive.
+
+Additionally, this function can be used to replace the specified strings.
+
+[Tidyverse reference page](https://stringr.tidyverse.org/reference/str_sub.html)
+
+## Extract sub strings
+
+Substrings can be extracted from scalars.
+
+### Extract a substring
+
+Extract position 3:5 in one string (i.e. a scalar).
+
+```{r}
+stringr::str_sub("abcdefgh", 3, 5)
+```
+
+### Extract one character
+
+One character can be extracted by setting the start and end positions to the same integer.
+
+```{r}
+stringr::str_sub("abcdefgh", 2, 2)
+```
+
+### End position higher than vector length
+
+Providing an end position longer than the vector will still work, only providing the characters from the specified start position to the end of the vector.
+
+Below we specify 7 to 10 on 8 length string and we are provided characters 7-8.
+
+```{r}
+stringr::str_sub("abcdefgh", 7, 10)
+```
+
+### Positions as negative values
+
+You can use negative numbers to represent a position relative to the end.
+For example, `-4` would mean the 4th-to-last character and `-2` would represent the 2nd-to-last character.
+
+Extract the fourth last to the 2nd last characters.
+
+```{r}
+stringr::str_sub("abcdefgh", -4, -2)
+```
+
+This means you can use `-1` to represent the last character.
+
+Extract the 6th to last character.
+
+```{r}
+stringr::str_sub("abcdefgh", 6, -1)
+```
+
+### Start position higher than end position
+
+If our start position is higher than our end position we extract nothing.
+
+```{r}
+stringr::str_sub("abcdefgh", 5, 3)
+```
+
+### Extract from a vector
+
+Any of the above methods can be used on a vector of strings.
+With a vector the function acts on each string separately.
+
+First create a vector.
+
+```{r}
+vec <- c("abc", "defghijk", "lmnopqrstuvwxyz")
+```
+
+Extract the 2nd to 3rd positions.
+
+```{r}
+vec |> stringr::str_sub(2,3)
+```
+
+Extract the 2nd to 10th position.
+
+```{r}
+vec |> stringr::str_sub(2,10)
+```
+
+Extract the 2nd to the last position
+
+```{r}
+vec |> stringr::str_sub(2,-1)
+```
+
+Extract the first to the third last position.
+
+```{r}
+vec |> stringr::str_sub(1,-3)
+```
+
+Extract the 10th to the 15th position.
+
+```{r}
+vec |> stringr::str_sub(10,15)
+```
+
+## Modify strings
+
+`str_sub()` can be used to modify strings by replacing the characters of the specified positions.
+
+This can be carried out by running the function followed by an assignment operator (`<-`) with the string fro replacement.
+
+Replace the last two characters with "re"
+
+```{r}
+#Create a string
+word <- "saber"
+#Replace substring
+stringr::str_sub(word, -2, -1) <- "re"
+#View modified string
+stringr::str_view(word)
+```
+
+The replacement does not need to have the same number of characters as the original substring.
+
+Replace the fourth character with "ou".
+
+```{r}
+#Create a string
+word <- "color"
+#Replace substring
+stringr::str_sub(word, 4, 4) <- "ou"
+#View modified string
+stringr::str_view(word)
+```
+
+You can remove a substring by replacing with nothing (i.e. `""`).
+
+```{r}
+#Create a string
+word <- "burglarized"
+#Replace substring
+stringr::str_sub(word, 6, -3) <- ""
+#View modified string
+stringr::str_view(word)
+```
+
+This works with vectors too.
+
+```{r}
+#Create a string
+vec <- c("saber", "meter", "saltpeter", "somber", "theater", "luster")
+#Replace substring er to re
+stringr::str_sub(vec, -2, -1) <- "re"
+#View modified string
+stringr::str_view(vec)
+```
