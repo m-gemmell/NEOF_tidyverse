@@ -437,6 +437,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Combining strings</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../stringr/str_c.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">str_c</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../stringr/cheatsheets.html" class="sidebar-item-text sidebar-link">
@@ -461,8 +478,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#white-spaces" id="toc-white-spaces" class="nav-link" data-scroll-target="#white-spaces">White spaces</a></li>
   <li><a href="#special-characters-1" id="toc-special-characters-1" class="nav-link" data-scroll-target="#special-characters-1">Special characters</a></li>
-  <li><a href="#uncode" id="toc-uncode" class="nav-link" data-scroll-target="#uncode">Uncode</a></li>
+  <li><a href="#unicode" id="toc-unicode" class="nav-link" data-scroll-target="#unicode">Unicode</a></li>
   </ul></li>
+  <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values">Missing values</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -480,6 +498,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <img src="images/stringr_str_view.png" class="img-fluid" style="width:200px">
 </center>
 <p>The function <code>stringr::str_view()</code> allows you to view/print the “raw contents” of a string.</p>
+<p><a href="https://stringr.tidyverse.org/reference/str_view.html">Tidyverse reference page</a></p>
 <section id="view-a-character-scalar" class="level2">
 <h2 class="anchored" data-anchor-id="view-a-character-scalar">View a character scalar</h2>
 <p>Normal R method to view a string.</p>
@@ -601,8 +620,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="uncode" class="level3">
-<h3 class="anchored" data-anchor-id="uncode">Uncode</h3>
+<section id="unicode" class="level3">
+<h3 class="anchored" data-anchor-id="unicode">Unicode</h3>
 <p>Unicode can be used to include other various special symbols. Examples include:</p>
 <ul>
 <li>π: Th pi symbol represented by <code>\u00b5</code></li>
@@ -630,9 +649,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>For more unicode characters please see: <a href="https://en.wikipedia.org/wiki/List_of_Unicode_characters">Wikipedia page of List of Unicode characters</a>. For these you need to change <code>U+</code> to <code>u</code> and you can use lower case letters instead of upper case.</p>
-
-
 </section>
+</section>
+<section id="missing-values" class="level2">
+<h2 class="anchored" data-anchor-id="missing-values">Missing values</h2>
+<p>Missing values are represented as <code>NA</code> in R.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"a"</span>, <span class="cn">NA</span>, <span class="st">"c"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_view</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] │ a
+[2] │ NA
+[3] │ c</code></pre>
+</div>
+</div>
+<p>When you run the above code you will notice that the <code>NA</code> is coloured with a different colour than the string <code>"NA"</code>.</p>
+
+
 </section>
 </section>
 

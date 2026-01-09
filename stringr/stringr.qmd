@@ -37,7 +37,7 @@ There are many sections for `stringr`. These are summarised below.
 
 </div>
 
-- [str_view](/stringr/str_view.qmd): View the raw contents of a string.
+- [`str_view()`](/stringr/str_view.qmd): View the raw contents of a string.
     - Includes information about various special characters and how to escape them with `\`.
 
 ### Character manipulation
@@ -65,9 +65,25 @@ These functions allow you to manipulate strings in vectors.
 
 ### Combining strings
 
-str_c()
-str_flatten()
-str_glue()
+<div class="hexrow">
+  <p><a href="/stringr/str_c.qmd">
+  <img src="images/stringr_str_c.png" width="150px">
+  </a></p>
+
+  <p><a href="/stringr/str_flatten.qmd">
+  <img src="images/stringr_str_flatten.png" width="150px">
+  </a></p>
+
+  <p><a href="/stringr/str_glue.qmd">
+  <img src="images/stringr_str_glue.png" width="150px">
+  </a></p>
+
+</div>
+
+- [`str_c()`](/stringr/str_c.qmd): Combine strings together (similar to `paste0()`).
+- [`str_flatten()`](/stringr/str_flatten.qmd): Flatten a vector of strings into one string.
+- [`str_glue()`](/stringr/str_glue.qmd): SImilar to `str_c()` but allows you to include variables within the strings to combine.
+  - Variable names are included in the strings with curly braces like so: `{variable_name}`
 
 
 ### White space tools

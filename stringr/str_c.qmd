@@ -1,0 +1,104 @@
+# str_c
+
+<center>
+![](images/stringr_str_c.png){style="width:200px"}
+</center>
+
+The function `stringr::str_c()` combines multiple character vectors into a single character vector.
+It is similar to the `paste0()` function.
+
+[Tidyverse reference page](https://stringr.tidyverse.org/reference/str_c.html)
+
+## Scalar and vector
+
+We can combine one string to a vector of strings.
+
+Add "day" to the end of the weekday prefixes.
+
+```{r}
+#Create a vector
+vec <- c("Mon", "Tues", "Wednes", "Thurs", "Fri")
+#Combine with day at the end
+weekdays <- stringr::str_c(vec, "day")
+#View
+weekdays |> stringr::str_view()
+```
+
+A separator can be chosen between the strings to be combined with `sep=`.
+
+Using the created `weekdays` vector print out the weekdays with "Weekday" at the start and the sperator `: ` (note the space after the `:`).
+
+```{r}
+#Combine with day at the end
+stringr::str_c("Weekday", weekdays, sep = ": ") |>
+    stringr::str_view()
+```
+
+Of course you can combine more than two string objects.
+
+Create a longer sentence with the `weekday` in the middle.
+
+```{r}
+#Combine with day at the end
+stringr::str_c("The day ", weekdays, " is a weekday.") |>
+    stringr::str_view()
+```
+
+## Vector and vector
+
+You can combine multiple vectors together.
+
+Create sentences stating the national plants of the four UK countries.
+
+```{r}
+#Create vectors
+plants <- c("Rose", "Thistle", "Leek", "Shamrock")
+countries <- c("England", "Scotland", "Wales", "Northern Ireland")
+#Combine vectors
+stringr::str_c("The ", plants, " is the national plant of ", countries) |>
+    stringr::str_view()
+```
+
+## Recycling elements
+
+With `paste0()` vectors of different length can be combined using the [recycling rule](https://neof-workshops.github.io/R_j4c0xh/17-Basic_programming.html#recycle-rule).
+
+```{r}
+#Create vectors
+vec1 <- c("a", "b", "c")
+vec2 <- c("y", "z")
+#Combine vectors
+paste0(vec1, vec2)
+```
+
+On the other hand `str_c()` does not work with vectors of different lengths.
+If you run the below command it will not work.
+
+```{r, eval=FALSE}
+#Combine vectors
+stringr::str_c(vec1, vec2)
+```
+
+## Missing values
+
+Missing values in R are presented as `NA`.
+
+When a `NA` is used in `paste0()` it will treat it as a string.
+You can see this in action in the below command when the `"b"` is combined with `"NA"`.
+
+```{r}
+#Create vectors
+vec1 <- c("a", "b", "c")
+vec2 <- c("x", NA, "z")
+#Combine vectors
+paste0(vec1, vec2)
+```
+
+A `NA` with `str_c()` produces a `NA`.
+Notice how the second value is a proper missing value (`NA`) with no quotes
+
+```{r}
+#Combine vectors
+stringr::str_c(vec1, vec2) 
+```
+

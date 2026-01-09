@@ -1,0 +1,48 @@
+# str_flatten
+
+<center>
+![](images/stringr_str_flatten.png){style="width:200px"}
+</center>
+
+The function `stringr::str_flatten()` allows you to create a single string from a character vector.
+
+[Tidyverse reference page](https://stringr.tidyverse.org/reference/str_flatten.html)
+
+## Flatten
+
+By default `str_flatten()` will add no spaces/separators when flattening.
+
+```{r}
+#Create vector
+vec <- c("A", "C", "G", "T")
+#Flatten vector
+vec |> stringr::str_flatten()
+```
+
+You can pipe the output for [`str_c()`](/stringr/str_c.qmd) to `str_flatten()`.
+
+```{r}
+#Create vectors
+vec1 <- c("a", "b", "c")
+vec2 <- c("x", "y", "z")
+#Combine then flatten
+stringr::str_c(vec1, vec2) |> stringr::str_flatten()
+```
+
+## Collapse and last
+
+The individual vector elements can be separated in the out string with the `collapse=` option.
+
+```{r}
+#Create vector
+vec <- c("A", "C", "G", "T")
+#Flatten with , separator
+stringr::str_flatten(vec, collapse = ",")
+```
+
+You can specify a final separator with `last =`.
+Additionally, separators can contain as many characters as you would like.
+
+```{r}
+stringr::str_flatten(vec, collapse = ", ", last = ", and ")
+```

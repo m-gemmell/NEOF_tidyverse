@@ -401,6 +401,35 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Combining strings</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../stringr/str_c.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">str_c</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../stringr/str_flatten.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">str_flatten</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../stringr/str_glue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">str_glue</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../stringr/cheatsheets.html" class="sidebar-item-text sidebar-link">
@@ -476,7 +505,7 @@ ul.task-list li input[type="checkbox"] {
 </p>
 </div>
 <ul>
-<li><a href="../stringr/str_view.html">str_view</a>: View the raw contents of a string.
+<li><a href="../stringr/str_view.html"><code>str_view()</code></a>: View the raw contents of a string.
 <ul>
 <li>Includes information about various special characters and how to escape them with <code>\</code>.</li>
 </ul></li>
@@ -504,7 +533,25 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="combining-strings" class="level3">
 <h3 class="anchored" data-anchor-id="combining-strings">Combining strings</h3>
-<p>str_c() str_flatten() str_glue()</p>
+<div class="hexrow">
+<p>
+<a href="../stringr/str_c.html"> <img src="images/stringr_str_c.png" width="150px"> </a>
+</p>
+<p>
+<a href="../stringr/str_flatten.html"> <img src="images/stringr_str_flatten.png" width="150px"> </a>
+</p>
+<p>
+<a href="../stringr/str_glue.html"> <img src="images/stringr_str_glue.png" width="150px"> </a>
+</p>
+</div>
+<ul>
+<li><a href="../stringr/str_c.html"><code>str_c()</code></a>: Combine strings together (similar to <code>paste0()</code>).</li>
+<li><a href="../stringr/str_flatten.html"><code>str_flatten()</code></a>: Flatten a vector of strings into one string.</li>
+<li><a href="../stringr/str_glue.html"><code>str_glue()</code></a>: SImilar to <code>str_c()</code> but allows you to include variables within the strings to combine.
+<ul>
+<li>Variable names are included in the strings with curly braces like so: <code>{variable_name}</code></li>
+</ul></li>
+</ul>
 </section>
 <section id="white-space-tools" class="level3">
 <h3 class="anchored" data-anchor-id="white-space-tools">White space tools</h3>

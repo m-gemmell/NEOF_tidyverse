@@ -325,5 +325,14 @@
   },
   "stringr/str_dup.qmd": {
     "str_dup.html": "0b68cfc9"
+  },
+  "stringr/str_c.qmd": {
+    "str_c.html": "aedb280d"
+  },
+  "stringr/str_flatten.qmd": {
+    "str_flatten.html": "c740d491"
+  },
+  "stringr/str_glue.qmd": {
+    "str_glue.html": "5e3ca09c"
   }
 }

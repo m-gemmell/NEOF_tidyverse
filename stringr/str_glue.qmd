@@ -1,0 +1,118 @@
+# str_glue
+
+<center>
+![](images/stringr_str_glue.png){style="width:200px"}
+</center>
+
+The function `stringr::str_glue()` is similar to [`str_c()`](/stringr/str_c.qmd) but allows you to include variable names within double quotes.
+
+Variables to be used are flanked by curly braces, e.g. `"{variable_name}"`.
+
+## Scalars
+
+You can include a string variable into a string specified in `stringr::glue()`.
+
+```{r}
+#Create a string scalar
+base <- "A"
+#Glue
+stringr::str_glue("Adenine is represented by the letter {base}")
+```
+
+You can include multiple variables.
+
+```{r}
+#Create string vectors
+base <- "A"
+comp <- "T"
+#Glue
+stringr::str_glue("The complementary base of {base} is {comp}")
+```
+
+Like `paste0()` or `str_c()` you can combine multiple strings and set a separator.
+In this case the option is `.sep=`.
+
+```{r}
+#Create string vectors
+dna <- "T"
+rna <- "U"
+#Glue
+stringr::str_glue("{dna} is a nucleic acid DNA base.",
+                    "{rna} is a nucleic acid RNA base.",
+                    .sep = " ")
+```
+
+
+If you need to display something such as `{base}` you can use double braces (`{{{base}}}`).
+
+Additionally we will use a new space (`\n`) as the separator.
+
+```{r}
+stringr::str_glue("You can include a variable with str_glue with braces, e.g. {{base}}.",
+                    "For example, here is adenine: {base}.",
+                    .sep = "\n") |>
+    stringr::str_view()
+```
+
+## Non strings
+
+Non strings are converted into strings.
+
+```{r}
+#Create a numeric scalar
+num <- 4
+#Glue
+stringr::str_glue("There are {num} DNA bases")
+```
+
+With numerics you can carry out maths in the braces.
+
+```{r}
+stringr::str_glue("There are {num/2} purines.",
+                    "There are {num-1} pyrimidines",
+                    .sep = "\n") |>
+    stringr::str_view()
+```
+
+Below shows how logicals and missing values work.
+
+```{r}
+#Vectors
+true <- TRUE
+missing <- NA
+#Glue
+stringr::str_glue("Logical: {true}. Missing value: {missing}.") |>
+    stringr::str_view()
+```
+
+## Vectors
+
+Using vectors with `str_glue()` works the same way as `str_c()`.
+
+```{r}
+#Create vec
+bases <- c("A","G","C","T")
+#Glue
+stringr::str_glue("A DNA base is {bases}") |> stringr::str_view()
+```
+
+When using multiple vectors ensure they are the same length.
+
+```{r}
+#Create vec
+bases <- c("A","G","C","T")
+names <- c("Adenine", "Guanine", "Cytosine", "Thymine")
+#Glue
+stringr::str_glue("{names} is represented by {bases}") |>
+    stringr::str_view()
+```
+
+Using vectors of different lengths will lead to an error but you can always use scalars with vectors.
+
+```{r}
+#Create vec
+type <- "DNA"
+#Glue
+stringr::str_glue("The {type} base {names} is represented by {bases}") |>
+    stringr::str_view()
+```

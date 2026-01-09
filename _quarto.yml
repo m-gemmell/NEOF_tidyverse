@@ -183,6 +183,11 @@ website:
       - href: stringr/str_length.qmd
       - href: stringr/str_sub.qmd
       - href: stringr/str_dup.qmd
+    - section: "Combining strings"
+      contents:
+      - href: stringr/str_c.qmd
+      - href: stringr/str_flatten.qmd
+      - href: stringr/str_glue.qmd
     - href: stringr/cheatsheets.qmd
   - id: Forcats
     title: Forcats

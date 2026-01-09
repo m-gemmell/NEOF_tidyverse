@@ -7,6 +7,8 @@
 
 The function `stringr::str_view()` allows you to view/print the "raw contents" of a string.
 
+[Tidyverse reference page](https://stringr.tidyverse.org/reference/str_view.html)
+
 ## View a character scalar
 
 Normal R method to view a string.
@@ -119,7 +121,7 @@ vec <- c("A double quote is: \"", "A single quote is: '", "An escape character i
 vec |> stringr::str_view()
 ```
 
-### Uncode
+### Unicode
 
 Unicode can be used to include other various special symbols.
 Examples include:
@@ -148,3 +150,13 @@ vec |> stringr::str_view()
 For more unicode characters please see: [Wikipedia page of List of Unicode characters](https://en.wikipedia.org/wiki/List_of_Unicode_characters).
 For these you need to change `U+` to `u` and you can use lower case letters instead of upper case.
 
+## Missing values
+
+Missing values are represented as `NA` in R.
+
+```{r}
+c("a", NA, "c") |>
+    stringr::str_view()
+```
+
+When you run the above code you will notice that the `NA` is coloured with a different colour than the string `"NA"`.
