@@ -1,0 +1,65 @@
+# str_trim
+
+<center>
+![](images/stringr_str_trim.png){style="width:200px"}
+</center>
+
+The function `stringr::str_trim()` removes white spaces.
+
+White spaces are:
+
+- Space: ` `
+- Tab: `\t`
+- Newline: `\n`
+
+[Tidyverse reference page](https://stringr.tidyverse.org/reference/str_trim.html)
+
+## String vector
+
+Prior to using the function create a vector with various different strings.
+
+```{r}
+#Create vector of strings
+vec <- c("   Spaces to the left of me", 
+        "Newlines to the right\n\n",
+        "Here I am,", 
+        "\t\tStuck in the middle of tabs\t\t")
+#View vector
+vec |> stringr::str_view()
+```
+
+## Default trimming
+
+By default the command removes all white spaces from both sides of strings.
+
+```{r}
+#Trim all white spaces from the start and end of strings
+vec |> stringr::str_trim() |> stringr::str_view()
+```
+
+__Note:____`str_trim()` does not remove white spaces that are not at the start or end of a string.
+
+```{r}
+"Here is a space: . Here is a tab:\t. Here is a new line:\n. " |>
+    stringr::str_trim() |>
+    stringr::str_view()
+```
+
+## Side
+
+The side to remove white spaces from can be chosen with `side=`.
+
+```{r}
+#Trim all white spaces from the start/left-side strings
+vec |> stringr::str_trim(side = "left") |> stringr::str_view()
+```
+
+```{r}
+#Trim all white spaces from the end/right-side strings
+vec |> stringr::str_trim(side = "right") |> stringr::str_view()
+```
+
+```{r}
+#Trim all white spaces from  bothsides strings
+vec |> stringr::str_trim(side = "both") |> stringr::str_view()
+```

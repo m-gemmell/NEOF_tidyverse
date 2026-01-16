@@ -1,0 +1,63 @@
+# str_subset
+
+<center>
+![](images/stringr_str_subset.png){style="width:200px"}
+</center>
+
+The function `stringr::str_subset()` returns the element of a vector that match a pattern/regular expression.
+
+[Tidyverse reference page](https://stringr.tidyverse.org/reference/str_subset.html)
+
+## String vector
+
+Prior to using the function create a vector of strings.
+
+```{r}
+#Create vector of strings
+vec <- c("Rose", "Thistle", "Leek", "Shamrock")
+#View vector
+vec
+```
+
+## Basic searches
+
+You can specify a string pattern to be used for detection.
+
+```{r}
+#Subset elements containing letter a
+vec |> stringr::str_subset("a")
+```
+
+The function is case-sensitive.
+"R" will detect "Rose" but not "shamrock".
+
+```{r}
+#Subset elements containing the letter R
+vec |> stringr::str_subset("R")
+```
+
+You can use various regular expressions.
+
+```{r}
+#Subset elements containing ending with k 
+vec |> stringr::str_subset("k$")
+```
+
+```{r}
+#Subset elements containing R or r
+vec |> stringr::str_subset("[Rr]")
+```
+
+```{r}
+#Subset elements containing s that has a vowel before it
+vec |> stringr::str_subset("[aeiou]s")
+```
+
+## Negate
+
+You carry out an inverted search (i.e. it returns FALSE if it does match) with the option `negate=TRUE`.
+
+```{r}
+#Invert subset elements containing letter s that has a vowel before it
+vec |> stringr::str_subset("[aeiou]s", negate=TRUE)
+```

@@ -358,6 +358,90 @@
     ]
   },
   {
+    "objectID": "stringr/str_trim.html",
+    "href": "stringr/str_trim.html",
+    "title": "str_trim",
+    "section": "",
+    "text": "The function stringr::str_trim() removes white spaces.\nWhite spaces are:\n\nSpace: \nTab: \\t\nNewline: \\n\n\nTidyverse reference page\n\n\nPrior to using the function create a vector with various different strings.\n\n#Create vector of strings\nvec &lt;- c(\"   Spaces to the left of me\", \n        \"Newlines to the right\\n\\n\",\n        \"Here I am,\", \n        \"\\t\\tStuck in the middle of tabs\\t\\t\")\n#View vector\nvec |&gt; stringr::str_view()\n\n[1] │    Spaces to the left of me\n[2] │ Newlines to the right\n    │ \n    │ \n[3] │ Here I am,\n[4] │ {\\t\\t}Stuck in the middle of tabs{\\t\\t}\n\n\n\n\n\nBy default the command removes all white spaces from both sides of strings.\n\n#Trim all white spaces from the start and end of strings\nvec |&gt; stringr::str_trim() |&gt; stringr::str_view()\n\n[1] │ Spaces to the left of me\n[2] │ Newlines to the right\n[3] │ Here I am,\n[4] │ Stuck in the middle of tabs\n\n\nNote:__str_trim() does not remove white spaces that are not at the start or end of a string.\n\n\"Here is a space: . Here is a tab:\\t. Here is a new line:\\n. \" |&gt;\n    stringr::str_trim() |&gt;\n    stringr::str_view()\n\n[1] │ Here is a space: . Here is a tab:{\\t}. Here is a new line:\n    │ .\n\n\n\n\n\nThe side to remove white spaces from can be chosen with side=.\n\n#Trim all white spaces from the start/left-side strings\nvec |&gt; stringr::str_trim(side = \"left\") |&gt; stringr::str_view()\n\n[1] │ Spaces to the left of me\n[2] │ Newlines to the right\n    │ \n    │ \n[3] │ Here I am,\n[4] │ Stuck in the middle of tabs{\\t\\t}\n\n\n\n#Trim all white spaces from the end/right-side strings\nvec |&gt; stringr::str_trim(side = \"right\") |&gt; stringr::str_view()\n\n[1] │    Spaces to the left of me\n[2] │ Newlines to the right\n[3] │ Here I am,\n[4] │ {\\t\\t}Stuck in the middle of tabs\n\n\n\n#Trim all white spaces from  bothsides strings\nvec |&gt; stringr::str_trim(side = \"both\") |&gt; stringr::str_view()\n\n[1] │ Spaces to the left of me\n[2] │ Newlines to the right\n[3] │ Here I am,\n[4] │ Stuck in the middle of tabs",
+    "crumbs": [
+      "Stringr",
+      "White space",
+      "str_trim"
+    ]
+  },
+  {
+    "objectID": "stringr/str_trim.html#string-vector",
+    "href": "stringr/str_trim.html#string-vector",
+    "title": "str_trim",
+    "section": "",
+    "text": "Prior to using the function create a vector with various different strings.\n\n#Create vector of strings\nvec &lt;- c(\"   Spaces to the left of me\", \n        \"Newlines to the right\\n\\n\",\n        \"Here I am,\", \n        \"\\t\\tStuck in the middle of tabs\\t\\t\")\n#View vector\nvec |&gt; stringr::str_view()\n\n[1] │    Spaces to the left of me\n[2] │ Newlines to the right\n    │ \n    │ \n[3] │ Here I am,\n[4] │ {\\t\\t}Stuck in the middle of tabs{\\t\\t}",
+    "crumbs": [
+      "Stringr",
+      "White space",
+      "str_trim"
+    ]
+  },
+  {
+    "objectID": "stringr/str_trim.html#default-trimming",
+    "href": "stringr/str_trim.html#default-trimming",
+    "title": "str_trim",
+    "section": "",
+    "text": "By default the command removes all white spaces from both sides of strings.\n\n#Trim all white spaces from the start and end of strings\nvec |&gt; stringr::str_trim() |&gt; stringr::str_view()\n\n[1] │ Spaces to the left of me\n[2] │ Newlines to the right\n[3] │ Here I am,\n[4] │ Stuck in the middle of tabs\n\n\nNote:__str_trim() does not remove white spaces that are not at the start or end of a string.\n\n\"Here is a space: . Here is a tab:\\t. Here is a new line:\\n. \" |&gt;\n    stringr::str_trim() |&gt;\n    stringr::str_view()\n\n[1] │ Here is a space: . Here is a tab:{\\t}. Here is a new line:\n    │ .",
+    "crumbs": [
+      "Stringr",
+      "White space",
+      "str_trim"
+    ]
+  },
+  {
+    "objectID": "stringr/str_trim.html#side",
+    "href": "stringr/str_trim.html#side",
+    "title": "str_trim",
+    "section": "",
+    "text": "The side to remove white spaces from can be chosen with side=.\n\n#Trim all white spaces from the start/left-side strings\nvec |&gt; stringr::str_trim(side = \"left\") |&gt; stringr::str_view()\n\n[1] │ Spaces to the left of me\n[2] │ Newlines to the right\n    │ \n    │ \n[3] │ Here I am,\n[4] │ Stuck in the middle of tabs{\\t\\t}\n\n\n\n#Trim all white spaces from the end/right-side strings\nvec |&gt; stringr::str_trim(side = \"right\") |&gt; stringr::str_view()\n\n[1] │    Spaces to the left of me\n[2] │ Newlines to the right\n[3] │ Here I am,\n[4] │ {\\t\\t}Stuck in the middle of tabs\n\n\n\n#Trim all white spaces from  bothsides strings\nvec |&gt; stringr::str_trim(side = \"both\") |&gt; stringr::str_view()\n\n[1] │ Spaces to the left of me\n[2] │ Newlines to the right\n[3] │ Here I am,\n[4] │ Stuck in the middle of tabs",
+    "crumbs": [
+      "Stringr",
+      "White space",
+      "str_trim"
+    ]
+  },
+  {
+    "objectID": "stringr/str_sub.html",
+    "href": "stringr/str_sub.html",
+    "title": "str_sub",
+    "section": "",
+    "text": "The function stringr::str_sub() allows you to extract sub strings from strings. The function requires three arguments:\n\nA character vector/scalar\nA start position\nAn end position\n\nThe positions are integers/whole numbers and are inclusive.\nAdditionally, this function can be used to replace the specified strings.\nTidyverse reference page\n\n\nSubstrings can be extracted from scalars.\n\n\nExtract position 3:5 in one string (i.e. a scalar).\n\nstringr::str_sub(\"abcdefgh\", 3, 5)\n\n[1] \"cde\"\n\n\n\n\n\nOne character can be extracted by setting the start and end positions to the same integer.\n\nstringr::str_sub(\"abcdefgh\", 2, 2)\n\n[1] \"b\"\n\n\n\n\n\nProviding an end position longer than the vector will still work, only providing the characters from the specified start position to the end of the vector.\nBelow we specify 7 to 10 on 8 length string and we are provided characters 7-8.\n\nstringr::str_sub(\"abcdefgh\", 7, 10)\n\n[1] \"gh\"\n\n\n\n\n\nYou can use negative numbers to represent a position relative to the end. For example, -4 would mean the 4th-to-last character and -2 would represent the 2nd-to-last character.\nExtract the fourth last to the 2nd last characters.\n\nstringr::str_sub(\"abcdefgh\", -4, -2)\n\n[1] \"efg\"\n\n\nThis means you can use -1 to represent the last character.\nExtract the 6th to last character.\n\nstringr::str_sub(\"abcdefgh\", 6, -1)\n\n[1] \"fgh\"\n\n\n\n\n\nIf our start position is higher than our end position we extract nothing.\n\nstringr::str_sub(\"abcdefgh\", 5, 3)\n\n[1] \"\"\n\n\n\n\n\nAny of the above methods can be used on a vector of strings. With a vector the function acts on each string separately.\nFirst create a vector.\n\nvec &lt;- c(\"abc\", \"defghijk\", \"lmnopqrstuvwxyz\")\n\nExtract the 2nd to 3rd positions.\n\nvec |&gt; stringr::str_sub(2,3)\n\n[1] \"bc\" \"ef\" \"mn\"\n\n\nExtract the 2nd to 10th position.\n\nvec |&gt; stringr::str_sub(2,10)\n\n[1] \"bc\"        \"efghijk\"   \"mnopqrstu\"\n\n\nExtract the 2nd to the last position\n\nvec |&gt; stringr::str_sub(2,-1)\n\n[1] \"bc\"             \"efghijk\"        \"mnopqrstuvwxyz\"\n\n\nExtract the first to the third last position.\n\nvec |&gt; stringr::str_sub(1,-3)\n\n[1] \"a\"             \"defghi\"        \"lmnopqrstuvwx\"\n\n\nExtract the 10th to the 15th position.\n\nvec |&gt; stringr::str_sub(10,15)\n\n[1] \"\"       \"\"       \"uvwxyz\"\n\n\n\n\n\n\nstr_sub() can be used to modify strings by replacing the characters of the specified positions.\nThis can be carried out by running the function followed by an assignment operator (&lt;-) with the string fro replacement.\nReplace the last two characters with “re”\n\n#Create a string\nword &lt;- \"saber\"\n#Replace substring\nstringr::str_sub(word, -2, -1) &lt;- \"re\"\n#View modified string\nstringr::str_view(word)\n\n[1] │ sabre\n\n\nThe replacement does not need to have the same number of characters as the original substring.\nReplace the fourth character with “ou”.\n\n#Create a string\nword &lt;- \"color\"\n#Replace substring\nstringr::str_sub(word, 4, 4) &lt;- \"ou\"\n#View modified string\nstringr::str_view(word)\n\n[1] │ colour\n\n\nYou can remove a substring by replacing with nothing (i.e. \"\").\n\n#Create a string\nword &lt;- \"burglarized\"\n#Replace substring\nstringr::str_sub(word, 6, -3) &lt;- \"\"\n#View modified string\nstringr::str_view(word)\n\n[1] │ burgled\n\n\nThis works with vectors too.\n\n#Create a string\nvec &lt;- c(\"saber\", \"meter\", \"saltpeter\", \"somber\", \"theater\", \"luster\")\n#Replace substring er to re\nstringr::str_sub(vec, -2, -1) &lt;- \"re\"\n#View modified string\nstringr::str_view(vec)\n\n[1] │ sabre\n[2] │ metre\n[3] │ saltpetre\n[4] │ sombre\n[5] │ theatre\n[6] │ lustre",
+    "crumbs": [
+      "Stringr",
+      "Character maniplation",
+      "str_sub"
+    ]
+  },
+  {
+    "objectID": "stringr/str_sub.html#extract-sub-strings",
+    "href": "stringr/str_sub.html#extract-sub-strings",
+    "title": "str_sub",
+    "section": "",
+    "text": "Substrings can be extracted from scalars.\n\n\nExtract position 3:5 in one string (i.e. a scalar).\n\nstringr::str_sub(\"abcdefgh\", 3, 5)\n\n[1] \"cde\"\n\n\n\n\n\nOne character can be extracted by setting the start and end positions to the same integer.\n\nstringr::str_sub(\"abcdefgh\", 2, 2)\n\n[1] \"b\"\n\n\n\n\n\nProviding an end position longer than the vector will still work, only providing the characters from the specified start position to the end of the vector.\nBelow we specify 7 to 10 on 8 length string and we are provided characters 7-8.\n\nstringr::str_sub(\"abcdefgh\", 7, 10)\n\n[1] \"gh\"\n\n\n\n\n\nYou can use negative numbers to represent a position relative to the end. For example, -4 would mean the 4th-to-last character and -2 would represent the 2nd-to-last character.\nExtract the fourth last to the 2nd last characters.\n\nstringr::str_sub(\"abcdefgh\", -4, -2)\n\n[1] \"efg\"\n\n\nThis means you can use -1 to represent the last character.\nExtract the 6th to last character.\n\nstringr::str_sub(\"abcdefgh\", 6, -1)\n\n[1] \"fgh\"\n\n\n\n\n\nIf our start position is higher than our end position we extract nothing.\n\nstringr::str_sub(\"abcdefgh\", 5, 3)\n\n[1] \"\"\n\n\n\n\n\nAny of the above methods can be used on a vector of strings. With a vector the function acts on each string separately.\nFirst create a vector.\n\nvec &lt;- c(\"abc\", \"defghijk\", \"lmnopqrstuvwxyz\")\n\nExtract the 2nd to 3rd positions.\n\nvec |&gt; stringr::str_sub(2,3)\n\n[1] \"bc\" \"ef\" \"mn\"\n\n\nExtract the 2nd to 10th position.\n\nvec |&gt; stringr::str_sub(2,10)\n\n[1] \"bc\"        \"efghijk\"   \"mnopqrstu\"\n\n\nExtract the 2nd to the last position\n\nvec |&gt; stringr::str_sub(2,-1)\n\n[1] \"bc\"             \"efghijk\"        \"mnopqrstuvwxyz\"\n\n\nExtract the first to the third last position.\n\nvec |&gt; stringr::str_sub(1,-3)\n\n[1] \"a\"             \"defghi\"        \"lmnopqrstuvwx\"\n\n\nExtract the 10th to the 15th position.\n\nvec |&gt; stringr::str_sub(10,15)\n\n[1] \"\"       \"\"       \"uvwxyz\"",
+    "crumbs": [
+      "Stringr",
+      "Character maniplation",
+      "str_sub"
+    ]
+  },
+  {
+    "objectID": "stringr/str_sub.html#modify-strings",
+    "href": "stringr/str_sub.html#modify-strings",
+    "title": "str_sub",
+    "section": "",
+    "text": "str_sub() can be used to modify strings by replacing the characters of the specified positions.\nThis can be carried out by running the function followed by an assignment operator (&lt;-) with the string fro replacement.\nReplace the last two characters with “re”\n\n#Create a string\nword &lt;- \"saber\"\n#Replace substring\nstringr::str_sub(word, -2, -1) &lt;- \"re\"\n#View modified string\nstringr::str_view(word)\n\n[1] │ sabre\n\n\nThe replacement does not need to have the same number of characters as the original substring.\nReplace the fourth character with “ou”.\n\n#Create a string\nword &lt;- \"color\"\n#Replace substring\nstringr::str_sub(word, 4, 4) &lt;- \"ou\"\n#View modified string\nstringr::str_view(word)\n\n[1] │ colour\n\n\nYou can remove a substring by replacing with nothing (i.e. \"\").\n\n#Create a string\nword &lt;- \"burglarized\"\n#Replace substring\nstringr::str_sub(word, 6, -3) &lt;- \"\"\n#View modified string\nstringr::str_view(word)\n\n[1] │ burgled\n\n\nThis works with vectors too.\n\n#Create a string\nvec &lt;- c(\"saber\", \"meter\", \"saltpeter\", \"somber\", \"theater\", \"luster\")\n#Replace substring er to re\nstringr::str_sub(vec, -2, -1) &lt;- \"re\"\n#View modified string\nstringr::str_view(vec)\n\n[1] │ sabre\n[2] │ metre\n[3] │ saltpetre\n[4] │ sombre\n[5] │ theatre\n[6] │ lustre",
+    "crumbs": [
+      "Stringr",
+      "Character maniplation",
+      "str_sub"
+    ]
+  },
+  {
     "objectID": "stringr/str_length.html",
     "href": "stringr/str_length.html",
     "title": "str_length",
@@ -391,6 +475,90 @@
       "Stringr",
       "Character maniplation",
       "str_length"
+    ]
+  },
+  {
+    "objectID": "stringr/str_flatten.html",
+    "href": "stringr/str_flatten.html",
+    "title": "str_flatten",
+    "section": "",
+    "text": "The function stringr::str_flatten() allows you to create a single string from a character vector.\nTidyverse reference page\n\n\nBy default str_flatten() will add no spaces/separators when flattening.\n\n#Create vector\nvec &lt;- c(\"A\", \"C\", \"G\", \"T\")\n#Flatten vector\nvec |&gt; stringr::str_flatten()\n\n[1] \"ACGT\"\n\n\nYou can pipe the output for str_c() to str_flatten().\n\n#Create vectors\nvec1 &lt;- c(\"a\", \"b\", \"c\")\nvec2 &lt;- c(\"x\", \"y\", \"z\")\n#Combine then flatten\nstringr::str_c(vec1, vec2) |&gt; stringr::str_flatten()\n\n[1] \"axbycz\"\n\n\n\n\n\nThe individual vector elements can be separated in the out string with the collapse= option.\n\n#Create vector\nvec &lt;- c(\"A\", \"C\", \"G\", \"T\")\n#Flatten with , separator\nstringr::str_flatten(vec, collapse = \",\")\n\n[1] \"A,C,G,T\"\n\n\nYou can specify a final separator with last =. Additionally, separators can contain as many characters as you would like.\n\nstringr::str_flatten(vec, collapse = \", \", last = \", and \")\n\n[1] \"A, C, G, and T\"",
+    "crumbs": [
+      "Stringr",
+      "Combining strings",
+      "str_flatten"
+    ]
+  },
+  {
+    "objectID": "stringr/str_flatten.html#flatten",
+    "href": "stringr/str_flatten.html#flatten",
+    "title": "str_flatten",
+    "section": "",
+    "text": "By default str_flatten() will add no spaces/separators when flattening.\n\n#Create vector\nvec &lt;- c(\"A\", \"C\", \"G\", \"T\")\n#Flatten vector\nvec |&gt; stringr::str_flatten()\n\n[1] \"ACGT\"\n\n\nYou can pipe the output for str_c() to str_flatten().\n\n#Create vectors\nvec1 &lt;- c(\"a\", \"b\", \"c\")\nvec2 &lt;- c(\"x\", \"y\", \"z\")\n#Combine then flatten\nstringr::str_c(vec1, vec2) |&gt; stringr::str_flatten()\n\n[1] \"axbycz\"",
+    "crumbs": [
+      "Stringr",
+      "Combining strings",
+      "str_flatten"
+    ]
+  },
+  {
+    "objectID": "stringr/str_flatten.html#collapse-and-last",
+    "href": "stringr/str_flatten.html#collapse-and-last",
+    "title": "str_flatten",
+    "section": "",
+    "text": "The individual vector elements can be separated in the out string with the collapse= option.\n\n#Create vector\nvec &lt;- c(\"A\", \"C\", \"G\", \"T\")\n#Flatten with , separator\nstringr::str_flatten(vec, collapse = \",\")\n\n[1] \"A,C,G,T\"\n\n\nYou can specify a final separator with last =. Additionally, separators can contain as many characters as you would like.\n\nstringr::str_flatten(vec, collapse = \", \", last = \", and \")\n\n[1] \"A, C, G, and T\"",
+    "crumbs": [
+      "Stringr",
+      "Combining strings",
+      "str_flatten"
+    ]
+  },
+  {
+    "objectID": "stringr/str_detect.html",
+    "href": "stringr/str_detect.html",
+    "title": "str_detect",
+    "section": "",
+    "text": "The function stringr::str_detect() detects the presence of a pattern/regular expression within each element of a string vector. It returns a logical vector with TRUE for matches and FALSE otherwise.\nTidyverse reference page\n\n\nPrior to using the function create a vector of strings.\n\n#Create vector of strings\nvec &lt;- c(\"Rose\", \"Thistle\", \"Leek\", \"Shamrock\")\n#View vector\nvec\n\n[1] \"Rose\"     \"Thistle\"  \"Leek\"     \"Shamrock\"\n\n\n\n\n\nYou can specify a string pattern to be used for detection.\n\n#Detect the letter a\nvec |&gt; stringr::str_detect(\"a\")\n\n[1] FALSE FALSE FALSE  TRUE\n\n\nThe function is case-sensitive. “R” will detect “Rose” but not “shamrock”.\n\n#Detect the letter R\nvec |&gt; stringr::str_detect(\"R\")\n\n[1]  TRUE FALSE FALSE FALSE\n\n\nYou can use various regular expressions.\n\n#Detect the strings ending with k \nvec |&gt; stringr::str_detect(\"k$\")\n\n[1] FALSE FALSE  TRUE  TRUE\n\n\n\n#Detect the letter R or r\nvec |&gt; stringr::str_detect(\"[Rr]\")\n\n[1]  TRUE FALSE FALSE  TRUE\n\n\n\n#Detect letter s that has a vowel before it\nvec |&gt; stringr::str_detect(\"[aeiou]s\")\n\n[1]  TRUE  TRUE FALSE FALSE\n\n\n\n\n\nYou carry out an inverted search (i.e. it returns FALSE if it does match) with the option negate=TRUE.\n\n#Invert detect letter s that has a vowel before it\nvec |&gt; stringr::str_detect(\"[aeiou]s\", negate=TRUE)\n\n[1] FALSE FALSE  TRUE  TRUE",
+    "crumbs": [
+      "Stringr",
+      "Pattern matching",
+      "str_detect"
+    ]
+  },
+  {
+    "objectID": "stringr/str_detect.html#string-vector",
+    "href": "stringr/str_detect.html#string-vector",
+    "title": "str_detect",
+    "section": "",
+    "text": "Prior to using the function create a vector of strings.\n\n#Create vector of strings\nvec &lt;- c(\"Rose\", \"Thistle\", \"Leek\", \"Shamrock\")\n#View vector\nvec\n\n[1] \"Rose\"     \"Thistle\"  \"Leek\"     \"Shamrock\"",
+    "crumbs": [
+      "Stringr",
+      "Pattern matching",
+      "str_detect"
+    ]
+  },
+  {
+    "objectID": "stringr/str_detect.html#basic-searches",
+    "href": "stringr/str_detect.html#basic-searches",
+    "title": "str_detect",
+    "section": "",
+    "text": "You can specify a string pattern to be used for detection.\n\n#Detect the letter a\nvec |&gt; stringr::str_detect(\"a\")\n\n[1] FALSE FALSE FALSE  TRUE\n\n\nThe function is case-sensitive. “R” will detect “Rose” but not “shamrock”.\n\n#Detect the letter R\nvec |&gt; stringr::str_detect(\"R\")\n\n[1]  TRUE FALSE FALSE FALSE\n\n\nYou can use various regular expressions.\n\n#Detect the strings ending with k \nvec |&gt; stringr::str_detect(\"k$\")\n\n[1] FALSE FALSE  TRUE  TRUE\n\n\n\n#Detect the letter R or r\nvec |&gt; stringr::str_detect(\"[Rr]\")\n\n[1]  TRUE FALSE FALSE  TRUE\n\n\n\n#Detect letter s that has a vowel before it\nvec |&gt; stringr::str_detect(\"[aeiou]s\")\n\n[1]  TRUE  TRUE FALSE FALSE",
+    "crumbs": [
+      "Stringr",
+      "Pattern matching",
+      "str_detect"
+    ]
+  },
+  {
+    "objectID": "stringr/str_detect.html#negate",
+    "href": "stringr/str_detect.html#negate",
+    "title": "str_detect",
+    "section": "",
+    "text": "You carry out an inverted search (i.e. it returns FALSE if it does match) with the option negate=TRUE.\n\n#Invert detect letter s that has a vowel before it\nvec |&gt; stringr::str_detect(\"[aeiou]s\", negate=TRUE)\n\n[1] FALSE FALSE  TRUE  TRUE",
+    "crumbs": [
+      "Stringr",
+      "Pattern matching",
+      "str_detect"
     ]
   },
   {
@@ -3328,9 +3496,33 @@
     "href": "stringr/stringr.html#sections",
     "title": "Stringr",
     "section": "Sections",
-    "text": "Sections\nThere are many sections for stringr. These are summarised below.\n\nViewing strings\n\n\n  \n\n\n\nstr_view(): View the raw contents of a string.\n\nIncludes information about various special characters and how to escape them with \\.\n\n\n\n\nCharacter manipulation\n\n\n  \n\n\n  \n\n\n  \n\n\nThese functions allow you to manipulate strings in vectors.\n\nstr_length(): Determine the length of a string (i.e. count the number of characters in a string).\nstr_sub(): Extract or modify a substring using a start and end position.\nstr_dup(): Duplicate a string a specified number of times.\n\n\n\nCombining strings\n\n\n  \n\n\n  \n\n\n  \n\n\n\nstr_c(): Combine strings together (similar to paste0()).\nstr_flatten(): Flatten a vector of strings into one string.\nstr_glue(): SImilar to str_c() but allows you to include variables within the strings to combine.\n\nVariable names are included in the strings with curly braces like so: {variable_name}\n\n\n\n\nWhite space tools\nThese functions allow you to add, remove, and manipulate whitespaces (e.g. spaces and tabs)\n\n\nPattern matching\nThese functions allow you to carry out various tasks with regular expressions.\nFor an introduction to regular expressions please see the Regular expressions chapter in R for Data Science 2e",
+    "text": "Sections\nThere are many sections for stringr. These are summarised below.\n\nViewing strings\n\n\n  \n\n\n\nstr_view(): View the raw contents of a string.\n\nIncludes information about various special characters and how to escape them with \\.\n\n\n\n\nCharacter manipulation\n\n\n  \n\n\n  \n\n\n  \n\n\nThese functions allow you to manipulate strings in vectors.\n\nstr_length(): Determine the length of a string (i.e. count the number of characters in a string).\nstr_sub(): Extract or modify a substring using a start and end position.\nstr_dup(): Duplicate a string a specified number of times.\n\n\n\nCombining strings\n\n\n  \n\n\n  \n\n\n  \n\n\nThese functions allow you combine strings into one scalar or vector.\n\nstr_c(): Combine strings together (similar to paste0()).\nstr_flatten(): Flatten a vector of strings into one string.\nstr_glue(): Similar to str_c() but allows you to include variables within the strings to combine.\n\nVariable names are included in the strings with curly braces like so: {variable_name}\n\n\n\n\nWhite space tools\n\n\n  \n\n\n  \n\n\nThese functions allow you to add, remove, and manipulate whitespaces (e.g. spaces and tabs).\n\nstr_pad(): Add padding characters to strings shorter than a specified length. The padded strings will all have a length equal to the length.\nstr_trim(): Remove all white spaces from the start and end of strings.\n\n\n\nPattern matching\n\n\n  \n\n\n  \n\n\n  \n\n\nThese functions allow you to carry out various tasks with regular expressions.\n\nstr_subset(): Subset vector to elements that match a pattern/regular expression.\nstr_detect(): Return logical vector showing which elements match (TRUE) a pattern/regular expression or not (FALSE).\nstr_count(): Count number of matches to a pattern/regular expression.\n\nFor an introduction to regular expressions please see:\n\nRegular expressions chapter in R for Data Science 2e\nStringr Regular expressions",
     "crumbs": [
       "Stringr"
+    ]
+  },
+  {
+    "objectID": "stringr/str_count.html",
+    "href": "stringr/str_count.html",
+    "title": "str_count",
+    "section": "",
+    "text": "The function stringr::str_counts() counts the number of matches to a pattern/regular expression within each element of a string vector.\nTidyverse reference page\n\n\nPrior to using the function create a vector of strings.\n\n#Create vector of strings\nvec &lt;- c(\"Rose\", \"Thistle\", \"Leek\", \"Shamrock\")\n#View vector\nvec\n\n[1] \"Rose\"     \"Thistle\"  \"Leek\"     \"Shamrock\"\n\n\nYou can specify a string pattern to be used for detection.\n\n#Count instances of s\nvec |&gt; stringr::str_count(\"s\")\n\n[1] 1 1 0 0\n\n\n\n#Count instances of e\nvec |&gt; stringr::str_count(\"e\")\n\n[1] 1 1 2 0\n\n\nThe function is case-sensitive. “R” will detect “Rose” but not “shamrock”.\n\n#Detect the letter R\nvec |&gt; stringr::str_count(\"R\")\n\n[1] 1 0 0 0\n\n\nThe function works with various regular expressions.\n\n#Detect the letter R or r\nvec |&gt; stringr::str_count(\"[Rr]\")\n\n[1] 1 0 0 1\n\n\n\n#Count number of vowels\nvec |&gt; stringr::str_count(\"[aeiou]\")\n\n[1] 2 2 2 2\n\n\nCount number of letters between A-M (inclusive), lower or upper case.\n\n#Count number of vowels\nvec |&gt; stringr::str_count(\"[A-Ma-m]\")\n\n[1] 1 4 4 5",
+    "crumbs": [
+      "Stringr",
+      "Pattern matching",
+      "str_count"
+    ]
+  },
+  {
+    "objectID": "stringr/str_count.html#count",
+    "href": "stringr/str_count.html#count",
+    "title": "str_count",
+    "section": "",
+    "text": "Prior to using the function create a vector of strings.\n\n#Create vector of strings\nvec &lt;- c(\"Rose\", \"Thistle\", \"Leek\", \"Shamrock\")\n#View vector\nvec\n\n[1] \"Rose\"     \"Thistle\"  \"Leek\"     \"Shamrock\"\n\n\nYou can specify a string pattern to be used for detection.\n\n#Count instances of s\nvec |&gt; stringr::str_count(\"s\")\n\n[1] 1 1 0 0\n\n\n\n#Count instances of e\nvec |&gt; stringr::str_count(\"e\")\n\n[1] 1 1 2 0\n\n\nThe function is case-sensitive. “R” will detect “Rose” but not “shamrock”.\n\n#Detect the letter R\nvec |&gt; stringr::str_count(\"R\")\n\n[1] 1 0 0 0\n\n\nThe function works with various regular expressions.\n\n#Detect the letter R or r\nvec |&gt; stringr::str_count(\"[Rr]\")\n\n[1] 1 0 0 1\n\n\n\n#Count number of vowels\nvec |&gt; stringr::str_count(\"[aeiou]\")\n\n[1] 2 2 2 2\n\n\nCount number of letters between A-M (inclusive), lower or upper case.\n\n#Count number of vowels\nvec |&gt; stringr::str_count(\"[A-Ma-m]\")\n\n[1] 1 4 4 5",
+    "crumbs": [
+      "Stringr",
+      "Pattern matching",
+      "str_count"
     ]
   },
   {
@@ -3358,40 +3550,167 @@
     ]
   },
   {
-    "objectID": "stringr/str_sub.html",
-    "href": "stringr/str_sub.html",
-    "title": "str_sub",
+    "objectID": "stringr/str_glue.html",
+    "href": "stringr/str_glue.html",
+    "title": "str_glue",
     "section": "",
-    "text": "The function stringr::str_sub() allows you to extract sub strings from strings. The function requires three arguments:\n\nA character vector/scalar\nA start position\nAn end position\n\nThe positions are integers/whole numbers and are inclusive.\nAdditionally, this function can be used to replace the specified strings.\nTidyverse reference page\n\n\nSubstrings can be extracted from scalars.\n\n\nExtract position 3:5 in one string (i.e. a scalar).\n\nstringr::str_sub(\"abcdefgh\", 3, 5)\n\n[1] \"cde\"\n\n\n\n\n\nOne character can be extracted by setting the start and end positions to the same integer.\n\nstringr::str_sub(\"abcdefgh\", 2, 2)\n\n[1] \"b\"\n\n\n\n\n\nProviding an end position longer than the vector will still work, only providing the characters from the specified start position to the end of the vector.\nBelow we specify 7 to 10 on 8 length string and we are provided characters 7-8.\n\nstringr::str_sub(\"abcdefgh\", 7, 10)\n\n[1] \"gh\"\n\n\n\n\n\nYou can use negative numbers to represent a position relative to the end. For example, -4 would mean the 4th-to-last character and -2 would represent the 2nd-to-last character.\nExtract the fourth last to the 2nd last characters.\n\nstringr::str_sub(\"abcdefgh\", -4, -2)\n\n[1] \"efg\"\n\n\nThis means you can use -1 to represent the last character.\nExtract the 6th to last character.\n\nstringr::str_sub(\"abcdefgh\", 6, -1)\n\n[1] \"fgh\"\n\n\n\n\n\nIf our start position is higher than our end position we extract nothing.\n\nstringr::str_sub(\"abcdefgh\", 5, 3)\n\n[1] \"\"\n\n\n\n\n\nAny of the above methods can be used on a vector of strings. With a vector the function acts on each string separately.\nFirst create a vector.\n\nvec &lt;- c(\"abc\", \"defghijk\", \"lmnopqrstuvwxyz\")\n\nExtract the 2nd to 3rd positions.\n\nvec |&gt; stringr::str_sub(2,3)\n\n[1] \"bc\" \"ef\" \"mn\"\n\n\nExtract the 2nd to 10th position.\n\nvec |&gt; stringr::str_sub(2,10)\n\n[1] \"bc\"        \"efghijk\"   \"mnopqrstu\"\n\n\nExtract the 2nd to the last position\n\nvec |&gt; stringr::str_sub(2,-1)\n\n[1] \"bc\"             \"efghijk\"        \"mnopqrstuvwxyz\"\n\n\nExtract the first to the third last position.\n\nvec |&gt; stringr::str_sub(1,-3)\n\n[1] \"a\"             \"defghi\"        \"lmnopqrstuvwx\"\n\n\nExtract the 10th to the 15th position.\n\nvec |&gt; stringr::str_sub(10,15)\n\n[1] \"\"       \"\"       \"uvwxyz\"\n\n\n\n\n\n\nstr_sub() can be used to modify strings by replacing the characters of the specified positions.\nThis can be carried out by running the function followed by an assignment operator (&lt;-) with the string fro replacement.\nReplace the last two characters with “re”\n\n#Create a string\nword &lt;- \"saber\"\n#Replace substring\nstringr::str_sub(word, -2, -1) &lt;- \"re\"\n#View modified string\nstringr::str_view(word)\n\n[1] │ sabre\n\n\nThe replacement does not need to have the same number of characters as the original substring.\nReplace the fourth character with “ou”.\n\n#Create a string\nword &lt;- \"color\"\n#Replace substring\nstringr::str_sub(word, 4, 4) &lt;- \"ou\"\n#View modified string\nstringr::str_view(word)\n\n[1] │ colour\n\n\nYou can remove a substring by replacing with nothing (i.e. \"\").\n\n#Create a string\nword &lt;- \"burglarized\"\n#Replace substring\nstringr::str_sub(word, 6, -3) &lt;- \"\"\n#View modified string\nstringr::str_view(word)\n\n[1] │ burgled\n\n\nThis works with vectors too.\n\n#Create a string\nvec &lt;- c(\"saber\", \"meter\", \"saltpeter\", \"somber\", \"theater\", \"luster\")\n#Replace substring er to re\nstringr::str_sub(vec, -2, -1) &lt;- \"re\"\n#View modified string\nstringr::str_view(vec)\n\n[1] │ sabre\n[2] │ metre\n[3] │ saltpetre\n[4] │ sombre\n[5] │ theatre\n[6] │ lustre",
+    "text": "The function stringr::str_glue() is similar to str_c() but allows you to include variable names within double quotes.\nVariables to be used are flanked by curly braces, e.g. \"{variable_name}\".\n\n\nYou can include a string variable into a string specified in stringr::glue().\n\n#Create a string scalar\nbase &lt;- \"A\"\n#Glue\nstringr::str_glue(\"Adenine is represented by the letter {base}\")\n\nAdenine is represented by the letter A\n\n\nYou can include multiple variables.\n\n#Create string vectors\nbase &lt;- \"A\"\ncomp &lt;- \"T\"\n#Glue\nstringr::str_glue(\"The complementary base of {base} is {comp}\")\n\nThe complementary base of A is T\n\n\nLike paste0() or str_c() you can combine multiple strings and set a separator. In this case the option is .sep=.\n\n#Create string vectors\ndna &lt;- \"T\"\nrna &lt;- \"U\"\n#Glue\nstringr::str_glue(\"{dna} is a nucleic acid DNA base.\",\n                    \"{rna} is a nucleic acid RNA base.\",\n                    .sep = \" \")\n\nT is a nucleic acid DNA base. U is a nucleic acid RNA base.\n\n\nIf you need to display something such as {base} you can use double braces ({{base}}).\nAdditionally we will use a new space (\\n) as the separator.\n\nstringr::str_glue(\"You can include a variable with str_glue with braces, e.g. {{base}}.\",\n                    \"For example, here is adenine: {base}.\",\n                    .sep = \"\\n\") |&gt;\n    stringr::str_view()\n\n[1] │ You can include a variable with str_glue with braces, e.g. {base}.\n    │ For example, here is adenine: A.\n\n\n\n\n\nNon strings are converted into strings.\n\n#Create a numeric scalar\nnum &lt;- 4\n#Glue\nstringr::str_glue(\"There are {num} DNA bases\")\n\nThere are 4 DNA bases\n\n\nWith numerics you can carry out maths in the braces.\n\nstringr::str_glue(\"There are {num/2} purines.\",\n                    \"There are {num-1} pyrimidines\",\n                    .sep = \"\\n\") |&gt;\n    stringr::str_view()\n\n[1] │ There are 2 purines.\n    │ There are 3 pyrimidines\n\n\nBelow shows how logicals and missing values work.\n\n#Vectors\ntrue &lt;- TRUE\nmissing &lt;- NA\n#Glue\nstringr::str_glue(\"Logical: {true}. Missing value: {missing}.\") |&gt;\n    stringr::str_view()\n\n[1] │ Logical: TRUE. Missing value: NA.\n\n\n\n\n\nUsing vectors with str_glue() works the same way as str_c().\n\n#Create vec\nbases &lt;- c(\"A\",\"G\",\"C\",\"T\")\n#Glue\nstringr::str_glue(\"A DNA base is {bases}\") |&gt; stringr::str_view()\n\n[1] │ A DNA base is A\n[2] │ A DNA base is G\n[3] │ A DNA base is C\n[4] │ A DNA base is T\n\n\nWhen using multiple vectors ensure they are the same length.\n\n#Create vec\nbases &lt;- c(\"A\",\"G\",\"C\",\"T\")\nnames &lt;- c(\"Adenine\", \"Guanine\", \"Cytosine\", \"Thymine\")\n#Glue\nstringr::str_glue(\"{names} is represented by {bases}\") |&gt;\n    stringr::str_view()\n\n[1] │ Adenine is represented by A\n[2] │ Guanine is represented by G\n[3] │ Cytosine is represented by C\n[4] │ Thymine is represented by T\n\n\nUsing vectors of different lengths will lead to an error but you can always use scalars with vectors.\n\n#Create vec\ntype &lt;- \"DNA\"\n#Glue\nstringr::str_glue(\"The {type} base {names} is represented by {bases}\") |&gt;\n    stringr::str_view()\n\n[1] │ The DNA base Adenine is represented by A\n[2] │ The DNA base Guanine is represented by G\n[3] │ The DNA base Cytosine is represented by C\n[4] │ The DNA base Thymine is represented by T",
     "crumbs": [
       "Stringr",
-      "Character maniplation",
-      "str_sub"
+      "Combining strings",
+      "str_glue"
     ]
   },
   {
-    "objectID": "stringr/str_sub.html#extract-sub-strings",
-    "href": "stringr/str_sub.html#extract-sub-strings",
-    "title": "str_sub",
+    "objectID": "stringr/str_glue.html#scalars",
+    "href": "stringr/str_glue.html#scalars",
+    "title": "str_glue",
     "section": "",
-    "text": "Substrings can be extracted from scalars.\n\n\nExtract position 3:5 in one string (i.e. a scalar).\n\nstringr::str_sub(\"abcdefgh\", 3, 5)\n\n[1] \"cde\"\n\n\n\n\n\nOne character can be extracted by setting the start and end positions to the same integer.\n\nstringr::str_sub(\"abcdefgh\", 2, 2)\n\n[1] \"b\"\n\n\n\n\n\nProviding an end position longer than the vector will still work, only providing the characters from the specified start position to the end of the vector.\nBelow we specify 7 to 10 on 8 length string and we are provided characters 7-8.\n\nstringr::str_sub(\"abcdefgh\", 7, 10)\n\n[1] \"gh\"\n\n\n\n\n\nYou can use negative numbers to represent a position relative to the end. For example, -4 would mean the 4th-to-last character and -2 would represent the 2nd-to-last character.\nExtract the fourth last to the 2nd last characters.\n\nstringr::str_sub(\"abcdefgh\", -4, -2)\n\n[1] \"efg\"\n\n\nThis means you can use -1 to represent the last character.\nExtract the 6th to last character.\n\nstringr::str_sub(\"abcdefgh\", 6, -1)\n\n[1] \"fgh\"\n\n\n\n\n\nIf our start position is higher than our end position we extract nothing.\n\nstringr::str_sub(\"abcdefgh\", 5, 3)\n\n[1] \"\"\n\n\n\n\n\nAny of the above methods can be used on a vector of strings. With a vector the function acts on each string separately.\nFirst create a vector.\n\nvec &lt;- c(\"abc\", \"defghijk\", \"lmnopqrstuvwxyz\")\n\nExtract the 2nd to 3rd positions.\n\nvec |&gt; stringr::str_sub(2,3)\n\n[1] \"bc\" \"ef\" \"mn\"\n\n\nExtract the 2nd to 10th position.\n\nvec |&gt; stringr::str_sub(2,10)\n\n[1] \"bc\"        \"efghijk\"   \"mnopqrstu\"\n\n\nExtract the 2nd to the last position\n\nvec |&gt; stringr::str_sub(2,-1)\n\n[1] \"bc\"             \"efghijk\"        \"mnopqrstuvwxyz\"\n\n\nExtract the first to the third last position.\n\nvec |&gt; stringr::str_sub(1,-3)\n\n[1] \"a\"             \"defghi\"        \"lmnopqrstuvwx\"\n\n\nExtract the 10th to the 15th position.\n\nvec |&gt; stringr::str_sub(10,15)\n\n[1] \"\"       \"\"       \"uvwxyz\"",
+    "text": "You can include a string variable into a string specified in stringr::glue().\n\n#Create a string scalar\nbase &lt;- \"A\"\n#Glue\nstringr::str_glue(\"Adenine is represented by the letter {base}\")\n\nAdenine is represented by the letter A\n\n\nYou can include multiple variables.\n\n#Create string vectors\nbase &lt;- \"A\"\ncomp &lt;- \"T\"\n#Glue\nstringr::str_glue(\"The complementary base of {base} is {comp}\")\n\nThe complementary base of A is T\n\n\nLike paste0() or str_c() you can combine multiple strings and set a separator. In this case the option is .sep=.\n\n#Create string vectors\ndna &lt;- \"T\"\nrna &lt;- \"U\"\n#Glue\nstringr::str_glue(\"{dna} is a nucleic acid DNA base.\",\n                    \"{rna} is a nucleic acid RNA base.\",\n                    .sep = \" \")\n\nT is a nucleic acid DNA base. U is a nucleic acid RNA base.\n\n\nIf you need to display something such as {base} you can use double braces ({{base}}).\nAdditionally we will use a new space (\\n) as the separator.\n\nstringr::str_glue(\"You can include a variable with str_glue with braces, e.g. {{base}}.\",\n                    \"For example, here is adenine: {base}.\",\n                    .sep = \"\\n\") |&gt;\n    stringr::str_view()\n\n[1] │ You can include a variable with str_glue with braces, e.g. {base}.\n    │ For example, here is adenine: A.",
     "crumbs": [
       "Stringr",
-      "Character maniplation",
-      "str_sub"
+      "Combining strings",
+      "str_glue"
     ]
   },
   {
-    "objectID": "stringr/str_sub.html#modify-strings",
-    "href": "stringr/str_sub.html#modify-strings",
-    "title": "str_sub",
+    "objectID": "stringr/str_glue.html#non-strings",
+    "href": "stringr/str_glue.html#non-strings",
+    "title": "str_glue",
     "section": "",
-    "text": "str_sub() can be used to modify strings by replacing the characters of the specified positions.\nThis can be carried out by running the function followed by an assignment operator (&lt;-) with the string fro replacement.\nReplace the last two characters with “re”\n\n#Create a string\nword &lt;- \"saber\"\n#Replace substring\nstringr::str_sub(word, -2, -1) &lt;- \"re\"\n#View modified string\nstringr::str_view(word)\n\n[1] │ sabre\n\n\nThe replacement does not need to have the same number of characters as the original substring.\nReplace the fourth character with “ou”.\n\n#Create a string\nword &lt;- \"color\"\n#Replace substring\nstringr::str_sub(word, 4, 4) &lt;- \"ou\"\n#View modified string\nstringr::str_view(word)\n\n[1] │ colour\n\n\nYou can remove a substring by replacing with nothing (i.e. \"\").\n\n#Create a string\nword &lt;- \"burglarized\"\n#Replace substring\nstringr::str_sub(word, 6, -3) &lt;- \"\"\n#View modified string\nstringr::str_view(word)\n\n[1] │ burgled\n\n\nThis works with vectors too.\n\n#Create a string\nvec &lt;- c(\"saber\", \"meter\", \"saltpeter\", \"somber\", \"theater\", \"luster\")\n#Replace substring er to re\nstringr::str_sub(vec, -2, -1) &lt;- \"re\"\n#View modified string\nstringr::str_view(vec)\n\n[1] │ sabre\n[2] │ metre\n[3] │ saltpetre\n[4] │ sombre\n[5] │ theatre\n[6] │ lustre",
+    "text": "Non strings are converted into strings.\n\n#Create a numeric scalar\nnum &lt;- 4\n#Glue\nstringr::str_glue(\"There are {num} DNA bases\")\n\nThere are 4 DNA bases\n\n\nWith numerics you can carry out maths in the braces.\n\nstringr::str_glue(\"There are {num/2} purines.\",\n                    \"There are {num-1} pyrimidines\",\n                    .sep = \"\\n\") |&gt;\n    stringr::str_view()\n\n[1] │ There are 2 purines.\n    │ There are 3 pyrimidines\n\n\nBelow shows how logicals and missing values work.\n\n#Vectors\ntrue &lt;- TRUE\nmissing &lt;- NA\n#Glue\nstringr::str_glue(\"Logical: {true}. Missing value: {missing}.\") |&gt;\n    stringr::str_view()\n\n[1] │ Logical: TRUE. Missing value: NA.",
     "crumbs": [
       "Stringr",
-      "Character maniplation",
-      "str_sub"
+      "Combining strings",
+      "str_glue"
     ]
+  },
+  {
+    "objectID": "stringr/str_glue.html#vectors",
+    "href": "stringr/str_glue.html#vectors",
+    "title": "str_glue",
+    "section": "",
+    "text": "Using vectors with str_glue() works the same way as str_c().\n\n#Create vec\nbases &lt;- c(\"A\",\"G\",\"C\",\"T\")\n#Glue\nstringr::str_glue(\"A DNA base is {bases}\") |&gt; stringr::str_view()\n\n[1] │ A DNA base is A\n[2] │ A DNA base is G\n[3] │ A DNA base is C\n[4] │ A DNA base is T\n\n\nWhen using multiple vectors ensure they are the same length.\n\n#Create vec\nbases &lt;- c(\"A\",\"G\",\"C\",\"T\")\nnames &lt;- c(\"Adenine\", \"Guanine\", \"Cytosine\", \"Thymine\")\n#Glue\nstringr::str_glue(\"{names} is represented by {bases}\") |&gt;\n    stringr::str_view()\n\n[1] │ Adenine is represented by A\n[2] │ Guanine is represented by G\n[3] │ Cytosine is represented by C\n[4] │ Thymine is represented by T\n\n\nUsing vectors of different lengths will lead to an error but you can always use scalars with vectors.\n\n#Create vec\ntype &lt;- \"DNA\"\n#Glue\nstringr::str_glue(\"The {type} base {names} is represented by {bases}\") |&gt;\n    stringr::str_view()\n\n[1] │ The DNA base Adenine is represented by A\n[2] │ The DNA base Guanine is represented by G\n[3] │ The DNA base Cytosine is represented by C\n[4] │ The DNA base Thymine is represented by T",
+    "crumbs": [
+      "Stringr",
+      "Combining strings",
+      "str_glue"
+    ]
+  },
+  {
+    "objectID": "stringr/str_pad.html",
+    "href": "stringr/str_pad.html",
+    "title": "str_pad",
+    "section": "",
+    "text": "The function stringr::str_pads() adds white space to strings to ensure it is a minimum length.\nTidyverse reference page\n\n\nPrior to using the function create a vector with strings of length 1, 2, 4, and 8.\n\n#Create vector of strings\nvec &lt;- c(\"1\", \"to\", \"four\", \"_eight_\")\n#View vector\nvec |&gt; stringr::str_view()\n\n[1] │ 1\n[2] │ to\n[3] │ four\n[4] │ _eight_\n\n\n\n\n\nPadding will add space to each string shorter than the specified pad length. These strings will have a total length (i.e. number of characters) equal to the pad length.\nBy default spaces () will be added to the start/left-side of the string for padding.\n\n#Pad strings to a min length of 10\nvec |&gt; stringr::str_pad(10) |&gt; stringr::str_view()\n\n[1] │          1\n[2] │         to\n[3] │       four\n[4] │    _eight_\n\n\nStrings with a length equal to or greater than the pad length will be untouched.\n\n#Pad strings to a min length of 4\nvec |&gt; stringr::str_pad(4) |&gt; stringr::str_view()\n\n[1] │    1\n[2] │   to\n[3] │ four\n[4] │ _eight_\n\n\n\n\n\nThe side to add the padding characters can be specified.\n\n#Pad to the left, the default\nvec |&gt; stringr::str_pad(10, side = \"left\") |&gt; stringr::str_view()\n\n[1] │          1\n[2] │         to\n[3] │       four\n[4] │    _eight_\n\n\n\n#Pad to the right\nvec |&gt; stringr::str_pad(10, side = \"right\") |&gt; stringr::str_view()\n\n[1] │ 1         \n[2] │ to        \n[3] │ four      \n[4] │ _eight_   \n\n\n\n#Padd on both sides\nvec |&gt; stringr::str_pad(10, side = \"both\") |&gt; stringr::str_view()\n\n[1] │     1     \n[2] │     to    \n[3] │    four   \n[4] │  _eight_  \n\n\n\n\n\nThe padding character can be specified. This character can only have a length of one (i.e. “ or”||” cannot be used).\n\n#Use pad character |\nvec |&gt; stringr::str_pad(10, pad = \"|\") |&gt; stringr::str_view()\n\n[1] │ |||||||||1\n[2] │ ||||||||to\n[3] │ ||||||four\n[4] │ |||_eight_\n\n\n\n#Use pad character .\nvec |&gt; stringr::str_pad(10, pad = \".\") |&gt; stringr::str_view()\n\n[1] │ .........1\n[2] │ ........to\n[3] │ ......four\n[4] │ ..._eight_\n\n\n\n#Use pad character _ with padding on both sides\nvec |&gt; stringr::str_pad(10, pad = \"_\", side = \"both\") |&gt; stringr::str_view()\n\n[1] │ ____1_____\n[2] │ ____to____\n[3] │ ___four___\n[4] │ __eight___",
+    "crumbs": [
+      "Stringr",
+      "White space",
+      "str_pad"
+    ]
+  },
+  {
+    "objectID": "stringr/str_pad.html#string-vector",
+    "href": "stringr/str_pad.html#string-vector",
+    "title": "str_pad",
+    "section": "",
+    "text": "Prior to using the function create a vector with strings of length 1, 2, 4, and 8.\n\n#Create vector of strings\nvec &lt;- c(\"1\", \"to\", \"four\", \"_eight_\")\n#View vector\nvec |&gt; stringr::str_view()\n\n[1] │ 1\n[2] │ to\n[3] │ four\n[4] │ _eight_",
+    "crumbs": [
+      "Stringr",
+      "White space",
+      "str_pad"
+    ]
+  },
+  {
+    "objectID": "stringr/str_pad.html#default-padding",
+    "href": "stringr/str_pad.html#default-padding",
+    "title": "str_pad",
+    "section": "",
+    "text": "Padding will add space to each string shorter than the specified pad length. These strings will have a total length (i.e. number of characters) equal to the pad length.\nBy default spaces () will be added to the start/left-side of the string for padding.\n\n#Pad strings to a min length of 10\nvec |&gt; stringr::str_pad(10) |&gt; stringr::str_view()\n\n[1] │          1\n[2] │         to\n[3] │       four\n[4] │    _eight_\n\n\nStrings with a length equal to or greater than the pad length will be untouched.\n\n#Pad strings to a min length of 4\nvec |&gt; stringr::str_pad(4) |&gt; stringr::str_view()\n\n[1] │    1\n[2] │   to\n[3] │ four\n[4] │ _eight_",
+    "crumbs": [
+      "Stringr",
+      "White space",
+      "str_pad"
+    ]
+  },
+  {
+    "objectID": "stringr/str_pad.html#side",
+    "href": "stringr/str_pad.html#side",
+    "title": "str_pad",
+    "section": "",
+    "text": "The side to add the padding characters can be specified.\n\n#Pad to the left, the default\nvec |&gt; stringr::str_pad(10, side = \"left\") |&gt; stringr::str_view()\n\n[1] │          1\n[2] │         to\n[3] │       four\n[4] │    _eight_\n\n\n\n#Pad to the right\nvec |&gt; stringr::str_pad(10, side = \"right\") |&gt; stringr::str_view()\n\n[1] │ 1         \n[2] │ to        \n[3] │ four      \n[4] │ _eight_   \n\n\n\n#Padd on both sides\nvec |&gt; stringr::str_pad(10, side = \"both\") |&gt; stringr::str_view()\n\n[1] │     1     \n[2] │     to    \n[3] │    four   \n[4] │  _eight_",
+    "crumbs": [
+      "Stringr",
+      "White space",
+      "str_pad"
+    ]
+  },
+  {
+    "objectID": "stringr/str_pad.html#pad-character",
+    "href": "stringr/str_pad.html#pad-character",
+    "title": "str_pad",
+    "section": "",
+    "text": "The padding character can be specified. This character can only have a length of one (i.e. “ or”||” cannot be used).\n\n#Use pad character |\nvec |&gt; stringr::str_pad(10, pad = \"|\") |&gt; stringr::str_view()\n\n[1] │ |||||||||1\n[2] │ ||||||||to\n[3] │ ||||||four\n[4] │ |||_eight_\n\n\n\n#Use pad character .\nvec |&gt; stringr::str_pad(10, pad = \".\") |&gt; stringr::str_view()\n\n[1] │ .........1\n[2] │ ........to\n[3] │ ......four\n[4] │ ..._eight_\n\n\n\n#Use pad character _ with padding on both sides\nvec |&gt; stringr::str_pad(10, pad = \"_\", side = \"both\") |&gt; stringr::str_view()\n\n[1] │ ____1_____\n[2] │ ____to____\n[3] │ ___four___\n[4] │ __eight___",
+    "crumbs": [
+      "Stringr",
+      "White space",
+      "str_pad"
+    ]
+  },
+  {
+    "objectID": "stringr/str_subset.html",
+    "href": "stringr/str_subset.html",
+    "title": "str_subset",
+    "section": "",
+    "text": "The function stringr::str_subset() returns the element of a vector that match a pattern/regular expression.\nTidyverse reference page\n\n\nPrior to using the function create a vector of strings.\n\n#Create vector of strings\nvec &lt;- c(\"Rose\", \"Thistle\", \"Leek\", \"Shamrock\")\n#View vector\nvec\n\n[1] \"Rose\"     \"Thistle\"  \"Leek\"     \"Shamrock\"\n\n\n\n\n\nYou can specify a string pattern to be used for detection.\n\n#Subset elements containing letter a\nvec |&gt; stringr::str_subset(\"a\")\n\n[1] \"Shamrock\"\n\n\nThe function is case-sensitive. “R” will detect “Rose” but not “shamrock”.\n\n#Subset elements containing the letter R\nvec |&gt; stringr::str_subset(\"R\")\n\n[1] \"Rose\"\n\n\nYou can use various regular expressions.\n\n#Subset elements containing ending with k \nvec |&gt; stringr::str_subset(\"k$\")\n\n[1] \"Leek\"     \"Shamrock\"\n\n\n\n#Subset elements containing R or r\nvec |&gt; stringr::str_subset(\"[Rr]\")\n\n[1] \"Rose\"     \"Shamrock\"\n\n\n\n#Subset elements containing s that has a vowel before it\nvec |&gt; stringr::str_subset(\"[aeiou]s\")\n\n[1] \"Rose\"    \"Thistle\"\n\n\n\n\n\nYou carry out an inverted search (i.e. it returns FALSE if it does match) with the option negate=TRUE.\n\n#Invert subset elements containing letter s that has a vowel before it\nvec |&gt; stringr::str_subset(\"[aeiou]s\", negate=TRUE)\n\n[1] \"Leek\"     \"Shamrock\"",
+    "crumbs": [
+      "Stringr",
+      "Pattern matching",
+      "str_subset"
+    ]
+  },
+  {
+    "objectID": "stringr/str_subset.html#string-vector",
+    "href": "stringr/str_subset.html#string-vector",
+    "title": "str_subset",
+    "section": "",
+    "text": "Prior to using the function create a vector of strings.\n\n#Create vector of strings\nvec &lt;- c(\"Rose\", \"Thistle\", \"Leek\", \"Shamrock\")\n#View vector\nvec\n\n[1] \"Rose\"     \"Thistle\"  \"Leek\"     \"Shamrock\"",
+    "crumbs": [
+      "Stringr",
+      "Pattern matching",
+      "str_subset"
+    ]
+  },
+  {
+    "objectID": "stringr/str_subset.html#basic-searches",
+    "href": "stringr/str_subset.html#basic-searches",
+    "title": "str_subset",
+    "section": "",
+    "text": "You can specify a string pattern to be used for detection.\n\n#Subset elements containing letter a\nvec |&gt; stringr::str_subset(\"a\")\n\n[1] \"Shamrock\"\n\n\nThe function is case-sensitive. “R” will detect “Rose” but not “shamrock”.\n\n#Subset elements containing the letter R\nvec |&gt; stringr::str_subset(\"R\")\n\n[1] \"Rose\"\n\n\nYou can use various regular expressions.\n\n#Subset elements containing ending with k \nvec |&gt; stringr::str_subset(\"k$\")\n\n[1] \"Leek\"     \"Shamrock\"\n\n\n\n#Subset elements containing R or r\nvec |&gt; stringr::str_subset(\"[Rr]\")\n\n[1] \"Rose\"     \"Shamrock\"\n\n\n\n#Subset elements containing s that has a vowel before it\nvec |&gt; stringr::str_subset(\"[aeiou]s\")\n\n[1] \"Rose\"    \"Thistle\"",
+    "crumbs": [
+      "Stringr",
+      "Pattern matching",
+      "str_subset"
+    ]
+  },
+  {
+    "objectID": "stringr/str_subset.html#negate",
+    "href": "stringr/str_subset.html#negate",
+    "title": "str_subset",
+    "section": "",
+    "text": "You carry out an inverted search (i.e. it returns FALSE if it does match) with the option negate=TRUE.\n\n#Invert subset elements containing letter s that has a vowel before it\nvec |&gt; stringr::str_subset(\"[aeiou]s\", negate=TRUE)\n\n[1] \"Leek\"     \"Shamrock\"",
+    "crumbs": [
+      "Stringr",
+      "Pattern matching",
+      "str_subset"
+    ]
+  },
+  {
+    "objectID": "stringr/str_trunc.html",
+    "href": "stringr/str_trunc.html",
+    "title": "str_trunc",
+    "section": "",
+    "text": "str_trunc\nThe function stringr::str_trunc() allows you to set the maximum number of characters strings can contain. Strings that are longer will be truncated to the specified length.\nTidyverse reference page\n\n#Create vector of strings with varying lengths\nvec &lt;- c(\"1\", \"to\",\"four\", \"_eight_\")\nvec |&gt; stringr::str_view()\n\n[1] │ 1\n[2] │ to\n[3] │ four\n[4] │ _eight_\n\n\n\n#Trunc to length of 3\nvec |&gt; stringr::str_trunc(3) |&gt; stringr::str_view()\n\n[1] │ 1\n[2] │ to\n[3] │ ...\n[4] │ ..."
   },
   {
     "objectID": "tibble/add_rows_and_columns.html",
@@ -3661,90 +3980,6 @@
     "text": "Sections\nThe sections for tidyr are summarised below.\n\nPivoting\n\n\n  \n\n\n  \n\n\nCertain analyses and tools require data to be in a specific structure. Two rectangular/table data structures are wide and long. The two pivot functions transform data between these two types.\n\npivot_longer(): Lengthens data, transforming it from wide to long. Many Tidyverse packages are built with long data in mind, especially ggplot2.\npivot_wider(): Widens data, transforming it from long to wide.\n\n\n\nCharacter vectors\n\n\n  \n\n\n  \n\n\nA column may contain multiple pieces of character/string data or you may want to create a column by uniting multiple character/string columns. The below functions can be used for these purposes.\n\nseparate_wider_delim(): Splits a string column into multiple columns by a delimiter.\nunite(): Combines/unites multiple string columns into one column.\n\n\n\nMissing values\n\n\n  \n\n\n  \n\n\nIt is common to encounter NAs in tabular data. Dropping columns with NAs or replacing NA values are common approaches to deal with them.\n\ndrop_na(): Remove rows with NAs.\nreplace_na(): Replace NA values.",
     "crumbs": [
       "Tidyr"
-    ]
-  },
-  {
-    "objectID": "stringr/str_flatten.html",
-    "href": "stringr/str_flatten.html",
-    "title": "str_flatten",
-    "section": "",
-    "text": "The function stringr::str_flatten() allows you to create a single string from a character vector.\nTidyverse reference page\n\n\nBy default str_flatten() will add no spaces/separators when flattening.\n\n#Create vector\nvec &lt;- c(\"A\", \"C\", \"G\", \"T\")\n#Flatten vector\nvec |&gt; stringr::str_flatten()\n\n[1] \"ACGT\"\n\n\nYou can pipe the output for str_c() to str_flatten().\n\n#Create vectors\nvec1 &lt;- c(\"a\", \"b\", \"c\")\nvec2 &lt;- c(\"x\", \"y\", \"z\")\n#Combine then flatten\nstringr::str_c(vec1, vec2) |&gt; stringr::str_flatten()\n\n[1] \"axbycz\"\n\n\n\n\n\nThe individual vector elements can be separated in the out string with the collapse= option.\n\n#Create vector\nvec &lt;- c(\"A\", \"C\", \"G\", \"T\")\n#Flatten with , separator\nstringr::str_flatten(vec, collapse = \",\")\n\n[1] \"A,C,G,T\"\n\n\nYou can specify a final separator with last =. Additionally, separators can contain as many characters as you would like.\n\nstringr::str_flatten(vec, collapse = \", \", last = \", and \")\n\n[1] \"A, C, G, and T\"",
-    "crumbs": [
-      "Stringr",
-      "Combining strings",
-      "str_flatten"
-    ]
-  },
-  {
-    "objectID": "stringr/str_flatten.html#flatten",
-    "href": "stringr/str_flatten.html#flatten",
-    "title": "str_flatten",
-    "section": "",
-    "text": "By default str_flatten() will add no spaces/separators when flattening.\n\n#Create vector\nvec &lt;- c(\"A\", \"C\", \"G\", \"T\")\n#Flatten vector\nvec |&gt; stringr::str_flatten()\n\n[1] \"ACGT\"\n\n\nYou can pipe the output for str_c() to str_flatten().\n\n#Create vectors\nvec1 &lt;- c(\"a\", \"b\", \"c\")\nvec2 &lt;- c(\"x\", \"y\", \"z\")\n#Combine then flatten\nstringr::str_c(vec1, vec2) |&gt; stringr::str_flatten()\n\n[1] \"axbycz\"",
-    "crumbs": [
-      "Stringr",
-      "Combining strings",
-      "str_flatten"
-    ]
-  },
-  {
-    "objectID": "stringr/str_flatten.html#collapse-and-last",
-    "href": "stringr/str_flatten.html#collapse-and-last",
-    "title": "str_flatten",
-    "section": "",
-    "text": "The individual vector elements can be separated in the out string with the collapse= option.\n\n#Create vector\nvec &lt;- c(\"A\", \"C\", \"G\", \"T\")\n#Flatten with , separator\nstringr::str_flatten(vec, collapse = \",\")\n\n[1] \"A,C,G,T\"\n\n\nYou can specify a final separator with last =. Additionally, separators can contain as many characters as you would like.\n\nstringr::str_flatten(vec, collapse = \", \", last = \", and \")\n\n[1] \"A, C, G, and T\"",
-    "crumbs": [
-      "Stringr",
-      "Combining strings",
-      "str_flatten"
-    ]
-  },
-  {
-    "objectID": "stringr/str_glue.html",
-    "href": "stringr/str_glue.html",
-    "title": "str_glue",
-    "section": "",
-    "text": "The function stringr::str_glue() is similar to str_c() but allows you to include variable names within double quotes.\nVariables to be used are flanked by curly braces, e.g. \"{variable_name}\".\n\n\nYou can include a string variable into a string specified in stringr::glue().\n\n#Create a string scalar\nbase &lt;- \"A\"\n#Glue\nstringr::str_glue(\"Adenine is represented by the letter {base}\")\n\nAdenine is represented by the letter A\n\n\nYou can include multiple variables.\n\n#Create string vectors\nbase &lt;- \"A\"\ncomp &lt;- \"T\"\n#Glue\nstringr::str_glue(\"The complementary base of {base} is {comp}\")\n\nThe complementary base of A is T\n\n\nLike paste0() or str_c() you can combine multiple strings and set a separator. In this case the option is .sep=.\n\n#Create string vectors\ndna &lt;- \"T\"\nrna &lt;- \"U\"\n#Glue\nstringr::str_glue(\"{dna} is a nucleic acid DNA base.\",\n                    \"{rna} is a nucleic acid RNA base.\",\n                    .sep = \" \")\n\nT is a nucleic acid DNA base. U is a nucleic acid RNA base.\n\n\nIf you need to display something such as {base} you can use double braces ({{base}}).\nAdditionally we will use a new space (\\n) as the separator.\n\nstringr::str_glue(\"You can include a variable with str_glue with braces, e.g. {{base}}.\",\n                    \"For example, here is adenine: {base}.\",\n                    .sep = \"\\n\") |&gt;\n    stringr::str_view()\n\n[1] │ You can include a variable with str_glue with braces, e.g. {base}.\n    │ For example, here is adenine: A.\n\n\n\n\n\nNon strings are converted into strings.\n\n#Create a numeric scalar\nnum &lt;- 4\n#Glue\nstringr::str_glue(\"There are {num} DNA bases\")\n\nThere are 4 DNA bases\n\n\nWith numerics you can carry out maths in the braces.\n\nstringr::str_glue(\"There are {num/2} purines.\",\n                    \"There are {num-1} pyrimidines\",\n                    .sep = \"\\n\") |&gt;\n    stringr::str_view()\n\n[1] │ There are 2 purines.\n    │ There are 3 pyrimidines\n\n\nBelow shows how logicals and missing values work.\n\n#Vectors\ntrue &lt;- TRUE\nmissing &lt;- NA\n#Glue\nstringr::str_glue(\"Logical: {true}. Missing value: {missing}.\") |&gt;\n    stringr::str_view()\n\n[1] │ Logical: TRUE. Missing value: NA.\n\n\n\n\n\nUsing vectors with str_glue() works the same way as str_c().\n\n#Create vec\nbases &lt;- c(\"A\",\"G\",\"C\",\"T\")\n#Glue\nstringr::str_glue(\"A DNA base is {bases}\") |&gt; stringr::str_view()\n\n[1] │ A DNA base is A\n[2] │ A DNA base is G\n[3] │ A DNA base is C\n[4] │ A DNA base is T\n\n\nWhen using multiple vectors ensure they are the same length.\n\n#Create vec\nbases &lt;- c(\"A\",\"G\",\"C\",\"T\")\nnames &lt;- c(\"Adenine\", \"Guanine\", \"Cytosine\", \"Thymine\")\n#Glue\nstringr::str_glue(\"{names} is represented by {bases}\") |&gt;\n    stringr::str_view()\n\n[1] │ Adenine is represented by A\n[2] │ Guanine is represented by G\n[3] │ Cytosine is represented by C\n[4] │ Thymine is represented by T\n\n\nUsing vectors of different lengths will lead to an error but you can always use scalars with vectors.\n\n#Create vec\ntype &lt;- \"DNA\"\n#Glue\nstringr::str_glue(\"The {type} base {names} is represented by {bases}\") |&gt;\n    stringr::str_view()\n\n[1] │ The DNA base Adenine is represented by A\n[2] │ The DNA base Guanine is represented by G\n[3] │ The DNA base Cytosine is represented by C\n[4] │ The DNA base Thymine is represented by T",
-    "crumbs": [
-      "Stringr",
-      "Combining strings",
-      "str_glue"
-    ]
-  },
-  {
-    "objectID": "stringr/str_glue.html#scalars",
-    "href": "stringr/str_glue.html#scalars",
-    "title": "str_glue",
-    "section": "",
-    "text": "You can include a string variable into a string specified in stringr::glue().\n\n#Create a string scalar\nbase &lt;- \"A\"\n#Glue\nstringr::str_glue(\"Adenine is represented by the letter {base}\")\n\nAdenine is represented by the letter A\n\n\nYou can include multiple variables.\n\n#Create string vectors\nbase &lt;- \"A\"\ncomp &lt;- \"T\"\n#Glue\nstringr::str_glue(\"The complementary base of {base} is {comp}\")\n\nThe complementary base of A is T\n\n\nLike paste0() or str_c() you can combine multiple strings and set a separator. In this case the option is .sep=.\n\n#Create string vectors\ndna &lt;- \"T\"\nrna &lt;- \"U\"\n#Glue\nstringr::str_glue(\"{dna} is a nucleic acid DNA base.\",\n                    \"{rna} is a nucleic acid RNA base.\",\n                    .sep = \" \")\n\nT is a nucleic acid DNA base. U is a nucleic acid RNA base.\n\n\nIf you need to display something such as {base} you can use double braces ({{base}}).\nAdditionally we will use a new space (\\n) as the separator.\n\nstringr::str_glue(\"You can include a variable with str_glue with braces, e.g. {{base}}.\",\n                    \"For example, here is adenine: {base}.\",\n                    .sep = \"\\n\") |&gt;\n    stringr::str_view()\n\n[1] │ You can include a variable with str_glue with braces, e.g. {base}.\n    │ For example, here is adenine: A.",
-    "crumbs": [
-      "Stringr",
-      "Combining strings",
-      "str_glue"
-    ]
-  },
-  {
-    "objectID": "stringr/str_glue.html#non-strings",
-    "href": "stringr/str_glue.html#non-strings",
-    "title": "str_glue",
-    "section": "",
-    "text": "Non strings are converted into strings.\n\n#Create a numeric scalar\nnum &lt;- 4\n#Glue\nstringr::str_glue(\"There are {num} DNA bases\")\n\nThere are 4 DNA bases\n\n\nWith numerics you can carry out maths in the braces.\n\nstringr::str_glue(\"There are {num/2} purines.\",\n                    \"There are {num-1} pyrimidines\",\n                    .sep = \"\\n\") |&gt;\n    stringr::str_view()\n\n[1] │ There are 2 purines.\n    │ There are 3 pyrimidines\n\n\nBelow shows how logicals and missing values work.\n\n#Vectors\ntrue &lt;- TRUE\nmissing &lt;- NA\n#Glue\nstringr::str_glue(\"Logical: {true}. Missing value: {missing}.\") |&gt;\n    stringr::str_view()\n\n[1] │ Logical: TRUE. Missing value: NA.",
-    "crumbs": [
-      "Stringr",
-      "Combining strings",
-      "str_glue"
-    ]
-  },
-  {
-    "objectID": "stringr/str_glue.html#vectors",
-    "href": "stringr/str_glue.html#vectors",
-    "title": "str_glue",
-    "section": "",
-    "text": "Using vectors with str_glue() works the same way as str_c().\n\n#Create vec\nbases &lt;- c(\"A\",\"G\",\"C\",\"T\")\n#Glue\nstringr::str_glue(\"A DNA base is {bases}\") |&gt; stringr::str_view()\n\n[1] │ A DNA base is A\n[2] │ A DNA base is G\n[3] │ A DNA base is C\n[4] │ A DNA base is T\n\n\nWhen using multiple vectors ensure they are the same length.\n\n#Create vec\nbases &lt;- c(\"A\",\"G\",\"C\",\"T\")\nnames &lt;- c(\"Adenine\", \"Guanine\", \"Cytosine\", \"Thymine\")\n#Glue\nstringr::str_glue(\"{names} is represented by {bases}\") |&gt;\n    stringr::str_view()\n\n[1] │ Adenine is represented by A\n[2] │ Guanine is represented by G\n[3] │ Cytosine is represented by C\n[4] │ Thymine is represented by T\n\n\nUsing vectors of different lengths will lead to an error but you can always use scalars with vectors.\n\n#Create vec\ntype &lt;- \"DNA\"\n#Glue\nstringr::str_glue(\"The {type} base {names} is represented by {bases}\") |&gt;\n    stringr::str_view()\n\n[1] │ The DNA base Adenine is represented by A\n[2] │ The DNA base Guanine is represented by G\n[3] │ The DNA base Cytosine is represented by C\n[4] │ The DNA base Thymine is represented by T",
-    "crumbs": [
-      "Stringr",
-      "Combining strings",
-      "str_glue"
     ]
   }
 ]

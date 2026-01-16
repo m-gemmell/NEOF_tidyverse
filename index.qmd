@@ -66,7 +66,7 @@ These are:
 - [readr](/readr/readr.qmd): Read in tabular data
 - [tidyr](/tidyr/tidyr.qmd): Tidying tibbles, includes going from wide to long tibbles/data frames
 - [ggplot2](/ggplot2/ggplot2.qmd): Visualisation with the grammar of graphics
-- [stringr](/stringr/stringr.qmd): String manipulation (in development)
+- [stringr](/stringr/stringr.qmd): String manipulation
 - [forcats](/forcats/forcats.qmd): Factor manipulation (in development)
 - [purrr](/purrr/purrr.qmd): Functions & vectors (in development)
 - [lubridate](/lubridate/lubridate.qmd): Data-time data (in development)

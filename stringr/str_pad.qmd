@@ -1,0 +1,78 @@
+# str_pad
+
+<center>
+![](images/stringr_str_pad.png){style="width:200px"}
+</center>
+
+The function `stringr::str_pads()` adds white space to strings to ensure it is a minimum length.
+
+[Tidyverse reference page](https://stringr.tidyverse.org/reference/str_pad.html)
+
+## String vector
+
+Prior to using the function create a vector with strings of length 1, 2, 4, and 8.
+
+```{r}
+#Create vector of strings
+vec <- c("1", "to", "four", "_eight_")
+#View vector
+vec |> stringr::str_view()
+```
+
+## Default padding
+
+Padding will add space to each string shorter than the specified pad length.
+These strings will have a total length (i.e. number of characters) equal to the pad length.
+
+By default spaces (` `) will be added to the start/left-side of the string for padding.
+
+```{r}
+#Pad strings to a min length of 10
+vec |> stringr::str_pad(10) |> stringr::str_view()
+```
+
+Strings with a length equal to or greater than the pad length will be untouched.
+
+```{r}
+#Pad strings to a min length of 4
+vec |> stringr::str_pad(4) |> stringr::str_view()
+```
+
+## Side
+
+The side to add the padding characters can be specified.
+
+```{r}
+#Pad to the left, the default
+vec |> stringr::str_pad(10, side = "left") |> stringr::str_view()
+```
+
+```{r}
+#Pad to the right
+vec |> stringr::str_pad(10, side = "right") |> stringr::str_view()
+```
+
+```{r}
+#Padd on both sides
+vec |> stringr::str_pad(10, side = "both") |> stringr::str_view()
+```
+
+## Pad character
+
+The padding character can be specified.
+This character can only have a length of one (i.e. "\t" or "||" cannot be used).
+
+```{r}
+#Use pad character |
+vec |> stringr::str_pad(10, pad = "|") |> stringr::str_view()
+```
+
+```{r}
+#Use pad character .
+vec |> stringr::str_pad(10, pad = ".") |> stringr::str_view()
+```
+
+```{r}
+#Use pad character _ with padding on both sides
+vec |> stringr::str_pad(10, pad = "_", side = "both") |> stringr::str_view()
+```

@@ -80,19 +80,58 @@ These functions allow you to manipulate strings in vectors.
 
 </div>
 
+These functions allow you combine strings into one scalar or vector.
+
 - [`str_c()`](/stringr/str_c.qmd): Combine strings together (similar to `paste0()`).
 - [`str_flatten()`](/stringr/str_flatten.qmd): Flatten a vector of strings into one string.
-- [`str_glue()`](/stringr/str_glue.qmd): SImilar to `str_c()` but allows you to include variables within the strings to combine.
+- [`str_glue()`](/stringr/str_glue.qmd): Similar to `str_c()` but allows you to include variables within the strings to combine.
   - Variable names are included in the strings with curly braces like so: `{variable_name}`
-
 
 ### White space tools
 
-These functions allow you to add, remove, and manipulate whitespaces (e.g. spaces and tabs)
+<div class="hexrow">
+  <p><a href="/stringr/str_pad.qmd">
+  <img src="images/stringr_str_pad.png" width="150px">
+  </a></p>
+
+  <p><a href="/stringr/str_trim.qmd">
+  <img src="images/stringr_str_trim.png" width="150px">
+  </a></p>
+
+</div>
+
+These functions allow you to add, remove, and manipulate whitespaces (e.g. spaces and tabs).
+
+- [`str_pad()`](/stringr/str_pad.qmd): Add padding characters to strings shorter than a specified length. The padded strings will all have a length equal to the length.
+- [`str_trim()`](/stringr/str_trim.qmd): Remove all white spaces from the start and end of strings.
 
 ### Pattern matching
 
+<div class="hexrow">
+  <p><a href="/stringr/str_subset.qmd">
+  <img src="images/stringr_str_subset.png" width="150px">
+  </a></p>
+
+  <p><a href="/stringr/str_detect.qmd">
+  <img src="images/stringr_str_detect.png" width="150px">
+  </a></p>
+
+  <p><a href="/stringr/str_count.qmd">
+  <img src="images/stringr_str_count.png" width="150px">
+  </a></p>
+
+</div>
+
 These functions allow you to carry out various tasks with regular expressions.
 
-For an introduction to regular expressions please see the [Regular expressions chapter in R for Data Science 2e](https://r4ds.hadley.nz/regexps.html)
+- [`str_subset()`](/stringr/str_subset.qmd): Subset vector to elements that match a pattern/regular expression.
+- [`str_detect()`](/stringr/str_detect.qmd): Return logical vector showing which elements match (`TRUE`) a pattern/regular expression or not (`FALSE`).
+- [`str_count()`](/stringr/str_count.qmd): Count number of matches to a pattern/regular expression.
+
+For an introduction to regular expressions please see:
+
+- [Regular expressions chapter in R for Data Science 2e](https://r4ds.hadley.nz/regexps.html)
+- [Stringr Regular expressions](https://stringr.tidyverse.org/articles/regular-expressions.html)
+
+
 

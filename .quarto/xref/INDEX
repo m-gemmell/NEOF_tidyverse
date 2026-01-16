@@ -334,5 +334,29 @@
   },
   "stringr/str_glue.qmd": {
     "str_glue.html": "5e3ca09c"
+  },
+  "stringr/str_pad.qmd": {
+    "str_pad.html": "1a4877fb"
+  },
+  "stringr/str_trim.qmd": {
+    "str_trim.html": "0951f16e"
+  },
+  "stringr/str_trunc.qmd": {
+    "str_trunc.html": "0719fcbc"
+  },
+  "stringr/str_wrap.qmd": {
+    "str_wrap.html": "a652df77"
+  },
+  "stringr/str_detect.qmd": {
+    "str_detect.html": "1f96339f"
+  },
+  "stringr/str_detect copy.qmd": {
+    "str_detect copy.html": "b250ac22"
+  },
+  "stringr/str_subset.qmd": {
+    "str_subset.html": "bf3d5554"
+  },
+  "stringr/str_count.qmd": {
+    "str_count.html": "e781e713"
   }
 }

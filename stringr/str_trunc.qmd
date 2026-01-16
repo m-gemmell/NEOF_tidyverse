@@ -1,0 +1,19 @@
+# str_trunc
+
+The function `stringr::str_trunc()` allows you to set the maximum number of characters strings can contain.
+Strings that are longer will be truncated to the specified length.
+
+[Tidyverse reference page](https://stringr.tidyverse.org/reference/str_flatten.html)
+
+
+```{r}
+#Create vector of strings with varying lengths
+vec <- c("1", "to","four", "_eight_")
+vec |> stringr::str_view()
+```
+
+
+```{r}
+#Trunc to length of 3
+vec |> stringr::str_trunc(3) |> stringr::str_view()
+```

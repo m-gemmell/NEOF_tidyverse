@@ -1,0 +1,59 @@
+# str_count
+
+<center>
+![](images/stringr_str_count.png){style="width:200px"}
+</center>
+
+The function `stringr::str_counts()` counts the number of matches to a pattern/regular expression within each element of a string vector.
+
+[Tidyverse reference page](https://stringr.tidyverse.org/reference/str_count.html)
+
+## Count
+
+Prior to using the function create a vector of strings.
+
+```{r}
+#Create vector of strings
+vec <- c("Rose", "Thistle", "Leek", "Shamrock")
+#View vector
+vec
+```
+
+You can specify a string pattern to be used for detection.
+
+```{r}
+#Count instances of s
+vec |> stringr::str_count("s")
+```
+
+```{r}
+#Count instances of e
+vec |> stringr::str_count("e")
+```
+
+The function is case-sensitive.
+"R" will detect "Rose" but not "shamrock".
+
+```{r}
+#Detect the letter R
+vec |> stringr::str_count("R")
+```
+
+The function works with various regular expressions.
+
+```{r}
+#Detect the letter R or r
+vec |> stringr::str_count("[Rr]")
+```
+
+```{r}
+#Count number of vowels
+vec |> stringr::str_count("[aeiou]")
+```
+
+Count number of letters between A-M (inclusive), lower or upper case.
+
+```{r}
+#Count number of vowels
+vec |> stringr::str_count("[A-Ma-m]")
+```

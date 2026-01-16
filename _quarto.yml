@@ -188,6 +188,15 @@ website:
       - href: stringr/str_c.qmd
       - href: stringr/str_flatten.qmd
       - href: stringr/str_glue.qmd
+    - section: "White space"
+      contents:
+      - href: stringr/str_pad.qmd
+      - href: stringr/str_trim.qmd
+    - section: "Pattern matching"
+      contents:
+      - href: stringr/str_subset.qmd
+      - href: stringr/str_detect.qmd
+      - href: stringr/str_count.qmd
     - href: stringr/cheatsheets.qmd
   - id: Forcats
     title: Forcats
