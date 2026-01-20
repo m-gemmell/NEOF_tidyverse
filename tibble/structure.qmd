@@ -2,6 +2,12 @@
 title: "Structure"
 format: html
 ---
+
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+
 <center>
 ![](images/tibble_structure.png){style="width:200px"}
 </center>
@@ -14,7 +20,7 @@ For demonstration we'll load and subset the `hbr_maples` data from the [lterdata
 #Load package
 library("lterdatasampler")
 #Subset of hbr_maples tibble
-tibble::as_tibble(lterdatasampler::hbr_maples)[1:10,1:7]
+lterdatasampler::hbr_maples[1:10,1:7]
 ```
 
 Let's go over some of its components:

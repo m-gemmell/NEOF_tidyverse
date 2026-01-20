@@ -2,6 +2,11 @@
 title: "Tibble"
 ---
 
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+
 <center>
 ![](../images/tibble.png){style="width:150px"}
 </center>

@@ -2,10 +2,15 @@
 title: "Creating tibbles"
 format: html
 ---
+
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+
 <center>
 ![](images/tibble_create.png){style="width:200px"}
 </center>
-
 
 There are various ways to create __tibbles__. 
 Below are three methods:

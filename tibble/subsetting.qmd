@@ -2,6 +2,12 @@
 title: "Subsetting"
 format: html
 ---
+
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+
 <center>
 ![](images/tibble_subset.png){style="width:200px"}
 </center>
@@ -21,7 +27,7 @@ library("lterdatasampler")
 
 Create a __tibble__ from a subset of the pie_crab data.
 ```{r}
-pie_crab_tbl <- tibble::as_tibble(lterdatasampler::pie_crab[1:10,1:7])
+pie_crab_tbl <- lterdatasampler::pie_crab[1:10,1:7]
 pie_crab_tbl
 ```
 

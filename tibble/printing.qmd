@@ -2,6 +2,18 @@
 title: "Printing or viewing"
 format: html
 ---
+
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+
+```{r, echo=FALSE, warning=FALSE,output=FALSE,error=FALSE}
+#Load package
+#needed to treat lterdatasampler::and_vertebrates as a tibble
+library("tidyverse")
+```
+
 <center>
 ![](images/tibble_print.png){style="width:200px"}
 </center>
@@ -10,13 +22,13 @@ Tibbles have some unique characteristics when printing and viewing them on a ter
 
 ## Load and print data
 
-Below we load the `and_vertebrates` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (hyperlink includes install instructions) and view it.
+Below we load the `and_vertebrates` __tibble__ from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (hyperlink includes install instructions) and view it.
 
 ```{r}
 #Load package
 library("lterdatasampler")
 #subsetted and_vertebrates tibble
-tibble::as_tibble(lterdatasampler::and_vertebrates)[1:10,1:5]
+lterdatasampler::and_vertebrates[1:10,1:5]
 ```
 
 Information on the format of a __tibble__ is within the [Tibble structure section](/tibble/structure.html#format)
@@ -36,7 +48,7 @@ The info shown below a __tibble__ is:
 - The number, names, and classes of the variables/columns not displayed
 
 ```{r}
-tibble::as_tibble(lterdatasampler::and_vertebrates)
+lterdatasampler::and_vertebrates
 ```
 
 ## Print more rows
@@ -44,5 +56,5 @@ tibble::as_tibble(lterdatasampler::and_vertebrates)
 More rows can be printed by using the base R `print()` function with the `n=` option.
 
 ```{r}
-print(tibble::as_tibble(lterdatasampler::and_vertebrates), n=20)
+print(lterdatasampler::and_vertebrates, n=20)
 ```
