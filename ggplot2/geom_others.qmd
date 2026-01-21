@@ -97,7 +97,7 @@ Two methods to create 2D bin counts are with:
 ```{r}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_bin_2d()
+    ggplot2::geom_bin_2d()
 ```
 
 ### Hexagonal 2D bin count heatmap
@@ -117,7 +117,7 @@ Generally hex bin heatmaps are better than square based 2D bin count heatmaps (a
 ```{r}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_hex()
+    ggplot2::geom_hex()
 ```
 
 ## Smooth density plot
@@ -130,7 +130,7 @@ The main advantage of a density plot over a histogram is that you can easily vis
 ```{r}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = cap_diameter)) +
-        ggplot2::geom_density(linewidth=1)
+    ggplot2::geom_density(linewidth=1)
 ```
 
 ## Scatter plot additional layers
@@ -157,8 +157,8 @@ Additionally, the shape of the lines can help display patterns in the data.
 mushroom_sample_tbl |>
     #ggplot code
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point() +
-        ggplot2::geom_density_2d(linewidth=1)
+    ggplot2::geom_point() +
+    ggplot2::geom_density_2d(linewidth=1)
 ```
 
 ### Smooth line
@@ -175,8 +175,8 @@ The below plot automatically uses "loess".
 mushroom_sample_tbl |>
     #ggplot code
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point() +
-        ggplot2::geom_smooth()
+    ggplot2::geom_point() +
+    ggplot2::geom_smooth()
 ```
 
 ### Rug
@@ -193,8 +193,8 @@ Each point is represented by a tick on the x and y axis locations and is therefo
 mushroom_sample_tbl |>
     #ggplot code
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point() +
-        ggplot2::geom_rug()
+    ggplot2::geom_point() +
+    ggplot2::geom_rug()
 ```
 
 ### Multiple layers
@@ -208,10 +208,10 @@ Below the code and image of a scatter plot with 2D density contours, a smooth li
 mushroom_sample_tbl |>
     #ggplot code
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point() +
-        ggplot2::geom_density_2d(linewidth=1) +
-        ggplot2::geom_smooth(colour = "red") +
-        ggplot2::geom_rug()
+    ggplot2::geom_point() +
+    ggplot2::geom_density_2d(linewidth=1) +
+    ggplot2::geom_smooth(colour = "red") +
+    ggplot2::geom_rug()
 ```
 
 ## Others

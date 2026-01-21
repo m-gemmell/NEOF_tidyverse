@@ -52,7 +52,8 @@ These features are covered in further pages.
 
 ```{r}
 #Create ggplot2 object and set the aesthetics
-scatter_plot <- ggplot2::ggplot(data=crab_age_weight_tbl, mapping=aes(x=Age, y = Weight)) +
+scatter_plot <- 
+    ggplot2::ggplot(data=crab_age_weight_tbl,mapping=aes(x=Age,y=Weight)) +
     #Set plot as a dot/scatter plot 
     ggplot2::geom_point() +
     #Add title to plot
@@ -100,9 +101,9 @@ scatter_plot <- crab_age_weight_tbl |>
     dplyr::filter(Age <= 15) |>
     #Create ggplot2 object and set the aesthetics
     ggplot2::ggplot(aes(x=Age, y = Weight)) +
-        #Set plot as a dot/scatter plot 
-        ggplot2::geom_point() +
-        #Add title to plot
-        labs(title="Crab age against weight scatter plot (15 years or younger)")
+    #Set plot as a dot/scatter plot 
+    ggplot2::geom_point() +
+    #Add title to plot
+    labs(title="Crab age against weight scatter plot (15 years or younger)")
 scatter_plot
 ```

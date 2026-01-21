@@ -2,6 +2,11 @@
 title: "Replace NA"
 ---
 
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+
 <center>
 ![](images/tidyr_replace_na.png){style="width:200px"}
 </center>
@@ -28,8 +33,9 @@ For demonstration we'll load the `mammal_sleep_tbl` data from the [mgrtibbles pa
 #Load package
 library("mgrtibbles")
 #mammal_sleep_tbl tibble for demonstration
-#Subset to only keep rows with at least one NA
-mammal_sleep_na_tbl <- mgrtibbles::mammal_sleep_tbl[!complete.cases(mammal_sleep_tbl),] |>
+mammal_sleep_na_tbl <-
+    #Subset to only keep rows with at least one NA
+    mgrtibbles::mammal_sleep_tbl[!complete.cases(mammal_sleep_tbl),] |>
     #Slice to keep first ten rows and select columns species to life_span
     dplyr::slice(1:10) |> dplyr::select(species:life_span)
 #View tibble

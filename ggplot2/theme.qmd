@@ -88,9 +88,9 @@ In the plot we will set the text size to __20__.
 ```{r}
 bat_roost_tbl |>
     ggplot2::ggplot(aes(y = MaxCountInAnyYear)) +
-        ggplot2::geom_boxplot() +
-        #Theme
-        ggplot2::theme(text=ggplot2::element_text(size = 20))
+    ggplot2::geom_boxplot() +
+    #Theme
+    ggplot2::theme(text=ggplot2::element_text(size = 20))
 ```
 
 ### Sets of text
@@ -119,15 +119,15 @@ bat_roost_tbl |>
     dplyr::filter(Country == "Northern Ireland") |>
     #Box plot
     ggplot2::ggplot(aes(y = MaxCountInAnyYear, x = County)) +
-        ggplot2::geom_boxplot() +
-        ggplot2::geom_jitter(aes(colour=Species), size=2) +
-        #Theme
-        ggplot2::theme(axis.title = ggplot2::element_text(size=20, colour = "blue"),
-                        axis.text.x = ggplot2::element_text(size=12, angle = 10),
-                        axis.text.y = ggplot2::element_text(size=12),
-                        legend.text = ggplot2::element_text(size = 12),
-                        legend.title = ggplot2::element_text(size = 20, colour="red")
-                        )
+    ggplot2::geom_boxplot() +
+    ggplot2::geom_jitter(aes(colour=Species), size=2) +
+    #Theme
+    ggplot2::theme(axis.title = ggplot2::element_text(size=20, colour = "blue"),
+                    axis.text.x = ggplot2::element_text(size=12, angle = 10),
+                    axis.text.y = ggplot2::element_text(size=12),
+                    legend.text = ggplot2::element_text(size = 12),
+                    legend.title = ggplot2::element_text(size = 20, colour="red")
+                    )
 ```
 
 ## Legend position
@@ -146,9 +146,9 @@ bat_roost_tbl |>
     dplyr::filter(Country == "Northern Ireland") |>
     #Box plot
     ggplot2::ggplot(aes(y = MaxCountInAnyYear, x = County)) +
-        ggplot2::geom_boxplot() +
-        ggplot2::geom_jitter(aes(colour=Species), size=2) +
-        #Theme
-        ggplot2::theme(legend.position="bottom")
+    ggplot2::geom_boxplot() +
+    ggplot2::geom_jitter(aes(colour=Species), size=2) +
+    #Theme
+    ggplot2::theme(legend.position="bottom")
 ```
 

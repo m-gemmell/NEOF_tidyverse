@@ -75,7 +75,7 @@ This will show the distribution of the max yearly population count within each o
 ```{r}
 bat_roost_tbl |>
     ggplot2::ggplot(aes(y = MaxCountInAnyYear)) +
-        ggplot2::geom_boxplot()
+    ggplot2::geom_boxplot()
 ```
 
 ## Split by categorical variable
@@ -89,7 +89,7 @@ In `aes()` set `x=Country` so there is a box and whisker for each Country, separ
 bat_roost_tbl |>
     #Box plot
     ggplot2::ggplot(aes(y = MaxCountInAnyYear, x = Country)) +
-        ggplot2::geom_boxplot()
+    ggplot2::geom_boxplot()
 ```
 
 ## Flipped box plot
@@ -103,7 +103,7 @@ In `aes()` set `y=Species` and `x=MaxCountInAnyYear` so there is a box and whisk
 bat_roost_tbl |>
     #Box plot
     ggplot2::ggplot(aes(x = MaxCountInAnyYear, y = Species)) +
-        ggplot2::geom_boxplot()
+    ggplot2::geom_boxplot()
 ```
 
 ## Layer of jittered points
@@ -128,8 +128,8 @@ bat_roost_tbl |>
     dplyr::filter(Country == "Northern Ireland") |>
     #Box plot
     ggplot2::ggplot(aes(y = MaxCountInAnyYear, x = County)) +
-        ggplot2::geom_boxplot() +
-        ggplot2::geom_jitter(aes(colour=Species), size=2)
+    ggplot2::geom_boxplot() +
+    ggplot2::geom_jitter(aes(colour=Species), size=2)
 ```
 
 ## Violin plot
@@ -151,8 +151,8 @@ bat_roost_tbl |>
                                     "Soprano pipistrelle")) |>
     #Box plot
     ggplot2::ggplot(aes(y = MaxCountInAnyYear, x = Country)) +
-        ggplot2::geom_violin() +
-        ggplot2::geom_jitter(aes(colour=Species), size=2)
+    ggplot2::geom_violin() +
+    ggplot2::geom_jitter(aes(colour=Species), size=2)
 ```
 
 

@@ -358,5 +358,11 @@
   },
   "stringr/str_count.qmd": {
     "str_count.html": "e781e713"
+  },
+  "tutorials.qmd": {
+    "tutorials.html": "20f8648d"
+  },
+  "learnr.qmd": {
+    "learnr.html": "d9fb1877"
   }
 }

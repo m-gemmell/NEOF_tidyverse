@@ -2,6 +2,11 @@
 title: "Pull"
 ---
 
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+
 <center>
 ![](images/dplyr_pull.png){style="width:200px"}
 </center>
@@ -35,5 +40,8 @@ Pull the column "total_sleep" to a vector and calculate the mean value.
 __Note:__ Requires [`dplyr::filter(!is.na(total_sleep))`](/tidyr/drop_na.qmd) as if any NAs are passed to `mean()` the result will be NA.
 
 ```{r}
-mammal_sleep_tbl |> dplyr::filter(!is.na(total_sleep)) |> dplyr::pull(total_sleep) |> mean()
+mammal_sleep_tbl |> 
+    dplyr::filter(!is.na(total_sleep)) |> 
+    dplyr::pull(total_sleep) |> 
+    mean()
 ```

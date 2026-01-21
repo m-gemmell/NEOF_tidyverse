@@ -74,9 +74,9 @@ __Note:__ We have to place the __variable/column__ name into the [`dplyr::vars()
 ```{r}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point() +
-        #Facet grid class by columns
-        ggplot2::facet_grid(cols = dplyr::vars(class))
+    ggplot2::geom_point() +
+    #Facet grid class by columns
+    ggplot2::facet_grid(cols = dplyr::vars(class))
 ```
 
 ### Facet grid by rows
@@ -91,9 +91,9 @@ __Note:__ We have to place the __variable/column__ name into the [`dplyr::vars()
 ```{r}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point() +
-        #Facet grid cap_color by rows
-        ggplot2::facet_grid(rows = dplyr::vars(cap_color))
+    ggplot2::geom_point() +
+    #Facet grid cap_color by rows
+    ggplot2::facet_grid(rows = dplyr::vars(cap_color))
 ```
 
 ### Facet grid by columns and rows
@@ -103,9 +103,9 @@ We'll combine the column and row __facetting__ of the 2 above plots into one plo
 ```{r}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point() +
-        #Facet grid class by columns and cap_color by rows
-        ggplot2::facet_grid(cols = dplyr::vars(class), rows = dplyr::vars(cap_color))
+    ggplot2::geom_point() +
+    #Facet grid class by columns and cap_color by rows
+    ggplot2::facet_grid(cols = dplyr::vars(class), rows = dplyr::vars(cap_color))
 ```
 
 ## Facet wrap
@@ -131,9 +131,9 @@ __Note:__ We have to place the __variable/column__ name into the [`dplyr::vars()
 ```{r}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point() +
-        #Facet wrap cap_color
-        ggplot2::facet_wrap(dplyr::vars(cap_color))
+    ggplot2::geom_point() +
+    #Facet wrap cap_color
+    ggplot2::facet_wrap(dplyr::vars(cap_color))
 ```
 
 ### Facet wrap with number of columns
@@ -148,9 +148,9 @@ Additionally, we'll set the number of columns to wrap the __panels__ around to 2
 ```{r}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point() +
-        #Facet wrap cap_color with 2 wrapping columns
-        ggplot2::facet_wrap(dplyr::vars(cap_color), ncol=2)
+    ggplot2::geom_point() +
+    #Facet wrap cap_color with 2 wrapping columns
+    ggplot2::facet_wrap(dplyr::vars(cap_color), ncol=2)
 ```
 
 ### Facet wrap with number of rows
@@ -165,9 +165,9 @@ Additionally, we'll set the number of rows to wrap the __panels__ around to 2 wi
 ```{r}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point() +
-        #Facet wrap cap_color with 2 wrapping rows
-        ggplot2::facet_wrap(dplyr::vars(cap_color), nrow=2)
+    ggplot2::geom_point() +
+    #Facet wrap cap_color with 2 wrapping rows
+    ggplot2::facet_wrap(dplyr::vars(cap_color), nrow=2)
 ```
 
 ## Facet scales
@@ -201,11 +201,11 @@ It is important to note that the scales for each __panel__ are not free.
 ```{r}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point() +
-        #Facet grid class by columns and cap_color by rows
-        #Set scales to free
-        ggplot2::facet_grid(cols = dplyr::vars(class), rows = dplyr::vars(cap_color),
-                            scales="free")
+    ggplot2::geom_point() +
+    #Facet grid class by columns and cap_color by rows
+    #Set scales to free
+    ggplot2::facet_grid(cols = dplyr::vars(class), rows = dplyr::vars(cap_color),
+                        scales="free")
 ```
 
 ### Free scales for facet_wrap()
@@ -219,9 +219,9 @@ In other words the scale have been chosen to fit the data in each __panel__.
 ```{r}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point() +
-        #Facet wrap cap_color
-        ggplot2::facet_wrap(dplyr::vars(cap_color), scales="free")
+    ggplot2::geom_point() +
+    #Facet wrap cap_color
+    ggplot2::facet_wrap(dplyr::vars(cap_color), scales="free")
 ```
 
 ## Facets as an aesthetic
@@ -241,13 +241,15 @@ Additionally, we will __facet__ with `gill_attachment` and `gill_color`
 
 ```{r}
 mushroom_tbl |>
-    ggplot2::ggplot(aes(x = stem_width, y = stem_height, color = cap_shape, shape = class)) +
+    ggplot2::ggplot(aes(x=stem_width,y=stem_height,color=cap_shape,shape=class)) +
         ggplot2::geom_point() +
         #Facet grid class by columns and cap_color by rows
-        ggplot2::facet_grid(cols = dplyr::vars(gill_attachment), rows = dplyr::vars(gill_color)) +
+        ggplot2::facet_grid(
+            cols = dplyr::vars(gill_attachment), rows = dplyr::vars(gill_color)) +
         #Labels
-        ggplot2::labs(title="Scatter plot showing features of mushrooms",
-                        subtitle="Facetted by gill colour (rows/x axis) and gill attachment (columsn/y axis)",
-                        x = "Stem width", y = "Stem height",
-                        color = "Cap shape", shape = "Edibility")
+        ggplot2::labs(
+            title="Scatter plot showing features of mushrooms",
+            subtitle="Facetted by gill colour (rows) and gill attachment (columns)",
+            x = "Stem width", y = "Stem height",
+            color = "Cap shape", shape = "Edibility")
 ```

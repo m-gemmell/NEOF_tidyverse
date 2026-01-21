@@ -69,7 +69,7 @@ fisheries_long_tbl |>
     #Filter to only retain Japan
     dplyr::filter(Entity=="Japan") |>
     ggplot2::ggplot(aes(x = Year, y = Metric_tons)) +
-        ggplot2::geom_line(linewidth = 1)
+    ggplot2::geom_line(linewidth = 1)
 ```
 
 `r hide("Plotting with multiple y values per x value")`
@@ -81,7 +81,7 @@ As there are four entities (EU, Japan, Peru, USA) this means there are four y va
 ```{r}
 fisheries_long_tbl |>
     ggplot2::ggplot(aes(x = Year, y = Metric_tons)) +
-        ggplot2::geom_step(linewidth = 1)
+    ggplot2::geom_step(linewidth = 1)
 ```
 `r unhide()`
 
@@ -96,7 +96,7 @@ In `aes()` set `colour=Entity` so each Entity will be represented a by separate 
 ```{r}
 fisheries_long_tbl |>
     ggplot2::ggplot(aes(x = Year, y = Metric_tons, colour = Entity)) +
-        ggplot2::geom_line(linewidth = 1)
+    ggplot2::geom_line(linewidth = 1)
 ```
 
 ## Steps
@@ -110,5 +110,5 @@ In `aes()` set `colour=Entity` so each Entity will be represented a by separate 
 ```{r}
 fisheries_long_tbl |>
     ggplot2::ggplot(aes(x = Year, y = Metric_tons, colour = Entity)) +
-        ggplot2::geom_step(linewidth = 1)
+    ggplot2::geom_step(linewidth = 1)
 ```

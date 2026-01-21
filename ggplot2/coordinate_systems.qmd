@@ -81,9 +81,9 @@ This is carried out by adding `ggplot2::coord_fixed(ratio = 1)`.
 ```{r, fig.height = 4}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point() +
-        #Fixed aspect ratio 
-        ggplot2::coord_fixed(ratio = 1)
+    ggplot2::geom_point() +
+    #Fixed aspect ratio 
+    ggplot2::coord_fixed(ratio = 1)
 ```
 
 In the above plot you will notice there is a more than times the width than height.

@@ -73,7 +73,7 @@ This is a __column__ of __categorical__ [factors (`<fct>`)](/tibble/structure.ht
 ```{r}
 amphibian_div_tbl |>    
     ggplot2::ggplot(aes(x = iucn_2cat)) +
-        ggplot2::geom_bar()
+    ggplot2::geom_bar()
 ```
 
 ## Flipped bar chart
@@ -86,7 +86,7 @@ Create a __flipped bar chart__ of the `Family` __categorical character variable/
 ```{r}
 amphibian_div_tbl |>    
     ggplot2::ggplot(aes(y = Family)) +
-        ggplot2::geom_bar()
+    ggplot2::geom_bar()
 ```
 
 ## Stacked bar chart
@@ -100,7 +100,7 @@ Create a __stacked bar chart__ of "iucn_2cat" counts where the fill of the bar c
 ```{r}
 amphibian_div_tbl |>    
     ggplot2::ggplot(aes(x = iucn_2cat, fill = Order)) +
-        ggplot2::geom_bar()
+    ggplot2::geom_bar()
 ```
 
 ## Side-by-side bar chart
@@ -113,7 +113,7 @@ Create a __side-by-side bar chart__ of "iucn_2cat" counts where the fill of the 
 ```{r}
 amphibian_div_tbl |>    
     ggplot2::ggplot(aes(x = iucn_2cat, fill = Order)) +
-        ggplot2::geom_bar(position = "dodge")
+    ggplot2::geom_bar(position = "dodge")
 ```
 
 ## Relative proportion bar chart
@@ -126,5 +126,5 @@ Create a __relative proportion bar chart__ of "iucn_2cat" counts where the fill 
 ```{r}
 amphibian_div_tbl |>    
     ggplot2::ggplot(aes(x = iucn_2cat, fill = Order)) +
-        ggplot2::geom_bar(position = "fill")
+    ggplot2::geom_bar(position = "fill")
 ```

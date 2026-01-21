@@ -3,6 +3,11 @@ title: "Lterdatasampler"
 format: html
 ---
 
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+
 <center>
 ![](./images/lterdatasampler.png){style="width:150px"}
 </center>

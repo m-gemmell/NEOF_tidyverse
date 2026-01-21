@@ -65,7 +65,7 @@ Create a scatter plot of __stem_height__ (y) against __stem_width__ (x).
 ```{r}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point()
+    ggplot2::geom_point()
 ```
 
 ## Colour groups
@@ -78,7 +78,7 @@ In `aes()` set `colour=class` so each point is coloured by whether its is edible
 ```{r}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height, colour = class)) +
-        ggplot2::geom_point()
+    ggplot2::geom_point()
 ```
 
 ## Colour & shape groups
@@ -92,8 +92,9 @@ Additionally, make the point sizes larger with `size=2` in the `ggplot2::geom_po
 
 ```{r}
 mushroom_tbl |>
-    ggplot2::ggplot(aes(x = stem_width, y = stem_height, shape = class, colour = cap_shape)) +
-        ggplot2::geom_point(size = 2)
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height, 
+                    shape = class, colour = cap_shape)) +
+    ggplot2::geom_point(size = 2)
 ```
 
 ## Size by continuous variable
@@ -107,7 +108,7 @@ In `aes()` set `size=cap_diameter` so the size of the points represents the cap 
 ```{r}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height, size = cap_diameter)) +
-        ggplot2::geom_point()
+    ggplot2::geom_point()
 ```
 
 ## Other considerations

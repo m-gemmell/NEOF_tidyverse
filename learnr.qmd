@@ -1,0 +1,39 @@
+# Learnr
+
+Tutorials are avialable to run through the R package [`learnr`](https://rstudio.github.io/learnr/).
+These are interactive tutorials that give practice and exercises to supplement this site.
+
+## Install instructions
+
+You will need R and RStudio installed on your computer.
+
+Within RStudio you will need to install the [`learnr`](https://rstudio.github.io/learnr/) package and the packages our [`learnr`](https://rstudio.github.io/learnr/) tutorials require.
+Below are the R commands to install these.
+
+```{r, eval=FALSE}
+#learnr
+install.packages("learnr")
+#tidyverse
+install.packages("tidyverse")
+#lterdatasample
+install.packages("lterdatasampler")
+#Our packages are available through github rather than cran
+#To install github based packages you need to install and load 
+# the remotes package
+install.packages("remotes")
+library("remotes")
+#mgrtibbles
+remotes::install_github("m-gemmell/mgrtibbles")
+#neoftidytutorials
+#Package with the tidyverse learnr tutorials
+remotes::install_github("m-gemmell/neoftidytutorials")
+```
+
+## Libraries
+
+Prior to running any tutorials (next page) you must load the [`learnr`](https://rstudio.github.io/learnr/) and `neoftidytutorials` packages in your RStudio.
+
+```{r, eval=FALSE}
+library("learnr")
+library(neoftidytutorials)
+```

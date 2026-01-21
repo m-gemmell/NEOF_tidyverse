@@ -66,19 +66,24 @@ To create a patchwork we need a few ggplots saved as objects first.
 ```{r}
 #Bar chart
 barchart <- mushroom_tbl |> 
-    ggplot2::ggplot(aes(x = class)) + ggplot2::geom_bar()
+    ggplot2::ggplot(aes(x = class)) + 
+    ggplot2::geom_bar()
 #Histogram
 histogram <- mushroom_tbl |> 
-    ggplot2::ggplot(aes(x = cap_diameter)) + ggplot2::geom_histogram()
+    ggplot2::ggplot(aes(x = cap_diameter)) + 
+    ggplot2::geom_histogram()
 #Line graph
 line <- mushroom_tbl |> 
-    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) + ggplot2::geom_line()
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) + 
+    ggplot2::geom_line()
 #Scatter plot
 point <- mushroom_tbl |> 
-    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) + ggplot2::geom_point()
+    ggplot2::ggplot(aes(x = stem_width, y = stem_height)) + 
+    ggplot2::geom_point()
 #Box plot
 box <- mushroom_tbl |> 
-    ggplot2::ggplot(aes(x = class, y = cap_diameter)) + ggplot2::geom_boxplot()
+    ggplot2::ggplot(aes(x = class, y = cap_diameter)) + 
+    ggplot2::geom_boxplot()
 ```
 
 ## Horizontal

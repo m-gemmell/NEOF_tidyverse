@@ -2,6 +2,11 @@
 title: "Group by"
 ---
 
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+
 <center>
 ![](images/dplyr_group_by.png){style="width:200px"}
 </center>
@@ -40,7 +45,9 @@ amphibian_div_tbl |> dplyr::group_by(IUCN.Red.List.Status)
 Group using multiple columns.
 
 ```{r}
-amphibian_dv_lineage_group_tbl <- amphibian_div_tbl |> dplyr::group_by(Order, Family, Genus)
+amphibian_dv_lineage_group_tbl <- 
+    amphibian_div_tbl |> 
+    dplyr::group_by(Order, Family, Genus)
 amphibian_dv_lineage_group_tbl
 ```
 

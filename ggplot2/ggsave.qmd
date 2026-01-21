@@ -62,7 +62,7 @@ We will use this object to save to various files.
 ```{r}
 iucn_barchart <- amphibian_div_tbl |>    
     ggplot2::ggplot(aes(x = iucn_2cat)) +
-        ggplot2::geom_bar()
+    ggplot2::geom_bar()
 ```
 
 If we call the object we can display it like below.

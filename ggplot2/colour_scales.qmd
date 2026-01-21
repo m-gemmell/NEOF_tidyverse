@@ -92,10 +92,10 @@ bat_roost_tbl |>
     dplyr::filter(Country == "Northern Ireland") |>
     #Box plot
     ggplot2::ggplot(aes(y = MaxCountInAnyYear, x = County)) +
-        ggplot2::geom_boxplot() +
-        ggplot2::geom_jitter(aes(colour=Species), size=3) +
-        #Colour brewer scale
-        ggplot2::scale_colour_brewer(palette = "Set2")
+    ggplot2::geom_boxplot() +
+    ggplot2::geom_jitter(aes(colour=Species), size=3) +
+    #Colour brewer scale
+    ggplot2::scale_colour_brewer(palette = "Set2")
 ```
 
 
@@ -120,8 +120,10 @@ __Note:__ The colours are assigned as hexadecimal values. If you want more infor
 
 ```{r}
 ibm_pal <- c("#648fff","#785ef0","#dc267f","#fe6100","#ffb000")
-wong_pal <- c("#e69f00","#56b4e9","#009e73","#f0e442","#0072b2","#d55e00","#cc79a7","#000000")
-tol_pal <- c("#332288","#117733","#44aa99","#88ccee","#ddcc77","#cc6677","#aa4499","#882255")
+wong_pal <- c("#e69f00","#56b4e9","#009e73","#f0e442",
+                "#0072b2","#d55e00","#cc79a7","#000000")
+tol_pal <- c("#332288","#117733","#44aa99","#88ccee",
+                "#ddcc77","#cc6677","#aa4499","#882255")
 ```
 
 ### Colour blind friendly plot
@@ -136,10 +138,10 @@ bat_roost_tbl |>
     dplyr::filter(Country == "Northern Ireland") |>
     #Box plot
     ggplot2::ggplot(aes(y = MaxCountInAnyYear, x = County)) +
-        ggplot2::geom_boxplot() +
-        ggplot2::geom_jitter(aes(colour=Species), size=3) +
-        #Manually use wong colour palette
-        ggplot2::scale_colour_manual(values = wong_pal)
+    ggplot2::geom_boxplot() +
+    ggplot2::geom_jitter(aes(colour=Species), size=3) +
+    #Manually use wong colour palette
+    ggplot2::scale_colour_manual(values = wong_pal)
 ```
 
 ## Number of colours

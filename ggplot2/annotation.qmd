@@ -171,7 +171,8 @@ m <- coef(lm_res)[[2]]
 #R squared value
 r_squared <- summary(lm_res)$adj.r.squared
 #Equation
-lm_equation <- paste0("y = ", round(m, 3), "x + ", round(c, 3), ", R^2 = ", round(r_squared, 3))
+lm_equation <- stringr::str_c(
+    "y = ", round(m, 3), "x + ", round(c, 3), ", R^2 = ", round(r_squared, 3))
 #Print lm equation
 lm_equation
 ```

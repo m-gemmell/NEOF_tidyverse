@@ -68,7 +68,7 @@ Create a scatter plot of **stem_height** (y) against **stem_width** (x).
 ```{r}
 scatterplot <- mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point()
+    ggplot2::geom_point()
 ```
 
 Next we can pipe the ggplot object to the function `plotly::ggplotly()`.

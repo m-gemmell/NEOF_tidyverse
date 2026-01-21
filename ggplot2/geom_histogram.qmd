@@ -75,7 +75,7 @@ This is a __column__ of __continuous doubles `<dbl>`__ representing the total ho
 ```{r}
 mammal_sleep_tbl |>
     ggplot2::ggplot(aes(x = total_sleep)) +
-        ggplot2::geom_histogram()
+    ggplot2::geom_histogram()
 ```
 
 ## Bin width
@@ -88,7 +88,7 @@ Create a histogram of `total_sleep` with a bin size of 1 hour (i.e. 1).
 ```{r}
 mammal_sleep_tbl |>
     ggplot2::ggplot(aes(x = total_sleep)) +
-        ggplot2::geom_histogram(binwidth = 1)
+    ggplot2::geom_histogram(binwidth = 1)
 ```
 
 ## Amount of bins
@@ -100,7 +100,7 @@ Create a histogram of `total_sleep` with a total of 15 bins.
 ```{r}
 mammal_sleep_tbl |>
     ggplot2::ggplot(aes(x = total_sleep)) +
-        ggplot2::geom_histogram(bins = 15)
+    ggplot2::geom_histogram(bins = 15)
 ```
 
 ## Flipped histogram
@@ -112,7 +112,7 @@ Create a __flipped histogram__ of the `total_sleep` __continuous double variable
 ```{r}
 mammal_sleep_tbl |>
     ggplot2::ggplot(aes(y = total_sleep)) +
-        ggplot2::geom_histogram()
+    ggplot2::geom_histogram()
 ```
 
 ## Frequency polygon
@@ -126,5 +126,5 @@ Create a __frequency polygon__ of `total__sleep` separated by the `danger` level
 ```{r}
 mammal_sleep_tbl |>
     ggplot2::ggplot(aes(x = total_sleep, colour = danger)) +
-        ggplot2::geom_freqpoly(binwidth = 5)
+    ggplot2::geom_freqpoly(binwidth = 5)
 ```

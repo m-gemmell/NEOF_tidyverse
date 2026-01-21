@@ -72,13 +72,13 @@ __Note:__ When using limits R will inform you of the number of rows (i.e. __obse
 ```{r}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point() +
-        ggplot2::scale_x_continuous(name="Stem width", 
-                                    breaks=c(0:10), 
-                                    limits = c(0,10)) +
-        ggplot2::scale_y_continuous(name="Stem height", 
-                                    breaks=seq(from=0, to=20, by=2), 
-                                    limits = c(0,20))
+    ggplot2::geom_point() +
+    ggplot2::scale_x_continuous(name="Stem width", 
+                                breaks=c(0:10), 
+                                limits = c(0,10)) +
+    ggplot2::scale_y_continuous(name="Stem height", 
+                                breaks=seq(from=0, to=20, by=2), 
+                                limits = c(0,20))
 ```
 
 ## Scale transformation
@@ -101,29 +101,28 @@ Notice the scale difference (i.e where the points and values are placed) but the
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point() +
-        ggplot2::scale_x_continuous(name="Stem width", 
-                                    breaks=seq(from = 0, to=50, by = 5), 
-                                    limits = c(1,50)) +
-        ggplot2::scale_y_continuous(name="Stem height", 
-                                    breaks=seq(from=0, to=20, by=2), 
-                                    limits = c(1,20)) +
-        ggplot2::labs(title="Untransformed scale")   
-
+    ggplot2::geom_point() +
+    ggplot2::scale_x_continuous(name="Stem width", 
+                                breaks=seq(from = 0, to=50, by = 5), 
+                                limits = c(1,50)) +
+    ggplot2::scale_y_continuous(name="Stem height", 
+                                breaks=seq(from=0, to=20, by=2), 
+                                limits = c(1,20)) +
+    ggplot2::labs(title="Untransformed scale")   
 ```
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point() +
-        #Log10 scale
-        ggplot2::scale_x_log10(name="Stem width",
-                                breaks=seq(from = 0, to=50, by = 5), 
-                                limits = c(1,50)) + 
-        ggplot2::scale_y_log10(name="Stem height",
-                                breaks=seq(from=0, to=20, by=2), 
-                                    limits = c(1,20)) +
-        ggplot2::labs(title="Log10 transformed scale")
+    ggplot2::geom_point() +
+    #Log10 scale
+    ggplot2::scale_x_log10(name="Stem width",
+                            breaks=seq(from = 0, to=50, by = 5), 
+                            limits = c(1,50)) + 
+    ggplot2::scale_y_log10(name="Stem height",
+                            breaks=seq(from=0, to=20, by=2), 
+                                limits = c(1,20)) +
+    ggplot2::labs(title="Log10 transformed scale")
 ```
 
 `r unhide()`
@@ -141,10 +140,10 @@ Transform both the x and y axis scales to log10.
 ```{r}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point() +
-        #Log10 scale
-        ggplot2::scale_x_log10(name="Stem width") + 
-        ggplot2::scale_y_log10(name="Stem height")
+    ggplot2::geom_point() +
+    #Log10 scale
+    ggplot2::scale_x_log10(name="Stem width") + 
+    ggplot2::scale_y_log10(name="Stem height")
 ```
 
 
@@ -160,10 +159,10 @@ mushroom_tbl |>
     #Filter to remove rows with 0 values for stem width and height
     dplyr::filter(stem_width != 0 & stem_height != 0) |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point() +
-        #Log10 scale
-        ggplot2::scale_x_log10(name="Stem width") + 
-        ggplot2::scale_y_log10(name="Stem height")
+    ggplot2::geom_point() +
+    #Log10 scale
+    ggplot2::scale_x_log10(name="Stem width") + 
+    ggplot2::scale_y_log10(name="Stem height")
 ```
 
 `r unhide()`
@@ -181,9 +180,9 @@ Transform both the x and y axis scales to square root.
 ```{r}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point() +
-        #Sqrt scale
-        ggplot2::scale_x_sqrt(name="Stem width") + 
-        ggplot2::scale_y_sqrt(name="Stem height")
+    ggplot2::geom_point() +
+    #Sqrt scale
+    ggplot2::scale_x_sqrt(name="Stem width") + 
+    ggplot2::scale_y_sqrt(name="Stem height")
 ```
 

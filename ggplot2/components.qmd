@@ -79,7 +79,7 @@ Create a scatterplot of "body_wt" (x) against "brain_wt" (y).
 ```{r}
 mammal_sleep_tbl |>
     ggplot2::ggplot(aes(x=body_wt, y = brain_wt)) +
-        ggplot2::geom_point()
+    ggplot2::geom_point()
 ```
 
 ### Add labels
@@ -89,9 +89,9 @@ Next we will customise the x and y labels and add a title by adding the `ggplot2
 ```{r}
 mammal_sleep_tbl |>
     ggplot2::ggplot(aes(x=body_wt, y = brain_wt)) +
-        ggplot2::geom_point() +
-        ggplot2::labs(x = "Body weight (kg)", y = "Brain weight (kg)",
-                    title = "Body versus Brain weight of mammals")
+    ggplot2::geom_point() +
+    ggplot2::labs(x = "Body weight (kg)", y = "Brain weight (kg)",
+                title = "Body versus Brain weight of mammals")
 ```
 
 ### Add linear regression line
@@ -102,10 +102,10 @@ Ensure to add this below `ggplot2::geom_point()` component.
 ```{r}
 mammal_sleep_tbl |>
     ggplot2::ggplot(aes(x=body_wt, y = brain_wt)) +
-        ggplot2::geom_point() +
-        ggplot2::geom_smooth(method='lm') +
-        ggplot2::labs(x = "Body weight (kg)", y = "Brain weight (kg)",
-                    title = "Body versus Brain weight of mammals")
+    ggplot2::geom_point() +
+    ggplot2::geom_smooth(method='lm') +
+    ggplot2::labs(x = "Body weight (kg)", y = "Brain weight (kg)",
+                title = "Body versus Brain weight of mammals")
 ```
 
 ### Add linear regression equation
@@ -129,11 +129,11 @@ Now we can a __text__ annotation of the equation with [`ggplot2::annotate()`](/g
 ```{r}
 mammal_sleep_tbl |>
     ggplot2::ggplot(aes(x=body_wt, y = brain_wt)) +
-        ggplot2::geom_point() +
-        ggplot2::geom_smooth(method='lm') +
-        ggplot2::annotate("text", x = 1.5, y = 0.05, label = lm_equation) +
-        ggplot2::labs(x = "Body weight (kg)", y = "Brain weight (kg)",
-                        title = "Body versus Brain weight of mammals")
+    ggplot2::geom_point() +
+    ggplot2::geom_smooth(method='lm') +
+    ggplot2::annotate("text", x = 1.5, y = 0.05, label = lm_equation) +
+    ggplot2::labs(x = "Body weight (kg)", y = "Brain weight (kg)",
+                    title = "Body versus Brain weight of mammals")
 ```
 
 ## Order of components
@@ -166,12 +166,12 @@ If you want to have a boxplot (`ggplot2::geom_boxplot()`) with the points (`ggpl
 ```{r}
 mammal_sleep_tbl |>
     ggplot2::ggplot(aes(x=predation, y = brain_wt)) +
-        #First layer is below the second layer
-        ggplot2::geom_boxplot() +
-        #Second layer is above the first layer
-        #Adds horizontal (x) space between points
-        # to reduce number of points overlapping
-        ggplot2::geom_jitter()
+    #First layer is below the second layer
+    ggplot2::geom_boxplot() +
+    #Second layer is above the first layer
+    #Adds horizontal (x) space between points
+    # to reduce number of points overlapping
+    ggplot2::geom_jitter()
 ```
 
 If you add the box plot layer after the points layer the boxes will be on top.
@@ -179,8 +179,8 @@ If you add the box plot layer after the points layer the boxes will be on top.
 ```{r}
 mammal_sleep_tbl |>
     ggplot2::ggplot(aes(x=predation, y = brain_wt)) +
-        #First layer is below the second layer
-        ggplot2::geom_jitter() +
-        #Second layer is above the first layer
-        ggplot2::geom_boxplot()
+    #First layer is below the second layer
+    ggplot2::geom_jitter() +
+    #Second layer is above the first layer
+    ggplot2::geom_boxplot()
 ```

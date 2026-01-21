@@ -69,8 +69,8 @@ We'll specify the x and y labels in the `ggplot2::lab()` function with `x=`, and
 ```{r}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height)) +
-        ggplot2::geom_point() +
-        ggplot2::labs(x = "Stem width", y = "Stem height")
+    ggplot2::geom_point() +
+    ggplot2::labs(x = "Stem width", y = "Stem height")
 ```
 
 ## Legend labels
@@ -85,9 +85,9 @@ Assign label names for the x, y, shape, and colour __aesthetics__.
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height, 
                         shape = class, colour = cap_shape)) +
-        ggplot2::geom_point(size = 2) +
-        ggplot2::labs(x = "Stem width", y = "Stem height", 
-                        shape = "Class", colour = "Cap shape")
+    ggplot2::geom_point(size = 2) +
+    ggplot2::labs(x = "Stem width", y = "Stem height", 
+                    shape = "Class", colour = "Cap shape")
 ```
 
 ## Title
@@ -100,8 +100,8 @@ This time we'll include a title (`title=`) and sub title (`subtitle=`), as well 
 ```{r}
 mushroom_tbl |>
     ggplot2::ggplot(aes(x = stem_width, y = stem_height, size = cap_diameter)) +
-        ggplot2::geom_point() +
-        ggplot2::labs(x = "Stem width", y = "Stem height", size = "Cap diameter",
-                        title = "Mushroom stem height (y) against stem width (x)",
-                        subtitle = "The size of the points are based on the mushroom cap diameters")
+    ggplot2::geom_point() +
+    ggplot2::labs(x = "Stem width", y = "Stem height", size = "Cap diameter",
+                    title = "Mushroom stem height (y) against stem width (x)",
+                    subtitle = "Size of points based on mushroom cap diameters")
 ```
