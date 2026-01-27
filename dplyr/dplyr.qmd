@@ -57,7 +57,7 @@ It can be used for all functions not just those from __tidyverse__.
 
 </div>
 
-There four main verbs (i.e. functions) to manipulate rows. These are:
+The four main verbs (i.e. functions) to manipulate rows. These are:
 
 - [__`arrange()`__](/dplyr/arrange.qmd): Arrange the rows of a __tibble__. Can be used to reorder the rows based on the values of a column.
 - [__`distinct()`__](/dplyr/distinct.qmd): Extracts unique/distinct rows from a __tibble__.
@@ -95,7 +95,7 @@ There four main verbs (i.e. functions) to manipulate rows. These are:
   </a></p>
 </div>
 
-There six main verbs (i.e. functions) to manipulate columns. These are:
+The six main verbs (i.e. functions) to manipulate columns. These are:
 
 - [__`glimpse()`__](/dplyr/glimpse.qmd): Print a __tibble__ in a transposed manner. Useful for seeing the data types of all the columns.
 - [__`mutate()`__](/dplyr/mutate.qmd): Mutate columns to create new columns based on existing ones, modify existing columns, and delete columns.

@@ -1,6 +1,12 @@
 ---
 title: "Pipes"
 ---
+
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+
 <center>
 ![](images/dplyr_pipe.png){style="width:150px"}
 </center>
@@ -26,7 +32,7 @@ __Note:__ When piping, the first variable of the post pipe function is the piped
 #Load package
 library("lterdatasampler")
 #hbr_maples tibble for demonstration
-maples_tbl <- tibble::as_tibble(lterdatasampler::hbr_maples)
+maples_tbl <- lterdatasampler::hbr_maples
 maples_tbl
 ```
 
