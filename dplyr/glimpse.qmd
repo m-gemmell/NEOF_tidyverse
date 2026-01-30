@@ -2,6 +2,11 @@
 title: "Glimpse"
 ---
 
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+
 <center>
 ![](images/dplyr_glimpse.png){style="width:200px"}
 </center>
@@ -19,8 +24,7 @@ For demonstration we'll load the `and_vertebrates` data from the [lterdatasample
 #Load package
 library("lterdatasampler")
 #and_vertebrates tibble for demonstration
-and_vertebrates_tbl <- tibble::as_tibble(lterdatasampler::and_vertebrates)
-and_vertebrates_tbl
+lterdatasampler::and_vertebrates
 ```
 
 ## Glimpse
@@ -29,6 +33,6 @@ Glimpse the __tibble__.
 This allows you to preview all the columns.
 
 ```{r}
-and_vertebrates_tbl |> dplyr::glimpse()
+and_vertebrates |> dplyr::glimpse()
 ```
 

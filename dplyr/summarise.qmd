@@ -36,7 +36,7 @@ We'll remove any rows with NAs as NAs cause mean and other other calculations to
 #Load package
 library("mgrtibbles")
 #amphibian_div_tbl tibble for demonstration
-amphibian_div_tbl <- mgrtibbles::amphibian_div_tbl |> na.omit()
+amphibian_div_tbl <- mgrtibbles::amphibian_div_tbl |> tidyr::drop_na()
 #View tibble
 amphibian_div_tbl
 ```

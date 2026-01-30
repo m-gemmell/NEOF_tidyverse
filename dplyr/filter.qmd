@@ -2,6 +2,11 @@
 title: "Filter"
 ---
 
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+
 <center>
 ![](images/dplyr_filter.png){style="width:200px"}
 </center>
@@ -23,41 +28,58 @@ For demonstration we'll load the `knz_bison` data from the [lterdatasampler pack
 #Load package
 library("lterdatasampler")
 #knz_bison tibble for demonstration
-bison_tbl <- lterdatasampler::knz_bison |>
-    #Convert to tibble
-    tibble::as_tibble()
-bison_tbl
+lterdatasampler::knz_bison
 ```
 
 ## Numeric columns
 
+A numeric column can be filtered using the various mathematic operators to retain matching (`TRUE`) rows.
+
+Mathematic operators include:
+
+- `==`: Equal
+- `>`: Greater than
+- `<`: Less than
+- `>=`: Greater than or equal to
+
 Filter the __tibble__ to only contain rows/observations from the year 2000 and onwards (>2000).
 
 ```{r}
-bison_tbl |> dplyr::filter(rec_year > 2000)
+knz_bison |> dplyr::filter(rec_year > 2000)
 ```
 
-## String columns
+## String/factor columns
+
+### One string match
+
+A string or factor column can be filtered by a string with the following operators:
+
+- `==`: Equal, i.e. keep matches.
+- `!=`: Not equal, i.e. remove matches.
 
 Filter the __tibble__ to only contain male observations.
 
 ```{r}
-bison_tbl |> dplyr::filter(animal_sex == "M")
+knz_bison |> dplyr::filter(animal_sex == "M")
 ```
 
+### Multiple string matches
+
+A vector of strings matching the variable/column values to be filtered can be used.
+Instead of `==` the [match operator (`%in%`)](https://stat.ethz.ch/R-manual/R-devel/library/base/html/match.html) can be used to retain all matching values.
+
 Filter to contain observations with animal codes of B-301, A1, and W-008.
-This is carried out below with the [match operator (`%in%`)](https://stat.ethz.ch/R-manual/R-devel/library/base/html/match.html).
 
 ```{r}
 #Vector of animal codes
 animal_codes <- c("B-301", "A1", "W-008")
 #Filter to retain rows/observations with one of the specified animal codes
-bison_tbl |> dplyr::filter(animal_code %in% animal_codes)
+knz_bison |> dplyr::filter(animal_code %in% animal_codes)
 ```
 
 ## Multiple columns
 
-You can filter based on multiple columns with logical operators.
+You can filter based on multiple columns/conditions with logical operators.
 
 The 2 main R logical operators are:
 
@@ -67,13 +89,13 @@ The 2 main R logical operators are:
 Extract females that have a weight greater or equal to 1000 pounds.
 
 ```{r}
-bison_tbl |> dplyr::filter(animal_sex == "F" & animal_weight >= 1000)
+knz_bison |> dplyr::filter(animal_sex == "F" & animal_weight >= 1000)
 ```
 
 Extract males or samples with a weight less than 900 pounds.
 
 ```{r}
-bison_tbl |> dplyr::filter(animal_sex == "M" | animal_weight < 900)
+knz_bison |> dplyr::filter(animal_sex == "M" | animal_weight < 900)
 ```
 
 ## Pipes
@@ -83,14 +105,14 @@ You can use pipes for finer control of multiple comparisons.
 The below command carries out the following filtering steps in order:
 
 1. Extract females. 
-2. Extract observations with animal weight between 900 and 1100. 
+2. Extract observations with animal weight between 900 and 1000. 
 3. Extract samples from the year 2000.
 
 ```{r}
-bison_tbl |> 
+knz_bison |> 
     #Filter to retain females
     dplyr::filter(animal_sex == "F") |>
-    #Filter to retain samples with animal_weight between 900 and 1100
+    #Filter to retain samples with animal_weight between 900 and 1000
     dplyr::filter(animal_weight > 900 & animal_weight < 1000) |>
     #Retain samples from year 2000
     dplyr::filter(rec_year == 2000)

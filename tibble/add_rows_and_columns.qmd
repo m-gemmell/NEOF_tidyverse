@@ -19,12 +19,10 @@ Data can be added to a __tibble__ by various methods. this includes:
 
 ## Create example tibbles
 
-Before demonstrating various examples we will create a few __tibbles__.
+Before demonstrating various examples we will create a couple __tibbles__.
 
 ```{r}
 num_tbl <- tibble::tibble(x = 1:3, y = 4:6, z = 7:9)
-num_tbl_2 <- tibble::tibble(aa = 11:13, ab = 14:16, ac = 17:19)
-num_tbl_3 <- tibble::tibble(x = 4:6, y = 7:9, z = 10:12)
 mixed_tbl <- tibble::tibble(number = 1:3, 
                             word = c("one","two","three"), 
                             logical = c(TRUE,FALSE,TRUE))

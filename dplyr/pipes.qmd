@@ -16,6 +16,8 @@ The preferred method when using `dplyr` and other __tidyverse__ package function
 
 The __tidyverse__ pipe symbol is `|>` (historically it was `%>%`).
 
+__Keyboard shortcut:__ `ctrl + shift + m` is the keyboard shortcut for `|>`.
+
 Pipes allow you to more easily combine multiple functions together with a logical flow.
 A big advantage of pipes is that they are generally easier to read compared to nesting functions within each other.
 

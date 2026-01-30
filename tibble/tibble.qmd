@@ -15,7 +15,7 @@ library(tidyverse)
 
 A __tibble__ (`tbl`) is a reimagining of the __data.frame__ (`df`) object. They are described as __data.frames__ that are:
 
-- __Lazy__: They don't change variable names and they partial matching does not work.
+- __Lazy__: They don't change variable names and partial matching does not work.
 - __Surly__: They complain more such as when a variable does not exist.
 
 One important note is that __tibbles__ don't have row names.

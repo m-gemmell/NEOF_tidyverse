@@ -8,7 +8,7 @@ title: "Mutate"
 
 The function `dplyr::mutate()` allows you to:
 
-- Create new columns based on existing columns.
+- Create new columns based on existing columns
 - Modify existing columns
 - Delete columns
 - Modify multiple columns at once with `dplyr::across()`
