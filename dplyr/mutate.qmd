@@ -38,7 +38,7 @@ mammal_sleep_tbl |>
     dplyr::mutate(brain_body_wt_ratio = brain_wt/(body_wt*1000))
 ```
 
-Create a column for life time sleep
+Create a column for life time sleep.
 
 ```{r}
 mammal_sleep_tbl |>
@@ -60,7 +60,7 @@ mammal_sleep_tbl |>
 
 ## Delete columns
 
-Remove the species column by setting it to `NULL`
+Remove the species column by setting it to `NULL`.
 
 ```{r}
 mammal_sleep_tbl |>

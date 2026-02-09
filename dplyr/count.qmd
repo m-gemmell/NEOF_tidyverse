@@ -6,7 +6,8 @@ title: "Count"
 ![](images/dplyr_count.png){style="width:200px"}
 </center>
 
-The function `count()` counts the number of each unique value within one or more variables.
+The function `count()` counts the number of observations/rows for each unique value within one or more variables.
+I.e. you can count the number of rows each group represents.
 
 [Tidyverse reference page](https://dplyr.tidyverse.org//reference/count.html)
 

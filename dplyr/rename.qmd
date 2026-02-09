@@ -2,11 +2,9 @@
 title: "Rename"
 ---
 
-<center>
-![](images/dplyr_rename.png){style="width:200px"}
-</center>
+<center>![](images/dplyr_rename.png){style="width:200px"}</center>
 
-The function `dplyr::rename()` allows you to rename column names in a __tibble__.
+The function `dplyr::rename()` allows you to rename column names in a **tibble**.
 
 [Tidyverse reference page](https://dplyr.tidyverse.org//reference/rename.html)
 
@@ -22,7 +20,7 @@ mammal_sleep_tbl<- mgrtibbles::mammal_sleep_tbl |> dplyr::slice(1:5)
 mammal_sleep_tbl
 ```
 
-# Rename columns
+## Rename columns
 
 The format of the `rename()` function is:
 
@@ -30,14 +28,37 @@ The format of the `rename()` function is:
 dplyr(new_name=old_name)
 ```
 
-Rename column __total_sleep__ to __tot_sleep__. 
+Rename column **total_sleep** to **tot_sleep**.
 
 ```{r}
 mammal_sleep_tbl |> dplyr::rename(tot_sleep=total_sleep)
 ```
 
-Rename columns __body_wt__ and __brain_wt__ to __body_kg__ and __brain_kg__.
+Rename columns **body_wt** and **brain_wt** to **body_kg** and **brain_kg**.
 
 ```{r}
 mammal_sleep_tbl |> dplyr::rename(body_kg=body_wt, brain_kg=brain_wt)
+```
+
+## Names with spaces
+
+Column names with spaces must be flanked with quotes. The following quotes can be used:
+
+-   `` ` ``: Acute
+-   `"`: Double quote
+-   `'`: Single quote
+
+Rename columns with spaces in `mgrtibble::crab_age_pred_tbl` to replace the space with an underscore (`_`).
+
+**Note:** The use of multiple types of quotes is for demonstrative purposes and it is recommended you use one.
+
+```{r}
+mgrtibbles::crab_age_pred_tbl |> 
+    #Slice top 5 rows
+    dplyr::slice(1:5) |>
+    dplyr::rename(
+        shucked_weight=`Shucked Weight`,
+        viscera_weight= "Viscera Weight",
+        shell_weight='Shell Weight'
+    )
 ```

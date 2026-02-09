@@ -45,10 +45,10 @@ amphibian_div_tbl |> dplyr::group_by(IUCN.Red.List.Status)
 Group using multiple columns.
 
 ```{r}
-amphibian_dv_lineage_group_tbl <- 
+amphibian_div_lineage_group_tbl <- 
     amphibian_div_tbl |> 
     dplyr::group_by(Order, Family, Genus)
-amphibian_dv_lineage_group_tbl
+amphibian_div_lineage_group_tbl
 ```
 
 ## Ungroup
@@ -56,5 +56,5 @@ amphibian_dv_lineage_group_tbl
 If required you can remove the grouping from a __tibble__ with `dplyr::ungroup()`.
 
 ```{r}
-amphibian_dv_lineage_group_tbl |> dplyr::ungroup()
+amphibian_div_lineage_group_tbl |> dplyr::ungroup()
 ```

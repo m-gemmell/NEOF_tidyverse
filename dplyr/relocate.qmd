@@ -68,8 +68,16 @@ mammal_sleep_tbl |>
 
 ## Relocate all columns of a certain data type
 
-Relocate all numeric (integer and floats) columns to start of __tibble__.
-This utilises the `where()` function.
+All columns of a specific data type can be moved at once using the `where()` function.
+The `where()` function is given one of the following:
+
+- `is.numeric`: Numeric
+- `is.character`: String/character
+- `is.factor`: Factor
+- `is.logical`: Logical
+- `is.Date`: Date
+
+Relocate all numeric (integer and floats) columns to the start of the __tibble__.
 
 ```{r}
 mammal_sleep_tbl |> dplyr::relocate(where(is.numeric))

@@ -6,8 +6,8 @@ title: "Summarise"
 ![](images/dplyr_summarise.png){style="width:200px"}
 </center>
 
-The function `summarise()` allows you to get a summary of the unique values within a grouped __tibble__.
-It will produce a __tibble_ of the summarised information.
+The function `summarise()` allows you to get a summary of values based on the groups within a grouped __tibble__.
+It will produce a __tibble__ of the summarised information.
 
 Various helper functions can be used to get specific info including:
 
@@ -16,6 +16,8 @@ Various helper functions can be used to get specific info including:
 - `median()`: Calculate median of columns.
 - `sd()`: Calculate standard deviation.
 - `IQR()`: Calculate interquartile range. iqr = upper quartile - lower quartile
+- `min(): Minimum value
+- `max()`: Maximum value
 - `first()`: Extract first value.
 - `last()`: Extract last value.
 - `nth()`: Extract specified nth value.
@@ -61,6 +63,20 @@ Notice that the new column's name is specified before the `=` sign. This is the 
 amphibian_div_tbl |> 
     dplyr::group_by(IUCN.Red.List.Status) |>
     dplyr::summarise(n = n())
+```
+
+## Min and max
+
+The `min()` and `max()` functions can be used to extract the minimum and maximum values from specified columns/variables for each group.
+
+```{r}
+amphibian_div_tbl |>
+    #Group by IUCN.Red.List.Status
+    dplyr::group_by(IUCN.Red.List.Status) |>
+    #Summarise
+    dplyr::summarise(
+                    min_body_size = min(Body_size_mm), 
+                    max_body_size = max(Body_size_mm))
 ```
 
 ## Mean and median
