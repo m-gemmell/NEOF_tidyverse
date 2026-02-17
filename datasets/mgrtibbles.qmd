@@ -44,6 +44,8 @@ For example:
 
 [bat_roost_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/bat_roost_tbl)
 
+[bat_roost_wide_tbl](https://github.com/m-gemmell/mgrtibbles/wiki/bat_roost_wide_tbl)
+
 [crab_age_pred_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/crab_age_pred_tbl)
 
 [crop_and_soil_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/crop_and_soil_tbl)
@@ -55,3 +57,11 @@ For example:
 [mammal_sleep_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/mammal_sleep_tbl)
 
 [mushroom_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/mushroom_tbl)
+
+[living_planet_tbl](https://github.com/m-gemmell/mgrtibbles/wiki/living_planet_tbl)
+
+[living_planet_wide_tbl](https://github.com/m-gemmell/mgrtibbles/wiki/living_planet_wide_tbl)
+
+[world_pop_tbl](https://github.com/m-gemmell/mgrtibbles/wiki/world_pop_tbl)
+
+[world_pop_wide_tbl](https://github.com/m-gemmell/mgrtibbles/wiki/world_pop_wide_tbl)

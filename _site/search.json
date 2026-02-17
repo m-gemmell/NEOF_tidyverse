@@ -140,6 +140,18 @@
     ]
   },
   {
+    "objectID": "tidyr/pivot_longer.html#more-metadata-columns",
+    "href": "tidyr/pivot_longer.html#more-metadata-columns",
+    "title": "Pivot longer",
+    "section": "More metadata columns",
+    "text": "More metadata columns\nWhat if we have more than one metadata column such as in the world_pop_wide_tbl displayed below?\n\nworld_pop_wide_tbl\n\n# A tibble: 234 × 13\n   CCA3  `Country/Territory` Capital       Continent `2022` `2020` `2015` `2010`\n   &lt;fct&gt; &lt;fct&gt;               &lt;chr&gt;         &lt;fct&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n 1 AFG   Afghanistan         Kabul         Asia      4.11e7 3.90e7 3.38e7 2.82e7\n 2 ALB   Albania             Tirana        Europe    2.84e6 2.87e6 2.88e6 2.91e6\n 3 DZA   Algeria             Algiers       Africa    4.49e7 4.35e7 3.95e7 3.59e7\n 4 ASM   American Samoa      Pago Pago     Oceania   4.43e4 4.62e4 5.14e4 5.48e4\n 5 AND   Andorra             Andorra la V… Europe    7.98e4 7.77e4 7.17e4 7.15e4\n 6 AGO   Angola              Luanda        Africa    3.56e7 3.34e7 2.81e7 2.34e7\n 7 AIA   Anguilla            The Valley    North Am… 1.59e4 1.56e4 1.45e4 1.32e4\n 8 ATG   Antigua and Barbuda Saint John’s  North Am… 9.38e4 9.27e4 8.99e4 8.57e4\n 9 ARG   Argentina           Buenos Aires  South Am… 4.55e7 4.50e7 4.33e7 4.11e7\n10 ARM   Armenia             Yerevan       Asia      2.78e6 2.81e6 2.88e6 2.95e6\n# ℹ 224 more rows\n# ℹ 5 more variables: `2000` &lt;dbl&gt;, `1990` &lt;dbl&gt;, `1980` &lt;dbl&gt;, `1970` &lt;dbl&gt;,\n#   Area_km2 &lt;dbl&gt;\n\n\nIn this case in it easier to specify which columns we want longified. That is columns 2022 to 1970.\n\nworld_pop_wide_tbl |&gt; \n    tidyr::pivot_longer(`2022`:`1970`, names_to=\"Year\", values_to=\"Population\")\n\n# A tibble: 1,872 × 7\n   CCA3  `Country/Territory` Capital Continent Area_km2 Year  Population\n   &lt;fct&gt; &lt;fct&gt;               &lt;chr&gt;   &lt;fct&gt;        &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;\n 1 AFG   Afghanistan         Kabul   Asia        652230 2022    41128771\n 2 AFG   Afghanistan         Kabul   Asia        652230 2020    38972230\n 3 AFG   Afghanistan         Kabul   Asia        652230 2015    33753499\n 4 AFG   Afghanistan         Kabul   Asia        652230 2010    28189672\n 5 AFG   Afghanistan         Kabul   Asia        652230 2000    19542982\n 6 AFG   Afghanistan         Kabul   Asia        652230 1990    10694796\n 7 AFG   Afghanistan         Kabul   Asia        652230 1980    12486631\n 8 AFG   Afghanistan         Kabul   Asia        652230 1970    10752971\n 9 ALB   Albania             Tirana  Europe       28748 2022     2842321\n10 ALB   Albania             Tirana  Europe       28748 2020     2866849\n# ℹ 1,862 more rows\n\n\nNote: Quotes are used for 2022 and 1970 as column/variable names that are numbers need them or they will not work.",
+    "crumbs": [
+      "Tidyr",
+      "Pivot",
+      "Pivot longer"
+    ]
+  },
+  {
     "objectID": "tidyr/cheatsheets.html",
     "href": "tidyr/cheatsheets.html",
     "title": "Cheatsheets",
@@ -1548,6 +1560,30 @@
     ]
   },
   {
+    "objectID": "dplyr/rename.html#rename-columns",
+    "href": "dplyr/rename.html#rename-columns",
+    "title": "Rename",
+    "section": "Rename columns",
+    "text": "Rename columns\nThe format of the rename() function is:\n\ndplyr(new_name=old_name)\n\nRename column total_sleep to tot_sleep.\n\nmammal_sleep_tbl |&gt; dplyr::rename(tot_sleep=total_sleep)\n\n# A tibble: 5 × 11\n  species   body_wt brain_wt non_dreaming dreaming tot_sleep life_span gestation\n  &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n1 Africane… 6654      5.71           NA       NA         3.3      38.6       645\n2 Africang…    1      0.0066          6.3      2         8.3       4.5        42\n3 ArcticFox    3.38   0.0445         NA       NA        12.5      14          60\n4 Arcticgr…    0.92   0.0057         NA       NA        16.5      NA          25\n5 Asianele… 2547      4.60            2.1      1.8       3.9      69         624\n# ℹ 3 more variables: predation &lt;fct&gt;, exposure &lt;fct&gt;, danger &lt;fct&gt;\n\n\nRename columns body_wt and brain_wt to body_kg and brain_kg.\n\nmammal_sleep_tbl |&gt; dplyr::rename(body_kg=body_wt, brain_kg=brain_wt)\n\n# A tibble: 5 × 11\n  species body_kg brain_kg non_dreaming dreaming total_sleep life_span gestation\n  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n1 Africa… 6654      5.71           NA       NA           3.3      38.6       645\n2 Africa…    1      0.0066          6.3      2           8.3       4.5        42\n3 Arctic…    3.38   0.0445         NA       NA          12.5      14          60\n4 Arctic…    0.92   0.0057         NA       NA          16.5      NA          25\n5 Asiane… 2547      4.60            2.1      1.8         3.9      69         624\n# ℹ 3 more variables: predation &lt;fct&gt;, exposure &lt;fct&gt;, danger &lt;fct&gt;",
+    "crumbs": [
+      "Dplyr",
+      "Columns",
+      "Rename"
+    ]
+  },
+  {
+    "objectID": "dplyr/rename.html#names-with-spaces",
+    "href": "dplyr/rename.html#names-with-spaces",
+    "title": "Rename",
+    "section": "Names with spaces",
+    "text": "Names with spaces\nColumn names with spaces must be flanked with quotes. The following quotes can be used:\n\n`: Acute\n\": Double quote\n': Single quote\n\nRename columns with spaces in mgrtibble::crab_age_pred_tbl to replace the space with an underscore (_).\nNote: The use of multiple types of quotes is for demonstrative purposes and it is recommended you use one.\n\nmgrtibbles::crab_age_pred_tbl |&gt; \n    #Slice top 5 rows\n    dplyr::slice(1:5) |&gt;\n    dplyr::rename(\n        shucked_weight=`Shucked Weight`,\n        viscera_weight= \"Viscera Weight\",\n        shell_weight='Shell Weight'\n    )\n\n# A tibble: 5 × 9\n  Sex   Length Diameter Height Weight shucked_weight viscera_weight shell_weight\n  &lt;fct&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;        &lt;dbl&gt;\n1 F      1.44     1.18   0.412  24.6           12.3            5.58         6.75\n2 M      0.888    0.65   0.212   5.40           2.30           1.37         1.56\n3 I      1.04     0.775  0.25    7.95           3.23           1.60         2.76\n4 F      1.18     0.888  0.25   13.5            4.75           2.28         5.24\n5 I      0.888    0.662  0.212   6.90           3.46           1.49         1.70\n# ℹ 1 more variable: Age &lt;dbl&gt;",
+    "crumbs": [
+      "Dplyr",
+      "Columns",
+      "Rename"
+    ]
+  },
+  {
     "objectID": "dplyr/pull.html",
     "href": "dplyr/pull.html",
     "title": "Pull",
@@ -1945,7 +1981,7 @@
     "href": "datasets/mgrtibbles.html#tibble-details",
     "title": "Mgrtibbles",
     "section": "Tibble details",
-    "text": "Tibble details\namphibian_div_tbl details\nbat_roost_tbl details\ncrab_age_pred_tbl details\ncrop_and_soil_tbl details\nfisheries_long_tbl details\nfisheries_wide_tbl details\nmammal_sleep_tbl details\nmushroom_tbl details",
+    "text": "Tibble details\namphibian_div_tbl details\nbat_roost_tbl details\nbat_roost_wide_tbl\ncrab_age_pred_tbl details\ncrop_and_soil_tbl details\nfisheries_long_tbl details\nfisheries_wide_tbl details\nmammal_sleep_tbl details\nmushroom_tbl details\nliving_planet_tbl\nliving_planet_wide_tbl\nworld_pop_tbl\nworld_pop_wide_tbl",
     "crumbs": [
       "Datasets",
       "Mgrtibbles"
@@ -2513,6 +2549,18 @@
     "title": "Summarise",
     "section": "Count",
     "text": "Count\nThe counts of each unique value can be added with n().\nNotice that the new column’s name is specified before the = sign. This is the same as the count() function.\n\namphibian_div_tbl |&gt; \n    dplyr::group_by(IUCN.Red.List.Status) |&gt;\n    dplyr::summarise(n = n())\n\n# A tibble: 5 × 2\n  IUCN.Red.List.Status                 n\n  &lt;fct&gt;                            &lt;int&gt;\n1 Least Concern (LC)                  55\n2 Near Threatened (NT)                 5\n3 Vulnerable (VU)                      3\n4 Endangered (EN)                      1\n5 Least Concern (LC) - Provisional     1",
+    "crumbs": [
+      "Dplyr",
+      "Grouping",
+      "Summarise"
+    ]
+  },
+  {
+    "objectID": "dplyr/summarise.html#min-and-max",
+    "href": "dplyr/summarise.html#min-and-max",
+    "title": "Summarise",
+    "section": "Min and max",
+    "text": "Min and max\nThe min() and max() functions can be used to extract the minimum and maximum values from specified columns/variables for each group.\n\namphibian_div_tbl |&gt;\n    #Group by IUCN.Red.List.Status\n    dplyr::group_by(IUCN.Red.List.Status) |&gt;\n    #Summarise\n    dplyr::summarise(\n                    min_body_size = min(Body_size_mm), \n                    max_body_size = max(Body_size_mm))\n\n# A tibble: 5 × 3\n  IUCN.Red.List.Status             min_body_size max_body_size\n  &lt;fct&gt;                                    &lt;dbl&gt;         &lt;dbl&gt;\n1 Least Concern (LC)                          33          1162\n2 Near Threatened (NT)                        51           171\n3 Vulnerable (VU)                             51           178\n4 Endangered (EN)                             87            87\n5 Least Concern (LC) - Provisional            48            48",
     "crumbs": [
       "Dplyr",
       "Grouping",
@@ -4039,42 +4087,6 @@
       "Tidyr",
       "Character vectors",
       "Unite"
-    ]
-  },
-  {
-    "objectID": "dplyr/rename.html#rename-columns",
-    "href": "dplyr/rename.html#rename-columns",
-    "title": "Rename",
-    "section": "Rename columns",
-    "text": "Rename columns\nThe format of the rename() function is:\n\ndplyr(new_name=old_name)\n\nRename column total_sleep to tot_sleep.\n\nmammal_sleep_tbl |&gt; dplyr::rename(tot_sleep=total_sleep)\n\n# A tibble: 5 × 11\n  species   body_wt brain_wt non_dreaming dreaming tot_sleep life_span gestation\n  &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n1 Africane… 6654      5.71           NA       NA         3.3      38.6       645\n2 Africang…    1      0.0066          6.3      2         8.3       4.5        42\n3 ArcticFox    3.38   0.0445         NA       NA        12.5      14          60\n4 Arcticgr…    0.92   0.0057         NA       NA        16.5      NA          25\n5 Asianele… 2547      4.60            2.1      1.8       3.9      69         624\n# ℹ 3 more variables: predation &lt;fct&gt;, exposure &lt;fct&gt;, danger &lt;fct&gt;\n\n\nRename columns body_wt and brain_wt to body_kg and brain_kg.\n\nmammal_sleep_tbl |&gt; dplyr::rename(body_kg=body_wt, brain_kg=brain_wt)\n\n# A tibble: 5 × 11\n  species body_kg brain_kg non_dreaming dreaming total_sleep life_span gestation\n  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n1 Africa… 6654      5.71           NA       NA           3.3      38.6       645\n2 Africa…    1      0.0066          6.3      2           8.3       4.5        42\n3 Arctic…    3.38   0.0445         NA       NA          12.5      14          60\n4 Arctic…    0.92   0.0057         NA       NA          16.5      NA          25\n5 Asiane… 2547      4.60            2.1      1.8         3.9      69         624\n# ℹ 3 more variables: predation &lt;fct&gt;, exposure &lt;fct&gt;, danger &lt;fct&gt;",
-    "crumbs": [
-      "Dplyr",
-      "Columns",
-      "Rename"
-    ]
-  },
-  {
-    "objectID": "dplyr/rename.html#names-with-spaces",
-    "href": "dplyr/rename.html#names-with-spaces",
-    "title": "Rename",
-    "section": "Names with spaces",
-    "text": "Names with spaces\nColumn names with spaces must be flanked with quotes. The following quotes can be used:\n\n`: Acute\n\": Double quote\n': Single quote\n\nRename columns with spaces in mgrtibble::crab_age_pred_tbl to replace the space with an underscore (_).\nNote: The use of multiple types of quotes is for demonstrative purposes and it is recommended you use one.\n\nmgrtibbles::crab_age_pred_tbl |&gt; \n    #Slice top 5 rows\n    dplyr::slice(1:5) |&gt;\n    dplyr::rename(\n        shucked_weight=`Shucked Weight`,\n        viscera_weight= \"Viscera Weight\",\n        shell_weight='Shell Weight'\n    )\n\n# A tibble: 5 × 9\n  Sex   Length Diameter Height Weight shucked_weight viscera_weight shell_weight\n  &lt;fct&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;        &lt;dbl&gt;\n1 F      1.44     1.18   0.412  24.6           12.3            5.58         6.75\n2 M      0.888    0.65   0.212   5.40           2.30           1.37         1.56\n3 I      1.04     0.775  0.25    7.95           3.23           1.60         2.76\n4 F      1.18     0.888  0.25   13.5            4.75           2.28         5.24\n5 I      0.888    0.662  0.212   6.90           3.46           1.49         1.70\n# ℹ 1 more variable: Age &lt;dbl&gt;",
-    "crumbs": [
-      "Dplyr",
-      "Columns",
-      "Rename"
-    ]
-  },
-  {
-    "objectID": "dplyr/summarise.html#min-and-max",
-    "href": "dplyr/summarise.html#min-and-max",
-    "title": "Summarise",
-    "section": "Min and max",
-    "text": "Min and max\nThe min() and max() functions can be used to extract the minimum and maximum values from specified columns/variables for each group.\n\namphibian_div_tbl |&gt;\n    #Group by IUCN.Red.List.Status\n    dplyr::group_by(IUCN.Red.List.Status) |&gt;\n    #Summarise\n    dplyr::summarise(\n                    min_body_size = min(Body_size_mm), \n                    max_body_size = max(Body_size_mm))\n\n# A tibble: 5 × 3\n  IUCN.Red.List.Status             min_body_size max_body_size\n  &lt;fct&gt;                                    &lt;dbl&gt;         &lt;dbl&gt;\n1 Least Concern (LC)                          33          1162\n2 Near Threatened (NT)                        51           171\n3 Vulnerable (VU)                             51           178\n4 Endangered (EN)                             87            87\n5 Least Concern (LC) - Provisional            48            48",
-    "crumbs": [
-      "Dplyr",
-      "Grouping",
-      "Summarise"
     ]
   }
 ]

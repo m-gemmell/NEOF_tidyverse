@@ -52,3 +52,21 @@ The three options provided below are:
 fisheries_wide_tbl |> 
     tidyr::pivot_longer(!Entity, names_to="Year", values_to = "Metric_tons")
 ```
+
+## More metadata columns
+
+What if we have more than one metadata column such as in the `world_pop_wide_tbl` displayed below?
+
+```{r}
+world_pop_wide_tbl
+```
+
+In this case in it easier to specify which columns we want longified.
+That is columns 2022 to 1970.
+
+```{r}
+world_pop_wide_tbl |> 
+    tidyr::pivot_longer(`2022`:`1970`, names_to="Year", values_to="Population")
+```
+
+__Note:__ Quotes are used for `2022` and `1970` as column/variable names that are numbers need them or they will not work.
