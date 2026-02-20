@@ -38,12 +38,14 @@ The `readr::read_delim()` function reads in __delimited rectangular data__ from 
 
 Topics covered are:
 
-- [Read_delim()](/readr/read.qmd): Reading in data with `readr::read_delim()` and specifying the delimiter with `delim=`. Common delimiters are comma (`,`), tab (`\t`), and space (` `).
-- [Column types](/readr/column_types.qmd): Specifying the data types (double, integer, character, factor, logical etc.) of the columns when reading in data with `readr::read_delim()`. Particularly important when you want integer or factor columns.
-- [Misc read options](/readr/read_misc.qmd): Three miscellaneous options for `readr::read_delim()`.
-    - `id=`: Adds an ID column containing the file path.
-    - `skip=`: Skips a specified number of lines from the top of the file.
-    - `n_max=`: Specify the max number of lines/rows to read into a __tibble__.
+- [Read_delim()](/readr/read.qmd): Reading in data with `readr::read_delim()` and specifying the delimiter with `delim=`
+  - Common delimiters are comma (`,`), tab (`\t`), and space (` `)
+- [Column types](/readr/column_types.qmd): Specifying the data types (double, integer, character, factor, logical etc.) of the columns when reading in data with `readr::read_delim()`
+  - Particularly important when you want integer or factor columns
+- [Misc read options](/readr/read_misc.qmd): Three miscellaneous options for `readr::read_delim()`
+    - `id=`: Adds an ID column containing the file path
+    - `skip=`: Skips a specified number of lines from the top of the file
+    - `n_max=`: Specify the max number of lines/rows to read into a __tibble__
 
 [Tidyverse reference page](https://readr.tidyverse.org/reference/read_delim.html)
 

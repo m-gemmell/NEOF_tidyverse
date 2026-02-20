@@ -10,9 +10,9 @@ Although there are specific functions for some delimiters this page will show yo
 
 The most common types of delimiters for rectangular data files are:
 
-- Commas (`,`): Files with commas as delimiters are known as CSV files (Comma Separated Values) and commonly end with the suffix __.csv__.
-- Tabs (`\t`): Files with tabs as delimiters are known as TSV files (Tab Separated Values) and commonly end with the suffix __.tsv__.
-- Spaces (` `): Spaces are used as delimiters for many files but are generally not recommended in data science.
+- Commas (`,`): Files with commas as delimiters are known as CSV files (Comma Separated Values) and commonly end with the suffix __.csv__
+- Tabs (`\t`): Files with tabs as delimiters are known as TSV files (Tab Separated Values) and commonly end with the suffix __.tsv__
+- Spaces (` `): Spaces are used as delimiters for many files but are generally not recommended in data science
 
 Additionally, non-standard delimiters can be specified. Tilde (`~`), Colon (`:`), Semi-colon (`;`), Pipe (`|`) are commonly used as non-standard delimiters. 
 

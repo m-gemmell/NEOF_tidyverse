@@ -27,7 +27,7 @@ mammal_sleep_tbl
 
 ## One column
 
-Select one column
+Select one column.
 
 ```{r}
 mammal_sleep_tbl |> dplyr::select(dreaming)
@@ -70,7 +70,7 @@ This means you can include variables/column names that don't exist and the funct
 
 ```{r}
 #Vector of column names
-vars <- c("genus", "species", "brain_wt", "total_sleep", "total_awake", "life_span")
+vars <- c("genus", "species", "brain_wt", "total_sleep", "total_awake", "life_span", "fake_123")
 #Select columns from vector
 mammal_sleep_tbl |> dplyr::select(any_of(vars))
 ```
@@ -80,7 +80,7 @@ To unselect variables place a `-` in front of the `any_of()` function.
 
 ```{r}
 #Vector of column names
-vars <- c("genus", "species", "brain_wt", "total_sleep", "total_awake", "life_span")
+vars <- c("genus", "species", "brain_wt", "total_sleep", "total_awake", "life_span", "fake_123")
 #Unselect columns from vector
 mammal_sleep_tbl |> dplyr::select(-any_of(vars))
 ```
@@ -101,7 +101,7 @@ Select columns 3:5.
 mammal_sleep_tbl |> dplyr::select(3:5)
 ```
 
-Select columns 4, 7,and 2.
+Select columns 4, 7, and 2.
 
 ```{r}
 mammal_sleep_tbl |> dplyr::select(c(4,7,2))
@@ -177,7 +177,7 @@ mammal_sleep_tbl |> dplyr::select(matches("s[lp]"))
 
 You can combine many of the methods above with `c()`.
 
-Select the species column and the last three columns.
+Select the `species` column and the last three columns.
 
 ```{r}
 mammal_sleep_tbl |> dplyr::select(
@@ -185,7 +185,7 @@ mammal_sleep_tbl |> dplyr::select(
 )
 ```
 
-Select the species column, the columns containing dreaming, and the 6th to 7th columns.
+Select the `species` column, the columns containing dreaming, and the 6th to 7th columns.
 
 ```{r}
 mammal_sleep_tbl |> dplyr::select(

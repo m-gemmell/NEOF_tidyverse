@@ -11,16 +11,16 @@ library(tidyverse)
 ![](images/dplyr_slice.png){style="width:200px"}
 </center>
 
-The `dplyr:slice()` function can be used to subset row.
+The `dplyr:slice()` function can be used to subset rows.
 
-Their are multiple slice commands:
+There are multiple slice functions:
 
-- `slice()`: Index rows by numeric index location.
-- `slice_head()`: Select rows from the top of the __tibble__.
-- `slice_tail()`: Select rows from the bottom of the __tibble__.
-- `slice_sample()`: Randomly select rows.
-- `slice_min()`: Select rows with smallest values of variable.
-- `slice_max()`: Select rows with largest values of a variable.
+- `slice()`: Index rows by numeric index location
+- `slice_head()`: Select rows from the top of the __tibble__
+- `slice_tail()`: Select rows from the bottom of the __tibble__
+- `slice_sample()`: Randomly select rows
+- `slice_min()`: Select rows with smallest values of a variable
+- `slice_max()`: Select rows with largest values of a variable
 
 [Tidyverse reference page](https://dplyr.tidyverse.org//reference/slice.html)
 
@@ -62,13 +62,13 @@ knz_bison |> dplyr::slice_tail(n=4)
 
 ## Max and min
 
-Extract the 3 observations with the highest animal_weight.
+Extract the 3 observations with the highest `animal_weight` values.
 
 ```{r}
 knz_bison |> dplyr::slice_max(animal_weight, n=3)
 ```
 
-Extract the 9 observations with the lowest animal_weight.
+Extract the 9 observations with the lowest `animal_weight` values.
 
 ```{r}
 knz_bison |> dplyr::slice_min(animal_weight, n=9)

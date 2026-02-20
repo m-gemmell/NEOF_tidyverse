@@ -12,7 +12,7 @@ The `dplyr::distinct()` function extracts unique/distinct rows from a __tibble__
 
 ## Dataset
 
-For demonstration we’ll load and subset the knz_bison data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (hyperlink includes install instructions). This time we will ensure to duplicate rows.
+For demonstration we’ll load and subset the `knz_bison` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (hyperlink includes install instructions). This time we will duplicate rows.
 
 ```{r}
 #Load package

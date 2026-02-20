@@ -16,7 +16,7 @@ There are multiple parts of a __ggplot2__ figure including:
 - The __ggplot2__ object that contains the aesthetics
 - The __aesthetics__: This is the data and what they are mapped to (x axis, y-axis, colour etc.)
 - The __geom layers__: This is how the aesthetics are visualised (bar chart, boxplot, histogram etc.)
-- The __guides__: The text and other information on the axes abd legends (labels, titles, etc.)
+- The __guides__: The text and other information on the axes and legends (labels, titles, etc.)
 - __Facetting__: Splitting of data to multiple plots (e.g. side by side box plots displaying different metrics)
 
 

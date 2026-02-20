@@ -11,12 +11,12 @@ library(tidyverse)
 ![](images/dplyr_filter.png){style="width:200px"}
 </center>
 
-The `dplyr::filter()` function can be used to extract rows that meet a certain condition.
+The `dplyr::filter()` function can be used to extract rows that meet specified conditions.
 
 This can be a useful method to:
 
-- Filter rows by numerics in a row, e.g. extract rows from years >= 2000.
-- Extract rows belonging to certain groups of metadata.
+- Filter rows by numerics in a row, e.g. extract rows from years >= 2000
+- Extract rows belonging to certain groups of metadata
 
 [Tidyverse reference page](https://dplyr.tidyverse.org//reference/filter.html)
 
@@ -42,7 +42,7 @@ Mathematic operators include:
 - `<`: Less than
 - `>=`: Greater than or equal to
 
-Filter the __tibble__ to only contain rows/observations from the year 2000 and onwards (>2000).
+Filter the __tibble__ to only contain rows/observations from the `rec_year` 2000 and onwards (>2000).
 
 ```{r}
 knz_bison |> dplyr::filter(rec_year > 2000)
@@ -54,8 +54,8 @@ knz_bison |> dplyr::filter(rec_year > 2000)
 
 A string or factor column can be filtered by a string with the following operators:
 
-- `==`: Equal, i.e. keep matches.
-- `!=`: Not equal, i.e. remove matches.
+- `==`: Equal, i.e. keep matches
+- `!=`: Not equal, i.e. remove matches
 
 Filter the __tibble__ to only contain male observations.
 
@@ -68,7 +68,7 @@ knz_bison |> dplyr::filter(animal_sex == "M")
 A vector of strings matching the variable/column values to be filtered can be used.
 Instead of `==` the [match operator (`%in%`)](https://stat.ethz.ch/R-manual/R-devel/library/base/html/match.html) can be used to retain all matching values.
 
-Filter to contain observations with animal codes of B-301, A1, and W-008.
+Filter to contain observations where `animal_code` is B-301, A1, or W-008.
 
 ```{r}
 #Vector of animal codes
@@ -104,9 +104,9 @@ You can use pipes for finer control of multiple comparisons.
 
 The below command carries out the following filtering steps in order:
 
-1. Extract females. 
-2. Extract observations with animal weight between 900 and 1000. 
-3. Extract samples from the year 2000.
+1. Extract females
+2. Extract observations with `animal_weight` between 900 and 1000
+3. Extract samples from the `rec_year` 2000
 
 ```{r}
 knz_bison |> 
@@ -120,4 +120,4 @@ knz_bison |>
 
 ## NA removal
 
-For removal of NAs please see the [tidyr drop NA page](/tidyr/drop_na.qmd).
+For removal of NAs please see the [`tidyr` `drop_na()` page](/tidyr/drop_na.qmd).

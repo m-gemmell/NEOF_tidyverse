@@ -28,13 +28,13 @@ The format of the `rename()` function is:
 dplyr(new_name=old_name)
 ```
 
-Rename column **total_sleep** to **tot_sleep**.
+Rename column `total_sleep` to `tot_sleep`.
 
 ```{r}
 mammal_sleep_tbl |> dplyr::rename(tot_sleep=total_sleep)
 ```
 
-Rename columns **body_wt** and **brain_wt** to **body_kg** and **brain_kg**.
+Rename columns `body_wt` and `brain_wt` to `body_kg` and `brain_kg`.
 
 ```{r}
 mammal_sleep_tbl |> dplyr::rename(body_kg=body_wt, brain_kg=brain_wt)
@@ -42,15 +42,15 @@ mammal_sleep_tbl |> dplyr::rename(body_kg=body_wt, brain_kg=brain_wt)
 
 ## Names with spaces
 
-Column names with spaces must be flanked with quotes. The following quotes can be used:
+Column names with spaces, numbers, or special characters must be flanked with quotes. The following quotes can be used:
 
--   `` ` ``: Acute
+-   `` ` ``: Backtick (recommended)
 -   `"`: Double quote
 -   `'`: Single quote
 
 Rename columns with spaces in `mgrtibble::crab_age_pred_tbl` to replace the space with an underscore (`_`).
 
-**Note:** The use of multiple types of quotes is for demonstrative purposes and it is recommended you use one.
+**Note:** The use of multiple types of quotes is for demonstrative purposes and it is recommended you use backticks (`` ` ``).
 
 ```{r}
 mgrtibbles::crab_age_pred_tbl |> 

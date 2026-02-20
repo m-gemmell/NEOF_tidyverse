@@ -11,16 +11,17 @@ It will produce a __tibble__ of the summarised information.
 
 Various helper functions can be used to get specific info including:
 
-- `n()`: Count number of instances of group.
-- `mean()`: Calculate means of a columns.
-- `median()`: Calculate median of columns.
-- `sd()`: Calculate standard deviation.
-- `IQR()`: Calculate interquartile range. iqr = upper quartile - lower quartile
+- `n()`: Count number of instances of group
+- `mean()`: Calculate means of a columns
+- `median()`: Calculate median of columns
+- `sd()`: Calculate standard deviation
+- `IQR()`: Calculate interquartile range
+    - iqr = upper quartile - lower quartile
 - `min(): Minimum value
 - `max()`: Maximum value
-- `first()`: Extract first value.
-- `last()`: Extract last value.
-- `nth()`: Extract specified nth value.
+- `first()`: Extract first value
+- `last()`: Extract last value
+- `nth()`: Extract specified nth value
 
 [Tidyverse reference page](https://dplyr.tidyverse.org//reference/summarise.html)
 
@@ -32,7 +33,7 @@ library("tidyverse")
 
 For demonstration we'll load the `amphibian_div_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions). 
 
-We'll remove any rows with NAs as NAs cause mean and other other calculations to return NA.
+We'll remove any rows with `NA`s as `NA`s cause mean and other other calculations to return `NA`.
 
 ```{r}
 #Load package
@@ -56,8 +57,9 @@ amphibian_div_tbl |>
 ## Count
 
 The counts of each unique value can be added with `n()`. 
+This is the same as the [`count()`](/dplyr/count.qmd) function.
 
-Notice that the new column's name is specified before the `=` sign. This is the same as the [`count()`](/dplyr/count.qmd) function.
+Notice that the new column's name is specified before the `=` sign. 
 
 ```{r}
 amphibian_div_tbl |> 
@@ -90,7 +92,7 @@ amphibian_div_tbl |>
     #Summarise
     dplyr::summarise(n = n(), 
                     mean_body_size = mean(Body_size_mm), 
-                    mean_max_litter_size = mean(Litter_size_max_n))
+                    mean_max_litter_size = mean(Litter_size_max_n)                    )
 ```
 
 The `median()` function calculates medians.
@@ -109,7 +111,7 @@ amphibian_div_tbl |>
 
 The `sd()` and `IQR()` function calculate standard deviation and inter quartile range (upper quartile - lower quartile).
 
-Note NAs are provided for standard deviation and 0 for IQR if there is only one value in the group.
+__Note:__ `NA`s are provided for standard deviation and 0 for IQR if there is only one value in the group.
 
 ```{r}
 amphibian_div_tbl |>
@@ -124,9 +126,9 @@ amphibian_div_tbl |>
 
 ## First, last and nth values
 
-The first, last, and nth value can be extracted with the function `first()`, `last()`, and `nth()`.
+The first, last, and nth values can be extracted with the functions: `first()`, `last()`, and `nth()`.
 
-Note NAs are provided for `nth()` as there is only one value. `first()` and `last()` work as the single value is the first and last value.
+__Note:__ `NA`s are provided for as some of the `nth()` values as there is only one value in those groups. `first()` and `last()` work as the single value is the first and last value.
 
 ```{r}
 amphibian_div_tbl |>

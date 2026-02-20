@@ -2,17 +2,23 @@
 title: "Dplyr"
 ---
 
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+library(mgrtibbles)
+```
+
 <center>
 ![](../images/dplyr.png){style="width:150px"}
 </center>
 
 ## Overview
 
-__Dplyr__ is the main data manipulation package for __tibbles__ in __tidyverse__.
+`Dplyr` is the main data manipulation package for __tibbles__ in `tidyverse`.
 
-__Dplyr__ is described as a "grammar of data manipulation" using verbs as the name of its various functions.
+`Dplyr` is described as a "grammar of data manipulation" using verbs as the name of its various functions.
 
-[dplyr homepage](https://dplyr.tidyverse.org//)
+[`dplyr` homepage](https://dplyr.tidyverse.org//)
 
 This website aims to quickly cover the most commonly used `dplyr` functions and uses.
 There are a lot more `dplyr` functions than those covered here.
@@ -32,9 +38,9 @@ There are many sections for `dplyr`. These are summarised below.
   </a></p>
 </div>
 
-[Pipes](/dplyr/pipes.qmd) (`|>`) are a vital part of creating efficient and clear code with __tidyverse__. 
+[Pipes](/dplyr/pipes.qmd) (`|>`) are a vital part of creating efficient and clear code with `tidyverse`. 
 Pipes allow you to chain/pipe functions together.
-It can be used for all functions not just those from __tidyverse__.
+It can be used for all functions not just those from `tidyverse`.
 
 ### Rows
 
@@ -59,10 +65,13 @@ It can be used for all functions not just those from __tidyverse__.
 
 The four main verbs (i.e. functions) to manipulate rows are:
 
-- [__`arrange()`__](/dplyr/arrange.qmd): Arrange the rows of a __tibble__. Can be used to reorder the rows based on the values of a column.
-- [__`distinct()`__](/dplyr/distinct.qmd): Extracts unique/distinct rows from a __tibble__.
-- [__`filter()`__](/dplyr/filter.qmd): Extract rows by filtering with conditions. This can be used to pick rows of certain groups, filter based on numeric sizes, and more.
-- [__`slice()`__](/dplyr/slice.qmd): A set of methods to choose a slice of rows based on index positions, top and bottom observations, and min and max values based on a specific column. This is especially useful for piping (`|>`).
+- [__`arrange()`__](/dplyr/arrange.qmd): Arrange the rows of a __tibble__
+  - Can be used to reorder the rows based on the values of a column
+- [__`distinct()`__](/dplyr/distinct.qmd): Extracts unique/distinct rows from a __tibble__
+- [__`filter()`__](/dplyr/filter.qmd): Extract rows by filtering with conditions
+  - Can be used to pick rows of certain groups, filter based on numeric sizes, and more
+- [__`slice()`__](/dplyr/slice.qmd): A set of methods to choose a slice of rows based on index positions, top and bottom observations, and min and max values based on a specific column
+  - Especially useful for piping (`|>`)
 
 ### Columns
 
@@ -97,17 +106,24 @@ The four main verbs (i.e. functions) to manipulate rows are:
 
 The six main verbs (i.e. functions) to manipulate columns are:
 
-- [__`glimpse()`__](/dplyr/glimpse.qmd): Print a __tibble__ in a transposed manner. Useful for seeing the data types of all the columns.
-- [__`mutate()`__](/dplyr/mutate.qmd): Mutate columns to create new columns based on existing ones, modify existing columns, and delete columns.
-- [__`pull()`__](/dplyr/pull.qmd): Pull out a single column from a __tibble__, resulting in a __vector__.
-- [__`relocate()`__](/dplyr/relocate.qmd): Relocate columns. You can relocate columns to the start or end, and you can move them after or before specified columns.
-- [__`rename()`__](/dplyr/rename.qmd): Rename columns in a __tibble__.
-- [__`select()`__](/dplyr/select.qmd): Select specific columns of a __tibble__. Can be used with a variety of helper functions such as `starts_with()`, `ends_with()`, `contains()`, and `matches()`.
+- [__`glimpse()`__](/dplyr/glimpse.qmd): Print a __tibble__ in a transposed manner
+  - Useful for viewing the data types of all the columns
+- [__`mutate()`__](/dplyr/mutate.qmd): Mutate columns including:
+  - Creating new columns based on existing ones
+  - Modifying existing columns
+  - Deleting columns
+- [__`pull()`__](/dplyr/pull.qmd): Pull out a single column from a __tibble__ as a __vector__
+- [__`relocate()`__](/dplyr/relocate.qmd): Relocate columns including:
+  - Relocating columns to the start or end
+  - Relocating columns after or before specified columns
+- [__`rename()`__](/dplyr/rename.qmd): Rename columns in a __tibble__
+- [__`select()`__](/dplyr/select.qmd): Select specific columns of a __tibble__
+  - Can be used with a variety of helper functions such as `starts_with()`, `ends_with()`, `contains()`, and `matches()`.
 
-If you would like to carry out one of the column functions with multiple columns you can look at the official documentation for the following functions: 
+If you would like to use one of the column functions with multiple columns you can look at the official documentation for the following functions: 
 
-- [__`across()`__](https://dplyr.tidyverse.org/reference/across.html): Operate on multiple columns simultaneously.
-- [__`pick()`__](https://dplyr.tidyverse.org/reference/pick.html): Select a subset of columns.
+- [__`across()`__](https://dplyr.tidyverse.org/reference/across.html): Operate on multiple columns simultaneously
+- [__`pick()`__](https://dplyr.tidyverse.org/reference/pick.html): Select a subset of columns
 
 ### Grouping
 
@@ -128,10 +144,10 @@ If you would like to carry out one of the column functions with multiple columns
 
 __Tibbles__ can be grouped by a specific variable/column or multiple variables/columns. This allows for group wise calculations.
 
-- [__`group_by()`__](/dplyr/group_by.qmd): Converts a __tibble__ to a grouped __tibble__.
-- [__`count()`__](/dplyr/count.qmd): Counts the number of instances of each unique value for the grouping in a __tibble__.
-- [__`summarise()`__](/dplyr/summarise.qmd): Produces a __tibble__ with summary information on the group members in a grouped __tibble__. 
-    - Various functions can be used to calculate summary information including `n()`, `mean()`, `median()`, `sd()`, `IQR()`, `first()`, `last()`, and `nth()`.
+- [__`group_by()`__](/dplyr/group_by.qmd): Converts a __tibble__ to a grouped __tibble__
+- [__`count()`__](/dplyr/count.qmd): Counts the number of instances of each unique value for the grouping in a __tibble__
+- [__`summarise()`__](/dplyr/summarise.qmd): Produces a __tibble__ with summary information on the group members in a grouped __tibble__.
+    - Various functions can be used to calculate summary information including: `n()`, `mean()`, `median()`, `sd()`, `IQR()`, `first()`, `last()`, and `nth()`
 
 ### Bind tibbles
 
@@ -148,5 +164,7 @@ __Tibbles__ can be grouped by a specific variable/column or multiple variables/c
 
 __Tibbles__ can be combined/bound together with the following functions:
 
-- [__`bind_cols()`__](/dplyr/bind_tibbles.qmd): Bind 2 __tibbles__ by columns (i.e. bind the __tibbles__ side by side). The two __tibbles__ must have the same number of rows.
-- [__`bind_row()`__](/dplyr/bind_tibbles.qmd): Bind 2 __tibbles__ by rows (i.e. bind one __tibble__ on top of the other ). The two __tibbles__ must have the same column types and names.
+- [__`bind_cols()`__](/dplyr/bind_tibbles.qmd): Bind 2 __tibbles__ by columns (i.e. bind the __tibbles__ side by side)
+  - The two __tibbles__ must have the same number of rows
+- [__`bind_row()`__](/dplyr/bind_tibbles.qmd): Bind 2 __tibbles__ by rows (i.e. bind one __tibble__ on top of the other)
+  - The two __tibbles__ must have the same column types and names

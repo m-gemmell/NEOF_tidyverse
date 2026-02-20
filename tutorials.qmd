@@ -5,9 +5,9 @@ Below shows you the order and how to run each tutorial.
 
 Important notes about these tutorials:
 
-- Progress is saved: If you close the tutorial and reopen it on the same computer & RStudio it will continue from where you left off.
-- Run in browser: You can click on the "Open in Browser" button at the top of the RStudio window with the tutorial to open the tutorial in a web browser.
-- Split screen: The intended way to run through the tutorials is with the tutorial on one half of your screen and this website at the relvant page on the other half.
+- Progress is saved: If you close the tutorial and reopen it on the same computer & RStudio it will continue from where you left off
+- Run in browser: You can click on the "Open in Browser" button at the top of the RStudio window with the tutorial to open the tutorial in a web browser
+- Split screen: The intended way to run through the tutorials is with the tutorial on one half of your screen and this website at the relevant page on the other half
 
 ## Tibble
 
@@ -15,10 +15,30 @@ The first tutorial is on __Tibbles__.
 
 To run the tutorial run the below [`learnr`](https://rstudio.github.io/learnr/) command.
 
-__Note:__ Ensure you have followed the [install directions before this](learnr.qmd).
+__Note:__ Ensure you have followed the [install directions before this](learnr.qmd) and you have loaded the library (`library("neoftidytutorials")`).
 
 ```{r, eval=FALSE}
 learnr::run_tutorial("tibbles", package = "neoftidytutorials")
 ```
 
 Whilst running through the tutorial refer to the [Tibble section of this website](/tibble/tibble.qmd).
+
+## Dplyr
+
+The second tutorial is on the __`dplyr`__ package.
+
+```{r, eval=FALSE}
+learnr::run_tutorial("dplyr", package = "neoftidytutorials")
+```
+
+Whilst running through the tutorial refer to the [`dplyr` section of this website](/dplyr/dplyr.qmd).
+
+## Tidyr
+
+The third tutorial is on the __`tidyr`__ package.
+
+```{r, eval=FALSE}
+learnr::run_tutorial("tidyr", package = "neoftidytutorials")
+```
+
+Whilst running through the tutorial refer to the [`tidyr` section of this website](/tidyr/tidyr.qmd).

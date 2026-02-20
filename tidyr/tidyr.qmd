@@ -8,17 +8,17 @@ title: "Tidyr"
 
 The purpose of `tidyr` is to create __tidy data__. Tidy data has three main features:
 
-- Each variable is a column; each column is a variable.
-- Each observation is a row; each row is an observation.
-- Each value is a cell; each cell is a single value.
+- Each variable is a column; each column is a variable
+- Each observation is a row; each row is an observation
+- Each value is a cell; each cell is a single value
 
-The aim of tidy data is to work within the tidyverse so less time is needed to manipulate data and fight with tools.
+The aim of tidy data is to work within the `tidyverse` so less time is needed to manipulate data and fight with tools.
 This allows you to spend your time and effort analysing the data.
 
 [tidyr homepage](https://tidyr.tidyverse.org/)
 
 This website aims to quickly cover the most commonly used `tidyr` functions and uses.
-Therefore there are a lot more `tidyr` functions than those covered here.
+There are a lot more `tidyr` functions than those covered here.
 Please check the below link for the full list.
 
 [Full tidyr reference page](https://tidyr.tidyverse.org//reference/index.html)
@@ -44,8 +44,9 @@ Certain analyses and tools require data to be in a specific structure.
 Two rectangular/table data structures are __wide__ and __long__.
 The two pivot functions transform data between these two types.
 
-- [__`pivot_longer()`__](/tidyr/pivot_longer.qmd): Lengthens data, transforming it from wide to long. Many __Tidyverse__ packages are built with long data in mind, especially [`ggplot2`](/ggplot2/ggplot2.qmd).
-- [__`pivot_wider()`__](/tidyr/pivot_wider.qmd): Widens data, transforming it from long to wide.
+- [__`pivot_longer()`__](/tidyr/pivot_longer.qmd): Longifies data, transforming it from wide to long
+  - Many `Tidyverse` packages are built with long data in mind, especially [`ggplot2`](/ggplot2/ggplot2.qmd)
+- [__`pivot_wider()`__](/tidyr/pivot_wider.qmd): Widens data, transforming it from long to wide
 
 ### Character vectors
 
@@ -62,8 +63,8 @@ The two pivot functions transform data between these two types.
 A column may contain multiple pieces of character/string data or you may want to create a column by uniting multiple character/string columns.
 The below functions can be used for these purposes.
 
-- [__`separate_wider_delim()`__](/tidyr/separate_wider.qmd): Splits a string column into multiple columns by a delimiter. 
-- [__`unite()`__](/tidyr/unite.qmd): Combines/unites multiple string columns into one column. 
+- [__`separate_wider_delim()`__](/tidyr/separate_wider.qmd): Splits a string column into multiple columns by a delimiter
+- [__`unite()`__](/tidyr/unite.qmd): Combines/unites multiple string columns into one column
 
 ### Missing values
 
@@ -80,5 +81,5 @@ The below functions can be used for these purposes.
 It is common to encounter NAs in tabular data.
 Dropping columns with NAs or replacing NA values are common approaches to deal with them.
 
-- [__`drop_na()`__](/tidyr/drop_na.qmd): Remove rows with NAs.
-- [__`replace_na()`__](/tidyr/replace_na.qmd): Replace NA values.
+- [__`drop_na()`__](/tidyr/drop_na.qmd): Remove rows with NAs
+- [__`replace_na()`__](/tidyr/replace_na.qmd): Replace NA values

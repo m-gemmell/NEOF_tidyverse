@@ -1,6 +1,6 @@
 # Learnr
 
-Tutorials are avialable to run through the R package [`learnr`](https://rstudio.github.io/learnr/).
+Tutorials are available to run through with the R package [`learnr`](https://rstudio.github.io/learnr/).
 These are interactive tutorials that give practice and exercises to supplement this site.
 
 ## Install instructions
@@ -35,5 +35,5 @@ Prior to running any tutorials (next page) you must load the [`learnr`](https://
 
 ```{r, eval=FALSE}
 library("learnr")
-library(neoftidytutorials)
+library("neoftidytutorials")
 ```

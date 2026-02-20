@@ -4,8 +4,8 @@ title: "Bind tibbles"
 
 __Tibbles__ can be bound together to create a new __tibble__ with:
 
-- `dplyr::bind_cols()`: Bind __tibbles__ side by side.
-- `dplyr::bind_rows()`: Bind __tibbles__ on top of each other.
+- `dplyr::bind_cols()`: Bind __tibbles__ side by side
+- `dplyr::bind_rows()`: Bind __tibbles__ on top of each other
 
 [Tidyverse reference page](https://dplyr.tidyverse.org//reference/add_rows_and_columns.html)
 
@@ -30,7 +30,7 @@ In other words you will end up with more columns and the same amount of rows.
 
 We will bind the two following __tibbles__ by columns.
 
-__Note__ that the two __tibbles__ must have the same amount of rows.
+__Note:__ The two __tibbles__ must have the same amount of rows.
 Additionally, they should have completely unique column names compared to each other.
 
 ```{r}
@@ -41,7 +41,7 @@ num_tbl
 num_tbl_2
 ```
 
-Column bind
+Column bind.
 
 ```{r}
 num_tbl_col_bound <- dplyr::bind_cols(num_tbl, num_tbl_2)
@@ -59,7 +59,7 @@ In other words you will end up with more rows and the same amount of columns.
 
 We will bind the two following __tibbles__ by rows.
 
-__Note__ that the two __tibbles__ must have the same amount of columns.
+__Note:__ The two __tibbles__ must have the same amount of columns.
 Additionally, they should have the same column names.
 
 ```{r}
@@ -70,7 +70,7 @@ num_tbl
 num_tbl_3
 ```
 
-Row bind
+Row bind.
 
 ```{r}
 num_tbl_row_bound <- dplyr::bind_rows(num_tbl, num_tbl_3)

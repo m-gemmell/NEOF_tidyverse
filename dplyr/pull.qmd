@@ -29,19 +29,19 @@ mgrtibbles::mammal_sleep_tbl
 
 ## A single column to a vector
 
-Pull the column "species" to a vector.
+Pull the column `species` to a vector.
 
 ```{r}
 mammal_sleep_tbl |> dplyr::pull(species)
 ```
 
-Pull the column "total_sleep" to a vector and calculate the mean value.
+Pull the column `total_sleep` to a vector and calculate the mean value.
 
 __Note:__ Requires [`tidyr::drop_na()`](/tidyr/drop_na.qmd) as if any NAs are passed to `mean()` the result will be NA.
 
 ```{r}
 mammal_sleep_tbl |> 
-    tidyr::drop_na() |> 
+    tidyr::drop_na(total_sleep) |> 
     dplyr::pull(total_sleep) |> 
     mean()
 ```

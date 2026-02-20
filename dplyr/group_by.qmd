@@ -11,7 +11,7 @@ library(tidyverse)
 ![](images/dplyr_group_by.png){style="width:200px"}
 </center>
 
-The function `group_by()` converts a __tibble__ into a grouped __tbl__.
+The function `group_by()` converts a __tibble__ into a grouped __tibble__.
 The grouping is based on one or more specified columns/variables.
 
 This allows you to carry out various functions in a groupwise manner.

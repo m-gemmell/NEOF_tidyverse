@@ -10,18 +10,21 @@ On top of choosing the delimiter (`delim=`) and the column types (`col_types=`) 
 
 The three covered here are:
 
-- `id=`: Adds an ID column containing the file path. Useful when reading in multiple files and combining the data into one __tibble__.
-- `skip=`: Skips a specified number of lines from the top of the file. Useful if the top of the file contains information (e.g. annotation) on the data that you don't want included in the __tibble__.
-- `n_max=`: Specify the max number of lines/rows to read into the __tibble__. Useful for only getting a small amount of the data for creating/testing/debugging code.
+- `id=`: Adds an ID column containing the file path
+    - Useful when reading in multiple files and combining the data into one __tibble__
+- `skip=`: Skips a specified number of lines from the top of the file
+    - Useful if the top of the file contains information (e.g. annotation) on the data that you don't want included in the __tibble__
+- `n_max=`: Specify the max number of lines/rows to read into the __tibble__
+    - Useful for only getting a small amount of the data for creating/testing/debugging code
 
 ## File path column
 
 The `id=` option can be used to add an ID column with the file path of the data. The important features of this are:
 
-- The column's name is specified as a string e.g. `id = "file_path"`.
-- The file path column is added as the first column to the resulting __tibble__.
-- The string specified as `file=` is used as the values in the created column.
-- The values of the resulting column are identical.
+- The column's name is specified as a string e.g. `id = "file_path"`
+- The file path column is added as the first column to the resulting __tibble__
+- The string specified as `file=` is used as the values in the created column
+- The values of the resulting column are identical
 
 ### ID as file path
 

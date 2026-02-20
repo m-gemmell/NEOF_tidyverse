@@ -49,8 +49,8 @@ title: "NEOF Tidyverse"
 library(tidyverse)
 ```
 
-This is a resource for the R Tidyverse suite of packages.
-It is intended as a quick one-stop reference for the various tidyverse packages and their functions, also known as a cookbook.
+This is a resource for the R `Tidyverse` suite of packages.
+It is intended as a quick one-stop reference/cookbook for the various `tidyverse` packages and their functions.
 
 This website does not go into great details rather it provides:
 
@@ -58,7 +58,7 @@ This website does not go into great details rather it provides:
 - Quick examples
 - Links to the official documentation
 
-This webpage is split into sections for each of the main packages in tidyverse.
+This website is split into sections for each of the main packages in tidyverse.
 These are:
 
 - [tibble](/tibble/tibble.qmd): A new and improved data frame-like object
@@ -71,6 +71,9 @@ These are:
 - [purrr](/purrr/purrr.qmd): Functions & vectors (in development)
 - [lubridate](/lubridate/lubridate.qmd): Data-time data (in development)
 
+__Tip:__ Hexagonal images, such as the 9 at the top of this page, can be clicked on to bring you to the package/function webpage.
+You can also right click and open link in new tab, or click with your middle mouse button to open the page in a new tab.
+
 __Note:__ The sections marked with "in development" are currently empty.
 
 ## Reading order
@@ -78,9 +81,11 @@ __Note:__ The sections marked with "in development" are currently empty.
 If you are starting out with Tidyverse I recommend reading through the website in the above order. 
 The above sections can be grouped into the following chapters:
 
-- Fundamental Tidyverse: [tibble](/tibble/tibble.qmd), [dplyr](/dplyr/dplyr.qmd), and [readr](/readr/readr.qmd).
-- Plot generation: [tidyr](/tidyr/tidyr.qmd) & [ggplot2](/ggplot2/ggplot2.qmd).
-- Miscellaneous: [stringr](/stringr/stringr.qmd), [forcats](/forcats/forcats.qmd), [purrr](/purrr/purrr.qmd), and [lubridate](/lubridate/lubridate.qmd).
+- Fundamental Tidyverse: [tibble](/tibble/tibble.qmd), [dplyr](/dplyr/dplyr.qmd), and [readr](/readr/readr.qmd)
+- Plot generation: [tidyr](/tidyr/tidyr.qmd) & [ggplot2](/ggplot2/ggplot2.qmd)
+- Miscellaneous: [stringr](/stringr/stringr.qmd), [forcats](/forcats/forcats.qmd), [purrr](/purrr/purrr.qmd), and [lubridate](/lubridate/lubridate.qmd)
+
+Optionally you can run through `learnr` tutorials made for this website: [`learnr` course](/learnr.qmd)
 
 ## Package names
 
@@ -110,7 +115,7 @@ Once installed you can load the package suite:
 library("tidyverse")
 ```
 
-To update Tidyverse check the foloowing link:
+To update Tidyverse check the following link:
 
 [Update tidyverse packages](https://tidyverse.tidyverse.org/reference/tidyverse_update.html)
 

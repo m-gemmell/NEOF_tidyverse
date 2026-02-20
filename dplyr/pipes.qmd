@@ -11,8 +11,7 @@ library(tidyverse)
 ![](images/dplyr_pipe.png){style="width:150px"}
 </center>
 
-
-The preferred method when using `dplyr` and other __tidyverse__ package functions is to use pipes.
+The preferred method when using `dplyr` and other `tidyverse` package functions is to use __pipes__.
 
 The __tidyverse__ pipe symbol is `|>` (historically it was `%>%`).
 
@@ -67,11 +66,11 @@ Pipes are great when you need to use multiple functions on one object.
 In the below case we:
 
 - Extract rows 1 to 1000 with [`dplyr::slice()`](/dplyr/slice.qmd)
-- Then filter the 1000 rows so we only retain observations/rows where the elevation column value is equal to "Low" with [`dplyr::filter()`](/dplyr/filter.qmd)
-- Select columns leaf1area and leaf2area with [`dplyr::select()`](/dplyr/select.qmd)
+- Then filter the 1000 rows so we only retain observations/rows where the `elevation` column value is equal to "Low" with [`dplyr::filter()`](/dplyr/filter.qmd)
+- Select columns `leaf1area` and `leaf2area` with [`dplyr::select()`](/dplyr/select.qmd)
 - Summarise the resulting __tibble__ with `summary()`
 
-__Note:__ Pipes are not only limited to __tidyverse__ functions.
+__Note:__ Pipes are not only limited to `tidyverse` functions.
 
 ```{r}
 maples_tbl |> 
@@ -85,7 +84,7 @@ maples_tbl |>
     summary()
 ```
 
-Less visually clear method with nested functions.
+The below code carries out the steps but in a less visually clear method with nested functions.
 
 ```{r}
 summary(dplyr::select(dplyr::filter(dplyr::slice(maples_tbl,1:1000),elevation=="Low"),c(leaf1area,leaf2area)))

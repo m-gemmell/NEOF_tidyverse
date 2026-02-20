@@ -12,7 +12,7 @@ library(tidyverse)
 ![](images/tibble_structure.png){style="width:200px"}
 </center>
 
-Tibbles are formatted like a __data.frame__ but have some extra functions and terminology.
+__Tibbles__ are formatted like a __data.frame__ but have some extra functions and terminology.
 
 For demonstration we'll load and subset the `hbr_maples` data from the [lterdatasampler package](/datasets/lterdatasampler.qmd) (hyperlink includes install instructions) and view it.
 
@@ -43,7 +43,7 @@ In the above example we have:
 
 As in a __data.frame__ each observation is within its own row.
 The contents of an observation/row is determined by your dataset and how you want to analyse or visualise it.
-There are many ways to manipulate __tibbles__ with the [dplyr](/dplyr/dplyr.qmd), [tidyr](/tidyr/tidyr.qmd), and other tidyverse packages. 
+There are many ways to manipulate __tibbles__ with the [`dplyr`](/dplyr/dplyr.qmd), [`tidyr`](/tidyr/tidyr.qmd), and other `tidyverse` packages. 
 
 __Tibble__ rows do not have row names and you cannot/should not give them row names.
 They are numbered/indexxed instead.
@@ -55,9 +55,9 @@ A __tibble__ will have a certain number of columns.
 Each column has a name that is at the top. 
 For example:
 
-- year
-- watershed
-- elevation
+- `year`
+- `watershed`
+- `elevation`
 
 Below the column/variable names is the data class/type of the column.
 All the entries within a single column will have the same data class.

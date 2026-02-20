@@ -50,7 +50,7 @@ mammal_sleep_tbl |>
 
 ## Modify existing column
 
-Modify the body_wt column with the `round()` function.
+Modify the `body_wt` column with the `round()` function.
 
 ```{r}
 mammal_sleep_tbl |>
@@ -60,7 +60,7 @@ mammal_sleep_tbl |>
 
 ## Delete columns
 
-Remove the species column by setting it to `NULL`.
+Remove the `species` column by setting it to `NULL`.
 
 ```{r}
 mammal_sleep_tbl |>
@@ -74,7 +74,7 @@ The `dplyr::across()` function can be used within a `dplyr::mutate()` function t
 
 [across() Tidyverse reference page](https://dplyr.tidyverse.org/reference/across.html)
 
-Numerically round the body_wt and brain_wt columns.
+Numerically round the `body_wt` and `brain_wt` columns.
 
 ```{r}
 mammal_sleep_tbl |>
@@ -84,7 +84,7 @@ mammal_sleep_tbl |>
         )
 ```
 
-Convert hour values of non_dreaming, dreaming, and total_sleep to minutes by multiplying by 60.
+Convert hour values of `non_dreaming`, `dreaming`, and `total_sleep` to minutes by multiplying by 60.
 
 __Note:__ `\(x) x*60` is a [purrr](/purrr/purrr.qmd) formula.
 
@@ -99,4 +99,4 @@ mammal_sleep_tbl |>
 
 ## NA filling
 
-For NA filling/editing please see the [tidyr drop NA page](/tidyr/drop_na.qmd).
+For NA filling/editing please see the [`tidyr` `drop_na()` page](/tidyr/drop_na.qmd).

@@ -11,12 +11,14 @@ library(tidyverse)
 ![](images/tidyr_replace_na.png){style="width:200px"}
 </center>
 
-It is common to have NAs in your data. 
+It is common to have `NA`s in your data. 
 However, sometimes instead of removing them you may want to replace them.
-below are three methods to carry this out.
+Below are three methods to carry this out.
 
-- Replace all NAs in a column with a specific value with `tidyr::replace_na()`. A common example is to replace all NAs with 0.
-- Use the corresponding value of another column to replace NAs. 
+- Replace all `NA`s in a column with a specific value with `tidyr::replace_na()`
+    - A common example is to replace all NAs with 0
+- Use the corresponding value of another column to replace `NA`s
+- Replace all `NA`s
 
 [Tidyverse reference page](https://tidyr.tidyverse.org//reference/replace_na.html)
 
@@ -24,8 +26,8 @@ below are three methods to carry this out.
 
 For demonstration we'll load the `mammal_sleep_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions). Additionally, we'll subset it to:
 
-- Keep the first ten rows with at least one NA.
-- Columns species to life_span
+- Keep the first ten rows with at least one `NA`
+- Keep columns `species` to `life_span`
 
 [mammal_sleep_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/mammal_sleep_tbl)
 
@@ -44,14 +46,14 @@ mammal_sleep_na_tbl
 
 ## Replace with a value
 
-Replace NAs in specified columns with `tidyr::replace_na()`.
+Replace `NA`s in specified columns with `tidyr::replace_na()`.
 
 When used with a __tibble__/__data.frame__ the function needs to be provided with a __list__.
 The list contains the column names and the replacement value.
 
 ### One column
 
-Replaces NAs in the `dreaming` column with 0.
+Replace `NA`s in the `dreaming` column with 0.
 
 ```{r}
 mammal_sleep_na_tbl |>
@@ -60,10 +62,10 @@ mammal_sleep_na_tbl |>
 
 ### Multiple columns
 
-Replaces:
+Replace:
 
-- NAs in the `dreaming` column with 0.
-- NAs in the `life_span` column with 1.
+- `NA`s in the `dreaming` column with 0
+- `NA`s in the `life_span` column with 1
 
 ```{r}
 mammal_sleep_na_tbl |>
@@ -72,8 +74,8 @@ mammal_sleep_na_tbl |>
 
 ### Vector
 
-the `replace_na()` function can be used with vectors.
-In this case the function only needs to value to be replace NAs with.
+The `replace_na()` function can be used with vectors.
+In this case the function only needs the value that `NA`s will be replaced with.
 
 ```{r}
 mammal_sleep_na_tbl |>
@@ -85,19 +87,25 @@ mammal_sleep_na_tbl |>
 
 ## Replace with other column
 
-NAs can be replaced with the corresponding value in another column. This carried out with the following functions:
+`NA`s can be replaced with the corresponding value in another column. 
+This is carried out with the following functions:
 
-- [`dplyr::mutate`](/dplyr/mutate.qmd): Mutate columns to create new columns based on existing ones, modify existing columns, and delete columns.
-- [`dplyr::coalesce`](https://dplyr.tidyverse.org//reference/coalesce.html): Finds the first non-missing value at each point.
+- [`dplyr::mutate`](/dplyr/mutate.qmd): Mutate columns to create new columns based on existing ones, modify existing columns, and delete columns
+- [`dplyr::coalesce`](https://dplyr.tidyverse.org//reference/coalesce.html): Finds the first non-missing value at each point
+
+The below command replaces `NA`s in the `dreaming` column with corresponding values in the `total_sleep` column.
 
 ```{r}
 mammal_sleep_na_tbl |>
     dplyr::mutate(dreaming = dplyr::coalesce(dreaming, total_sleep))
 ```
 
+Ensure the column you are editing is the first option in the `coalesce()` function.
+If not then in the above all the `dreaming` values would be changed to the non missing `total_sleep` values.
+
 ## Replace all NAs
 
-All NAs can be replaced with a value using base R's `is.na()` function.
+All the `NA`s in a tibble/data.frame can be replaced with a value using base R's `is.na()` function.
 
 ```{r}
 mammal_sleep_na_tbl[is.na(mammal_sleep_na_tbl)] <- 0

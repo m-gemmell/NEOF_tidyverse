@@ -28,8 +28,10 @@ mgrtibbles::crop_and_soil_tbl |>
 
 ## Separate a column
 
-Split the column __Temperature_celsius_kelvin__ into 2 columns by the delimiter "_".
-This will produce a __Temp_celsius__ column and a _-Temp_kelvin__ column.
+Split the column `Temperature_celsius_kelvin` into 2 columns by the delimiter "_".
+This will produce a `Temp_celsius` column and a `Temp_kelvin` column.
+
+As `Temperature_celsius_kelvin` was a string column we then need to mutate the 2 separated columns into numeric columns.
 
 ```{r}
 crop_and_soil_tbl |>

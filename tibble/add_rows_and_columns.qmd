@@ -14,7 +14,7 @@ library(tidyverse)
 
 Data can be added to a __tibble__ by various methods. this includes:
 
-- Adding a new row or column with [`tibble::add_row()`](https://tibble.tidyverse.org/reference/add_row.html) and [`tibble::add_column()`](https://tibble.tidyverse.org/reference/add_column.html).
+- Adding a new row or column with [`tibble::add_row()`](https://tibble.tidyverse.org/reference/add_row.html) and [`tibble::add_column()`](https://tibble.tidyverse.org/reference/add_column.html)
 - Binding rows or columns with [Dplyr](/dplyr/bind_tibbles.qmd)
 
 ## Create example tibbles
@@ -49,7 +49,7 @@ num_tbl
 ```
 
 To add a new column you can provide `tibble::add_column()` with a vector that is the same length as the number of rows.
-In the below example the new column will have the name __aa__.
+In the below example the new column will have the name `aa`.
 
 ```{r}
 num_tbl_added_col <- tibble::add_column(num_tbl, aa = 10:12)

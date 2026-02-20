@@ -9,10 +9,11 @@ The `readr::read_delim()` function allows you to read in __delimited rectangular
 
 We will only cover `readr::read_delim()` but the full list of read functions are below:
 
-- `readr::read_delim()`: The base read functions.
-- `readr::read_csv()`: As `readr::read_delim()` but uses commas (`,`) as the default delimiter.
-- `readr::read_csv2()`: For some European fromatted data. As `readr::read_delim()` but uses semi colons (`;`) as the default delimiter and uses commas (`,`) for decimal points.
-- `readr::read_tsv()`: As `readr::read_delim()` but uses tabs (`\t`) as the default delimiter.
+- `readr::read_delim()`: The base read functions
+- `readr::read_csv()`: As `readr::read_delim()` but uses commas (`,`) as the default delimiter
+- `readr::read_csv2()`: For some European fromatted data.
+    - Same as `readr::read_delim()` but uses semi colons (`;`) as the default delimiter and uses commas (`,`) for decimal points
+- `readr::read_tsv()`: As `readr::read_delim()` but uses tabs (`\t`) as the default delimiter
 
 [Tidyverse reference page](https://readr.tidyverse.org/reference/read_delim.html)
 
@@ -22,9 +23,9 @@ Although there are specific functions for some delimiters this webpage will show
 
 The most common types of delimiters for rectangular data files are:
 
-- Commas (`,`): Files with commas as delimiters are known as CSV files (Comma Separated Values) and commonly end with the suffix __.csv__.
-- Tabs (`\t`): Files with tabs as delimiters are known as TSV files (Tab Separated Values) and commonly end with the suffix __.tsv__.
-- Spaces (` `): Spaces are used as delimiters for many files but are generally not recommended in data science.
+- Commas (`,`): Files with commas as delimiters are known as CSV files (Comma Separated Values) and commonly end with the suffix __.csv__
+- Tabs (`\t`): Files with tabs as delimiters are known as TSV files (Tab Separated Values) and commonly end with the suffix __.tsv__
+- Spaces (` `): Spaces are used as delimiters for many files but are generally not recommended in data science
 
 Additionally, non-standard delimiters can be specified. Tilde (`~`), Colon (`:`), Semi-colon (`;`), Pipe (`|`) are commonly used as non-standard delimiters. 
 
@@ -115,7 +116,7 @@ readr::read_delim(
 ## Non-standard delimiter
 
 You can use many other characters as delimiters when reading files.
-This can be useful if values in the data contain the three common delimiters (comm, tab, and space).
+This can be useful if values in the data contain the three common delimiters (comma, tab, and space).
 
 The most common non-standard delimiters are:
 

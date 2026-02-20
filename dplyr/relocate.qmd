@@ -30,9 +30,9 @@ mammal_sleep_tbl
 
 ## Relocate to first column
 
-Relocating a column to the first column is the default behaviour of `dplyr::relocate()`
+Relocating a column to the first column is the default behaviour of `dplyr::relocate()`.
 
-Relocate column "body_wt" to first column.
+Relocate column `body_wt` to the first column.
 
 ```{r}
 mammal_sleep_tbl |> dplyr::relocate(body_wt)
@@ -40,7 +40,7 @@ mammal_sleep_tbl |> dplyr::relocate(body_wt)
 
 ## Relocate after another column
 
-Relocate the __body_wt__ column after the __brain_wt__ column with the `.after=` option.
+Relocate the `body_wt` column after the `brain_wt` column with the `.after=` option.
 
 ```{r}
 mammal_sleep_tbl |> dplyr::relocate(body_wt, .after=brain_wt)
@@ -48,7 +48,7 @@ mammal_sleep_tbl |> dplyr::relocate(body_wt, .after=brain_wt)
 
 ## Relocate before another column
 
-Relocate the __dreaming__ column before the __non_dreaming__ column with the `.before=` option.
+Relocate the `dreaming` column before the `non_dreaming` column with the `.before=` option.
 
 ```{r}
 mammal_sleep_tbl |> dplyr::relocate(dreaming, .before=non_dreaming)
@@ -56,7 +56,7 @@ mammal_sleep_tbl |> dplyr::relocate(dreaming, .before=non_dreaming)
 
 ## Relocate a column to the last column
 
-Use the `last_col()` helper function as the `.after()` option to move the __predation__ column to the last column.
+Use the `last_col()` helper function as the `.after()` option to move the `predation` column to the last column.
 
 ```{r}
 mammal_sleep_tbl |> 
@@ -83,7 +83,7 @@ Relocate all numeric (integer and floats) columns to the start of the __tibble__
 mammal_sleep_tbl |> dplyr::relocate(where(is.numeric))
 ```
 
-Relocate all factor columns after the species column.
+Relocate all factor columns after the `species` column.
 
 ```{r}
 mammal_sleep_tbl |> dplyr::relocate(where(is.factor), .after=species)

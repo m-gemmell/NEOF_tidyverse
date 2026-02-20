@@ -8,7 +8,7 @@ This website uses a variety of different datasets as examples.
 This includes:
 
 - __Files to download:__ These are specifically to gain practice with reading in files.
-    - [data](/datasets/data_files.qmd): Infomration and download links to various files.
+    - [data](/datasets/data_files.qmd): Information and download links to various files.
 - __R packages:__ There are various R packages that contain R objects such as `data.frames` and `tibbles`.
     - [lterdatasampler](/datasets/lterdatasampler.qmd): R package containing various data sets in `tibble` format.
     - [mgrtibbles](/datasets/mgrtibbles.qmd): R package containing data created for these materials.

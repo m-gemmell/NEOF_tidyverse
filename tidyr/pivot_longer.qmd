@@ -6,18 +6,19 @@ title: "Pivot longer"
 ![](images/tidyr_pivot_longer.png){style="width:200px"}
 </center>
 
-The function `pivot_longer()` longifys data, converting it from wide to long.
+The function `pivot_longer()` longifies data, converting it from wide to long.
 Long data is generally the preferred format for __Tidyverse__, and is especially useful for [`ggplot2`](/ggplot2/ggplot2.qmd).
 
 When data is longified:
 
-- The number of rows increases.
-- The number of columns decreases.
+- The number of rows increases
+- The number of columns decreases
 
 To longify data a set of columns are chosen.
 
-- The column names are assigned as data of a __names__ column.
-- The values within the columns are assigned to a __value__ column. Each value is within its own row.
+- The column names are assigned as the data within a __names__ column
+- The values within the columns' cells are assigned to a __value__ column
+    - Each value is within its own row
 
 [Tidyverse reference page](https://tidyr.tidyverse.org//reference/pivot_longer.html)
 
@@ -42,15 +43,15 @@ Pivot the __wide tibble__ to a __long tibble__.
 
 The three options provided below are:
 
-- The columns to use for longifying.
-    - Below `!Entity` is used to longify all but the `Entity` column.
-    - String vectors can be used.
-- `names_to=`: New column in long data containing the __names__ of the longified columns.
-- `values_to=`: New column in long data containing the __values__ of the longified columns.
+- The columns to use for longifying
+    - Below `!Entity` is used to longify all but the `Entity` column
+    - String vectors can be used
+- `names_to=`: New column in long data containing the __names__ of the longified columns
+- `values_to=`: New column in long data containing the __values__ of the longified columns
 
 ```{r}
 fisheries_wide_tbl |> 
-    tidyr::pivot_longer(!Entity, names_to="Year", values_to = "Metric_tons")
+    tidyr::pivot_longer(!Entity, names_to="Year", values_to="Metric_tons")
 ```
 
 ## More metadata columns
@@ -62,7 +63,8 @@ world_pop_wide_tbl
 ```
 
 In this case in it easier to specify which columns we want longified.
-That is columns 2022 to 1970.
+
+Longify columns `2022` to `1970`.
 
 ```{r}
 world_pop_wide_tbl |> 

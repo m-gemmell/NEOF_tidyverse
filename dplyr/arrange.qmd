@@ -30,7 +30,7 @@ bison_tbl
 
 ## Numeric columns
 
-Arrange the __tibble__ by rec_year:
+Arrange the __tibble__ by `rec_year`.
 
 ```{r}
 bison_tbl |> dplyr::arrange(rec_year)
@@ -38,7 +38,7 @@ bison_tbl |> dplyr::arrange(rec_year)
 
 `dplyr::arrange()` will arrange the rows by the selected column in ascending fashion (lowest to highest). You can use the `desc()` function on columns you wan't to be ordered in descending fashion.
 
-Arrange the __tibble__ by rec_year in descending fashion:
+Arrange the __tibble__ by `rec_year` in descending fashion.
 
 ```{r}
 bison_tbl |> dplyr::arrange(desc(rec_year))
@@ -46,7 +46,7 @@ bison_tbl |> dplyr::arrange(desc(rec_year))
 
 ## String columns
 
-Strings are order by alphabetical order.
+Strings are ordered by alphabetical order.
 
 Default is from A-Z (ascending).
 
