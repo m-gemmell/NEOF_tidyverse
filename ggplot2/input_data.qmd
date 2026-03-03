@@ -10,20 +10,21 @@ library(tidyverse)
 
 When creating a `ggplot2` object two pieces of information are vital:
 
-- __Input data:__ A __tibble/data.frame__ in a long format.
-- __Aesthetics:__ Specifies which columns of the input data are used for the different parts of the plot.
+- __Input data:__ A __tibble/data.frame__ in a long format
+- __Aesthetics:__ Specifies which columns of the input data are used for the different parts of the plot
 
 This page describes the input data whilst the next describes aesthetics.
 
 ## Long/tidy data
 
-When using the __tidyverse__ we are primarily working with __tidy/long__ data.
+When using  `tidyverse` packages we are primarily working with __tidy/long__ data.
 This is by design.
 
 ### Purpose of long/tidy data
 
 There is a definite learning curve to using __tidy/long__ data.
 We humans have used __messy/wide__ data for most of our education and so tend to find it more intuitive.
+
 The purpose of __tidy/long__ data is to:
 
 - Make data manipulation and analysis more consistent
@@ -42,9 +43,9 @@ Although hard to give a specific definition, __tidy/long__ data have the three f
 In essence you never want __column__ names to be __values__, rather having those __values__ inhabit the __cells__ of a __column/variable__.
 For example, instead of 10 __columns__ of ten different years (1990, 1991, 1993, etc) where the __cell values__ are the fish metric ton __values__ you would have:
 
-- A __column/variable__ called "Year" containing the years as __values__
-- A __column/variable__ called "Metric_tons" containing the fish metric ton __values__
-- Each "Year" __value__ and corresponding "Metric_tons" __value__ would be one __observation/row__
+- A __column/variable__ called `Year` containing the years as __values__
+- A __column/variable__ called `Metric_tons` containing the fish metric ton __values__
+- Each `Year` __value__ and corresponding `Metric_tons` __value__ would be one __observation/row__
 
 The below __tibble__ shows a small slice of this __tidy/long tibble__.
 
@@ -100,7 +101,7 @@ set.seed(NULL)
 head(weight_age_tbl)
 ```
 ```{r}
-#Histogram plot
+#Boxplot
 ggplot2::ggplot(weight_age_tbl, aes(x=age_range,y=weight)) +
     ggplot2::geom_boxplot()
 ```
@@ -108,7 +109,7 @@ ggplot2::ggplot(weight_age_tbl, aes(x=age_range,y=weight)) +
 ### Multiple continuous columns
 
 The format of columns in your long __tibble__ is highly dependant on your specific data and the type of plots you will create.
-For example, you may have a scatterplot comparing 2 continuous measues from 2 different columns (e.g. height vs weight).
+For example, you may have a scatterplot comparing 2 continuous measures from 2 different columns (e.g. height vs weight).
 In this case each row would contain the height and weight of one individual.
 
 The below code blocks creates an example __tibble__ and a scatter plot with the data.
@@ -129,7 +130,7 @@ ggplot2::ggplot(weight_height_tbl, aes(x=weight,y=height)) +
     ggplot2::geom_point()
 ```
 
-In this case there seems to be no linear correlation but that is because we randomly created the dataset in a very niave manner.
+In this case there seems to be no linear correlation but that is because we randomly created the dataset in a very naive manner.
 
 ## The surface
 

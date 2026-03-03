@@ -9,22 +9,22 @@ library(tidyverse)
 
 Histograms are commonly used to display the distribution of a single __continuous variable__.
 This is carried out by creating bins (i.e. number ranges) and counting the number of values that are within each bin.
-These bin counts displayed as a bar chart.
+These bin counts are displayed as a bar chart.
 
 In this page we will create histograms with `ggplot2::geom_histogram()`. Through examples we will demonstrate creating:
 
-- A histogram with default options.
-- A histogram when specifying bin width.
-- A histogram when specifying the number of bins.
-- A flipped histogram.
-- A frequency polygon.
+- A histogram with default options
+- A histogram when specifying bin width
+- A histogram when specifying the number of bins
+- A flipped histogram
+- A frequency polygon
 
 [Tidyverse reference page](https://ggplot2.tidyverse.org//reference/geom_histogram.html)
 
 ## Dataset
 
 For demonstration we'll load the `mammal_sleep_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
-We will select the "total_sleep" and "predation" columns for our plots.
+We will select the `total_sleep` and `predation` columns for our plots.
 
 [mammal_sleep_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/mammal_sleep_tbl)
 
@@ -66,7 +66,7 @@ The function will create bins (number ranges) and count the number of values tha
 
 For our default histogram the data will be fit into 30 bins. 
 This is always the default value of `ggplot2::geom_histogram()` and the function will output a message saying how to choose a better value.
-However, the best method on choosing a better value is to create the default plot first and then experiment with bin numbers afterwards.
+However, the best method on choosing a value is to create the default plot first and then experiment with bin numbers afterwards.
 Choosing bin widths or bin numbers is shown below.
 
 Create a histogram of the `total_sleep` __variable/column__.

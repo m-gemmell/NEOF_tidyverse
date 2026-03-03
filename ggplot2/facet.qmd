@@ -64,10 +64,9 @@ To learn more and edit this see the [facet scales section](#facet-scales).
 
 ### Facet grid by columns
 
-Create a scatter plot of __stem_height__ (y) against __stem_width__ (x).
+Create a scatter plot of `stem_height` (y) against `stem_width` (x).
 
-We'll __facet__ the data by the __variable__ `class`.
-We'll __facet__ by columns (i.e. the __facet panels__ are separated by rows on the plot) with `dplyr::facet_grid(cols = dplyr::vars(class))`.
+We'll __facet__ the data by the __variable__ `class`, __facetting__ by columns with `dplyr::facet_grid(cols = dplyr::vars(class))`.
 
 __Note:__ We have to place the __variable/column__ name into the [`dplyr::vars()`](https://dplyr.tidyverse.org/reference/vars.html) function for this.
 
@@ -81,10 +80,9 @@ mushroom_tbl |>
 
 ### Facet grid by rows
 
-Create a scatter plot of __stem_height__ (y) against __stem_width__ (x).
+Create a scatter plot of `stem_height` (y) against `stem_width` (x).
 
-We'll __facet__ the data by the __variable__ `cap_color`.
-We'll __facet__ by rows (i.e. the __facet panels__ are separated by rows on the plot) with `ggplot2::facet_grid(rows = dplyr::vars(cap_color))`.
+We'll __facet__ the data by the __variable__ `cap_color`, __facetting__ by rows with `ggplot2::facet_grid(rows = dplyr::vars(cap_color))`.
 
 __Note:__ We have to place the __variable/column__ name into the [`dplyr::vars()`](https://dplyr.tidyverse.org/reference/vars.html) function for this.
 
@@ -110,18 +108,18 @@ mushroom_tbl |>
 
 ## Facet wrap
 
-The function `ggplot2::facet_wrap()` will wrap __panels__ over multiple rows.
+The function `ggplot2::facet_wrap()` will wrap __panels__ over multiple rows and/or columns.
 The number of rows/columns to wrap around can be set with `nrow=`/`ncol=`.
 This is the preferred method when you are __facetting__ by one __discrete variable__.
 
-It is important to note with this method the scales are fixed (i.e. all the __panels__ have the same scale).
+It is important to note that with this method the scales are fixed (i.e. all the __panels__ have the same scale).
 To learn more and edit this see the [facet scales section](#facet-scales).
 
 [`facet_wrap()` reference webpage](https://ggplot2.tidyverse.org//reference/facet_wrap.html)
 
 ### Default facet wrap
 
-Create a scatter plot of __stem_height__ (y) against __stem_width__ (x).
+Create a scatter plot of `stem_height` (y) against `stem_width` (x).
 
 We'll __facet__ the data by the __variable__ `cap_color`.
 This will be carried out with `ggplot2::facet_wrap(dplyr::vars(cap_color))`.
@@ -140,10 +138,10 @@ mushroom_tbl |>
 
 The number of columns to wrap the __panels__ around can be chosen with the `ncol=` option.
 
-Create a scatter plot of __stem_height__ (y) against __stem_width__ (x).
+Create a scatter plot of `stem_height` (y) against `stem_width` (x).
 
 We'll __facet__ the data by the __variable__ `cap_color`.
-Additionally, we'll set the number of columns to wrap the __panels__ around to 2 with `ncol=2`
+Additionally, we'll set the number of columns to wrap the __panels__ around to 2 with `ncol=2`.
 
 ```{r}
 mushroom_tbl |>
@@ -157,7 +155,7 @@ mushroom_tbl |>
 
 The number of rows to wrap the __panels__ around can be chosen with the `nrow=` option.
 
-Create a scatter plot of __stem_height__ (y) against __stem_width__ (x).
+Create a scatter plot of `stem_height` (y) against `stem_width` (x).
 
 We'll __facet__ the data by the __variable__ `cap_color`.
 Additionally, we'll set the number of rows to wrap the __panels__ around to 2 with `nrow=2`
@@ -184,10 +182,10 @@ In these __variables__ the points are very close together (overclustered) so it 
 
 To change the scales we can use the options `scales=` with one of the following:
 
-- `"fixed"`: This is the default with both scales being fixed.
-- `"free"`: This allows both axes scales to be free.
-- `"free_x"`: The x axis scale is free but the y axis scale is fixed.
-- `"free_y"`: The y axis scale is free but the x axis scale is fixed.
+- `"fixed"`: This is the default with both scales being fixed
+- `"free"`: This allows both axes scales to be free
+- `"free_x"`: The x axis scale is free but the y axis scale is fixed
+- `"free_y"`: The y axis scale is free but the x axis scale is fixed
 
 ### Free scales for facet_grid()
 
@@ -226,7 +224,7 @@ mushroom_tbl |>
 
 ## Facets as an aesthetic
 
-__Facets__ become especially useufl when you have a lot of __variables__ you would like to represent as aesthetics.
+__Facets__ become especially useful when you have a lot of __variables__ you would like to represent as aesthetics.
 There are no limits to the the number of __facets__ you can use, unlike colours and shapes.
 
 Let's create a final scatter plot plot with the `mushroom_tbl` tibble.
@@ -237,7 +235,7 @@ The aesthetics we will set are:
 - `colour=cap_shape`
 - `shape=class`
 
-Additionally, we will __facet__ with `gill_attachment` and `gill_color`
+Additionally, we will __facet__ with `gill_attachment` and `gill_color`.
 
 ```{r}
 mushroom_tbl |>

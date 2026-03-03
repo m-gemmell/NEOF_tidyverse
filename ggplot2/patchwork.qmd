@@ -11,7 +11,7 @@ library(tidyverse)
 
 The `patchwork` package allows you to combine multiple ggplots into one graphic.
 
-It is a separate package to tidyverse and requires installing.
+It is a separate package to `tidyverse` and requires installing.
 The install instructions are in the below link.
 
 [Patchwork home page](https://patchwork.data-imaginist.com/)
@@ -143,9 +143,9 @@ The PNG file contains the following image:
 As you may have noticed when laying out the plots on a graphic `patchwork` will divide spaces equally between the rows and the columns within each row.
 In the last plot:
 
-- Each of the 2 rows are given 50% of the height.
-- The first row has 3 plots so each plot is given a third of the graphic width.
-- The second row has 2 plots so each plot is given a half of the graphic width.
+- Each of the 2 rows are given 50% of the height
+- The first row has 3 plots so each plot is given a third of the graphic width
+- The second row has 2 plots so each plot is given a half of the graphic width
 
 There are many ways to control the layout.
 To see these various methods please check the following link:

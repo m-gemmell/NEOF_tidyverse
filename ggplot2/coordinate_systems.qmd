@@ -60,7 +60,7 @@ mushroom_tbl |>
 By default when a ggplot is created the x and y axis will each take up as much space as the width and height the plotting area allows.
 However, this can lead to an extreme aspect ratio for the x and y axes.
 This may be unwanted for certain types of data.
-For example, ordination plots (such as PCoA and NMDs) are generally better with an aspect ratio of 1.
+For example, ordination plots (such as PCoA and NMDs) are generally better with an aspect ratio of 1:1.
 
 To control the aspect ratio of the x and y axes the function/component `ggplot2::coord_fixed()` can be added.
 The ratio can be specified with the option `ratio=`.
@@ -86,10 +86,10 @@ mushroom_tbl |>
     ggplot2::coord_fixed(ratio = 1)
 ```
 
-In the above plot you will notice there is a more than times the width than height.
+In the above plot you will notice there is more than 2 times the width than height.
 This is because the `stem_width` values go from 0 to a bit less than 50 whilst the `stem_height` values go from 0 to a bit more than 15.
 What is important is that the value from 0-10 (and continuing) takes up the same width and height in the resulting plot.
-This 1:1 ratio allows you to see relationships without the shape becoming warped by an uneven
+This 1:1 ratio allows you to see relationships without the shape becoming warped by an uneven y:x ratio.
 
 __Note:__ When saving a plot with [`ggsave()`](/ggplot2/ggsave.qmd) ensure your chosen height and width have the same/similar aspect ratio.
 Otherwise you may end up with blank space on the sides or the top and bottom.

@@ -11,8 +11,8 @@ library(tidyverse)
 The `ggplot2::theme()` component can be used to alter the appearance of a ggplot.
 There are many options but this page will show the following:
 
-- Altering the size and colour of text.
-- Changing the legend position.
+- Altering the size and colour of text
+- Changing the legend position
 
 For a full list of options please see the below web links:
 
@@ -25,10 +25,10 @@ For a full list of options please see the below web links:
 We'll recreate many of the plots in the [`geom_boxplot()` chapter](/ggplot2/geom_boxplot.qmd), so we'll load the `bat_roost_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
 To preprocess the data we will:
 
-- Remove the `RoostCode` __variable/column__ with [`dplyr::select`](/dplyr/select.qmd).
-- Remove __rows/observations__ with a MaxCountInAnyYear greater than or equal to 250 with [`dplyr::filter()`](/dplyr/filter.qmd)
-- Remove __rows/observations__ from the __Country__ grouping "British Crown Dependencies" to retain the countries England, Northern Ireland, Scotland, and Wales with [`dplyr::filter()`](/dplyr/filter.qmd)
-- Remove __rows/observations__ where the the Country or Species value is NA with [`tidyr:drop_na()`](/tidyr/drop_na.qmd)
+- Remove the `RoostCode` __variable/column__ with [`dplyr::select`](/dplyr/select.qmd)
+- Remove __rows/observations__ with a `MaxCountInAnyYear` greater than or equal to 250 with [`dplyr::filter()`](/dplyr/filter.qmd)
+- Remove __rows/observations__ from the `Country` grouping "British Crown Dependencies" to retain the countries England, Northern Ireland, Scotland, and Wales with [`dplyr::filter()`](/dplyr/filter.qmd)
+- Remove __rows/observations__ where the the `Country` or `Species` value is NA with [`tidyr:drop_na()`](/tidyr/drop_na.qmd)
 
 [bat_roost_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/bat_roost_tbl)
 
@@ -73,7 +73,7 @@ Instead the text/font size can be chosen in the `ggplot2::theme()` function.
 ### All text
 
 Create the [default box plot](/ggplot2/geom_boxplot.qmd#default-box-plot).
-We will set the the text size with the `ggplot2::theme()` option `text=`
+We will set the the text size with the `ggplot2::theme()` option `text=`.
 
 This options then needs to be provided with the function `ggplot2::element_text()` which itself has different options.
 These include:

@@ -13,9 +13,9 @@ This can be used to great effect to see numerical changes over time.
 
 In this page we will create line charts with `ggplot2::geom_line()`. Through examples we will demonstrate creating:
 
-- A line charts with one line.
-- A line chart with multiple lines each representing a different group.
-- A stepped line chart.
+- A line charts with one line
+- A line chart with multiple lines each representing a different group
+- A stepped line chart
 
 [Tidyverse reference page](https://ggplot2.tidyverse.org//reference/geom_path.html)
 
@@ -61,7 +61,7 @@ fisheries_long_tbl |>
 When creating a line chart only one y value can be assigned to each x value per line.
 To create a line chart with only one line we will plot the information for Japan.
 
-Create a line chart of __Metric_tons__ (y) against __Year__ (x) for Japan.
+Create a line chart of `Metric_tons` (y) against `Year` (x) for Japan.
 Additionally, we'll set `linewidth=1` in `ggplot::geom_line()` to make the line thicker for clarity.
 
 ```{r}
@@ -75,8 +75,8 @@ fisheries_long_tbl |>
 `r hide("Plotting with multiple y values per x value")`
 Although you can create a line chart with multiple x values per y values it becomes impossible to read fully.
 
-The below example plots a line chart with the ___tibble__ without filtering out one Entity or colour grouping by Entity (see below).
-As there are four entities (EU, Japan, Peru, USA) this means there are four y values per year which are all connected before moving ont the next year.
+The below example plots a line chart with the __tibble__ without filtering out one Entity or colour grouping by Entity (see below).
+As there are four entities (EU, Japan, Peru, USA) this means there are four y values per year which are all connected before moving onto the next year.
 
 ```{r}
 fisheries_long_tbl |>
@@ -90,7 +90,7 @@ fisheries_long_tbl |>
 Line charts are great for showing changes across a time range of several groups.
 Each group can be represented as a coloured line on the same chart.
 
-Create a __Metric_tons__ (y) against __Year__ (x) line chart for our __tibble__.
+Create a `Metric_tons` (y) against `Year` (x) line chart for our __tibble__.
 In `aes()` set `colour=Entity` so each Entity will be represented a by separate coloured line.
 
 ```{r}
@@ -101,10 +101,10 @@ fisheries_long_tbl |>
 
 ## Steps
 
-An optional method for a line chart is a stepped line chart.
+An optional method for a line chart is a stepped line chart with `geom_step()`.
 This can make it a bit easier to compare the individual values between coloured groups.
 
-Create a __Metric_tons__ (y) against __Year__ (x) stepped line chart for our __tibble__.
+Create a `Metric_tons` (y) against `Year` (x) stepped line chart for our __tibble__.
 In `aes()` set `colour=Entity` so each Entity will be represented a by separate coloured line.
 
 ```{r}

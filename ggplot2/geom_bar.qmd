@@ -23,8 +23,8 @@ Through examples we will demonstrate creating:
 ## Dataset
 
 For demonstration we'll load the `amphibian_div_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
-Additionally, we'll [select](/dplyr/select.qmd) the columns "iucn_2cat", "Order", and "Family" which we will use for plotting.
-Then we'll remove any rows with an NA value using [`tidyr::drop_na`](/tidyr/drop_na.qmd).
+Additionally, we'll [select](/dplyr/select.qmd) the columns `iucn_2cat`, `Order`, and `Family` which we will use for plotting.
+Then we'll remove any rows with an `NA` value using [`tidyr::drop_na`](/tidyr/drop_na.qmd).
 
 [amphibian_div_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/amphibian_div_tbl)
 
@@ -34,7 +34,7 @@ library("mgrtibbles")
 #Data
 amphibian_div_tbl <- 
     mgrtibbles::amphibian_div_tbl |>
-    #Select to retain only the iucn_2cat and Order columns
+    #Select to retain only the iucn_2cat, Order, and Family columns
     dplyr::select(iucn_2cat,Order,Family) |>
     #Drop any rows with an NA
     tidyr::drop_na()
@@ -93,9 +93,9 @@ amphibian_div_tbl |>
 
 It is common to __map__ a second __categorical variable/column__ to the __fill aesthetic__.
 By default this will create a __stacked bar chart__ where the __fill variable__ is represented by colours filling the bar chart.
-This is useful is you are more interested in the __differences between__ the x-axis groupings.
+This is useful if you are more interested in the __differences between__ the x-axis groupings.
 
-Create a __stacked bar chart__ of "iucn_2cat" counts where the fill of the bar chart is coloured by "Order".
+Create a __stacked bar chart__ of `iucn_2cat` counts where the fill of the bar chart is coloured by `Order`.
 
 ```{r}
 amphibian_div_tbl |>    
@@ -105,10 +105,10 @@ amphibian_div_tbl |>
 
 ## Side-by-side bar chart
 
-When you are interested in the __differences within__ the x-axis groupings you can created a __side-by-side__ bar chart.
+When you are interested in the __differences within__ the x-axis groupings you can create a __side-by-side__ bar chart.
 This is carried out by using the `position=` option in `ggplot2::geom_bar()` and setting it to `"dodge"`.
 
-Create a __side-by-side bar chart__ of "iucn_2cat" counts where the fill of the bar chart is coloured by "Order".
+Create a __side-by-side bar chart__ of `iucn_2cat` counts where the fill of the bar chart is coloured by `Order`.
 
 ```{r}
 amphibian_div_tbl |>    
@@ -118,10 +118,10 @@ amphibian_div_tbl |>
 
 ## Relative proportion bar chart
 
-ALthough __absolute count__ values are useful for __bar charts__ you will sometimes want __relative proportions__.
+Although __absolute count__ values are useful for __bar charts__ you will sometimes want __relative proportions__.
 To convert the values so the total x-axis count per group equals 1 you can set `position=` to `"fill"`.
 
-Create a __relative proportion bar chart__ of "iucn_2cat" counts where the fill of the bar chart is coloured by "Order".
+Create a __relative proportion bar chart__ of `iucn_2cat` counts where the fill of the bar chart is coloured by `Order`.
 
 ```{r}
 amphibian_div_tbl |>    

@@ -53,7 +53,7 @@ These features are covered in further pages.
 ```{r}
 #Create ggplot2 object and set the aesthetics
 scatter_plot <- 
-    ggplot2::ggplot(data=crab_age_weight_tbl,mapping=aes(x=Age,y=Weight)) +
+    ggplot2::ggplot(data=crab_age_weight_tbl, mapping=aes(x=Age, y=Weight)) +
     #Set plot as a dot/scatter plot 
     ggplot2::geom_point() +
     #Add title to plot
@@ -72,7 +72,7 @@ To create a `ggplot` object we use the function `ggplot2::ggplot()` and provide 
 The first part is the __data__ (`data=crab_age_weight_tbl`).
 __Data__ for `ggplot()` needs to be [long formatted](/tidyr/pivot_longer.html) so each column can be assigned to an __aesthetic__.
 
-The second part is the __aesthetic mapping__ information (`mapping=aes(x=Age, y = Weight)`). 
+The second part is the __aesthetic mapping__ information (`mapping=aes(x=Age, y=Weight)`). 
 This maps the information/values in our data's columns to the different __aesthetics__ in our plot (e.g. axes).
 One important note is that you do not need to use quotes when referring to column names in the `aes()` brackets.
 
@@ -96,11 +96,12 @@ Since the `data=` parameter is first we can pipe our __data/tibble/data.frame__ 
 This is useful if you want to carry out some data manipulation unique to the plot you will create.
 
 ```{r}
+#Scatter plot of age against weight for crabs that are 15 years old or younger
 scatter_plot <- crab_age_weight_tbl |>
     #Filter to keep crabs with an age up to 15 years
     dplyr::filter(Age <= 15) |>
     #Create ggplot2 object and set the aesthetics
-    ggplot2::ggplot(aes(x=Age, y = Weight)) +
+    ggplot2::ggplot(aes(x=Age, y=Weight)) +
     #Set plot as a dot/scatter plot 
     ggplot2::geom_point() +
     #Add title to plot

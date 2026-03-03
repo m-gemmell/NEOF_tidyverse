@@ -14,8 +14,8 @@ This is facilitated by being able to add components with `+`.
 ## Dataset
 
 For demonstration we'll load the `mammal_sleep_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
-For ease and clarity we'll [select](/dplyr/select.qmd) the "body_wt", "brain_wt", and "predation" columns.
-Additionally, we'll [filter](/dplyr/filter.qmd) the rows to only retain observations where the body weight is less than 10 and the brain weight is less than 0.1.
+For ease and clarity we'll [select](/dplyr/select.qmd) the `body_wt`, `brain_wt`, and `predation` columns.
+Additionally, we'll [filter](/dplyr/filter.qmd) the rows to only retain observations where the `body_wt` is less than 10 and the `brain_wt` is less than 0.1.
 
 [mammal_sleep_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/mammal_sleep_tbl)
 
@@ -48,33 +48,33 @@ mammal_sleep_tbl |>
 
 This page will demonstrate building a more complex `ggplot2` plot by creating the following plots:
 
-1. A scatter plot.
-2. A scatter plot with customised labels.
-3. A scatter plot with customised labels, and a linear regression line.
-4. A scatter plot with customised labels, a linear regression line, and linear regression equation.
+1. A scatter plot
+2. A scatter plot with customised labels
+3. A scatter plot with customised labels, and a linear regression line
+4. A scatter plot with customised labels, a linear regression line, and linear regression equation
 
-With these examples we will reuse the code of the previous step and add the one component to add an extra feature to the plot.
+With these examples we will reuse the code of the previous example and add one component to include an extra feature to the plot.
 
-For the official `ggplot2` infom,ration about components please see: [Intorduction to ggplot2](https://ggplot2.tidyverse.org/articles/ggplot2.html)
+For the official `ggplot2` information about components please see: [Intorduction to ggplot2](https://ggplot2.tidyverse.org/articles/ggplot2.html)
 
-### Scatterplot
+## Scatterplot
 
 First we will create a scatter plot. For this we will use 2 components.
 
 The first component is the `ggplot2::ggplot()` function which must always be the first __component__. 
-This will create the `ggplot` object from our [dataset](/ggplot2/input_data.qmd). 
+This will create the `ggplot` object from our [dataset](/ggplot2/input_data.qmd).
 Additionally, we will specify the [aesthetics](/ggplot2/aesthetics.qmd) for our plot with this function.
 
 The __aesthetics__ can be specified in other components as you will find out in later sections.
 
-The second component is the layer, `ggplot2:geom_point()`. 
+The second component is the layer: `ggplot2:geom_point()`. 
 This will create a scatter/point plot from our `ggplot` object.
 
 When adding a new component we need to add the plus symblol (`+`) to the end of our previous component.
 It is very easy to miss a `+` when adding new components, especially if you add a component between other components.
 This is a similar principle to using `|>` for [piping](/dplyr/pipes.qmd) with other `tidyverse` packages and functions.
 
-Create a scatterplot of "body_wt" (x) against "brain_wt" (y).
+Create a scatterplot of `body_wt` (x) against `brain_wt` (y).
 
 ```{r}
 mammal_sleep_tbl |>
@@ -82,9 +82,9 @@ mammal_sleep_tbl |>
     ggplot2::geom_point()
 ```
 
-### Add labels
+## Add labels
 
-Next we will customise the x and y labels and add a title by adding the `ggplot2::labs()` __component/function__.
+Next we will customise the x and y labels and add a title with the `ggplot2::labs()` __component/function__.
 
 ```{r}
 mammal_sleep_tbl |>
@@ -94,10 +94,11 @@ mammal_sleep_tbl |>
                 title = "Body versus Brain weight of mammals")
 ```
 
-### Add linear regression line
+## Add linear regression line
 
-Our fourth component is `geom_smooth(method = 'lm)` to add a linear regression line to our plot.
-Ensure to add this below `ggplot2::geom_point()` component.
+Our fourth component is `geom_smooth(method = 'lm)`.
+We'll use it to add a linear regression line to our plot.
+This needs to be somewhere below the `ggplot2::geom_point()` component.
 
 ```{r}
 mammal_sleep_tbl |>
@@ -108,7 +109,7 @@ mammal_sleep_tbl |>
                 title = "Body versus Brain weight of mammals")
 ```
 
-### Add linear regression equation
+## Add linear regression equation
 
 Finally we will add the linear equation on top of our plot.
 
@@ -124,7 +125,7 @@ lm_equation <- paste0("y = ",as.character(m),"x + ",as.character(c))
 lm_equation
 ```
 
-Now we can a __text__ annotation of the equation with [`ggplot2::annotate()`](/ggplot2/annotation.qmd).
+Now we can add a __text__ annotation of the equation with [`ggplot2::annotate()`](/ggplot2/annotation.qmd).
 
 ```{r}
 mammal_sleep_tbl |>
@@ -161,7 +162,7 @@ __Layers/geoms__ will be overlayed on top of each other.
 A __layer__ added after another one will be on top.
 In other words, the first __layer__ will be below the second which will be below the third etc.
 
-If you want to have a boxplot (`ggplot2::geom_boxplot()`) with the points (`ggplot2::geom_jitter()`) on top of the points needed to be added after (on top of) the boxplot component.
+If you want to have a boxplot (`ggplot2::geom_boxplot()`) with the points (`ggplot2::geom_jitter()`) on top of the boxes, `geom_boxplot()` needs to be called as a component before (i.e. above) `geom_jitter()` in the code.
 
 ```{r}
 mammal_sleep_tbl |>

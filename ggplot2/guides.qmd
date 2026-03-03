@@ -11,8 +11,8 @@ library(tidyverse)
 The guides of legends and axes values can be customised to make the data clearer.
 This can be carried out with the __functions/components__:
 
-- `ggplot2::legend_guide()`: Change the position of the title and change the number of rows/columns the values are placed within.
-- `ggplot2::guide_axis()`: Allow the axis values to dodge each other or change their angle.
+- `ggplot2::legend_guide()`: Change the position of the title and change the number of rows/columns the values are placed within
+- `ggplot2::guide_axis()`: Allow the axis values to dodge each other or change their angle
 
 When using these functions we place them within the `ggplot2::guide()` __function/component__ so we can set the __aesthetic__ we specifically want to change.
 This will be demonstrated below.
@@ -24,17 +24,17 @@ This will be demonstrated below.
 We'll recreate many of the plots in the [`geom_boxplot()` chapter](/ggplot2/geom_boxplot.qmd), so we'll load the `bat_roost_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd) (hyperlink includes install instructions).
 To preprocess the data we will:
 
-- Remove the `RoostCode` __variable/column__ with [`dplyr::select`](/dplyr/select.qmd).
-- Remove __rows/observations__ with a MaxCountInAnyYear greater than or equal to 250 with [`dplyr::filter()`](/dplyr/filter.qmd)
-- Remove __rows/observations__ from the __Country__ grouping "British Crown Dependencies" to retain the countries England, Northern Ireland, Scotland, and Wales with [`dplyr::filter()`](/dplyr/filter.qmd)
-- Remove __rows/observations__ where the the Country or Species value is NA with [`tidyr:drop_na()`](/tidyr/drop_na.qmd)
+- Remove the `RoostCode` __variable/column__ with [`dplyr::select`](/dplyr/select.qmd)
+- Remove __rows/observations__ with a `MaxCountInAnyYear` greater than or equal to 250 with [`dplyr::filter()`](/dplyr/filter.qmd)
+- Remove __rows/observations__ from the `Country` grouping "British Crown Dependencies" to retain the countries England, Northern Ireland, Scotland, and Wales with [`dplyr::filter()`](/dplyr/filter.qmd)
+- Remove __rows/observations__ where the the `Country` or `Species` value is `NA` with [`tidyr:drop_na()`](/tidyr/drop_na.qmd)
 
 [bat_roost_tbl details](https://github.com/m-gemmell/mgrtibbles/wiki/bat_roost_tbl)
 
 ```{r}
 #Load package
 library("mgrtibbles")
-#mushroom_tbl tibble for demonstration
+#bat_roost_tbl tibble for demonstration
 bat_roost_tbl <- mgrtibbles::bat_roost_tbl |>
     #Select all but roost code column
     dplyr::select(!RoostCode) |>
@@ -100,7 +100,8 @@ Create the [boxplot with a layer of jittered points](/ggplot2/geom_boxplot.qmd#l
 We'll carry out the following changes:
 
 - Set all the text size to 20 ([Set all text size with `ggplot2::theme()`](/ggplot2/theme.qmd#all-text))
-- Set the x axis text to dodge with `ggplot2::guide(x = ggplot2::guide_axis(n.dodge = 2))`. The 2 represents the number of rows/columns used for dodging.
+- Set the x axis text to dodge with `ggplot2::guide(x = ggplot2::guide_axis(n.dodge = 2))`
+    - The 2 represents the number of rows/columns used for dodging.
 
 [`guide_axis()` reference](https://ggplot2.tidyverse.org//reference/guide_axis.html)
 

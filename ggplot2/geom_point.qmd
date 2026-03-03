@@ -12,10 +12,10 @@ Scatter plots are commonly used to display the relationship between two __contin
 
 In this page we will create scatter plots with `ggplot2::geom_point()`. Through examples we will demonstrate creating:
 
-- A default scatter plot to plot two __continuos variables__ against each other.
-- A scatter plot with the points coloured by a __categorical variable__.
-- A scatter plot with the colour and shapes of points determined by 2 __categorical variables__.
-- A scatter plot with the size of the points representing a third __continuous variable__.
+- A default scatter plot to plot two __continuos variables__ against each other
+- A scatter plot with the points coloured by a __categorical variable__
+- A scatter plot with the colour and shapes of points determined by 2 __categorical variables__
+- A scatter plot with the size of the points representing a third __continuous variable__
 
 [Tidyverse reference page](https://ggplot2.tidyverse.org//reference/geom_point.html)
 
@@ -60,7 +60,7 @@ mushroom_tbl |>
 
 ## Default scatter plot
 
-Create a scatter plot of __stem_height__ (y) against __stem_width__ (x).
+Create a scatter plot of `stem_height` (y) against `stem_width` (x).
 
 ```{r}
 mushroom_tbl |>
@@ -72,7 +72,7 @@ mushroom_tbl |>
 
 When displaying a single __categorical variable__ it is normally best practice to use the colour aesthetic.
 
-Create a scatter plot of __stem_height__ (y) against __stem_width__ (x).
+Create a scatter plot of `stem_height` (y) against `stem_width` (x).
 In `aes()` set `colour=class` so each point is coloured by whether its is edible or poisonous.
 
 ```{r}
@@ -86,7 +86,7 @@ mushroom_tbl |>
 When displaying 2 different __categorical variables__ in a scatter plot it is common to use colour and shape.
 I advise using colour for the __variable__ with more groupings.
 
-Create a scatter plot of __stem_height__ (y) against __stem_width__ (x).
+Create a scatter plot of `stem_height` (y) against `stem_width` (x).
 In `aes()` set `colour=cap_shape` and `shape=class`.
 Additionally, make the point sizes larger with `size=2` in the `ggplot2::geom_point()` function.
 
@@ -102,7 +102,7 @@ mushroom_tbl |>
 To display a third __continuous variable__ on a scatter plot the size of the points can be used.
 This can cause issues where it is more likely points will overlap due to large values producing large points.
 
-Create a scatter plot of __stem_height__ (y) against __stem_width__ (x).
+Create a scatter plot of `stem_height` (y) against `stem_width` (x).
 In `aes()` set `size=cap_diameter` so the size of the points represents the cap diameter size.
 
 ```{r}
@@ -115,6 +115,6 @@ mushroom_tbl |>
 
 You may want to use a different plot or add other layers on top of a scatter plot depending on you and your data's needs.
 
-- A smooth lin to display patters (i.e. a linear model) can be added with [`geom_smooth()`](/ggplot2/geom_others.qmd#smooth)
+- A smooth line to display patterns (i.e. a linear model) can be added with [`geom_smooth()`](/ggplot2/geom_others.qmd#smooth)
 - If there are too many values to effectively plot with a scatter plot you may want to use a [2D bin count plot](/ggplot2/geom_others.qmd#d-bin-counts)
 - Dashes can be added to the axes margins to display the distributions along with the 2d plot, this is called a [rug plot](/ggplot2/geom_others.qmd#rug)

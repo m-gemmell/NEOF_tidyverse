@@ -58,7 +58,7 @@ mushroom_tbl |>
 
 ## Continuous scale
 
-There are many arguments that can be included in `ggplot2::scale_x_continuous` and `ggplot2::scale_y_continuous` to effect each of the axis scales.
+There are many arguments that can be included in `ggplot2::scale_x_continuous` and `ggplot2::scale_y_continuous` to affect each of the axis scales.
 These include:
 
 - `name=`: set the label name (can be used instead of [`labs()`](/ggplot2/labels.qmd))
@@ -148,7 +148,7 @@ mushroom_tbl |>
 
 
 `r hide("log-10 transformation introduced infinite values")`
-R has given a warning that the log-10 transformation has introduced infinite values. This occurs because `log10(0)` produces the result `-inf` in R. This warning can therefore normally be ignored as long as the plot looks fine.
+R has given a warning that the log-10 transformation has introduced infinite values. This occurs because `log10(0)` produces the result `-inf` in R. This warning can normally be ignored as long as the plot looks fine.
 
 Sometimes this will cause a plot to become empty.
 This can be best avoided by removing rows were both the x and y axis values equal 0 with [`filter()`](/dplyr/filter.qmd).

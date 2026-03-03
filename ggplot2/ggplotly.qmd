@@ -9,9 +9,11 @@ library(tidyverse)
 
 Plotly is a graphing library that allows you to create interactive charts and maps. These are in the form of html files.
 
-This works with python, R, ggplot2, and other languages. You can create plots with plotly's own library in R. However, we'll demonstrate how to plotlyify plots with ggplot2 using `ggplotly()`.
+This works with python, R, `ggplot2`, and other languages. You can create plots with plotly's own library in R. However, we'll demonstrate how to plotlyfy plots with `ggplot2` using `ggplotly()`.
 
-The package `plotly` is separate to `tidyverse` and therefore needs installing. [Install instruction](https://plotly.com/r/getting-started/).
+The package `plotly` is separate to `tidyverse` and therefore needs installing.
+
+[Install instruction](https://plotly.com/r/getting-started/)
 
 Once installed you can load the library.
 
@@ -19,7 +21,7 @@ Once installed you can load the library.
 library("plotly")
 ```
 
-[Plotly ggplotly refernce page](https://plotly.com/ggplot2/)
+[Plotly ggplotly reference page](https://plotly.com/ggplot2/)
 
 ## Dataset
 
@@ -61,9 +63,9 @@ mushroom_tbl |>
 
 ## Scatter plot
 
-To create a plotly plot from a ggplot we first create a ggplot pbject
+To create a plotly plot we'll first create a ggplot pbject
 
-Create a scatter plot of **stem_height** (y) against **stem_width** (x).
+Create a scatter plot of `stem_height` (y) against `stem_width` (x).
 
 ```{r}
 scatterplot <- mushroom_tbl |>
@@ -77,6 +79,8 @@ The html based plot is interactive allowing you to:
 
 -   Zoom in horizontally, vertically, or with both axes.
 -   Rest the zoom with the home (`r icons::icon_style(icons::fontawesome("home", style="solid"), fill = "#648fff")`) symbol on the top right.
+
+Try interacting with the below plot.
 
 ```{r}
 scatterplot |> plotly::ggplotly()

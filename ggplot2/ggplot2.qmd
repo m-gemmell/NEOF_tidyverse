@@ -8,12 +8,12 @@ title: "Ggplot2"
 
 ## Overview
 
-__Ggplot2__ is the visualisation package of __Tidyverse__.
-It utilises the __grammar of graphics__ (the gg in ggplot2) to create plots/figures in a layered/compartmentalised fashion.
+`Ggplot2` is the visualisation package of Tidyverse`.
+It utilises the __grammar of graphics__ (the gg in `ggplot2`) to create plots/figures in a layered/compartmentalised fashion.
 
-There are multiple parts of a __ggplot2__ figure including:
+There are multiple parts of a `ggplot2` figure including:
 
-- The __ggplot2__ object that contains the aesthetics
+- The `ggplot2` object that contains the __aesthetics__
 - The __aesthetics__: This is the data and what they are mapped to (x axis, y-axis, colour etc.)
 - The __geom layers__: This is how the aesthetics are visualised (bar chart, boxplot, histogram etc.)
 - The __guides__: The text and other information on the axes and legends (labels, titles, etc.)
@@ -23,7 +23,7 @@ There are multiple parts of a __ggplot2__ figure including:
 [ggplot2 homepage](https://ggplot2.tidyverse.org//)
 
 This website aims to quickly cover the most commonly used `ggplot2` functions and uses.
-Therefore there are a lot more `ggplot2` functions than those covered here.
+There are a lot more `ggplot2` functions than those covered here.
 Please check the below link for the full list.
 
 [Full ggplot2 reference page](https://ggplot2.tidyverse.org//reference/index.html)
@@ -53,13 +53,13 @@ There are various sections for `ggplot2`. These are summarised below.
 </div>
 
 
-Creating a basic plot with `ggplot2`. In essence the introduction to `ggplot2` usage.
+The introduction to `ggplot2` usage.
 
 - [__Basic plot__](/ggplot2/basic_plot.qmd): Creation of a basic plot with `ggplot2`
-- [__Input data__](/ggplot2/input_data.qmd): The required input format data for `ggplot2`. 
-    - Discusses the difference between __tidy/long__ data and __wide/messy__ data.
-- [__Aesthetics__](/ggplot2/aesthetics.qmd): What they are, the different types, and their usage.
-- [__Components__](/ggplot2/components.qmd): What components are and how to add (`+`) them to a `ggplot2` object.
+- [__Input data__](/ggplot2/input_data.qmd): The required input format data for `ggplot2`
+    - Discusses the difference between __tidy/long__ data and __wide/messy__ data
+- [__Aesthetics__](/ggplot2/aesthetics.qmd): What they are, the different types, and their usage
+- [__Components__](/ggplot2/components.qmd): What components are and how to add (`+`) them to a `ggplot2` object
 
 ### Layers
 
@@ -95,15 +95,15 @@ Creating a basic plot with `ggplot2`. In essence the introduction to `ggplot2` u
 
 
 Arguably the most important __component__ for `ggplot2` are the __layers__.
-__Layers__ (also known as geom) are used to plot the data in different ways, i.e. different plots.
+__Layers__ (also known as geoms) are used to plot the data in different ways, i.e. different plots.
 This website will cover a few of the most commonly used ones.
 
-- [__`geom_bar()`__](/ggplot2/geom_bar.qmd): Bar chart.
-- [__`geom_histogram()`__](/ggplot2/geom_histogram.qmd): histogram.
-- [__`geom_line()`__](/ggplot2/geom_line.qmd): Line graph.
-- [__`geom_point()`__](/ggplot2/geom_point.qmd): Scatter plot.
-- [__`geom_boxplot()`__](/ggplot2/geom_boxplot.qmd): Box and whisker plot.
-- [Other geoms](/ggplot2/geom_others.qmd): Other useful geom layers.
+- [__`geom_bar()`__](/ggplot2/geom_bar.qmd): Bar chart
+- [__`geom_histogram()`__](/ggplot2/geom_histogram.qmd): Histogram
+- [__`geom_line()`__](/ggplot2/geom_line.qmd): Line graph
+- [__`geom_point()`__](/ggplot2/geom_point.qmd): Scatter plot
+- [__`geom_boxplot()`__](/ggplot2/geom_boxplot.qmd): Box and whisker plot
+- [Other geoms](/ggplot2/geom_others.qmd): Other useful geom layers
 
 ### Output
 
@@ -123,9 +123,9 @@ This website will cover a few of the most commonly used ones.
 
 How to save the output of `ggplot2` objects.
 
-- [__`ggsave()`__](/ggplot2/ggsave.qmd): Save a `ggplot` object/figure to a static image file.
-- [__`pathcwork`__](/ggplot2/patchwork.qmd): Combing multiple `gpglot2` objects into the same graphic/image. (https://patchwork.data-imaginist.com/)
-- [__`ggplotly()`__](/ggplot2/ggplotly.qmd): Convert a `ggplot2` object to an interactive plotly object and save it as an HTML file.
+- [__`ggsave()`__](/ggplot2/ggsave.qmd): Save a `ggplot` object/figure to a static image file
+- [__`patchwork`__](/ggplot2/patchwork.qmd): Combing multiple `gglot2` objects into the same graphic/image
+- [__`ggplotly()`__](/ggplot2/ggplotly.qmd): Convert a `ggplot2` object to an interactive plotly object and save it as an HTML file
 
 ### Customisation
 
@@ -173,18 +173,18 @@ How to save the output of `ggplot2` objects.
 On top of __layers__ there are various other __components__.
 These include:
 
-- [__`labs()`__](/ggplot2/labels.qmd): Modifying labels on the axes, legend, and other plot labels.
-- [__`theme()`__](/ggplot2/theme.qmd): Modifying components of a theme including the legend position and the font sizes in the plot.
+- [__`labs()`__](/ggplot2/labels.qmd): Modifying labels on the axes, legend, and other plot labels
+- [__`theme()`__](/ggplot2/theme.qmd): Modifying components of a theme including the legend position and the font sizes in the plot
 - [__Scale values__](/ggplot2/scale_values.qmd): How to modify the scale of the x and y axis (e.g. plot values as log10 values or square root values)
-- [__Colour scales__](/ggplot2/colour_scales.qmd): How to set the colours for aesthetics.
-- [__Guides__](/ggplot2/guides.qmd): Modify the appearance of guides including the layout of the legend and axes values.
+- [__Colour scales__](/ggplot2/colour_scales.qmd): How to set the colours for aesthetics
+- [__Guides__](/ggplot2/guides.qmd): Modify the appearance of guides including the layout of the legend and axes values
   - Setting number of rows for legend values
   - Allowing axis value/guides to dodge each other when they would otherwise overlap
-- [__Annotations__](/ggplot2/annotation.qmd): Adding text and lines onto the plotting area.
+- [__Annotations__](/ggplot2/annotation.qmd): Adding text and lines onto the plotting area
   - Includes how to create a [statistical lm abline with the equation on the plot](/ggplot2/annotation.qmd#statistical-abline-and-equation)
-- [__Coordinate systems__](/ggplot2/coordinate_systems.qmd): Modify how the x and y aesthetics combine. 
-  - Modify the x and y aspect ratio.
-- [__Facetting__](/ggplot2/facet.qmd): Splitting a plot into multiple panels by subsetting the visualised data by one or two metadata categories.
+- [__Coordinate systems__](/ggplot2/coordinate_systems.qmd): Modify how the x and y aesthetics combine
+  - Modify the x and y aspect ratio
+- [__Facetting__](/ggplot2/facet.qmd): Splitting a plot into multiple panels by subsetting the visualised data by one or two metadata categories
 
 
 
