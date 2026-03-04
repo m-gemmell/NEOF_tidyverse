@@ -15,6 +15,12 @@ In this page we will demonstrate how to change the colour scale of the colour ae
 - `ggplot2::scale_colour_manual()`: Set the colours to be used manually
     - Allows the use of colour blind friendly palettes
 
+Additionally, you can change the colour scale of the fill aesthetic with:
+
+- `ggplot2::scale_fill_brewer()`: Change the colours used by the fill aesthetic to the colour brewer palette
+- `ggplot2::scale_fill_manual()`: Set the colours of the fill aesthetic to be used manually
+    - Allows the use of colour blind friendly palettes
+
 There are many other ways to change the colour scale. Please see the below link for the full list of functions.
 
 [Tidyverse reference page](https://ggplot2.tidyverse.org//reference/index.html#scales)
@@ -146,6 +152,47 @@ bat_roost_tbl |>
     ggplot2::geom_jitter(aes(colour=Species), size=3) +
     #Manually use wong colour palette
     ggplot2::scale_colour_manual(values = wong_pal)
+```
+
+## Fill aesthetic
+
+The colours used for the fill aesthetic can be changed. 
+
+
+### Fill with colour brewer
+
+The function `ggplot2::scale_fill_brewer()` can set the colour for the fill aesthetic to a [colour brewer palette](https://neof-workshops.github.io/Tidyverse/ggplot2/colour_scales.html#colour-brewer-palettes).
+
+```{r}
+bat_roost_tbl |>
+  #Filter to only retain Northern Ireland rows
+  dplyr::filter(Country == "Northern Ireland") |>
+  #Box plot of MaxCountInAnyYear against County
+  #Fill colour based on County
+  ggplot2::ggplot(aes(x=County, y = MaxCountInAnyYear, fill = County)) +
+  geom_boxplot() +
+  #Use Colour brewer set1 palette for fill aesthetic
+  ggplot2::scale_fill_brewer(palette="Set1")
+```
+
+### Fill with manual palette
+
+The function `ggplot2::scale_fill_manual()` can set the colour for the fill aesthetic to a manually created palette.
+
+```{r}
+#Vector for Tol palette
+tol_pal <- c("#332288","#117733","#44aa99","#88ccee",
+                "#ddcc77","#cc6677","#aa4499","#882255")
+#ggplot box plot 
+bat_roost_tbl |>
+  #Filter to only retain Northern Ireland rows
+  dplyr::filter(Country == "Northern Ireland") |>
+  #Box plot of MaxCountInAnyYear against County
+  #Fill colour based on County
+  ggplot2::ggplot(aes(x=County, y = MaxCountInAnyYear, fill = County)) +
+  geom_boxplot() +
+  #Use manually created palette for fill aesthetic
+  ggplot2::scale_fill_manual(values=wong_pal)
 ```
 
 ## Number of colours

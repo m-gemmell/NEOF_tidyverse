@@ -118,7 +118,7 @@ There are many considerations when choosing which aesthetics to use including:
 
 - How many different aesthetics can be used before the plot is too noisy
 - Some aesthetics can only be used for continuous or categorical whilst others can be used for both
-- How many categorical gorupings can be effectively used for an aesthetic
+- How many categorical groupings can be effectively used for an aesthetic
     - Although you could use 100 colours for 100 groups, the colours will be very hard to differentiate between
 - Should you be using colour blind friendly palettes?
 

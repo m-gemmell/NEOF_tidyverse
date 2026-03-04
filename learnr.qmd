@@ -17,6 +17,8 @@ install.packages("learnr")
 install.packages("tidyverse")
 #lterdatasample
 install.packages("lterdatasampler")
+#INstall hexbin
+install.packages("hexbin")
 #Our packages are available through github rather than cran
 #To install github based packages you need to install and load 
 # the remotes package
