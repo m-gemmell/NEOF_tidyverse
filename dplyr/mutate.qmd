@@ -13,6 +13,8 @@ The function `dplyr::mutate()` allows you to:
 - Delete columns
 - Modify multiple columns at once with `dplyr::across()`
 
+You can use operators and/or functions in a `mutate()` function with one or multiple columns/variables within the __tibble__ you are mutating.
+
 [Tidyverse reference page](https://dplyr.tidyverse.org//reference/mutate.html)
 
 ## Dataset
@@ -96,6 +98,73 @@ mammal_sleep_tbl |>
         )
 ```
 
+## Changing column classes
+
+You can convert a column to a different class with the `as.` functions, including:
+
+- `as.numeric()`: Convert to numerics
+    - Especially useful when a column of numbers is set to characters
+- `as.character()`: Convert to string/character
+- `as.factor()`: Convert to factors
+
+First we'll use the function `forcats::fct_recode()` to recode the factor levels of `predation`, `exposure`, and `danger` from 1-5 to least likely-most likely.
+
+Glimpse original numbered factors.
+
+```{r}
+#Original numbers factors
+mammal_sleep_tbl |>
+    #Select columns of interest
+    dplyr::select(species,predation:danger) |>
+    dplyr::glimpse()
+```
+
+Recode factors to strings and glimpse new tibble.
+
+```{r}
+#New string factors tibble
+mammal_sleep_fct_indexes_tbl <-
+    mammal_sleep_tbl |>
+    #Select columns of interest
+    dplyr::select(species,predation:danger) |>
+    #Mutate predation to convert indexes from number to character values
+    #Demonstrates factor recoding on one column
+    dplyr::mutate(
+        predation=forcats::fct_recode(
+            predation, "least likely"="1","unlikely"="2",
+            "neither"="3","likely"="4","most likely"="5")
+    ) |>
+    #Mutate exposure and danger to convert indexes from number to character values
+    #Demonstrates the same factor recoding on multiple columns
+    dplyr::mutate(
+        dplyr::across(
+            exposure:danger,
+            ~ forcats::fct_recode(.x,
+            "least likely"="1","unlikely"="2",
+            "neither"="3","likely"="4","most likely"="5")
+        )
+    )
+#Glimpse created tibble
+mammal_sleep_fct_indexes_tbl |> dplyr::glimpse()
+```
+
+Convert the `predation` __factor__ column to __strings__ and convert the `exposure` __factor__ columns to __numerics__.
+
+```{r}
+mammal_sleep_fct_indexes_tbl |>
+    #Mutate factors to strings and to numerics
+    dplyr::mutate(exposure=as.character(exposure), danger=as.numeric(danger))
+```
+
+Convert the columns `gestation:exposure` from __factors__ to __characters__.
+
+```{r}
+mammal_sleep_fct_indexes_tbl |>
+    #Mutate factors to strings and to numerics
+    dplyr::mutate(
+        dplyr::across(predation:danger, as.character)
+    )
+```
 
 ## NA filling
 

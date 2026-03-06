@@ -6,6 +6,7 @@
 ```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
 #Load library so functions run smoothly
 library(tidyverse)
+library(lterdatasampler)
 ```
 
 When creating a `ggplot2` object two pieces of information are vital:
@@ -110,6 +111,25 @@ crop_and_soil_tbl |>
     ggplot2::ggplot(aes(x = Humidity, y = Moisture, 
                         color = Temp_celsius, size = Nitrogen)) +
     ggplot2::geom_point()
+```
+
+## Calling aesthetic in layers
+
+Primarily we set aesthetics in the `ggplot2::ggplot()` function.
+However, aesthetics can be set in a specific layers such as `ggplot2::geom_boxplot()`.
+This is useful to make different layers show different information.
+
+Below is a quick example where the __color__ aesthetic is set in `geom_jitter()` so the points are coloured by `watershed` but the violins are not.
+
+```{r}
+hbr_maples |>
+    #Drop na values
+    tidyr::drop_na() |>
+    #Violin plot of corrected_leaf_area (y) by elevation (x)
+    ggplot2::ggplot(aes(x=elevation,y=corrected_leaf_area)) +
+    ggplot2::geom_violin() +
+    #Colour jitter points by watershed
+    ggplot2::geom_jitter(aes(colour=watershed))
 ```
 
 ## Correct use of aesthetics
