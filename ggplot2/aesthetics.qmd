@@ -14,7 +14,7 @@ When creating a `ggplot2` object two pieces of information are vital:
 - __Input data:__ A __tibble/data.frame__ in a long format
 - __Aesthetics:__ Specifies which columns of the input data are used for the different parts of the plot
 
-This page shows different aesthetics and their uses whilst the previous page described the input data.
+This page shows different aesthetics and their uses whilst the previous page describes the input data.
 
 ## Aesthetics
 

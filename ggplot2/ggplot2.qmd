@@ -8,14 +8,14 @@ title: "Ggplot2"
 
 ## Overview
 
-`Ggplot2` is the visualisation package of Tidyverse`.
+`Ggplot2` is the visualisation package of `Tidyverse`.
 It utilises the __grammar of graphics__ (the gg in `ggplot2`) to create plots/figures in a layered/compartmentalised fashion.
 
 There are multiple parts of a `ggplot2` figure including:
 
-- The `ggplot2` object that contains the __aesthetics__
-- The __aesthetics__: This is the data and what they are mapped to (x axis, y-axis, colour etc.)
-- The __geom layers__: This is how the aesthetics are visualised (bar chart, boxplot, histogram etc.)
+- The `ggplot2` object that contains the __data__ and __aesthetics__
+- The __aesthetics__: The visual properties of the plot that the variables/columns are mapped to (x axis, y-axis, colour etc.)
+- The __geom layers__: How the aesthetics are visualised (bar chart, boxplot, histogram etc.)
 - The __guides__: The text and other information on the axes and legends (labels, titles, etc.)
 - __Facetting__: Splitting of data to multiple plots (e.g. side by side box plots displaying different metrics)
 
