@@ -56,10 +56,7 @@ website:
     align: left
     contents:
     - href: index.qmd
-    - section: "Course"
-      contents:
-      - href: learnr.qmd
-      - href: tutorials.qmd
+    - href: learnr.qmd
   - id: Tibble
     title: Tibble
     style: floating

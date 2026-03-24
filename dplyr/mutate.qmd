@@ -30,6 +30,12 @@ mgrtibbles::mammal_sleep_tbl
 
 ## Create new column
 
+The format of the `mutate()` function is:
+
+```{r, eval=FALSE}
+dplyr::rename(mutated=mutation)
+```
+
 Create a column of brain and body weight ratio.
 
 ```{r}

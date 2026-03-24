@@ -25,7 +25,7 @@ mammal_sleep_tbl
 The format of the `rename()` function is:
 
 ```{r, eval=FALSE}
-dplyr(new_name=old_name)
+dplyr::rename(new_name=old_name)
 ```
 
 Rename column `total_sleep` to `tot_sleep`.
