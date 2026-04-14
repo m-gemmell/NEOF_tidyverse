@@ -20,17 +20,17 @@ This page shows different aesthetics and their uses whilst the previous page des
 
 The most important aesthetics are:
 
-- `x`: X-axis (continuos or categorical)
-- `y`: Y-axis (continuos or categorical)
+- `x`: X-axis (continuous or categorical)
+- `y`: Y-axis (continuous or categorical)
 - `shape`: The shape of points (categorical)
     - There are 20 different shapes
-- `colour`: The colour of objects (continuos or categorical)
+- `colour`: The colour of objects (continuous or categorical)
     - When used for points this is the stroke colour (i.e. outside line)
-- `fill`: The fill colour of objects (continuos or categorical)
-- `size`: The size of shapes (continuos)
+- `fill`: The fill colour of objects (continuous or categorical)
+- `size`: The size of shapes (continuous)
 - `linetype`: The type of the lines (categorical) 
     - There are 6 different line types including: solid, dashed, and dotted 
-- `linewidth`: The width of the lines (continuos)
+- `linewidth`: The width of the lines (continuous)
 
 As you can see there are a lot of aesthetic options.
 Which you use will depends on your data and how you want to visualise it.
@@ -46,7 +46,7 @@ For demonstration we'll load the `crop_and_soil_tbl` data from the [mgrtibbles p
 This contains:
 
 - Three categorical columns: `Soil_type`, `Crop_type`, and `Fertilisier`
-- Five continuos column: `Humidity`, `Moisture`, `Nitrogen`, `Potassium`, and `Phosphorus`
+- Five continuous column: `Humidity`, `Moisture`, `Nitrogen`, `Potassium`, and `Phosphorus`
 - A combine column: The `Temperature_clesius_kelvin` column contains the celsius and kelvin values. 
     - This will be [split into 2 columns](/tidyr/separate_wider.html#separate-a-column)
 
