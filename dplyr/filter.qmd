@@ -98,6 +98,40 @@ Extract males or samples with a weight less than 900 pounds.
 knz_bison |> dplyr::filter(animal_sex == "M" | animal_weight < 900)
 ```
 
+## Regular expression matching with `grepl()`
+
+You can use [`grepl()`](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/grep) to filter rows that contain a string in a column.
+
+Extract rows where `animal_code` column/variable contains "A".
+
+```{r}
+knz_bison |>
+    dplyr::filter(grepl("A", animal_code))
+```
+
+Extract rows where `animal_code` does not contain "B".
+
+```{r}
+knz_bison |>
+    dplyr::filter(!grepl("B", animal_code))
+```
+
+You can use **regular expressions**.
+
+Extract rows where `animal_code` column/variable starts with "A".
+
+```{r}
+knz_bison |>
+    dplyr::filter(grepl("^A", animal_code))
+```
+
+Extract rows where `animal_code` either begins with "8" or ends with "9".
+
+```{r}
+knz_bison |>
+    dplyr::filter(grepl("^8|9$", animal_code))
+```
+
 ## Pipes
 
 You can use pipes for finer control of multiple comparisons.
