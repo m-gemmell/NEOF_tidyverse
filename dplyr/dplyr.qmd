@@ -158,6 +158,10 @@ __Tibbles__ can be grouped by a specific variable/column or multiple variables/c
 
   <p><a href="/dplyr/bind_tibbles.qmd">
   <img src="images/dplyr_bind_rows.png" width="150px">
+
+  <p><a href="/dplyr/join.qmd">
+  <img src="images/dplyr_join.png" width="150px">
+
   </a></p>
 
 </div>
@@ -168,3 +172,5 @@ __Tibbles__ can be combined/bound together with the following functions:
   - The two __tibbles__ must have the same number of rows
 - [__`bind_row()`__](/dplyr/bind_tibbles.qmd): Bind 2 __tibbles__ by rows (i.e. bind one __tibble__ on top of the other)
   - The two __tibbles__ must have the same column types and names
+- [**`inner_join()`**](/dplyr/join.qmd): Join 2 **tibbles** by a matching key column
+  - Similar to excel's VLOOKUP

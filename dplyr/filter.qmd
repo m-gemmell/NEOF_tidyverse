@@ -5,6 +5,7 @@ title: "Filter"
 ```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
 #Load library so functions run smoothly
 library(tidyverse)
+library("lterdatasampler")
 ```
 
 <center>

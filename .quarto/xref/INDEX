@@ -364,5 +364,8 @@
   },
   "learnr.qmd": {
     "learnr.html": "d9fb1877"
+  },
+  "dplyr/join.qmd": {
+    "join.html": "8c393ccc"
   }
 }

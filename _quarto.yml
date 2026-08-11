@@ -96,7 +96,10 @@ website:
       - href: dplyr/group_by.qmd
       - href: dplyr/count.qmd
       - href: dplyr/summarise.qmd
-    - href: dplyr/bind_tibbles.qmd
+    - section: "Bind/Join"
+      contents:
+      - href: dplyr/bind_tibbles.qmd
+      - href: dplyr/join.qmd
     - href: dplyr/cheatsheets.qmd
   - id: Readr
     title: Readr

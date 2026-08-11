@@ -2,6 +2,12 @@
 title: "Arrange"
 ---
 
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+library("lterdatasampler")
+```
+
 <center>
 ![](images/dplyr_arrange.png){style="width:200px"}
 </center>

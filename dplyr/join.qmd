@@ -1,0 +1,83 @@
+---
+title: "Join"
+---
+
+```{r, echo=FALSE, warning=FALSE, results=FALSE, output=FALSE}
+#Load library so functions run smoothly
+library(tidyverse)
+```
+
+<center>
+![](images/dplyr_join.png){style="width:200px"}
+</center>
+
+There are various join functions in `dplyr`.
+This page will only show the use of `dplyr::inner_join()`.
+This function joins 2 `tibbles`/`data.frames` based on a key column.
+This allows you to add data from matching rows similar to VLOOKUP in excel.
+
+[Tidyverse reference page](https://dplyr.tidyverse.org//reference/mutate-joins.html)
+
+## Dataset
+
+Before demonstrating various examples we will create a 2 tibbles:
+
+- `acris_records`: Contain records of frogs from Acris species (Cricket frogs).
+- `species_info`: Contains IUCN and lineage information on the the 2 frog
+
+We'll use these for joining.
+
+```{r}
+#Vectors for tibble
+Species <- c("Acris gryllus","Acris blanchardi","Acris blanchardi","Acris crepitans",
+                "Acris crepitans","Acris blanchardi","Acris blanchardi",
+                "Acris blanchardi","Acris gryllus","Acris gryllus")
+length <- c(32,10,14,23,19,11,9,14,32,22)
+#Tibble
+acris_records <- tibble::tibble(Species, length)
+acris_records
+```
+
+Acquire IUCN and lineage information from the `amphibian_div_tbl` data from the [mgrtibbles package](/datasets/mgrtibbles.qmd).
+
+```{r}
+#Load package
+library("mgrtibbles")
+species_info <- mgrtibbles::amphibian_div_tbl |>
+    #Select columns
+    dplyr::select(Species:Genus) |>
+    #Extract distinct/unique rows
+    dplyr::distinct() |>
+    #Select Acris rows
+    dplyr::filter(Genus=="Acris")
+species_info
+```
+
+## inner_join()
+
+Join 2 `tibbles`/`data.frames` with a key column.
+This key column must have the same name and matching values.
+
+```{r}
+dplyr::inner_join(
+    #Left tibble
+    acris_records,
+    #Right tibble
+    species_info,
+    #Key column
+    by = "Species"
+)
+```
+
+Swapping the left and right `tibbles` swaps their positions in the joined `tibble`.
+
+```{r}
+dplyr::inner_join(
+    #Left tibble
+    species_info,
+    #Right tibble
+    acris_records,
+    #Key column
+    by = "Species"
+)
+```
