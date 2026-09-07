@@ -158,10 +158,10 @@ __Tibbles__ can be grouped by a specific variable/column or multiple variables/c
 
   <p><a href="/dplyr/bind_tibbles.qmd">
   <img src="images/dplyr_bind_rows.png" width="150px">
+  </a></p>
 
   <p><a href="/dplyr/join.qmd">
   <img src="images/dplyr_join.png" width="150px">
-
   </a></p>
 
 </div>

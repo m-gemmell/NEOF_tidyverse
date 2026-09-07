@@ -3,6 +3,20 @@
 Tutorials are available to run through with the R package [`learnr`](https://rstudio.github.io/learnr/).
 These are interactive tutorials that give practice and exercises to supplement this site.
 
+::: {.callout-tip collapse="true" title="Run on course webVNC instead"}
+We recommend you run through the learnr tutorials on your own computer with RStudio by following the instructions outside of this box.
+
+However, if you cannot get it to easily work or you prefer you can run it on the course webVNC you were provided (if you are not on the course you will have to run this through your own computer).
+
+To run the tutorial on the webVNC run the following use script on a new terminal:
+
+```{bash, eval=FALSE}
+. useneoftidytuts
+```
+
+Then follow the instructions on the terminal.
+:::
+
 ## Install instructions
 
 You will need R and RStudio installed on your computer.
@@ -24,6 +38,9 @@ install.packages("hexbin")
 # the remotes package
 install.packages("remotes")
 library("remotes")
+```
+
+```{r,eval=FALSE}
 #mgrtibbles
 remotes::install_github("m-gemmell/mgrtibbles")
 #neoftidytutorials

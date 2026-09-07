@@ -51,7 +51,9 @@ iris_tbl <- tibble::as_tibble(iris)
 iris_tbl
 ```
 
-__Note:__ The `iris` dataset is built-in to base R. You can see all the pre-loaded datasets in R with `data()`
+::: {.callout-note}
+The `iris` dataset is built-in to base R. You can see all the pre-loaded datasets in R with `data()`
+:::
 
 ## File to tibble
 

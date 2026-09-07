@@ -31,9 +31,7 @@ mixed_tbl <- tibble::tibble(number = 1:3,
 
 ## Adding one row or column
 
-Adding one new column or row can be carried out with the 
-
-intuitively named functions:
+Adding one new column or row can be carried out with the intuitively named functions:
 
 - [`tibble::add_column()`](https://tibble.tidyverse.org/reference/add_column.html): Add one or more columns to a __tibble__
 - [`tibble::add_row()`](https://tibble.tidyverse.org/reference/add_row.html): Add one or more rows to a __tibble__

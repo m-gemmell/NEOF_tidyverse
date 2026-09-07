@@ -71,10 +71,14 @@ These are:
 - [purrr](/purrr/purrr.qmd): Functions & vectors (in development)
 - [lubridate](/lubridate/lubridate.qmd): Data-time data (in development)
 
-__Tip:__ Hexagonal images, such as the 9 at the top of this page, can be clicked on to bring you to the package/function webpage.
+::: {.callout-tip}
+Hexagonal images, such as the 9 at the top of this page, can be clicked on to bring you to the package/function webpage.
 You can also right click and open link in new tab, or click with your middle mouse button to open the page in a new tab.
+:::
 
-__Note:__ The sections marked with "in development" are currently empty.
+::: {.callout-note}
+The sections marked with "in development" are currently empty.
+:::
 
 ## Reading order
 
@@ -118,6 +122,20 @@ library("tidyverse")
 To update Tidyverse check the following link:
 
 [Update tidyverse packages](https://tidyverse.tidyverse.org/reference/tidyverse_update.html)
+
+::: {.callout-tip collapse="true" title="Run on course webVNC instead"}
+We recommend you run through the [learnr tutorials](/learnr.qmd) on your own computer with RStudio.
+
+However, if you cannot get it to easily work or you prefer you can run it on the course webVNC you were provided (if you are not on the course you will have to run this through your own computer).
+
+To run the tutorial on the webVNC run the following use script on a new terminal:
+
+```{bash, eval=FALSE}
+. useneoftidytuts
+```
+
+Then follow the instructions on the terminal.
+:::
 
 ## External links
 
