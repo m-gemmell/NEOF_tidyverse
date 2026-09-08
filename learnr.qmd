@@ -17,6 +17,19 @@ To run the tutorial on the webVNC run the following use script on a new terminal
 Then follow the instructions on the terminal.
 :::
 
+## Rtools for windows
+
+If you are using a windows machine you will need to have RTools installed.
+Close your RStudio (or equivalent) and open the below link:
+
+[https://cran.r-project.org/bin/windows/Rtools/](https://cran.r-project.org/bin/windows/Rtools/)
+
+- Click on the the latest version
+- On the new page find and click on the "RToolsXX INstaller" (XX being the number of the version, e.g. 45) to download the installer
+- Run the installer
+
+Once RTools is installed you can open up RStudio and run the below.
+
 ## Install instructions
 
 You will need R and RStudio installed on your computer.
