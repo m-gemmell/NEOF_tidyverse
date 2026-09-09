@@ -46,7 +46,7 @@ Mathematic operators include:
 Filter the __tibble__ to only contain rows/observations from the `rec_year` 2000 and onwards (>2000).
 
 ```{r}
-knz_bison |> dplyr::filter(rec_year > 2000)
+knz_bison |> dplyr::filter(rec_year >= 2000)
 ```
 
 ## String/factor columns

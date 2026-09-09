@@ -42,7 +42,7 @@ Arrange the __tibble__ by `rec_year`.
 bison_tbl |> dplyr::arrange(rec_year)
 ```
 
-`dplyr::arrange()` will arrange the rows by the selected column in ascending fashion (lowest to highest). You can use the `desc()` function on columns you wan't to be ordered in descending fashion.
+`dplyr::arrange()` will arrange the rows by the selected column in ascending fashion (lowest to highest/a->z). You can use the `desc()` function on columns you wan't to be ordered in descending fashion (highest to lowest/z->a).
 
 Arrange the __tibble__ by `rec_year` in descending fashion.
 

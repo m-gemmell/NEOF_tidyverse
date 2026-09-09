@@ -70,7 +70,8 @@ This means you can include variables/column names that don't exist and the funct
 
 ```{r}
 #Vector of column names
-vars <- c("genus", "species", "brain_wt", "total_sleep", "total_awake", "life_span", "fake_123")
+vars <- c("genus", "species", "brain_wt", "total_sleep", 
+            "total_awake", "life_span", "fake_123")
 #Select columns from vector
 mammal_sleep_tbl |> dplyr::select(any_of(vars))
 ```
@@ -80,7 +81,8 @@ To unselect variables place a `-` in front of the `any_of()` function.
 
 ```{r}
 #Vector of column names
-vars <- c("genus", "species", "brain_wt", "total_sleep", "total_awake", "life_span", "fake_123")
+vars <- c("genus", "species", "brain_wt", 
+            "total_sleep", "total_awake", "life_span", "fake_123")
 #Unselect columns from vector
 mammal_sleep_tbl |> dplyr::select(-any_of(vars))
 ```

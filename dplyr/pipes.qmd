@@ -55,7 +55,7 @@ The above command acts the same as the below.
 dplyr::slice(maples_tbl,1:5)
 ```
 
-To assign the output of piped function you can utilise the assignment operator as usual.
+To assign the output of a piped function you can utilise the assignment operator as usual.
 
 ```{r}
 maples_subset_tbl <- maples_tbl |> dplyr::slice(1:7)
@@ -73,7 +73,9 @@ In the below case we:
 - Select columns `leaf1area` and `leaf2area` with [`dplyr::select()`](/dplyr/select.qmd)
 - Summarise the resulting __tibble__ with `summary()`
 
-__Note:__ Pipes are not only limited to `tidyverse` functions.
+::: {.callout-note}
+Pipes are not only limited to `tidyverse` functions.
+:::
 
 ```{r}
 maples_tbl |> 
@@ -87,7 +89,7 @@ maples_tbl |>
     summary()
 ```
 
-The below code carries out the steps but in a less visually clear method with nested functions.
+The below code carries out the same steps but in a less visually clear method with nested functions.
 
 ```{r}
 summary(dplyr::select(dplyr::filter(dplyr::slice(maples_tbl,1:1000),elevation=="Low"),c(leaf1area,leaf2area)))

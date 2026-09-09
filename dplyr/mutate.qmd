@@ -162,7 +162,7 @@ mammal_sleep_fct_indexes_tbl |>
     dplyr::mutate(exposure=as.character(exposure), danger=as.numeric(danger))
 ```
 
-Convert the columns `gestation:exposure` from __factors__ to __characters__.
+Convert the columns `predation:danger` from __factors__ to __characters__.
 
 ```{r}
 mammal_sleep_fct_indexes_tbl |>

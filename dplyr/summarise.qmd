@@ -12,8 +12,8 @@ It will produce a __tibble__ of the summarised information.
 Various helper functions can be used to get specific info including:
 
 - `n()`: Count number of instances of group
-- `mean()`: Calculate means of a columns
-- `median()`: Calculate median of columns
+- `mean()`: Calculate mean
+- `median()`: Calculate median
 - `sd()`: Calculate standard deviation
 - `IQR()`: Calculate interquartile range
     - iqr = upper quartile - lower quartile
